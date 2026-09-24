@@ -14,7 +14,7 @@ import platform
 import subprocess
 import time
 import uuid
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -152,6 +152,16 @@ class Study:
             for s in engine_strategies(events, ds, self.objective, self.cfg, spec.key, single_decision=spec.single):
                 s.name = f"{spec.key}/{s.name}"
                 out.append(s)
+        # measured per-event latency: priority/rules computation, and complete routing per engine
+        pre = self._pre_ms_per_event
+        rules_lat = out[1].per_unit_latency_ms
+        self.latency.setdefault("priority_ms_per_event", []).extend(rules_lat)
+        for spec in self.engines:
+            eng_lat = [d.latency_ms for d in engine_decisions[spec.key]]
+            self.latency.setdefault(f"routing_ms_per_event:{spec.key}", []).extend(
+                pre + e + p for e, p in zip(eng_lat, rules_lat))
+        self.latency.setdefault("routing_ms_per_event:RULES", []).extend(pre + p for p in rules_lat)
+        self.latency.setdefault("routing_ms_per_event:LOCAL_EDGE", []).extend(pre + p for p in out[3].per_unit_latency_ms)
         out.append(unavailable("ENGINE_PLUS_DEEP", "deep analysis disabled in Phase 2 (no Anthropic spend until the Jev benchmark indicates what to escalate)"))
         tol = {lid: (m.get("tolerance_before_s", 0), m.get("tolerance_after_s", 0)) for lid, m in label_meta.items()}
         out.append(oracle_strategy(iw, labels, tol))
@@ -160,6 +170,13 @@ class Study:
     def _evaluate_all(self, dataset, sd, batch, strategies, iw, labels, label_meta, raw_total):
         widx = WindowIndex(iw)
         fid = self.cfg.compression.fidelity
+        # RANDOM: one unit list per seed (ordering is budget-independent), re-used for every budget
+        seg_seed = int(hashlib.sha256(f"{sd.segment.id}:{batch}".encode()).hexdigest()[:6], 16) * 100
+        base = random_strategy(iw, 0).units
+        rand_orders = []
+        for seed in range(RANDOM_SEEDS):
+            rng = __import__("random").Random(seg_seed + seed)
+            rand_orders.append([replace(u, utility=rng.random()) for u in base])
         for frac in BUDGET_FRACTIONS:
             budget = int(frac * raw_total)
             for s in strategies:
@@ -167,9 +184,8 @@ class Study:
                     continue
                 m = evaluate_selection(allocate(s.units, budget), labels, label_meta, widx, raw_total, fid)
                 self.rows.append(self._row(dataset, sd, batch, s.name, frac, None, m))
-            for seed in range(RANDOM_SEEDS):
-                r = random_strategy(iw, int(hashlib.sha256(sd.segment.id.encode()).hexdigest()[:6], 16) * 100 + seed)
-                m = evaluate_selection(allocate(r.units, budget), labels, label_meta, widx, raw_total, fid)
+            for seed, units in enumerate(rand_orders):
+                m = evaluate_selection(allocate(units, budget), labels, label_meta, widx, raw_total, fid)
                 self.rows.append(self._row(dataset, sd, batch, "RANDOM", frac, seed, m))
 
     @staticmethod
@@ -191,7 +207,8 @@ class Study:
         iw0 = eval_windows(det0.instrument_windows, sd)
         raw0 = int(iw0["raw"].sum() or 0)
         # local preprocessing latency amortized per candidate event (measured batch time / events)
-        self.latency.setdefault("preprocessing_ms_per_event", []).extend([pre_ms / max(len(det0.events), 1)] * len(events0))
+        self._pre_ms_per_event = pre_ms / max(len(det0.events), 1)
+        self.latency.setdefault("preprocessing_ms_per_event", []).extend([self._pre_ms_per_event] * len(events0))
 
         if "real" in self.experiments or "storage" in self.experiments or "gating" in self.experiments:
             dec0 = {spec.key: self._engine_decisions(spec, events0, sd) for spec in self.engines}
@@ -212,8 +229,10 @@ class Study:
             base_seed = int(hashlib.sha256(f"{self.split}:{seg.id}".encode()).hexdigest()[:8], 16) % 1_000_000
             for b in range(self.n_batches):
                 inj = plan_sweep_batch(sd.mission.samples, det0.windows, seg.eval, n, base_seed + b, floors, f"{seg.id}-B{b:02d}")
+                t2 = time.perf_counter()
                 det = detect_events(sd.mission, sd.adapter, self.cfg, injections=inj)
                 assign_novelty(det.events)
+                self._pre_ms_per_event = (time.perf_counter() - t2) * 1000 / max(len(det.events), 1)
                 events = eval_filter_events(det.events, sd)
                 iw = eval_windows(det.instrument_windows, sd)
                 raw = int(iw["raw"].sum() or 0)

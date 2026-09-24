@@ -4,6 +4,13 @@ DEEPSIFT separates **what the data says** (data plane), **what a model thinks** 
 the mission wants** (objective layer) and **what actually happens** (priority, storage, downlink) so that
 each can be replaced, measured and audited independently.
 
+> **Onboard vs cloud — read this first.** DEEPSIFT evaluates an *onboard-autonomy architecture*.
+> ONBOARD-SIMULATED: preprocessing, feature extraction, candidate detection, priority, storage,
+> bandwidth and routing. REMOTE: Jev inference, which runs on TypeSafe's hosted API over the network.
+> The current Jev implementation is API-hosted and therefore does not establish deployability on
+> spacecraft hardware. Jev latency and cost figures are for a ground-based API call, not an onboard
+> processor. The LOCAL EDGE BASELINE is the only decision model in DEEPSIFT that runs without a network.
+
 ```mermaid
 flowchart TB
   subgraph DataPlane[Data plane — deterministic]

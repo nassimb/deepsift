@@ -9,6 +9,7 @@ const LINKS = [
   ["/control", "Mission Control"],
   ["/blackout", "Blackout"],
   ["/experiments", "Experiments"],
+  ["/study", "Study"],
   ["/explorer", "Data Explorer"],
   ["/audit", "Audit"],
   ["/config", "Config"],

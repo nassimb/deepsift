@@ -1,0 +1,12 @@
+TYPESAFE_API_KEY is not set, so every Jev strategy is reported UNAVAILABLE.
+To enable it (do not paste the key into chat):
+  1. cp .env.example .env            (in the DEEPSIFT repository root)
+  2. edit .env and set  TYPESAFE_API_KEY=<your key>
+  3. export it for CLI runs:  set -a; . ./.env; set +a
+  4. uv run python scripts/jev_smoke.py      (verifies one call before any benchmark)
+`npm run demo` and scripts/run_study.py load .env automatically.
+→ continuing with every non-Jev strategy; Jev strategies are reported UNAVAILABLE.
+
+[20260924T203948-validation-91b4] segment VAL-2013-10-SEP
+[20260924T203948-validation-91b4] segment VAL-2014-10-FD
+run 20260924T203948-validation-91b4 → artifacts/runs/20260924T203948-validation-91b4  (jev: UNAVAILABLE: TYPESAFE_API_KEY not set)

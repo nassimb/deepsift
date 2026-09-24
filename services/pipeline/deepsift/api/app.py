@@ -395,3 +395,84 @@ def get_experiment(xid: str):
 @app.get("/api/actions")
 def actions():
     return [a.value for a in DownlinkAction]
+
+
+# ---------------------------------------------------------------- Phase-2 study runs (read-only)
+from fastapi.responses import FileResponse  # noqa: E402
+
+from deepsift.core.config import ROOT as _ROOT  # noqa: E402
+
+RUNS_ROOT = _ROOT / "artifacts" / "runs"
+FIG_ROOT = _ROOT / "artifacts" / "figures"
+
+
+def _run_dir(rid: str):
+    d = (RUNS_ROOT / rid).resolve()
+    if RUNS_ROOT.resolve() not in d.parents or not (d / "manifest.json").exists():
+        raise HTTPException(404, "unknown run")
+    return d
+
+
+@app.get("/api/runs")
+def list_runs():
+    out = []
+    for d in sorted(RUNS_ROOT.glob("*/manifest.json"), reverse=True):
+        m = json.loads(d.read_text())
+        out.append({"run_id": m["run_id"], "split": m["split"], "started_at": m["started_at"], "git": m.get("git"),
+                    "config_version": m["config_version"], "jev_status": m.get("jev_status"),
+                    "engines": [e["key"] for e in m.get("engines", [])],
+                    "figures": sorted(p.name for p in (FIG_ROOT / m["run_id"]).glob("*.png")) if (FIG_ROOT / m["run_id"]).exists() else []})
+    return out
+
+
+@app.get("/api/runs/{rid}/manifest")
+def run_manifest(rid: str):
+    m = json.loads((_run_dir(rid) / "manifest.json").read_text())
+    m["datasets"]["raw_products"].pop("per_file", None)
+    return m
+
+
+@app.get("/api/runs/{rid}/results")
+def run_results(rid: str):
+    r = json.loads((_run_dir(rid) / "results.json").read_text())
+    for row in r.get("storage", []):
+        row.pop("preserved_detail", None)
+    return r
+
+
+@app.get("/api/runs/{rid}/failures")
+def run_failures(rid: str):
+    f = json.loads((_run_dir(rid) / "failures.json").read_text())
+    return {cat: [{k: v for k, v in ex.items() if k != "event"} | {"has_event": "event" in ex} for ex in items]
+            for cat, items in f.items()}
+
+
+@app.get("/api/runs/{rid}/figures/{name}")
+def run_figure(rid: str, name: str):
+    p = (FIG_ROOT / rid / name).resolve()
+    if (FIG_ROOT / rid).resolve() not in p.parents or not p.exists() or p.suffix not in (".png", ".csv", ".txt"):
+        raise HTTPException(404, "no such figure")
+    return FileResponse(p)
+
+
+@app.get("/api/runs/{rid}/events/{eid}")
+def run_event(rid: str, eid: str):
+    """Event Inspector view for a failure-analysis example (rules scoring + computed counterfactuals)."""
+    f = json.loads((_run_dir(rid) / "failures.json").read_text())
+    ex = next((x for items in f.values() for x in items if x.get("event_id") == eid and "event" in x), None)
+    if ex is None:
+        raise HTTPException(404, "event not stored in this run's failure examples")
+    from deepsift.priority.engine import explain, rules_decision
+
+    e = ScientificEvent.model_validate(ex["event"])
+    e.gate = GateStatus.FALLBACK
+    d = rules_decision(e, S.cfg)
+    obj = S.pipeline.objectives[S.cfg.objective] if S.pipeline else load_objectives()[S.cfg.objective]
+    pb, act, notes = score_event(e, d, GateStatus.FALLBACK, obj, S.cfg)
+    e.priority, e.proposed_action, e.final_action = pb, act, act
+    e.gate_reason = "study replay: deterministic rules view (engine answers shown separately)"
+    e.explanation = explain(e, pb, act, e.gate_reason, notes)
+    cf = counterfactuals(e, d, GateStatus.FALLBACK, obj, S.cfg, S.pipeline.objectives if S.pipeline else load_objectives())
+    return {"event": e.model_dump(mode="json"), "row": _row(e, S.cfg), "effective_decision": d.model_dump(mode="json"),
+            "effective_source": "deterministic rules (study replay)", "counterfactuals": cf, "audit": [], "sim_item": None,
+            "study": {k: v for k, v in ex.items() if k != "event"}}

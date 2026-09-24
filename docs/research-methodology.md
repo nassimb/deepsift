@@ -3,6 +3,13 @@
 DEEPSIFT v0.1 is a prototype and a simulation. This document states what it measures, how, and what the
 measurements cannot support.
 
+> **Onboard vs cloud — read this first.** DEEPSIFT evaluates an *onboard-autonomy architecture*.
+> ONBOARD-SIMULATED: preprocessing, feature extraction, candidate detection, priority, storage,
+> bandwidth and routing. REMOTE: Jev inference, which runs on TypeSafe's hosted API over the network.
+> The current Jev implementation is API-hosted and therefore does not establish deployability on
+> spacecraft hardware. Jev latency and cost figures are for a ground-based API call, not an onboard
+> processor. The LOCAL EDGE BASELINE is the only decision model in DEEPSIFT that runs without a network.
+
 ## Research question
 
 Under a fixed downlink budget, does inserting a fast, bounded-output decision model (TypeSafe's Jev)
@@ -135,3 +142,63 @@ done, DEEPSIFT treats every answer as evidence to be gated, not as a fact.
 
 Reading: the candidate filter plus a priority engine is doing most of the work; the heuristic engine does
 not improve recall over rules and slightly improves the proxy. H1 remains untested for Jev.
+
+---
+
+# Phase 2 protocol (supersedes the v0.1 evaluation)
+
+The v0.1 benchmark above is kept for the record; it leaked (see `docs/leakage-audit.md`) and is a
+development result only. Phase 2 was declared as follows **before** any validation or test metric was
+computed.
+
+## Splits (`data/splits/splits.json`)
+
+| split | segments (scored sols) | use |
+|---|---|---|
+| calibration | 232–251 | derive detector thresholds (label-free); train LOCAL EDGE (synthetic seeds 10000+) |
+| validation | 412–430, 779–820 | sweeps; the gating-threshold choice via the pre-declared rule |
+| test | 732–750, 871–930, 2068–2105 | evaluated once per frozen configuration; never used for tuning |
+
+Each validation/test segment has a 7-sol warm-up block that feeds trailing baselines and is never
+scored. The runner refuses `--split test` unless `config/phase2.yaml` carries frozen validation choices.
+
+## Calibration
+
+`scripts/calibrate.py`: thresholds = quantiles giving the declared target flag rates
+(`config/calibration_targets.yaml`: level 2 %, dip 0.5 % of pressure windows, noise 0.5 %) on the
+calibration split; per-channel noise floor = 1.4826·MAD(Δ consecutive samples)/√2.
+
+## Pre-declared selection rule (gating thresholds)
+
+Among Pareto-optimal (auto, uncertain) points on **validation synthetic** data, keep those that would
+escalate ≤ 25 % of candidates; choose the highest high-severity tolerant recall; break ties by precision
+(lower bound), then fewer downlinked bytes. Applied mechanically by `run_study.py --freeze`.
+
+## Metrics (Phase 2)
+
+* **strict recall** — a retained unit overlaps the label interval; only for labels whose source states a
+  timing uncertainty (Guo et al. 2018 FDs; synthetic injections).
+* **tolerant recall** — overlap with the interval widened by the source's own uncertainty
+  (Guo Table 1: 0.68 d before onset, 0.55 d after nadir; 1 day for date-only SEPs; 1 sol for dust-storm phases).
+  Tolerances come from sources and are recorded in each manifest; they were not tuned.
+* **coverage** — share of the label's raw instrument data (by bytes) covered by retained products. Needed
+  because "any overlap" saturates for multi-day events: random sampling hits long events by chance.
+* **precision (lower bound)** — retained units overlapping any label ÷ retained units.
+* **value per MB (proxy)** — Σ severity weight × assumed product fidelity ÷ downlinked MB. A proxy.
+* Real and synthetic results are always reported separately. RANDOM is run over 30 seeds (mean, sd, 95 % CI);
+  synthetic results also carry a per-batch 95 % CI over 25 batches per segment.
+
+## Budgets and storage
+
+Downlink budgets are fractions of the *generated raw bytes of the scored sols*: 0.1, 0.25, 0.5, 1, 2, 5,
+10, 25 %. The reference operating point for sweeps and failure analysis is 0.5 %. Storage experiments
+place the whole scored segment inside a blackout and sweep capacity 16 KiB → 8 MiB for two policies:
+VALUE_PER_BYTE_ONLY and PROTECTED_HIGH_VALUE_TIER.
+
+## Strategies
+
+RANDOM · STATISTICAL · RULES · RULES_PLUS_STATISTICAL · LOCAL_EDGE · engine ENGINE_ONLY /
+RULES_PLUS_ENGINE / ENGINE_SINGLE_DECISION for the MOCK heuristic and each Jev variant (FULL_CONTEXT,
+NO_MISSION_OBJECTIVE, MINIMAL, NUMERIC_ONLY, SINGLE_DECISION) · ENGINE_PLUS_DEEP (disabled: no
+Anthropic spend in Phase 2) · ORACLE — NOT DEPLOYABLE (label-aware upper bound: first the cheapest
+window of every label, then value per byte).

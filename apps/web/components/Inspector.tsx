@@ -88,7 +88,7 @@ function Dist({ a, order }: { a: Answer | undefined; order?: string[] }) {
 
 const H = ({ children }: { children: React.ReactNode }) => <div className="label mt-4 mb-1.5 pb-1 border-b border-line">{children}</div>;
 
-export function Inspector({ id, onClose, onSelect }: { id: string; onClose: () => void; onSelect?: (id: string) => void }) {
+export function Inspector({ id, onClose, onSelect, detailUrl }: { id: string; onClose: () => void; onSelect?: (id: string) => void; detailUrl?: string }) {
   const [d, setD] = useState<Detail | null>(null);
   const [series, setSeries] = useState<Series | null>(null);
   const [err, setErr] = useState<string | null>(null);
@@ -98,7 +98,7 @@ export function Inspector({ id, onClose, onSelect }: { id: string; onClose: () =
 
   useEffect(() => {
     let alive = true;
-    api<Detail>(`/api/events/${encodeURIComponent(id)}`)
+    api<Detail>(detailUrl ?? `/api/events/${encodeURIComponent(id)}`)
       .then((x) => {
         if (!alive) return;
         setD(x);
@@ -113,7 +113,7 @@ export function Inspector({ id, onClose, onSelect }: { id: string; onClose: () =
     return () => {
       alive = false;
     };
-  }, [id]);
+  }, [id, detailUrl]);
 
   if (err) return <div className="p-3 mono text-[11px]" style={{ color: "var(--s-critical)" }}>{err}</div>;
   if (!d) return <div className="p-3 label">loading {id}…</div>;

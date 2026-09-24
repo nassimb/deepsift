@@ -12,6 +12,13 @@ relay budget, including a communication blackout.
 It is built to be **measured, inspected and reproduced**, not to impress. It is not flight software, it
 is not validated by NASA/JPL, and it does not produce scientific findings.
 
+> **Onboard vs cloud — read this first.** DEEPSIFT evaluates an *onboard-autonomy architecture*.
+> ONBOARD-SIMULATED: preprocessing, feature extraction, candidate detection, priority, storage,
+> bandwidth and routing. REMOTE: Jev inference, which runs on TypeSafe's hosted API over the network.
+> The current Jev implementation is API-hosted and therefore does not establish deployability on
+> spacecraft hardware. Jev latency and cost figures are for a ground-based API call, not an onboard
+> processor. The LOCAL EDGE BASELINE is the only decision model in DEEPSIFT that runs without a network.
+
 ---
 
 ## Why onboard science triage matters

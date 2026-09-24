@@ -67,6 +67,16 @@ def evaluate_selection(selection, labels: list[Label], label_meta: dict[str, dic
     kept_by_inst: dict[str, list] = {}
     for u, a, s in kept:
         kept_by_inst.setdefault(u.instrument, []).append((u.t0, u.t1, fidelity[a.value]))
+    merged: dict[str, tuple[list, list]] = {}           # union of retained unit intervals per instrument
+    for inst, spans in kept_by_inst.items():
+        st, en = [], []
+        for a, b, _ in sorted(spans, key=lambda x: x[0]):
+            if st and a <= en[-1]:
+                en[-1] = max(en[-1], b)
+            else:
+                st.append(a)
+                en.append(b)
+        merged[inst] = (st, en)
     covered_units = set()
     per_label = {}
     for lab in labels:
@@ -92,10 +102,11 @@ def evaluate_selection(selection, labels: list[Label], label_meta: dict[str, dic
                 best_f = max(best_f, fidelity[a.value])
         mids, raws, _ = windows.by_inst[inst]
         tot = sum(raws[i] for i in widx) or 1
+        starts, ends = merged.get(inst, ([], []))
         cov = 0
-        spans = kept_by_inst.get(inst, [])
         for i in widx:
-            if any(a <= mids[i] <= b for a, b, _ in spans):
+            k = bisect_right(starts, mids[i]) - 1        # last merged span starting at/before the window midpoint
+            if k >= 0 and mids[i] <= ends[k]:
                 cov += raws[i]
         conf = m.get("confidence")
         per_label[lab.id] = {

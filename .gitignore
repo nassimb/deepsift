@@ -10,3 +10,6 @@ node_modules/
 .env
 .env.local
 .claude/
+# per-row study outputs are large (hundreds of MB); results.json/manifest/failures/tables are committed
+artifacts/runs/*/rows.jsonl
+artifacts/jev_smoke_calls.jsonl
