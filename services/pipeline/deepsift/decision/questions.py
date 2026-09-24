@@ -69,3 +69,14 @@ QUESTIONS: dict[str, QuestionSpec] = {
 
 # questions whose confidence drives the gating decision
 GATING_QUESTIONS = ("science_value", "event_type")
+
+
+# Ablation: one question only (JEV_SINGLE_DECISION). The strategy uses P(yes) directly as utility.
+SINGLE_DECISION_QUESTIONS: dict[str, QuestionSpec] = {
+    "retain": QuestionSpec(
+        "noul",
+        "This detected Mars surface event deserves to have its data retained and sent to Earth with priority.",
+        {"true": "Scientifically or operationally valuable enough to spend limited bandwidth on",
+         "false": "Routine or uninformative; the bandwidth is better spent elsewhere"},
+    ),
+}

@@ -36,7 +36,8 @@ class MockDecisionEngine(DecisionEngine):
     name = "mock-heuristic-v1"
     is_real_model = False
 
-    def decide(self, events: list[ScientificEvent], mission_name: str, location: str) -> list[EngineDecision]:
+    def decide(self, events: list[ScientificEvent], mission_name: str, location: str,
+               objective: dict | None = None) -> list[EngineDecision]:
         return [self._one(e, mission_name, location) for e in events]
 
     def _one(self, e: ScientificEvent, mission_name: str, location: str) -> EngineDecision:

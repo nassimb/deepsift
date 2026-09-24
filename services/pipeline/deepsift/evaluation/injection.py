@@ -8,7 +8,7 @@ Byte costs remain those of the original records (injection does not change the a
 
 from __future__ import annotations
 
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, field
 from datetime import datetime, timedelta
 
 import numpy as np
@@ -40,6 +40,7 @@ class Injection:
     magnitude: float
     expected_type: str
     severity: str
+    meta: dict = field(default_factory=dict)   # sweep parameters: shape, magnitude_sigma, sigma_bg, bucket, ...
 
     @property
     def t_end(self) -> datetime:
@@ -88,6 +89,18 @@ def apply_injections(samples: pl.DataFrame, injections: list[Injection], seed: i
             vals[idx] += rng.normal(0, m, len(idx))
         elif k == "slow_drift":
             vals[idx] += m * frac
+        elif k.startswith("offset_"):
+            # systematic sweep kinds: magnitude is absolute per channel in meta["abs_magnitude"][channel]
+            shape = k.split("_", 1)[1]
+            amp = np.array([inj.meta["abs_magnitude"][c] for c in chans]) * inj.meta.get("sign", 1.0)
+            if shape == "step":
+                g = np.ones(len(idx))
+            elif shape == "pulse":
+                centre = t0 + inj.duration_s / 2
+                g = np.exp(-0.5 * ((ts - centre) / max(inj.duration_s / 4, 1.0)) ** 2)
+            else:  # ramp
+                g = frac
+            vals[idx] += amp * g
         elif k == "multi_sensor_correlated":
             shape = np.sin(np.pi * frac)
             sign = np.where(chans == "pressure", -1.0, np.where(chans == "uv_abc", -0.05, 1.0))

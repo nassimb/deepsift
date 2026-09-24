@@ -104,7 +104,8 @@ class Pipeline:
 
     def decide(self, events: list[ScientificEvent], metadata, objective: MissionObjective, windows: pl.DataFrame | None = None) -> dict:
         t0 = time.perf_counter()
-        decisions = self.engine.decide(events, metadata.short_name, metadata.location) if events else []
+        decisions = self.engine.decide(events, metadata.short_name, metadata.location,
+                                       objective=objective.model_dump(mode="json")) if events else []
         t_engine = (time.perf_counter() - t0) * 1000
         deep_ms = []
         t1 = time.perf_counter()

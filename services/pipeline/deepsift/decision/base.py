@@ -12,7 +12,8 @@ class DecisionEngine(ABC):
     is_real_model: bool = False   # False for heuristic stand-ins — surfaced in every UI/benchmark label
 
     @abstractmethod
-    def decide(self, events: list[ScientificEvent], mission_name: str, location: str) -> list[EngineDecision]:
+    def decide(self, events: list[ScientificEvent], mission_name: str, location: str,
+               objective: dict | None = None) -> list[EngineDecision]:
         """Return one decision per event, in order. Must not raise for a single bad event."""
 
     def describe(self) -> dict:

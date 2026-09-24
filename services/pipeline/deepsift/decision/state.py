@@ -80,3 +80,44 @@ def build_state(event: ScientificEvent, mission_name: str, location: str) -> dic
         "detection_reasons": f.trigger_reasons[:6],
         "channels": channels,
     }
+
+
+# ---------------------------------------------------------------- ablation variants (Phase 2)
+STATE_VARIANTS = ("full_context", "no_mission_objective", "minimal", "numeric_only")
+
+
+def build_state_variant(event: ScientificEvent, mission_name: str, location: str, variant: str,
+                        objective: dict | None = None) -> dict:
+    """State sent to the engine for each ablation variant. Deterministic; never contains labels."""
+    if variant == "no_mission_objective":
+        return build_state(event, mission_name, location)
+    if variant == "full_context":
+        s = build_state(event, mission_name, location)
+        if objective:
+            s["mission_objective"] = {"name": objective.get("name"), "description": objective.get("description")}
+        return s
+    f = event.features
+    if variant == "minimal":
+        return {
+            "instrument": event.instrument,
+            "local_time": local_time_words(f.lmst_hour),
+            "duration": duration_words(f.duration_s),
+            "sensors_flagged": {
+                name: [deviation_words(c.robust_z)] + [q for q in c.flags if q != "level"]
+                for name, c in f.channels.items() if name in event.sensors
+            },
+        }
+    if variant == "numeric_only":
+        return {
+            "instrument": event.instrument,
+            "lmst_hour": round(f.lmst_hour, 3),
+            "duration_s": round(f.duration_s, 1),
+            "channels": {
+                name: {k: (round(v, 4) if isinstance(v, float) else v) for k, v in {
+                    "mean": c.mean, "baseline": c.baseline, "robust_z": c.robust_z, "dip": c.dip,
+                    "flat_fraction": c.flat_fraction, "missing_fraction": c.missing_fraction,
+                    "noise_ratio": c.noise_ratio, "rarity": c.rarity}.items()}
+                for name, c in f.channels.items()
+            },
+        }
+    raise ValueError(f"unknown state variant {variant}")
