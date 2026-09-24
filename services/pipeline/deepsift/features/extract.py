@@ -72,7 +72,8 @@ def window_stats(samples: pl.DataFrame, window_expr_by_instrument: dict[str, pl.
     return w.sort("instrument", "channel", "t_start")
 
 
-def add_baselines(w: pl.DataFrame, channels: list[ChannelSpec], baseline_sols: int, match_tolerance_s: int = 600) -> pl.DataFrame:
+def add_baselines(w: pl.DataFrame, channels: list[ChannelSpec], baseline_sols: int, match_tolerance_s: int = 600,
+                  min_sigma_override: dict[str, float] | None = None) -> pl.DataFrame:
     """Attach baseline statistics from the preceding `baseline_sols` sols.
 
     Diurnal channels: for each prior sol, take the window whose mean local time is nearest to
@@ -124,7 +125,8 @@ def add_baselines(w: pl.DataFrame, channels: list[ChannelSpec], baseline_sols: i
         pl.when(pl.col("baseline_n").fill_null(0) < 3).then(pl.lit("insufficient")).otherwise(pl.col("baseline_mode")).alias("baseline_mode")
     )
 
-    min_sigma = pl.col("channel").replace_strict({k: v.min_sigma for k, v in spec.items()}, default=0.1)
+    floors = {k: v.min_sigma for k, v in spec.items()} | (min_sigma_override or {})
+    min_sigma = pl.col("channel").replace_strict(floors, default=0.1)
     sigma = pl.max_horizontal(pl.col("baseline_mad").fill_null(0) * MAD_TO_SIGMA, min_sigma)
     w = w.with_columns(
         sigma.alias("sigma"),

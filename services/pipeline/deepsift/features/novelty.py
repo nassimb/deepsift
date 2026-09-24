@@ -23,9 +23,9 @@ def signature(e: ScientificEvent) -> np.ndarray:
     q = [c for c in ch.values()]
     v += [
         max((c.dip for c in q), default=0.0) / 2,
-        1.0 if any(c.flat_fraction >= 0.95 for c in q) else 0.0,
-        1.0 if any(c.missing_fraction >= 0.5 for c in q) else 0.0,
-        1.0 if any(c.noise_ratio >= 4 for c in q) else 0.0,
+        1.0 if any("stuck" in c.flags for c in q) else 0.0,
+        1.0 if any("dropout" in c.flags for c in q) else 0.0,
+        1.0 if any("noise" in c.flags for c in q) else 0.0,
         0.5 * math.sin(2 * math.pi * e.features.lmst_hour / 24),
         0.5 * math.cos(2 * math.pi * e.features.lmst_hour / 24),
         min(math.log10(e.features.duration_s + 1) / 5, 1.0),

@@ -1,0 +1,14 @@
+# Declared BEFORE deriving any threshold (Phase 2, 2026-09-24). These are the only free choices of
+# the calibration step; every detector threshold is computed from them on the CALIBRATION split,
+# label-free and without synthetic injections. Changing them requires a new calibration run and a
+# new config version, and must not be done in response to validation or test results.
+
+split: calibration
+target_flag_rate:
+  level: 0.02          # fraction of channel-windows (per instrument) flagged for |robust z|
+  dip: 0.005           # fraction of pressure windows flagged for a sub-minute pressure drop
+  noise: 0.005         # fraction of channel-windows flagged for sample-to-sample noise
+noise_floor_method: sample_difference_mad   # min_sigma[channel] = 1.4826·MAD(Δ consecutive samples)/√2 (sensor noise)
+structural:              # definitions, not tuned
+  flat_fraction_threshold: 0.95
+  missing_fraction_threshold: 0.5

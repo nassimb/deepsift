@@ -1,0 +1,3682 @@
+{
+ "schema": "deepsift-ground-truth-v1",
+ "built_at": "2026-09-24T20:19:48.862474+00:00",
+ "sources": {
+  "guo2018": {
+   "url": "https://arxiv.org/pdf/1712.06885v1",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "source_type": "peer_reviewed_paper",
+   "sha256": "77a8dbdc181393a79d0dc0a72a847249ee09b0d083f92c11390632061bfd12ad"
+  },
+  "lowe2025": {
+   "url": "https://arxiv.org/pdf/2502.02469v1",
+   "citation": "Löwe, J. L., Khaksarighiri, S., Wimmer-Schweingruber, R. F., Hassler, D. M., Ehresmann, B., Guo, J., et al. (2025). Nowcasting Solar Energetic Particle Events for Mars Missions. Manuscript submitted to Space Weather (arXiv:2502.02469v1), Tables 1-3.",
+   "source_type": "mission_team_publication",
+   "sha256": "554c3594709a81ad0147ffce1f710e8a27988baaa289ab66d5ec674e33416425"
+  },
+  "hassler2014": {
+   "url": "https://www.science.org/doi/10.1126/science.1244797",
+   "citation": "Hassler, D. M., Zeitlin, C., Wimmer-Schweingruber, R. F., et al. (2014). Mars' Surface Radiation Environment Measured with the Mars Science Laboratory's Curiosity Rover. Science, 343(6169), 1244797. doi:10.1126/science.1244797",
+   "source_type": "peer_reviewed_paper"
+  },
+  "viudez2019": {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6750032/",
+   "citation": "Viúdez-Moreiras, D., Newman, C. E., de la Torre, M., et al. (2019). Effects of the MY34/2018 Global Dust Storm as Measured by MSL REMS in Gale Crater. Journal of Geophysical Research: Planets, 124(7), 1899-1912. doi:10.1029/2019JE005985",
+   "source_type": "peer_reviewed_paper"
+  }
+ },
+ "coverage": {
+  "guo2018": {
+   "start": "2014-10-17T00:00:00Z",
+   "end": "2016-09-28T23:59:59Z",
+   "instrument": "RAD",
+   "completeness": "FD list from two independent manual identifications merged; small FDs may be missing"
+  },
+  "lowe2025": {
+   "start": "2012-08-06T00:00:00Z",
+   "end": "2024-10-31T23:59:59Z",
+   "instrument": "RAD",
+   "completeness": "surface SEP events detected by RAD (16)"
+  }
+ },
+ "severity_convention": {
+  "note": "Fixed before Phase-2 evaluation. Not a scientific ranking.",
+  "forbush_decrease": "high if drop ≥ 5 %, medium if 3–5 %, low if < 3 %",
+  "solar_energetic_particle_event": "high",
+  "global_dust_storm_phase": "high"
+ },
+ "events": [
+  {
+   "event_id": "FD-GUO2018-001",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2014-10-17T20:45:00Z",
+   "end_time": "2014-10-19T19:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_rate_drop_percent": 18.1,
+    "dose_rate_at_onset_uGy_per_day": 232,
+    "dose_rate_at_nadir_uGy_per_day": 190
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 1; interval = onset → nadir (the decrease phase). MAVEN columns: 1.40 1.02 26.93."
+  },
+  {
+   "event_id": "FD-GUO2018-002",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2014-11-04T23:15:00Z",
+   "end_time": "2014-11-05T18:45:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 3.7,
+    "dose_rate_at_onset_uGy_per_day": 216,
+    "dose_rate_at_nadir_uGy_per_day": 208
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 2; interval = onset → nadir (the decrease phase). MAVEN columns: no FD no FD no FD."
+  },
+  {
+   "event_id": "FD-GUO2018-003",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2014-11-08T10:15:00Z",
+   "end_time": "2014-11-09T07:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_rate_drop_percent": 5.5,
+    "dose_rate_at_onset_uGy_per_day": 218,
+    "dose_rate_at_nadir_uGy_per_day": 206
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 3; interval = onset → nadir (the decrease phase). MAVEN columns: 1.21 1.13 6.61."
+  },
+  {
+   "event_id": "FD-GUO2018-004",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2014-11-14T18:30:00Z",
+   "end_time": "2014-11-19T13:30:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_rate_drop_percent": 8.51,
+    "dose_rate_at_onset_uGy_per_day": 235,
+    "dose_rate_at_nadir_uGy_per_day": 215
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 4; interval = onset → nadir (the decrease phase). MAVEN columns: no data no data no data."
+  },
+  {
+   "event_id": "FD-GUO2018-005",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2014-11-23T06:00:00Z",
+   "end_time": "2014-11-29T14:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_rate_drop_percent": 9.95,
+    "dose_rate_at_onset_uGy_per_day": 221,
+    "dose_rate_at_nadir_uGy_per_day": 199
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 5; interval = onset → nadir (the decrease phase). MAVEN columns: no data no data no data."
+  },
+  {
+   "event_id": "FD-GUO2018-006",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2014-12-12T03:00:00Z",
+   "end_time": "2014-12-15T11:15:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_rate_drop_percent": 6.67,
+    "dose_rate_at_onset_uGy_per_day": 225,
+    "dose_rate_at_nadir_uGy_per_day": 210
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 6; interval = onset → nadir (the decrease phase). MAVEN columns: 1.21 1.12 7.69."
+  },
+  {
+   "event_id": "FD-GUO2018-007",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2014-12-17T12:45:00Z",
+   "end_time": "2014-12-21T09:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_rate_drop_percent": 10.6,
+    "dose_rate_at_onset_uGy_per_day": 217,
+    "dose_rate_at_nadir_uGy_per_day": 194
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 7; interval = onset → nadir (the decrease phase). MAVEN columns: increase increase increase."
+  },
+  {
+   "event_id": "FD-GUO2018-008",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-01-09T03:00:00Z",
+   "end_time": "2015-01-10T00:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 1.36,
+    "dose_rate_at_onset_uGy_per_day": 221,
+    "dose_rate_at_nadir_uGy_per_day": 218
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 8; interval = onset → nadir (the decrease phase). MAVEN columns: 1.20 1.16 3.18."
+  },
+  {
+   "event_id": "FD-GUO2018-009",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-01-13T03:30:00Z",
+   "end_time": "2015-01-15T04:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_rate_drop_percent": 6.88,
+    "dose_rate_at_onset_uGy_per_day": 218,
+    "dose_rate_at_nadir_uGy_per_day": 203
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 9; interval = onset → nadir (the decrease phase). MAVEN columns: 1.26 1.15 8.52."
+  },
+  {
+   "event_id": "FD-GUO2018-010",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-01-18T00:45:00Z",
+   "end_time": "2015-01-19T06:30:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_rate_drop_percent": 5.24,
+    "dose_rate_at_onset_uGy_per_day": 210,
+    "dose_rate_at_nadir_uGy_per_day": 199
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 10; interval = onset → nadir (the decrease phase). MAVEN columns: 1.18 1.03 13.27."
+  },
+  {
+   "event_id": "FD-GUO2018-011",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-02-07T05:45:00Z",
+   "end_time": "2015-02-13T12:45:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_rate_drop_percent": 7.14,
+    "dose_rate_at_onset_uGy_per_day": 224,
+    "dose_rate_at_nadir_uGy_per_day": 208
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 11; interval = onset → nadir (the decrease phase). MAVEN columns: 1.20 1.06 11.45."
+  },
+  {
+   "event_id": "FD-GUO2018-012",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-02-14T04:15:00Z",
+   "end_time": "2015-02-15T22:30:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 4.72,
+    "dose_rate_at_onset_uGy_per_day": 212,
+    "dose_rate_at_nadir_uGy_per_day": 202
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 12; interval = onset → nadir (the decrease phase). MAVEN columns: 1.16 1.06 8.51."
+  },
+  {
+   "event_id": "FD-GUO2018-013",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-02-17T20:30:00Z",
+   "end_time": "2015-02-18T11:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 1.46,
+    "dose_rate_at_onset_uGy_per_day": 205,
+    "dose_rate_at_nadir_uGy_per_day": 202
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 13; interval = onset → nadir (the decrease phase). MAVEN columns: 1.12 1.06 5.44."
+  },
+  {
+   "event_id": "FD-GUO2018-014",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-02-21T22:00:00Z",
+   "end_time": "2015-02-23T12:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 1.9,
+    "dose_rate_at_onset_uGy_per_day": 211,
+    "dose_rate_at_nadir_uGy_per_day": 207
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 14; interval = onset → nadir (the decrease phase). MAVEN columns: increase increase increase."
+  },
+  {
+   "event_id": "FD-GUO2018-015",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-02-27T16:00:00Z",
+   "end_time": "2015-03-01T16:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 2.84,
+    "dose_rate_at_onset_uGy_per_day": 211,
+    "dose_rate_at_nadir_uGy_per_day": 205
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 15; interval = onset → nadir (the decrease phase). MAVEN columns: 1.15 1.09 4.96."
+  },
+  {
+   "event_id": "FD-GUO2018-016",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-03-03T11:15:00Z",
+   "end_time": "2015-03-05T13:45:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_rate_drop_percent": 14.29,
+    "dose_rate_at_onset_uGy_per_day": 210,
+    "dose_rate_at_nadir_uGy_per_day": 180
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 16; interval = onset → nadir (the decrease phase). MAVEN columns: 1.14 0.96 15.79."
+  },
+  {
+   "event_id": "FD-GUO2018-017",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-03-06T06:15:00Z",
+   "end_time": "2015-03-07T17:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_rate_drop_percent": 5.26,
+    "dose_rate_at_onset_uGy_per_day": 190,
+    "dose_rate_at_nadir_uGy_per_day": 180
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 17; interval = onset → nadir (the decrease phase). MAVEN columns: increase increase increase."
+  },
+  {
+   "event_id": "FD-GUO2018-018",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-03-08T10:15:00Z",
+   "end_time": "2015-03-09T19:15:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_rate_drop_percent": 5.95,
+    "dose_rate_at_onset_uGy_per_day": 185,
+    "dose_rate_at_nadir_uGy_per_day": 174
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 18; interval = onset → nadir (the decrease phase). MAVEN columns: increase increase increase."
+  },
+  {
+   "event_id": "FD-GUO2018-019",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-03-19T12:30:00Z",
+   "end_time": "2015-03-20T01:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 1.47,
+    "dose_rate_at_onset_uGy_per_day": 204,
+    "dose_rate_at_nadir_uGy_per_day": 201
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 19; interval = onset → nadir (the decrease phase). MAVEN columns: no FD no FD no FD."
+  },
+  {
+   "event_id": "FD-GUO2018-020",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-03-21T00:30:00Z",
+   "end_time": "2015-03-22T06:30:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 4.88,
+    "dose_rate_at_onset_uGy_per_day": 205,
+    "dose_rate_at_nadir_uGy_per_day": 195
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 20; interval = onset → nadir (the decrease phase). MAVEN columns: 1.07 0.99 7.56."
+  },
+  {
+   "event_id": "FD-GUO2018-021",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-03-24T22:00:00Z",
+   "end_time": "2015-03-25T17:45:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 3.85,
+    "dose_rate_at_onset_uGy_per_day": 208,
+    "dose_rate_at_nadir_uGy_per_day": 200
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 21; interval = onset → nadir (the decrease phase). MAVEN columns: increase increase increase."
+  },
+  {
+   "event_id": "FD-GUO2018-022",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-03-28T10:00:00Z",
+   "end_time": "2015-03-30T23:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_rate_drop_percent": 8.61,
+    "dose_rate_at_onset_uGy_per_day": 209,
+    "dose_rate_at_nadir_uGy_per_day": 191
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 22; interval = onset → nadir (the decrease phase). MAVEN columns: increase increase increase."
+  },
+  {
+   "event_id": "FD-GUO2018-023",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-04-03T02:45:00Z",
+   "end_time": "2015-04-05T00:15:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 4.55,
+    "dose_rate_at_onset_uGy_per_day": 198,
+    "dose_rate_at_nadir_uGy_per_day": 189
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 23; interval = onset → nadir (the decrease phase). MAVEN columns: no data no data no data."
+  },
+  {
+   "event_id": "FD-GUO2018-024",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-04-07T03:00:00Z",
+   "end_time": "2015-04-07T08:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 2.06,
+    "dose_rate_at_onset_uGy_per_day": 194,
+    "dose_rate_at_nadir_uGy_per_day": 190
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 24; interval = onset → nadir (the decrease phase). MAVEN columns: no data no data no data."
+  },
+  {
+   "event_id": "FD-GUO2018-025",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-04-15T20:00:00Z",
+   "end_time": "2015-04-16T12:30:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 1.94,
+    "dose_rate_at_onset_uGy_per_day": 206,
+    "dose_rate_at_nadir_uGy_per_day": 202
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 25; interval = onset → nadir (the decrease phase). MAVEN columns: 0.82 0.77 5.86."
+  },
+  {
+   "event_id": "FD-GUO2018-026",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-04-19T11:30:00Z",
+   "end_time": "2015-04-21T05:30:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 1.44,
+    "dose_rate_at_onset_uGy_per_day": 209,
+    "dose_rate_at_nadir_uGy_per_day": 206
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 26; interval = onset → nadir (the decrease phase). MAVEN columns: 0.86 0.83 3.24."
+  },
+  {
+   "event_id": "FD-GUO2018-027",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-04-23T19:15:00Z",
+   "end_time": "2015-04-24T15:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_rate_drop_percent": 8.1,
+    "dose_rate_at_onset_uGy_per_day": 210,
+    "dose_rate_at_nadir_uGy_per_day": 193
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 27; interval = onset → nadir (the decrease phase). MAVEN columns: 1.10 0.90 18.64."
+  },
+  {
+   "event_id": "FD-GUO2018-028",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-04-26T10:45:00Z",
+   "end_time": "2015-04-28T05:15:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_rate_drop_percent": 5.85,
+    "dose_rate_at_onset_uGy_per_day": 205,
+    "dose_rate_at_nadir_uGy_per_day": 193
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 28; interval = onset → nadir (the decrease phase). MAVEN columns: no FD no FD no FD."
+  },
+  {
+   "event_id": "FD-GUO2018-029",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-05-02T15:00:00Z",
+   "end_time": "2015-05-03T00:15:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 4.02,
+    "dose_rate_at_onset_uGy_per_day": 199,
+    "dose_rate_at_nadir_uGy_per_day": 191
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 29; interval = onset → nadir (the decrease phase). MAVEN columns: no FD no FD no FD."
+  },
+  {
+   "event_id": "FD-GUO2018-030",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-05-06T02:00:00Z",
+   "end_time": "2015-05-06T21:45:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 4.12,
+    "dose_rate_at_onset_uGy_per_day": 194,
+    "dose_rate_at_nadir_uGy_per_day": 186
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 30; interval = onset → nadir (the decrease phase). MAVEN columns: increase increase increase."
+  },
+  {
+   "event_id": "FD-GUO2018-031",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-05-08T08:30:00Z",
+   "end_time": "2015-05-08T18:30:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 2.06,
+    "dose_rate_at_onset_uGy_per_day": 194,
+    "dose_rate_at_nadir_uGy_per_day": 190
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 31; interval = onset → nadir (the decrease phase). MAVEN columns: increase increase increase."
+  },
+  {
+   "event_id": "FD-GUO2018-032",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-05-12T13:30:00Z",
+   "end_time": "2015-05-13T10:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 2.96,
+    "dose_rate_at_onset_uGy_per_day": 203,
+    "dose_rate_at_nadir_uGy_per_day": 197
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 32; interval = onset → nadir (the decrease phase). MAVEN columns: no FD no FD no FD."
+  },
+  {
+   "event_id": "FD-GUO2018-033",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-05-20T09:30:00Z",
+   "end_time": "2015-05-21T06:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 0.94,
+    "dose_rate_at_onset_uGy_per_day": 213,
+    "dose_rate_at_nadir_uGy_per_day": 211
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 33; interval = onset → nadir (the decrease phase). MAVEN columns: 1.16 1.11 3.88."
+  },
+  {
+   "event_id": "FD-GUO2018-034",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-05-25T10:30:00Z",
+   "end_time": "2015-05-25T23:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 2.78,
+    "dose_rate_at_onset_uGy_per_day": 216,
+    "dose_rate_at_nadir_uGy_per_day": 210
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 34; interval = onset → nadir (the decrease phase). MAVEN columns: no FD no FD no FD."
+  },
+  {
+   "event_id": "FD-GUO2018-035",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-06-12T07:00:00Z",
+   "end_time": "2015-06-15T02:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_rate_drop_percent": 5.73,
+    "dose_rate_at_onset_uGy_per_day": 227,
+    "dose_rate_at_nadir_uGy_per_day": 214
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 35; interval = onset → nadir (the decrease phase). MAVEN columns: 1.23 1.12 8.81."
+  },
+  {
+   "event_id": "FD-GUO2018-036",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-06-22T11:30:00Z",
+   "end_time": "2015-06-23T12:15:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_rate_drop_percent": 7.14,
+    "dose_rate_at_onset_uGy_per_day": 224,
+    "dose_rate_at_nadir_uGy_per_day": 208
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 36; interval = onset → nadir (the decrease phase). MAVEN columns: 1.28 1.08 15.64."
+  },
+  {
+   "event_id": "FD-GUO2018-037",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-06-28T07:30:00Z",
+   "end_time": "2015-06-28T15:30:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 2.35,
+    "dose_rate_at_onset_uGy_per_day": 213,
+    "dose_rate_at_nadir_uGy_per_day": 208
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 37; interval = onset → nadir (the decrease phase). MAVEN columns: no FD no FD no FD."
+  },
+  {
+   "event_id": "FD-GUO2018-038",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-06-30T14:45:00Z",
+   "end_time": "2015-07-01T15:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_rate_drop_percent": 6.54,
+    "dose_rate_at_onset_uGy_per_day": 214,
+    "dose_rate_at_nadir_uGy_per_day": 200
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 38; interval = onset → nadir (the decrease phase). MAVEN columns: no data no data no data."
+  },
+  {
+   "event_id": "FD-GUO2018-039",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-07-02T12:00:00Z",
+   "end_time": "2015-07-03T06:30:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 3.37,
+    "dose_rate_at_onset_uGy_per_day": 208,
+    "dose_rate_at_nadir_uGy_per_day": 201
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 39; interval = onset → nadir (the decrease phase). MAVEN columns: 1.14 1.11 2.72."
+  },
+  {
+   "event_id": "FD-GUO2018-040",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-07-08T00:30:00Z",
+   "end_time": "2015-07-10T09:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 1.86,
+    "dose_rate_at_onset_uGy_per_day": 215,
+    "dose_rate_at_nadir_uGy_per_day": 211
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 40; interval = onset → nadir (the decrease phase). MAVEN columns: no FD no FD no FD."
+  },
+  {
+   "event_id": "FD-GUO2018-041",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-07-12T12:45:00Z",
+   "end_time": "2015-07-13T03:45:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 2.79,
+    "dose_rate_at_onset_uGy_per_day": 215,
+    "dose_rate_at_nadir_uGy_per_day": 209
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 41; interval = onset → nadir (the decrease phase). MAVEN columns: no FD no FD no FD."
+  },
+  {
+   "event_id": "FD-GUO2018-042",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-07-24T06:00:00Z",
+   "end_time": "2015-07-24T13:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 1.76,
+    "dose_rate_at_onset_uGy_per_day": 227,
+    "dose_rate_at_nadir_uGy_per_day": 223
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 42; interval = onset → nadir (the decrease phase). MAVEN columns: no FD no FD no FD."
+  },
+  {
+   "event_id": "FD-GUO2018-043",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-07-26T12:30:00Z",
+   "end_time": "2015-07-27T11:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 3.04,
+    "dose_rate_at_onset_uGy_per_day": 230,
+    "dose_rate_at_nadir_uGy_per_day": 223
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 43; interval = onset → nadir (the decrease phase). MAVEN columns: 1.21 1.16 4.46."
+  },
+  {
+   "event_id": "FD-GUO2018-044",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-08-01T17:00:00Z",
+   "end_time": "2015-08-02T09:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 3.1,
+    "dose_rate_at_onset_uGy_per_day": 226,
+    "dose_rate_at_nadir_uGy_per_day": 219
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 44; interval = onset → nadir (the decrease phase). MAVEN columns: 1.19 1.13 5.21."
+  },
+  {
+   "event_id": "FD-GUO2018-045",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-08-06T09:30:00Z",
+   "end_time": "2015-08-09T23:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 2.67,
+    "dose_rate_at_onset_uGy_per_day": 225,
+    "dose_rate_at_nadir_uGy_per_day": 219
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 45; interval = onset → nadir (the decrease phase). MAVEN columns: 1.24 1.20 3.46."
+  },
+  {
+   "event_id": "FD-GUO2018-046",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-08-16T18:00:00Z",
+   "end_time": "2015-08-17T14:30:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 2.17,
+    "dose_rate_at_onset_uGy_per_day": 230,
+    "dose_rate_at_nadir_uGy_per_day": 225
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 46; interval = onset → nadir (the decrease phase). MAVEN columns: no FD no FD no FD."
+  },
+  {
+   "event_id": "FD-GUO2018-047",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-08-20T10:30:00Z",
+   "end_time": "2015-08-26T11:30:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_rate_drop_percent": 5.65,
+    "dose_rate_at_onset_uGy_per_day": 230,
+    "dose_rate_at_nadir_uGy_per_day": 217
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 47; interval = onset → nadir (the decrease phase). MAVEN columns: 1.21 1.12 7.34."
+  },
+  {
+   "event_id": "FD-GUO2018-048",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-08-28T19:45:00Z",
+   "end_time": "2015-08-31T12:30:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 4.46,
+    "dose_rate_at_onset_uGy_per_day": 224,
+    "dose_rate_at_nadir_uGy_per_day": 214
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 48; interval = onset → nadir (the decrease phase). MAVEN columns: 1.20 1.15 4.58."
+  },
+  {
+   "event_id": "FD-GUO2018-049",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-09-07T14:00:00Z",
+   "end_time": "2015-09-07T19:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 1.75,
+    "dose_rate_at_onset_uGy_per_day": 229,
+    "dose_rate_at_nadir_uGy_per_day": 225
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 49; interval = onset → nadir (the decrease phase). MAVEN columns: no FD no FD no FD."
+  },
+  {
+   "event_id": "FD-GUO2018-050",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-09-09T19:00:00Z",
+   "end_time": "2015-09-12T21:30:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 4.35,
+    "dose_rate_at_onset_uGy_per_day": 230,
+    "dose_rate_at_nadir_uGy_per_day": 220
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 50; interval = onset → nadir (the decrease phase). MAVEN columns: no FD no FD no FD."
+  },
+  {
+   "event_id": "FD-GUO2018-051",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-09-16T13:00:00Z",
+   "end_time": "2015-09-17T19:45:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 3.06,
+    "dose_rate_at_onset_uGy_per_day": 229,
+    "dose_rate_at_nadir_uGy_per_day": 222
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 51; interval = onset → nadir (the decrease phase). MAVEN columns: 1.22 1.19 2.63."
+  },
+  {
+   "event_id": "FD-GUO2018-052",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-09-18T14:45:00Z",
+   "end_time": "2015-09-19T14:30:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 3.51,
+    "dose_rate_at_onset_uGy_per_day": 228,
+    "dose_rate_at_nadir_uGy_per_day": 220
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 52; interval = onset → nadir (the decrease phase). MAVEN columns: 1.21 1.15 5.02."
+  },
+  {
+   "event_id": "FD-GUO2018-053",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-10-05T09:00:00Z",
+   "end_time": "2015-10-09T03:30:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 4.35,
+    "dose_rate_at_onset_uGy_per_day": 230,
+    "dose_rate_at_nadir_uGy_per_day": 220
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 53; interval = onset → nadir (the decrease phase). MAVEN columns: 1.28 1.16 9.50."
+  },
+  {
+   "event_id": "FD-GUO2018-054",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-10-09T15:45:00Z",
+   "end_time": "2015-10-11T13:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 4.0,
+    "dose_rate_at_onset_uGy_per_day": 225,
+    "dose_rate_at_nadir_uGy_per_day": 216
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 54; interval = onset → nadir (the decrease phase). MAVEN columns: 1.25 1.15 7.69."
+  },
+  {
+   "event_id": "FD-GUO2018-055",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-10-18T03:00:00Z",
+   "end_time": "2015-10-20T03:30:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_rate_drop_percent": 5.13,
+    "dose_rate_at_onset_uGy_per_day": 234,
+    "dose_rate_at_nadir_uGy_per_day": 222
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 55; interval = onset → nadir (the decrease phase). MAVEN columns: 1.23 1.19 3.17."
+  },
+  {
+   "event_id": "FD-GUO2018-056",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-10-23T11:30:00Z",
+   "end_time": "2015-10-24T10:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 2.18,
+    "dose_rate_at_onset_uGy_per_day": 229,
+    "dose_rate_at_nadir_uGy_per_day": 224
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 56; interval = onset → nadir (the decrease phase). MAVEN columns: no FD no FD no FD."
+  },
+  {
+   "event_id": "FD-GUO2018-057",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-10-29T09:30:00Z",
+   "end_time": "2015-10-30T20:30:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 3.42,
+    "dose_rate_at_onset_uGy_per_day": 234,
+    "dose_rate_at_nadir_uGy_per_day": 226
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 57; interval = onset → nadir (the decrease phase). MAVEN columns: increase increase increase."
+  },
+  {
+   "event_id": "FD-GUO2018-058",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-11-08T00:30:00Z",
+   "end_time": "2015-11-08T20:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 4.78,
+    "dose_rate_at_onset_uGy_per_day": 230,
+    "dose_rate_at_nadir_uGy_per_day": 219
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 58; interval = onset → nadir (the decrease phase). MAVEN columns: increase increase increase."
+  },
+  {
+   "event_id": "FD-GUO2018-059",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-11-13T06:45:00Z",
+   "end_time": "2015-11-14T22:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 3.67,
+    "dose_rate_at_onset_uGy_per_day": 245,
+    "dose_rate_at_nadir_uGy_per_day": 236
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 59; interval = onset → nadir (the decrease phase). MAVEN columns: 1.31 1.27 3.35."
+  },
+  {
+   "event_id": "FD-GUO2018-060",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-11-19T22:15:00Z",
+   "end_time": "2015-11-22T06:45:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_rate_drop_percent": 7.02,
+    "dose_rate_at_onset_uGy_per_day": 242,
+    "dose_rate_at_nadir_uGy_per_day": 225
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 60; interval = onset → nadir (the decrease phase). MAVEN columns: 1.32 1.17 11.56."
+  },
+  {
+   "event_id": "FD-GUO2018-061",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-11-24T05:15:00Z",
+   "end_time": "2015-11-25T05:45:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 3.43,
+    "dose_rate_at_onset_uGy_per_day": 233,
+    "dose_rate_at_nadir_uGy_per_day": 225
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 61; interval = onset → nadir (the decrease phase). MAVEN columns: 1.24 1.22 2.01."
+  },
+  {
+   "event_id": "FD-GUO2018-062",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-11-28T01:00:00Z",
+   "end_time": "2015-11-28T18:30:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 2.52,
+    "dose_rate_at_onset_uGy_per_day": 238,
+    "dose_rate_at_nadir_uGy_per_day": 232
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 62; interval = onset → nadir (the decrease phase). MAVEN columns: 1.25 1.23 2.23."
+  },
+  {
+   "event_id": "FD-GUO2018-063",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-12-01T15:00:00Z",
+   "end_time": "2015-12-02T14:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 2.47,
+    "dose_rate_at_onset_uGy_per_day": 243,
+    "dose_rate_at_nadir_uGy_per_day": 237
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 63; interval = onset → nadir (the decrease phase). MAVEN columns: no FD no FD no FD."
+  },
+  {
+   "event_id": "FD-GUO2018-064",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-12-07T09:30:00Z",
+   "end_time": "2015-12-08T08:15:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 3.61,
+    "dose_rate_at_onset_uGy_per_day": 249,
+    "dose_rate_at_nadir_uGy_per_day": 240
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 64; interval = onset → nadir (the decrease phase). MAVEN columns: 1.36 1.34 1.91."
+  },
+  {
+   "event_id": "FD-GUO2018-065",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-12-12T21:00:00Z",
+   "end_time": "2015-12-14T07:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 3.12,
+    "dose_rate_at_onset_uGy_per_day": 256,
+    "dose_rate_at_nadir_uGy_per_day": 248
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 65; interval = onset → nadir (the decrease phase). MAVEN columns: no FD no FD no FD."
+  },
+  {
+   "event_id": "FD-GUO2018-066",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-12-14T20:15:00Z",
+   "end_time": "2015-12-15T14:45:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 4.35,
+    "dose_rate_at_onset_uGy_per_day": 253,
+    "dose_rate_at_nadir_uGy_per_day": 242
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 66; interval = onset → nadir (the decrease phase). MAVEN columns: 1.42 1.36 4.50."
+  },
+  {
+   "event_id": "FD-GUO2018-067",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-12-15T21:00:00Z",
+   "end_time": "2015-12-17T07:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_rate_drop_percent": 6.88,
+    "dose_rate_at_onset_uGy_per_day": 247,
+    "dose_rate_at_nadir_uGy_per_day": 230
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 67; interval = onset → nadir (the decrease phase). MAVEN columns: 1.37 1.26 7.69."
+  },
+  {
+   "event_id": "FD-GUO2018-068",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2015-12-18T15:45:00Z",
+   "end_time": "2015-12-21T23:30:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 4.24,
+    "dose_rate_at_onset_uGy_per_day": 236,
+    "dose_rate_at_nadir_uGy_per_day": 226
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 68; interval = onset → nadir (the decrease phase). MAVEN columns: 1.34 1.26 5.91."
+  },
+  {
+   "event_id": "FD-GUO2018-069",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-01-02T16:15:00Z",
+   "end_time": "2016-01-03T14:45:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 4.18,
+    "dose_rate_at_onset_uGy_per_day": 239,
+    "dose_rate_at_nadir_uGy_per_day": 229
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 69; interval = onset → nadir (the decrease phase). MAVEN columns: 1.46 1.38 5.22."
+  },
+  {
+   "event_id": "FD-GUO2018-070",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-01-04T03:30:00Z",
+   "end_time": "2016-01-04T14:30:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 3.36,
+    "dose_rate_at_onset_uGy_per_day": 238,
+    "dose_rate_at_nadir_uGy_per_day": 230
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 70; interval = onset → nadir (the decrease phase). MAVEN columns: 1.40 1.36 2.86."
+  },
+  {
+   "event_id": "FD-GUO2018-071",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-01-05T06:45:00Z",
+   "end_time": "2016-01-06T10:45:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_rate_drop_percent": 5.11,
+    "dose_rate_at_onset_uGy_per_day": 235,
+    "dose_rate_at_nadir_uGy_per_day": 223
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 71; interval = onset → nadir (the decrease phase). MAVEN columns: 1.34 1.24 7.46."
+  },
+  {
+   "event_id": "FD-GUO2018-072",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-01-12T19:30:00Z",
+   "end_time": "2016-01-13T04:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 4.05,
+    "dose_rate_at_onset_uGy_per_day": 247,
+    "dose_rate_at_nadir_uGy_per_day": 237
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 72; interval = onset → nadir (the decrease phase). MAVEN columns: no FD no FD no FD."
+  },
+  {
+   "event_id": "FD-GUO2018-073",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-01-16T01:30:00Z",
+   "end_time": "2016-01-17T12:45:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 2.83,
+    "dose_rate_at_onset_uGy_per_day": 247,
+    "dose_rate_at_nadir_uGy_per_day": 240
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 73; interval = onset → nadir (the decrease phase). MAVEN columns: 1.37 1.33 2.85."
+  },
+  {
+   "event_id": "FD-GUO2018-074",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-01-17T21:45:00Z",
+   "end_time": "2016-01-18T09:30:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 2.02,
+    "dose_rate_at_onset_uGy_per_day": 248,
+    "dose_rate_at_nadir_uGy_per_day": 243
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 74; interval = onset → nadir (the decrease phase). MAVEN columns: no FD no FD no FD."
+  },
+  {
+   "event_id": "FD-GUO2018-075",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-01-20T04:15:00Z",
+   "end_time": "2016-01-22T05:45:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 2.44,
+    "dose_rate_at_onset_uGy_per_day": 246,
+    "dose_rate_at_nadir_uGy_per_day": 240
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 75; interval = onset → nadir (the decrease phase). MAVEN columns: 1.35 1.30 3.41."
+  },
+  {
+   "event_id": "FD-GUO2018-076",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-01-25T11:15:00Z",
+   "end_time": "2016-01-26T19:45:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 3.2,
+    "dose_rate_at_onset_uGy_per_day": 250,
+    "dose_rate_at_nadir_uGy_per_day": 242
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 76; interval = onset → nadir (the decrease phase). MAVEN columns: 1.40 1.32 5.64."
+  },
+  {
+   "event_id": "FD-GUO2018-077",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-01-27T20:30:00Z",
+   "end_time": "2016-01-28T19:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 2.82,
+    "dose_rate_at_onset_uGy_per_day": 248,
+    "dose_rate_at_nadir_uGy_per_day": 241
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 77; interval = onset → nadir (the decrease phase). MAVEN columns: no FD no FD no FD."
+  },
+  {
+   "event_id": "FD-GUO2018-078",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-02-01T08:15:00Z",
+   "end_time": "2016-02-02T09:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 4.44,
+    "dose_rate_at_onset_uGy_per_day": 248,
+    "dose_rate_at_nadir_uGy_per_day": 237
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 78; interval = onset → nadir (the decrease phase). MAVEN columns: 1.39 1.32 4.74."
+  },
+  {
+   "event_id": "FD-GUO2018-079",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-02-04T00:15:00Z",
+   "end_time": "2016-02-04T21:45:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_rate_drop_percent": 5.84,
+    "dose_rate_at_onset_uGy_per_day": 257,
+    "dose_rate_at_nadir_uGy_per_day": 242
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 79; interval = onset → nadir (the decrease phase). MAVEN columns: 1.41 1.36 3.12."
+  },
+  {
+   "event_id": "FD-GUO2018-080",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-02-07T15:30:00Z",
+   "end_time": "2016-02-09T02:15:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 3.95,
+    "dose_rate_at_onset_uGy_per_day": 253,
+    "dose_rate_at_nadir_uGy_per_day": 243
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 80; interval = onset → nadir (the decrease phase). MAVEN columns: 1.43 1.37 4.40."
+  },
+  {
+   "event_id": "FD-GUO2018-081",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-02-11T15:45:00Z",
+   "end_time": "2016-02-12T13:30:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 3.1,
+    "dose_rate_at_onset_uGy_per_day": 258,
+    "dose_rate_at_nadir_uGy_per_day": 250
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 81; interval = onset → nadir (the decrease phase). MAVEN columns: 1.41 1.34 4.69."
+  },
+  {
+   "event_id": "FD-GUO2018-082",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-02-15T03:00:00Z",
+   "end_time": "2016-02-15T13:30:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 2.73,
+    "dose_rate_at_onset_uGy_per_day": 256,
+    "dose_rate_at_nadir_uGy_per_day": 249
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 82; interval = onset → nadir (the decrease phase). MAVEN columns: no FD no FD no FD."
+  },
+  {
+   "event_id": "FD-GUO2018-083",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-02-17T08:30:00Z",
+   "end_time": "2016-02-18T14:30:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 2.73,
+    "dose_rate_at_onset_uGy_per_day": 256,
+    "dose_rate_at_nadir_uGy_per_day": 249
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 83; interval = onset → nadir (the decrease phase). MAVEN columns: 1.39 1.35 3.44."
+  },
+  {
+   "event_id": "FD-GUO2018-084",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-02-19T21:15:00Z",
+   "end_time": "2016-02-23T09:30:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 2.34,
+    "dose_rate_at_onset_uGy_per_day": 256,
+    "dose_rate_at_nadir_uGy_per_day": 250
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 84; interval = onset → nadir (the decrease phase). MAVEN columns: 1.42 1.35 4.73."
+  },
+  {
+   "event_id": "FD-GUO2018-085",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-02-29T08:15:00Z",
+   "end_time": "2016-03-05T06:30:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_rate_drop_percent": 6.11,
+    "dose_rate_at_onset_uGy_per_day": 262,
+    "dose_rate_at_nadir_uGy_per_day": 246
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 85; interval = onset → nadir (the decrease phase). MAVEN columns: 1.47 1.35 8.12."
+  },
+  {
+   "event_id": "FD-GUO2018-086",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-03-05T23:45:00Z",
+   "end_time": "2016-03-06T11:15:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 3.17,
+    "dose_rate_at_onset_uGy_per_day": 252,
+    "dose_rate_at_nadir_uGy_per_day": 244
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 86; interval = onset → nadir (the decrease phase). MAVEN columns: 1.37 1.37 1.374."
+  },
+  {
+   "event_id": "FD-GUO2018-087",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-03-10T07:45:00Z",
+   "end_time": "2016-03-12T07:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_rate_drop_percent": 6.2,
+    "dose_rate_at_onset_uGy_per_day": 258,
+    "dose_rate_at_nadir_uGy_per_day": 242
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 87; interval = onset → nadir (the decrease phase). MAVEN columns: 1.45 1.37 5.65."
+  },
+  {
+   "event_id": "FD-GUO2018-088",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-03-16T08:30:00Z",
+   "end_time": "2016-03-17T08:15:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 3.12,
+    "dose_rate_at_onset_uGy_per_day": 256,
+    "dose_rate_at_nadir_uGy_per_day": 248
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 88; interval = onset → nadir (the decrease phase). MAVEN columns: 1.44 1.41 2.43."
+  },
+  {
+   "event_id": "FD-GUO2018-089",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-03-19T14:45:00Z",
+   "end_time": "2016-03-20T06:15:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 2.79,
+    "dose_rate_at_onset_uGy_per_day": 251,
+    "dose_rate_at_nadir_uGy_per_day": 244
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 89; interval = onset → nadir (the decrease phase). MAVEN columns: 1.43 1.36 4.82."
+  },
+  {
+   "event_id": "FD-GUO2018-090",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-03-26T21:30:00Z",
+   "end_time": "2016-03-28T08:30:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_rate_drop_percent": 5.81,
+    "dose_rate_at_onset_uGy_per_day": 258,
+    "dose_rate_at_nadir_uGy_per_day": 243
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 90; interval = onset → nadir (the decrease phase). MAVEN columns: 1.44 1.35 6.25."
+  },
+  {
+   "event_id": "FD-GUO2018-091",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-03-28T15:30:00Z",
+   "end_time": "2016-03-29T02:45:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 2.43,
+    "dose_rate_at_onset_uGy_per_day": 247,
+    "dose_rate_at_nadir_uGy_per_day": 241
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 91; interval = onset → nadir (the decrease phase). MAVEN columns: 1.36 1.33 2.56."
+  },
+  {
+   "event_id": "FD-GUO2018-092",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-04-06T05:00:00Z",
+   "end_time": "2016-04-06T17:30:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 1.94,
+    "dose_rate_at_onset_uGy_per_day": 258,
+    "dose_rate_at_nadir_uGy_per_day": 253
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 92; interval = onset → nadir (the decrease phase). MAVEN columns: no FD no FD no FD."
+  },
+  {
+   "event_id": "FD-GUO2018-093",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-04-13T02:30:00Z",
+   "end_time": "2016-04-13T22:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 4.21,
+    "dose_rate_at_onset_uGy_per_day": 261,
+    "dose_rate_at_nadir_uGy_per_day": 250
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 93; interval = onset → nadir (the decrease phase). MAVEN columns: 1.51 1.40 7.15."
+  },
+  {
+   "event_id": "FD-GUO2018-094",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-04-14T22:30:00Z",
+   "end_time": "2016-04-16T19:45:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_rate_drop_percent": 5.47,
+    "dose_rate_at_onset_uGy_per_day": 256,
+    "dose_rate_at_nadir_uGy_per_day": 242
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 94; interval = onset → nadir (the decrease phase). MAVEN columns: 1.45 1.39 3.73."
+  },
+  {
+   "event_id": "FD-GUO2018-095",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-04-22T10:30:00Z",
+   "end_time": "2016-04-25T11:30:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_rate_drop_percent": 6.9,
+    "dose_rate_at_onset_uGy_per_day": 261,
+    "dose_rate_at_nadir_uGy_per_day": 243
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 95; interval = onset → nadir (the decrease phase). MAVEN columns: 1.47 1.37 7.07."
+  },
+  {
+   "event_id": "FD-GUO2018-096",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-05-03T17:45:00Z",
+   "end_time": "2016-05-05T18:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 3.86,
+    "dose_rate_at_onset_uGy_per_day": 259,
+    "dose_rate_at_nadir_uGy_per_day": 249
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 96; interval = onset → nadir (the decrease phase). MAVEN columns: 1.47 1.41 4.29."
+  },
+  {
+   "event_id": "FD-GUO2018-097",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-05-09T17:30:00Z",
+   "end_time": "2016-05-10T18:15:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_rate_drop_percent": 5.34,
+    "dose_rate_at_onset_uGy_per_day": 262,
+    "dose_rate_at_nadir_uGy_per_day": 248
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 97; interval = onset → nadir (the decrease phase). MAVEN columns: 1.47 1.39 5.97."
+  },
+  {
+   "event_id": "FD-GUO2018-098",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-05-15T03:00:00Z",
+   "end_time": "2016-05-16T08:45:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 2.67,
+    "dose_rate_at_onset_uGy_per_day": 262,
+    "dose_rate_at_nadir_uGy_per_day": 255
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 98; interval = onset → nadir (the decrease phase). MAVEN columns: increase increase increase."
+  },
+  {
+   "event_id": "FD-GUO2018-099",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-05-18T00:00:00Z",
+   "end_time": "2016-05-22T23:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_rate_drop_percent": 7.98,
+    "dose_rate_at_onset_uGy_per_day": 263,
+    "dose_rate_at_nadir_uGy_per_day": 242
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 99; interval = onset → nadir (the decrease phase). MAVEN columns: 1.50 1.37 9.18."
+  },
+  {
+   "event_id": "FD-GUO2018-100",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-05-25T07:30:00Z",
+   "end_time": "2016-05-26T15:30:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 1.56,
+    "dose_rate_at_onset_uGy_per_day": 257,
+    "dose_rate_at_nadir_uGy_per_day": 253
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 100; interval = onset → nadir (the decrease phase). MAVEN columns: no FD no FD no FD."
+  },
+  {
+   "event_id": "FD-GUO2018-101",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-05-31T04:30:00Z",
+   "end_time": "2016-06-01T05:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 2.31,
+    "dose_rate_at_onset_uGy_per_day": 260,
+    "dose_rate_at_nadir_uGy_per_day": 254
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 101; interval = onset → nadir (the decrease phase). MAVEN columns: 1.47 1.41 3.88."
+  },
+  {
+   "event_id": "FD-GUO2018-102",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-06-06T19:30:00Z",
+   "end_time": "2016-06-07T09:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 3.32,
+    "dose_rate_at_onset_uGy_per_day": 271,
+    "dose_rate_at_nadir_uGy_per_day": 262
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 102; interval = onset → nadir (the decrease phase). MAVEN columns: 1.55 1.47 4.96."
+  },
+  {
+   "event_id": "FD-GUO2018-103",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-06-08T01:15:00Z",
+   "end_time": "2016-06-08T23:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 2.61,
+    "dose_rate_at_onset_uGy_per_day": 268,
+    "dose_rate_at_nadir_uGy_per_day": 261
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 103; interval = onset → nadir (the decrease phase). MAVEN columns: no FD no FD no FD."
+  },
+  {
+   "event_id": "FD-GUO2018-104",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-06-11T03:15:00Z",
+   "end_time": "2016-06-17T19:45:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_rate_drop_percent": 9.59,
+    "dose_rate_at_onset_uGy_per_day": 271,
+    "dose_rate_at_nadir_uGy_per_day": 245
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 104; interval = onset → nadir (the decrease phase). MAVEN columns: 1.58 1.36 13.55."
+  },
+  {
+   "event_id": "FD-GUO2018-105",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-06-22T20:30:00Z",
+   "end_time": "2016-06-25T09:15:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 3.08,
+    "dose_rate_at_onset_uGy_per_day": 260,
+    "dose_rate_at_nadir_uGy_per_day": 252
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 105; interval = onset → nadir (the decrease phase). MAVEN columns: 1.46 1.41 3.62."
+  },
+  {
+   "event_id": "FD-GUO2018-106",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-07-03T09:45:00Z",
+   "end_time": "2016-07-03T18:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 2.64,
+    "dose_rate_at_onset_uGy_per_day": 265,
+    "dose_rate_at_nadir_uGy_per_day": 258
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 106; interval = onset → nadir (the decrease phase). MAVEN columns: 1.58 1.49 5.76."
+  },
+  {
+   "event_id": "FD-GUO2018-107",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-07-08T05:30:00Z",
+   "end_time": "2016-07-15T22:30:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_rate_drop_percent": 8.09,
+    "dose_rate_at_onset_uGy_per_day": 272,
+    "dose_rate_at_nadir_uGy_per_day": 250
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 107; interval = onset → nadir (the decrease phase). MAVEN columns: 1.64 1.40 14.23."
+  },
+  {
+   "event_id": "FD-GUO2018-108",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-07-19T21:00:00Z",
+   "end_time": "2016-07-21T19:30:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 3.46,
+    "dose_rate_at_onset_uGy_per_day": 260,
+    "dose_rate_at_nadir_uGy_per_day": 251
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 108; interval = onset → nadir (the decrease phase). MAVEN columns: 1.46 1.42 2.82."
+  },
+  {
+   "event_id": "FD-GUO2018-109",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-07-28T11:00:00Z",
+   "end_time": "2016-07-29T05:15:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 2.26,
+    "dose_rate_at_onset_uGy_per_day": 266,
+    "dose_rate_at_nadir_uGy_per_day": 260
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 109; interval = onset → nadir (the decrease phase). MAVEN columns: 1.52 1.49 2.17."
+  },
+  {
+   "event_id": "FD-GUO2018-110",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-08-02T01:30:00Z",
+   "end_time": "2016-08-03T01:30:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 3.69,
+    "dose_rate_at_onset_uGy_per_day": 271,
+    "dose_rate_at_nadir_uGy_per_day": 261
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 110; interval = onset → nadir (the decrease phase). MAVEN columns: 1.58 1.52 4.17."
+  },
+  {
+   "event_id": "FD-GUO2018-111",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-08-04T07:15:00Z",
+   "end_time": "2016-08-10T11:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_rate_drop_percent": 5.99,
+    "dose_rate_at_onset_uGy_per_day": 267,
+    "dose_rate_at_nadir_uGy_per_day": 251
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 111; interval = onset → nadir (the decrease phase). MAVEN columns: 1.57 1.39 11.34."
+  },
+  {
+   "event_id": "FD-GUO2018-112",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-08-11T22:00:00Z",
+   "end_time": "2016-08-12T13:30:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 2.73,
+    "dose_rate_at_onset_uGy_per_day": 256,
+    "dose_rate_at_nadir_uGy_per_day": 249
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 112; interval = onset → nadir (the decrease phase). MAVEN columns: no FD no FD no FD."
+  },
+  {
+   "event_id": "FD-GUO2018-113",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-08-14T07:45:00Z",
+   "end_time": "2016-08-16T02:45:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 3.52,
+    "dose_rate_at_onset_uGy_per_day": 256,
+    "dose_rate_at_nadir_uGy_per_day": 247
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 113; interval = onset → nadir (the decrease phase). MAVEN columns: 1.50 1.45 1.45."
+  },
+  {
+   "event_id": "FD-GUO2018-114",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-08-18T11:15:00Z",
+   "end_time": "2016-08-18T22:30:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 2.68,
+    "dose_rate_at_onset_uGy_per_day": 261,
+    "dose_rate_at_nadir_uGy_per_day": 254
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 114; interval = onset → nadir (the decrease phase). MAVEN columns: 1.50 1.44 3.93."
+  },
+  {
+   "event_id": "FD-GUO2018-115",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-08-21T19:15:00Z",
+   "end_time": "2016-08-23T22:30:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 2.65,
+    "dose_rate_at_onset_uGy_per_day": 264,
+    "dose_rate_at_nadir_uGy_per_day": 257
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 115; interval = onset → nadir (the decrease phase). MAVEN columns: 1.56 1.50 4.16."
+  },
+  {
+   "event_id": "FD-GUO2018-116",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-08-29T18:30:00Z",
+   "end_time": "2016-09-02T18:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_rate_drop_percent": 9.29,
+    "dose_rate_at_onset_uGy_per_day": 269,
+    "dose_rate_at_nadir_uGy_per_day": 244
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 116; interval = onset → nadir (the decrease phase). MAVEN columns: 1.60 1.45 9.01."
+  },
+  {
+   "event_id": "FD-GUO2018-117",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-09-08T20:00:00Z",
+   "end_time": "2016-09-09T06:15:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_rate_drop_percent": 7.03,
+    "dose_rate_at_onset_uGy_per_day": 256,
+    "dose_rate_at_nadir_uGy_per_day": 238
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 117; interval = onset → nadir (the decrease phase). MAVEN columns: no FD no FD no FD."
+  },
+  {
+   "event_id": "FD-GUO2018-118",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-09-16T04:45:00Z",
+   "end_time": "2016-09-17T00:15:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "low",
+   "magnitude": {
+    "dose_rate_drop_percent": 2.82,
+    "dose_rate_at_onset_uGy_per_day": 248,
+    "dose_rate_at_nadir_uGy_per_day": 241
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 118; interval = onset → nadir (the decrease phase). MAVEN columns: no FD no FD no FD."
+  },
+  {
+   "event_id": "FD-GUO2018-119",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-09-17T12:30:00Z",
+   "end_time": "2016-09-18T11:00:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 4.03,
+    "dose_rate_at_onset_uGy_per_day": 248,
+    "dose_rate_at_nadir_uGy_per_day": 238
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 119; interval = onset → nadir (the decrease phase). MAVEN columns: 1.58 1.52 4.04."
+  },
+  {
+   "event_id": "FD-GUO2018-120",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-09-22T15:45:00Z",
+   "end_time": "2016-09-23T16:30:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "medium",
+   "magnitude": {
+    "dose_rate_drop_percent": 3.26,
+    "dose_rate_at_onset_uGy_per_day": 276,
+    "dose_rate_at_nadir_uGy_per_day": 267
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 120; interval = onset → nadir (the decrease phase). MAVEN columns: 1.63 1.55 4.60."
+  },
+  {
+   "event_id": "FD-GUO2018-121",
+   "event_type": "radiation",
+   "event_subtype": "forbush_decrease",
+   "start_time": "2016-09-24T04:00:00Z",
+   "end_time": "2016-09-28T01:15:00Z",
+   "time_uncertainty": {
+    "start_days": 0.68,
+    "end_days": 0.55,
+    "basis": "Guo et al. (2018) Table 1, uncertainty of the manual identification procedure"
+   },
+   "confidence_in_time_bounds": "documented_uncertainty",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_rate_drop_percent": 5.86,
+    "dose_rate_at_onset_uGy_per_day": 273,
+    "dose_rate_at_nadir_uGy_per_day": 257
+   },
+   "source": "guo2018",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Guo, J., Lillis, R., Wimmer-Schweingruber, R. F., et al. (2018). Measurements of Forbush decreases at Mars: both by MSL on ground and by MAVEN in orbit. Astronomy & Astrophysics, 611, A79. doi:10.1051/0004-6361/201732087 (arXiv:1712.06885v1, Appendix table).",
+   "notes": "Catalogue row 121; interval = onset → nadir (the decrease phase). MAVEN columns: 1.60 1.48 7.50."
+  },
+  {
+   "event_id": "SEP-LOWE2025-2013-04-10",
+   "event_type": "radiation",
+   "event_subtype": "solar_energetic_particle_event",
+   "start_time": "2013-04-10T00:00:00Z",
+   "end_time": "2013-04-12T00:00:00Z",
+   "time_uncertainty": {
+    "start_days": 1.0,
+    "end_days": 1.0,
+    "basis": "source gives a calendar date only; the window [date, date+2 d] is a DEEPSIFT bounding convention"
+   },
+   "confidence_in_time_bounds": "NEEDS_VERIFICATION",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_E_shelter_duration_above_25pct": "00d 05h:33m"
+   },
+   "source": "lowe2025",
+   "source_type": "mission_team_publication",
+   "citation": "Löwe, J. L., Khaksarighiri, S., Wimmer-Schweingruber, R. F., Hassler, D. M., Ehresmann, B., Guo, J., et al. (2025). Nowcasting Solar Energetic Particle Events for Mars Missions. Manuscript submitted to Space Weather (arXiv:2502.02469v1), Tables 1-3.",
+   "notes": "Listed under 'MARTIAN SURFACE' SEP events measured by MSL/RAD. Date semantics are not defined in the text ('The timestamps in the first column refer to the SEP events'). Use only with tolerant matching. Manuscript was submitted, not yet peer reviewed, at the time of retrieval."
+  },
+  {
+   "event_id": "SEP-LOWE2025-2013-10-10",
+   "event_type": "radiation",
+   "event_subtype": "solar_energetic_particle_event",
+   "start_time": "2013-10-10T00:00:00Z",
+   "end_time": "2013-10-12T00:00:00Z",
+   "time_uncertainty": {
+    "start_days": 1.0,
+    "end_days": 1.0,
+    "basis": "source gives a calendar date only; the window [date, date+2 d] is a DEEPSIFT bounding convention"
+   },
+   "confidence_in_time_bounds": "NEEDS_VERIFICATION",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_E_shelter_duration_above_25pct": "00d 11h:15m"
+   },
+   "source": "lowe2025",
+   "source_type": "mission_team_publication",
+   "citation": "Löwe, J. L., Khaksarighiri, S., Wimmer-Schweingruber, R. F., Hassler, D. M., Ehresmann, B., Guo, J., et al. (2025). Nowcasting Solar Energetic Particle Events for Mars Missions. Manuscript submitted to Space Weather (arXiv:2502.02469v1), Tables 1-3.",
+   "notes": "Listed under 'MARTIAN SURFACE' SEP events measured by MSL/RAD. Date semantics are not defined in the text ('The timestamps in the first column refer to the SEP events'). Use only with tolerant matching. Manuscript was submitted, not yet peer reviewed, at the time of retrieval."
+  },
+  {
+   "event_id": "SEP-LOWE2025-2014-01-05",
+   "event_type": "radiation",
+   "event_subtype": "solar_energetic_particle_event",
+   "start_time": "2014-01-05T00:00:00Z",
+   "end_time": "2014-01-07T00:00:00Z",
+   "time_uncertainty": {
+    "start_days": 1.0,
+    "end_days": 1.0,
+    "basis": "source gives a calendar date only; the window [date, date+2 d] is a DEEPSIFT bounding convention"
+   },
+   "confidence_in_time_bounds": "NEEDS_VERIFICATION",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {},
+   "source": "lowe2025",
+   "source_type": "mission_team_publication",
+   "citation": "Löwe, J. L., Khaksarighiri, S., Wimmer-Schweingruber, R. F., Hassler, D. M., Ehresmann, B., Guo, J., et al. (2025). Nowcasting Solar Energetic Particle Events for Mars Missions. Manuscript submitted to Space Weather (arXiv:2502.02469v1), Tables 1-3.",
+   "notes": "Listed under 'MARTIAN SURFACE' SEP events measured by MSL/RAD. Date semantics are not defined in the text ('The timestamps in the first column refer to the SEP events'). Use only with tolerant matching. Manuscript was submitted, not yet peer reviewed, at the time of retrieval."
+  },
+  {
+   "event_id": "SEP-LOWE2025-2014-09-02",
+   "event_type": "radiation",
+   "event_subtype": "solar_energetic_particle_event",
+   "start_time": "2014-09-02T00:00:00Z",
+   "end_time": "2014-09-04T00:00:00Z",
+   "time_uncertainty": {
+    "start_days": 1.0,
+    "end_days": 1.0,
+    "basis": "source gives a calendar date only; the window [date, date+2 d] is a DEEPSIFT bounding convention"
+   },
+   "confidence_in_time_bounds": "NEEDS_VERIFICATION",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_E_shelter_duration_above_25pct": "01d 14h:17m"
+   },
+   "source": "lowe2025",
+   "source_type": "mission_team_publication",
+   "citation": "Löwe, J. L., Khaksarighiri, S., Wimmer-Schweingruber, R. F., Hassler, D. M., Ehresmann, B., Guo, J., et al. (2025). Nowcasting Solar Energetic Particle Events for Mars Missions. Manuscript submitted to Space Weather (arXiv:2502.02469v1), Tables 1-3.",
+   "notes": "Listed under 'MARTIAN SURFACE' SEP events measured by MSL/RAD. Date semantics are not defined in the text ('The timestamps in the first column refer to the SEP events'). Use only with tolerant matching. Manuscript was submitted, not yet peer reviewed, at the time of retrieval."
+  },
+  {
+   "event_id": "SEP-LOWE2025-2014-09-10",
+   "event_type": "radiation",
+   "event_subtype": "solar_energetic_particle_event",
+   "start_time": "2014-09-10T00:00:00Z",
+   "end_time": "2014-09-12T00:00:00Z",
+   "time_uncertainty": {
+    "start_days": 1.0,
+    "end_days": 1.0,
+    "basis": "source gives a calendar date only; the window [date, date+2 d] is a DEEPSIFT bounding convention"
+   },
+   "confidence_in_time_bounds": "NEEDS_VERIFICATION",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {},
+   "source": "lowe2025",
+   "source_type": "mission_team_publication",
+   "citation": "Löwe, J. L., Khaksarighiri, S., Wimmer-Schweingruber, R. F., Hassler, D. M., Ehresmann, B., Guo, J., et al. (2025). Nowcasting Solar Energetic Particle Events for Mars Missions. Manuscript submitted to Space Weather (arXiv:2502.02469v1), Tables 1-3.",
+   "notes": "Listed under 'MARTIAN SURFACE' SEP events measured by MSL/RAD. Date semantics are not defined in the text ('The timestamps in the first column refer to the SEP events'). Use only with tolerant matching. Manuscript was submitted, not yet peer reviewed, at the time of retrieval."
+  },
+  {
+   "event_id": "SEP-LOWE2025-2017-09-10",
+   "event_type": "radiation",
+   "event_subtype": "solar_energetic_particle_event",
+   "start_time": "2017-09-10T00:00:00Z",
+   "end_time": "2017-09-12T00:00:00Z",
+   "time_uncertainty": {
+    "start_days": 1.0,
+    "end_days": 1.0,
+    "basis": "source gives a calendar date only; the window [date, date+2 d] is a DEEPSIFT bounding convention"
+   },
+   "confidence_in_time_bounds": "NEEDS_VERIFICATION",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {},
+   "source": "lowe2025",
+   "source_type": "mission_team_publication",
+   "citation": "Löwe, J. L., Khaksarighiri, S., Wimmer-Schweingruber, R. F., Hassler, D. M., Ehresmann, B., Guo, J., et al. (2025). Nowcasting Solar Energetic Particle Events for Mars Missions. Manuscript submitted to Space Weather (arXiv:2502.02469v1), Tables 1-3.",
+   "notes": "Listed under 'MARTIAN SURFACE' SEP events measured by MSL/RAD. Date semantics are not defined in the text ('The timestamps in the first column refer to the SEP events'). Use only with tolerant matching. Manuscript was submitted, not yet peer reviewed, at the time of retrieval."
+  },
+  {
+   "event_id": "SEP-LOWE2025-2021-10-28",
+   "event_type": "radiation",
+   "event_subtype": "solar_energetic_particle_event",
+   "start_time": "2021-10-28T00:00:00Z",
+   "end_time": "2021-10-30T00:00:00Z",
+   "time_uncertainty": {
+    "start_days": 1.0,
+    "end_days": 1.0,
+    "basis": "source gives a calendar date only; the window [date, date+2 d] is a DEEPSIFT bounding convention"
+   },
+   "confidence_in_time_bounds": "NEEDS_VERIFICATION",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {},
+   "source": "lowe2025",
+   "source_type": "mission_team_publication",
+   "citation": "Löwe, J. L., Khaksarighiri, S., Wimmer-Schweingruber, R. F., Hassler, D. M., Ehresmann, B., Guo, J., et al. (2025). Nowcasting Solar Energetic Particle Events for Mars Missions. Manuscript submitted to Space Weather (arXiv:2502.02469v1), Tables 1-3.",
+   "notes": "Listed under 'MARTIAN SURFACE' SEP events measured by MSL/RAD. Date semantics are not defined in the text ('The timestamps in the first column refer to the SEP events'). Use only with tolerant matching. Manuscript was submitted, not yet peer reviewed, at the time of retrieval."
+  },
+  {
+   "event_id": "SEP-LOWE2025-2022-02-15",
+   "event_type": "radiation",
+   "event_subtype": "solar_energetic_particle_event",
+   "start_time": "2022-02-15T00:00:00Z",
+   "end_time": "2022-02-17T00:00:00Z",
+   "time_uncertainty": {
+    "start_days": 1.0,
+    "end_days": 1.0,
+    "basis": "source gives a calendar date only; the window [date, date+2 d] is a DEEPSIFT bounding convention"
+   },
+   "confidence_in_time_bounds": "NEEDS_VERIFICATION",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {},
+   "source": "lowe2025",
+   "source_type": "mission_team_publication",
+   "citation": "Löwe, J. L., Khaksarighiri, S., Wimmer-Schweingruber, R. F., Hassler, D. M., Ehresmann, B., Guo, J., et al. (2025). Nowcasting Solar Energetic Particle Events for Mars Missions. Manuscript submitted to Space Weather (arXiv:2502.02469v1), Tables 1-3.",
+   "notes": "Listed under 'MARTIAN SURFACE' SEP events measured by MSL/RAD. Date semantics are not defined in the text ('The timestamps in the first column refer to the SEP events'). Use only with tolerant matching. Manuscript was submitted, not yet peer reviewed, at the time of retrieval."
+  },
+  {
+   "event_id": "SEP-LOWE2025-2022-03-14",
+   "event_type": "radiation",
+   "event_subtype": "solar_energetic_particle_event",
+   "start_time": "2022-03-14T00:00:00Z",
+   "end_time": "2022-03-16T00:00:00Z",
+   "time_uncertainty": {
+    "start_days": 1.0,
+    "end_days": 1.0,
+    "basis": "source gives a calendar date only; the window [date, date+2 d] is a DEEPSIFT bounding convention"
+   },
+   "confidence_in_time_bounds": "NEEDS_VERIFICATION",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {},
+   "source": "lowe2025",
+   "source_type": "mission_team_publication",
+   "citation": "Löwe, J. L., Khaksarighiri, S., Wimmer-Schweingruber, R. F., Hassler, D. M., Ehresmann, B., Guo, J., et al. (2025). Nowcasting Solar Energetic Particle Events for Mars Missions. Manuscript submitted to Space Weather (arXiv:2502.02469v1), Tables 1-3.",
+   "notes": "Listed under 'MARTIAN SURFACE' SEP events measured by MSL/RAD. Date semantics are not defined in the text ('The timestamps in the first column refer to the SEP events'). Use only with tolerant matching. Manuscript was submitted, not yet peer reviewed, at the time of retrieval."
+  },
+  {
+   "event_id": "SEP-LOWE2025-2023-03-12",
+   "event_type": "radiation",
+   "event_subtype": "solar_energetic_particle_event",
+   "start_time": "2023-03-12T00:00:00Z",
+   "end_time": "2023-03-14T00:00:00Z",
+   "time_uncertainty": {
+    "start_days": 1.0,
+    "end_days": 1.0,
+    "basis": "source gives a calendar date only; the window [date, date+2 d] is a DEEPSIFT bounding convention"
+   },
+   "confidence_in_time_bounds": "NEEDS_VERIFICATION",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {},
+   "source": "lowe2025",
+   "source_type": "mission_team_publication",
+   "citation": "Löwe, J. L., Khaksarighiri, S., Wimmer-Schweingruber, R. F., Hassler, D. M., Ehresmann, B., Guo, J., et al. (2025). Nowcasting Solar Energetic Particle Events for Mars Missions. Manuscript submitted to Space Weather (arXiv:2502.02469v1), Tables 1-3.",
+   "notes": "Listed under 'MARTIAN SURFACE' SEP events measured by MSL/RAD. Date semantics are not defined in the text ('The timestamps in the first column refer to the SEP events'). Use only with tolerant matching. Manuscript was submitted, not yet peer reviewed, at the time of retrieval."
+  },
+  {
+   "event_id": "SEP-LOWE2025-2024-05-20",
+   "event_type": "radiation",
+   "event_subtype": "solar_energetic_particle_event",
+   "start_time": "2024-05-20T00:00:00Z",
+   "end_time": "2024-05-22T00:00:00Z",
+   "time_uncertainty": {
+    "start_days": 1.0,
+    "end_days": 1.0,
+    "basis": "source gives a calendar date only; the window [date, date+2 d] is a DEEPSIFT bounding convention"
+   },
+   "confidence_in_time_bounds": "NEEDS_VERIFICATION",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {},
+   "source": "lowe2025",
+   "source_type": "mission_team_publication",
+   "citation": "Löwe, J. L., Khaksarighiri, S., Wimmer-Schweingruber, R. F., Hassler, D. M., Ehresmann, B., Guo, J., et al. (2025). Nowcasting Solar Energetic Particle Events for Mars Missions. Manuscript submitted to Space Weather (arXiv:2502.02469v1), Tables 1-3.",
+   "notes": "Listed under 'MARTIAN SURFACE' SEP events measured by MSL/RAD. Date semantics are not defined in the text ('The timestamps in the first column refer to the SEP events'). Use only with tolerant matching. Manuscript was submitted, not yet peer reviewed, at the time of retrieval."
+  },
+  {
+   "event_id": "SEP-LOWE2025-2024-07-22",
+   "event_type": "radiation",
+   "event_subtype": "solar_energetic_particle_event",
+   "start_time": "2024-07-22T00:00:00Z",
+   "end_time": "2024-07-24T00:00:00Z",
+   "time_uncertainty": {
+    "start_days": 1.0,
+    "end_days": 1.0,
+    "basis": "source gives a calendar date only; the window [date, date+2 d] is a DEEPSIFT bounding convention"
+   },
+   "confidence_in_time_bounds": "NEEDS_VERIFICATION",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {},
+   "source": "lowe2025",
+   "source_type": "mission_team_publication",
+   "citation": "Löwe, J. L., Khaksarighiri, S., Wimmer-Schweingruber, R. F., Hassler, D. M., Ehresmann, B., Guo, J., et al. (2025). Nowcasting Solar Energetic Particle Events for Mars Missions. Manuscript submitted to Space Weather (arXiv:2502.02469v1), Tables 1-3.",
+   "notes": "Listed under 'MARTIAN SURFACE' SEP events measured by MSL/RAD. Date semantics are not defined in the text ('The timestamps in the first column refer to the SEP events'). Use only with tolerant matching. Manuscript was submitted, not yet peer reviewed, at the time of retrieval."
+  },
+  {
+   "event_id": "SEP-LOWE2025-2024-07-26",
+   "event_type": "radiation",
+   "event_subtype": "solar_energetic_particle_event",
+   "start_time": "2024-07-26T00:00:00Z",
+   "end_time": "2024-07-28T00:00:00Z",
+   "time_uncertainty": {
+    "start_days": 1.0,
+    "end_days": 1.0,
+    "basis": "source gives a calendar date only; the window [date, date+2 d] is a DEEPSIFT bounding convention"
+   },
+   "confidence_in_time_bounds": "NEEDS_VERIFICATION",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {},
+   "source": "lowe2025",
+   "source_type": "mission_team_publication",
+   "citation": "Löwe, J. L., Khaksarighiri, S., Wimmer-Schweingruber, R. F., Hassler, D. M., Ehresmann, B., Guo, J., et al. (2025). Nowcasting Solar Energetic Particle Events for Mars Missions. Manuscript submitted to Space Weather (arXiv:2502.02469v1), Tables 1-3.",
+   "notes": "Listed under 'MARTIAN SURFACE' SEP events measured by MSL/RAD. Date semantics are not defined in the text ('The timestamps in the first column refer to the SEP events'). Use only with tolerant matching. Manuscript was submitted, not yet peer reviewed, at the time of retrieval."
+  },
+  {
+   "event_id": "SEP-LOWE2025-2024-08-04",
+   "event_type": "radiation",
+   "event_subtype": "solar_energetic_particle_event",
+   "start_time": "2024-08-04T00:00:00Z",
+   "end_time": "2024-08-06T00:00:00Z",
+   "time_uncertainty": {
+    "start_days": 1.0,
+    "end_days": 1.0,
+    "basis": "source gives a calendar date only; the window [date, date+2 d] is a DEEPSIFT bounding convention"
+   },
+   "confidence_in_time_bounds": "NEEDS_VERIFICATION",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {},
+   "source": "lowe2025",
+   "source_type": "mission_team_publication",
+   "citation": "Löwe, J. L., Khaksarighiri, S., Wimmer-Schweingruber, R. F., Hassler, D. M., Ehresmann, B., Guo, J., et al. (2025). Nowcasting Solar Energetic Particle Events for Mars Missions. Manuscript submitted to Space Weather (arXiv:2502.02469v1), Tables 1-3.",
+   "notes": "Listed under 'MARTIAN SURFACE' SEP events measured by MSL/RAD. Date semantics are not defined in the text ('The timestamps in the first column refer to the SEP events'). Use only with tolerant matching. Manuscript was submitted, not yet peer reviewed, at the time of retrieval."
+  },
+  {
+   "event_id": "SEP-LOWE2025-2024-09-02",
+   "event_type": "radiation",
+   "event_subtype": "solar_energetic_particle_event",
+   "start_time": "2024-09-02T00:00:00Z",
+   "end_time": "2024-09-04T00:00:00Z",
+   "time_uncertainty": {
+    "start_days": 1.0,
+    "end_days": 1.0,
+    "basis": "source gives a calendar date only; the window [date, date+2 d] is a DEEPSIFT bounding convention"
+   },
+   "confidence_in_time_bounds": "NEEDS_VERIFICATION",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {},
+   "source": "lowe2025",
+   "source_type": "mission_team_publication",
+   "citation": "Löwe, J. L., Khaksarighiri, S., Wimmer-Schweingruber, R. F., Hassler, D. M., Ehresmann, B., Guo, J., et al. (2025). Nowcasting Solar Energetic Particle Events for Mars Missions. Manuscript submitted to Space Weather (arXiv:2502.02469v1), Tables 1-3.",
+   "notes": "Listed under 'MARTIAN SURFACE' SEP events measured by MSL/RAD. Date semantics are not defined in the text ('The timestamps in the first column refer to the SEP events'). Use only with tolerant matching. Manuscript was submitted, not yet peer reviewed, at the time of retrieval."
+  },
+  {
+   "event_id": "SEP-LOWE2025-2024-10-05",
+   "event_type": "radiation",
+   "event_subtype": "solar_energetic_particle_event",
+   "start_time": "2024-10-05T00:00:00Z",
+   "end_time": "2024-10-07T00:00:00Z",
+   "time_uncertainty": {
+    "start_days": 1.0,
+    "end_days": 1.0,
+    "basis": "source gives a calendar date only; the window [date, date+2 d] is a DEEPSIFT bounding convention"
+   },
+   "confidence_in_time_bounds": "NEEDS_VERIFICATION",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {},
+   "source": "lowe2025",
+   "source_type": "mission_team_publication",
+   "citation": "Löwe, J. L., Khaksarighiri, S., Wimmer-Schweingruber, R. F., Hassler, D. M., Ehresmann, B., Guo, J., et al. (2025). Nowcasting Solar Energetic Particle Events for Mars Missions. Manuscript submitted to Space Weather (arXiv:2502.02469v1), Tables 1-3.",
+   "notes": "Listed under 'MARTIAN SURFACE' SEP events measured by MSL/RAD. Date semantics are not defined in the text ('The timestamps in the first column refer to the SEP events'). Use only with tolerant matching. Manuscript was submitted, not yet peer reviewed, at the time of retrieval."
+  },
+  {
+   "event_id": "SEP-2013-04-SOL242",
+   "event_type": "radiation",
+   "event_subtype": "solar_energetic_particle_event",
+   "start_time": "2013-04-11T00:00:00Z",
+   "end_time": "2013-04-12T23:59:59Z",
+   "time_uncertainty": {
+    "start_days": 1.0,
+    "end_days": 1.0,
+    "basis": "day-resolution statements in the source; see verification record"
+   },
+   "confidence_in_time_bounds": "NEEDS_VERIFICATION",
+   "affected_instruments": [
+    "RAD"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "dose_enhancement_over_gcr": "~30% (Hassler et al. 2014)",
+    "sep_dose_uGy": 50
+   },
+   "source": "hassler2014",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Hassler, D. M., Zeitlin, C., Wimmer-Schweingruber, R. F., et al. (2014). Mars' Surface Radiation Environment Measured with the Mars Science Laboratory's Curiosity Rover. Science, 343(6169), 1244797. doi:10.1126/science.1244797",
+   "split_note": "In the CALIBRATION split, which was inspected during v0.1 development. Reported only as a development event.",
+   "verification": {
+    "old_bounds": {
+     "start_time": "2013-04-11T06:00:00Z",
+     "end_time": "2013-04-12T12:00:00Z",
+     "origin": "v0.1 data/labels/documented_events.yaml — set by the maintainers from the PDS RDR dose record"
+    },
+    "new_bounds": {
+     "start_time": "2013-04-11T00:00:00Z",
+     "end_time": "2013-04-12T23:59:59Z"
+    },
+    "statements_found": [
+     {
+      "source": "hassler2014",
+      "where": "main text and Fig. 1 caption",
+      "quote": "RAD observed a dose rate enhancement from one hard SEP event on sol 242 (12 to 13 April 2013)"
+     },
+     {
+      "source": "hassler2014",
+      "where": "Materials and Methods",
+      "quote": "The dose rate time series associated with the SEP event enhancement seen on 11 to 12 April 2013 resulting from an M-class flare on the Sun"
+     },
+     {
+      "source": "lowe2025",
+      "where": "Tables 1-3",
+      "quote": "2013-04-10 (Martian surface SEP event)"
+     },
+     {
+      "source": "PDS MSL-M-RAD-3-RDR-V1.0",
+      "where": "RAD_RDR_2013_101_*_0242 (DEEPSIFT reading)",
+      "quote": "dose B 9.13 µGy/h at 2013-04-11T06:01Z, 10.73 at 12:09Z, peak 12.13 at 14:12Z, back to ~9.2 by 2013-04-12T04:32Z"
+     }
+    ],
+    "reason": "The primary peer-reviewed source is internally inconsistent (12-13 April vs 11-12 April); the mission-team preprint lists 2013-04-10. Sol 242 spans ≈2013-04-11T05:30Z → 2013-04-12T06:10Z by the REMS clock relation, which is consistent only with the 11-12 April statement. New bounds = the 11-12 April statement at day resolution. Sub-day timing is NOT established by an independent source; status stays NEEDS_VERIFICATION. The old bounds were derived by looking at the same RDR data they are evaluated on."
+   },
+   "notes": "Development event only."
+  },
+  {
+   "event_id": "GDS-MY34-ONSET",
+   "event_type": "atmospheric",
+   "event_subtype": "global_dust_storm_phase",
+   "start_time": "2018-06-07T14:53:42Z",
+   "end_time": "2018-06-17T21:29:34Z",
+   "start_sol": 2075,
+   "end_sol": 2085,
+   "time_uncertainty": {
+    "start_days": 1.03,
+    "end_days": 1.03,
+    "basis": "source gives sol numbers (1 sol = 1.0275 d)"
+   },
+   "confidence_in_time_bounds": "sol_resolution",
+   "affected_instruments": [
+    "REMS"
+   ],
+   "affected_channels": [
+    "uv_abc",
+    "pressure",
+    "air_temp",
+    "ground_temp"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "peak_opacity": 8.5,
+    "surface_uv_decrease": "~95%",
+    "semidiurnal_tide_amplitude_Pa": 40
+   },
+   "source": "viudez2019",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Viúdez-Moreiras, D., Newman, C. E., de la Torre, M., et al. (2019). Effects of the MY34/2018 Global Dust Storm as Measured by MSL REMS in Gale Crater. Journal of Geophysical Research: Planets, 124(7), 1899-1912. doi:10.1029/2019JE005985",
+   "notes": "Phase marker as stated by the source: \"Storm reaches Gale (start of the onset phase at Gale)\". Gradual multi-sol event; a detector with a 7-sol trailing baseline adapts during the event, so only the onset is expected to be detectable as a departure."
+  },
+  {
+   "event_id": "GDS-MY34-PEAK",
+   "event_type": "atmospheric",
+   "event_subtype": "global_dust_storm_phase",
+   "start_time": "2018-06-17T21:29:34Z",
+   "end_time": "2018-07-04T08:02:58Z",
+   "start_sol": 2085,
+   "end_sol": 2101,
+   "time_uncertainty": {
+    "start_days": 1.03,
+    "end_days": 1.03,
+    "basis": "source gives sol numbers (1 sol = 1.0275 d)"
+   },
+   "confidence_in_time_bounds": "sol_resolution",
+   "affected_instruments": [
+    "REMS"
+   ],
+   "affected_channels": [
+    "uv_abc",
+    "pressure",
+    "air_temp",
+    "ground_temp"
+   ],
+   "severity": "high",
+   "magnitude": {
+    "peak_opacity": 8.5,
+    "surface_uv_decrease": "~95%",
+    "semidiurnal_tide_amplitude_Pa": 40
+   },
+   "source": "viudez2019",
+   "source_type": "peer_reviewed_paper",
+   "citation": "Viúdez-Moreiras, D., Newman, C. E., de la Torre, M., et al. (2019). Effects of the MY34/2018 Global Dust Storm as Measured by MSL REMS in Gale Crater. Journal of Geophysical Research: Planets, 124(7), 1899-1912. doi:10.1029/2019JE005985",
+   "notes": "Phase marker as stated by the source: \"Peak at Gale / highly dusty phase (sols 2085-2100)\". Gradual multi-sol event; a detector with a 7-sol trailing baseline adapts during the event, so only the onset is expected to be detectable as a departure."
+  }
+ ]
+}

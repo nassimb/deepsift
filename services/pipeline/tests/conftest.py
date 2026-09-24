@@ -59,7 +59,9 @@ def make_event(eid="SYN-1", instrument="REMS", z=6.0, sensors=("pressure",), dip
     ch = sensors[0]
     cf = ChannelFeatures(channel=ch, unit="Pa", n=300, mean=mean if mean is not None else baseline + z, std=1.0,
                          min=baseline - 5, max=baseline + 5, baseline=baseline, baseline_mad=1 / 1.4826, robust_z=z,
-                         dip=dip, flat_fraction=flat, missing_fraction=missing, noise_ratio=noise, rarity=0.97)
+                         dip=dip, flat_fraction=flat, missing_fraction=missing, noise_ratio=noise, rarity=0.97,
+                         flags=[f for f, on in (("level", abs(z) >= 4), ("dip", dip >= 0.75), ("stuck", flat >= 0.95),
+                                                ("dropout", missing >= 0.5), ("noise", noise >= 4)) if on])
     feats = EventFeatures(deviation_score=abs(z), rarity_score=0.97, duration_s=duration, rate_of_change=0.1,
                           correlated_channels=len(sensors), cross_instrument_coincidence=False, novelty=novelty,
                           lmst_hour=lmst_h, trigger_reasons=[f"{ch}: synthetic"], channels={ch: cf})

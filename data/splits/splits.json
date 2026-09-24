@@ -1,0 +1,109 @@
+{
+  "version": "phase2-v1",
+  "created": "2026-09-24",
+  "principle": "Temporal, non-overlapping segments. Thresholds are derived only from CALIBRATION (label-free target flag rates). Configuration choices (gating, priority, policy) are made only on VALIDATION. TEST is evaluated once per frozen configuration and never used for tuning. Each segment carries a warm-up block used only to build trailing baselines; warm-up sols are never scored.",
+  "baseline_warmup_sols": 7,
+  "splits": {
+    "calibration": {
+      "note": "The original v0.1 development segment. It was inspected extensively while building v0.1 and is therefore treated as contaminated: used for threshold derivation and debugging only. The sol 242 SEP is reported as a DEVELOPMENT event, never as test evidence.",
+      "segments": [
+        {
+          "id": "CAL-2013-04",
+          "warmup": null,
+          "eval": [
+            232,
+            251
+          ]
+        }
+      ]
+    },
+    "validation": {
+      "note": "Used for threshold sweeps and configuration choices. Contains the 2013-10-10 surface SEP and the first Forbush decreases of the Guo et al. (2018) catalogue.",
+      "segments": [
+        {
+          "id": "VAL-2013-10-SEP",
+          "warmup": [
+            405,
+            411
+          ],
+          "eval": [
+            412,
+            430
+          ]
+        },
+        {
+          "id": "VAL-2014-10-FD",
+          "warmup": [
+            772,
+            778
+          ],
+          "eval": [
+            779,
+            820
+          ]
+        }
+      ]
+    },
+    "test": {
+      "note": "Held out. Not inspected before the configuration was frozen. Contains the 2014-09-02 and 2014-09-10 surface SEPs, Forbush decreases from the Guo et al. (2018) catalogue, and the MY34 global dust storm onset/peak at Gale.",
+      "segments": [
+        {
+          "id": "TEST-2014-09-SEP",
+          "warmup": [
+            725,
+            731
+          ],
+          "eval": [
+            732,
+            750
+          ]
+        },
+        {
+          "id": "TEST-2015-01-FD",
+          "warmup": [
+            864,
+            870
+          ],
+          "eval": [
+            871,
+            930
+          ]
+        },
+        {
+          "id": "TEST-2018-GDS",
+          "warmup": [
+            2061,
+            2067
+          ],
+          "eval": [
+            2068,
+            2105
+          ]
+        }
+      ]
+    }
+  },
+  "pds_gaps": {
+    "note": "No product exists on the PDS for these sols (verified by directory listing, 2026-09-24).",
+    "REMS": [
+      874,
+      875,
+      876,
+      877,
+      878,
+      879
+    ],
+    "RAD": [
+      782,
+      874,
+      875,
+      876,
+      877,
+      878,
+      879,
+      2081,
+      2082,
+      2083
+    ]
+  }
+}

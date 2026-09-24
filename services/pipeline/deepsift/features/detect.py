@@ -23,6 +23,10 @@ class DetectionResult:
     counts: dict[str, int] = field(default_factory=dict)
 
 
+FLAG_NAMES = ("level", "dip", "stuck", "dropout", "noise", "range")
+QUALITY_FLAGS = {"stuck", "dropout", "noise", "range"}
+
+
 def _iso(t) -> str:
     return t.isoformat().replace("+00:00", "Z")
 
@@ -49,7 +53,7 @@ def detect_events(mission, adapter, config, injections=None) -> DetectionResult:
     timings["windowing"] = (time.perf_counter() - t0) * 1000
 
     t0 = time.perf_counter()
-    w = add_baselines(w, channels, det.baseline_sols)
+    w = add_baselines(w, channels, det.baseline_sols, min_sigma_override=det.min_sigma)
     w = add_rarity(w)
     timings["feature_extraction"] = (time.perf_counter() - t0) * 1000
 
@@ -141,6 +145,7 @@ def detect_events(mission, adapter, config, injections=None) -> DetectionResult:
                 flat_fraction=max((x["flat_fraction"] or 0.0) for x in lst),
                 missing_fraction=max(x["missing_fraction"] for x in lst),
                 noise_ratio=max(x["noise_ratio"] for x in lst), rarity=max(x["rarity"] for x in lst),
+                flags=sorted({f for x in lst for f in FLAG_NAMES if x.get(f"f_{f}")}),
             )
             fl = [x for x in lst if x["flagged"]]
             if fl:

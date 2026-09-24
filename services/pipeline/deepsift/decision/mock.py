@@ -14,6 +14,7 @@ import time
 from deepsift.core.models import AnswerDist, EngineDecision, ScientificEvent
 from deepsift.decision.base import DecisionEngine
 from deepsift.decision.state import build_state
+from deepsift.features.detect import QUALITY_FLAGS
 
 ATMOS = {"pressure", "uv_abc", "rel_humidity"}
 THERMAL = {"air_temp", "ground_temp"}
@@ -45,19 +46,18 @@ class MockDecisionEngine(DecisionEngine):
         flagged = set(e.sensors)
         dev = f.deviation_score
         quality = sum(
-            1 for k, c in ch.items() if k in flagged and (
-            c.flat_fraction >= 0.95 or c.missing_fraction >= 0.5 or c.noise_ratio >= 4)
+            1 for k, c in ch.items() if k in flagged and set(c.flags) & QUALITY_FLAGS
         )
         # implausible level jumps: RAD dose collapsing to <30 % of baseline is not a known natural process
         implausible = any(
             c.baseline and c.baseline > 0 and c.mean is not None and c.mean < 0.3 * c.baseline for c in ch.values() if e.instrument == "RAD"
         )
-        dip = ch["pressure"].dip if "pressure" in ch else 0.0
+        dip_flag = "pressure" in ch and "dip" in ch["pressure"].flags
 
         inst = 1.2 * quality + (3.0 if implausible else 0.0)
         type_logits = {
             "nominal": 1.5 - 0.35 * dev,
-            "atmospheric": 0.9 * len(flagged & ATMOS) + (1.5 if dip >= 0.75 else 0.0) - 0.5 * quality,
+            "atmospheric": 0.9 * len(flagged & ATMOS) + (1.5 if dip_flag else 0.0) - 0.5 * quality,
             "radiation": (2.5 + 0.1 * min(dev, 20)) if e.instrument == "RAD" and not implausible else -2.0,
             "thermal": 0.9 * len(flagged & THERMAL) - 0.4 * quality,
             "instrument_anomaly": inst,

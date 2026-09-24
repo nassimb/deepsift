@@ -30,6 +30,7 @@ class Detection(BaseModel):
     noise_ratio_threshold: float = 4.0
     merge_gap_s: int = 900
     coincidence_window_s: int = 3600
+    min_sigma: dict[str, float] | None = None  # per-channel noise floor for robust z; None → adapter defaults
 
 
 class Gating(BaseModel):
@@ -108,6 +109,7 @@ class Config(BaseModel):
     deep_analysis: DeepCfg = Field(default_factory=DeepCfg)
     objective: str = "balanced_science"
     benchmark: BenchmarkCfg = Field(default_factory=BenchmarkCfg)
+    provenance: dict[str, Any] | None = None  # how derived values were obtained (calibration run, validation choices)
 
     def version(self) -> str:
         canonical = json.dumps(self.model_dump(mode="json"), sort_keys=True, separators=(",", ":"))

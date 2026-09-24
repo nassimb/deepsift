@@ -31,6 +31,7 @@ from deepsift.core.models import (
     ScienceValue,
     ScientificEvent,
 )
+from deepsift.features.detect import QUALITY_FLAGS
 from deepsift.objectives.objective import MissionObjective
 
 TERMS = ("science_value", "mission_relevance", "anomaly_strength", "novelty")
@@ -44,7 +45,7 @@ def anomaly_strength(deviation: float, scale: float) -> float:
 def rules_type(e: ScientificEvent) -> str:
     """Deterministic event-type guess used by the rules baseline and by fallback gating."""
     ch = {k: c for k, c in e.features.channels.items() if k in e.sensors}  # only channels that triggered
-    if any(c.flat_fraction >= 0.95 or c.missing_fraction >= 0.5 or c.noise_ratio >= 4 for c in ch.values()):
+    if any(set(c.flags) & QUALITY_FLAGS for c in ch.values()):
         return EventType.INSTRUMENT_ANOMALY.value
     if e.instrument == "RAD":
         return EventType.RADIATION.value

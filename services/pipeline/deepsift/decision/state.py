@@ -56,13 +56,13 @@ def build_state(event: ScientificEvent, mission_name: str, location: str) -> dic
             "rarity": rarity_words(c.rarity),
         }
         quality = []
-        if c.flat_fraction >= 0.95:
+        if "stuck" in c.flags:
             quality.append("values stuck (identical consecutive samples)")
-        if c.missing_fraction >= 0.5:
+        if "dropout" in c.flags:
             quality.append(f"{c.missing_fraction:.0%} of samples missing")
-        if c.noise_ratio >= 4:
+        if "noise" in c.flags:
             quality.append(f"sample-to-sample noise {c.noise_ratio:.0f}x normal")
-        if name == "pressure" and c.dip >= 0.75:
+        if "dip" in c.flags:
             quality.append(f"short pressure drop of {c.dip:.2f} Pa below the running median")
         if quality:
             d["notes"] = quality

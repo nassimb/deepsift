@@ -132,6 +132,25 @@ def parse_rad_product(txt: bytes, product: str) -> pl.DataFrame:
     return pl.DataFrame(out, schema_overrides={"t": pl.Datetime("us", "UTC"), "lmst_s": pl.Float64})
 
 
+def parse_rad_compact(raw: bytes) -> tuple[pl.DataFrame, dict[int, tuple[int, int, int]]]:
+    """Read a deepsift-rad-compact-v1 record (see scripts/fetch_nasa.py)."""
+    import json
+
+    d = json.loads(raw)
+    rows, sizes = [], {}
+    for o in d["observations"]:
+        if not o["start_obs_utc"]:
+            continue
+        y, doy, hms = o["start_obs_utc"][:4], o["start_obs_utc"][5:8], o["start_obs_utc"][9:]
+        hh, mm, ss = (int(x) for x in hms.split(":"))
+        t = datetime(int(y), 1, 1, hh, mm, ss, tzinfo=timezone.utc) + timedelta(days=int(doy) - 1)
+        mars_sol = int(o["start_obs_mars"].split()[0]) if o.get("start_obs_mars") else 0
+        rows.append({"record": o["record"], "t": t, "sol": mars_sol, "lmst_s": 0.0, "dose_b": o["dose_b"],
+                     "dose_e": o["dose_e"], "bytes": o["raw"], "product": d["product"]})
+        sizes[o["record"]] = (o["raw"], o["full"], o["compressed"])
+    return pl.DataFrame(rows, schema_overrides={"t": pl.Datetime("us", "UTC"), "lmst_s": pl.Float64}), sizes
+
+
 class CuriosityAdapter(MissionAdapter):
     id = "msl_curiosity"
 
@@ -154,7 +173,7 @@ class CuriosityAdapter(MissionAdapter):
             sol = int(re.search(r"RMD(\d{4})", p.name).group(1))
             lbl = next(iter(sorted((root / "rems").glob(p.name.split(".")[0] + ".LBL*"))), None)
             found.append(("REMS", p, lbl, sol))
-        for p in sorted((root / "rad").glob("RAD_RDR_*.TXT*")):
+        for p in sorted([*(root / "rad").glob("RAD_RDR_*.TXT*"), *(root / "rad").glob("RAD_RDR_*.compact.json.gz")]):
             sol = int(re.search(r"_(\d{4})_V\d\d", p.name).group(1))
             found.append(("RAD", p, None, sol))
         return found
@@ -269,16 +288,27 @@ class CuriosityAdapter(MissionAdapter):
                         ).filter(pl.col("value").is_not_null() & (pl.col("value") != MISSING))
                     )
             else:
-                obs = parse_rad_product(raw, product)
+                if path.name.endswith(".compact.json.gz"):
+                    # derived record written by fetch_nasa.py --compact (byte sizes measured on the original)
+                    obs, sizes = parse_rad_compact(raw)
+                    product = obs["product"][0] if not obs.is_empty() else product
+                else:
+                    obs = parse_rad_product(raw, product)
+                    sizes = None
                 if obs.is_empty():
                     continue
                 for row in obs.iter_rows(named=True):
-                    blob = row["raw"]
-                    byte_rows.append({
-                        "instrument": "RAD", "window": f"{product}:{row['record']}", "raw": len(blob),
-                        "full": len(zlib.compress(blob, self.zlib_level)),
+                    if sizes is not None:
+                        raw_b, full_b, comp_b = sizes[row["record"]]
+                    else:
+                        blob = row["raw"]
+                        raw_b = len(blob)
+                        full_b = len(zlib.compress(blob, self.zlib_level))
                         # RAD blocks are mostly histograms; the lossy product keeps counters + dose only
-                        "compressed": len(zlib.compress(blob[: max(1, len(blob) // self.decimation)], self.zlib_level)),
+                        comp_b = len(zlib.compress(blob[: max(1, len(blob) // self.decimation)], self.zlib_level))
+                    byte_rows.append({
+                        "instrument": "RAD", "window": f"{product}:{row['record']}", "raw": raw_b,
+                        "full": full_b, "compressed": comp_b,
                         "row_start": row["record"], "row_end": row["record"], "product": product,
                     })
                 record_frames.append(obs.select(pl.lit("RAD").alias("instrument"), "product", "record", "t", "bytes"))

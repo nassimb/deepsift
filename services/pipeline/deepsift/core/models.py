@@ -102,6 +102,7 @@ class ChannelFeatures(BaseModel):
     missing_fraction: float = 0.0      # fraction of expected samples absent (dropout)
     noise_ratio: float = 0.0           # std(first differences) / baseline std(first differences)
     rarity: float = 0.0                # empirical tail probability rank of |robust_z| in history (0..1)
+    flags: list[str] = Field(default_factory=list)  # detector flags raised on this channel: level|dip|stuck|dropout|noise|range
 
 
 class EventFeatures(BaseModel):
