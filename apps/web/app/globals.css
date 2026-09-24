@@ -156,3 +156,6 @@ textarea {
 .state-pulse {
   animation: blink-state 1.6s ease-in-out infinite;
 }
+.btn[data-active="true"]:hover {
+  color: var(--bg);
+}

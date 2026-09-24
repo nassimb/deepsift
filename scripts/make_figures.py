@@ -178,7 +178,7 @@ def calibration(res, out: Path, notes):
         ax.set_ylim(0, 1)
         rows += [[k, x["lo"], x["hi"], x["n"], x["mean_conf"], x["accuracy"]] for x in b]
     axes[0][0].set_ylabel("observed agreement with labels")
-    fig.suptitle("Reliability of MODEL CONFIDENCE (not probability of scientific truth)", fontsize=9)
+    fig.suptitle("Reliability of MODEL CONFIDENCE (not probability of scientific truth)", fontsize=9, y=1.08)
     fig.savefig(out / "confidence_calibration.png")
     plt.close(fig)
     write_csv(out / "confidence_calibration.csv", ["series", "bin_lo", "bin_hi", "n", "mean_confidence", "accuracy"], rows)

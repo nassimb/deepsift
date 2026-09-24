@@ -44,13 +44,13 @@ second, and a code-owned priority/scheduling layer last — with every decision 
   deepsift/evaluation     anomaly injection, labels, 5 strategies, metrics, benchmark harness
   deepsift/audit          DuckDB audit log (decisions, runs, config versions, labels)
   deepsift/api            FastAPI service
-  tests/                  43 pytest tests
+  tests/                  58 pytest tests
 /config                   default.yaml (all thresholds/weights/budgets), objectives.yaml
 /data/raw                 PDS download cache + manifest.json (URLs, sizes, sha256) — git-ignored
 /data/fixtures            real PDS sample, sols 238–243 (gzip) — offline fallback, LOCAL NASA SAMPLE
 /data/labels              documented_events.yaml
 /scripts                  fetch_nasa.py, run_pipeline.py, run_benchmark.py, demo.sh
-/docs                     architecture.md, research-methodology.md
+/docs                     architecture.md, research-methodology.md, leakage-audit.md, ground-truth.md, jev-evaluation.md
 ```
 
 The requested `packages/{core,mission-adapters,decision-engine,simulation,evaluation}` split is kept
@@ -161,7 +161,11 @@ same greedy allocator: **random sampling**, **threshold rules**, **statistical a
 documented event plus nine kinds of synthetic injections per trial, placed with a seed. Full details and
 caveats: [`docs/research-methodology.md`](docs/research-methodology.md).
 
-**Measured result (2026-09-24, Apple M5, 5 seeds, engine = mock heuristic, NOT Jev)** —
+> **Superseded.** The v0.1 benchmark below leaked: thresholds, injection magnitudes and one storage
+> policy were tuned on the same sols it evaluates (`docs/leakage-audit.md`). It is kept as a development
+> record. The Phase-2 held-out evaluation is summarised in the next section.
+
+**v0.1 development result (2026-09-24, Apple M5, 5 seeds, engine = mock heuristic, NOT Jev)** —
 experiment `20260924T190246-8a4f1b`:
 
 | strategy | recall | high-severity recall | retained-but-unlabeled¹ | value/MB (proxy)² |
@@ -183,13 +187,33 @@ Measured pipeline performance on the same machine (`npm run pipeline`): 1.43 M s
 126 candidates from 1,922 instrument windows; mock-engine decisions ≈ 0.015 ms each (Python function
 time, not model inference); 99.5 % data reduction under the default budget.
 
+## Phase 2: held-out evaluation (current)
+
+* Temporal splits: calibration (sols 232–251) → validation (412–430, 779–820) → **test** (732–750,
+  871–930, 2068–2105), each held-out segment with a never-scored baseline warm-up (`data/splits/splits.json`).
+* Thresholds derived label-free from calibration only (`scripts/calibrate.py`); gating thresholds frozen
+  on validation by a pre-declared rule; test run once.
+* Ground truth: 121 Forbush decreases (Guo et al. 2018), 16 surface SEP dates (Löwe et al. 2025), MY34
+  dust-storm phases (Viúdez-Moreiras et al. 2019); sol 242 verification record (`docs/ground-truth.md`).
+* 1,852 synthetic injections on test in declared difficulty buckets; strict / tolerant / coverage metrics;
+  RANDOM over 30 seeds; ORACLE — NOT DEPLOYABLE; LOCAL EDGE BASELINE (1.6 KB logistic model, no network).
+* **Jev was not evaluated — no API key was available.** The harness, call log, smoke test and five
+  ablations are ready (`docs/jev-evaluation.md` → "How to run").
+
+Held-out findings (mock engine, not Jev): candidate detection caps every event-based strategy at 63–68 %
+high-severity synthetic recall; above ~1 % of raw bytes a no-AI rules + statistical hybrid leads (73 → 100 %);
+at 0.5 % the mock engine reaches 60 % vs rules 50 % and the local edge model 53 %; documented Forbush
+decreases are not isolated by the detector (≈2 % data coverage, random 7 %); the v0.1 protected-tier storage
+policy preserves *fewer* high-severity synthetic events at 1–4 MiB. Full report: `docs/jev-evaluation.md`;
+UI: `/study`; artifacts: `artifacts/runs/`, `artifacts/figures/`.
+
 ## How to reproduce
 
 ```bash
 uv run python scripts/fetch_nasa.py --sols 232-251   # real PDS products + manifest (sha256)
 npm run pipeline                                      # one run → audit log + stage timings
 npm run benchmark -- --trials 5                       # stored in data/processed/experiments/
-npm test                                              # 43 tests (run offline on the bundled sample)
+npm test                                              # 58 tests (run offline on the bundled sample)
 ```
 
 Every run records the config version (content hash), pipeline version, engine, objective and each

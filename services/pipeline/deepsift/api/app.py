@@ -45,7 +45,7 @@ class State:
         with self.lock:
             self.audit.record_config(self.cfg)
             self.pipeline = Pipeline(self.cfg, audit=self.audit)
-            self.run = self.pipeline.run(note="api boot")
+            self.run = self.pipeline.run(sols=demo_sols(), note="api boot")
 
     def rescore(self, objective: MissionObjective, note: str):
         """Objective / priority / gating changes: no raw pipeline, no engine calls."""
@@ -61,6 +61,14 @@ class State:
                               r.metadata["sols"], len(r.events), {}, note)
         self.audit.record_decisions(run_id, r.events, objective, self.cfg)
         r.run_id = run_id
+
+
+def demo_sols() -> list[int]:
+    """Mission Control replays the calibration segment (data/raw now also holds validation/test sols)."""
+    from deepsift.evaluation.segments import segments
+
+    seg = segments("calibration")[0]
+    return list(range(seg.eval[0], seg.eval[1] + 1))
 
 
 S = State()
@@ -288,7 +296,7 @@ def put_config(req: ConfigPatch):
         t0 = time.perf_counter()
         if heavy:
             S.pipeline = Pipeline(after, audit=S.audit)
-            S.run = S.pipeline.run(objective_id=S.run.objective.id if S.run else None, note="config change (full rerun)")
+            S.run = S.pipeline.run(sols=demo_sols(), objective_id=S.run.objective.id if S.run else None, note="config change (full rerun)")
         else:
             S.rescore(S.run.objective, note="config change (rescore)")
         return {"version": after.version(), "changes": changes, "rerun": "full" if heavy else "rescore",

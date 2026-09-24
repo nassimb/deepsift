@@ -62,7 +62,9 @@ def git_state() -> dict:
             return subprocess.check_output(["git", *a], cwd=ROOT, text=True, stderr=subprocess.DEVNULL).strip()
         except Exception:  # noqa: BLE001
             return None
-    return {"commit": run("rev-parse", "HEAD"), "dirty": bool(run("status", "--porcelain")), "describe": run("describe", "--always", "--dirty")}
+    porcelain = run("status", "--porcelain") or ""
+    return {"commit": run("rev-parse", "HEAD"), "dirty": bool(porcelain), "describe": run("describe", "--always", "--dirty"),
+            "dirty_paths": [ln[3:] for ln in porcelain.splitlines()][:200]}
 
 
 def dataset_hashes(sols: list[int]) -> dict:
@@ -119,6 +121,7 @@ class Study:
                 self.jev_status = "enabled"
             else:
                 self.jev_status = "UNAVAILABLE: TYPESAFE_API_KEY not set"
+        self.git_at_start = git_state()          # captured before any work: the code actually executed
         self.rows: list[dict] = []
         self.calib: dict[str, dict[str, list]] = {}
         self.failures: dict[str, list] = {}
@@ -413,7 +416,7 @@ class Study:
         sols = sorted({s for seg in segs for s in seg.load_sols})
         manifest = {
             "run_id": self.run_id, "split": self.split, "started_at": started.isoformat(),
-            "finished_at": datetime.now(timezone.utc).isoformat(), "git": git_state(),
+            "finished_at": datetime.now(timezone.utc).isoformat(), "git": self.git_at_start, "git_at_finish": git_state(),
             "config_version": self.cfg.version(), "config": self.cfg.model_dump(mode="json"),
             "segments": [{"id": s.id, "warmup": s.warmup, "eval": s.eval} for s in segs],
             "datasets": {"raw_products": dataset_hashes(sols),

@@ -12,7 +12,7 @@ from deepsift.pipeline import Pipeline
 
 def main() -> None:
     cfg = load_config()
-    r = Pipeline(cfg, audit=AuditLog()).run(note="cli")
+    r = Pipeline(cfg, audit=AuditLog()).run(sols=list(range(232, 252)), note="cli")
     md = r.metadata
     print(f"run {r.run_id} · {md['short_name']} · {md['data_source']} · sols {md['sols'][0]}–{md['sols'][-1]} · engine {r.engine['name']}")
     print("counts:", md["counts"])

@@ -1,0 +1,753 @@
+{
+ "run_id": "20260924T204836-test-c6f9",
+ "split": "test",
+ "started_at": "2026-09-24T20:48:36.058446+00:00",
+ "finished_at": "2026-09-24T21:09:46.736473+00:00",
+ "git": {
+  "commit": "7ae93ca1497d3d9e9987de53b96d39c63b43e5a0",
+  "dirty": true,
+  "describe": "v0.1-baseline-3-g7ae93ca-dirty"
+ },
+ "config_version": "d59227d52476",
+ "config": {
+  "mission": "msl_curiosity",
+  "detection": {
+   "rems_window_s": 300,
+   "lmst_bin_minutes": 30,
+   "baseline_sols": 7,
+   "min_samples": 30,
+   "z_threshold": 9.344,
+   "rad_z_threshold": 8.603,
+   "dip_threshold_pa": 0.43,
+   "flat_fraction_threshold": 0.95,
+   "missing_fraction_threshold": 0.5,
+   "noise_ratio_threshold": 4.631,
+   "merge_gap_s": 900,
+   "coincidence_window_s": 3600,
+   "min_sigma": {
+    "air_temp": 0.03145,
+    "dose_b": 0.20502,
+    "dose_e": 0.06391,
+    "ground_temp": 3.26039,
+    "pressure": 0.04193,
+    "rel_humidity": 0.01048,
+    "uv_abc": 0.02097
+   }
+  },
+  "gating": {
+   "auto_threshold": 0.8,
+   "uncertain_threshold": 0.3,
+   "deep_request_threshold": 0.6
+  },
+  "priority": {
+   "weights": {
+    "science_value": 0.35,
+    "mission_relevance": 0.3,
+    "anomaly_strength": 0.2,
+    "novelty": 0.15
+   },
+   "anomaly_scale": 6.0,
+   "confidence_penalty": 0.5,
+   "cost_exponent": 0.5,
+   "thresholds": {
+    "full_data": 0.55,
+    "compress": 0.42,
+    "summary_only": 0.22
+   },
+   "engine_action_policy": "upgrade_only",
+   "instrument_failure_floor": 0.6
+  },
+  "compression": {
+   "decimation_factor": 8,
+   "zlib_level": 6,
+   "fidelity": {
+    "full_data": 1.0,
+    "compress": 0.5,
+    "summary_only": 0.15,
+    "discard": 0.0
+   }
+  },
+  "downlink": {
+   "passes_per_sol": 2,
+   "pass_bytes": 32768,
+   "storage_bytes": 1048576,
+   "background_summary": true,
+   "protect_utility": null
+  },
+  "blackout": {
+   "duration_sols": 3.0,
+   "storage_bytes": 196608
+  },
+  "decision_engine": {
+   "kind": "auto",
+   "jev_model": "jev-latest",
+   "price_per_mtok_input_usd": 0.042,
+   "timeout_s": 10.0,
+   "max_concurrency": 8
+  },
+  "deep_analysis": {
+   "provider": "none",
+   "model": "claude-opus-5"
+  },
+  "objective": "balanced_science",
+  "benchmark": {
+   "random_seed": 7,
+   "injection_seed": 11,
+   "injections_per_sol": 1.0
+  },
+  "provenance": {
+   "calibration": {
+    "script": "scripts/calibrate.py",
+    "at": "2026-09-24T20:22:44.139700+00:00",
+    "split": "calibration",
+    "sols": [
+     232,
+     251
+    ],
+    "targets": {
+     "split": "calibration",
+     "target_flag_rate": {
+      "level": 0.02,
+      "dip": 0.005,
+      "noise": 0.005
+     },
+     "noise_floor_method": "sample_difference_mad",
+     "structural": {
+      "flat_fraction_threshold": 0.95,
+      "missing_fraction_threshold": 0.5
+     }
+    },
+    "trailing_windows_used": 5585,
+    "v0_1_values": {
+     "z_threshold": 4.0,
+     "rad_z_threshold": 3.5,
+     "dip_threshold_pa": 0.75,
+     "noise_ratio_threshold": 4.0
+    },
+    "data_sha256_digest": "4e514220a2f1bfd435f307be09e3fa789358ea139e97cc4a0eaafc294e0039a4",
+    "labels_read": false,
+    "injections_used": false
+   },
+   "validation_choices": {
+    "validation_run": "20260924T203948-validation-91b4",
+    "rule": "Among Pareto-optimal (auto, uncertain) gating thresholds on VALIDATION synthetic data, keep those that would escalate \u2264 25 % of candidate events; choose the one with the highest high-severity tolerant recall; break ties by precision (lower bound), then by fewer downlinked bytes.",
+    "per_engine": {
+     "MOCK": {
+      "auto_threshold": 0.8,
+      "uncertain_threshold": 0.3,
+      "validation_point": {
+       "auto": 0.8,
+       "uncertain": 0.3,
+       "tolerant_recall": 0.6884422110552764,
+       "high_tolerant_recall": 0.6506417120890806,
+       "precision_lower_bound": 0.0665706014363091,
+       "downlink_bytes": 34662059,
+       "false_positive_units": 2204,
+       "would_escalate": 0,
+       "events": 2353,
+       "pareto": true
+      }
+     }
+    },
+    "frozen": true,
+    "applied_to_gating_defaults_from": "MOCK"
+   }
+  }
+ },
+ "segments": [
+  {
+   "id": "TEST-2014-09-SEP",
+   "warmup": [
+    725,
+    731
+   ],
+   "eval": [
+    732,
+    750
+   ]
+  },
+  {
+   "id": "TEST-2015-01-FD",
+   "warmup": [
+    864,
+    870
+   ],
+   "eval": [
+    871,
+    930
+   ]
+  },
+  {
+   "id": "TEST-2018-GDS",
+   "warmup": [
+    2061,
+    2067
+   ],
+   "eval": [
+    2068,
+    2105
+   ]
+  }
+ ],
+ "datasets": {
+  "raw_products": {
+   "files": 394,
+   "digest": "735fd675fcabbbf20d2a9b7808d95f299b74a181e28f4ad82332a15d35cf8789",
+   "per_file": {
+    "data/raw/rad/RAD_RDR_2014_232_12_14_0725_V00.compact.json.gz": "57b011ccbd24beffe737bc68b91f05d69a6add09a1e1a42026c115b9126addc0",
+    "data/raw/rad/RAD_RDR_2014_233_13_06_0726_V00.compact.json.gz": "d58afd02ee3f527903e7c97818a6ccba89ced010ccad3ff787e9b70820bae878",
+    "data/raw/rad/RAD_RDR_2014_234_13_38_0727_V00.compact.json.gz": "32cddf36586511b2533fb8a7847cb83a998c070caddce61c252336afe8e9a076",
+    "data/raw/rad/RAD_RDR_2014_235_14_12_0728_V00.compact.json.gz": "34d9d2d9e9460dbd0586abe1ef2f9575c8260712efe34037918edc14ccea4dbc",
+    "data/raw/rad/RAD_RDR_2014_236_15_04_0729_V00.compact.json.gz": "73d319767d1fc709672869370416f2640f53127703cf278e93c4bb0b3510ac40",
+    "data/raw/rad/RAD_RDR_2014_237_15_36_0730_V00.compact.json.gz": "252b24b17ab30da62222366fd0bcde9534089c94f76946f40dd44583ea67c864",
+    "data/raw/rad/RAD_RDR_2014_238_16_09_0731_V00.compact.json.gz": "6371044c858487381908529f41e986055b5325a39c59e27d2c3b334e29019ba3",
+    "data/raw/rad/RAD_RDR_2014_239_17_00_0732_V00.compact.json.gz": "c78b19e7599d555ee2c06b33b2fdee49447e59900457c2785449b41e5819d091",
+    "data/raw/rad/RAD_RDR_2014_240_17_33_0733_V00.compact.json.gz": "be9d6244dc75beafc8877181f3232062c6fa11e27907e0c26b136d4cf6bd489b",
+    "data/raw/rad/RAD_RDR_2014_241_18_07_0734_V00.compact.json.gz": "71953024a235e9ac3be59c87d1e4248916671ac3ae9bfe67b27d38896e707843",
+    "data/raw/rad/RAD_RDR_2014_242_18_57_0735_V00.compact.json.gz": "11a01fc6f82cf261eb7358f2a954d79c1fadade3f5085b437dd018a2ffafd3a9",
+    "data/raw/rad/RAD_RDR_2014_243_19_32_0736_V00.compact.json.gz": "44b96925215049df9ceb362ce7f57aeae9e1b8d9f9e72f7b9b8fc6c3fc7dc54f",
+    "data/raw/rad/RAD_RDR_2014_244_20_21_0737_V00.compact.json.gz": "133fe712ef98d967ae359abd25f9f53dfee5dc7a214a67067da7f051c6682805",
+    "data/raw/rad/RAD_RDR_2014_245_20_54_0738_V00.compact.json.gz": "813362640c4ea5480d300392abfffe07b8d854e2a10f15217971f5f9c4dfad50",
+    "data/raw/rad/RAD_RDR_2014_246_21_28_0739_V00.compact.json.gz": "3c2cd3e65070fc1ae5fec5f47a2a5fbe97ffa914ea274f106dd43ae620019ba9",
+    "data/raw/rad/RAD_RDR_2014_247_22_18_0740_V00.compact.json.gz": "3ffa128c3c8d8b3f1d4de3aebcd7a9b584c336ec5d10bcaf17901f2b64012262",
+    "data/raw/rad/RAD_RDR_2014_248_22_51_0741_V00.compact.json.gz": "519b1af3149d4bff2255b1c6736ec0ad06b7450d74e44fd47dd8af8190f1e6a6",
+    "data/raw/rad/RAD_RDR_2014_249_23_25_0742_V00.compact.json.gz": "5b02b4e9f525c36ddf20944248d8995650db777e4ac13c076357f6137f9f7eb8",
+    "data/raw/rad/RAD_RDR_2014_251_00_19_0743_V00.compact.json.gz": "702e0fab8fd1beb7a05d061b4c412715cd6df74882f506e48bcf6e897c16e93b",
+    "data/raw/rad/RAD_RDR_2014_252_00_49_0744_V00.compact.json.gz": "49a23c70ae4f008279521a5ba38f9f5ea2ea6d18c0fdb609f9fe0d2dd5f6d19e",
+    "data/raw/rad/RAD_RDR_2014_253_01_32_0745_V00.compact.json.gz": "4059d6878771e31e489407fa00fc7aa5f7f11641606c84759629dbcf1f65f6cf",
+    "data/raw/rad/RAD_RDR_2014_254_02_12_0746_V00.compact.json.gz": "98d85e03f8b64b1d650ffddd64459481c2fffbf57e682a261e513196245aecd8",
+    "data/raw/rad/RAD_RDR_2014_255_02_49_0747_V00.compact.json.gz": "9f286effe9ac2738635f8937bfd8ecf8876e94244c573347c4ceb9fe673e934e",
+    "data/raw/rad/RAD_RDR_2014_256_03_38_0748_V00.compact.json.gz": "a264f431dd719701944bd52ca556295d53650d2125523c3ab50619f06b1a9643",
+    "data/raw/rad/RAD_RDR_2014_257_04_13_0749_V00.compact.json.gz": "4268cb90b367343cb57c5fb4bec4d42454e9039a728d3148e6cfab06cdf86ed4",
+    "data/raw/rad/RAD_RDR_2014_258_04_44_0750_V00.compact.json.gz": "0b31f90534c279440058bd2acd2b33da5c6d90d72f0132687e2167612a46c29b",
+    "data/raw/rad/RAD_RDR_2015_010_07_41_0864_V00.compact.json.gz": "cea93bb4a78a4e46252ad56b453420fa223b289bae8a4d526b4e0a4417cc4ed8",
+    "data/raw/rad/RAD_RDR_2015_011_08_18_0865_V00.compact.json.gz": "2d684465c0de94c085a0ee0ef1633f3056c469c07b6f933e3e121463b0295f82",
+    "data/raw/rad/RAD_RDR_2015_012_09_06_0866_V00.compact.json.gz": "c2984b6adffbfe42e58f6aff69913000fdf8fcdbb33f4b8fd96aaefdebd45d4c",
+    "data/raw/rad/RAD_RDR_2015_013_09_42_0867_V00.compact.json.gz": "c0c5374c6922a5bed4259c388020fbd7333330646c84b5fa57e9b39e23ed3df0",
+    "data/raw/rad/RAD_RDR_2015_014_10_12_0868_V00.compact.json.gz": "175e50484628367e9eeae6f4e10b58dfd27c0552a2656c8bda7a41de7717ff08",
+    "data/raw/rad/RAD_RDR_2015_015_11_11_0869_V00.compact.json.gz": "4554d01157a7830d73473d04a6b9eeea2ca9d7460a540726456326fe2757c56d",
+    "data/raw/rad/RAD_RDR_2015_016_11_42_0870_V00.compact.json.gz": "24a70c46ea8575c97c00248c06b2d5c9510904356393482b96b69ec1cc5ae4ef",
+    "data/raw/rad/RAD_RDR_2015_017_12_15_0871_V00.compact.json.gz": "7c6ef72020d8951d17d03fabd66061b04a07dc907b130642195ce420f752bbe1",
+    "data/raw/rad/RAD_RDR_2015_018_13_00_0872_V00.compact.json.gz": "b3835d372ec11f8e2e5c30621142451774e0e7f59096c5d7afe8549c9ab9b3cd",
+    "data/raw/rad/RAD_RDR_2015_019_13_40_0873_V00.compact.json.gz": "815cef6ad118184e79068760092126d835063a19d797a2430f80452527865c4c",
+    "data/raw/rad/RAD_RDR_2015_020_14_24_0874_V00.compact.json.gz": "ffda43069d742ada0d0049bc21c0a633a167301321427eaf3fe09449b45bf327",
+    "data/raw/rad/RAD_RDR_2015_027_06_45_0880_V00.compact.json.gz": "187946ba68a702247da39f9c22e071811083f4dd44e7748d0f259ee0b5e833ef",
+    "data/raw/rad/RAD_RDR_2015_027_19_00_0881_V00.compact.json.gz": "8c2f0baf74498d246c2ee37e92126b80cd2f54ba5141bb80f7a3985114267d94",
+    "data/raw/rad/RAD_RDR_2015_028_19_35_0882_V00.compact.json.gz": "5c058d6aa45462e4edf5b073015619b2adf028a3d022c201f1d1b5c28dbdf405",
+    "data/raw/rad/RAD_RDR_2015_029_20_24_0883_V00.compact.json.gz": "517779de3912c080ad37e12add4aaeaac4476f675cdbed98d5298dffce1673e7",
+    "data/raw/rad/RAD_RDR_2015_030_20_59_0884_V00.compact.json.gz": "237bc00e0d56b184436e2870c5b44407152121d5c09fc88d5a393718d79b70c2",
+    "data/raw/rad/RAD_RDR_2015_031_21_32_0885_V00.compact.json.gz": "486356b13a0cca5314ce57ef905eaa4087fa2e65d75d3508b7e2b9dfa326b6f3",
+    "data/raw/rad/RAD_RDR_2015_032_22_24_0886_V00.compact.json.gz": "fe23ee73ef59ba917b0066ccf641cc06b98b6110c3a1a853e9a2456d240e5d89",
+    "data/raw/rad/RAD_RDR_2015_033_23_10_0887_V00.compact.json.gz": "fc4c97112892f7353a04f98457ee45783bd171c7cb652cadabe5d650a7d90933",
+    "data/raw/rad/RAD_RDR_2015_034_23_32_0888_V00.compact.json.gz": "7ac51bffb8ba8fdd536fcc6cecdbdd6665d529af5ff91c09a85f4d3220586a17",
+    "data/raw/rad/RAD_RDR_2015_036_00_20_0889_V00.compact.json.gz": "2bdafdd0149988099689fd2b45107b8a4dc80a5d18821cb11cb87ca08ad890d8",
+    "data/raw/rad/RAD_RDR_2015_037_00_55_0890_V00.compact.json.gz": "3e447344859772a18fa251e2635ac6193949c4ba3b428b432970bd236d76c81c",
+    "data/raw/rad/RAD_RDR_2015_038_01_28_0891_V00.compact.json.gz": "813bcf521f7690a6d2a730e35a110c9fd2f0366062393386d3173d4a9c1ca2ab",
+    "data/raw/rad/RAD_RDR_2015_039_02_19_0892_V00.compact.json.gz": "e2fe7725dca7e11e121a3dd5890bc5227a0d44d5c25f4b0d6cabba9c1c947d4e",
+    "data/raw/rad/RAD_RDR_2015_040_02_53_0893_V00.compact.json.gz": "f9de09cf079ac0bc2699fadb125c9186c1c1ea28ee599929135f9efb01bb0bbd",
+    "data/raw/rad/RAD_RDR_2015_041_03_43_0894_V00.compact.json.gz": "35cbcd5b7e56a1c3c40da997e3450118780fecbde66d020afaac8df719a1850e",
+    "data/raw/rad/RAD_RDR_2015_042_04_18_0895_V00.compact.json.gz": "1663f28aa02635da5a78ea66d4bc2e0336fe7e2e2f25aab5529b77fdecf749d2",
+    "data/raw/rad/RAD_RDR_2015_043_04_51_0896_V00.compact.json.gz": "510141b0d4cb76e0743d9fd1b1c9e8b79d93f232a918189d0d8f5fc74170c5cf",
+    "data/raw/rad/RAD_RDR_2015_044_05_26_0897_V00.compact.json.gz": "b5bdd9ee2be5850872fd16a7d7ca361ea45309f1d9e8ff71b204644a521ca6e5",
+    "data/raw/rad/RAD_RDR_2015_045_06_12_0898_V00.compact.json.gz": "d46f22144a0473927fd9d6676fafedd7cc78859cc73a15e0af11582f2b40eecc",
+    "data/raw/rad/RAD_RDR_2015_046_06_48_0899_V00.compact.json.gz": "5fb909ee871f73dcdbc64b891ba84b6a8e248500e0abf5fce583d5387401b094",
+    "data/raw/rad/RAD_RDR_2015_047_07_38_0900_V00.compact.json.gz": "26326ac73e8359e3ca50544b9a2e6b3acecf8118e0d7e1b1766a78f0bd3780bd",
+    "data/raw/rad/RAD_RDR_2015_048_08_14_0901_V00.compact.json.gz": "2df1e466af5e0906815e90cf4ed22bcdd67246c78d42cdad9ad633815daa214b",
+    "data/raw/rad/RAD_RDR_2015_049_08_45_0902_V00.compact.json.gz": "4810d271d362615e8a25982f25950bf1efe50caf459a8d4e056b20f67a92b41e",
+    "data/raw/rad/RAD_RDR_2015_050_09_38_0903_V00.compact.json.gz": "bfe3c5e30e0a16d5c0c77f29513e1f657a0d60f030220076de3a2af5af002348",
+    "data/raw/rad/RAD_RDR_2015_051_10_09_0904_V00.compact.json.gz": "1451a9a869b7248fcaf851cbaea4b16a632fed419a070b7698e9fc75d61ab623",
+    "data/raw/rad/RAD_RDR_2015_052_10_46_0905_V00.compact.json.gz": "84ceb33f92d6f10919982a503ca26dcac083f9629e1e234f98de55563ed726ab",
+    "data/raw/rad/RAD_RDR_2015_053_11_34_0906_V00.compact.json.gz": "09f55c46a975eee1e4e7b570fce95385890495ec8a0943616dab63e7d6eb7b5a",
+    "data/raw/rad/RAD_RDR_2015_054_12_09_0907_V00.compact.json.gz": "8bf25f1ee354113e1170cc31a0b89382a24cdbef235611b40a387e3c4a3340d9",
+    "data/raw/rad/RAD_RDR_2015_055_12_43_0908_V00.compact.json.gz": "c9eda4e3c0e3e420a3748c42943955125e1fee35fb97c255c2bd5bb05d277c7e",
+    "data/raw/rad/RAD_RDR_2015_056_13_48_0909_V00.compact.json.gz": "fa084a55b61e7727f923e0bda8cf024076f0e1878074e1a213ac88cefd64675d",
+    "data/raw/rad/RAD_RDR_2015_057_14_05_0910_V00.compact.json.gz": "24eefb6718b338a182d9e00771318aad8e3471ef80da6d9307d5bb12a065805f",
+    "data/raw/rad/RAD_RDR_2015_058_14_40_0911_V00.compact.json.gz": "3b8193d9dc8f206da284e722ad4c3f327d19c6d39bb2bb3c03ddb6f79e886a58",
+    "data/raw/rad/RAD_RDR_2015_059_15_31_0912_V00.compact.json.gz": "375c61dcc6073a540ce663ab22e1d9cb7471d4b8b612e680893e1a2039a670dc",
+    "data/raw/rad/RAD_RDR_2015_060_16_20_0913_V00.compact.json.gz": "f1c6a7448e10a9af8d339a0de18682867b3240f354cf5702786e18835f93fdb5",
+    "data/raw/rad/RAD_RDR_2015_061_16_55_0914_V00.compact.json.gz": "70ad32ce326e34a58902a5cd95675439db4ae028d2b96536595f856d86cfed4d",
+    "data/raw/rad/RAD_RDR_2015_062_17_28_0915_V00.compact.json.gz": "1fa0527db1330215206923a2705bf91c00fb5a003e7a546bb9e31214ed3f3bf3",
+    "data/raw/rad/RAD_RDR_2015_063_18_03_0916_V00.compact.json.gz": "c5867ec9650beca39e113571e92f8238b2e6a357336396df952b88a19373f40a",
+    "data/raw/rad/RAD_RDR_2015_064_18_52_0917_V00.compact.json.gz": "8f87b36cdeb4ee8700acd14a68dd4289586ffc66f4651027417adc1f431b196d",
+    "data/raw/rad/RAD_RDR_2015_065_19_27_0918_V00.compact.json.gz": "73e93a532f6d506165d68a253c29ff0292a2b18a6a23c788cb06269303ac73ff",
+    "data/raw/rad/RAD_RDR_2015_066_20_00_0919_V00.compact.json.gz": "19cd42013efedc9d166c97cb7601fb60c7861660970a46c44563ad2f3ea0b4ac",
+    "data/raw/rad/RAD_RDR_2015_067_20_50_0920_V00.compact.json.gz": "3860d8523216ed03e0299aa04b39cbd78a625738ddcb95718236edd659d8af11",
+    "data/raw/rad/RAD_RDR_2015_068_21_38_0921_V00.compact.json.gz": "4f569d636c153f6f4295d36ebac97a67c84891c143e3281c45c581e6e8f403bb",
+    "data/raw/rad/RAD_RDR_2015_069_22_01_0922_V00.compact.json.gz": "39b96f1a32713b3e64b5f8822c10e8c2ae2c832ce48e50b29d29cae3f055d861",
+    "data/raw/rad/RAD_RDR_2015_070_22_48_0923_V00.compact.json.gz": "769f307958b0590701ab0f001d8871507e9c2388f164b9cec4fdd018d3f986b4",
+    "data/raw/rad/RAD_RDR_2015_071_23_29_0924_V00.compact.json.gz": "0a2bce560b61976dd0d26bdf7a83db3535c03e7a331a3cff6c5e67d2562af15a",
+    "data/raw/rad/RAD_RDR_2015_072_23_56_0925_V00.compact.json.gz": "33d803bf7608bf4d379c14954cfe3765756dda6d2c852cfc11b9cb2ea8d9a6a6",
+    "data/raw/rad/RAD_RDR_2015_074_00_49_0926_V00.compact.json.gz": "ded1e0b6617e2a2bafaa7ed02ad455af4807970184c95cf0ff1226d7c24876f5",
+    "data/raw/rad/RAD_RDR_2015_075_01_20_0927_V00.compact.json.gz": "7a447ec31d8bb67597c32105ad77643a30f502cd899f4bfa07655e123e739a9c",
+    "data/raw/rad/RAD_RDR_2015_076_01_56_0928_V00.compact.json.gz": "5fcc5ec807c2269a461c471e5336d95fb35a743834df3677e6dba870236d6ff7",
+    "data/raw/rad/RAD_RDR_2015_077_02_44_0929_V00.compact.json.gz": "e85d2e0638d54a732e94f28a7c1dc03df96657440e39d6433ce6b1e0b2e41468",
+    "data/raw/rad/RAD_RDR_2015_078_03_20_0930_V00.compact.json.gz": "3716f9788340f20667a758b96d89fd7a709ca8ee6ca574c1c0d64fc169b7e002",
+    "data/raw/rad/RAD_RDR_2018_144_05_53_2061_V00.compact.json.gz": "1875cde5f4e926c5ae796f40948f7648c9410e6e6e9a52f05cf71b0d7e5333e3",
+    "data/raw/rad/RAD_RDR_2018_145_06_26_2062_V00.compact.json.gz": "b40ed0ed8991c3a741705fb3cd7e51df3ea3c290afd149a8a0e665249076341a",
+    "data/raw/rad/RAD_RDR_2018_146_07_01_2063_V00.compact.json.gz": "65f4772f0cf176bebce76053ff5de5e5dfba50f09d6c589b6999306f89b89dba",
+    "data/raw/rad/RAD_RDR_2018_147_07_52_2064_V00.compact.json.gz": "d2b633a730d8a70a11b2a646ed9eb700bb57aebc4fcf241005b138ae5b3362bb",
+    "data/raw/rad/RAD_RDR_2018_148_08_28_2065_V00.compact.json.gz": "d060277abbe82ce8517a166243a8307d3e4229d243d324124c20d4b2e18d447d",
+    "data/raw/rad/RAD_RDR_2018_149_09_00_2066_V00.compact.json.gz": "f759b9acb07052662b3e15fe2481ba49d0fbfa45d7adb0dbd6acd791ae4c4488",
+    "data/raw/rad/RAD_RDR_2018_150_09_52_2067_V00.compact.json.gz": "e2159a0ad4095723def0369957ef247af85d8dc4ca2d93187b05541d8337215b",
+    "data/raw/rad/RAD_RDR_2018_151_10_20_2068_V00.compact.json.gz": "90b51b897455bc7e03804528e3d08a7b16f956e14d893276a65061c3bd8891c6",
+    "data/raw/rad/RAD_RDR_2018_152_11_02_2069_V00.compact.json.gz": "9653548a8237483cbfd8fa43dac4d10326b550e1950058561b78d416866d6972",
+    "data/raw/rad/RAD_RDR_2018_153_11_51_2070_V00.compact.json.gz": "c2bc2a5ef8b604dea9c3e434fe921a11d41df2116b89687b0f33680a11f3947d",
+    "data/raw/rad/RAD_RDR_2018_154_12_25_2071_V00.compact.json.gz": "68171aa18d82e1c7852acc34d90de56deda76aa859722be8a3b785df166a6490",
+    "data/raw/rad/RAD_RDR_2018_155_13_00_2072_V00.compact.json.gz": "56a64f3437d9c228a7e50240991c76e9172df712958a819adacc5e02cdda375f",
+    "data/raw/rad/RAD_RDR_2018_156_13_34_2073_V00.compact.json.gz": "4ceaba452f43c9cb49e9d0e1ce0268f75575e85268de6a50745f3a407c7e7117",
+    "data/raw/rad/RAD_RDR_2018_157_14_28_2074_V00.compact.json.gz": "90c50c5f50339cf40a8ebd6c802216a50afef0a4b22c0ad081f06c5e23bfd333",
+    "data/raw/rad/RAD_RDR_2018_158_15_00_2075_V00.compact.json.gz": "4a29f336e82d70a40af9c78e67b973f65889cfb35d1f27b0465ac0bb236fa1c7",
+    "data/raw/rad/RAD_RDR_2018_159_15_36_2076_V00.compact.json.gz": "29dd1587df167ed365f401d6f9f5d5cdc478416454e7df37d0e86eae1ecc8464",
+    "data/raw/rad/RAD_RDR_2018_160_16_28_2077_V00.compact.json.gz": "fa9092083c3ac14f096553174641e809d9924eaab9b0049705730b36f2de9077",
+    "data/raw/rad/RAD_RDR_2018_161_17_01_2078_V00.compact.json.gz": "300598db53f046e0f916cb8775a219588c02f1834d4e37123eab0cf81a3f1a39",
+    "data/raw/rad/RAD_RDR_2018_162_17_34_2079_V00.compact.json.gz": "45c71bf504d0e317c454676d30ace4dc6e48489b1447fb1709b3c9486c59eabd",
+    "data/raw/rad/RAD_RDR_2018_163_18_20_2080_V00.compact.json.gz": "cc93963f0059614fc8eeb3ab9d942097b796e5d6b04aa65cb315d61bb0149199",
+    "data/raw/rad/RAD_RDR_2018_167_21_02_2084_V00.compact.json.gz": "f17e204af936a751e1d27b81bca67a185229756c279914e32f6e86aa80b213df",
+    "data/raw/rad/RAD_RDR_2018_168_21_34_2085_V00.compact.json.gz": "7b724fe22e5fa4222af80d6703c3cafbec8393153a80f7efad6fd8e330c85dfc",
+    "data/raw/rad/RAD_RDR_2018_169_22_13_2086_V00.compact.json.gz": "38a3083b73bba9d6b7c841f7e0cc537357c7acb25d2c6ff36a1402d61a3b8358",
+    "data/raw/rad/RAD_RDR_2018_170_22_59_2087_V00.compact.json.gz": "ce3b587d8e11f1019e03448226fa24cf56e2272a05f7b24d2e04af819962a15e",
+    "data/raw/rad/RAD_RDR_2018_171_23_34_2088_V00.compact.json.gz": "fae725fe1774111d3a4a141995f68485455ac459f47b986c3e7251821b9b228a",
+    "data/raw/rad/RAD_RDR_2018_173_00_08_2089_V00.compact.json.gz": "2520249324aacc3cbde5c086e1b1761e92a4ac6783d925857a0896ebd259ff1b",
+    "data/raw/rad/RAD_RDR_2018_174_00_59_2090_V00.compact.json.gz": "9fc219f50297f74d8d69e183317ffccc408aabeca0833ce28c10c31da932be2e",
+    "data/raw/rad/RAD_RDR_2018_175_01_36_2091_V00.compact.json.gz": "316552001dfcff2aa56d33cbd093916ee99f8b39b3d2b4576a9d5210f0aebe2e",
+    "data/raw/rad/RAD_RDR_2018_176_02_08_2092_V00.compact.json.gz": "49789b48de00b4a4771262a939c92a43f8a16c91b58f1dd40faff9b7f98c5568",
+    "data/raw/rad/RAD_RDR_2018_177_03_01_2093_V00.compact.json.gz": "c4313d1884c79b7d929a560f7465b403ccd62ccf0afab80445ace8fb99fd6dce",
+    "data/raw/rad/RAD_RDR_2018_178_03_33_2094_V00.compact.json.gz": "3b0b0cc71d7707676ee5dddcb37fbdf4eeadc828cd40dab1160d11b50b28b319",
+    "data/raw/rad/RAD_RDR_2018_179_04_09_2095_V00.compact.json.gz": "ad2a96b254198b259c4f02a55c81a470f51c11a8e03de867f60c935365cbbfd6",
+    "data/raw/rad/RAD_RDR_2018_180_05_01_2096_V00.compact.json.gz": "44071ed254c17feb3056e0c0b9432c3d3e940f72bb401a403b2292b6940e228d",
+    "data/raw/rad/RAD_RDR_2018_181_05_34_2097_V00.compact.json.gz": "f6b5396cf83cd8406af25a9eae870aa4a03a7772d5b1ee11c4ef30a90d9da3c6",
+    "data/raw/rad/RAD_RDR_2018_182_06_08_2098_V00.compact.json.gz": "a7ee4d6a78156b73a85973e9d05de46963011c1ce92f67f3505f322cde69a8ee",
+    "data/raw/rad/RAD_RDR_2018_183_06_43_2099_V00.compact.json.gz": "01cbb00edfbd2444ad7c6c378d7883f44b58ef894fca408416e372bee06c68cc",
+    "data/raw/rad/RAD_RDR_2018_184_07_31_2100_V00.compact.json.gz": "9905f6b09ddec9fe3383c3022b28690916c357572b608b01863eef7ecc1d8f72",
+    "data/raw/rad/RAD_RDR_2018_185_08_08_2101_V00.compact.json.gz": "55f0f280ff5b586a7032140ec9051b02833459252c71fa6211ad24883969fe6d",
+    "data/raw/rad/RAD_RDR_2018_186_08_43_2102_V00.compact.json.gz": "6dcc0ffd8004de6b5b9cedc1a3d51b518e60ea1f0194f67906080cbef5d2951d",
+    "data/raw/rad/RAD_RDR_2018_187_09_33_2103_V00.compact.json.gz": "037ca37429e90ad2c2fbb261a5f9ea3243a60304ddbdfc2228c90d65829d3d90",
+    "data/raw/rad/RAD_RDR_2018_188_10_07_2104_V00.compact.json.gz": "6e1b97d61d4bbb7da9d1b2bed085edc69da6b029670c3b50697181a70185ff5e",
+    "data/raw/rad/RAD_RDR_2018_189_10_46_2105_V00.compact.json.gz": "dcdd1d9f65c5d30c6d5ec7f843d51c49dbbd5f4dee4c77eab593fcfca7eeda7e",
+    "data/raw/rems/RME_461807918RMD07250000000_______P3.LBL.gz": "d3ad7557531797d3cdc9b01be6a1e7092d74b49ed142446c2d170901615b3c70",
+    "data/raw/rems/RME_461807918RMD07250000000_______P3.TAB.gz": "8aae982471b68a87fe9ca497d7d0e525ccb1ec5cb59a23f5d4d669d0341a7f89",
+    "data/raw/rems/RME_461896693RMD07260000000_______P3.LBL.gz": "588fe90233c8defe98ae2cf7a093c3766948bf5518e9c97f7dfafd94713b7a6e",
+    "data/raw/rems/RME_461896693RMD07260000000_______P3.TAB.gz": "5cd07cf3a1974754f794c4ee3cb22388f9dc852b8c49f4b7038c932c60039817",
+    "data/raw/rems/RME_461985467RMD07270000000_______P3.LBL.gz": "39db47beeedf0ad2bc7c15a23450aa4d23c6e0380313e5c7b49ec684c825260b",
+    "data/raw/rems/RME_461985467RMD07270000000_______P3.TAB.gz": "c77566e7b67f05a97d4a79d234c2e0d98b7f71e4b812eb6ed7bdbb864249cbe4",
+    "data/raw/rems/RME_462074241RMD07280000000_______P3.LBL.gz": "eb36c78940e120ff2a6f3264b353c85296d9da3030e82ba83044c96b741eaf06",
+    "data/raw/rems/RME_462074241RMD07280000000_______P3.TAB.gz": "f23a720d2724fc78be630d6b595212c8ede548063ec31183146187abc9bb6abd",
+    "data/raw/rems/RME_462163016RMD07290000000_______P3.LBL.gz": "013c3ed366697ea51086e24a072f4dfa7e8f6654a99388c6a8e407dfee964f2b",
+    "data/raw/rems/RME_462163016RMD07290000000_______P3.TAB.gz": "946c7926cdb954ce81ea0c4ed40aba8d3d1955b7ed102d5b22c275c796594c16",
+    "data/raw/rems/RME_462251790RMD07300000000_______P3.LBL.gz": "b36a9e6acf22311670b925ff9a693e36592ff21f3d01605550a81275ae312b1d",
+    "data/raw/rems/RME_462251790RMD07300000000_______P3.TAB.gz": "f5d9f32cedfea4e41e09388f7b6098a18361a1532d76f9e039324115a08ca087",
+    "data/raw/rems/RME_462340565RMD07310000000_______P3.LBL.gz": "151d37c13879718430b9dcd4df94019f9b7602165283428d09d2de9da8e86d55",
+    "data/raw/rems/RME_462340565RMD07310000000_______P3.TAB.gz": "448892c3fc7faf94b78b4cc349e4eddbe99f5fc9560c75441cdd57c2a531e7f2",
+    "data/raw/rems/RME_462429339RMD07320000000_______P3.LBL.gz": "087959345a406ea750e66046fd7451fbfb95220154d6a7b67cfe06ca28c99f53",
+    "data/raw/rems/RME_462429339RMD07320000000_______P3.TAB.gz": "0271a55f1ca74565c96295252850fa91a16ec996ae957a260b33d8f9622c7f45",
+    "data/raw/rems/RME_462518113RMD07330000000_______P3.LBL.gz": "51d57015b143213a5f19e8d9ff4a7b162d9a1b707592bfe65db23b5308b0cda8",
+    "data/raw/rems/RME_462518113RMD07330000000_______P3.TAB.gz": "2991c82874aa02df26294840d90d61137b74995a870f2a794a01facb1e3497b7",
+    "data/raw/rems/RME_462606888RMD07340000000_______P3.LBL.gz": "bc3d5978416ead01433681e4ffa8bed688c3b28460affb1c25746437e23d2641",
+    "data/raw/rems/RME_462606888RMD07340000000_______P3.TAB.gz": "1f9c722707881e3b1df559490f55e4cb672b592151a14a905603b936de39e1f8",
+    "data/raw/rems/RME_462695662RMD07350000000_______P4.LBL.gz": "ebb2ca7fa164a7040e73d56c6ecd3f70b2eb39cf5d1b5fe0e4603319ae92f6f1",
+    "data/raw/rems/RME_462695662RMD07350000000_______P4.TAB.gz": "3259245ed6f27a391826e08d9b89b233204b902e16ac54f0965db75229e1518d",
+    "data/raw/rems/RME_462784437RMD07360000000_______P4.LBL.gz": "f8b5eb24d53884d0158af0b69edad72cdbb72d881575cf20b4e9d3bd14e00283",
+    "data/raw/rems/RME_462784437RMD07360000000_______P4.TAB.gz": "1426a5f45176f8fa0104ddb68ed9d2b3d1d6a62cf0eb1e22cc8876b928e6a64d",
+    "data/raw/rems/RME_462873211RMD07370000000_______P4.LBL.gz": "b2dba137d36ce89cf9f9a3dcba666e7b5248815545dcad1574157d0ca014ebb0",
+    "data/raw/rems/RME_462873211RMD07370000000_______P4.TAB.gz": "3ca6ee393955d4e1e61948cfc989df82436a00e04ca57d3626bb6bb43e61837b",
+    "data/raw/rems/RME_462961985RMD07380000000_______P4.LBL.gz": "dbcbdfbc3fb82bba74f481936a02c71637ffd9bab333db730a3c6895852e38aa",
+    "data/raw/rems/RME_462961985RMD07380000000_______P4.TAB.gz": "1a1a17af752c04fc36810bae580ae1bbff5a548a94d7abe86001990f4ca93cf0",
+    "data/raw/rems/RME_463050760RMD07390000000_______P4.LBL.gz": "d30195b280e42b048118c485957cc9294c1fc1b62fd0e2124c288cfac9730776",
+    "data/raw/rems/RME_463050760RMD07390000000_______P4.TAB.gz": "ec660b51d6ef933c808f0fce45a9c1878a9bb0fe4b66cdbbf853348b68c91b63",
+    "data/raw/rems/RME_463139534RMD07400000000_______P4.LBL.gz": "7f5a3215c25cf3df3c6891eb34a4efef5c01e4ebb793d4d4595350dcf9bf5e97",
+    "data/raw/rems/RME_463139534RMD07400000000_______P4.TAB.gz": "40e93f816369ab875abe4ef7aaf226c24d2e38311d6777165b0b88a236b896a6",
+    "data/raw/rems/RME_463228309RMD07410000000_______P4.LBL.gz": "3574325a1bbe9d060df6440a59e73c8cd1a37cacfe119aac51a8fce73ce6a10b",
+    "data/raw/rems/RME_463228309RMD07410000000_______P4.TAB.gz": "ba3b7ab70b5b5ec5d33e129586871ee001265cac095e820ad74e9d0dc07f9b8a",
+    "data/raw/rems/RME_463317083RMD07420000000_______P4.LBL.gz": "9eaa341e01f7b01fc11a16d38cd9419cb3fdd5765376f1a1ec5663d735f1965f",
+    "data/raw/rems/RME_463317083RMD07420000000_______P4.TAB.gz": "6c12e6cf2225a285ff739b43899b473f08d748916dc5fbb7df75e90665bdedbe",
+    "data/raw/rems/RME_463405857RMD07430000000_______P4.LBL.gz": "9a28be23d280bcb47b6527eb3521e3d91b562102fddf8de112d08e40a8a9ed8f",
+    "data/raw/rems/RME_463405857RMD07430000000_______P4.TAB.gz": "f8e7cf00342efa6bfc34ebe887a3abf9309e200e5d7b9167d17976e586636134",
+    "data/raw/rems/RME_463494632RMD07440000000_______P4.LBL.gz": "2df8f4dcdd68a8956126c162bd160e8ed2e9fc21a505bf164b40373ab716fa07",
+    "data/raw/rems/RME_463494632RMD07440000000_______P4.TAB.gz": "b64c30d0867139efa928e2582c63c8d654fb5b475c3cc3efcae383250cbc7ca7",
+    "data/raw/rems/RME_463583406RMD07450000000_______P4.LBL.gz": "dbc040a182fde7462f80501efb539966c48d0c9a47890b223827072bdb10a0fe",
+    "data/raw/rems/RME_463583406RMD07450000000_______P4.TAB.gz": "575f6ada1805728d6322549cf9aeef8e0375ae651a983eda04dae0866f49cfff",
+    "data/raw/rems/RME_463672181RMD07460000000_______P4.LBL.gz": "509e568de26efaf849e5af9cd8373bafbaf3c0c30d221b70a7b3606b86863d85",
+    "data/raw/rems/RME_463672181RMD07460000000_______P4.TAB.gz": "958408719d96cd7090f623c58e89aea6bba14b62e36dd0c08a622e866aefdf28",
+    "data/raw/rems/RME_463760955RMD07470000000_______P4.LBL.gz": "6bf944b3ce6cefea0e3fdffd1fdb21b949f1258c98db27f20f4fc2e633780abc",
+    "data/raw/rems/RME_463760955RMD07470000000_______P4.TAB.gz": "8b3e26f82e0fb5bb8ccee261ba55b5a8ace459139d1184cab8731c9084efa8ec",
+    "data/raw/rems/RME_463849730RMD07480000000_______P4.LBL.gz": "b395fcffe51ff7bf1a4b9a15d25688ab5b9690ca25e287d3417891817b9dbd28",
+    "data/raw/rems/RME_463849730RMD07480000000_______P4.TAB.gz": "eeeeaf6d8d677d251b1fc25edd9051b1f5a64feaa605be1746eb5e06b0009cc4",
+    "data/raw/rems/RME_463938504RMD07490000000_______P4.LBL.gz": "f743a56f226c4ca7c977b53f51abbfa626c70a27db90773bfa41eef504a80116",
+    "data/raw/rems/RME_463938504RMD07490000000_______P4.TAB.gz": "493082c898ae3364c85ba546cc28419b4db616ed9f65b6432e77b87e32d34647",
+    "data/raw/rems/RME_464027278RMD07500000000_______P4.LBL.gz": "9b7fc9da9d4df60597c761d7f30c686189688545f1b0066106dd1c8b2f79c007",
+    "data/raw/rems/RME_464027278RMD07500000000_______P4.TAB.gz": "1664787a75d183b90714c45e9c99a1866aa87d9e16729aea3355fc5c98a475d0",
+    "data/raw/rems/RME_474147561RMD08640000000_______P3.LBL.gz": "606d3a2636fc9d35e24ac6f16bf223549a070a4819d337cda1314d8ff18db2f7",
+    "data/raw/rems/RME_474147561RMD08640000000_______P3.TAB.gz": "eef8e3a13cf6ca162d21be4ed264f73cb09e3068ce8f011598a935cc7fc1972c",
+    "data/raw/rems/RME_474236335RMD08650000000_______P3.LBL.gz": "0e473a12ca5916413bd7aed4ce0aec44f28f3f438e6ad0d814059febb4a85a43",
+    "data/raw/rems/RME_474236335RMD08650000000_______P3.TAB.gz": "61d5648ed472af504016f35fc0a949c36795afb4ff9a7d37355ffbcfe770f52c",
+    "data/raw/rems/RME_474325109RMD08660000000_______P3.LBL.gz": "cf8ebf19daecd5dc20d4bafebb473d072b3fdce19dd1ac7349c9c15e8f6710f3",
+    "data/raw/rems/RME_474325109RMD08660000000_______P3.TAB.gz": "17c2600f3b8b39d09452693d7754307d950e763b17989602e21d08a0511bbd1b",
+    "data/raw/rems/RME_474413884RMD08670000000_______P3.LBL.gz": "36bdbf8a6973c58ab61b316ec799dba8446623c05f7902b8b5dcb43abceb3a39",
+    "data/raw/rems/RME_474413884RMD08670000000_______P3.TAB.gz": "2f26fd20b45bc04ead21857f555ee0163262f8427be8684d55f17b378e74bd7d",
+    "data/raw/rems/RME_474502658RMD08680000000_______P3.LBL.gz": "fa1fe2871f3fa57bc1357e852f3d474c673b6e551c9f027f810fe11011e6b418",
+    "data/raw/rems/RME_474502658RMD08680000000_______P3.TAB.gz": "23a030eb9acccf3d4deceb4997cdbb6e22f3f4fad32eac42effe43dbfc1af4ae",
+    "data/raw/rems/RME_474591433RMD08690000000_______P3.LBL.gz": "6c6c95b6db77c6993fe14da368e1c3cd6547ea586f9f449e2a2e295bf4777e1f",
+    "data/raw/rems/RME_474591433RMD08690000000_______P3.TAB.gz": "f160d9f1d7d36a7115daabe3e6bb9fa70989a81f7cfc7e8e86b448a37799e7f6",
+    "data/raw/rems/RME_474680207RMD08700000000_______P3.LBL.gz": "46c1116af16eec5ef214c95df4e558ae3d3903ff261bd7f7ccd87cc0a0708cab",
+    "data/raw/rems/RME_474680207RMD08700000000_______P3.TAB.gz": "e0a548fd11c40a30448931bc8ee3d7a2e38610329f3fb275c1e64e77eadf6305",
+    "data/raw/rems/RME_474768981RMD08710000000_______P3.LBL.gz": "f93b6552cdb2a81e52d8a8386ea72811e9655ae740cd21b9300b63b2b4628748",
+    "data/raw/rems/RME_474768981RMD08710000000_______P3.TAB.gz": "d13b711ec6ebe284ddcb3f1725daeaf5136fe0ec0560dfbc467b7a0018814d4a",
+    "data/raw/rems/RME_474857756RMD08720000000_______P3.LBL.gz": "4fe026a7e85c080cc556be17a797eb54954f82b5d8a8c5eaaaba4bb8e728a948",
+    "data/raw/rems/RME_474857756RMD08720000000_______P3.TAB.gz": "96ece2275142f2f6e07db7fb2cd5ccdd2dea687f3e88e302db3a816f60279a44",
+    "data/raw/rems/RME_474946530RMD08730000000_______P3.LBL.gz": "cbcf27ea956676ae04f314b3a14d664e495bf282e1b899b1b032cb8eae2d3386",
+    "data/raw/rems/RME_474946530RMD08730000000_______P3.TAB.gz": "5091e2d2577d794b976a60d0e268bd51d3296c8fd41fe5905ce4defa51c62215",
+    "data/raw/rems/RME_475567951RMD08800000000_______P3.LBL.gz": "dbf5f4dd2d513c8820cd0bf41516c87ac53ecec274bec5dc5a8b2c119ab3e710",
+    "data/raw/rems/RME_475567951RMD08800000000_______P3.TAB.gz": "59d1892278948dceccf4564185f4a4c92763be2cdbc85f847aefa1b08704f190",
+    "data/raw/rems/RME_475656726RMD08810000000_______P3.LBL.gz": "db76a5f5321c7ddbd0c3ebd3dd45c451b82fae687d103bdf6b6123c3524752b6",
+    "data/raw/rems/RME_475656726RMD08810000000_______P3.TAB.gz": "5895ab3ee1560f768ebb3abf5f5c962767ec2fc03c02adc8ed5c3e3d962870b1",
+    "data/raw/rems/RME_475745500RMD08820000000_______P3.LBL.gz": "c02bef99a8cbd9faceba26e780651cf103d696d512e505c94679799dc36772f3",
+    "data/raw/rems/RME_475745500RMD08820000000_______P3.TAB.gz": "51a087e0bed366e3e16f160b76ae331a4359014408012c07d6b097da0327260f",
+    "data/raw/rems/RME_475834274RMD08830000000_______P3.LBL.gz": "ef7cf37f6e3706e4f58aa741b416f23734f057f8dfc32e4e10623e0b4f24dd77",
+    "data/raw/rems/RME_475834274RMD08830000000_______P3.TAB.gz": "56fa4fc245bd89c55f04cebbdb7831ccab31cf50a8117a1798d95eb107906cf8",
+    "data/raw/rems/RME_475923049RMD08840000000_______P3.LBL.gz": "e16bfa18a40f463cb379b676e3525732f7d0a6db176b0dbfbe94e30269b4acf4",
+    "data/raw/rems/RME_475923049RMD08840000000_______P3.TAB.gz": "a302650c6a55ef56168fe69a90c9cde73fb52ca513da31193333511c87057436",
+    "data/raw/rems/RME_476011823RMD08850000000_______P3.LBL.gz": "584db235eb53b26d4d97b7c2629fb379eb95957a7518def9ae80ee5e8f7e3fb2",
+    "data/raw/rems/RME_476011823RMD08850000000_______P3.TAB.gz": "6e2314967ff381fe7ce36a174c712bce15c3a1c2e8d988884869f50c24d6043c",
+    "data/raw/rems/RME_476100598RMD08860000000_______P3.LBL.gz": "53554577c7f53f22458ffeea93abeb9982c8675e6e312cf6521295222db9dc70",
+    "data/raw/rems/RME_476100598RMD08860000000_______P3.TAB.gz": "c07d56fc9aa397d52e0f64f0b7f76ead4c9165675c41386720a17399af46d606",
+    "data/raw/rems/RME_476189372RMD08870000000_______P3.LBL.gz": "fa5e412311885180a927bad21c535fb92276f71a6bbef423ed8f5242f81b30fd",
+    "data/raw/rems/RME_476189372RMD08870000000_______P3.TAB.gz": "a9f23c389cbd6dd5024f972d656b3b298c31d83a09405e3781be873feb24fb6f",
+    "data/raw/rems/RME_476278146RMD08880000000_______P3.LBL.gz": "81c19e3ef7e607a42d70cea3f1a2df002a9c70cc38f1f96209b2f4ed09109dd9",
+    "data/raw/rems/RME_476278146RMD08880000000_______P3.TAB.gz": "e01fce560ed397ae5f543200203b280e425346291153bfbb8d7af4216cd59dff",
+    "data/raw/rems/RME_476366921RMD08890000000_______P3.LBL.gz": "59d1a2664a8461b2102185f3f19a816cffef2c640f38a15f40f4a274900ba3d0",
+    "data/raw/rems/RME_476366921RMD08890000000_______P3.TAB.gz": "0273ebea4e5eb2f741616528acca6f4a744fd39dacb313bf1e03482b01335e58",
+    "data/raw/rems/RME_476455695RMD08900000000_______P3.LBL.gz": "ca0d3c1316a12c5e28a02ecedbc342fdf9356a01e5e6ec59cfd1d27793fdb7c2",
+    "data/raw/rems/RME_476455695RMD08900000000_______P3.TAB.gz": "cea2d7cdfceffdeed39b4c60016fd87ceafe9402a212b7285d0e86e311321948",
+    "data/raw/rems/RME_476544470RMD08910000000_______P3.LBL.gz": "94a03740bb333805da1bdd618b68ecaa05a2f7b4de11be479acb31297410cb02",
+    "data/raw/rems/RME_476544470RMD08910000000_______P3.TAB.gz": "aa9c9fe907025b8889c239dc9d32a916d6f882c1de6e2cceee984c86b06a62ea",
+    "data/raw/rems/RME_476633244RMD08920000000_______P3.LBL.gz": "23742fb6f289715331ade090690c381b2901667a97ee4b2e8f308e4b4775e0ce",
+    "data/raw/rems/RME_476633244RMD08920000000_______P3.TAB.gz": "0107a006baa294aa7ea7506aa8ab80341c3dd81141a91b4c7433ee2302158394",
+    "data/raw/rems/RME_476722018RMD08930000000_______P3.LBL.gz": "76a996985c569a6b1596db492ec789086b35e874d75ba2dd17939906f12990f3",
+    "data/raw/rems/RME_476722018RMD08930000000_______P3.TAB.gz": "70ce402549918b37fe74ed09a3cf0e562f48f293a221ab92735ae625c9ee879b",
+    "data/raw/rems/RME_476810793RMD08940000000_______P3.LBL.gz": "b2ec65498a9f2a67297c38ba88fff0e5797b5dcf6c37c7133f5f6e39be35b233",
+    "data/raw/rems/RME_476810793RMD08940000000_______P3.TAB.gz": "e1fe8342f7202973e28057e19d74f354eae024c391f8697233eb6cd88b117105",
+    "data/raw/rems/RME_476899567RMD08950000000_______P3.LBL.gz": "37a61aa55338495829fd5ed05d864ff324f60e3f04f74d57720d670145c96929",
+    "data/raw/rems/RME_476899567RMD08950000000_______P3.TAB.gz": "d572663bd2be466b8898223bc9b68e13e2baaee469c149032d6879ccb1a82834",
+    "data/raw/rems/RME_476988342RMD08960000000_______P3.LBL.gz": "10c3de3fc8df7d37046f2224ceabd714f27cec5ecd82ad8d32a2a87c6832e23f",
+    "data/raw/rems/RME_476988342RMD08960000000_______P3.TAB.gz": "31e694499383b49467e5e42aec07f9331196446472402c436b5d3d01da6343dd",
+    "data/raw/rems/RME_477077116RMD08970000000_______P3.LBL.gz": "70aad323c20ab0fb8ad21e4278363adc48e22dcdb829eadafee9e9e57d2ca45f",
+    "data/raw/rems/RME_477077116RMD08970000000_______P3.TAB.gz": "c858ec2807f70389421c6e9ac607c1c80974c6c68dcdaee7abde069e7a52a9cd",
+    "data/raw/rems/RME_477165890RMD08980000000_______P3.LBL.gz": "b308bcbed1daae5175d555d96d4c6b72a6b080e31e3ef7d8e555114e0e44a7e7",
+    "data/raw/rems/RME_477165890RMD08980000000_______P3.TAB.gz": "58142d3fb32293d7125c4346e16f55ce6f3dabf32507e72549c7708bc8f8f134",
+    "data/raw/rems/RME_477254665RMD08990000000_______P3.LBL.gz": "8fd2ca960cb860842c70657d182a9ccb31413d6bc3d3162463f312718991850d",
+    "data/raw/rems/RME_477254665RMD08990000000_______P3.TAB.gz": "c81a93d94e71b8ca6fbb9c7f7c9648fc545c21928cfb51fe3566378dd1ed518d",
+    "data/raw/rems/RME_477343439RMD09000000000_______P3.LBL.gz": "624cada7a0aa584d0b726070f9fcd002f7df64dacc064245514d9b2cafd19833",
+    "data/raw/rems/RME_477343439RMD09000000000_______P3.TAB.gz": "b8e80bb4a6c5241967c887a8037229a2cc27514927e6292fbe53edca42149f22",
+    "data/raw/rems/RME_477432214RMD09010000000_______P3.LBL.gz": "16825a7b9909005503b08341948ec879759c1d1c06ac1fa45508c04b00e36628",
+    "data/raw/rems/RME_477432214RMD09010000000_______P3.TAB.gz": "0fbb43f314ddd05396b3396f66ebd850f60e6b1870c1937b14961b69540a1d52",
+    "data/raw/rems/RME_477520988RMD09020000000_______P3.LBL.gz": "3d94385a621f1e9d742ac92e39fe98b18d57180fe83b1df4f39024dd76279036",
+    "data/raw/rems/RME_477520988RMD09020000000_______P3.TAB.gz": "f3fbf66848e6a557e39b60aca1855819900b7aa215fbbc01d9cfe7a8a2a88483",
+    "data/raw/rems/RME_477609762RMD09030000000_______P3.LBL.gz": "605d624d665739989e5ac8099179489b02bd0d7bdce71ecdc67959ad5dd17d68",
+    "data/raw/rems/RME_477609762RMD09030000000_______P3.TAB.gz": "ed33cbcfb31e25cad46e5f7ec3473f25942fc5d4d5028d880598ff62b7c8b99b",
+    "data/raw/rems/RME_477698537RMD09040000000_______P3.LBL.gz": "4a83ddd107ec25c41d4545ba1d3dbe1188f55f06f726b522c7d741b6c34986f9",
+    "data/raw/rems/RME_477698537RMD09040000000_______P3.TAB.gz": "79b915034377296e7215b4d4657ec77e374d1d3d1c90634832acd1a3223e3c45",
+    "data/raw/rems/RME_477787311RMD09050000000_______P3.LBL.gz": "ec344e227929bfa1c55957bcee944739482eeb9a04a13f54331f48b940540a77",
+    "data/raw/rems/RME_477787311RMD09050000000_______P3.TAB.gz": "cf904709045f977b2d87485677b739dc87d9863d64372f3b4726f1c77a64b000",
+    "data/raw/rems/RME_477876086RMD09060000000_______P3.LBL.gz": "f98ffad05ce279f43feb16276214e6a7b27debac0c2d8a30a5aafcde90f7233f",
+    "data/raw/rems/RME_477876086RMD09060000000_______P3.TAB.gz": "13b43117d4ee6aab3cbd6b70c6e3915b888833715efb1048236daf2f5e66363c",
+    "data/raw/rems/RME_477964860RMD09070000000_______P3.LBL.gz": "70ad0a40683a5f0a0d7f5f61d7a9c8b5dc37e196eee3b533e504aa3cbd3813b8",
+    "data/raw/rems/RME_477964860RMD09070000000_______P3.TAB.gz": "6c24cb878a68b2dcc3dbb97d85bb190b5cbbf7f8f0d620375af51634c962ab7f",
+    "data/raw/rems/RME_478053634RMD09080000000_______P3.LBL.gz": "4a9b521b81c29f3836157e45db6648fa64f7e2260e550bcd531e02ebc350b5f1",
+    "data/raw/rems/RME_478053634RMD09080000000_______P3.TAB.gz": "495681f8435e68d9b6bd7dace6d7eee424b31c0742e61ec65ccd385e8f759364",
+    "data/raw/rems/RME_478142409RMD09090000000_______P3.LBL.gz": "e7a4466d2e1ee5991471e232ff6281ea8a91c38c9660d62914b99ee48521946e",
+    "data/raw/rems/RME_478142409RMD09090000000_______P3.TAB.gz": "e1cf3b688a1bcf7945565241a15a0c0b477471ca23d22e9bd596de4af9e9cfd0",
+    "data/raw/rems/RME_478231183RMD09100000000_______P3.LBL.gz": "90c8c148cb6a5a5a55c9d8a14fe5d887d1419d3d7afa0495b2da65df7a73e78c",
+    "data/raw/rems/RME_478231183RMD09100000000_______P3.TAB.gz": "f13dcdc6484b1fcd416f4ba1aa9adbf71c9b6b2db1f5d04e463c95965b4f9fec",
+    "data/raw/rems/RME_478319958RMD09110000000_______P3.LBL.gz": "5c8fa13f8436a515cb21b6e78dd1f19f50ab88534f5252e49e2d6c63f78d633b",
+    "data/raw/rems/RME_478319958RMD09110000000_______P3.TAB.gz": "b0b63cf26a8c461872e9f5be6726ec263d579b7cf4640d5fcdc3d4f70346bf39",
+    "data/raw/rems/RME_478408732RMD09120000000_______P3.LBL.gz": "2c479399ac51e013d80dcf43ad6f4a1bbfc50572fb67edd9f3acfd063f183359",
+    "data/raw/rems/RME_478408732RMD09120000000_______P3.TAB.gz": "720466cc03dd524abd409cd48a8e97ee2f45fa494734c1aadccd28dc68498320",
+    "data/raw/rems/RME_478497507RMD09130000000_______P3.LBL.gz": "beaac317b5fb88e5bb8e1dc388f1a42525b8e29ff2e39c60d976da7a91f1dc83",
+    "data/raw/rems/RME_478497507RMD09130000000_______P3.TAB.gz": "89c55f6b9171391ce11d5e1c891d34ece4cf435cf49dc733bef48a97ec9ee31c",
+    "data/raw/rems/RME_478586281RMD09140000000_______P3.LBL.gz": "77f42a5e4bd9c63b4f6323a551df6dd65f18592e52048e996062a4a6a928225a",
+    "data/raw/rems/RME_478586281RMD09140000000_______P3.TAB.gz": "65fbb49203819c766f5771e039667d20a20b1be54ab6ebc32dcd00902213876a",
+    "data/raw/rems/RME_478675055RMD09150000000_______P3.LBL.gz": "97d8c413afada62fcb33b60cf03bd7262824dce6421acb7798f792bd1ac8a02a",
+    "data/raw/rems/RME_478675055RMD09150000000_______P3.TAB.gz": "2cb7624e2825bfee9c5093f0edb0d36f36b14d482f8c8a6c202d13c08cf20c52",
+    "data/raw/rems/RME_478763830RMD09160000000_______P3.LBL.gz": "a9aa4a79f72ede156a44f3d67855cdee52b1c8bf8702b6dbad5808975b82b33e",
+    "data/raw/rems/RME_478763830RMD09160000000_______P3.TAB.gz": "3ff23b2fd0b409ec033aabd7b0e1856eafc4414de428db6b3647dcccc2b11cdc",
+    "data/raw/rems/RME_478852604RMD09170000000_______P3.LBL.gz": "02c29bd36f397cd31f1acee02f6f2a465457305267db3d6f6eb4b485a2d1fe1f",
+    "data/raw/rems/RME_478852604RMD09170000000_______P3.TAB.gz": "1eb77124e06b7b3cb136cea3ff2f7b02526acafa155ccf80fd55c3a42f97df94",
+    "data/raw/rems/RME_478941379RMD09180000000_______P3.LBL.gz": "902e312660377459f0654006f6b8b929d6c71504ed3d6cd62ea6b32ac125eb99",
+    "data/raw/rems/RME_478941379RMD09180000000_______P3.TAB.gz": "8b8a2569d33d359378c5ba5ed89498b46ffe467386ee516e4c78535a9b47566b",
+    "data/raw/rems/RME_479030153RMD09190000000_______P3.LBL.gz": "ed9765b65163ab2f7ad253a1887d179caf292358d3654afe1a64cf60ba147d90",
+    "data/raw/rems/RME_479030153RMD09190000000_______P3.TAB.gz": "8ccc1884f85ba001c79fde8cc77fadc0d098479d6ee3cbbbb1aa86d304c5f578",
+    "data/raw/rems/RME_479118927RMD09200000000_______P3.LBL.gz": "1f66ba8e5e57283b6d970ee20fda2a33eddc64bcc83ca69faf30ac23130fa93d",
+    "data/raw/rems/RME_479118927RMD09200000000_______P3.TAB.gz": "4da1380ed1b3cff76b388319a1c7306f1fefd832f7741f9f8c38ebf9e79b556d",
+    "data/raw/rems/RME_479207702RMD09210000000_______P3.LBL.gz": "bd799c26951990ad0a8611bfb48313f150128dd7d39edaa867fc86d26d534c2c",
+    "data/raw/rems/RME_479207702RMD09210000000_______P3.TAB.gz": "a44db461a2c99b8a3da62175c38ea974cbddc3832945fdfd114a69120ee3a5d9",
+    "data/raw/rems/RME_479296476RMD09220000000_______P3.LBL.gz": "71e8f107d4525849672b47e73a691c85efa750f38f164dcf9dd28d442a323418",
+    "data/raw/rems/RME_479296476RMD09220000000_______P3.TAB.gz": "1d3ee2106c7c9c0dc477e123d2234d8a1b93a238b13d87fe3f621dd6f3ca10a8",
+    "data/raw/rems/RME_479385251RMD09230000000_______P3.LBL.gz": "27ba2cd282a497f6048a151e22e4a9f29be411cfb37c3aae41e839a223f7c9d7",
+    "data/raw/rems/RME_479385251RMD09230000000_______P3.TAB.gz": "56e0c6c31078b02a75bd6d69acc9d4d90f073d26b8b43dca72356a6929e24f44",
+    "data/raw/rems/RME_479474025RMD09240000000_______P3.LBL.gz": "045e5b1d2dd20e4cb44e8f76b50690214b49f2302de560cb98f968e238350417",
+    "data/raw/rems/RME_479474025RMD09240000000_______P3.TAB.gz": "24d173c26c703e2bcda2a4ccd6c352e2b6141f82fab3d1a5fa34a1c88a0e7858",
+    "data/raw/rems/RME_479562799RMD09250000000_______P3.LBL.gz": "bfd5aff22f8bdc61ed18971fe6b171095f236f17cd6e0fde2a97c0cb08ac3f40",
+    "data/raw/rems/RME_479562799RMD09250000000_______P3.TAB.gz": "a949496abe93b4af6f1f0c0d0ee77cda51c0baea20fcd0b46273773f4cc7c3ee",
+    "data/raw/rems/RME_479651574RMD09260000000_______P3.LBL.gz": "ebfd18fd47524238faf7f91f1811a54d2e43ca56bbece738924c9cdc76047a46",
+    "data/raw/rems/RME_479651574RMD09260000000_______P3.TAB.gz": "32e697fa8e81d1bb18e3058a3a2b13e4c155915f19668232761281e12b4be2f5",
+    "data/raw/rems/RME_479740348RMD09270000000_______P3.LBL.gz": "5200c6dee4b07b2fd11c20e4256aebec60c38457f707c8d68852ff79dd049071",
+    "data/raw/rems/RME_479740348RMD09270000000_______P3.TAB.gz": "c20d66bfecea0aa050a8f43cc03e8f62260a3e113b71c6e39affc6d48ce75348",
+    "data/raw/rems/RME_479829123RMD09280000000_______P3.LBL.gz": "2b8bb6b54da5dc4b8ee55a13882091d3c2a7bdf62bb2676ed74924aff3907b99",
+    "data/raw/rems/RME_479829123RMD09280000000_______P3.TAB.gz": "1a7fbdf217c72abe646f9bf17327e1c002d30eb4264f44bcd3941645c76ec97f",
+    "data/raw/rems/RME_479917897RMD09290000000_______P3.LBL.gz": "3c05832eeaa16fed640c431f84406fa2026aa438c2111fe6716b85d0f157623c",
+    "data/raw/rems/RME_479917897RMD09290000000_______P3.TAB.gz": "b33a15701fdad0b01c824d6ac0f2460042437f1a576b50fd001e4ea0b5005c80",
+    "data/raw/rems/RME_480006671RMD09300000000_______P3.LBL.gz": "afec3c2177af434f58763b96ba784037d31d7fcd4a8afe20a7acc270ac8bd0b5",
+    "data/raw/rems/RME_480006671RMD09300000000_______P3.TAB.gz": "a7ec3e7a7b15cd3d7264ba90346abfdcde357e598a6f374df389b32ec799cbc6",
+    "data/raw/rems/RME_580410525RMD20610000000_______P2.LBL.gz": "045c80d859187fd7f127e1d3bbd85d60831ceae9f14077544a87100ce3b2f5f5",
+    "data/raw/rems/RME_580410525RMD20610000000_______P2.TAB.gz": "5239e83d64c17fe148925d1daac454814c12196b649ea29a15a6fc3fde1e0718",
+    "data/raw/rems/RME_580499299RMD20620000000_______P2.LBL.gz": "66984560be2004ea94b64879c134f6dc19985d38785cc7eb32f318b0ce7c273b",
+    "data/raw/rems/RME_580499299RMD20620000000_______P2.TAB.gz": "22b6102cccf371667df25fea14adc868166359894c84ef771ec795bae49ae4bb",
+    "data/raw/rems/RME_580588074RMD20630000000_______P2.LBL.gz": "16ea5c20860de17993522c433e563978ee0efe6c144cf1c0cf06986d2a6bd10c",
+    "data/raw/rems/RME_580588074RMD20630000000_______P2.TAB.gz": "0e7d20e40ef2e6856ac459e49dbe795ce6377098e59ae1415ab5f0b014dffcb7",
+    "data/raw/rems/RME_580676848RMD20640000000_______P2.LBL.gz": "81ed95e79980954c1d2ddeda9cbd74cbe3e3730f7631552a1744ba6f137c09fd",
+    "data/raw/rems/RME_580676848RMD20640000000_______P2.TAB.gz": "8b046d01ced7b3f4de5563bd2202376956c3f22605a285c4edf376a9209dcedd",
+    "data/raw/rems/RME_580765622RMD20650000000_______P2.LBL.gz": "69afac9a9d6b26aaca4689606d7ccb5bf9f22d9f34e77e82e729e6c1bbc7e6d4",
+    "data/raw/rems/RME_580765622RMD20650000000_______P2.TAB.gz": "582ea80830e5a01971d65ba9dccbc6e0eee47370a3ddf74e756b2bbf73b0707a",
+    "data/raw/rems/RME_580854397RMD20660000000_______P2.LBL.gz": "8454e9cb96d5ca113dd0173bed833730ee589889fbc83c00c09f3044c8744ad5",
+    "data/raw/rems/RME_580854397RMD20660000000_______P2.TAB.gz": "222514ee1098dbd9f6f471ee59b3be47f812986f2d5dff61b8a6ae2649cf342f",
+    "data/raw/rems/RME_580943171RMD20670000000_______P2.LBL.gz": "ca5bfbb77caafa62d52346ce8a9ee6ef387d9edd959d2e44ed12a9affba52f9d",
+    "data/raw/rems/RME_580943171RMD20670000000_______P2.TAB.gz": "8164addcd73340d2d1ae979e09660fa0fc656daecad0a01beb942688f057d949",
+    "data/raw/rems/RME_581031946RMD20680000000_______P2.LBL.gz": "60b6273a8e474f6822823a9a8193232a67993f38f05e86d254f4bc608c714ac7",
+    "data/raw/rems/RME_581031946RMD20680000000_______P2.TAB.gz": "e8e3393efcfc61d80a7decb5e273eec3ff18770a9d1875dca94a6f3f4bbeb4d5",
+    "data/raw/rems/RME_581120720RMD20690000000_______P2.LBL.gz": "b463270286c58fd0b428e73f89445314c5d9df1969d87b7ecffa670d9ce50771",
+    "data/raw/rems/RME_581120720RMD20690000000_______P2.TAB.gz": "59e68ee323f9adbe85f249f653fb5a7bbcf6240622eeb7a54f1568be2c03c25b",
+    "data/raw/rems/RME_581209494RMD20700000000_______P2.LBL.gz": "01ef1935bb0c5ac9e19907ce1708e38bb94b819928c522c34d119fbc751d86c8",
+    "data/raw/rems/RME_581209494RMD20700000000_______P2.TAB.gz": "e4294a430a6d3e251fbc294319d601227973bd117c7a31d011c404a48deedba5",
+    "data/raw/rems/RME_581298269RMD20710000000_______P2.LBL.gz": "bef23059a499b8bb358b641510347dcb52129dd85decb1478d13af0727ed8291",
+    "data/raw/rems/RME_581298269RMD20710000000_______P2.TAB.gz": "5d7533f6bea3f7fa7d20a58c663b7c19e13083778cf009d26e1d376ec5eebc91",
+    "data/raw/rems/RME_581387043RMD20720000000_______P2.LBL.gz": "dba9d9abbcda025dd681fe03e1cd59e7275cd9f9fcc316ee277dae29031d3908",
+    "data/raw/rems/RME_581387043RMD20720000000_______P2.TAB.gz": "68a19b25d2fd74e84d645e94b736cccd4dbea88e55c3a9c20f9f26211ac394eb",
+    "data/raw/rems/RME_581475818RMD20730000000_______P2.LBL.gz": "1882684eaf7bb2ad38175f93c3b62c13ded1ec44ec019406b52b62e550a05236",
+    "data/raw/rems/RME_581475818RMD20730000000_______P2.TAB.gz": "de9c99d3245c39ad56fd0952ce2c2b32e846e8d7b1731217963aeb73833fd9be",
+    "data/raw/rems/RME_581564592RMD20740000000_______P2.LBL.gz": "3c7f17cfe9da9eb9698542d717ad3041fc0a73747495583f587e4f3fbcbdec0e",
+    "data/raw/rems/RME_581564592RMD20740000000_______P2.TAB.gz": "b39fa28029a28c633a8f282e32f7378a3e17cfb6338b1b1183ab5808752e8663",
+    "data/raw/rems/RME_581653366RMD20750000000_______P2.LBL.gz": "48c20dcd0e9e8562e7178afbd515f096982876bfecac56576f86a6c5a8683e04",
+    "data/raw/rems/RME_581653366RMD20750000000_______P2.TAB.gz": "026469be25b46c8ea860555a76869ababa39ce93bd18d3dd1dd3d60556bdf6ba",
+    "data/raw/rems/RME_581742141RMD20760000000_______P2.LBL.gz": "89de778929b98c18bcf2b2d69917af7d0a38cac0571859c3f324647ef0e01729",
+    "data/raw/rems/RME_581742141RMD20760000000_______P2.TAB.gz": "4db1f0e0c73f0f6a00b15480779ab30752de93848511d39f9af036d64f7bcbc8",
+    "data/raw/rems/RME_581830915RMD20770000000_______P2.LBL.gz": "efce2ab244c3843bccaf6a5a6f26ee7cb64a7c976a317dc65525a6c12cd5ff1e",
+    "data/raw/rems/RME_581830915RMD20770000000_______P2.TAB.gz": "dd3c743d407526fbb5f16ed8ef823728da3ee7513e8159322e9ddd8f47f0ab3c",
+    "data/raw/rems/RME_581919690RMD20780000000_______P2.LBL.gz": "a90cb81ac2ad78e2ac29c20b1b962a9f84981c91c95ee023760f8af2aec6336a",
+    "data/raw/rems/RME_581919690RMD20780000000_______P2.TAB.gz": "c8c2addcd8a74c7f9b76f9fd114d211b975b646a26e3a4a01ab2a6580c33f63a",
+    "data/raw/rems/RME_582008464RMD20790000000_______P2.LBL.gz": "244cc50cad4a8cf605c64e85f973b30b373f46f3dee3784c878fa00f3b04ae7e",
+    "data/raw/rems/RME_582008464RMD20790000000_______P2.TAB.gz": "08a3a8150147113d8e4b025cf03207855d49c84c05eb4e74ad3867d970b8e637",
+    "data/raw/rems/RME_582097239RMD20800000000_______P2.LBL.gz": "aafc4232fcd6bcb9d98f7454dc397e4cb5969726cad348f2743b4d8477914f8b",
+    "data/raw/rems/RME_582097239RMD20800000000_______P2.TAB.gz": "43713bfa3ca81c3d141b0a0e387ad738f40b077a083ef5052b5e835d4fbe9f6c",
+    "data/raw/rems/RME_582186013RMD20810000000_______P2.LBL.gz": "48828ff7bd2e99139417bfd79b0614931beb35ff0b707392c3e1710600fadcf3",
+    "data/raw/rems/RME_582186013RMD20810000000_______P2.TAB.gz": "d13a14c86825076da7fcfefedf1e19f46a0e8eb42b5c0b28cddd73a67666789a",
+    "data/raw/rems/RME_582274787RMD20820000000_______P2.LBL.gz": "bb9bd9ff4bf1529d0ef95bc9ce68b4caafb6b660c714de0c57d6bcef8fd88781",
+    "data/raw/rems/RME_582274787RMD20820000000_______P2.TAB.gz": "0024dbe7f3ef0a9968884dc412701549897390e95bef8e43df5d51fe485ab92b",
+    "data/raw/rems/RME_582363562RMD20830000000_______P2.LBL.gz": "417e1b1e28c0fcced63de60a3a35ac1df9ed0d93dbdc673b7958250c655dea78",
+    "data/raw/rems/RME_582363562RMD20830000000_______P2.TAB.gz": "a16c7e339f6352d858ded59a144de916c20e3d0472bf6f47527689a1425990de",
+    "data/raw/rems/RME_582452336RMD20840000000_______P2.LBL.gz": "8412a29df08b3b16842b484f9da30bcf13d448516d78e8e9c1efde30f01bc0e9",
+    "data/raw/rems/RME_582452336RMD20840000000_______P2.TAB.gz": "a06c8a79728184e78ded4278870357579fc3ac705e17cdc69af8a59bd59e3d3e",
+    "data/raw/rems/RME_582541111RMD20850000000_______P2.LBL.gz": "f610320011aa1c856a4aa2d3b14d10e404bacb771a92c0f52a4d95ab3ec6fd07",
+    "data/raw/rems/RME_582541111RMD20850000000_______P2.TAB.gz": "387ac90445d0bd58bdb23cb2496bcd2d6840971818fc7447bf828f67fa7d663a",
+    "data/raw/rems/RME_582629885RMD20860000000_______P2.LBL.gz": "3d372d9f62799b4ee12e01d14e2f99ceaf9f54b69196857ebbe391f395cdd717",
+    "data/raw/rems/RME_582629885RMD20860000000_______P2.TAB.gz": "7ed4dc55ff13bb9b2fab4618192cc5cecc74217dfe1c141ead3ed7ac8ae29be4",
+    "data/raw/rems/RME_582718659RMD20870000000_______P2.LBL.gz": "61ad6da8e1e6b1ec209a2157fae6a86e9bf90191b687e3aa352290b52f80cb5f",
+    "data/raw/rems/RME_582718659RMD20870000000_______P2.TAB.gz": "06880c15b45ef03445e131b2ef75bd66c8abe5b352533ba978a65eff06fba003",
+    "data/raw/rems/RME_582807434RMD20880000000_______P2.LBL.gz": "09333c234991553aa8da9644c31bd738c34e7ec98dea499dbc49f7adc63db74a",
+    "data/raw/rems/RME_582807434RMD20880000000_______P2.TAB.gz": "5abc6145a374be0446bdd3887fcfda9e1db9bb24aae609f6310d2d46dec47636",
+    "data/raw/rems/RME_582896208RMD20890000000_______P2.LBL.gz": "eaaa66256d2e0919aa30472094d803c93324f4be7ae353cc07b89f335ae988c2",
+    "data/raw/rems/RME_582896208RMD20890000000_______P2.TAB.gz": "980d5a182da2a878cece0d5dac344213db83cc43ff432d1c8c652bb2e7363e2f",
+    "data/raw/rems/RME_582984983RMD20900000000_______P2.LBL.gz": "e625584abe487373b9f65af776fbd2bc9e347f02a3ba8f8279da42f030fc4d62",
+    "data/raw/rems/RME_582984983RMD20900000000_______P2.TAB.gz": "d09c406c430a41e3300d35fb7504decde59657ecbc5298fa766a58616407e3ca",
+    "data/raw/rems/RME_583073757RMD20910000000_______P2.LBL.gz": "b9d8dddf520eddab03db40cf209a22166076228fc61b8dc56164230887031fb5",
+    "data/raw/rems/RME_583073757RMD20910000000_______P2.TAB.gz": "74cb2c5210432e434d907a6917a5a31fb4e1727f1180fd40eb9e0799ea5bf3c9",
+    "data/raw/rems/RME_583162531RMD20920000000_______P2.LBL.gz": "aa7a786688f16f8b703d2a1cdbae7369bc743b18a3ea01f8044d2fd179f7b6f3",
+    "data/raw/rems/RME_583162531RMD20920000000_______P2.TAB.gz": "b53cbb15aa395fb60f221f2dc086a62f00d368241968a43014dacbbc228cbbbf",
+    "data/raw/rems/RME_583251306RMD20930000000_______P2.LBL.gz": "a61d5f492941db7c8b700b40f2e0f787bda8531726d3f2ec29227c3b244d23eb",
+    "data/raw/rems/RME_583251306RMD20930000000_______P2.TAB.gz": "9d5e36749097a0aef4817f615b70c444b8a9672eabe86ec0636615807b949fca",
+    "data/raw/rems/RME_583340080RMD20940000000_______P2.LBL.gz": "c49c63337a179ad463399a220e0aaff2d1d59f4821ea17c41cf3a80779a3bf34",
+    "data/raw/rems/RME_583340080RMD20940000000_______P2.TAB.gz": "fc5a9717e801ca173faa7ad17cb06919e62d67c45f1702e651bfb5a6e1a4f777",
+    "data/raw/rems/RME_583428855RMD20950000000_______P2.LBL.gz": "02b8d4b11af9445f5f9a156bd05b8380d1b33f9b6e29528510eadae57021a2d1",
+    "data/raw/rems/RME_583428855RMD20950000000_______P2.TAB.gz": "771ec93c69bdbe1b6ef02618afd1211758176a3b8286d22e015462a6478cdca4",
+    "data/raw/rems/RME_583517629RMD20960000000_______P2.LBL.gz": "db67c557877c368a6d4d148df223cb0c7a029cbfcffe6a9cf5d0069382fede47",
+    "data/raw/rems/RME_583517629RMD20960000000_______P2.TAB.gz": "aba6e7b7d29fbc61e9be55bbbe9d6d3b80add90b7ed6c14b2b038431253949b9",
+    "data/raw/rems/RME_583606403RMD20970000000_______P2.LBL.gz": "eb7653ef4227c3efcf8e98609e20827cbe7422ffd0770af3a2f950d3feae1f29",
+    "data/raw/rems/RME_583606403RMD20970000000_______P2.TAB.gz": "a46e53034cffcd0a870f90306bd21bb37222cf1ea5ad5079ba8c7ebb93e6c1d0",
+    "data/raw/rems/RME_583695178RMD20980000000_______P2.LBL.gz": "b87cde9743abbb3193568b491d79fd889915ef6c261852ec0738ee612309ac67",
+    "data/raw/rems/RME_583695178RMD20980000000_______P2.TAB.gz": "2514ece6ace57f58ec92fae7129c6c1fd75f01c8039b089dec2b319f6690d73e",
+    "data/raw/rems/RME_583783952RMD20990000000_______P2.LBL.gz": "9a9a98e7edded9fa9aec5404b28d6a31062be1699d2880c13a96a8871a0e2554",
+    "data/raw/rems/RME_583783952RMD20990000000_______P2.TAB.gz": "79a098e046091553084473894e538172132f139d0b62b389199143dc53f836b6",
+    "data/raw/rems/RME_583872727RMD21000000000_______P2.LBL.gz": "757fe0ef3f079b6b68606785bb4b33e5cc77c1d73e8b42953af1c22f64dae8ed",
+    "data/raw/rems/RME_583872727RMD21000000000_______P2.TAB.gz": "a491da3ca58a35fd0edcc0fdcfcae49c5f739b4aaec368fc04e977d12c8cfae3",
+    "data/raw/rems/RME_583961501RMD21010000000_______P2.LBL.gz": "6054c8e57622dc975c485a0982b89a50f015f7b706d223d1e3c92ed85fce8c1e",
+    "data/raw/rems/RME_583961501RMD21010000000_______P2.TAB.gz": "64bae373baa575aa658e0eae09327f20b794e2e8c51fc87870b731a927ba0794",
+    "data/raw/rems/RME_584050275RMD21020000000_______P2.LBL.gz": "493853fcb0d8a77f467a3ff6fe1a9017c0463ad658f6d4c8bee526a82c24a1d8",
+    "data/raw/rems/RME_584050275RMD21020000000_______P2.TAB.gz": "7c0cb5e93ce13c86ae98ac2f71ee394aed1676f31ccf20f4527138976d189d83",
+    "data/raw/rems/RME_584139050RMD21030000000_______P2.LBL.gz": "a48f92fe46f2d698069dfa138fd20679670a6354a9cb413b5dd2e09f485dd7c2",
+    "data/raw/rems/RME_584139050RMD21030000000_______P2.TAB.gz": "eea3e6aec54af0a8ddf899a5c9b251f9eb58129cad4d1cce06bc5694f2726527",
+    "data/raw/rems/RME_584227824RMD21040000000_______P2.LBL.gz": "cb56144fa7e5c9d88ac11daa206eabad2fa5c9a3e95543151fbd41ff8096cbe4",
+    "data/raw/rems/RME_584227824RMD21040000000_______P2.TAB.gz": "6d6df33817727b1867b53eb896d145f438dfcc6e4c700bc3bbd24ddcf05d360e",
+    "data/raw/rems/RME_584316599RMD21050000000_______P2.LBL.gz": "c36893f29c038915da046d7b7741d0715b420665a6d6a62c60d0d662c224ff6d",
+    "data/raw/rems/RME_584316599RMD21050000000_______P2.TAB.gz": "ab774ebd232107e3f07c5810fa358958af0f1a8735c764fc4099a5fca2dd6027"
+   }
+  },
+  "ground_truth_sha256": "48f4e034eb515f069d74e87548a6f9947936fb46823354052ffdacbc707229a1",
+  "splits_sha256": "e236e3c8433a5f754250502a490c49f2269f45f3e8f0f458e03c6a13edf67f5e",
+  "local_edge_sha256": "0281fa0429338fe94ebbe2bae4fe3038e224d962caf6627b098905a540bc52ac"
+ },
+ "strategies": {
+  "doc": "Phase-2 triage strategies. Each returns Units for the common byte allocator.\n\nSTRATEGIES (display names are neutral \u2014 no \"winner\"):\n  RANDOM                  instrument windows, random order, FULL products (seeded; run over many seeds)\n  STATISTICAL             instrument windows ranked by RMS robust z (+ dip term), FULL products\n  RULES                   candidate events, deterministic rule decision \u2192 priority engine\n  RULES_PLUS_STATISTICAL  RULES first; leftover budget to STATISTICAL windows outside candidate events\n  LOCAL_EDGE              candidate events scored by a small local logistic model (no network)\n  ENGINE_ONLY             engine answers used for every event (no confidence fallback)\n  RULES_PLUS_ENGINE       engine answers gated by confidence; low confidence \u2192 rules (the v0.1 pipeline)\n  ENGINE_SINGLE_DECISION  utility = P(retain) from one yes/no question (Jev ablation)\n  ENGINE_PLUS_DEEP        RULES_PLUS_ENGINE with deep escalation \u2014 UNAVAILABLE unless a provider is enabled\n  ORACLE                  knows the labels; value-per-byte optimal window selection \u2014 NOT DEPLOYABLE\n",
+  "oracle_label": "ORACLE \u2014 NOT DEPLOYABLE",
+  "allocator": "greedy by utility; degrade one product level until it fits (evaluation/benchmark.py:allocate)"
+ },
+ "engines": [
+  {
+   "key": "MOCK",
+   "name": "mock-heuristic-v1",
+   "is_real_model": false
+  }
+ ],
+ "jev_status": "UNAVAILABLE: TYPESAFE_API_KEY not set",
+ "seeds": {
+  "random_strategy_seeds": 30,
+  "synthetic_batches_per_segment": 25,
+  "synthetic_seed_rule": "sha256(split:segment)[:8] % 1e6 + batch",
+  "local_edge_training_seed_base": 10000
+ },
+ "budgets": {
+  "fractions_of_generated_raw_bytes": [
+   0.001,
+   0.0025,
+   0.005,
+   0.01,
+   0.02,
+   0.05,
+   0.1,
+   0.25
+  ],
+  "reference": 0.005
+ },
+ "storage_bytes": [
+  16384,
+  32768,
+  65536,
+  131072,
+  262144,
+  524288,
+  1048576,
+  2097152,
+  4194304,
+  8388608
+ ],
+ "gating_grid": [
+  [
+   0.5,
+   0.3
+  ],
+  [
+   0.5,
+   0.5
+  ],
+  [
+   0.6,
+   0.3
+  ],
+  [
+   0.6,
+   0.5
+  ],
+  [
+   0.6,
+   0.6
+  ],
+  [
+   0.7,
+   0.3
+  ],
+  [
+   0.7,
+   0.5
+  ],
+  [
+   0.7,
+   0.6
+  ],
+  [
+   0.7,
+   0.7
+  ],
+  [
+   0.8,
+   0.3
+  ],
+  [
+   0.8,
+   0.5
+  ],
+  [
+   0.8,
+   0.6
+  ],
+  [
+   0.8,
+   0.7
+  ],
+  [
+   0.8,
+   0.8
+  ],
+  [
+   0.9,
+   0.3
+  ],
+  [
+   0.9,
+   0.5
+  ],
+  [
+   0.9,
+   0.6
+  ],
+  [
+   0.9,
+   0.7
+  ],
+  [
+   0.9,
+   0.8
+  ],
+  [
+   0.95,
+   0.3
+  ],
+  [
+   0.95,
+   0.5
+  ],
+  [
+   0.95,
+   0.6
+  ],
+  [
+   0.95,
+   0.7
+  ],
+  [
+   0.95,
+   0.8
+  ]
+ ],
+ "system": {
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "python": "3.12.13",
+  "cpu": "Apple M5",
+  "polars": "1.44.2",
+  "typesafe_sdk": "0.7.1"
+ },
+ "results_files": {
+  "results.json": "artifacts/runs/20260924T204836-test-c6f9/results.json",
+  "rows.jsonl": "artifacts/runs/20260924T204836-test-c6f9/rows.jsonl",
+  "failures.json": "artifacts/runs/20260924T204836-test-c6f9/failures.json",
+  "injections.json": "artifacts/runs/20260924T204836-test-c6f9/injections.json"
+ },
+ "reproduce": "uv run python scripts/run_study.py --split test --batches 25"
+}

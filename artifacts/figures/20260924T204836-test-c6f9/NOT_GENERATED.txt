@@ -1,0 +1,2 @@
+cost_vs_recall: NOT GENERATED — no real Jev calls in this run (cost cannot be measured without the API)
+deep_model_calls_avoided: NOT GENERATED — deep escalation is disabled in Phase 2 (no Anthropic spend)

@@ -1,0 +1,414 @@
+{
+ "run_id": "20260924T211615-calibration-4924",
+ "split": "calibration",
+ "started_at": "2026-09-24T21:16:15.400558+00:00",
+ "finished_at": "2026-09-24T21:16:20.348841+00:00",
+ "git": {
+  "commit": "7ae93ca1497d3d9e9987de53b96d39c63b43e5a0",
+  "dirty": true,
+  "describe": "v0.1-baseline-3-g7ae93ca-dirty"
+ },
+ "config_version": "d59227d52476",
+ "config": {
+  "mission": "msl_curiosity",
+  "detection": {
+   "rems_window_s": 300,
+   "lmst_bin_minutes": 30,
+   "baseline_sols": 7,
+   "min_samples": 30,
+   "z_threshold": 9.344,
+   "rad_z_threshold": 8.603,
+   "dip_threshold_pa": 0.43,
+   "flat_fraction_threshold": 0.95,
+   "missing_fraction_threshold": 0.5,
+   "noise_ratio_threshold": 4.631,
+   "merge_gap_s": 900,
+   "coincidence_window_s": 3600,
+   "min_sigma": {
+    "air_temp": 0.03145,
+    "dose_b": 0.20502,
+    "dose_e": 0.06391,
+    "ground_temp": 3.26039,
+    "pressure": 0.04193,
+    "rel_humidity": 0.01048,
+    "uv_abc": 0.02097
+   }
+  },
+  "gating": {
+   "auto_threshold": 0.8,
+   "uncertain_threshold": 0.3,
+   "deep_request_threshold": 0.6
+  },
+  "priority": {
+   "weights": {
+    "science_value": 0.35,
+    "mission_relevance": 0.3,
+    "anomaly_strength": 0.2,
+    "novelty": 0.15
+   },
+   "anomaly_scale": 6.0,
+   "confidence_penalty": 0.5,
+   "cost_exponent": 0.5,
+   "thresholds": {
+    "full_data": 0.55,
+    "compress": 0.42,
+    "summary_only": 0.22
+   },
+   "engine_action_policy": "upgrade_only",
+   "instrument_failure_floor": 0.6
+  },
+  "compression": {
+   "decimation_factor": 8,
+   "zlib_level": 6,
+   "fidelity": {
+    "full_data": 1.0,
+    "compress": 0.5,
+    "summary_only": 0.15,
+    "discard": 0.0
+   }
+  },
+  "downlink": {
+   "passes_per_sol": 2,
+   "pass_bytes": 32768,
+   "storage_bytes": 1048576,
+   "background_summary": true,
+   "protect_utility": null
+  },
+  "blackout": {
+   "duration_sols": 3.0,
+   "storage_bytes": 196608
+  },
+  "decision_engine": {
+   "kind": "auto",
+   "jev_model": "jev-latest",
+   "price_per_mtok_input_usd": 0.042,
+   "timeout_s": 10.0,
+   "max_concurrency": 8
+  },
+  "deep_analysis": {
+   "provider": "none",
+   "model": "claude-opus-5"
+  },
+  "objective": "balanced_science",
+  "benchmark": {
+   "random_seed": 7,
+   "injection_seed": 11,
+   "injections_per_sol": 1.0
+  },
+  "provenance": {
+   "calibration": {
+    "script": "scripts/calibrate.py",
+    "at": "2026-09-24T20:22:44.139700+00:00",
+    "split": "calibration",
+    "sols": [
+     232,
+     251
+    ],
+    "targets": {
+     "split": "calibration",
+     "target_flag_rate": {
+      "level": 0.02,
+      "dip": 0.005,
+      "noise": 0.005
+     },
+     "noise_floor_method": "sample_difference_mad",
+     "structural": {
+      "flat_fraction_threshold": 0.95,
+      "missing_fraction_threshold": 0.5
+     }
+    },
+    "trailing_windows_used": 5585,
+    "v0_1_values": {
+     "z_threshold": 4.0,
+     "rad_z_threshold": 3.5,
+     "dip_threshold_pa": 0.75,
+     "noise_ratio_threshold": 4.0
+    },
+    "data_sha256_digest": "4e514220a2f1bfd435f307be09e3fa789358ea139e97cc4a0eaafc294e0039a4",
+    "labels_read": false,
+    "injections_used": false
+   },
+   "validation_choices": {
+    "validation_run": "20260924T203948-validation-91b4",
+    "rule": "Among Pareto-optimal (auto, uncertain) gating thresholds on VALIDATION synthetic data, keep those that would escalate \u2264 25 % of candidate events; choose the one with the highest high-severity tolerant recall; break ties by precision (lower bound), then by fewer downlinked bytes.",
+    "per_engine": {
+     "MOCK": {
+      "auto_threshold": 0.8,
+      "uncertain_threshold": 0.3,
+      "validation_point": {
+       "auto": 0.8,
+       "uncertain": 0.3,
+       "tolerant_recall": 0.6884422110552764,
+       "high_tolerant_recall": 0.6506417120890806,
+       "precision_lower_bound": 0.0665706014363091,
+       "downlink_bytes": 34662059,
+       "false_positive_units": 2204,
+       "would_escalate": 0,
+       "events": 2353,
+       "pareto": true
+      }
+     }
+    },
+    "frozen": true,
+    "applied_to_gating_defaults_from": "MOCK"
+   }
+  }
+ },
+ "segments": [
+  {
+   "id": "CAL-2013-04",
+   "warmup": null,
+   "eval": [
+    232,
+    251
+   ]
+  }
+ ],
+ "datasets": {
+  "raw_products": {
+   "files": 80,
+   "digest": "ad27efcb91d145f2d0866b47d4c4879e813a57f814bc15d9a380486d54f6f560",
+   "per_file": {
+    "data/raw/rad/RAD_RDR_2013_090_23_50_0232_V00.LBL": "56a90e48c85e0fa316ff4fc2ea448c19bd3c9cba8fdf2453a0b99759a5768e8f",
+    "data/raw/rad/RAD_RDR_2013_090_23_50_0232_V00.TXT": "4164032f03230b3d88ecd5f68bf9654a6f1bfea5f682a39e4b46f23009822e08",
+    "data/raw/rad/RAD_RDR_2013_092_02_14_0233_V00.LBL": "d249c6acb74cd778fe241d9b1964109022a1afbe517f255ce125cb3c94137de1",
+    "data/raw/rad/RAD_RDR_2013_092_02_14_0233_V00.TXT": "925dd8ff15a1978fd2473a1811a384b83bed95e147b239fb0cfa1cb7f322ef9f",
+    "data/raw/rad/RAD_RDR_2013_093_01_53_0234_V00.LBL": "7aafe90fdc935a640266efee789de99df84cabae8b49ed737da50b63d4bda074",
+    "data/raw/rad/RAD_RDR_2013_093_01_53_0234_V00.TXT": "64a45287d0e9281aba407e35e74bea2c5a33965a3f64aa65d37424f769965da4",
+    "data/raw/rad/RAD_RDR_2013_094_02_32_0235_V00.LBL": "ec6024aa4dab52eeb95002c12ce4ee6b971a7b3124baae2221a813e20da261be",
+    "data/raw/rad/RAD_RDR_2013_094_02_32_0235_V00.TXT": "f7e3a0b3f2dc043734f4df6c682cdb58d6e124d8ca785accc51bbf5c86ea68ca",
+    "data/raw/rad/RAD_RDR_2013_095_03_11_0236_V00.LBL": "5f66b5a1f7d4ccbab099fb2992cb044e842d114c863269742bf4778ad349ebd0",
+    "data/raw/rad/RAD_RDR_2013_095_03_11_0236_V00.TXT": "51935caa72796ba6a41f61838009c68cd32d5a444908a735953b2977f2a64989",
+    "data/raw/rad/RAD_RDR_2013_096_03_08_0237_V00.LBL": "95edc84d5a70f8ae1abe955af6ce96db6a8a24d4779ee208e529ecc7a35c6c52",
+    "data/raw/rad/RAD_RDR_2013_096_03_08_0237_V00.TXT": "fd686803e38b318465497c565424285bc0dccad6bc69602ca2ab98cde6286975",
+    "data/raw/rad/RAD_RDR_2013_097_04_00_0238_V00.LBL": "6842f4eede100a0da6f87e89bbd3a9bc7c9966f6aaf3e152d3547f130c4f4a41",
+    "data/raw/rad/RAD_RDR_2013_097_04_00_0238_V00.TXT": "716f21bf169f3eeb82b49f2fe45f855427a2ad49f9fe4a9bd66ac773758b8cd0",
+    "data/raw/rad/RAD_RDR_2013_098_05_13_0239_V00.LBL": "6f810197b591739d7214d0c0b38b7d8ce0525f68988de73eab9f5ca9549a358d",
+    "data/raw/rad/RAD_RDR_2013_098_05_13_0239_V00.TXT": "4503de4cc63ac65cb2f4eaf54f9240a63df989f9bfd3f6e325aabf7e7c1a974c",
+    "data/raw/rad/RAD_RDR_2013_099_05_49_0240_V00.LBL": "7ae98a06f5fb421889788c7351d8fc0b4196a5124941fc3e9ae0e077669c7c37",
+    "data/raw/rad/RAD_RDR_2013_099_05_49_0240_V00.TXT": "b80e130f7b2062e56b626446a2f37f8c1e4518dbdcdaf748413459e7869598c4",
+    "data/raw/rad/RAD_RDR_2013_100_05_46_0241_V00.LBL": "6d1caf21697ddf65f0ba05a3d2f59ee09479dd29d71b82b0dc29e8e39fc48014",
+    "data/raw/rad/RAD_RDR_2013_100_05_46_0241_V00.TXT": "36564fcfac5e1d8c5168ad1abe8cf3c4952d0ddfc414632a074080d3c3d38b33",
+    "data/raw/rad/RAD_RDR_2013_101_07_02_0242_V00.LBL": "0a4602ceca4309a3834067689b3ed17eed4c86307cf0be4e01548c13774a5905",
+    "data/raw/rad/RAD_RDR_2013_101_07_02_0242_V00.TXT": "7937b841d31dce4afdd5fc80f1ae2bc5aef65f6f93d0e25cc0153b393f6c9628",
+    "data/raw/rad/RAD_RDR_2013_102_07_37_0243_V00.LBL": "67db02c71bf4e1ea9b5bee69825cc87fe3a35431cf64ab2399a28482b288fa51",
+    "data/raw/rad/RAD_RDR_2013_102_07_37_0243_V00.TXT": "aec27f66a346475293511d724a5a3227fe364af3c46b10bb942adc5e9092e8c5",
+    "data/raw/rad/RAD_RDR_2013_103_08_16_0244_V00.LBL": "3665e64bdee288d9845061cdbb51ee421391b1cce20decf9a53b10f1b58b2051",
+    "data/raw/rad/RAD_RDR_2013_103_08_16_0244_V00.TXT": "b572165fc10937c7ea52e2611a0f51b060ebc41334852b3059cc903f684f0e66",
+    "data/raw/rad/RAD_RDR_2013_104_08_34_0245_V00.LBL": "eb5a8a11de3953aad6b6316991bfcd35b6e4273fa144595da0d57683c38c4697",
+    "data/raw/rad/RAD_RDR_2013_104_08_34_0245_V00.TXT": "357060a2e240e37847639e008b4666d96b0d9b9ce39f53f91a291023d46fdf8b",
+    "data/raw/rad/RAD_RDR_2013_105_09_13_0246_V00.LBL": "cbe4edfb6bc4fac243f9d92dd2b99651ac45eadeb0f677ab61306b355bafe590",
+    "data/raw/rad/RAD_RDR_2013_105_09_13_0246_V00.TXT": "335b10fea7eb2dcbe6d65186453acf3d037df476d635ac9f03fa8b9c9adb58c2",
+    "data/raw/rad/RAD_RDR_2013_106_09_46_0247_V00.LBL": "8d960a41d1e6fa638779ac8f687afaa405d2b069488e8e848e44e7ce563ab3fc",
+    "data/raw/rad/RAD_RDR_2013_106_09_46_0247_V00.TXT": "d436d20fb38fc7e0d930446a396f11a5c9565b60d69976108a5f27d70f75fb8a",
+    "data/raw/rad/RAD_RDR_2013_107_10_25_0248_V00.LBL": "5d4678e9ff100dce7109d2a77c2997fd9746ebd1a389f25fdfea6f3d5bbcb9b0",
+    "data/raw/rad/RAD_RDR_2013_107_10_25_0248_V00.TXT": "ce0cad34bc3d476bcc3668655c4b8741fd1cb6595c96a6729612616c9b6bef63",
+    "data/raw/rad/RAD_RDR_2013_108_11_03_0249_V00.LBL": "57320691830404e04e094285c7e27ea5ac9129c61a32bdefe7b8ff15a9d323f5",
+    "data/raw/rad/RAD_RDR_2013_108_11_03_0249_V00.TXT": "a578acb4e9abc25cd014ee778963f85987829704325075d5cd9f17997700f1a5",
+    "data/raw/rad/RAD_RDR_2013_109_11_42_0250_V00.LBL": "94f1d8ba5497c268494e44d169c216a974e7fc33d320fae97063d9e7393dcd20",
+    "data/raw/rad/RAD_RDR_2013_109_11_42_0250_V00.TXT": "56f768c5612c926bc64d4a53ff628749dcf330ab5b888249aa6267d53ec7b59f",
+    "data/raw/rad/RAD_RDR_2013_110_12_36_0251_V00.LBL": "dd961e85098daa95fcff2ae3a358361cb7cc0360b908254bb118a53b08c653fe",
+    "data/raw/rad/RAD_RDR_2013_110_12_36_0251_V00.TXT": "c742307a3b530bbb5597bc37ba4ce2d8d9a57b7a4e17bf1fe42c7322068e20e6",
+    "data/raw/rems/RME_418042135RMD02320000000_______P8.LBL": "12add1988981cd683896a8ec914b872771239eed68b3f0db5085030b90d3bc18",
+    "data/raw/rems/RME_418042135RMD02320000000_______P8.TAB": "d0e972864e9bf1e89231834ee4d3c0f0b38afd1b596a695a4cb555a886040ab0",
+    "data/raw/rems/RME_418130909RMD02330000000_______P8.LBL": "42c34e3b8b10048523982fb45221258c29a593f5f7fca0aafb814bb33497a210",
+    "data/raw/rems/RME_418130909RMD02330000000_______P8.TAB": "7e7beebe67a5165f2bc4736e68f5fc2b5251048a3474e13dd7e5b6612479d0cd",
+    "data/raw/rems/RME_418219684RMD02340000000_______P8.LBL": "50178fa0b07f68ffaff8c686859c1e4c98da6af3e26e89f08a00815eca9e6cef",
+    "data/raw/rems/RME_418219684RMD02340000000_______P8.TAB": "0506823aab278ef602687278d93b4ef25a3d0ebbd96bd0babf2f19933a19030b",
+    "data/raw/rems/RME_418308458RMD02350000000_______P8.LBL": "87d689586607803e552c23da96180ef47660777c2804ddf32c62f581d4915c9b",
+    "data/raw/rems/RME_418308458RMD02350000000_______P8.TAB": "617782c34081b6d420c896bb118bd0720c1287270be44bfac021f79e3cff0fa0",
+    "data/raw/rems/RME_418397233RMD02360000000_______P8.LBL": "943d976476522f53a14861c01e51ece8336d45bb46b83b2f5e207bf6401c9c78",
+    "data/raw/rems/RME_418397233RMD02360000000_______P8.TAB": "f9882365b4ec347fa8986b656a3c2e0ef56bee85b95768994583ada498a5f70d",
+    "data/raw/rems/RME_418486007RMD02370000000_______P8.LBL": "994cdb5eb560b4608e81204d72a9ed279101d5762b1d25eb5892210cb48aed92",
+    "data/raw/rems/RME_418486007RMD02370000000_______P8.TAB": "5af29bd35ad78e3642d9d598093988f22c51d71004f0a6e839eacda639d49c9c",
+    "data/raw/rems/RME_418574781RMD02380000000_______P8.LBL": "1d8dd9d6c69cd4cc7de343b26db5700f02523a9cfefe693546662b4a5aa18761",
+    "data/raw/rems/RME_418574781RMD02380000000_______P8.TAB": "8c9c675d349bec084d564ec7db685d093c737cc3c476bd7ef0642cac614221b0",
+    "data/raw/rems/RME_418663556RMD02390000000_______P8.LBL": "e6cb288ba63421ce09b655acbc1160f02fc1fce1ca47246b8bc0893b7c7dca3b",
+    "data/raw/rems/RME_418663556RMD02390000000_______P8.TAB": "001bd50bc621c76bf86327ad4982b2b37f646d1798c2ac4e2d8b4aeb264d4414",
+    "data/raw/rems/RME_418752330RMD02400000000_______P8.LBL": "dd7656ea88ef0bd2e73f83d4a22d75c7a9dfcb73601c06933b7dc313a9533dc1",
+    "data/raw/rems/RME_418752330RMD02400000000_______P8.TAB": "a273d1414b65a53dfd1394e1b36dc0e3beee668a007d026755f2f3e8597042c2",
+    "data/raw/rems/RME_418841105RMD02410000000_______P8.LBL": "f58fb597c1af47e0b026a84f9ca97f72dd49931b3140ab64c806b11cc6372c62",
+    "data/raw/rems/RME_418841105RMD02410000000_______P8.TAB": "a59395e7e7b3270148eccd0dc7afbc6c273701b0e98718fed1c4a931e1196701",
+    "data/raw/rems/RME_418929879RMD02420000000_______P8.LBL": "d635a6420f011ffdef89f1427afc70732c356f479832ba04084b03c4aba9316b",
+    "data/raw/rems/RME_418929879RMD02420000000_______P8.TAB": "c1738b4e06851f132405e39820e63577a9c53480167dfe5c421556773296f27c",
+    "data/raw/rems/RME_419018653RMD02430000000_______P8.LBL": "d826694516490d64626b7c870540c69569ed8852d9c04b1f74b1d6f2e42210c9",
+    "data/raw/rems/RME_419018653RMD02430000000_______P8.TAB": "7a8651c9bb3f78d0bc23db1aeac4b06994ef563a1a457bcd329a2a61efca036e",
+    "data/raw/rems/RME_419107428RMD02440000000_______P8.LBL": "bb466f4300728352a1718948354ee3bb02bab55d82166cb59c10bda6471df84b",
+    "data/raw/rems/RME_419107428RMD02440000000_______P8.TAB": "5567aecd812edf955276a10709bcea5d9102f575c1665892669427029b61e3ea",
+    "data/raw/rems/RME_419196202RMD02450000000_______P8.LBL": "fcb4abe4cfae81655b97077a4fe29f847f7b51a45a54b9d3860afbd9b687d746",
+    "data/raw/rems/RME_419196202RMD02450000000_______P8.TAB": "e6db2715df86741d36a70303bca6c5930631dcb31bc4f7c7e2476c06f128a9cb",
+    "data/raw/rems/RME_419284977RMD02460000000_______P8.LBL": "a70ec44fb5d8d3fb9f0d0e3e4eb4cf0fc82b8a3397a0f9f2b12d5ede605b287b",
+    "data/raw/rems/RME_419284977RMD02460000000_______P8.TAB": "265257ffff82d5dbe19a747395177ff1a58ebe18d7ec7b7e6370ada7fc3ccf6e",
+    "data/raw/rems/RME_419373751RMD02470000000_______P8.LBL": "6c19ee82d81027a513a9c130c489cea00d3df8c09a8a73cb3fa1dbfa685df934",
+    "data/raw/rems/RME_419373751RMD02470000000_______P8.TAB": "e5114ea8d9537c1093ea8492c1b84275d2fa565a3136cd483e562f1f822a7396",
+    "data/raw/rems/RME_419462526RMD02480000000_______P8.LBL": "ecb7f8ef7fb31832ec3a7e590a96767136540b71c77b4ba162252223f7f2ab9a",
+    "data/raw/rems/RME_419462526RMD02480000000_______P8.TAB": "c248c649f7cc9bb2fbc1ad26bc0407160c615ff20505e58a949eb0bdee8c2bb3",
+    "data/raw/rems/RME_419551300RMD02490000000_______P8.LBL": "8fe3ba3901a53dbee14d7a52c51f1a2ea01b787b9fd02bfb6f5742614325a212",
+    "data/raw/rems/RME_419551300RMD02490000000_______P8.TAB": "61f936c86fa0e7d0ee70a915ef3eda85f659395f15edb486b84edc0039950a5e",
+    "data/raw/rems/RME_419640074RMD02500000000_______P8.LBL": "f9d48874c1b227c0804c36c526f13551fc8b21b901721161c44079bf43ed764f",
+    "data/raw/rems/RME_419640074RMD02500000000_______P8.TAB": "0d297af2af928ab21d8c54eb22e7065a291bae7c462ee4ad5e851e75edebce6e",
+    "data/raw/rems/RME_419728849RMD02510000000_______P8.LBL": "0b95535a28479ddaa36f12d1e5f94ea7e3f78321e73f633c59835719979a81f4",
+    "data/raw/rems/RME_419728849RMD02510000000_______P8.TAB": "5f3716f16e579d923a571dc2d881483f7ff79e61c2c1a253033a95f9ac16d2c6"
+   }
+  },
+  "ground_truth_sha256": "48f4e034eb515f069d74e87548a6f9947936fb46823354052ffdacbc707229a1",
+  "splits_sha256": "e236e3c8433a5f754250502a490c49f2269f45f3e8f0f458e03c6a13edf67f5e",
+  "local_edge_sha256": "0281fa0429338fe94ebbe2bae4fe3038e224d962caf6627b098905a540bc52ac"
+ },
+ "strategies": {
+  "doc": "Phase-2 triage strategies. Each returns Units for the common byte allocator.\n\nSTRATEGIES (display names are neutral \u2014 no \"winner\"):\n  RANDOM                  instrument windows, random order, FULL products (seeded; run over many seeds)\n  STATISTICAL             instrument windows ranked by RMS robust z (+ dip term), FULL products\n  RULES                   candidate events, deterministic rule decision \u2192 priority engine\n  RULES_PLUS_STATISTICAL  RULES first; leftover budget to STATISTICAL windows outside candidate events\n  LOCAL_EDGE              candidate events scored by a small local logistic model (no network)\n  ENGINE_ONLY             engine answers used for every event (no confidence fallback)\n  RULES_PLUS_ENGINE       engine answers gated by confidence; low confidence \u2192 rules (the v0.1 pipeline)\n  ENGINE_SINGLE_DECISION  utility = P(retain) from one yes/no question (Jev ablation)\n  ENGINE_PLUS_DEEP        RULES_PLUS_ENGINE with deep escalation \u2014 UNAVAILABLE unless a provider is enabled\n  ORACLE                  knows the labels; value-per-byte optimal window selection \u2014 NOT DEPLOYABLE\n",
+  "oracle_label": "ORACLE \u2014 NOT DEPLOYABLE",
+  "allocator": "greedy by utility; degrade one product level until it fits (evaluation/benchmark.py:allocate)"
+ },
+ "engines": [
+  {
+   "key": "MOCK",
+   "name": "mock-heuristic-v1",
+   "is_real_model": false
+  }
+ ],
+ "jev_status": "UNAVAILABLE: TYPESAFE_API_KEY not set",
+ "seeds": {
+  "random_strategy_seeds": 30,
+  "synthetic_batches_per_segment": 1,
+  "synthetic_seed_rule": "sha256(split:segment)[:8] % 1e6 + batch",
+  "local_edge_training_seed_base": 10000
+ },
+ "budgets": {
+  "fractions_of_generated_raw_bytes": [
+   0.001,
+   0.0025,
+   0.005,
+   0.01,
+   0.02,
+   0.05,
+   0.1,
+   0.25
+  ],
+  "reference": 0.005
+ },
+ "storage_bytes": [
+  16384,
+  32768,
+  65536,
+  131072,
+  262144,
+  524288,
+  1048576,
+  2097152,
+  4194304,
+  8388608
+ ],
+ "gating_grid": [
+  [
+   0.5,
+   0.3
+  ],
+  [
+   0.5,
+   0.5
+  ],
+  [
+   0.6,
+   0.3
+  ],
+  [
+   0.6,
+   0.5
+  ],
+  [
+   0.6,
+   0.6
+  ],
+  [
+   0.7,
+   0.3
+  ],
+  [
+   0.7,
+   0.5
+  ],
+  [
+   0.7,
+   0.6
+  ],
+  [
+   0.7,
+   0.7
+  ],
+  [
+   0.8,
+   0.3
+  ],
+  [
+   0.8,
+   0.5
+  ],
+  [
+   0.8,
+   0.6
+  ],
+  [
+   0.8,
+   0.7
+  ],
+  [
+   0.8,
+   0.8
+  ],
+  [
+   0.9,
+   0.3
+  ],
+  [
+   0.9,
+   0.5
+  ],
+  [
+   0.9,
+   0.6
+  ],
+  [
+   0.9,
+   0.7
+  ],
+  [
+   0.9,
+   0.8
+  ],
+  [
+   0.95,
+   0.3
+  ],
+  [
+   0.95,
+   0.5
+  ],
+  [
+   0.95,
+   0.6
+  ],
+  [
+   0.95,
+   0.7
+  ],
+  [
+   0.95,
+   0.8
+  ]
+ ],
+ "system": {
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "python": "3.12.13",
+  "cpu": "Apple M5",
+  "polars": "1.44.2",
+  "typesafe_sdk": "0.7.1"
+ },
+ "results_files": {
+  "results.json": "artifacts/runs/20260924T211615-calibration-4924/results.json",
+  "rows.jsonl": "artifacts/runs/20260924T211615-calibration-4924/rows.jsonl",
+  "failures.json": "artifacts/runs/20260924T211615-calibration-4924/failures.json",
+  "injections.json": "artifacts/runs/20260924T211615-calibration-4924/injections.json"
+ },
+ "reproduce": "uv run python scripts/run_study.py --split calibration --batches 1"
+}

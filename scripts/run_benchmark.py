@@ -19,7 +19,7 @@ def main() -> None:
     args = ap.parse_args()
     cfg = load_config()
     p = Pipeline(cfg)
-    r = run_benchmark(p, cfg, trials=args.trials)
+    r = run_benchmark(p, cfg, trials=args.trials, sols=list(range(232, 252)))
     print(f"experiment {r['id']} · engine {r['engine']['name']} (real model: {r['engine']['is_real_model']}) · "
           f"{r['data_source']} sols {r['sols'][0]}–{r['sols'][-1]} · budget {r['budget_bytes']:,} B · {r['trials']} trials")
     print(f"{'strategy':<14}{'recall':>9}{'high':>9}{'unlabeled':>11}{'downlink':>12}{'value/MB':>10}{'deep':>6}")
