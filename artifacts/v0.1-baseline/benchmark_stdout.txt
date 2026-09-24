@@ -1,0 +1,13 @@
+experiment 20260924T192316-8d794b · engine mock-heuristic-v1 (real model: False) · NASA_PDS sols 232–251 · budget 1,376,256 B · 5 trials
+strategy         recall     high  unlabeled    downlink  value/MB  deep
+random            20.9%    25.0%      95.5%   1,376,148       8.6     0
+rules             51.8%    73.3%      69.7%   1,376,147      18.1     0
+statistical       15.5%    11.7%      92.3%   1,376,167       5.8     0
+engine            45.5%    68.3%      71.3%   1,376,142      18.8     0
+engine_deep     UNAVAILABLE — no DeepAnalysisProvider configured (set deep_analysis.provider=claude and ANTHROPIC_API_KEY)
+
+caveats:
+ - Recall is measured against synthetic injections plus one documented event; unlabeled real phenomena exist, so 'retained_unlabeled_rate' is an upper bound on the false-positive rate, not the rate itself.
+ - science_value_per_mb_proxy = Σ(severity weight × assumed product fidelity) / downlinked MB. It is a proxy; it does not measure true scientific value.
+ - When the engine is 'mock-heuristic-v1' the 'engine' rows describe a hand-written heuristic, not Jev. The heuristic and the injection generator were written by the same authors.
+ - Byte costs are zlib sizes of PDS ASCII records; flight encodings would differ.

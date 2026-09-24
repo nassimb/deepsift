@@ -1,0 +1,158 @@
+@import "tailwindcss";
+
+/* DEEPSIFT instrument palette — dark operations console.
+   Data colours validated with the dataviz validator (dark, surface #0d0f12, all-pairs):
+   atmospheric / radiation / thermal = the three categorical slots that pass all-pairs CVD.
+   Remaining classes use neutral ink + distinct marker SHAPE (never colour alone). */
+:root {
+  color-scheme: dark;
+  --bg: #07080a;
+  --panel: #0d0f12;
+  --panel-2: #111418;
+  --line: #1d2127;
+  --line-2: #272c33;
+  --grid: #161a1f;
+  --ink: #e4e7ea;
+  --ink-2: #a3abb4;
+  --ink-3: #6b747e;
+  --ink-4: #454c55;
+
+  --c-atmospheric: #3987e5;
+  --c-radiation: #d95926;
+  --c-thermal: #199e70;
+  --c-instrument: #d6dade;
+  --c-unknown: #8a939c;
+  --c-nominal: #4a525b;
+
+  /* ordinal downlink ramp (one hue, validated --ordinal) */
+  --a-discard: #3a4048;
+  --a-summary: #184f95;
+  --a-compress: #2a78d6;
+  --a-full: #6da7ec;
+
+  /* status (reserved; always with a label) */
+  --s-good: #0ca30c;
+  --s-warn: #fab219;
+  --s-serious: #ec835a;
+  --s-critical: #d03b3b;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-panel: var(--panel);
+  --color-panel-2: var(--panel-2);
+  --color-line: var(--line);
+  --color-line-2: var(--line-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-ink-4: var(--ink-4);
+  --color-good: var(--s-good);
+  --color-warn: var(--s-warn);
+  --color-serious: var(--s-serious);
+  --color-critical: var(--s-critical);
+  --font-sans: var(--font-plex-sans);
+  --font-mono: var(--font-plex-mono);
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+body {
+  font-family: var(--font-plex-sans), system-ui, sans-serif;
+  font-feature-settings: "tnum" 1;
+}
+
+.mono {
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.label {
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+
+.btn {
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1px solid var(--line-2);
+  background: var(--panel-2);
+  color: var(--ink-2);
+  padding: 4px 10px;
+  border-radius: 2px;
+}
+.btn:hover:not(:disabled) {
+  color: var(--ink);
+  border-color: var(--ink-4);
+}
+.btn:disabled {
+  opacity: 0.4;
+}
+.btn[data-active="true"] {
+  color: var(--bg);
+  background: var(--ink);
+  border-color: var(--ink);
+}
+
+.chip {
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid var(--line-2);
+  padding: 1px 6px;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+input[type="number"],
+input[type="text"],
+select,
+textarea {
+  background: var(--panel-2);
+  border: 1px solid var(--line-2);
+  color: var(--ink);
+  border-radius: 2px;
+  padding: 3px 6px;
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  font-size: 12px;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line-2);
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@keyframes blink-state {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+/* only used to show a real state (link lost, replay running) */
+.state-pulse {
+  animation: blink-state 1.6s ease-in-out infinite;
+}

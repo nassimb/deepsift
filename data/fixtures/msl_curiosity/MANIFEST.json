@@ -1,0 +1,173 @@
+{
+ "description": "Real NASA PDS products (gzip-compressed copies) bundled as the LOCAL_NASA_SAMPLE fallback. Sols 238-243 include the documented 2013-04-11 SEP event (sol 242).",
+ "files": [
+  {
+   "fixture": "rad/RAD_RDR_2013_097_04_00_0238_V00.LBL.gz",
+   "source_url": "https://pds-ppi.igpp.ucla.edu/data/MSL-M-RAD-3-RDR-V1.0/DATA/SOL_00180_00269/RAD_RDR_2013_097_04_00_0238_V00.LBL",
+   "original_bytes": 341440,
+   "original_sha256": "6842f4eede100a0da6f87e89bbd3a9bc7c9966f6aaf3e152d3547f130c4f4a41",
+   "sol": 238
+  },
+  {
+   "fixture": "rad/RAD_RDR_2013_097_04_00_0238_V00.TXT.gz",
+   "source_url": "https://pds-ppi.igpp.ucla.edu/data/MSL-M-RAD-3-RDR-V1.0/DATA/SOL_00180_00269/RAD_RDR_2013_097_04_00_0238_V00.TXT",
+   "original_bytes": 8533837,
+   "original_sha256": "716f21bf169f3eeb82b49f2fe45f855427a2ad49f9fe4a9bd66ac773758b8cd0",
+   "sol": 238
+  },
+  {
+   "fixture": "rad/RAD_RDR_2013_098_05_13_0239_V00.LBL.gz",
+   "source_url": "https://pds-ppi.igpp.ucla.edu/data/MSL-M-RAD-3-RDR-V1.0/DATA/SOL_00180_00269/RAD_RDR_2013_098_05_13_0239_V00.LBL",
+   "original_bytes": 341440,
+   "original_sha256": "6f810197b591739d7214d0c0b38b7d8ce0525f68988de73eab9f5ca9549a358d",
+   "sol": 239
+  },
+  {
+   "fixture": "rad/RAD_RDR_2013_098_05_13_0239_V00.TXT.gz",
+   "source_url": "https://pds-ppi.igpp.ucla.edu/data/MSL-M-RAD-3-RDR-V1.0/DATA/SOL_00180_00269/RAD_RDR_2013_098_05_13_0239_V00.TXT",
+   "original_bytes": 8520305,
+   "original_sha256": "4503de4cc63ac65cb2f4eaf54f9240a63df989f9bfd3f6e325aabf7e7c1a974c",
+   "sol": 239
+  },
+  {
+   "fixture": "rad/RAD_RDR_2013_099_05_49_0240_V00.LBL.gz",
+   "source_url": "https://pds-ppi.igpp.ucla.edu/data/MSL-M-RAD-3-RDR-V1.0/DATA/SOL_00180_00269/RAD_RDR_2013_099_05_49_0240_V00.LBL",
+   "original_bytes": 341440,
+   "original_sha256": "7ae98a06f5fb421889788c7351d8fc0b4196a5124941fc3e9ae0e077669c7c37",
+   "sol": 240
+  },
+  {
+   "fixture": "rad/RAD_RDR_2013_099_05_49_0240_V00.TXT.gz",
+   "source_url": "https://pds-ppi.igpp.ucla.edu/data/MSL-M-RAD-3-RDR-V1.0/DATA/SOL_00180_00269/RAD_RDR_2013_099_05_49_0240_V00.TXT",
+   "original_bytes": 8534613,
+   "original_sha256": "b80e130f7b2062e56b626446a2f37f8c1e4518dbdcdaf748413459e7869598c4",
+   "sol": 240
+  },
+  {
+   "fixture": "rad/RAD_RDR_2013_100_05_46_0241_V00.LBL.gz",
+   "source_url": "https://pds-ppi.igpp.ucla.edu/data/MSL-M-RAD-3-RDR-V1.0/DATA/SOL_00180_00269/RAD_RDR_2013_100_05_46_0241_V00.LBL",
+   "original_bytes": 356960,
+   "original_sha256": "6d1caf21697ddf65f0ba05a3d2f59ee09479dd29d71b82b0dc29e8e39fc48014",
+   "sol": 241
+  },
+  {
+   "fixture": "rad/RAD_RDR_2013_100_05_46_0241_V00.TXT.gz",
+   "source_url": "https://pds-ppi.igpp.ucla.edu/data/MSL-M-RAD-3-RDR-V1.0/DATA/SOL_00180_00269/RAD_RDR_2013_100_05_46_0241_V00.TXT",
+   "original_bytes": 9278178,
+   "original_sha256": "36564fcfac5e1d8c5168ad1abe8cf3c4952d0ddfc414632a074080d3c3d38b33",
+   "sol": 241
+  },
+  {
+   "fixture": "rad/RAD_RDR_2013_101_07_02_0242_V00.LBL.gz",
+   "source_url": "https://pds-ppi.igpp.ucla.edu/data/MSL-M-RAD-3-RDR-V1.0/DATA/SOL_00180_00269/RAD_RDR_2013_101_07_02_0242_V00.LBL",
+   "original_bytes": 267840,
+   "original_sha256": "0a4602ceca4309a3834067689b3ed17eed4c86307cf0be4e01548c13774a5905",
+   "sol": 242
+  },
+  {
+   "fixture": "rad/RAD_RDR_2013_101_07_02_0242_V00.TXT.gz",
+   "source_url": "https://pds-ppi.igpp.ucla.edu/data/MSL-M-RAD-3-RDR-V1.0/DATA/SOL_00180_00269/RAD_RDR_2013_101_07_02_0242_V00.TXT",
+   "original_bytes": 6542046,
+   "original_sha256": "7937b841d31dce4afdd5fc80f1ae2bc5aef65f6f93d0e25cc0153b393f6c9628",
+   "sol": 242
+  },
+  {
+   "fixture": "rad/RAD_RDR_2013_102_07_37_0243_V00.LBL.gz",
+   "source_url": "https://pds-ppi.igpp.ucla.edu/data/MSL-M-RAD-3-RDR-V1.0/DATA/SOL_00180_00269/RAD_RDR_2013_102_07_37_0243_V00.LBL",
+   "original_bytes": 356160,
+   "original_sha256": "67db02c71bf4e1ea9b5bee69825cc87fe3a35431cf64ab2399a28482b288fa51",
+   "sol": 243
+  },
+  {
+   "fixture": "rad/RAD_RDR_2013_102_07_37_0243_V00.TXT.gz",
+   "source_url": "https://pds-ppi.igpp.ucla.edu/data/MSL-M-RAD-3-RDR-V1.0/DATA/SOL_00180_00269/RAD_RDR_2013_102_07_37_0243_V00.TXT",
+   "original_bytes": 8902149,
+   "original_sha256": "aec27f66a346475293511d724a5a3227fe364af3c46b10bb942adc5e9092e8c5",
+   "sol": 243
+  },
+  {
+   "fixture": "rems/RME_418574781RMD02380000000_______P8.LBL.gz",
+   "source_url": "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00180_00269/SOL00238/RME_418574781RMD02380000000_______P8.LBL",
+   "original_bytes": 3030,
+   "original_sha256": "1d8dd9d6c69cd4cc7de343b26db5700f02523a9cfefe693546662b4a5aa18761",
+   "sol": 238
+  },
+  {
+   "fixture": "rems/RME_418574781RMD02380000000_______P8.TAB.gz",
+   "source_url": "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00180_00269/SOL00238/RME_418574781RMD02380000000_______P8.TAB",
+   "original_bytes": 4011276,
+   "original_sha256": "8c9c675d349bec084d564ec7db685d093c737cc3c476bd7ef0642cac614221b0",
+   "sol": 238
+  },
+  {
+   "fixture": "rems/RME_418663556RMD02390000000_______P8.LBL.gz",
+   "source_url": "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00180_00269/SOL00239/RME_418663556RMD02390000000_______P8.LBL",
+   "original_bytes": 3030,
+   "original_sha256": "e6cb288ba63421ce09b655acbc1160f02fc1fce1ca47246b8bc0893b7c7dca3b",
+   "sol": 239
+  },
+  {
+   "fixture": "rems/RME_418663556RMD02390000000_______P8.TAB.gz",
+   "source_url": "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00180_00269/SOL00239/RME_418663556RMD02390000000_______P8.TAB",
+   "original_bytes": 4011276,
+   "original_sha256": "001bd50bc621c76bf86327ad4982b2b37f646d1798c2ac4e2d8b4aeb264d4414",
+   "sol": 239
+  },
+  {
+   "fixture": "rems/RME_418752330RMD02400000000_______P8.LBL.gz",
+   "source_url": "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00180_00269/SOL00240/RME_418752330RMD02400000000_______P8.LBL",
+   "original_bytes": 3030,
+   "original_sha256": "dd7656ea88ef0bd2e73f83d4a22d75c7a9dfcb73601c06933b7dc313a9533dc1",
+   "sol": 240
+  },
+  {
+   "fixture": "rems/RME_418752330RMD02400000000_______P8.TAB.gz",
+   "source_url": "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00180_00269/SOL00240/RME_418752330RMD02400000000_______P8.TAB",
+   "original_bytes": 4011276,
+   "original_sha256": "a273d1414b65a53dfd1394e1b36dc0e3beee668a007d026755f2f3e8597042c2",
+   "sol": 240
+  },
+  {
+   "fixture": "rems/RME_418841105RMD02410000000_______P8.LBL.gz",
+   "source_url": "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00180_00269/SOL00241/RME_418841105RMD02410000000_______P8.LBL",
+   "original_bytes": 3030,
+   "original_sha256": "f58fb597c1af47e0b026a84f9ca97f72dd49931b3140ab64c806b11cc6372c62",
+   "sol": 241
+  },
+  {
+   "fixture": "rems/RME_418841105RMD02410000000_______P8.TAB.gz",
+   "source_url": "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00180_00269/SOL00241/RME_418841105RMD02410000000_______P8.TAB",
+   "original_bytes": 4011276,
+   "original_sha256": "a59395e7e7b3270148eccd0dc7afbc6c273701b0e98718fed1c4a931e1196701",
+   "sol": 241
+  },
+  {
+   "fixture": "rems/RME_418929879RMD02420000000_______P8.LBL.gz",
+   "source_url": "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00180_00269/SOL00242/RME_418929879RMD02420000000_______P8.LBL",
+   "original_bytes": 3030,
+   "original_sha256": "d635a6420f011ffdef89f1427afc70732c356f479832ba04084b03c4aba9316b",
+   "sol": 242
+  },
+  {
+   "fixture": "rems/RME_418929879RMD02420000000_______P8.TAB.gz",
+   "source_url": "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00180_00269/SOL00242/RME_418929879RMD02420000000_______P8.TAB",
+   "original_bytes": 4011276,
+   "original_sha256": "c1738b4e06851f132405e39820e63577a9c53480167dfe5c421556773296f27c",
+   "sol": 242
+  },
+  {
+   "fixture": "rems/RME_419018653RMD02430000000_______P8.LBL.gz",
+   "source_url": "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00180_00269/SOL00243/RME_419018653RMD02430000000_______P8.LBL",
+   "original_bytes": 3030,
+   "original_sha256": "d826694516490d64626b7c870540c69569ed8852d9c04b1f74b1d6f2e42210c9",
+   "sol": 243
+  },
+  {
+   "fixture": "rems/RME_419018653RMD02430000000_______P8.TAB.gz",
+   "source_url": "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00180_00269/SOL00243/RME_419018653RMD02430000000_______P8.TAB",
+   "original_bytes": 4011276,
+   "original_sha256": "7a8651c9bb3f78d0bc23db1aeac4b06994ef563a1a457bcd329a2a61efca036e",
+   "sol": 243
+  }
+ ]
+}

@@ -1,0 +1,38 @@
+# Mission objectives are structured configuration, not prose.
+# mission_relevance(event) = max( Σ_type P(type) · type_weights[type],  max_channel channel_weights[c] · 1[c flagged] )
+# `priority_weights` (optional) overrides the global priority weights while this objective is active.
+# Changing objective re-scores stored decisions; the raw pipeline and the decision engine are not re-run.
+
+balanced_science:
+  name: Balanced Science
+  description: Retain the scientifically strongest events across all instruments with no single emphasis.
+  type_weights: {nominal: 0.05, atmospheric: 0.8, radiation: 0.8, thermal: 0.6, instrument_anomaly: 0.4, unknown: 0.7}
+  channel_weights: {}
+
+atmospheric_science:
+  name: Atmospheric Science
+  description: >
+    Prioritize unusual atmospheric phenomena around Gale Crater. Pressure transients (convective
+    vortices), humidity and UV changes: very high. Radiation: medium. Routine temperature variation: low.
+  type_weights: {nominal: 0.05, atmospheric: 1.0, radiation: 0.5, thermal: 0.3, instrument_anomaly: 0.2, unknown: 0.6}
+  channel_weights: {pressure: 1.0, uv_abc: 0.9, rel_humidity: 0.8}
+
+radiation_monitoring:
+  name: Radiation Monitoring
+  description: Surface radiation environment first — solar energetic particle events and dose-rate changes.
+  type_weights: {nominal: 0.05, atmospheric: 0.3, radiation: 1.0, thermal: 0.2, instrument_anomaly: 0.3, unknown: 0.5}
+  channel_weights: {dose_b: 1.0, dose_e: 1.0}
+
+engineering_health:
+  name: Engineering Health
+  description: Sensor health first — stuck values, dropouts, noise and discontinuities must reach the ground.
+  type_weights: {nominal: 0.05, atmospheric: 0.2, radiation: 0.2, thermal: 0.3, instrument_anomaly: 1.0, unknown: 0.6}
+  channel_weights: {}
+  priority_weights: {science_value: 0.2, mission_relevance: 0.45, anomaly_strength: 0.25, novelty: 0.10}
+
+rare_event_discovery:
+  name: Rare Event Discovery
+  description: Favour events unlike anything seen earlier in the segment, regardless of instrument.
+  type_weights: {nominal: 0.05, atmospheric: 0.6, radiation: 0.6, thermal: 0.6, instrument_anomaly: 0.4, unknown: 1.0}
+  channel_weights: {}
+  priority_weights: {science_value: 0.25, mission_relevance: 0.15, anomaly_strength: 0.25, novelty: 0.35}

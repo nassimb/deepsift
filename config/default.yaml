@@ -1,0 +1,79 @@
+# DEEPSIFT default configuration.
+# Every value here is a researcher-editable assumption. Changes made through the API are
+# versioned (config_version = sha256 of the canonical JSON) and written to the audit log.
+
+mission: msl_curiosity
+
+detection:
+  rems_window_s: 300            # REMS windows (the MODRDR product samples at ~1 Hz in bursts)
+  lmst_bin_minutes: 30          # diurnal baseline bin width
+  baseline_sols: 7              # trailing sols used for the same-local-time baseline
+  min_samples: 30               # windows with fewer samples are not analysed
+  z_threshold: 4.0              # |robust z| vs diurnal baseline that makes a window a candidate
+  rad_z_threshold: 3.5          # RAD dose windows use their own threshold
+  dip_threshold_pa: 0.75        # Pa drop below a 60 s running median (convective-vortex signature); ~p99.8 of real windows
+  flat_fraction_threshold: 0.95 # stuck-value flag
+  missing_fraction_threshold: 0.5
+  noise_ratio_threshold: 4.0    # sample-to-sample noise far above the baseline → noisy sensor
+  merge_gap_s: 900              # adjacent candidate windows closer than this merge into one event
+  coincidence_window_s: 3600
+
+gating:
+  auto_threshold: 0.90          # ≥ → automatic routing
+  uncertain_threshold: 0.70     # [uncertain, auto) → keep, flag UNCERTAIN, floor at SUMMARY_ONLY
+  deep_request_threshold: 0.60  # P(needs_deep_analysis) at or above → escalate if a provider exists
+
+priority:
+  weights:
+    science_value: 0.35
+    mission_relevance: 0.30
+    anomaly_strength: 0.20
+    novelty: 0.15
+  anomaly_scale: 6.0            # anomaly_strength = 1 − exp(−deviation/scale)
+  confidence_penalty: 0.5       # utility ×= 1 − λ·(1 − confidence)
+  cost_exponent: 0.5            # scheduler density = utility / KB^β
+  thresholds:
+    full_data: 0.55
+    compress: 0.42
+    summary_only: 0.22
+  engine_action_policy: upgrade_only   # ignore | upgrade_only — engine may raise, never lower, by one level
+  instrument_failure_floor: 0.6        # P(instrument failure) ≥ → at least SUMMARY_ONLY (engineering safety)
+
+compression:
+  decimation_factor: 8          # COMPRESS keeps 1 of N records, then zlib
+  zlib_level: 6
+  # Proxy fidelity of each product type — an ASSUMPTION used by the science-value proxy.
+  fidelity:
+    full_data: 1.0
+    compress: 0.5
+    summary_only: 0.15
+    discard: 0.0
+
+downlink:
+  passes_per_sol: 2
+  pass_bytes: 32768             # 32 KiB per relay pass (simulation parameter, not Curiosity's real allocation)
+  storage_bytes: 1048576        # 1 MiB onboard triage-product buffer
+  background_summary: true      # nominal windows are reduced to per-sol summaries
+  protect_utility: null         # products with utility ≥ this are degraded last (null → FULL-DATA threshold)
+
+blackout:
+  duration_sols: 3.0
+  storage_bytes: 196608         # 192 KiB available during blackout
+
+decision_engine:
+  kind: auto                    # auto (jev if TYPESAFE_API_KEY is set, else mock) | mock | jev
+  jev_model: jev-latest
+  price_per_mtok_input_usd: 0.042   # TypeSafe published price (Sept 2026); output tokens free
+  timeout_s: 10
+  max_concurrency: 8
+
+deep_analysis:
+  provider: none                # none | claude (requires ANTHROPIC_API_KEY) — explicit opt-in: it is the expensive path
+  model: claude-opus-5
+
+objective: balanced_science
+
+benchmark:
+  random_seed: 7
+  injection_seed: 11
+  injections_per_sol: 1.0

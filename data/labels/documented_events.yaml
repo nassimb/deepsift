@@ -1,0 +1,19 @@
+# DOCUMENTED_EVENT labels. Each entry must cite a public source. Time bounds are set by the
+# DEEPSIFT maintainers and are deliberately generous; they are NOT taken from the cited paper.
+# Status "needs_verification" means a maintainer should confirm the bounds against the source
+# before any result using this label is published.
+
+- id: DOC-SEP-2013-04-11
+  instrument: RAD
+  t_start: "2013-04-11T06:00:00Z"
+  t_end: "2013-04-12T12:00:00Z"
+  expected_type: radiation
+  severity: high
+  description: >
+    Solar energetic particle (SEP) event of 2013 April 11 (MSL sol 242), observed at the Martian
+    surface by RAD. In the PDS RAD RDR used here, total dose rate B rises from a ~9.1 µGy/h baseline
+    to a 12.13 µGy/h peak on sol 242.
+  reference: >
+    Hassler, D. M. et al. (2014), Mars' Surface Radiation Environment Measured with the Mars Science
+    Laboratory's Curiosity Rover, Science 343(6169), 1244797 — reports the sol 242 SEP event.
+  status: needs_verification
