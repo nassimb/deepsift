@@ -54,7 +54,7 @@ export function SourceBadges({ status, replay = true }: { status: Status | null;
       <span
         className="chip"
         style={{ color: eng?.is_real_model ? "var(--ink-2)" : "var(--s-warn)", borderColor: eng?.is_real_model ? undefined : "#5a4412" }}
-        title={eng?.is_real_model ? "Decisions from a real model" : "Heuristic stand-in; not Jev. Set TYPESAFE_API_KEY to use Jev."}
+        title={eng?.is_real_model ? "Decisions from a real model" : "Heuristic stand-in, not Jev. Jev was evaluated in Phase 2 and is not in the default ranking path."}
       >
         ENGINE {eng?.is_real_model ? eng.name.toUpperCase() : "MOCK · HEURISTIC"}
       </span>

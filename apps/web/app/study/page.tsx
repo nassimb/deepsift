@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Inspector } from "@/components/Inspector";
+import { JevStatus, jevRunLabel } from "@/components/JevStatus";
 import { Section } from "@/components/Kpi";
 import { Nav, SourceBadges, useStatus } from "@/components/Nav";
 import { API, api } from "@/lib/api";
@@ -142,7 +143,7 @@ export default function StudyPage() {
         <select value={rid ?? ""} onChange={(e) => setRid(e.target.value)}>
           {runs.map((r) => (
             <option key={r.run_id} value={r.run_id}>
-              {r.run_id} · {r.split.toUpperCase()} · {r.jev_status.startsWith("enabled") ? "Jev" : "no Jev"}
+              {r.run_id} · {r.split.toUpperCase()} · {r.jev_status.startsWith("enabled") ? "Jev in this run" : "Jev not in this run"}
             </option>
           ))}
         </select>
@@ -156,7 +157,7 @@ export default function StudyPage() {
         {run && (
           <span className="mono text-[10px] text-ink-3 ml-auto">
             {run.split.toUpperCase()} · git {run.git?.commit?.slice(0, 8)}
-            {run.git?.dirty ? "-dirty" : ""} · cfg {run.config_version} · {run.jev_status}
+            {run.git?.dirty ? "-dirty" : ""} · cfg {run.config_version} · {jevRunLabel(run.jev_status)}
           </span>
         )}
       </div>
@@ -164,12 +165,13 @@ export default function StudyPage() {
 
       <div className="flex-1 min-h-0 grid grid-cols-[minmax(0,1fr)_380px] gap-px bg-line">
         <div className="bg-bg p-3 space-y-3 overflow-y-auto">
+          <JevStatus compact={tab !== "Benchmark"} />
           {tab === "Benchmark" && res && (
             <>
               <div className="panel p-2 mono text-[11px] text-ink-2">
                 Measured trade-offs at the reference budget (0.5 % of generated raw bytes). No strategy is ranked — pick the operating point that matters.
                 Documented events and synthetic injections are never pooled. RANDOM shows mean over 30 seeds [95 % CI].
-                {!res.jev_status.startsWith("enabled") && <span style={{ color: "var(--s-warn)" }}> Jev: {res.jev_status}.</span>}
+                {!res.jev_status.startsWith("enabled") && <span className="text-ink-3"> Jev not evaluated in this run — the project-level Jev result is shown above.</span>}
               </div>
               <TradeoffTable title="Documented events (real)" rows={res.real_reference} note="End-to-end recall = detection recall (frozen candidate filter, identical for all strategies) × retention given detection. precision (lb) is a lower bound: unlabelled real phenomena exist. Coverage = fraction of the labelled event's raw data covered by retained products. n = 14 on test: too few for strong claims." />
               <TradeoffTable title="Synthetic stress test" rows={res.synthetic_reference} note="injections placed in scored sols only, magnitudes in σ of the local background; ORACLE — NOT DEPLOYABLE — is a label-aware upper bound." />

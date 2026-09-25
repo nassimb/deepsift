@@ -169,8 +169,8 @@ export default function ExperimentsPage() {
               </div>
               {!exp.engine.is_real_model && (
                 <div className="panel p-2 mono text-[11px]" style={{ color: "var(--s-warn)", borderColor: "#5a4412" }}>
-                  ENGINE ROWS USE THE MOCK HEURISTIC, NOT JEV. They show the pipeline works end-to-end; they are not evidence about Jev. Set
-                  TYPESAFE_API_KEY (decision_engine.kind: auto) to measure the real model.
+                  ENGINE ROWS USE THE MOCK HEURISTIC, NOT JEV. They show the pipeline works end-to-end; they are not evidence about Jev. Jev
+                  itself was evaluated on validation in Phase 2 (see Study) and is not in the default ranking path.
                 </div>
               )}
 

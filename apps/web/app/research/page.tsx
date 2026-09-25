@@ -59,7 +59,7 @@ export default function Research() {
             <li><b className="text-ink font-medium">Random sampling</b> of instrument windows, full products, seeded.</li>
             <li><b className="text-ink font-medium">Threshold rules</b> — the deterministic candidate filter plus rule-based type and value; identical to the pipeline&apos;s fallback path.</li>
             <li><b className="text-ink font-medium">Statistical anomaly detection</b> — all windows ranked by multivariate robust deviation, independent of the candidate filter.</li>
-            <li><b className="text-ink font-medium">Decision engine</b> — candidates → engine → gating → priority. Jev when a key is configured, otherwise a labelled heuristic mock.</li>
+            <li><b className="text-ink font-medium">Decision engine</b> — candidates → engine → gating → priority. A labelled heuristic mock by default; Jev was evaluated in Phase 2 and discontinued for the ranking role (see Study).</li>
             <li><b className="text-ink font-medium">Engine + deep analysis</b> — escalations go to a DeepAnalysisProvider; reported UNAVAILABLE without one.</li>
           </ol>
           <p>All strategies use the same greedy byte allocator and the same budget (passes/sol × bytes/pass × sols).</p>

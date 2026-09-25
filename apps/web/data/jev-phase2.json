@@ -1,0 +1,113 @@
+{
+ "status": "EVALUATED \u00b7 NOT RETAINED IN DEFAULT RANKING PATH",
+ "model": "typesafe/jev-1.13",
+ "transport": "OpenRouter",
+ "split": "validation",
+ "tag": "phase2-complete",
+ "conclusion": "Jev 1.13 was evaluated via OpenRouter during Phase 2. On validation, it did not provide a measurable improvement in candidate-event ranking over deterministic baselines or the local edge model. Under the pre-registered stop rule, Jev was discontinued for the ranking role.",
+ "scope": "This result applies to this experiment and this ranking role only, not to Jev in general. All Jev runs, call logs and the cache are preserved for reproducibility.",
+ "evidence": {
+  "run_id": "20260925T094903-jev-v3-pilot-84af",
+  "file": "artifacts/runs/20260925T094903-jev-v3-pilot-84af/analysis.json",
+  "events": 598,
+  "high_severity_labels": 100,
+  "auroc": {
+   "RULES": 0.5832760989010989,
+   "LOCAL_EDGE": 0.6091002747252747,
+   "JEV_V3_NO_OBJECTIVE": 0.5826350732600732,
+   "JEV_V3_WITH_OBJECTIVE": 0.588907967032967
+  },
+  "auroc_diff_vs_rules": {
+   "no_objective": {
+    "diff": -0.0006410256410256387,
+    "ci95": [
+     -0.02629880018866502,
+     0.026620432801428038
+    ]
+   },
+   "with_objective": {
+    "diff": 0.005631868131868112,
+    "ci95": [
+     -0.02005463745464951,
+     0.03720910703201871
+    ]
+   }
+  },
+  "auroc_diff_vs_local_edge": {
+   "no_objective": {
+    "diff": -0.026465201465201482,
+    "ci95": [
+     -0.08587556873074852,
+     0.044062132638219634
+    ]
+   },
+   "with_objective": {
+    "diff": -0.02019230769230773,
+    "ci95": [
+     -0.09037913036846297,
+     0.05288144199035295
+    ]
+   }
+  }
+ },
+ "history": [
+  {
+   "run_id": "20260925T090044-jev-probe-6ded",
+   "stage": "probe",
+   "what": "single authenticated request (OpenRouter)",
+   "live_calls": 1,
+   "cost_usd": 6.3e-05,
+   "models_returned": [
+    "typesafe/jev-1.13-20260917"
+   ]
+  },
+  {
+   "run_id": "20260925T090119-jev-smoke-b935",
+   "stage": "smoke",
+   "what": "30 validation events, operational checks",
+   "live_calls": 38,
+   "cost_usd": 0.002325,
+   "models_returned": [
+    "typesafe/jev-1.13-20260917"
+   ]
+  },
+  {
+   "run_id": "20260925T091126-jev-pilot-7351",
+   "stage": "pilot q1",
+   "what": "300 validation events \u00d7 5 variants \u2014 degenerate answers",
+   "live_calls": 1565,
+   "cost_usd": 0.081459,
+   "models_returned": [
+    "typesafe/jev-1.13-20260917"
+   ]
+  },
+  {
+   "run_id": "20260925T092458-jev-wording-q2-d559",
+   "stage": "wording q2",
+   "what": "150 events \u2014 mixed effect, not adopted",
+   "live_calls": 130,
+   "cost_usd": 0.008421,
+   "models_returned": [
+    "typesafe/jev-1.13-20260917"
+   ]
+  },
+  {
+   "run_id": "20260925T094903-jev-v3-pilot-84af",
+   "stage": "V3 pilot",
+   "what": "598 events, science-only schema \u2014 healthy outputs, no ordering gain",
+   "live_calls": 1500,
+   "cost_usd": 0.049948,
+   "models_returned": [
+    "typesafe/jev-1.13-20260917"
+   ]
+  }
+ ],
+ "totals": {
+  "live_calls": 3234,
+  "cost_usd": 0.142216
+ },
+ "docs": [
+  "docs/jev-model-selection.md",
+  "docs/jev-evaluation.md"
+ ]
+}
