@@ -1,0 +1,422 @@
+{
+ "version": "phase3-v1",
+ "camera": "MSL Navcam (MSLNAV_0XXX raw EDR)",
+ "selected_at": "2026-09-25T13:12:00.977767+00:00",
+ "git_commit_at_selection": "58ff832fccf84a5e666df2eb48ba5d6ff20c6eec",
+ "development": {
+  "sols": [
+   412,
+   430
+  ],
+  "note": "Phase 2 validation SEP segment; approved 2026-09-25"
+ },
+ "validation": {
+  "sols": [
+   779,
+   820
+  ],
+  "note": "Phase 2 validation FD segment; approved 2026-09-25"
+ },
+ "test": {
+  "sols": [
+   950,
+   979
+  ],
+  "note": "held out; selected by the rule below from listings only; immutable"
+ },
+ "selection_rule": {
+  "text": "fixed by the user, 2026-09-25) and the operational definitions declared here BEFORE the scan runs:\n  Scan windows [s, s+29] for s = 950, 951, \u2026 and take the FIRST that satisfies ALL of:\n  R1 outside every Phase 2 interval \u2014 the calibration / validation / test EVALUATION sols and their warm-up sols\n  R2 \u2265 10 sols with \u2265 1 Navcam acquisition\n  R3 \u2265 500 Navcam acquisitions in total. ACQUISITION = one capture instant (unique spacecraft clock in the EDR file\n     name) with at least one non-thumbnail EDR product; a stereo left/right pair is ONE acquisition (as in Phase 3 M3)\n  R4 REMS available: a REMS MODRDR (RMD) product listed for \u2265 27 of the 30 sols (90 %)\n  R5 RAD available:  a RAD RDR product listed for \u2265 27 of the 30 sols (90 %)\n  R6 not inside a known solar-conjunction operational gap: the window must not overlap the command-moratorium dates\n     below (UTC dates converted to sols with the sol\u2194UTC pairs in the RAD RDR product names)\n  R7 reproducibly usable: every sol's Navcam directory listing is retrievable (HTTP 200, or 404 = no products);\n     every Navcam .IMG listed has a matching .LBL; no listed .IMG has size 0; the archive index\n     MSLNAV_0XXX/INDEX/INDEX.TAB answers (HEAD 200)\n",
+  "parameters": {
+   "start": 950,
+   "length": 30,
+   "min_active_sols": 10,
+   "min_acquisitions": 500,
+   "telemetry_min_sols": 27
+  },
+  "conjunctions": [
+   {
+    "start": "2013-04-04",
+    "end": "2013-05-01",
+    "source": "https://www.jpl.nasa.gov/news/for-moratorium-on-sending-commands-to-mars-blame-the-sun/",
+    "sols": [
+     235,
+     262
+    ]
+   },
+   {
+    "start": "2015-06-07",
+    "end": "2015-06-21",
+    "source": "https://www.jpl.nasa.gov/news/mars-missions-to-pause-commanding-in-june-due-to-sun/",
+    "sols": [
+     1008,
+     1022
+    ]
+   }
+  ],
+  "phase2_sols_excluded": [
+   232,
+   2105,
+   233
+  ],
+  "navcam_index_head_status": 200
+ },
+ "evidence": {
+  "windows_evaluated": [
+   {
+    "start": 950,
+    "R1_outside_phase2": true,
+    "R6_no_conjunction": true,
+    "R2_active_sols": 25,
+    "R3_acquisitions": 1194,
+    "R4_rems_sols": 29,
+    "R5_rad_sols": 30,
+    "R7_reproducible": true,
+    "passed": true
+   }
+  ],
+  "test_per_sol": {
+   "950": {
+    "http": 200,
+    "products": 268,
+    "acquisitions": 67,
+    "img_without_lbl": 0,
+    "zero_size": 0,
+    "rems": true,
+    "rad": true
+   },
+   "951": {
+    "http": 200,
+    "products": 196,
+    "acquisitions": 53,
+    "img_without_lbl": 0,
+    "zero_size": 0,
+    "rems": true,
+    "rad": true
+   },
+   "952": {
+    "http": 200,
+    "products": 437,
+    "acquisitions": 109,
+    "img_without_lbl": 0,
+    "zero_size": 0,
+    "rems": true,
+    "rad": true
+   },
+   "953": {
+    "http": 404,
+    "products": 0,
+    "acquisitions": 0,
+    "img_without_lbl": 0,
+    "zero_size": 0,
+    "rems": true,
+    "rad": true
+   },
+   "954": {
+    "http": 200,
+    "products": 28,
+    "acquisitions": 11,
+    "img_without_lbl": 0,
+    "zero_size": 0,
+    "rems": true,
+    "rad": true
+   },
+   "955": {
+    "http": 200,
+    "products": 8,
+    "acquisitions": 2,
+    "img_without_lbl": 0,
+    "zero_size": 0,
+    "rems": true,
+    "rad": true
+   },
+   "956": {
+    "http": 200,
+    "products": 470,
+    "acquisitions": 130,
+    "img_without_lbl": 0,
+    "zero_size": 0,
+    "rems": false,
+    "rad": true
+   },
+   "957": {
+    "http": 200,
+    "products": 412,
+    "acquisitions": 109,
+    "img_without_lbl": 0,
+    "zero_size": 0,
+    "rems": true,
+    "rad": true
+   },
+   "958": {
+    "http": 200,
+    "products": 230,
+    "acquisitions": 59,
+    "img_without_lbl": 0,
+    "zero_size": 0,
+    "rems": true,
+    "rad": true
+   },
+   "959": {
+    "http": 404,
+    "products": 0,
+    "acquisitions": 0,
+    "img_without_lbl": 0,
+    "zero_size": 0,
+    "rems": true,
+    "rad": true
+   },
+   "960": {
+    "http": 200,
+    "products": 314,
+    "acquisitions": 80,
+    "img_without_lbl": 0,
+    "zero_size": 0,
+    "rems": true,
+    "rad": true
+   },
+   "961": {
+    "http": 200,
+    "products": 24,
+    "acquisitions": 12,
+    "img_without_lbl": 0,
+    "zero_size": 0,
+    "rems": true,
+    "rad": true
+   },
+   "962": {
+    "http": 200,
+    "products": 124,
+    "acquisitions": 51,
+    "img_without_lbl": 0,
+    "zero_size": 0,
+    "rems": true,
+    "rad": true
+   },
+   "963": {
+    "http": 200,
+    "products": 168,
+    "acquisitions": 46,
+    "img_without_lbl": 0,
+    "zero_size": 0,
+    "rems": true,
+    "rad": true
+   },
+   "964": {
+    "http": 200,
+    "products": 245,
+    "acquisitions": 61,
+    "img_without_lbl": 0,
+    "zero_size": 0,
+    "rems": true,
+    "rad": true
+   },
+   "965": {
+    "http": 404,
+    "products": 0,
+    "acquisitions": 0,
+    "img_without_lbl": 0,
+    "zero_size": 0,
+    "rems": true,
+    "rad": true
+   },
+   "966": {
+    "http": 200,
+    "products": 96,
+    "acquisitions": 48,
+    "img_without_lbl": 0,
+    "zero_size": 0,
+    "rems": true,
+    "rad": true
+   },
+   "967": {
+    "http": 200,
+    "products": 484,
+    "acquisitions": 121,
+    "img_without_lbl": 0,
+    "zero_size": 0,
+    "rems": true,
+    "rad": true
+   },
+   "968": {
+    "http": 200,
+    "products": 24,
+    "acquisitions": 12,
+    "img_without_lbl": 0,
+    "zero_size": 0,
+    "rems": true,
+    "rad": true
+   },
+   "969": {
+    "http": 404,
+    "products": 0,
+    "acquisitions": 0,
+    "img_without_lbl": 0,
+    "zero_size": 0,
+    "rems": true,
+    "rad": true
+   },
+   "970": {
+    "http": 404,
+    "products": 0,
+    "acquisitions": 0,
+    "img_without_lbl": 0,
+    "zero_size": 0,
+    "rems": true,
+    "rad": true
+   },
+   "971": {
+    "http": 200,
+    "products": 148,
+    "acquisitions": 37,
+    "img_without_lbl": 0,
+    "zero_size": 0,
+    "rems": true,
+    "rad": true
+   },
+   "972": {
+    "http": 200,
+    "products": 16,
+    "acquisitions": 8,
+    "img_without_lbl": 0,
+    "zero_size": 0,
+    "rems": true,
+    "rad": true
+   },
+   "973": {
+    "http": 200,
+    "products": 24,
+    "acquisitions": 12,
+    "img_without_lbl": 0,
+    "zero_size": 0,
+    "rems": true,
+    "rad": true
+   },
+   "974": {
+    "http": 200,
+    "products": 8,
+    "acquisitions": 2,
+    "img_without_lbl": 0,
+    "zero_size": 0,
+    "rems": true,
+    "rad": true
+   },
+   "975": {
+    "http": 200,
+    "products": 12,
+    "acquisitions": 3,
+    "img_without_lbl": 0,
+    "zero_size": 0,
+    "rems": true,
+    "rad": true
+   },
+   "976": {
+    "http": 200,
+    "products": 468,
+    "acquisitions": 117,
+    "img_without_lbl": 0,
+    "zero_size": 0,
+    "rems": true,
+    "rad": true
+   },
+   "977": {
+    "http": 200,
+    "products": 16,
+    "acquisitions": 8,
+    "img_without_lbl": 0,
+    "zero_size": 0,
+    "rems": true,
+    "rad": true
+   },
+   "978": {
+    "http": 200,
+    "products": 112,
+    "acquisitions": 28,
+    "img_without_lbl": 0,
+    "zero_size": 0,
+    "rems": true,
+    "rad": true
+   },
+   "979": {
+    "http": 200,
+    "products": 16,
+    "acquisitions": 8,
+    "img_without_lbl": 0,
+    "zero_size": 0,
+    "rems": true,
+    "rad": true
+   }
+  },
+  "test_totals": {
+   "active_sols": 25,
+   "acquisitions": 1194,
+   "products_listed": 4348,
+   "rems_sols": 29,
+   "rad_sols": 30
+  }
+ },
+ "pds_listing_sha256": {
+  "https://pds-ppi.igpp.ucla.edu/data/MSL-M-RAD-3-RDR-V1.0/DATA/": "ea26820a184f078cf9e71f07d2b6064e940aeb22833afcc90d8beef46e121212",
+  "https://pds-ppi.igpp.ucla.edu/data/MSL-M-RAD-3-RDR-V1.0/DATA/SOL_00090_00179/": "1c7ae53d7c69ae18ebeafced8975b0c69e9d3315ca84a02a2f9df30712dec9c8",
+  "https://pds-ppi.igpp.ucla.edu/data/MSL-M-RAD-3-RDR-V1.0/DATA/SOL_00180_00269/": "edf78079b79819725c2a1b47a82ccdbe8aa298c4ba15c6d6a31ee12dc4c2d838",
+  "https://pds-ppi.igpp.ucla.edu/data/MSL-M-RAD-3-RDR-V1.0/DATA/SOL_00270_00359/": "d84755ddaf2059ad0c09b65ab1e8bbcc10ba08c152c536c46abee1d0086c4a71",
+  "https://pds-ppi.igpp.ucla.edu/data/MSL-M-RAD-3-RDR-V1.0/DATA/SOL_00805_00938/": "1ef0d08f873bb49d907d407aa12583afde3726614336f080fba4c23992066fc1",
+  "https://pds-ppi.igpp.ucla.edu/data/MSL-M-RAD-3-RDR-V1.0/DATA/SOL_00939_01062/": "1f5898a8695fc25872e944a1a88d3ff6843b820b0741d6f2bf101694a7c74b0b",
+  "https://pds-ppi.igpp.ucla.edu/data/MSL-M-RAD-3-RDR-V1.0/DATA/SOL_01063_01159/": "9c688c8d927014a878d0694fdeba24c9d4dde7e3c12abbe65ee304cb017167c8",
+  "https://planetarydata.jpl.nasa.gov/img/data/msl/MSLNAV_0XXX/DATA/SOL00950/": "3bd356473199e8a42d350deb5f143fcf041aed425b2b5ed59302a1efa34e6148",
+  "https://planetarydata.jpl.nasa.gov/img/data/msl/MSLNAV_0XXX/DATA/SOL00951/": "b4c3a2240f18b8cb5b9fd9e7ae1b12f55a6d9d4980a98eda05d2a849773c3b2a",
+  "https://planetarydata.jpl.nasa.gov/img/data/msl/MSLNAV_0XXX/DATA/SOL00952/": "cbfa91c6f298bde689adee2dd5fed429743124d774def5ad32e383d92bc1ada5",
+  "https://planetarydata.jpl.nasa.gov/img/data/msl/MSLNAV_0XXX/DATA/SOL00954/": "ff527c73093a9704e81222ca36a13899380831d580676afa9061e5df47ca5a59",
+  "https://planetarydata.jpl.nasa.gov/img/data/msl/MSLNAV_0XXX/DATA/SOL00955/": "a139e0ea6d8036866294a509e38e92e5b3583c3340d48a5d3b49a2100c2d3482",
+  "https://planetarydata.jpl.nasa.gov/img/data/msl/MSLNAV_0XXX/DATA/SOL00956/": "03a5ae1c705e598771c3ab2c19974f430822ed9ebc8e5705cb7dbb1e76e255cd",
+  "https://planetarydata.jpl.nasa.gov/img/data/msl/MSLNAV_0XXX/DATA/SOL00957/": "0254c9bcc8bf01f9d78612b1ab3699dd374b0e18742264ab9025334ee967860e",
+  "https://planetarydata.jpl.nasa.gov/img/data/msl/MSLNAV_0XXX/DATA/SOL00958/": "419754319a25016f4f24e645dabab43696bf539ef8a6c377b21b30ca32f4a9e1",
+  "https://planetarydata.jpl.nasa.gov/img/data/msl/MSLNAV_0XXX/DATA/SOL00960/": "168d1b99df0960bb8b4421016eccaeb80b84b81af92410aa7d45d67711e84881",
+  "https://planetarydata.jpl.nasa.gov/img/data/msl/MSLNAV_0XXX/DATA/SOL00961/": "1974d210967c410f65d04a1db53c7e0fef96ca9e87a72c4de6059164628cefc0",
+  "https://planetarydata.jpl.nasa.gov/img/data/msl/MSLNAV_0XXX/DATA/SOL00962/": "a4d54666e676b6818cb2f871023bac257350468850d0b341c169cf6fea85e72b",
+  "https://planetarydata.jpl.nasa.gov/img/data/msl/MSLNAV_0XXX/DATA/SOL00963/": "28ce8330bab5aecd168c0cc44a8353b59e37c8a724d4b4fe8490306b7301e3a8",
+  "https://planetarydata.jpl.nasa.gov/img/data/msl/MSLNAV_0XXX/DATA/SOL00964/": "06435e53be57eb46cf986c35cccb98a81ed3082fd5108ec9d5be6d609a3ac13f",
+  "https://planetarydata.jpl.nasa.gov/img/data/msl/MSLNAV_0XXX/DATA/SOL00966/": "177cca7db4ad5cee84a4297e52d58145d6c1420e72d29a0b462b3e867da995e6",
+  "https://planetarydata.jpl.nasa.gov/img/data/msl/MSLNAV_0XXX/DATA/SOL00967/": "fc3dafa4b93153040cbfa75d4f12a51a603ad4a76f8f91768fed9404b2dd8a82",
+  "https://planetarydata.jpl.nasa.gov/img/data/msl/MSLNAV_0XXX/DATA/SOL00968/": "adabae6aded06ded02e66efd6e666287f1a75953b13458dedf7fb63172989878",
+  "https://planetarydata.jpl.nasa.gov/img/data/msl/MSLNAV_0XXX/DATA/SOL00971/": "46a5824925e9ab076080e367586efd05df78e402c0c1f664cae8b2dea83a8ae8",
+  "https://planetarydata.jpl.nasa.gov/img/data/msl/MSLNAV_0XXX/DATA/SOL00972/": "faaf21757ffa1622eb324128fe4f864e9cfb1afc76a2314aef86b2f6ea18de81",
+  "https://planetarydata.jpl.nasa.gov/img/data/msl/MSLNAV_0XXX/DATA/SOL00973/": "48ea0535d52beac9be61b8a76135f3149e057a5098bfa03b369387233b63d753",
+  "https://planetarydata.jpl.nasa.gov/img/data/msl/MSLNAV_0XXX/DATA/SOL00974/": "60d7580607c024397b4a2d59f0a26473eb9fab5fd0a56c97bfb7a951e3d109a8",
+  "https://planetarydata.jpl.nasa.gov/img/data/msl/MSLNAV_0XXX/DATA/SOL00975/": "f6924ea15363e58b2e6728cb714aec6f82ea8df8962c3227c9d5fe17aaa2d5c4",
+  "https://planetarydata.jpl.nasa.gov/img/data/msl/MSLNAV_0XXX/DATA/SOL00976/": "930c633ae6cbd5366088c0f75d4461f1150614c5e07a9d98d45e2ec6b68572a5",
+  "https://planetarydata.jpl.nasa.gov/img/data/msl/MSLNAV_0XXX/DATA/SOL00977/": "bb557035ae221f733381e2be5b67bbe5b5ead814ee7c3c3b238a8004061adc1f",
+  "https://planetarydata.jpl.nasa.gov/img/data/msl/MSLNAV_0XXX/DATA/SOL00978/": "394d2adb812e90b0912c571c91fe4d0c4fdd3438824b03494ae139f4f04e325e",
+  "https://planetarydata.jpl.nasa.gov/img/data/msl/MSLNAV_0XXX/DATA/SOL00979/": "541e90faf0b56da5ba2e3aef9b8945ffe3182ebf421d0fc54588306a74f9569e",
+  "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/": "664ad83d13482727a71dad06123e8c719059f76f1860002339ac45547d28c8e3",
+  "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00939_01062/SOL00950/": "0a95b36aa7a4bcf1966ba07030ab162c7c9c24ba62d7ed2c561a43aa71b5d5d6",
+  "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00939_01062/SOL00951/": "42337fd90149f48c554234c005e1a02aa62fff2c709f597078a313f2379fc80a",
+  "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00939_01062/SOL00952/": "949f7ce6c46d778660e0a0b7d90414cb5a2d6c85b6e3b5cdb3564eef519a66fb",
+  "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00939_01062/SOL00953/": "3b1d121512c19d42dee4a6cca7f5483e0b3457ae65eedbd3e0be20b62a6c0151",
+  "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00939_01062/SOL00954/": "fb2bfa4bb5a63356c633d692ccb0f3bfc214d6dd2b883479cc44e67316908b2e",
+  "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00939_01062/SOL00955/": "a91bfe395b0f4afcb817b04b6b76e1d60e69729f53acc240e9ca23778d29a4d6",
+  "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00939_01062/SOL00957/": "44d86bb9dfae63dec62adc87b893a044280334680601452a561e7d9ec77d5db9",
+  "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00939_01062/SOL00958/": "179276fe82663f700a888b6c58a1283496f7a9a2b4220eda3befcf16dd30c476",
+  "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00939_01062/SOL00959/": "75ab7fb413aaf143aa580c8f44d06c2fd4f5d9e15fffe71668c20a7c899b2f79",
+  "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00939_01062/SOL00960/": "bb303c7965f65438d599aac9e18e4dd56c4f09cf70f7514c8e8e697594553f7a",
+  "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00939_01062/SOL00961/": "e6ca3216defe3df83d22b220129775256f67d6ebc19460e22e86f3714b83d6e0",
+  "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00939_01062/SOL00962/": "f305836ad4e1d97268be6768b60921dcdefd8f5777b30296676890d4efff6290",
+  "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00939_01062/SOL00963/": "8a43ae8ab6d56115e755548d7d54e2137ebd768994c326d46affbb1e264d1503",
+  "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00939_01062/SOL00964/": "383142faee557f094271ba775c4f7556567bab03c8f766e54f93886eb973e3b3",
+  "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00939_01062/SOL00965/": "d8120b39b252b92bc7c71ad2da523a0ea6845aa7e9c4761a0e565edceea7aee5",
+  "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00939_01062/SOL00966/": "4c5cb4976e09afd02c182cb8ee917835a7bf13176851cbe2d62780a0c448b90b",
+  "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00939_01062/SOL00967/": "070a3482fd90fb8e48f92b334c44e977002cc37e2bb29baa9a1833f1164630b8",
+  "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00939_01062/SOL00968/": "a676d0eb491a0f3a2a07650df20aa5813881cc3e7905a9f2d3869c47bdd1ab82",
+  "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00939_01062/SOL00969/": "876d390e6f4c8f2c9ad17dc015d4e9c742612635ff203852de6a4667f21efc60",
+  "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00939_01062/SOL00970/": "5b06e4f51fd124ea7e9c648ca9073b4451232323a43fcc1385185d82d909bf6b",
+  "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00939_01062/SOL00971/": "6fda11ab0235e6d5aa91cec9d4fd6af731178bb9ecb218a0eee5a5a61f09053d",
+  "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00939_01062/SOL00972/": "6d41434467f58f1841a7bbbfee46f1ec9d65f504abcf134560efda8c9ad79a72",
+  "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00939_01062/SOL00973/": "36ebd7ac4c3d6ef94f2756f9e0d2a6a418aec4b4dcc75b8f1513e031a4ce09f9",
+  "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00939_01062/SOL00974/": "eeaef8c10a09ace1db1f8b2883a112f79a634e1c98b9553af4efb302c403273f",
+  "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00939_01062/SOL00975/": "9268166c0f19ef2404393655a9715fcd5dc259fd7da63cb16926b01dfe1b49e4",
+  "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00939_01062/SOL00976/": "f1148fc54e778ae0f042ca449dd498d807b2fc6e5858b9e5c7ea2ee579bf884d",
+  "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00939_01062/SOL00977/": "bb3c1f1f5b70b001a60cc9ec6d657589199927e40543917b91f844a384ff3e41",
+  "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00939_01062/SOL00978/": "d68fc3013798320307f57a96854ecd3174ed066ea7f92a45fc141ad08e5d0ada",
+  "https://atmos.nmsu.edu/PDS/data/mslrem_1001/DATA/SOL_00939_01062/SOL00979/": "40fde68bb38844ebc64d7e5d230e752b35f49829effe4b064a445522cc345f97"
+ },
+ "survivorship_note": "The PDS archive holds only observations that were actually downlinked. Phase 3 tests retrospective bandwidth-constrained prioritization of archived rover observations, not reconstruction of the complete onboard image stream."
+}
