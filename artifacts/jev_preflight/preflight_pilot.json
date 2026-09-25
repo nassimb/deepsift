@@ -8,20 +8,20 @@
   "numeric_only",
   "single_decision"
  ],
- "model": "jev-1.13.0",
+ "model": "typesafe/jev-1.13",
  "candidate_events": {
   "sampled": 300
  },
  "requests_without_cache": 1500,
- "unique_requests": 1297,
- "already_cached": 0,
- "live_calls_needed": 1297,
+ "unique_requests": 1290,
+ "already_cached": 26,
+ "live_calls_needed": 1264,
  "live_calls_by_variant": {
-  "full_context": 255,
-  "no_mission_objective": 255,
-  "minimal": 235,
+  "full_context": 254,
+  "no_mission_objective": 228,
+  "minimal": 231,
   "numeric_only": 297,
-  "single_decision": 255
+  "single_decision": 254
  },
  "requests_per_event": 1,
  "decisions_per_request": {
@@ -31,30 +31,34 @@
   "numeric_only": 5,
   "single_decision": 1
  },
- "estimated_input_tokens": 962475,
- "token_estimate_basis": "ASSUMED 4.0 chars/token (no real usage yet) \u2014 treat cost as \u00b150 %",
- "estimated_cost_usd": 0.0404,
+ "estimated_input_tokens": 1491979,
+ "token_estimate_basis": "measured 2.51 chars/token from 30 cached calls",
+ "estimated_cost_usd": 0.0627,
  "pricing": {
-  "model": "jev-1.13.0",
+  "model": "typesafe/jev-1.13",
+  "transport": "openrouter",
+  "provider": "TypeSafe",
   "usd_per_mtok_input": 0.042,
   "usd_per_mtok_output": 0.0,
   "requests_per_minute": 1200,
   "tokens_per_second": 250000,
-  "source": "https://docs.typesafe.ai/models.md",
+  "source": "https://openrouter.ai/api/v1/models/typesafe/jev-1.13/endpoints",
   "retrieved": "2026-09-25",
-  "verbatim": "Price (per Btok / per Mtok) $42 / $0.042 \u2014 Charged per input token. Output tokens are free."
+  "verbatim": "endpoint \"TypeSafe | typesafe/jev-1.13-20260917\": pricing {\"prompt\":\"0.000000042\",\"completion\":\"0\"}",
+  "rate_limit_source": "TypeSafe direct (docs.typesafe.ai/models.md); OpenRouter's own limit for this key is not published \u2014 used only for the time estimate",
+  "actual_cost": "each OpenRouter response carries usage.cost (USD); the run budget uses it when present"
  },
  "estimated_minutes": {
   "rate_limit_floor": 1.1,
   "latency_bound_range": [
-   0.2,
-   1.4
+   0.8,
+   0.8
   ],
-  "basis": "vendor-stated 70\u2013500 ms, 8 concurrent"
+  "basis": "measured p50"
  },
  "funnel": [],
  "guard_ok": false,
- "guard_reason": "token usage not yet measured (cost is an assumption); run the smoke test first or pass an explicit --allow-cost for this run",
+ "guard_reason": "planned live calls 1,264 > limit 1,000 (JEV_MAX_CALLS or --allow-calls)",
  "limits": {
   "JEV_MAX_CALLS": 1000,
   "JEV_MAX_COST_USD": 1.0

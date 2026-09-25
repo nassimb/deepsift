@@ -26,10 +26,11 @@ sys.path.insert(0, str(ROOT / "services" / "pipeline"))
 from deepsift.core.config import load_config  # noqa: E402
 from deepsift.core.env import load_dotenv  # noqa: E402
 from deepsift.decision.jev import (ENDPOINT, KEY_ENV, TRANSPORT, VARIANTS, ApiBudget, JevDecisionEngine,  # noqa: E402
+                                   question_specs_for,
                                    jev_available, missing_key_instructions, sdk_version)
 from deepsift.decision.jev_cache import JevCache  # noqa: E402
-from deepsift.decision.questions import QUESTIONS, SINGLE_DECISION_QUESTIONS  # noqa: E402
-from deepsift.evaluation.jev_plan import MISSION, build_plan, fmt_summary, guard, limits_from_env  # noqa: E402
+from deepsift.decision.questions import QUESTIONS  # noqa: E402
+from deepsift.evaluation.jev_plan import MISSION, build_plan, fmt_summary, guard, limits_from_env, score_tier  # noqa: E402
 from deepsift.evaluation.metrics2 import ece, percentiles  # noqa: E402
 from deepsift.evaluation.study import git_state, system_info  # noqa: E402
 from deepsift.objectives.objective import load_objectives  # noqa: E402
@@ -127,7 +128,11 @@ def main() -> int:
     ap.add_argument("--mode", choices=["smoke", "pilot"], required=True)
     ap.add_argument("--variants", default=None)
     ap.add_argument("--n", type=int, default=None)
-    ap.add_argument("--repeat", type=int, default=0, help="smoke only: re-ask 3 events N times live (no cache) to measure variability")
+    ap.add_argument("--repeat", type=int, default=0, help="re-ask a subset N times live, uncached (smoke: 3 events, 1 variant; pilot: --repeat-n events × every variant)")
+    ap.add_argument("--repeat-n", type=int, default=20, help="pilot: size of the stratified repeatability subset")
+    ap.add_argument("--objective-check", type=int, default=0,
+                    help="pilot: re-ask FULL_CONTEXT for this many events under each alternative objective in --alt-objectives")
+    ap.add_argument("--alt-objectives", default="engineering_health,radiation_monitoring")
     ap.add_argument("--allow-calls", type=int, default=None)
     ap.add_argument("--allow-cost", type=float, default=None)
     ap.add_argument("--probe-only", action="store_true", help="send exactly one live request, report, and stop")
@@ -141,7 +146,9 @@ def main() -> int:
     plan, selected = build_plan(cfg, args.mode, variants, n_sample=args.n)
     cache = JevCache()
     summ = plan.summary(cache)
-    extra = 3 * args.repeat if args.mode == "smoke" else 0
+    n_rep = 3 if args.mode == "smoke" else min(args.repeat_n, len(selected))
+    alt_objs = [o for o in args.alt_objectives.split(",") if o] if args.objective_check else []
+    extra = n_rep * args.repeat * (1 if args.mode == "smoke" else len(variants)) + args.objective_check * len(alt_objs)
     summ["live_calls_needed"] += extra if not args.probe_only else 0
     if args.probe_only:
         summ["live_calls_needed"] = min(summ["live_calls_needed"], 1)
@@ -158,12 +165,19 @@ def main() -> int:
     objective = load_objectives()[cfg.objective].model_dump(mode="json")
     events = [e for e, _, _ in selected]
     strata = {e.id: list(k) for e, _, k in selected}
+    manifest_rows = [{"event_id": e.id, "group": t, "segment": t.split(":")[0], "dataset": t.split(":")[1], "instrument": e.instrument,
+                      "sol": e.sol, "stratum": list(k), "score_tier": score_tier(e, cfg), "deviation_score": e.features.deviation_score,
+                      "duration_s": e.features.duration_s, "raw_bytes": e.bytes.raw, "sensors": e.sensors,
+                      "synthetic_injection_ids": e.synthetic_injection_ids} for e, t, k in selected]
+    (out / "sampling_manifest.json").write_text(json.dumps({"split": "validation", "seed": 20260925, "n": len(selected),
+                                                          "strata_key": "(label status, synthetic severity, instrument, score tier, rules type)",
+                                                          "events": manifest_rows}, indent=1, default=str))
     # single-request probe before any batch: a rejected key or schema problem costs one call, not N
     probe_eng = JevDecisionEngine(model=cfg.decision_engine.jev_model, variant=variants[0], call_log=out / "jev_calls.jsonl",
                                   run_id=run_id, cache=cache, budget=budget, max_concurrency=1,
                                   max_retries=0 if args.probe_only else 2)   # probe = exactly one HTTP request
     [pd] = probe_eng.decide(events[:1], *MISSION, objective=objective)
-    specs0 = SINGLE_DECISION_QUESTIONS if VARIANTS[variants[0]][1] == "single" else QUESTIONS
+    specs0 = question_specs_for(variants[0])
     if args.probe_only:
         recs = [json.loads(x) for x in (out / "jev_calls.jsonl").read_text().splitlines()] if (out / "jev_calls.jsonl").exists() else []
         live = [r for r in recs if not r.get("cache_hit")]
@@ -205,7 +219,7 @@ def main() -> int:
                                 max_concurrency=cfg.decision_engine.max_concurrency, price_per_mtok_input_usd=cfg.decision_engine.price_per_mtok_input_usd,
                                 variant=v, call_log=out / "jev_calls.jsonl", run_id=run_id, cache=cache, budget=budget)
         ds = eng.decide(events, *MISSION, objective=objective)
-        specs = SINGLE_DECISION_QUESTIONS if VARIANTS[v][1] == "single" else QUESTIONS
+        specs = question_specs_for(v)
         bad = [(e.id, validate(d, specs)) for e, d in zip(events, ds)]
         bad = [b for b in bad if b[1]]
         if bad and args.mode == "smoke":
@@ -239,6 +253,40 @@ def main() -> int:
                           "importance_calibration_vs_injection_overlap": ece(imp_c, imp_y, bins=5)}
         print(f"{v}: invalid {len(bad)}/{len(events)} · live {eng.stats['live_calls']} · cached {eng.stats['cache_hits']} · "
               f"p50 {per_variant[v]['latency_ms'].get('p50', 0):.0f} ms · tokens/req {per_variant[v]['input_tokens_per_request']}")
+    pilot_extra = None
+    if args.mode == "pilot":
+        # stratified repeatability subset: round-robin over (label status, instrument, score tier)
+        cells: dict = defaultdict(list)
+        for e in events:
+            cells[(strata[e.id][0], e.instrument, score_tier(e, cfg))].append(e)
+        sub, keys = [], sorted(cells)
+        while len(sub) < n_rep and any(cells[k] for k in keys):
+            for k in keys:
+                if cells[k] and len(sub) < n_rep:
+                    sub.append(cells[k].pop(0))
+        rep_out = {}
+        if args.repeat:
+            for v in variants:
+                eng = JevDecisionEngine(model=cfg.decision_engine.jev_model, variant=v, call_log=out / "jev_calls.jsonl",
+                                        run_id=run_id, use_cache=False, budget=budget, max_concurrency=cfg.decision_engine.max_concurrency)
+                ds = eng.decide([e for e in sub for _ in range(args.repeat)], *MISSION, objective=objective)
+                specs = question_specs_for(v)
+                rep_out[v] = {e.id: {"cached": answers_brief(answers_by[v][e.id]),
+                                     "uncached": [answers_brief(d) for d in ds[i * args.repeat:(i + 1) * args.repeat]],
+                                     **spread([answers_by[v][e.id]] + ds[i * args.repeat:(i + 1) * args.repeat], specs)}
+                              for i, e in enumerate(sub)}
+        obj_out = {}
+        if alt_objs:
+            objs = load_objectives()
+            chk = events[:: max(1, len(events) // args.objective_check)][: args.objective_check]
+            for name in alt_objs:
+                eng = JevDecisionEngine(model=cfg.decision_engine.jev_model, variant="full_context", call_log=out / "jev_calls.jsonl",
+                                        run_id=run_id, cache=cache, budget=budget, max_concurrency=cfg.decision_engine.max_concurrency)
+                ds = eng.decide(chk, *MISSION, objective=objs[name].model_dump(mode="json"))
+                obj_out[name] = {e.id: answers_brief(d) for e, d in zip(chk, ds)}
+            obj_out["_baseline_objective"] = cfg.objective
+        pilot_extra = {"repeat_subset": [e.id for e in sub], "repeat": rep_out, "objective_check": obj_out}
+        (out / "pilot_extra.json").write_text(json.dumps(pilot_extra, indent=1, default=str))
     smoke_checks = None
     if args.mode == "smoke":
         v = variants[0]
@@ -279,7 +327,7 @@ def main() -> int:
         eng = JevDecisionEngine(model=cfg.decision_engine.jev_model, variant=v, call_log=out / "jev_calls.jsonl", run_id=run_id,
                                 use_cache=False, budget=budget, max_concurrency=1)
         repeat = {}
-        specs = SINGLE_DECISION_QUESTIONS if VARIANTS[v][1] == "single" else QUESTIONS
+        specs = question_specs_for(v)
         for e in events[:3]:
             ds = eng.decide([e] * args.repeat, *MISSION, objective=objective)
             # the cached first answer + N uncached identical repeats

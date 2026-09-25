@@ -80,3 +80,39 @@ SINGLE_DECISION_QUESTIONS: dict[str, QuestionSpec] = {
          "false": "Routine or uninformative; the bandwidth is better spent elsewhere"},
     ),
 }
+
+
+# ---------------------------------------------------------------------------------------------------
+# Question schema versions. "q1" = QUESTIONS above (pre-registered; used by every Phase-2b result so far).
+# "q2" = VALIDATION-ONLY wording experiment after pilot 20260925T091126-jev-pilot-7351, which found
+# instrument_failure = "yes" on 92–100 % of candidates in every variant (including documented Forbush
+# decreases / SEPs and synthetic physical offsets without any quality flag) and "uncertain" never chosen.
+# q2 changes ONLY the instrument_failure question and the instrument_anomaly criterion of event_type, to
+# separate "specific evidence of a sensor/data problem" from "a large deviation from normal". Answer keys
+# are unchanged, so the frozen priority formula reads q2 answers exactly as q1 answers.
+# See docs/jev-model-selection.md § Representation changes.
+QUESTION_SCHEMA_VERSION = {"q1": "2026-09-25 pre-registered", "q2": "2026-09-25 validation-only wording experiment"}
+
+QUESTIONS_V2: dict[str, QuestionSpec] = dict(QUESTIONS)
+QUESTIONS_V2["event_type"] = QuestionSpec(
+    "choice",
+    QUESTIONS["event_type"].instructions,
+    {
+        **QUESTIONS["event_type"].criteria,
+        "instrument_anomaly": "Specific evidence of a sensor or data problem: stuck or repeated values, missing samples, noise far above "
+                              "the sensor's usual level, or physically impossible values. A large deviation from normal, on its own, "
+                              "is not evidence of a sensor problem",
+    },
+)
+QUESTIONS_V2["instrument_failure"] = QuestionSpec(
+    "choice",
+    "Does the evidence specifically suggest malfunction or degradation of the measuring instrument or its data handling, "
+    "rather than a natural environmental phenomenon? The size of a deviation from normal conditions, on its own, does not "
+    "distinguish the two.",
+    {
+        "yes": "There is specific evidence of a sensor or data problem: stuck or repeated values, missing samples, noise far above "
+               "the sensor's usual level, or physically impossible values",
+        "no": "The measurements are physically plausible and show no specific sign of a sensor or data problem",
+        "uncertain": "The evidence points both ways, or there is too little information to tell a malfunction from a natural phenomenon",
+    },
+)

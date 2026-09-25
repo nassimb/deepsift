@@ -1,0 +1,548 @@
+{
+ "run_id": "20260925T092458-jev-wording-q2-d559",
+ "pilot_run": "20260925T091126-jev-pilot-7351",
+ "split": "validation",
+ "variant_q1": "no_mission_objective",
+ "variant_q2": "no_mission_objective@q2",
+ "schema_change": "instrument_failure question + event_type.instrument_anomaly criterion (see decision/questions.py QUESTIONS_V2)",
+ "preflight": {
+  "events": 150,
+  "with_ground_truth": 37,
+  "unique_requests": 130,
+  "live_calls_needed": 130,
+  "estimated_input_tokens": 223085,
+  "estimated_cost_usd": 0.009369577435575892,
+  "chars_per_token_measured": 2.4300090539355876,
+  "estimated_minutes": 0.08
+ },
+ "operations": {
+  "live_requests": 130,
+  "cache_hits": 20,
+  "input_tokens": 200493,
+  "output_tokens": 29110,
+  "cost_usd": 0.008420706,
+  "errors": 0,
+  "retries": 0,
+  "malformed": 0,
+  "models_returned": {
+   "typesafe/jev-1.13-20260917": 130
+  }
+ },
+ "comparison": {
+  "distributions": {
+   "q1": {
+    "event_type": {
+     "radiation": 17,
+     "instrument_anomaly": 101,
+     "atmospheric": 20,
+     "thermal": 12
+    },
+    "instrument_failure": {
+     "no": 14,
+     "yes": 136
+    },
+    "science_value": {
+     "high": 126,
+     "medium": 4,
+     "low": 8,
+     "none": 12
+    },
+    "downlink_action": {
+     "full_data": 121,
+     "compress": 8,
+     "summary_only": 21
+    }
+   },
+   "q2": {
+    "event_type": {
+     "radiation": 7,
+     "instrument_anomaly": 101,
+     "atmospheric": 24,
+     "thermal": 18
+    },
+    "instrument_failure": {
+     "no": 41,
+     "yes": 107,
+     "uncertain": 2
+    },
+    "science_value": {
+     "high": 123,
+     "medium": 4,
+     "low": 6,
+     "none": 17
+    },
+    "downlink_action": {
+     "full_data": 121,
+     "compress": 8,
+     "summary_only": 21
+    }
+   }
+  },
+  "changed_rate": {
+   "event_type": 0.14666666666666667,
+   "instrument_failure": 0.2866666666666667,
+   "science_value": 0.04,
+   "downlink_action": 0.04666666666666667
+  },
+  "class_bias": {
+   "truth_group": {
+    "documented": {
+     "n": 12,
+     "q1": {
+      "failure": {
+       "no": 4,
+       "yes": 8
+      },
+      "p_type_instrument_anomaly": 0.5833333333333334
+     },
+     "q2": {
+      "failure": {
+       "no": 3,
+       "yes": 9
+      },
+      "p_type_instrument_anomaly": 0.75
+     }
+    },
+    "synthetic_physical": {
+     "n": 17,
+     "q1": {
+      "failure": {
+       "yes": 17
+      },
+      "p_type_instrument_anomaly": 0.8823529411764706
+     },
+     "q2": {
+      "failure": {
+       "no": 2,
+       "yes": 15
+      },
+      "p_type_instrument_anomaly": 0.8823529411764706
+     }
+    },
+    "synthetic_quality_fault": {
+     "n": 8,
+     "q1": {
+      "failure": {
+       "yes": 8
+      },
+      "p_type_instrument_anomaly": 1.0
+     },
+     "q2": {
+      "failure": {
+       "yes": 8
+      },
+      "p_type_instrument_anomaly": 1.0
+     }
+    },
+    "unlabelled": {
+     "n": 113,
+     "q1": {
+      "failure": {
+       "no": 10,
+       "yes": 103
+      },
+      "p_type_instrument_anomaly": 0.6283185840707964
+     },
+     "q2": {
+      "failure": {
+       "yes": 75,
+       "no": 36,
+       "uncertain": 2
+      },
+      "p_type_instrument_anomaly": 0.6106194690265486
+     }
+    }
+   },
+   "quality_flagged": {
+    "False": {
+     "n": 95,
+     "q1": {
+      "failure": {
+       "no": 14,
+       "yes": 81
+      },
+      "p_type_instrument_anomaly": 0.4842105263157895
+     },
+     "q2": {
+      "failure": {
+       "no": 40,
+       "yes": 53,
+       "uncertain": 2
+      },
+      "p_type_instrument_anomaly": 0.4842105263157895
+     }
+    },
+    "True": {
+     "n": 55,
+     "q1": {
+      "failure": {
+       "yes": 55
+      },
+      "p_type_instrument_anomaly": 1.0
+     },
+     "q2": {
+      "failure": {
+       "yes": 54,
+       "no": 1
+      },
+      "p_type_instrument_anomaly": 1.0
+     }
+    }
+   },
+   "instrument": {
+    "RAD": {
+     "n": 43,
+     "q1": {
+      "failure": {
+       "no": 13,
+       "yes": 30
+      },
+      "p_type_instrument_anomaly": 0.6046511627906976
+     },
+     "q2": {
+      "failure": {
+       "no": 7,
+       "yes": 36
+      },
+      "p_type_instrument_anomaly": 0.8372093023255814
+     }
+    },
+    "REMS": {
+     "n": 107,
+     "q1": {
+      "failure": {
+       "yes": 106,
+       "no": 1
+      },
+      "p_type_instrument_anomaly": 0.7009345794392523
+     },
+     "q2": {
+      "failure": {
+       "yes": 71,
+       "no": 34,
+       "uncertain": 2
+      },
+      "p_type_instrument_anomaly": 0.6074766355140186
+     }
+    }
+   }
+  },
+  "ground_truth": {
+   "q1": {
+    "n": 37,
+    "event_type_accuracy": 0.40540540540540543,
+    "instrument_failure_accuracy": 0.32432432432432434,
+    "instrument_failure_on_quality_faults": {
+     "yes": 8
+    },
+    "instrument_failure_on_physical": {
+     "no": 4,
+     "yes": 25
+    },
+    "event_type_conf_correct": 0.8059999999999999,
+    "event_type_conf_incorrect": 0.7890909090909091,
+    "rules_event_type_accuracy": 0.6756756756756757
+   },
+   "q2": {
+    "n": 37,
+    "event_type_accuracy": 0.35135135135135137,
+    "instrument_failure_accuracy": 0.35135135135135137,
+    "instrument_failure_on_quality_faults": {
+     "yes": 8
+    },
+    "instrument_failure_on_physical": {
+     "no": 5,
+     "yes": 24
+    },
+    "event_type_conf_correct": 0.9023076923076924,
+    "event_type_conf_incorrect": 0.7741666666666666,
+    "rules_event_type_accuracy": 0.6756756756756757
+   }
+  },
+  "confidence_mean": {
+   "q1": {
+    "event_type": 0.7034,
+    "instrument_failure": 0.7453333333333333,
+    "science_value": 0.6532,
+    "downlink_action": 0.3677333333333333
+   },
+   "q2": {
+    "event_type": 0.7324,
+    "instrument_failure": 0.5525333333333333,
+    "science_value": 0.6565333333333334,
+    "downlink_action": 0.36300000000000004
+   }
+  },
+  "examples_changed": [
+   {
+    "event_id": "MSL-RAD-0412-190234",
+    "dataset": "synthetic",
+    "truth": [
+     "radiation",
+     "offset_ramp"
+    ],
+    "flags": {
+     "dose_b": [
+      "level"
+     ],
+     "dose_e": [
+      "level"
+     ]
+    },
+    "rules_type": "radiation",
+    "event_type": [
+     "radiation",
+     "radiation"
+    ],
+    "instrument_failure": [
+     "yes",
+     "no"
+    ]
+   },
+   {
+    "event_id": "MSL-REMS-0430-235539",
+    "dataset": "synthetic",
+    "truth": [
+     "atmospheric",
+     "offset_ramp"
+    ],
+    "flags": {
+     "pressure": [
+      "level"
+     ]
+    },
+    "rules_type": "atmospheric",
+    "event_type": [
+     "atmospheric",
+     "atmospheric"
+    ],
+    "instrument_failure": [
+     "yes",
+     "no"
+    ]
+   },
+   {
+    "event_id": "MSL-RAD-0812-135338",
+    "dataset": "real",
+    "truth": [
+     "radiation",
+     "forbush_decrease"
+    ],
+    "flags": {
+     "dose_e": [
+      "level"
+     ]
+    },
+    "rules_type": "radiation",
+    "event_type": [
+     "radiation",
+     "instrument_anomaly"
+    ],
+    "instrument_failure": [
+     "yes",
+     "yes"
+    ]
+   },
+   {
+    "event_id": "MSL-RAD-0817-130711",
+    "dataset": "real",
+    "truth": [
+     "radiation",
+     "forbush_decrease"
+    ],
+    "flags": {
+     "dose_e": [
+      "level"
+     ]
+    },
+    "rules_type": "radiation",
+    "event_type": [
+     "radiation",
+     "instrument_anomaly"
+    ],
+    "instrument_failure": [
+     "no",
+     "yes"
+    ]
+   },
+   {
+    "event_id": "MSL-RAD-0412-141832",
+    "dataset": "real",
+    "truth": null,
+    "flags": {
+     "dose_b": [
+      "level"
+     ],
+     "dose_e": [
+      "level"
+     ]
+    },
+    "rules_type": "radiation",
+    "event_type": [
+     "radiation",
+     "instrument_anomaly"
+    ],
+    "instrument_failure": [
+     "no",
+     "yes"
+    ]
+   },
+   {
+    "event_id": "MSL-RAD-0780-143238",
+    "dataset": "real",
+    "truth": null,
+    "flags": {
+     "dose_e": [
+      "level"
+     ]
+    },
+    "rules_type": "radiation",
+    "event_type": [
+     "radiation",
+     "instrument_anomaly"
+    ],
+    "instrument_failure": [
+     "no",
+     "yes"
+    ]
+   },
+   {
+    "event_id": "MSL-REMS-0414-225231",
+    "dataset": "real",
+    "truth": null,
+    "flags": {
+     "air_temp": [
+      "level"
+     ],
+     "pressure": [
+      "level"
+     ]
+    },
+    "rules_type": "atmospheric",
+    "event_type": [
+     "atmospheric",
+     "atmospheric"
+    ],
+    "instrument_failure": [
+     "yes",
+     "no"
+    ]
+   },
+   {
+    "event_id": "MSL-REMS-0415-101039",
+    "dataset": "real",
+    "truth": null,
+    "flags": {
+     "rel_humidity": [
+      "level"
+     ]
+    },
+    "rules_type": "atmospheric",
+    "event_type": [
+     "instrument_anomaly",
+     "atmospheric"
+    ],
+    "instrument_failure": [
+     "yes",
+     "no"
+    ]
+   },
+   {
+    "event_id": "MSL-REMS-0412-035501",
+    "dataset": "real",
+    "truth": null,
+    "flags": {
+     "air_temp": [
+      "level"
+     ]
+    },
+    "rules_type": "thermal",
+    "event_type": [
+     "thermal",
+     "thermal"
+    ],
+    "instrument_failure": [
+     "yes",
+     "no"
+    ]
+   },
+   {
+    "event_id": "MSL-REMS-0426-160952",
+    "dataset": "real",
+    "truth": null,
+    "flags": {
+     "rel_humidity": [
+      "level"
+     ]
+    },
+    "rules_type": "atmospheric",
+    "event_type": [
+     "atmospheric",
+     "atmospheric"
+    ],
+    "instrument_failure": [
+     "yes",
+     "no"
+    ]
+   },
+   {
+    "event_id": "MSL-REMS-0416-093353",
+    "dataset": "real",
+    "truth": null,
+    "flags": {
+     "air_temp": [
+      "level"
+     ]
+    },
+    "rules_type": "thermal",
+    "event_type": [
+     "thermal",
+     "thermal"
+    ],
+    "instrument_failure": [
+     "yes",
+     "no"
+    ]
+   },
+   {
+    "event_id": "MSL-RAD-0412-141832",
+    "dataset": "synthetic",
+    "truth": null,
+    "flags": {
+     "dose_b": [
+      "level"
+     ],
+     "dose_e": [
+      "level"
+     ]
+    },
+    "rules_type": "radiation",
+    "event_type": [
+     "radiation",
+     "instrument_anomaly"
+    ],
+    "instrument_failure": [
+     "no",
+     "yes"
+    ]
+   }
+  ]
+ },
+ "git": {
+  "commit": "3d14202f0fb0d8fba34390bd0e81051f62df7bf4",
+  "dirty": true,
+  "describe": "phase2-pre-jev-3-g3d14202-dirty",
+  "dirty_paths": [
+   "rtifacts/jev_preflight/preflight_pilot.json",
+   "scripts/jev_pilot.py",
+   "services/pipeline/deepsift/decision/jev.py",
+   "services/pipeline/deepsift/decision/questions.py",
+   "services/pipeline/deepsift/evaluation/jev_plan.py",
+   "artifacts/runs/20260925T091126-jev-pilot-7351/",
+   "artifacts/runs/20260925T092458-jev-wording-q2-d559/",
+   "scripts/jev_pilot_report.py",
+   "scripts/jev_wording_experiment.py"
+  ]
+ },
+ "note": "VALIDATION-only wording experiment; q1 pilot results retained unchanged"
+}

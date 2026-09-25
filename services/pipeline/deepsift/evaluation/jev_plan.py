@@ -21,9 +21,8 @@ import random
 from dataclasses import dataclass, field
 
 from deepsift.core.config import Config
-from deepsift.decision.jev import TRANSPORT, VARIANTS, questions_payload, sdk_version
+from deepsift.decision.jev import ALL_VARIANTS, TRANSPORT, question_specs_for, questions_payload, sdk_version
 from deepsift.decision.jev_cache import JevCache, request_key
-from deepsift.decision.questions import QUESTIONS, SINGLE_DECISION_QUESTIONS
 from deepsift.decision.state import build_state_variant
 from deepsift.evaluation.segments import eval_filter_events, load_segment, segments
 from deepsift.evaluation.sweeps import plan_sweep_batch
@@ -92,7 +91,7 @@ class Plan:
             "live_calls_needed": len(live),
             "live_calls_by_variant": {v: sum(1 for r in live if r.variant == v) for v in self.variants},
             "requests_per_event": 1,
-            "decisions_per_request": {v: (1 if VARIANTS[v][1] == "single" else len(QUESTIONS)) for v in self.variants},
+            "decisions_per_request": {v: len(question_specs_for(v)) for v in self.variants},
             "estimated_input_tokens": round(tokens),
             "token_estimate_basis": (f"measured {cpt:.2f} chars/token from {st.get('entries')} cached calls" if st.get("measured_chars_per_token")
                                      else f"ASSUMED {CHARS_PER_TOKEN_ASSUMED} chars/token (no real usage yet) — treat cost as ±50 %"),
@@ -106,9 +105,9 @@ class Plan:
 
 
 def _payload(e, variant, objective) -> tuple[str, int, dict]:
-    sv, qset = VARIANTS[variant]
+    sv = ALL_VARIANTS[variant][0]
     state = build_state_variant(e, *MISSION, sv, objective)
-    q = questions_payload(SINGLE_DECISION_QUESTIONS if qset == "single" else QUESTIONS)
+    q = questions_payload(question_specs_for(variant))
     return state, len(json.dumps(state, ensure_ascii=False)) + len(json.dumps(q, ensure_ascii=False)), q
 
 
@@ -129,21 +128,28 @@ def _candidate_sets(cfg: Config, split: str, batches: int):
             yield "synthetic", sd, det, b, eval_filter_events(det.events, sd), inj, seg
 
 
-def _stratum(e, inj_by_id) -> tuple:
+def score_tier(e, cfg: Config | None) -> str:
+    """Detector score relative to the frozen level threshold of the event's instrument."""
+    thr = (cfg.detection.rad_z_threshold if e.instrument == "RAD" else cfg.detection.z_threshold) if cfg else 9.0
+    r = e.features.deviation_score / thr
+    return "below_level_threshold" if r < 1 else "near_threshold" if r < 1.5 else "medium" if r < 3 else "high"
+
+
+def _stratum(e, inj_by_id, cfg: Config | None = None) -> tuple:
+    """(label status, synthetic severity, instrument, detector-score tier, rules type)."""
     ids = e.synthetic_injection_ids
-    if ids:
-        inj = inj_by_id.get(ids[0])
-        return ("synthetic", inj.severity if inj else "?", (inj.meta.get("bucket") if inj else "?"), rules_type(e))
-    dev = e.features.deviation_score
-    return ("unlabelled", "none", "dev_hi" if dev >= 20 else "dev_mid" if dev >= 10 else "dev_lo", rules_type(e))
+    inj = inj_by_id.get(ids[0]) if ids else None
+    status = "synthetic" if ids else "unlabelled"
+    sev = (inj.severity if inj else "?") if ids else "none"
+    return (status, sev, e.instrument, score_tier(e, cfg), rules_type(e))
 
 
-def stratified_sample(events_with_inj, n: int, seed: int) -> list:
-    """Round-robin over strata so every (label status, severity, difficulty, rules type) cell is represented."""
+def stratified_sample(events_with_inj, n: int, seed: int, cfg: Config | None = None) -> list:
+    """Round-robin over strata so every (label status, severity, instrument, score tier, rules type) cell is represented."""
     rng = random.Random(seed)
     cells: dict[tuple, list] = {}
     for e, inj_by_id, tag in events_with_inj:
-        cells.setdefault(_stratum(e, inj_by_id), []).append((e, tag))
+        cells.setdefault(_stratum(e, inj_by_id, cfg), []).append((e, tag))
     for v in cells.values():
         rng.shuffle(v)
     keys = sorted(cells)
@@ -171,7 +177,7 @@ def build_plan(cfg: Config, mode: str, variants: list[str], batches: int = 25, n
             inj_by_id = {i.id: i for i in inj}
             pool += [(e, inj_by_id, f"{seg.id}:{dataset}:{b}") for e in evs]
         n = n_sample or (30 if mode == "smoke" else 300)
-        selected = stratified_sample(pool, n, seed)
+        selected = stratified_sample(pool, n, seed, cfg)
         plan.events_by_dataset = {"sampled": len(selected)}
         for e, tag, stratum in selected:
             for v in variants:

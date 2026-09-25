@@ -72,6 +72,28 @@ whether it deserves the full ablation.
 | TypeSafe-direct smoke | `20260925T083440-jev-smoke-fe7c` | 30 (before fail-fast existed) | all HTTP 401, key rejected — transport abandoned |
 | OpenRouter probe | `20260925T090044-jev-probe-6ded` | 1 | all 8 probe checks passed |
 | OpenRouter smoke (30 events, `--repeat 3`) | `20260925T090119-jev-smoke-b935` | 29 + 9 repeats | 0 errors, 0 malformed, 0 retries; cache determinism confirmed |
+| Pilot (300 stratified validation events × 5 variants, 20-event repeat subset × 2, objective check 2 × 50) | `20260925T091126-jev-pilot-7351` | 1,565 ($0.0815) | 0 errors / 0 malformed / 0 retries; **semantically pathological** (below) |
+| Wording experiment q1 → q2 (150 of the pilot events, NO_MISSION_OBJECTIVE) | `20260925T092458-jev-wording-q2-d559` | 130 ($0.0084) | mixed; no ground-truth gain; q2 NOT adopted |
+
+Pilot sampler (changed before the pilot, validation only): strata = (label status, synthetic severity, instrument,
+detector-score tier relative to the frozen level threshold, rules type); sampling manifest in the run folder.
+Pilot analysis: `scripts/jev_pilot_report.py` (cache only, zero-call budget). Ranking on the sample uses the declared
+approximation in that script's docstring (budget scaled by sampled/all candidate bytes; labels detected by a sampled
+candidate); with only 10 synthetic + 4 documented high-severity labels detected in the sample it is underpowered.
+
+## Representation changes (validation only)
+
+**q2 question schema** (`decision/questions.py` `QUESTIONS_V2`, variant `no_mission_objective@q2`, kept out of the
+five pre-registered variants). Why: the q1 pilot returned `instrument_failure = yes` on 92–100 % of candidates in every
+variant, including documented Forbush decreases/SEPs and synthetic physical offsets with no quality flag, and never used
+`uncertain`. q2 rewrites only `instrument_failure` ("does the evidence specifically suggest malfunction or degradation
+… rather than a natural phenomenon? The size of a deviation, on its own, does not distinguish the two") and the
+`instrument_anomaly` criterion of `event_type`; answer keys unchanged (the frozen priority formula reads them unchanged).
+Cache: keys contain the exact question schema, so q1 entries can never be served for q2; q1 entries and results kept.
+Outcome on the same 150 events: REMS unflagged candidates `failure = yes` 81/95 → 53/95 and `uncertain` used twice,
+but RAD `event_type = instrument_anomaly` 60 % → 84 % (documented Forbush decreases flipped to instrument anomaly);
+ground-truth accuracy unchanged within noise (n = 37: event type 0.41 → 0.35, instrument failure 0.32 → 0.35).
+**Not adopted.** No further wording iterations were run.
 
 ## Selection record
 

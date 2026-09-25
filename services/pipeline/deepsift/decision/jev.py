@@ -30,7 +30,7 @@ from pathlib import Path
 
 from deepsift.core.models import AnswerDist, EngineDecision, ScientificEvent
 from deepsift.decision.base import DecisionEngine
-from deepsift.decision.questions import QUESTIONS, SINGLE_DECISION_QUESTIONS, QuestionSpec
+from deepsift.decision.questions import QUESTIONS, QUESTIONS_V2, SINGLE_DECISION_QUESTIONS, QuestionSpec
 from deepsift.decision.state import build_state_variant
 
 VARIANTS = {
@@ -41,6 +41,16 @@ VARIANTS = {
     "numeric_only": ("numeric_only", "five"),
     "single_decision": ("no_mission_objective", "single"),
 }
+# Validation-only question-schema experiments. Kept OUT of VARIANTS so the pre-registered five are unchanged.
+SCHEMA_VARIANTS = {
+    "no_mission_objective@q2": ("no_mission_objective", "five_q2"),
+}
+ALL_VARIANTS = {**VARIANTS, **SCHEMA_VARIANTS}
+QUESTION_SETS = {"five": QUESTIONS, "five_q2": QUESTIONS_V2, "single": SINGLE_DECISION_QUESTIONS}
+
+
+def question_specs_for(variant: str) -> dict[str, QuestionSpec]:
+    return QUESTION_SETS[ALL_VARIANTS[variant][1]]
 
 
 TRANSPORT = "openrouter"
@@ -134,7 +144,7 @@ class JevDecisionEngine(DecisionEngine):
                  price_per_mtok_input_usd: float = 0.042, client=None, variant: str = "no_mission_objective",
                  call_log: Path | None = None, run_id: str | None = None, max_retries: int = 2,
                  cache=None, use_cache: bool = True, budget: ApiBudget | None = None):
-        if variant not in VARIANTS:
+        if variant not in ALL_VARIANTS:
             raise ValueError(f"unknown Jev variant {variant}")
         self.model = model
         self.timeout_s = timeout_s
@@ -142,8 +152,8 @@ class JevDecisionEngine(DecisionEngine):
         self.price = price_per_mtok_input_usd
         self._client = client
         self.variant = variant
-        self.state_variant, qset = VARIANTS[variant]
-        self.question_specs = SINGLE_DECISION_QUESTIONS if qset == "single" else QUESTIONS
+        self.state_variant = ALL_VARIANTS[variant][0]
+        self.question_specs = question_specs_for(variant)
         self.call_log = call_log
         self.run_id = run_id
         self.max_retries = max_retries
