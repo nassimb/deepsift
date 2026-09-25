@@ -119,6 +119,21 @@ deep-analysis routing are system decisions and are no longer asked. Code: `decis
   60 unlabelled per real segment. Preflight: 598 events, 1,500 live calls, est. $0.046.
 * Outcome rule (stop rule): PROCEED / MARGINAL / STOP JEV after this pilot; no fourth redesign.
 
+### V3 outcome — run `20260925T094903-jev-v3-pilot-84af` (1,500 live calls, $0.0499, 0 errors)
+
+* Health: passed the declared gates (top category ≤ 60 %; phenomenon class accuracy 0.83 on 269 physical labels vs
+  0.33 for rules, but it is almost a sensor-family lookup; phenomenon class moves 0–3 % when the objective is put in the
+  state vs 1 % repeat baseline). Caveats: mission relevance is 100/100 `very_high` under `engineering_health`;
+  scientific interest largely echoes the magnitude bucket (raw AUROC 0.60 vs detector tier 0.59, local edge 0.61).
+* Ordering-only, synthetic high severity (100 labels): no gain. AUROC Jev V3 − rules −0.001 [−0.026, 0.027] (no
+  objective), +0.006 [−0.020, 0.037] (with); − no-Jev control +0.006 / +0.012 (CIs include 0). At 0.25/0.5/1 % JEV_V3
+  (no objective) selects exactly the same high-severity labels as the no-Jev control. Best nominal: WITH_OBJECTIVE vs
+  rules at 0.25 %, 12 vs 4 labels (p = 0.077 uncorrected, ~60 comparisons); full fidelity 12 vs 8 (p = 0.50).
+* As configured, the V3 adapter (with or without Jev) sends less full-fidelity data than RULES; not a Jev effect.
+* Documented real events: 5 high-severity labels (21 candidates) — UNDERPOWERED; the AUROC gain there is reproduced
+  by the no-Jev control (QC factor), not by Jev.
+* **Outcome: C — STOP JEV** for the ranking role (fails to improve candidate ordering). No fourth redesign.
+
 ## Selection record
 
 *Empty until the validation ablation has run.* To be filled from `--freeze-jev` output: chosen variant,

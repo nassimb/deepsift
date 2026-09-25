@@ -1,0 +1,286 @@
+{
+ "n_items": 598,
+ "n_unique_candidates": 447,
+ "errors": 0,
+ "scientific_interest": {
+  "high": 217,
+  "exceptional": 38,
+  "medium": 110,
+  "low": 79,
+  "none": 3
+ },
+ "phenomenon_class": {
+  "radiation": 81,
+  "thermal": 85,
+  "atmospheric": 267,
+  "uncertain": 14
+ },
+ "mission_relevance[balanced_science]": {
+  "very_high": 48,
+  "high": 125,
+  "medium": 95,
+  "low": 179
+ },
+ "top_share": {
+  "scientific_interest": 0.4854586129753915,
+  "phenomenon_class": 0.5973154362416108,
+  "mission_relevance[balanced_science]": 0.4004474272930649
+ },
+ "interest_by_group": {
+  "truth": {
+   "real:high": {
+    "n": 21,
+    "high": 10,
+    "exceptional": 8,
+    "medium": 3
+   },
+   "real:medium": {
+    "n": 5,
+    "high": 5
+   },
+   "synthetic:high": {
+    "n": 140,
+    "high": 89,
+    "medium": 21,
+    "low": 16,
+    "exceptional": 14
+   },
+   "synthetic:low": {
+    "n": 59,
+    "low": 18,
+    "high": 29,
+    "medium": 9,
+    "none": 3
+   },
+   "synthetic:medium": {
+    "n": 103,
+    "high": 57,
+    "low": 14,
+    "medium": 25,
+    "exceptional": 7
+   },
+   "unlabelled": {
+    "n": 270,
+    "high": 114,
+    "medium": 81,
+    "low": 50,
+    "exceptional": 25
+   }
+  },
+  "data_quality": {
+   "BAD": {
+    "n": 249,
+    "low": 93,
+    "medium": 67,
+    "high": 75,
+    "none": 3,
+    "exceptional": 11
+   },
+   "CLEAN": {
+    "n": 215,
+    "high": 115,
+    "exceptional": 33,
+    "medium": 62,
+    "low": 5
+   },
+   "SUSPECT": {
+    "n": 134,
+    "high": 114,
+    "medium": 10,
+    "exceptional": 10
+   }
+  },
+  "instrument": {
+   "RAD": {
+    "n": 101,
+    "high": 61,
+    "exceptional": 30,
+    "medium": 10
+   },
+   "REMS": {
+    "n": 497,
+    "high": 243,
+    "medium": 129,
+    "low": 98,
+    "exceptional": 24,
+    "none": 3
+   }
+  },
+  "score_tier": {
+   "below_level_threshold": {
+    "n": 179,
+    "low": 88,
+    "medium": 61,
+    "high": 27,
+    "none": 3
+   },
+   "high": {
+    "n": 118,
+    "high": 61,
+    "exceptional": 48,
+    "medium": 4,
+    "low": 5
+   },
+   "medium": {
+    "n": 170,
+    "high": 145,
+    "medium": 18,
+    "exceptional": 6,
+    "low": 1
+   },
+   "near_threshold": {
+    "n": 131,
+    "medium": 56,
+    "high": 71,
+    "low": 4
+   }
+  }
+ },
+ "phenomenon_by_instrument": {
+  "REMS": {
+   "thermal": 85,
+   "atmospheric": 266,
+   "uncertain": 14
+  },
+  "RAD": {
+   "radiation": 81,
+   "atmospheric": 1
+  }
+ },
+ "mission_relevance_by_objective_diag": {
+  "balanced_science": {
+   "n": 100,
+   "all": {
+    "very_high": 29,
+    "high": 40,
+    "low": 22,
+    "medium": 9
+   },
+   "REMS": {
+    "high": 11,
+    "low": 22,
+    "medium": 8,
+    "very_high": 4
+   },
+   "RAD": {
+    "very_high": 25,
+    "high": 29,
+    "medium": 1
+   }
+  },
+  "radiation_monitoring": {
+   "n": 100,
+   "all": {
+    "very_high": 55,
+    "none": 22,
+    "high": 10,
+    "low": 10,
+    "medium": 3
+   },
+   "REMS": {
+    "none": 22,
+    "high": 10,
+    "low": 10,
+    "medium": 3
+   },
+   "RAD": {
+    "very_high": 55
+   }
+  },
+  "engineering_health": {
+   "n": 100,
+   "all": {
+    "very_high": 100
+   },
+   "REMS": {
+    "very_high": 45
+   },
+   "RAD": {
+    "very_high": 55
+   }
+  }
+ },
+ "phenomenon_vs_objective": {
+  "radiation_monitoring": {
+   "n": 100,
+   "phenomenon_changed": 0.03,
+   "interest_changed": 0.09
+  },
+  "engineering_health": {
+   "n": 100,
+   "phenomenon_changed": 0.0,
+   "interest_changed": 0.16
+  },
+  "repeat_baseline_no_objective": {
+   "n": 100,
+   "phenomenon_changed": 0.01,
+   "interest_changed": 0.03
+  },
+  "used_for_priority_and_reported": "objective-free V3_SCIENCE request only (identical across objectives by construction)"
+ },
+ "phenomenon_ground_truth": {
+  "n": 269,
+  "accuracy": 0.828996282527881,
+  "rules_accuracy": 0.3308550185873606,
+  "conf_correct": 0.8485650224215247,
+  "conf_incorrect": 0.7628260869565218,
+  "accuracy_by_conf": {
+   "<0.5": {
+    "n": 20,
+    "acc": 0.65
+   },
+   "0.5-0.7": {
+    "n": 47,
+    "acc": 0.723404255319149
+   },
+   "0.7-0.9": {
+    "n": 54,
+    "acc": 0.8888888888888888
+   },
+   ">=0.9": {
+    "n": 148,
+    "acc": 0.8648648648648649
+   }
+  },
+  "confusion": {
+   "radiation->radiation": 67,
+   "atmospheric->atmospheric": 141,
+   "atmospheric->thermal": 22,
+   "thermal->thermal": 15,
+   "atmospheric->uncertain": 2,
+   "thermal->atmospheric": 21,
+   "radiation->atmospheric": 1
+  }
+ },
+ "interest_vs_label_severity": {
+  "high": {
+   "n": 21,
+   "high": 10,
+   "exceptional": 8,
+   "medium": 3
+  },
+  "medium": {
+   "n": 5,
+   "high": 5
+  },
+  "low": {
+   "n": 0
+  },
+  "agreement_high_vs_low": 0.6863636363636364
+ },
+ "confidence": {
+  "interest": {
+   "mean": 0.5552572706935123,
+   "median": 0.51
+  },
+  "phenomenon": {
+   "mean": 0.8224608501118568,
+   "median": 0.91
+  },
+  "relevance": {
+   "mean": 0.39570469798657715,
+   "median": 0.38
+  }
+ },
+ "flags": []
+}
