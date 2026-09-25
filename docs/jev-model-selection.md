@@ -134,6 +134,15 @@ deep-analysis routing are system decisions and are no longer asked. Code: `decis
   by the no-Jev control (QC factor), not by Jev.
 * **Outcome: C — STOP JEV** for the ranking role (fails to improve candidate ordering). No fourth redesign.
 
+## Final Phase 2 decision (tag `phase2-complete`)
+
+On the validation experiment, Jev 1.13 did not provide a measurable improvement in candidate-event ranking over deterministic baselines or the local edge model. Under the pre-registered stop rule, Jev was discontinued for the ranking role.
+
+This result applies only to this experiment and task (ranking already-detected REMS/RAD candidate events on DEEPSIFT's validation split, with the state representations and questions tested). It is not a general claim about Jev. All Jev code, runs, call logs, the inference cache and the evaluation documents are preserved for reproducibility. Jev is not part of the default active ranking path going forward (opt-in only: `DEEPSIFT_EXPERIMENTAL_JEV=1` or `scripts/run_study.py --experimental-jev`).
+
+No JEV_SCHEMA_V4 will be created, Jev is not tuned further, and the held-out Jev test is not run merely to obtain
+a result. No variant was frozen, so the selection record below stays empty by design.
+
 ## Selection record
 
 *Empty until the validation ablation has run.* To be filled from `--freeze-jev` output: chosen variant,

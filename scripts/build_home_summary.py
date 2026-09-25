@@ -201,7 +201,7 @@ def jev_block() -> dict:
             "latency_ms": ops["latency_ms"], "auroc": {k: au[f"synthetic|{k}"]["auroc"] for k in ("RULES", "LOCAL_EDGE", "JEV_V3_NO_OBJECTIVE", "JEV_V3_WITH_OBJECTIVE")},
             "auroc_diff_vs_rules": {"no_objective": pick("synthetic|JEV_V3_NO_OBJECTIVE-minus-RULES"), "with_objective": pick("synthetic|JEV_V3_WITH_OBJECTIVE-minus-RULES")},
             "ordering_only_retention": order,
-            "outcome": "No measurable improvement in candidate ordering over rules (validation pilot). Recommendation recorded: STOP JEV for the ranking role; decision pending."}
+            "outcome": "No measurable improvement in candidate ordering over rules (validation pilot). Discontinued for the ranking role under the pre-registered stop rule (phase2-complete)."}
 
 
 def data_block() -> dict:

@@ -79,7 +79,7 @@ class Blackout(BaseModel):
 
 
 class DecisionEngineCfg(BaseModel):
-    kind: Literal["auto", "mock", "jev"] = "auto"  # auto → jev when OPENROUTER_API_KEY is set
+    kind: Literal["auto", "mock", "jev"] = "auto"  # auto → mock; jev only with DEEPSIFT_EXPERIMENTAL_JEV=1 + key (Phase 2 stop rule)
     jev_model: str = "typesafe/jev-1.13"
     price_per_mtok_input_usd: float = 0.042
     timeout_s: float = 10

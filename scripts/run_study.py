@@ -5,7 +5,8 @@
     uv run python scripts/run_study.py --freeze <validation_run_id>  # apply the pre-declared selection rule
     uv run python scripts/run_study.py --split test                  # refuses unless the config is frozen
 
-Jev strategies run only if OPENROUTER_API_KEY is set AND scripts/jev_smoke.py passes first.
+Jev strategies are OFF by default since phase2-complete (stop rule). `--experimental-jev` re-enables them for
+reproducibility; they then also need OPENROUTER_API_KEY and a passing scripts/jev_smoke.py.
 """
 
 from __future__ import annotations
@@ -127,7 +128,9 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--split", choices=["calibration", "validation", "test"])
     ap.add_argument("--batches", type=int, default=25)
-    ap.add_argument("--no-jev", action="store_true")
+    ap.add_argument("--experimental-jev", action="store_true",
+                    help="opt in to the discontinued Jev ranking strategies (Phase 2 stop rule; reproducibility only)")
+    ap.add_argument("--no-jev", action="store_true", help="kept for old commands; Jev is already off by default")
     ap.add_argument("--experiments", default="real,synthetic,storage,gating,calibration")
     ap.add_argument("--freeze", metavar="VALIDATION_RUN_ID")
     ap.add_argument("--freeze-jev", metavar="VALIDATION_RUN_ID")
@@ -146,7 +149,7 @@ def main() -> int:
     cfg = load_config(PHASE2)
     if args.split == "test" and not (cfg.provenance or {}).get("validation_choices", {}).get("frozen"):
         raise SystemExit("refusing to evaluate TEST: config/phase2.yaml has no frozen validation choices (run --freeze first)")
-    use_jev = not args.no_jev
+    use_jev = args.experimental_jev and not args.no_jev      # Jev left the default path at phase2-complete
     budget = None
     variants = args.jev_variants.split(",") if args.jev_variants else None
     if use_jev:

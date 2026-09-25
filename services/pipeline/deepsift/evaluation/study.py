@@ -97,7 +97,7 @@ def synthetic_labels_with_meta(injections) -> tuple[list[Label], dict]:
 
 
 class Study:
-    def __init__(self, cfg: Config, split: str, run_id: str | None = None, n_batches: int = 25, use_jev: bool = True,
+    def __init__(self, cfg: Config, split: str, run_id: str | None = None, n_batches: int = 25, use_jev: bool = False,
                  jev_variants: list[str] | None = None, experiments: set[str] | None = None, out_root: Path | None = None,
                  budget=None, use_cache: bool = True):
         self.cfg = cfg

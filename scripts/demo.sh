@@ -37,6 +37,6 @@ for _ in $(seq 1 90); do
 done
 echo
 echo "  DEEPSIFT ready → http://localhost:$WEB_PORT/control"
-echo "  engine: $( [ -n "${OPENROUTER_API_KEY:-}" ] && echo 'Jev via OpenRouter (OPENROUTER_API_KEY present)' || echo 'mock heuristic (no OPENROUTER_API_KEY)')"
+echo "  engine: mock heuristic (Jev is not in the default path since Phase 2; see docs/jev-model-selection.md)"
 (command -v open >/dev/null && open "http://localhost:$WEB_PORT/control") || true
 wait

@@ -14,9 +14,9 @@ is not validated by NASA/JPL, and it does not produce scientific findings.
 
 > **Onboard vs cloud — read this first.** DEEPSIFT evaluates an *onboard-autonomy architecture*.
 > ONBOARD-SIMULATED: preprocessing, feature extraction, candidate detection, priority, storage,
-> bandwidth and routing. REMOTE: Jev inference, which runs on TypeSafe's hosted API over the network.
-> The current Jev implementation is API-hosted and therefore does not establish deployability on
-> spacecraft hardware. Jev latency and cost figures are for a ground-based API call, not an onboard
+> bandwidth and routing. REMOTE (experimental, off by default since Phase 2): Jev inference, called over
+> the network through OpenRouter. It was API-hosted and therefore does not establish deployability on
+> spacecraft hardware; its latency and cost figures are for a ground-based API call, not an onboard
 > processor. The LOCAL EDGE BASELINE is the only decision model in DEEPSIFT that runs without a network.
 
 ---
@@ -197,8 +197,8 @@ time, not model inference); 99.5 % data reduction under the default budget.
   dust-storm phases (Viúdez-Moreiras et al. 2019); sol 242 verification record (`docs/ground-truth.md`).
 * 1,852 synthetic injections on test in declared difficulty buckets; strict / tolerant / coverage metrics;
   RANDOM over 30 seeds; ORACLE — NOT DEPLOYABLE; LOCAL EDGE BASELINE (1.6 KB logistic model, no network).
-* **Jev was not evaluated — no API key was available.** The harness, call log, smoke test and five
-  ablations are ready (`docs/jev-evaluation.md` → "How to run").
+* Jev was evaluated only on validation, in staged pilots (see "Phase 2 conclusion" below); it was never run on
+  the held-out test.
 
 Held-out findings (mock engine, not Jev): candidate detection caps every event-based strategy at 63–68 %
 high-severity synthetic recall; above ~1 % of raw bytes a no-AI rules + statistical hybrid leads (73 → 100 %);
@@ -206,6 +206,18 @@ at 0.5 % the mock engine reaches 60 % vs rules 50 % and the local edge model 53 
 decreases are not isolated by the detector (≈2 % data coverage, random 7 %); the v0.1 protected-tier storage
 policy preserves *fewer* high-severity synthetic events at 1–4 MiB. Full report: `docs/jev-evaluation.md`;
 UI: `/study`; artifacts: `artifacts/runs/`, `artifacts/figures/`.
+
+## Phase 2 conclusion (tag `phase2-complete`)
+
+On the validation experiment, Jev 1.13 did not provide a measurable improvement in candidate-event ranking over deterministic baselines or the local edge model. Under the pre-registered stop rule, Jev was discontinued for the ranking role.
+
+This result applies only to this experiment and task (ranking already-detected REMS/RAD candidate events on DEEPSIFT's validation split, with the state representations and questions tested). It is not a general claim about Jev. All Jev code, runs, call logs, the inference cache and the evaluation documents are preserved for reproducibility. Jev is not part of the default active ranking path going forward (opt-in only: `DEEPSIFT_EXPERIMENTAL_JEV=1` or `scripts/run_study.py --experimental-jev`).
+
+Evidence: validation pilots `20260925T091126-jev-pilot-7351` (q1 schema, degenerate answers),
+`20260925T092458-jev-wording-q2-d559` (wording change, not adopted) and `20260925T094903-jev-v3-pilot-84af`
+(science-only V3 schema: healthy outputs; ordering-only AUROC vs rules −0.001 [−0.026, 0.027] without and
++0.006 [−0.020, 0.037] with the mission objective, 100 high-severity labels). Protocol and records:
+`docs/jev-model-selection.md`, `docs/jev-evaluation.md`.
 
 ## How to reproduce
 
@@ -239,8 +251,8 @@ Individual services: `npm run api`, `npm run web`.
 
 | variable | purpose |
 |---|---|
-| `TYPESAFE_API_KEY` | enables `JevDecisionEngine` automatically (`decision_engine.kind: auto`; set `mock` to force the heuristic) |
-| `TYPESAFE_BASE_URL`, `TYPESAFE_DEFAULT_MODEL` | optional SDK overrides |
+| `OPENROUTER_API_KEY` | key for the experimental Jev engine (via OpenRouter); has no effect unless Jev is opted in |
+| `DEEPSIFT_EXPERIMENTAL_JEV` | `1` lets `decision_engine.kind: auto` select Jev again (off by default since Phase 2) |
 | `ANTHROPIC_API_KEY` | enables `ClaudeDeepAnalysis` (also set `deep_analysis.provider: claude`) |
 | `NEXT_PUBLIC_DEEPSIFT_API` | UI → API base URL (default `http://localhost:8787`) |
 | `DEEPSIFT_SOLS`, `DEEPSIFT_API_PORT`, `DEEPSIFT_WEB_PORT`, `DEEPSIFT_SKIP_FETCH` | demo script options |
@@ -260,7 +272,7 @@ Copy `.env.example` to `.env`; keys are never hard-coded or logged.
 
 ## Future work
 
-Real Jev evaluation and calibration curves · more documented events (e.g. Sept 2017 SEP, 2018 dust storm)
+Phase 3: multimodal (imagery + telemetry) triage · more documented events (e.g. Sept 2017 SEP, 2018 dust storm)
 and human labels · Perseverance MEDA adapter · imagery and multi-instrument fusion · learned baselines ·
 onboard-realistic encodings and CCSDS packetization · hardware-in-the-loop timing.
 

@@ -9,6 +9,8 @@ and (b) the benchmark can swap the decision stage for other strategies on identi
 
 from __future__ import annotations
 
+import os
+
 import json
 import statistics
 import time
@@ -38,9 +40,19 @@ from deepsift.simulation.scheduler import BACKGROUND_UTILITY, Blackout, Item, si
 RUNS_DIR = DATA_DIR / "processed" / "runs"
 
 
+EXPERIMENTAL_JEV_ENV = "DEEPSIFT_EXPERIMENTAL_JEV"
+
+
+def jev_opted_in() -> bool:
+    """Jev left the default ranking path at Phase 2 completion (tag phase2-complete): the pre-registered stop rule
+    discontinued it for the ranking role. `kind: auto` selects it only with DEEPSIFT_EXPERIMENTAL_JEV=1 (and a key);
+    `kind: jev` remains an explicit, experimental choice. The implementation is kept for reproducibility."""
+    return os.environ.get(EXPERIMENTAL_JEV_ENV, "").strip() == "1"
+
+
 def make_engine(cfg: Config) -> DecisionEngine:
     de = cfg.decision_engine
-    if de.kind == "jev" or (de.kind == "auto" and jev_available()):
+    if de.kind == "jev" or (de.kind == "auto" and jev_opted_in() and jev_available()):
         if not jev_available():
             raise RuntimeError("decision_engine.kind=jev but OPENROUTER_API_KEY is not set")
         return JevDecisionEngine(model=de.jev_model, timeout_s=de.timeout_s, max_concurrency=de.max_concurrency,

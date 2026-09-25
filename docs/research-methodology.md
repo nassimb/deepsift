@@ -202,3 +202,11 @@ RULES_PLUS_ENGINE / ENGINE_SINGLE_DECISION for the MOCK heuristic and each Jev v
 NO_MISSION_OBJECTIVE, MINIMAL, NUMERIC_ONLY, SINGLE_DECISION) · ENGINE_PLUS_DEEP (disabled: no
 Anthropic spend in Phase 2) · ORACLE — NOT DEPLOYABLE (label-aware upper bound: first the cheapest
 window of every label, then value per byte).
+
+## Phase 2 outcome (tag `phase2-complete`)
+
+On the validation experiment, Jev 1.13 did not provide a measurable improvement in candidate-event ranking over
+deterministic baselines or the local edge model. Under the pre-registered stop rule, Jev was discontinued for the
+ranking role. The result is limited to this experiment and task and is not a general claim about Jev. Jev code,
+runs, call logs and cache are preserved for reproducibility; Jev is not in the default ranking path (opt-in only).
+Details: `docs/jev-model-selection.md`.

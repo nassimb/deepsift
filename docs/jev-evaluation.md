@@ -1,5 +1,11 @@
 # Jev evaluation — Phase 2 report
 
+> **Phase 2 conclusion (final, tag `phase2-complete`).** On the validation experiment, Jev 1.13 did not provide a measurable improvement in candidate-event ranking over deterministic baselines or the local edge model. Under the pre-registered stop rule, Jev was discontinued for the ranking role.
+> This result applies only to this experiment and task (ranking already-detected REMS/RAD candidate events on DEEPSIFT's validation split, with the state representations and questions tested). It is not a general claim about Jev. All Jev code, runs, call logs, the inference cache and the evaluation documents are preserved for reproducibility. Jev is not part of the default active ranking path going forward (opt-in only: `DEEPSIFT_EXPERIMENTAL_JEV=1` or `scripts/run_study.py --experimental-jev`).
+> The sections below were written before the live Jev runs and are kept unchanged as the pre-Jev record; the
+> live results are in `docs/jev-model-selection.md` (operational record, q2 and V3 outcomes).
+
+
 **Status: Jev has not been evaluated yet (no API key).** No `TYPESAFE_API_KEY` was available during Phase 2, so every Jev
 strategy and ablation is reported UNAVAILABLE and no Jev number appears in this report. The harness,
 the call logging, the smoke test and all five ablation variants are implemented and tested (through the

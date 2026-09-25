@@ -283,7 +283,8 @@ export default function Home() {
             </Finding>
             <Finding n="6" t="The semantic model has not beaten rules at ranking.">
               Validation pilots only: early question schemas produced degenerate answers; the science-only redesign was healthy but ordered
-              candidates no better than rules (ΔAUROC {J.auroc_diff_vs_rules.no_objective.diff.toFixed(3)}). A decision on keeping it is pending.
+              candidates no better than rules (ΔAUROC {J.auroc_diff_vs_rules.no_objective.diff.toFixed(3)}). Under the pre-registered stop rule it was discontinued for
+              this ranking role — a result about this experiment, not about Jev in general.
             </Finding>
           </ol>
           <div className="mt-3 flex flex-wrap gap-2">
