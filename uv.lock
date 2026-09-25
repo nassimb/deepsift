@@ -198,6 +198,7 @@ dependencies = [
     { name = "pydantic" },
     { name = "pyyaml" },
     { name = "scikit-learn" },
+    { name = "scipy" },
     { name = "typesafe-sdk" },
     { name = "uvicorn", extra = ["standard"] },
 ]
@@ -222,6 +223,7 @@ requires-dist = [
     { name = "pydantic", specifier = ">=2.13.5" },
     { name = "pyyaml", specifier = ">=6.0.3" },
     { name = "scikit-learn", specifier = ">=1.9.1" },
+    { name = "scipy", specifier = ">=1.18.1" },
     { name = "typesafe-sdk", specifier = ">=0.7.1" },
     { name = "uvicorn", extras = ["standard"], specifier = ">=0.53.0" },
 ]

@@ -1,0 +1,2017 @@
+{
+ "version": "REVIEW_PAIRS_V1",
+ "created_at": "2026-09-25T13:37:56.864837+00:00",
+ "split": "development",
+ "question": "Which observation would you prioritize for downlink?",
+ "choices": [
+  "A",
+  "B",
+  "EQUAL",
+  "UNSURE"
+ ],
+ "blinding": "reviewers see images + basic metadata only; categories and scores are revealed after the answer",
+ "pairs": [
+  {
+   "pair_id": "P31-000",
+   "A": "MSL-NAV-0417-434515247",
+   "B": "MSL-NAV-0417-434515143",
+   "category": "PHASH_VS_EMBEDDING",
+   "scores": {
+    "151": {
+     "size_rank": 348,
+     "novelty_rank": 507,
+     "telemetry_rank": 189,
+     "phash_rep_rank": 119,
+     "embedding_novelty": 0.023494720458984375,
+     "telemetry_score": 0.6806334647014723,
+     "full_bytes": 156704.03072
+    },
+    "150": {
+     "size_rank": 310,
+     "novelty_rank": 323,
+     "telemetry_rank": 188,
+     "phash_rep_rank": 118,
+     "embedding_novelty": 0.044328927993774414,
+     "telemetry_score": 0.6806334647014723,
+     "full_bytes": 154536.01792
+    }
+   }
+  },
+  {
+   "pair_id": "P31-001",
+   "A": "MSL-NAV-0417-434515405",
+   "B": "MSL-NAV-0417-434515076",
+   "category": "PHASH_VS_EMBEDDING",
+   "scores": {
+    "153": {
+     "size_rank": 336,
+     "novelty_rank": 488,
+     "telemetry_rank": 191,
+     "phash_rep_rank": 121,
+     "embedding_novelty": 0.02543008327484131,
+     "telemetry_score": 0.6806334647014723,
+     "full_bytes": 156084.06016
+    },
+    "149": {
+     "size_rank": 343,
+     "novelty_rank": 344,
+     "telemetry_rank": 187,
+     "phash_rep_rank": 117,
+     "embedding_novelty": 0.0413355827331543,
+     "telemetry_score": 0.6806334647014723,
+     "full_bytes": 156435.98848
+    }
+   }
+  },
+  {
+   "pair_id": "P31-002",
+   "A": "MSL-NAV-0413-434161826",
+   "B": "MSL-NAV-0413-434163825",
+   "category": "SIZE_VS_NOVELTY",
+   "scores": {
+    "94": {
+     "size_rank": 49,
+     "novelty_rank": 562,
+     "telemetry_rank": 360,
+     "phash_rep_rank": 494,
+     "embedding_novelty": 0.010993421077728271,
+     "telemetry_score": 0.0,
+     "full_bytes": 139028.0704
+    },
+    "123": {
+     "size_rank": 585,
+     "novelty_rank": 69,
+     "telemetry_rank": 389,
+     "phash_rep_rank": 98,
+     "embedding_novelty": 0.10351788997650146,
+     "telemetry_score": 0.0,
+     "full_bytes": 1048535.36768
+    }
+   }
+  },
+  {
+   "pair_id": "P31-003",
+   "A": "MSL-NAV-0413-434162982",
+   "B": "MSL-NAV-0426-435324594",
+   "category": "SIZE_VS_NOVELTY",
+   "scores": {
+    "112": {
+     "size_rank": 55,
+     "novelty_rank": 559,
+     "telemetry_rank": 378,
+     "phash_rep_rank": 498,
+     "embedding_novelty": 0.01301640272140503,
+     "telemetry_score": 0.0,
+     "full_bytes": 139463.96672
+    },
+    "533": {
+     "size_rank": 552,
+     "novelty_rank": 45,
+     "telemetry_rank": 568,
+     "phash_rep_rank": 417,
+     "embedding_novelty": 0.13535940647125244,
+     "telemetry_score": 0.0,
+     "full_bytes": 524288.0
+    }
+   }
+  },
+  {
+   "pair_id": "P31-004",
+   "A": "MSL-NAV-0413-434163856",
+   "B": "MSL-NAV-0413-434161548",
+   "category": "SIZE_VS_NOVELTY",
+   "scores": {
+    "124": {
+     "size_rank": 570,
+     "novelty_rank": 144,
+     "telemetry_rank": 390,
+     "phash_rep_rank": 99,
+     "embedding_novelty": 0.07198953628540039,
+     "telemetry_score": 0.0,
+     "full_bytes": 786404.47488
+    },
+    "91": {
+     "size_rank": 48,
+     "novelty_rank": 517,
+     "telemetry_rank": 357,
+     "phash_rep_rank": 493,
+     "embedding_novelty": 0.022262096405029297,
+     "telemetry_score": 0.0,
+     "full_bytes": 138976.0512
+    }
+   }
+  },
+  {
+   "pair_id": "P31-005",
+   "A": "MSL-NAV-0416-434436382",
+   "B": "MSL-NAV-0422-434969197",
+   "category": "SIZE_VS_NOVELTY",
+   "scores": {
+    "140": {
+     "size_rank": 6,
+     "novelty_rank": 587,
+     "telemetry_rank": 399,
+     "phash_rep_rank": 113,
+     "embedding_novelty": 0.00045543909072875977,
+     "telemetry_score": 0.0,
+     "full_bytes": 65279.92359875
+    },
+    "363": {
+     "size_rank": 537,
+     "novelty_rank": 70,
+     "telemetry_rank": 179,
+     "phash_rep_rank": 289,
+     "embedding_novelty": 0.103310227394104,
+     "telemetry_score": 0.6845150877144996,
+     "full_bytes": 524288.0
+    }
+   }
+  },
+  {
+   "pair_id": "P31-006",
+   "A": "MSL-NAV-0424-435140856",
+   "B": "MSL-NAV-0426-435324338",
+   "category": "SIZE_VS_NOVELTY",
+   "scores": {
+    "421": {
+     "size_rank": 78,
+     "novelty_rank": 472,
+     "telemetry_rank": 499,
+     "phash_rep_rank": 565,
+     "embedding_novelty": 0.02757042646408081,
+     "telemetry_score": 0.0,
+     "full_bytes": 140944.01536000002
+    },
+    "527": {
+     "size_rank": 482,
+     "novelty_rank": 59,
+     "telemetry_rank": 562,
+     "phash_rep_rank": 411,
+     "embedding_novelty": 0.11241090297698975,
+     "telemetry_score": 0.0,
+     "full_bytes": 524236.88192
+    }
+   }
+  },
+  {
+   "pair_id": "P31-007",
+   "A": "MSL-NAV-0417-434526432",
+   "B": "MSL-NAV-0424-435140340",
+   "category": "SIZE_VS_NOVELTY",
+   "scores": {
+    "236": {
+     "size_rank": 528,
+     "novelty_rank": 46,
+     "telemetry_rank": 52,
+     "phash_rep_rank": 186,
+     "embedding_novelty": 0.13518637418746948,
+     "telemetry_score": 0.7902249719311265,
+     "full_bytes": 524288.0
+    },
+    "415": {
+     "size_rank": 79,
+     "novelty_rank": 489,
+     "telemetry_rank": 120,
+     "phash_rep_rank": 563,
+     "embedding_novelty": 0.0253717303276062,
+     "telemetry_score": 0.7799422069402441,
+     "full_bytes": 140951.96159999998
+    }
+   }
+  },
+  {
+   "pair_id": "P31-008",
+   "A": "MSL-NAV-0424-435147166",
+   "B": "MSL-NAV-0424-435140604",
+   "category": "SIZE_VS_NOVELTY",
+   "scores": {
+    "485": {
+     "size_rank": 498,
+     "novelty_rank": 131,
+     "telemetry_rank": 23,
+     "phash_rep_rank": 379,
+     "embedding_novelty": 0.07388895750045776,
+     "telemetry_score": 0.7905927458577863,
+     "full_bytes": 524269.64992
+    },
+    "418": {
+     "size_rank": 58,
+     "novelty_rank": 526,
+     "telemetry_rank": 123,
+     "phash_rep_rank": 564,
+     "embedding_novelty": 0.020678579807281494,
+     "telemetry_score": 0.7799422069402441,
+     "full_bytes": 139756.01152
+    }
+   }
+  },
+  {
+   "pair_id": "P31-009",
+   "A": "MSL-NAV-0413-434164121",
+   "B": "MSL-NAV-0413-434160430",
+   "category": "SIZE_VS_NOVELTY",
+   "scores": {
+    "125": {
+     "size_rank": 516,
+     "novelty_rank": 8,
+     "telemetry_rank": 391,
+     "phash_rep_rank": 100,
+     "embedding_novelty": 0.2708381414413452,
+     "telemetry_score": 0.0,
+     "full_bytes": 524288.0
+    },
+    "79": {
+     "size_rank": 59,
+     "novelty_rank": 550,
+     "telemetry_rank": 288,
+     "phash_rep_rank": 489,
+     "embedding_novelty": 0.014439523220062256,
+     "telemetry_score": 0.6571632425865981,
+     "full_bytes": 139804.01664
+    }
+   }
+  },
+  {
+   "pair_id": "P31-010",
+   "A": "MSL-NAV-0419-434696418",
+   "B": "MSL-NAV-0425-435220337",
+   "category": "SIZE_VS_NOVELTY",
+   "scores": {
+    "282": {
+     "size_rank": 46,
+     "novelty_rank": 514,
+     "telemetry_rank": 469,
+     "phash_rep_rank": 537,
+     "embedding_novelty": 0.022535979747772217,
+     "telemetry_score": 0.0,
+     "full_bytes": 138600.03840000002
+    },
+    "500": {
+     "size_rank": 467,
+     "novelty_rank": 23,
+     "telemetry_rank": 53,
+     "phash_rep_rank": 589,
+     "embedding_novelty": 0.17908453941345215,
+     "telemetry_score": 0.7898202262727965,
+     "full_bytes": 262144.0
+    }
+   }
+  },
+  {
+   "pair_id": "P31-011",
+   "A": "MSL-NAV-0426-435324441",
+   "B": "MSL-NAV-0416-434436408",
+   "category": "SIZE_VS_NOVELTY",
+   "scores": {
+    "530": {
+     "size_rank": 550,
+     "novelty_rank": 37,
+     "telemetry_rank": 565,
+     "phash_rep_rank": 414,
+     "embedding_novelty": 0.14653486013412476,
+     "telemetry_score": 0.0,
+     "full_bytes": 524288.0
+    },
+    "142": {
+     "size_rank": 8,
+     "novelty_rank": 589,
+     "telemetry_rank": 401,
+     "phash_rep_rank": 504,
+     "embedding_novelty": 0.00043010711669921875,
+     "telemetry_score": 0.0,
+     "full_bytes": 65279.92359875
+    }
+   }
+  },
+  {
+   "pair_id": "P31-012",
+   "A": "MSL-NAV-0419-434703676",
+   "B": "MSL-NAV-0427-435402040",
+   "category": "SIZE_VS_NOVELTY",
+   "scores": {
+    "313": {
+     "size_rank": 500,
+     "novelty_rank": 22,
+     "telemetry_rank": 7,
+     "phash_rep_rank": 246,
+     "embedding_novelty": 0.18054699897766113,
+     "telemetry_score": 0.7976302891287311,
+     "full_bytes": 524273.58207999996
+    },
+    "543": {
+     "size_rank": 32,
+     "novelty_rank": 585,
+     "telemetry_rank": 263,
+     "phash_rep_rank": 598,
+     "embedding_novelty": 0.0005140304565429688,
+     "telemetry_score": 0.6572141586726432,
+     "full_bytes": 65279.92359875
+    }
+   }
+  },
+  {
+   "pair_id": "P31-013",
+   "A": "MSL-NAV-0419-434696702",
+   "B": "MSL-NAV-0416-434427240",
+   "category": "SIZE_VS_NOVELTY",
+   "scores": {
+    "285": {
+     "size_rank": 71,
+     "novelty_rank": 457,
+     "telemetry_rank": 472,
+     "phash_rep_rank": 538,
+     "embedding_novelty": 0.029009699821472168,
+     "telemetry_score": 0.0,
+     "full_bytes": 140579.96288
+    },
+    "137": {
+     "size_rank": 520,
+     "novelty_rank": 151,
+     "telemetry_rank": 214,
+     "phash_rep_rank": 112,
+     "embedding_novelty": 0.07050180435180664,
+     "telemetry_score": 0.677148513672179,
+     "full_bytes": 524288.0
+    }
+   }
+  },
+  {
+   "pair_id": "P31-014",
+   "A": "MSL-NAV-0412-434077610",
+   "B": "MSL-NAV-0417-434525512",
+   "category": "SIZE_VS_NOVELTY",
+   "scores": {
+    "54": {
+     "size_rank": 481,
+     "novelty_rank": 119,
+     "telemetry_rank": 352,
+     "phash_rep_rank": 44,
+     "embedding_novelty": 0.07910847663879395,
+     "telemetry_score": 0.0,
+     "full_bytes": 524235.5712
+    },
+    "226": {
+     "size_rank": 15,
+     "novelty_rank": 599,
+     "telemetry_rank": 42,
+     "phash_rep_rank": 523,
+     "embedding_novelty": 0.00028705596923828125,
+     "telemetry_score": 0.7902249719311265,
+     "full_bytes": 65279.92359875
+    }
+   }
+  },
+  {
+   "pair_id": "P31-015",
+   "A": "MSL-NAV-0424-435147406",
+   "B": "MSL-NAV-0424-435148045",
+   "category": "SIZE_VS_NOVELTY",
+   "scores": {
+    "491": {
+     "size_rank": 501,
+     "novelty_rank": 122,
+     "telemetry_rank": 29,
+     "phash_rep_rank": 385,
+     "embedding_novelty": 0.07828414440155029,
+     "telemetry_score": 0.7905927458577863,
+     "full_bytes": 524277.51424
+    },
+    "495": {
+     "size_rank": 21,
+     "novelty_rank": 605,
+     "telemetry_rank": 33,
+     "phash_rep_rank": 585,
+     "embedding_novelty": 0.0002300739288330078,
+     "telemetry_score": 0.7905927458577863,
+     "full_bytes": 65279.92359875
+    }
+   }
+  },
+  {
+   "pair_id": "P31-016",
+   "A": "MSL-NAV-0417-434525551",
+   "B": "MSL-NAV-0424-435147037",
+   "category": "SIZE_VS_NOVELTY",
+   "scores": {
+    "229": {
+     "size_rank": 18,
+     "novelty_rank": 464,
+     "telemetry_rank": 45,
+     "phash_rep_rank": 179,
+     "embedding_novelty": 0.028597712516784668,
+     "telemetry_score": 0.7902249719311265,
+     "full_bytes": 65279.92359875
+    },
+    "481": {
+     "size_rank": 539,
+     "novelty_rank": 28,
+     "telemetry_rank": 19,
+     "phash_rep_rank": 375,
+     "embedding_novelty": 0.16233432292938232,
+     "telemetry_score": 0.7905927458577863,
+     "full_bytes": 524288.0
+    }
+   }
+  },
+  {
+   "pair_id": "P31-017",
+   "A": "MSL-NAV-0424-435138083",
+   "B": "MSL-NAV-0429-435585423",
+   "category": "SIZE_VS_NOVELTY",
+   "scores": {
+    "387": {
+     "size_rank": 93,
+     "novelty_rank": 474,
+     "telemetry_rank": 92,
+     "phash_rep_rank": 309,
+     "embedding_novelty": 0.02724015712738037,
+     "telemetry_score": 0.7799422069402441,
+     "full_bytes": 141867.99104
+    },
+    "584": {
+     "size_rank": 580,
+     "novelty_rank": 136,
+     "telemetry_rank": 74,
+     "phash_rep_rank": 458,
+     "embedding_novelty": 0.07306694984436035,
+     "telemetry_score": 0.7871380548952324,
+     "full_bytes": 786432.0
+    }
+   }
+  },
+  {
+   "pair_id": "P31-018",
+   "A": "MSL-NAV-0429-435592489",
+   "B": "MSL-NAV-0429-435592259",
+   "category": "SIZE_VS_NOVELTY",
+   "scores": {
+    "607": {
+     "size_rank": 38,
+     "novelty_rank": 588,
+     "telemetry_rank": 607,
+     "phash_rep_rank": 607,
+     "embedding_novelty": 0.00045239925384521484,
+     "telemetry_score": 0.0,
+     "full_bytes": 65279.92359875
+    },
+    "597": {
+     "size_rank": 562,
+     "novelty_rank": 53,
+     "telemetry_rank": 597,
+     "phash_rep_rank": 471,
+     "embedding_novelty": 0.1194232702255249,
+     "telemetry_score": 0.0,
+     "full_bytes": 524288.0
+    }
+   }
+  },
+  {
+   "pair_id": "P31-019",
+   "A": "MSL-NAV-0424-435137825",
+   "B": "MSL-NAV-0413-434164121",
+   "category": "SIZE_VS_NOVELTY",
+   "scores": {
+    "383": {
+     "size_rank": 53,
+     "novelty_rank": 534,
+     "telemetry_rank": 88,
+     "phash_rep_rank": 553,
+     "embedding_novelty": 0.018689870834350586,
+     "telemetry_score": 0.7799422069402441,
+     "full_bytes": 139364.02432000003
+    },
+    "125": {
+     "size_rank": 516,
+     "novelty_rank": 8,
+     "telemetry_rank": 391,
+     "phash_rep_rank": 100,
+     "embedding_novelty": 0.2708381414413452,
+     "telemetry_score": 0.0,
+     "full_bytes": 524288.0
+    }
+   }
+  },
+  {
+   "pair_id": "P31-020",
+   "A": "MSL-NAV-0424-435147037",
+   "B": "MSL-NAV-0419-434694795",
+   "category": "SIZE_VS_NOVELTY",
+   "scores": {
+    "481": {
+     "size_rank": 539,
+     "novelty_rank": 28,
+     "telemetry_rank": 19,
+     "phash_rep_rank": 375,
+     "embedding_novelty": 0.16233432292938232,
+     "telemetry_score": 0.7905927458577863,
+     "full_bytes": 524288.0
+    },
+    "264": {
+     "size_rank": 80,
+     "novelty_rank": 515,
+     "telemetry_rank": 451,
+     "phash_rep_rank": 531,
+     "embedding_novelty": 0.02248305082321167,
+     "telemetry_score": 0.0,
+     "full_bytes": 140964.00384000002
+    }
+   }
+  },
+  {
+   "pair_id": "P31-021",
+   "A": "MSL-NAV-0426-435324563",
+   "B": "MSL-NAV-0413-434161826",
+   "category": "SIZE_VS_NOVELTY",
+   "scores": {
+    "532": {
+     "size_rank": 504,
+     "novelty_rank": 85,
+     "telemetry_rank": 567,
+     "phash_rep_rank": 416,
+     "embedding_novelty": 0.09436261653900146,
+     "telemetry_score": 0.0,
+     "full_bytes": 524280.13568
+    },
+    "94": {
+     "size_rank": 49,
+     "novelty_rank": 562,
+     "telemetry_rank": 360,
+     "phash_rep_rank": 494,
+     "embedding_novelty": 0.010993421077728271,
+     "telemetry_score": 0.0,
+     "full_bytes": 139028.0704
+    }
+   }
+  },
+  {
+   "pair_id": "P31-022",
+   "A": "MSL-NAV-0429-435592284",
+   "B": "MSL-NAV-0416-434436369",
+   "category": "SIZE_VS_NOVELTY",
+   "scores": {
+    "598": {
+     "size_rank": 563,
+     "novelty_rank": 57,
+     "telemetry_rank": 598,
+     "phash_rep_rank": 472,
+     "embedding_novelty": 0.11556148529052734,
+     "telemetry_score": 0.0,
+     "full_bytes": 524288.0
+    },
+    "139": {
+     "size_rank": 5,
+     "novelty_rank": 579,
+     "telemetry_rank": 398,
+     "phash_rep_rank": 502,
+     "embedding_novelty": 0.0006085634231567383,
+     "telemetry_score": 0.0,
+     "full_bytes": 65279.92359875
+    }
+   }
+  },
+  {
+   "pair_id": "P31-023",
+   "A": "MSL-NAV-0426-435324532",
+   "B": "MSL-NAV-0419-434694531",
+   "category": "SIZE_VS_NOVELTY",
+   "scores": {
+    "531": {
+     "size_rank": 551,
+     "novelty_rank": 80,
+     "telemetry_rank": 566,
+     "phash_rep_rank": 415,
+     "embedding_novelty": 0.0956375002861023,
+     "telemetry_score": 0.0,
+     "full_bytes": 524288.0
+    },
+    "261": {
+     "size_rank": 105,
+     "novelty_rank": 511,
+     "telemetry_rank": 448,
+     "phash_rep_rank": 530,
+     "embedding_novelty": 0.022842347621917725,
+     "telemetry_score": 0.0,
+     "full_bytes": 142447.98464
+    }
+   }
+  },
+  {
+   "pair_id": "P31-024",
+   "A": "MSL-NAV-0424-435147037",
+   "B": "MSL-NAV-0429-435592476",
+   "category": "SIZE_VS_NOVELTY",
+   "scores": {
+    "481": {
+     "size_rank": 539,
+     "novelty_rank": 28,
+     "telemetry_rank": 19,
+     "phash_rep_rank": 375,
+     "embedding_novelty": 0.16233432292938232,
+     "telemetry_score": 0.7905927458577863,
+     "full_bytes": 524288.0
+    },
+    "606": {
+     "size_rank": 37,
+     "novelty_rank": 590,
+     "telemetry_rank": 606,
+     "phash_rep_rank": 475,
+     "embedding_novelty": 0.0004246234893798828,
+     "telemetry_score": 0.0,
+     "full_bytes": 65279.92359875
+    }
+   }
+  },
+  {
+   "pair_id": "P31-025",
+   "A": "MSL-NAV-0416-434427192",
+   "B": "MSL-NAV-0416-434436447",
+   "category": "SIZE_VS_NOVELTY",
+   "scores": {
+    "135": {
+     "size_rank": 480,
+     "novelty_rank": 92,
+     "telemetry_rank": 212,
+     "phash_rep_rank": 110,
+     "embedding_novelty": 0.09144681692123413,
+     "telemetry_score": 0.677148513672179,
+     "full_bytes": 524223.77472
+    },
+    "145": {
+     "size_rank": 11,
+     "novelty_rank": 594,
+     "telemetry_rank": 404,
+     "phash_rep_rank": 507,
+     "embedding_novelty": 0.000352323055267334,
+     "telemetry_score": 0.0,
+     "full_bytes": 65279.92359875
+    }
+   }
+  },
+  {
+   "pair_id": "P31-026",
+   "A": "MSL-NAV-0412-434077793",
+   "B": "MSL-NAV-0424-435138058",
+   "category": "SIZE_VS_NOVELTY",
+   "scores": {
+    "58": {
+     "size_rank": 513,
+     "novelty_rank": 10,
+     "telemetry_rank": 356,
+     "phash_rep_rank": 48,
+     "embedding_novelty": 0.2392609715461731,
+     "telemetry_score": 0.0,
+     "full_bytes": 524288.0
+    },
+    "386": {
+     "size_rank": 67,
+     "novelty_rank": 532,
+     "telemetry_rank": 91,
+     "phash_rep_rank": 554,
+     "embedding_novelty": 0.019180119037628174,
+     "telemetry_score": 0.7799422069402441,
+     "full_bytes": 140324.0448
+    }
+   }
+  },
+  {
+   "pair_id": "P31-027",
+   "A": "MSL-NAV-0419-434693338",
+   "B": "MSL-NAV-0426-435313931",
+   "category": "TELEMETRY_VS_IMAGE",
+   "scores": {
+    "247": {
+     "size_rank": 57,
+     "novelty_rank": 142,
+     "telemetry_rank": 434,
+     "phash_rep_rank": 526,
+     "embedding_novelty": 0.07248222827911377,
+     "telemetry_score": 0.0,
+     "full_bytes": 139539.98848
+    },
+    "509": {
+     "size_rank": 411,
+     "novelty_rank": 496,
+     "telemetry_rank": 132,
+     "phash_rep_rank": 393,
+     "embedding_novelty": 0.024755239486694336,
+     "telemetry_score": 0.6880241580032623,
+     "full_bytes": 160152.04352
+    }
+   }
+  },
+  {
+   "pair_id": "P31-028",
+   "A": "MSL-NAV-0417-434518719",
+   "B": "MSL-NAV-0425-435220349",
+   "category": "TELEMETRY_VS_IMAGE",
+   "scores": {
+    "179": {
+     "size_rank": 231,
+     "novelty_rank": 58,
+     "telemetry_rank": 405,
+     "phash_rep_rank": 510,
+     "embedding_novelty": 0.11329281330108643,
+     "telemetry_score": 0.0,
+     "full_bytes": 151211.95008
+    },
+    "501": {
+     "size_rank": 468,
+     "novelty_rank": 569,
+     "telemetry_rank": 54,
+     "phash_rep_rank": 387,
+     "embedding_novelty": 0.0009908080101013184,
+     "telemetry_score": 0.7898202262727965,
+     "full_bytes": 262144.0
+    }
+   }
+  },
+  {
+   "pair_id": "P31-029",
+   "A": "MSL-NAV-0413-434163856",
+   "B": "MSL-NAV-0424-435138058",
+   "category": "TELEMETRY_VS_IMAGE",
+   "scores": {
+    "124": {
+     "size_rank": 570,
+     "novelty_rank": 144,
+     "telemetry_rank": 390,
+     "phash_rep_rank": 99,
+     "embedding_novelty": 0.07198953628540039,
+     "telemetry_score": 0.0,
+     "full_bytes": 786404.47488
+    },
+    "386": {
+     "size_rank": 67,
+     "novelty_rank": 532,
+     "telemetry_rank": 91,
+     "phash_rep_rank": 554,
+     "embedding_novelty": 0.019180119037628174,
+     "telemetry_score": 0.7799422069402441,
+     "full_bytes": 140324.0448
+    }
+   }
+  },
+  {
+   "pair_id": "P31-030",
+   "A": "MSL-NAV-0417-434515006",
+   "B": "MSL-NAV-0412-434073158",
+   "category": "TELEMETRY_VS_IMAGE",
+   "scores": {
+    "148": {
+     "size_rank": 354,
+     "novelty_rank": 358,
+     "telemetry_rank": 186,
+     "phash_rep_rank": 116,
+     "embedding_novelty": 0.04016798734664917,
+     "telemetry_score": 0.6806334647014723,
+     "full_bytes": 156727.95136
+    },
+    "9": {
+     "size_rank": 187,
+     "novelty_rank": 61,
+     "telemetry_rank": 307,
+     "phash_rep_rank": 9,
+     "embedding_novelty": 0.1092519760131836,
+     "telemetry_score": 0.0,
+     "full_bytes": 149308.04736
+    }
+   }
+  },
+  {
+   "pair_id": "P31-031",
+   "A": "MSL-NAV-0429-435592259",
+   "B": "MSL-NAV-0417-434525512",
+   "category": "TELEMETRY_VS_IMAGE",
+   "scores": {
+    "597": {
+     "size_rank": 562,
+     "novelty_rank": 53,
+     "telemetry_rank": 597,
+     "phash_rep_rank": 471,
+     "embedding_novelty": 0.1194232702255249,
+     "telemetry_score": 0.0,
+     "full_bytes": 524288.0
+    },
+    "226": {
+     "size_rank": 15,
+     "novelty_rank": 599,
+     "telemetry_rank": 42,
+     "phash_rep_rank": 523,
+     "embedding_novelty": 0.00028705596923828125,
+     "telemetry_score": 0.7902249719311265,
+     "full_bytes": 65279.92359875
+    }
+   }
+  },
+  {
+   "pair_id": "P31-032",
+   "A": "MSL-NAV-0412-434073184",
+   "B": "MSL-NAV-0424-435139848",
+   "category": "TELEMETRY_VS_IMAGE",
+   "scores": {
+    "10": {
+     "size_rank": 166,
+     "novelty_rank": 78,
+     "telemetry_rank": 308,
+     "phash_rep_rank": 10,
+     "embedding_novelty": 0.09629225730895996,
+     "telemetry_score": 0.0,
+     "full_bytes": 148020.01919999998
+    },
+    "410": {
+     "size_rank": 120,
+     "novelty_rank": 400,
+     "telemetry_rank": 115,
+     "phash_rep_rank": 325,
+     "embedding_novelty": 0.0355910062789917,
+     "telemetry_score": 0.7799422069402441,
+     "full_bytes": 144019.94752
+    }
+   }
+  },
+  {
+   "pair_id": "P31-033",
+   "A": "MSL-NAV-0422-434967560",
+   "B": "MSL-NAV-0412-434076977",
+   "category": "TELEMETRY_VS_IMAGE",
+   "scores": {
+    "342": {
+     "size_rank": 128,
+     "novelty_rank": 342,
+     "telemetry_rank": 158,
+     "phash_rep_rank": 258,
+     "embedding_novelty": 0.04147839546203613,
+     "telemetry_score": 0.6845150877144996,
+     "full_bytes": 145248.01024
+    },
+    "46": {
+     "size_rank": 475,
+     "novelty_rank": 1,
+     "telemetry_rank": 344,
+     "phash_rep_rank": 36,
+     "embedding_novelty": 0.48503541946411133,
+     "telemetry_score": 0.0,
+     "full_bytes": 492175.36
+    }
+   }
+  },
+  {
+   "pair_id": "P31-034",
+   "A": "MSL-NAV-0424-435148019",
+   "B": "MSL-NAV-0415-434344311",
+   "category": "TELEMETRY_VS_IMAGE",
+   "scores": {
+    "493": {
+     "size_rank": 1,
+     "novelty_rank": 602,
+     "telemetry_rank": 31,
+     "phash_rep_rank": 583,
+     "embedding_novelty": 0.0002326369285583496,
+     "telemetry_score": 0.7905927458577863,
+     "full_bytes": 65272.08996875
+    },
+    "129": {
+     "size_rank": 518,
+     "novelty_rank": 143,
+     "telemetry_rank": 395,
+     "phash_rep_rank": 104,
+     "embedding_novelty": 0.07208466529846191,
+     "telemetry_score": 0.0,
+     "full_bytes": 524288.0
+    }
+   }
+  },
+  {
+   "pair_id": "P31-035",
+   "A": "MSL-NAV-0417-434519580",
+   "B": "MSL-NAV-0417-434515650",
+   "category": "TELEMETRY_VS_IMAGE",
+   "scores": {
+    "190": {
+     "size_rank": 318,
+     "novelty_rank": 87,
+     "telemetry_rank": 416,
+     "phash_rep_rank": 153,
+     "embedding_novelty": 0.09336626529693604,
+     "telemetry_score": 0.0,
+     "full_bytes": 155319.99232000002
+    },
+    "156": {
+     "size_rank": 355,
+     "novelty_rank": 384,
+     "telemetry_rank": 194,
+     "phash_rep_rank": 124,
+     "embedding_novelty": 0.03723853826522827,
+     "telemetry_score": 0.6806334647014723,
+     "full_bytes": 156728.03328
+    }
+   }
+  },
+  {
+   "pair_id": "P31-036",
+   "A": "MSL-NAV-0413-434164156",
+   "B": "MSL-NAV-0417-434515568",
+   "category": "TELEMETRY_VS_IMAGE",
+   "scores": {
+    "126": {
+     "size_rank": 517,
+     "novelty_rank": 40,
+     "telemetry_rank": 392,
+     "phash_rep_rank": 101,
+     "embedding_novelty": 0.14050310850143433,
+     "telemetry_score": 0.0,
+     "full_bytes": 524288.0
+    },
+    "155": {
+     "size_rank": 364,
+     "novelty_rank": 339,
+     "telemetry_rank": 193,
+     "phash_rep_rank": 123,
+     "embedding_novelty": 0.04170948266983032,
+     "telemetry_score": 0.6806334647014723,
+     "full_bytes": 157103.96416
+    }
+   }
+  },
+  {
+   "pair_id": "P31-037",
+   "A": "MSL-NAV-0426-435324441",
+   "B": "MSL-NAV-0427-435401988",
+   "category": "TELEMETRY_VS_IMAGE",
+   "scores": {
+    "530": {
+     "size_rank": 550,
+     "novelty_rank": 37,
+     "telemetry_rank": 565,
+     "phash_rep_rank": 414,
+     "embedding_novelty": 0.14653486013412476,
+     "telemetry_score": 0.0,
+     "full_bytes": 524288.0
+    },
+    "539": {
+     "size_rank": 28,
+     "novelty_rank": 576,
+     "telemetry_rank": 259,
+     "phash_rep_rank": 595,
+     "embedding_novelty": 0.0006653666496276855,
+     "telemetry_score": 0.6572141586726432,
+     "full_bytes": 65279.92359875
+    }
+   }
+  },
+  {
+   "pair_id": "P31-038",
+   "A": "MSL-NAV-0424-435144230",
+   "B": "MSL-NAV-0422-434968763",
+   "category": "TELEMETRY_VS_IMAGE",
+   "scores": {
+    "464": {
+     "size_rank": 455,
+     "novelty_rank": 147,
+     "telemetry_rank": 542,
+     "phash_rep_rank": 362,
+     "embedding_novelty": 0.0714845061302185,
+     "telemetry_score": 0.0,
+     "full_bytes": 163555.98336
+    },
+    "355": {
+     "size_rank": 568,
+     "novelty_rank": 361,
+     "telemetry_rank": 171,
+     "phash_rep_rank": 281,
+     "embedding_novelty": 0.03953361511230469,
+     "telemetry_score": 0.6845150877144996,
+     "full_bytes": 786391.36768
+    }
+   }
+  },
+  {
+   "pair_id": "P31-039",
+   "A": "MSL-NAV-0412-434073131",
+   "B": "MSL-NAV-0424-435139299",
+   "category": "TELEMETRY_VS_IMAGE",
+   "scores": {
+    "8": {
+     "size_rank": 208,
+     "novelty_rank": 2,
+     "telemetry_rank": 306,
+     "phash_rep_rank": 476,
+     "embedding_novelty": 0.482887864112854,
+     "telemetry_score": 0.0,
+     "full_bytes": 150267.98592
+    },
+    "402": {
+     "size_rank": 76,
+     "novelty_rank": 499,
+     "telemetry_rank": 107,
+     "phash_rep_rank": 319,
+     "embedding_novelty": 0.024263620376586914,
+     "telemetry_score": 0.7799422069402441,
+     "full_bytes": 140712.01792
+    }
+   }
+  },
+  {
+   "pair_id": "P31-040",
+   "A": "MSL-NAV-0429-435592161",
+   "B": "MSL-NAV-0419-434691770",
+   "category": "TELEMETRY_VS_IMAGE",
+   "scores": {
+    "594": {
+     "size_rank": 560,
+     "novelty_rank": 48,
+     "telemetry_rank": 594,
+     "phash_rep_rank": 468,
+     "embedding_novelty": 0.13333547115325928,
+     "telemetry_score": 0.0,
+     "full_bytes": 524288.0
+    },
+    "244": {
+     "size_rank": 321,
+     "novelty_rank": 437,
+     "telemetry_rank": 239,
+     "phash_rep_rank": 194,
+     "embedding_novelty": 0.03170889616012573,
+     "telemetry_score": 0.6644971441635383,
+     "full_bytes": 155411.98848
+    }
+   }
+  },
+  {
+   "pair_id": "P31-041",
+   "A": "MSL-NAV-0426-435312360",
+   "B": "MSL-NAV-0417-434519056",
+   "category": "TELEMETRY_VS_IMAGE",
+   "scores": {
+    "505": {
+     "size_rank": 232,
+     "novelty_rank": 388,
+     "telemetry_rank": 128,
+     "phash_rep_rank": 389,
+     "embedding_novelty": 0.03686845302581787,
+     "telemetry_score": 0.6880241580032623,
+     "full_bytes": 151280.0256
+    },
+    "183": {
+     "size_rank": 317,
+     "novelty_rank": 125,
+     "telemetry_rank": 409,
+     "phash_rep_rank": 148,
+     "embedding_novelty": 0.07593947649002075,
+     "telemetry_score": 0.0,
+     "full_bytes": 155267.97311999998
+    }
+   }
+  },
+  {
+   "pair_id": "P31-042",
+   "A": "MSL-NAV-0413-434162253",
+   "B": "MSL-NAV-0422-434968699",
+   "category": "TELEMETRY_VS_IMAGE",
+   "scores": {
+    "102": {
+     "size_rank": 515,
+     "novelty_rank": 91,
+     "telemetry_rank": 368,
+     "phash_rep_rank": 82,
+     "embedding_novelty": 0.09165596961975098,
+     "telemetry_score": 0.0,
+     "full_bytes": 524288.0
+    },
+    "353": {
+     "size_rank": 599,
+     "novelty_rank": 471,
+     "telemetry_rank": 169,
+     "phash_rep_rank": 279,
+     "embedding_novelty": 0.02782493829727173,
+     "telemetry_score": 0.6845150877144996,
+     "full_bytes": 1048576.0
+    }
+   }
+  },
+  {
+   "pair_id": "P31-043",
+   "A": "MSL-NAV-0424-435138297",
+   "B": "MSL-NAV-0429-435592350",
+   "category": "TELEMETRY_VS_IMAGE",
+   "scores": {
+    "389": {
+     "size_rank": 56,
+     "novelty_rank": 508,
+     "telemetry_rank": 94,
+     "phash_rep_rank": 555,
+     "embedding_novelty": 0.023155272006988525,
+     "telemetry_score": 0.7799422069402441,
+     "full_bytes": 139463.96672
+    },
+    "600": {
+     "size_rank": 489,
+     "novelty_rank": 55,
+     "telemetry_rank": 600,
+     "phash_rep_rank": 474,
+     "embedding_novelty": 0.11800402402877808,
+     "telemetry_score": 0.0,
+     "full_bytes": 524246.05695999996
+    }
+   }
+  },
+  {
+   "pair_id": "P31-044",
+   "A": "MSL-NAV-0419-434693338",
+   "B": "MSL-NAV-0424-435139044",
+   "category": "TELEMETRY_VS_IMAGE",
+   "scores": {
+    "247": {
+     "size_rank": 57,
+     "novelty_rank": 142,
+     "telemetry_rank": 434,
+     "phash_rep_rank": 526,
+     "embedding_novelty": 0.07248222827911377,
+     "telemetry_score": 0.0,
+     "full_bytes": 139539.98848
+    },
+    "399": {
+     "size_rank": 99,
+     "novelty_rank": 431,
+     "telemetry_rank": 104,
+     "phash_rep_rank": 317,
+     "embedding_novelty": 0.032048821449279785,
+     "telemetry_score": 0.7799422069402441,
+     "full_bytes": 142051.98336
+    }
+   }
+  },
+  {
+   "pair_id": "P31-045",
+   "A": "MSL-NAV-0424-435138560",
+   "B": "MSL-NAV-0429-435592410",
+   "category": "TELEMETRY_VS_IMAGE",
+   "scores": {
+    "393": {
+     "size_rank": 104,
+     "novelty_rank": 329,
+     "telemetry_rank": 98,
+     "phash_rep_rank": 313,
+     "embedding_novelty": 0.04295241832733154,
+     "telemetry_score": 0.7799422069402441,
+     "full_bytes": 142447.98463999998
+    },
+    "601": {
+     "size_rank": 33,
+     "novelty_rank": 115,
+     "telemetry_rank": 601,
+     "phash_rep_rank": 602,
+     "embedding_novelty": 0.08012372255325317,
+     "telemetry_score": 0.0,
+     "full_bytes": 65279.92359875
+    }
+   }
+  },
+  {
+   "pair_id": "P31-046",
+   "A": "MSL-NAV-0426-435324594",
+   "B": "MSL-NAV-0422-434964860",
+   "category": "TELEMETRY_VS_IMAGE",
+   "scores": {
+    "533": {
+     "size_rank": 552,
+     "novelty_rank": 45,
+     "telemetry_rank": 568,
+     "phash_rep_rank": 417,
+     "embedding_novelty": 0.13535940647125244,
+     "telemetry_score": 0.0,
+     "full_bytes": 524288.0
+    },
+    "325": {
+     "size_rank": 362,
+     "novelty_rank": 449,
+     "telemetry_rank": 141,
+     "phash_rep_rank": 255,
+     "embedding_novelty": 0.03040701150894165,
+     "telemetry_score": 0.6845150877144996,
+     "full_bytes": 157000.00767999998
+    }
+   }
+  },
+  {
+   "pair_id": "P31-047",
+   "A": "MSL-NAV-0426-435312360",
+   "B": "MSL-NAV-0412-434073381",
+   "category": "TELEMETRY_VS_IMAGE",
+   "scores": {
+    "505": {
+     "size_rank": 232,
+     "novelty_rank": 388,
+     "telemetry_rank": 128,
+     "phash_rep_rank": 389,
+     "embedding_novelty": 0.03686845302581787,
+     "telemetry_score": 0.6880241580032623,
+     "full_bytes": 151280.0256
+    },
+    "11": {
+     "size_rank": 270,
+     "novelty_rank": 68,
+     "telemetry_rank": 309,
+     "phash_rep_rank": 11,
+     "embedding_novelty": 0.10388302803039551,
+     "telemetry_score": 0.0,
+     "full_bytes": 152771.95264
+    }
+   }
+  },
+  {
+   "pair_id": "P31-048",
+   "A": "MSL-NAV-0426-435324242",
+   "B": "MSL-NAV-0427-435402040",
+   "category": "TELEMETRY_VS_IMAGE",
+   "scores": {
+    "524": {
+     "size_rank": 546,
+     "novelty_rank": 25,
+     "telemetry_rank": 559,
+     "phash_rep_rank": 408,
+     "embedding_novelty": 0.16514158248901367,
+     "telemetry_score": 0.0,
+     "full_bytes": 524288.0
+    },
+    "543": {
+     "size_rank": 32,
+     "novelty_rank": 585,
+     "telemetry_rank": 263,
+     "phash_rep_rank": 598,
+     "embedding_novelty": 0.0005140304565429688,
+     "telemetry_score": 0.6572141586726432,
+     "full_bytes": 65279.92359875
+    }
+   }
+  },
+  {
+   "pair_id": "P31-049",
+   "A": "MSL-NAV-0426-435324306",
+   "B": "MSL-NAV-0422-434967560",
+   "category": "TELEMETRY_VS_IMAGE",
+   "scores": {
+    "526": {
+     "size_rank": 547,
+     "novelty_rank": 76,
+     "telemetry_rank": 561,
+     "phash_rep_rank": 410,
+     "embedding_novelty": 0.0978618860244751,
+     "telemetry_score": 0.0,
+     "full_bytes": 524288.0
+    },
+    "342": {
+     "size_rank": 128,
+     "novelty_rank": 342,
+     "telemetry_rank": 158,
+     "phash_rep_rank": 258,
+     "embedding_novelty": 0.04147839546203613,
+     "telemetry_score": 0.6845150877144996,
+     "full_bytes": 145248.01024
+    }
+   }
+  },
+  {
+   "pair_id": "P31-050",
+   "A": "MSL-NAV-0419-434693365",
+   "B": "MSL-NAV-0413-434160984",
+   "category": "TELEMETRY_VS_IMAGE",
+   "scores": {
+    "248": {
+     "size_rank": 111,
+     "novelty_rank": 139,
+     "telemetry_rank": 435,
+     "phash_rep_rank": 198,
+     "embedding_novelty": 0.07289755344390869,
+     "telemetry_score": 0.0,
+     "full_bytes": 143180.02176
+    },
+    "85": {
+     "size_rank": 114,
+     "novelty_rank": 549,
+     "telemetry_rank": 294,
+     "phash_rep_rank": 491,
+     "embedding_novelty": 0.01476907730102539,
+     "telemetry_score": 0.6571632425865981,
+     "full_bytes": 143307.9808
+    }
+   }
+  },
+  {
+   "pair_id": "P31-051",
+   "A": "MSL-NAV-0426-435323449",
+   "B": "MSL-NAV-0413-434160155",
+   "category": "TELEMETRY_VS_IMAGE",
+   "scores": {
+    "517": {
+     "size_rank": 477,
+     "novelty_rank": 4,
+     "telemetry_rank": 552,
+     "phash_rep_rank": 401,
+     "embedding_novelty": 0.36115795373916626,
+     "telemetry_score": 0.0,
+     "full_bytes": 513255.66976
+    },
+    "76": {
+     "size_rank": 81,
+     "novelty_rank": 538,
+     "telemetry_rank": 285,
+     "phash_rep_rank": 488,
+     "embedding_novelty": 0.018455684185028076,
+     "telemetry_score": 0.6571632425865981,
+     "full_bytes": 141016.02304
+    }
+   }
+  },
+  {
+   "pair_id": "P31-052",
+   "A": "MSL-NAV-0419-434694795",
+   "B": "MSL-NAV-0419-434697358",
+   "category": "SEQUENCE_METHODS",
+   "scores": {
+    "264": {
+     "size_rank": 80,
+     "novelty_rank": 515,
+     "telemetry_rank": 451,
+     "phash_rep_rank": 531,
+     "embedding_novelty": 0.02248305082321167,
+     "telemetry_score": 0.0,
+     "full_bytes": 140964.00384000002
+    },
+    "296": {
+     "size_rank": 358,
+     "novelty_rank": 392,
+     "telemetry_rank": 483,
+     "phash_rep_rank": 231,
+     "embedding_novelty": 0.03680545091629028,
+     "telemetry_score": 0.0,
+     "full_bytes": 156855.99232000002
+    }
+   }
+  },
+  {
+   "pair_id": "P31-053",
+   "A": "MSL-NAV-0413-434159879",
+   "B": "MSL-NAV-0413-434159708",
+   "category": "SEQUENCE_METHODS",
+   "scores": {
+    "73": {
+     "size_rank": 107,
+     "novelty_rank": 498,
+     "telemetry_rank": 282,
+     "phash_rep_rank": 55,
+     "embedding_novelty": 0.024367928504943848,
+     "telemetry_score": 0.6571632425865981,
+     "full_bytes": 142808.02304
+    },
+    "72": {
+     "size_rank": 264,
+     "novelty_rank": 341,
+     "telemetry_rank": 281,
+     "phash_rep_rank": 61,
+     "embedding_novelty": 0.04157876968383789,
+     "telemetry_score": 0.6571632425865981,
+     "full_bytes": 152479.98976
+    }
+   }
+  },
+  {
+   "pair_id": "P31-054",
+   "A": "MSL-NAV-0412-434074727",
+   "B": "MSL-NAV-0412-434074975",
+   "category": "SEQUENCE_METHODS",
+   "scores": {
+    "26": {
+     "size_rank": 218,
+     "novelty_rank": 164,
+     "telemetry_rank": 324,
+     "phash_rep_rank": 21,
+     "embedding_novelty": 0.06777679920196533,
+     "telemetry_score": 0.0,
+     "full_bytes": 150720.02048
+    },
+    "28": {
+     "size_rank": 127,
+     "novelty_rank": 445,
+     "telemetry_rank": 326,
+     "phash_rep_rank": 23,
+     "embedding_novelty": 0.03124290704727173,
+     "telemetry_score": 0.0,
+     "full_bytes": 145155.93216
+    }
+   }
+  },
+  {
+   "pair_id": "P31-055",
+   "A": "MSL-NAV-0412-434075826",
+   "B": "MSL-NAV-0412-434071536",
+   "category": "SEQUENCE_METHODS",
+   "scores": {
+    "38": {
+     "size_rank": 300,
+     "novelty_rank": 281,
+     "telemetry_rank": 336,
+     "phash_rep_rank": 30,
+     "embedding_novelty": 0.048393964767456055,
+     "telemetry_score": 0.0,
+     "full_bytes": 154124.04223999998
+    },
+    "5": {
+     "size_rank": 213,
+     "novelty_rank": 441,
+     "telemetry_rank": 229,
+     "phash_rep_rank": 5,
+     "embedding_novelty": 0.0314478874206543,
+     "telemetry_score": 0.6768099499096726,
+     "full_bytes": 150540.04223999998
+    }
+   }
+  },
+  {
+   "pair_id": "P31-056",
+   "A": "MSL-NAV-0417-434516067",
+   "B": "MSL-NAV-0417-434519313",
+   "category": "SEQUENCE_METHODS",
+   "scores": {
+    "161": {
+     "size_rank": 405,
+     "novelty_rank": 234,
+     "telemetry_rank": 199,
+     "phash_rep_rank": 129,
+     "embedding_novelty": 0.05449938774108887,
+     "telemetry_score": 0.6806334647014723,
+     "full_bytes": 159220.03968
+    },
+    "186": {
+     "size_rank": 265,
+     "novelty_rank": 203,
+     "telemetry_rank": 412,
+     "phash_rep_rank": 150,
+     "embedding_novelty": 0.059618353843688965,
+     "telemetry_score": 0.0,
+     "full_bytes": 152499.97824
+    }
+   }
+  },
+  {
+   "pair_id": "P31-057",
+   "A": "MSL-NAV-0417-434520573",
+   "B": "MSL-NAV-0417-434520483",
+   "category": "SEQUENCE_METHODS",
+   "scores": {
+    "205": {
+     "size_rank": 259,
+     "novelty_rank": 543,
+     "telemetry_rank": 431,
+     "phash_rep_rank": 516,
+     "embedding_novelty": 0.01677185297012329,
+     "telemetry_score": 0.0,
+     "full_bytes": 152363.99104
+    },
+    "204": {
+     "size_rank": 403,
+     "novelty_rank": 104,
+     "telemetry_rank": 430,
+     "phash_rep_rank": 164,
+     "embedding_novelty": 0.08522403240203857,
+     "telemetry_score": 0.0,
+     "full_bytes": 159116.00128
+    }
+   }
+  },
+  {
+   "pair_id": "P31-058",
+   "A": "MSL-NAV-0424-435142203",
+   "B": "MSL-NAV-0424-435141893",
+   "category": "SEQUENCE_METHODS",
+   "scores": {
+    "438": {
+     "size_rank": 366,
+     "novelty_rank": 275,
+     "telemetry_rank": 516,
+     "phash_rep_rank": 344,
+     "embedding_novelty": 0.04913145303726196,
+     "telemetry_score": 0.0,
+     "full_bytes": 157171.95776000002
+    },
+    "433": {
+     "size_rank": 174,
+     "novelty_rank": 483,
+     "telemetry_rank": 511,
+     "phash_rep_rank": 569,
+     "embedding_novelty": 0.026116490364074707,
+     "telemetry_score": 0.0,
+     "full_bytes": 148508.01664
+    }
+   }
+  },
+  {
+   "pair_id": "P31-059",
+   "A": "MSL-NAV-0424-435137825",
+   "B": "MSL-NAV-0424-435139044",
+   "category": "SEQUENCE_METHODS",
+   "scores": {
+    "383": {
+     "size_rank": 53,
+     "novelty_rank": 534,
+     "telemetry_rank": 88,
+     "phash_rep_rank": 553,
+     "embedding_novelty": 0.018689870834350586,
+     "telemetry_score": 0.7799422069402441,
+     "full_bytes": 139364.02432000003
+    },
+    "399": {
+     "size_rank": 99,
+     "novelty_rank": 431,
+     "telemetry_rank": 104,
+     "phash_rep_rank": 317,
+     "embedding_novelty": 0.032048821449279785,
+     "telemetry_score": 0.7799422069402441,
+     "full_bytes": 142051.98336
+    }
+   }
+  },
+  {
+   "pair_id": "P31-060",
+   "A": "MSL-NAV-0412-434072345",
+   "B": "MSL-NAV-0412-434075852",
+   "category": "SEQUENCE_METHODS",
+   "scores": {
+    "7": {
+     "size_rank": 266,
+     "novelty_rank": 118,
+     "telemetry_rank": 231,
+     "phash_rep_rank": 7,
+     "embedding_novelty": 0.07942712306976318,
+     "telemetry_score": 0.6768099499096726,
+     "full_bytes": 152559.94368
+    },
+    "39": {
+     "size_rank": 305,
+     "novelty_rank": 195,
+     "telemetry_rank": 337,
+     "phash_rep_rank": 31,
+     "embedding_novelty": 0.061115264892578125,
+     "telemetry_score": 0.0,
+     "full_bytes": 154372.01408
+    }
+   }
+  },
+  {
+   "pair_id": "P31-061",
+   "A": "MSL-NAV-0424-435138768",
+   "B": "MSL-NAV-0424-435139629",
+   "category": "SEQUENCE_METHODS",
+   "scores": {
+    "395": {
+     "size_rank": 52,
+     "novelty_rank": 554,
+     "telemetry_rank": 100,
+     "phash_rep_rank": 557,
+     "embedding_novelty": 0.013844490051269531,
+     "telemetry_score": 0.7799422069402441,
+     "full_bytes": 139104.01024
+    },
+    "408": {
+     "size_rank": 179,
+     "novelty_rank": 224,
+     "telemetry_rank": 113,
+     "phash_rep_rank": 324,
+     "embedding_novelty": 0.055914342403411865,
+     "telemetry_score": 0.7799422069402441,
+     "full_bytes": 148895.98976
+    }
+   }
+  },
+  {
+   "pair_id": "P31-062",
+   "A": "MSL-NAV-0412-434076306",
+   "B": "MSL-NAV-0412-434073184",
+   "category": "SEQUENCE_METHODS",
+   "scores": {
+    "43": {
+     "size_rank": 204,
+     "novelty_rank": 347,
+     "telemetry_rank": 341,
+     "phash_rep_rank": 485,
+     "embedding_novelty": 0.04117739200592041,
+     "telemetry_score": 0.0,
+     "full_bytes": 150140.02688
+    },
+    "10": {
+     "size_rank": 166,
+     "novelty_rank": 78,
+     "telemetry_rank": 308,
+     "phash_rep_rank": 10,
+     "embedding_novelty": 0.09629225730895996,
+     "telemetry_score": 0.0,
+     "full_bytes": 148020.01919999998
+    }
+   }
+  },
+  {
+   "pair_id": "P31-063",
+   "A": "MSL-NAV-0424-435143472",
+   "B": "MSL-NAV-0424-435143422",
+   "category": "SEQUENCE_METHODS",
+   "scores": {
+    "455": {
+     "size_rank": 398,
+     "novelty_rank": 185,
+     "telemetry_rank": 533,
+     "phash_rep_rank": 356,
+     "embedding_novelty": 0.06358593702316284,
+     "telemetry_score": 0.0,
+     "full_bytes": 158872.04352
+    },
+    "453": {
+     "size_rank": 201,
+     "novelty_rank": 469,
+     "telemetry_rank": 531,
+     "phash_rep_rank": 575,
+     "embedding_novelty": 0.02794671058654785,
+     "telemetry_score": 0.0,
+     "full_bytes": 150096.03584
+    }
+   }
+  },
+  {
+   "pair_id": "P31-064",
+   "A": "MSL-NAV-0424-435141365",
+   "B": "MSL-NAV-0424-435141946",
+   "category": "SEQUENCE_METHODS",
+   "scores": {
+    "427": {
+     "size_rank": 137,
+     "novelty_rank": 327,
+     "telemetry_rank": 505,
+     "phash_rep_rank": 567,
+     "embedding_novelty": 0.04328089952468872,
+     "telemetry_score": 0.0,
+     "full_bytes": 145899.9296
+    },
+    "435": {
+     "size_rank": 298,
+     "novelty_rank": 461,
+     "telemetry_rank": 513,
+     "phash_rep_rank": 342,
+     "embedding_novelty": 0.028779327869415283,
+     "telemetry_score": 0.0,
+     "full_bytes": 154055.96672
+    }
+   }
+  },
+  {
+   "pair_id": "P31-065",
+   "A": "MSL-NAV-0417-434516406",
+   "B": "MSL-NAV-0417-434518335",
+   "category": "SEQUENCE_METHODS",
+   "scores": {
+    "165": {
+     "size_rank": 373,
+     "novelty_rank": 105,
+     "telemetry_rank": 203,
+     "phash_rep_rank": 132,
+     "embedding_novelty": 0.08507794141769409,
+     "telemetry_score": 0.6806334647014723,
+     "full_bytes": 157608.01792
+    },
+    "177": {
+     "size_rank": 392,
+     "novelty_rank": 145,
+     "telemetry_rank": 222,
+     "phash_rep_rank": 143,
+     "embedding_novelty": 0.07192385196685791,
+     "telemetry_score": 0.6768936733610995,
+     "full_bytes": 158632.01792
+    }
+   }
+  },
+  {
+   "pair_id": "P31-066",
+   "A": "MSL-NAV-0424-435139822",
+   "B": "MSL-NAV-0424-435140367",
+   "category": "SEQUENCE_METHODS",
+   "scores": {
+    "409": {
+     "size_rank": 65,
+     "novelty_rank": 539,
+     "telemetry_rank": 114,
+     "phash_rep_rank": 561,
+     "embedding_novelty": 0.017782509326934814,
+     "telemetry_score": 0.7799422069402441,
+     "full_bytes": 140123.99615999998
+    },
+    "416": {
+     "size_rank": 141,
+     "novelty_rank": 479,
+     "telemetry_rank": 121,
+     "phash_rep_rank": 329,
+     "embedding_novelty": 0.026752591133117676,
+     "telemetry_score": 0.7799422069402441,
+     "full_bytes": 146116.03456
+    }
+   }
+  },
+  {
+   "pair_id": "P31-067",
+   "A": "MSL-NAV-0424-435140881",
+   "B": "MSL-NAV-0424-435140856",
+   "category": "SEQUENCE_METHODS",
+   "scores": {
+    "422": {
+     "size_rank": 109,
+     "novelty_rank": 272,
+     "telemetry_rank": 500,
+     "phash_rep_rank": 333,
+     "embedding_novelty": 0.04942476749420166,
+     "telemetry_score": 0.0,
+     "full_bytes": 143104.0
+    },
+    "421": {
+     "size_rank": 78,
+     "novelty_rank": 472,
+     "telemetry_rank": 499,
+     "phash_rep_rank": 565,
+     "embedding_novelty": 0.02757042646408081,
+     "telemetry_score": 0.0,
+     "full_bytes": 140944.01536000002
+    }
+   }
+  },
+  {
+   "pair_id": "P31-068",
+   "A": "MSL-NAV-0412-434075515",
+   "B": "MSL-NAV-0412-434069859",
+   "category": "SEQUENCE_METHODS",
+   "scores": {
+    "34": {
+     "size_rank": 183,
+     "novelty_rank": 487,
+     "telemetry_rank": 332,
+     "phash_rep_rank": 482,
+     "embedding_novelty": 0.025577247142791748,
+     "telemetry_score": 0.0,
+     "full_bytes": 149167.96416
+    },
+    "1": {
+     "size_rank": 308,
+     "novelty_rank": 465,
+     "telemetry_rank": 225,
+     "phash_rep_rank": 1,
+     "embedding_novelty": 0.028552353382110596,
+     "telemetry_score": 0.6768099499096726,
+     "full_bytes": 154423.95136
+    }
+   }
+  },
+  {
+   "pair_id": "P31-069",
+   "A": "MSL-NAV-0422-434967316",
+   "B": "MSL-NAV-0422-434964860",
+   "category": "SEQUENCE_METHODS",
+   "scores": {
+    "339": {
+     "size_rank": 206,
+     "novelty_rank": 333,
+     "telemetry_rank": 155,
+     "phash_rep_rank": 265,
+     "embedding_novelty": 0.04246866703033447,
+     "telemetry_score": 0.6845150877144996,
+     "full_bytes": 150219.98080000002
+    },
+    "325": {
+     "size_rank": 362,
+     "novelty_rank": 449,
+     "telemetry_rank": 141,
+     "phash_rep_rank": 255,
+     "embedding_novelty": 0.03040701150894165,
+     "telemetry_score": 0.6845150877144996,
+     "full_bytes": 157000.00767999998
+    }
+   }
+  },
+  {
+   "pair_id": "P31-070",
+   "A": "MSL-NAV-0413-434162458",
+   "B": "MSL-NAV-0413-434162887",
+   "category": "SEQUENCE_METHODS",
+   "scores": {
+    "105": {
+     "size_rank": 140,
+     "novelty_rank": 470,
+     "telemetry_rank": 371,
+     "phash_rep_rank": 84,
+     "embedding_novelty": 0.0278739333152771,
+     "telemetry_score": 0.0,
+     "full_bytes": 146035.99872
+    },
+    "111": {
+     "size_rank": 327,
+     "novelty_rank": 502,
+     "telemetry_rank": 377,
+     "phash_rep_rank": 89,
+     "embedding_novelty": 0.024144351482391357,
+     "telemetry_score": 0.0,
+     "full_bytes": 155575.99232
+    }
+   }
+  },
+  {
+   "pair_id": "P31-071",
+   "A": "MSL-NAV-0412-434073423",
+   "B": "MSL-NAV-0412-434073849",
+   "category": "SEQUENCE_METHODS",
+   "scores": {
+    "12": {
+     "size_rank": 311,
+     "novelty_rank": 263,
+     "telemetry_rank": 310,
+     "phash_rep_rank": 12,
+     "embedding_novelty": 0.05065774917602539,
+     "telemetry_score": 0.0,
+     "full_bytes": 154635.96032
+    },
+    "16": {
+     "size_rank": 198,
+     "novelty_rank": 419,
+     "telemetry_rank": 314,
+     "phash_rep_rank": 478,
+     "embedding_novelty": 0.03308069705963135,
+     "telemetry_score": 0.0,
+     "full_bytes": 149976.02304
+    }
+   }
+  },
+  {
+   "pair_id": "P31-072",
+   "A": "MSL-NAV-0429-435581625",
+   "B": "MSL-NAV-0429-435581985",
+   "category": "SEQUENCE_METHODS",
+   "scores": {
+    "549": {
+     "size_rank": 384,
+     "novelty_rank": 97,
+     "telemetry_rank": 571,
+     "phash_rep_rank": 423,
+     "embedding_novelty": 0.08823871612548828,
+     "telemetry_score": 0.0,
+     "full_bytes": 158147.95263999997
+    },
+    "553": {
+     "size_rank": 414,
+     "novelty_rank": 124,
+     "telemetry_rank": 575,
+     "phash_rep_rank": 427,
+     "embedding_novelty": 0.07648825645446777,
+     "telemetry_score": 0.0,
+     "full_bytes": 160380.02688
+    }
+   }
+  },
+  {
+   "pair_id": "P31-073",
+   "A": "MSL-NAV-0419-434696964",
+   "B": "MSL-NAV-0419-434696152",
+   "category": "SEQUENCE_METHODS",
+   "scores": {
+    "289": {
+     "size_rank": 185,
+     "novelty_rank": 245,
+     "telemetry_rank": 476,
+     "phash_rep_rank": 226,
+     "embedding_novelty": 0.05337613821029663,
+     "telemetry_score": 0.0,
+     "full_bytes": 149211.9552
+    },
+    "279": {
+     "size_rank": 47,
+     "novelty_rank": 553,
+     "telemetry_rank": 466,
+     "phash_rep_rank": 536,
+     "embedding_novelty": 0.01391744613647461,
+     "telemetry_score": 0.0,
+     "full_bytes": 138672.04608
+    }
+   }
+  },
+  {
+   "pair_id": "P31-074",
+   "A": "MSL-NAV-0417-434519990",
+   "B": "MSL-NAV-0417-434521021",
+   "category": "SEQUENCE_METHODS",
+   "scores": {
+    "196": {
+     "size_rank": 302,
+     "novelty_rank": 176,
+     "telemetry_rank": 422,
+     "phash_rep_rank": 157,
+     "embedding_novelty": 0.06448519229888916,
+     "telemetry_score": 0.0,
+     "full_bytes": 154300.0064
+    },
+    "212": {
+     "size_rank": 399,
+     "novelty_rank": 213,
+     "telemetry_rank": 246,
+     "phash_rep_rank": 170,
+     "embedding_novelty": 0.058617591857910156,
+     "telemetry_score": 0.6616765573120293,
+     "full_bytes": 158964.03968
+    }
+   }
+  },
+  {
+   "pair_id": "P31-075",
+   "A": "MSL-NAV-0424-435143177",
+   "B": "MSL-NAV-0424-435143229",
+   "category": "SEQUENCE_METHODS",
+   "scores": {
+    "450": {
+     "size_rank": 188,
+     "novelty_rank": 475,
+     "telemetry_rank": 528,
+     "phash_rep_rank": 574,
+     "embedding_novelty": 0.027134478092193604,
+     "telemetry_score": 0.0,
+     "full_bytes": 149348.02432
+    },
+    "452": {
+     "size_rank": 214,
+     "novelty_rank": 170,
+     "telemetry_rank": 530,
+     "phash_rep_rank": 354,
+     "embedding_novelty": 0.0663335919380188,
+     "telemetry_score": 0.0,
+     "full_bytes": 150540.04223999998
+    }
+   }
+  },
+  {
+   "pair_id": "P31-076",
+   "A": "MSL-NAV-0413-434161548",
+   "B": "MSL-NAV-0413-434156809",
+   "category": "SEQUENCE_METHODS",
+   "scores": {
+    "91": {
+     "size_rank": 48,
+     "novelty_rank": 517,
+     "telemetry_rank": 357,
+     "phash_rep_rank": 493,
+     "embedding_novelty": 0.022262096405029297,
+     "telemetry_score": 0.0,
+     "full_bytes": 138976.0512
+    },
+    "60": {
+     "size_rank": 146,
+     "novelty_rank": 291,
+     "telemetry_rank": 269,
+     "phash_rep_rank": 50,
+     "embedding_novelty": 0.047258734703063965,
+     "telemetry_score": 0.6571632425865981,
+     "full_bytes": 146419.95776000002
+    }
+   }
+  }
+ ]
+}

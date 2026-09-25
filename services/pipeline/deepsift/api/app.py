@@ -519,3 +519,105 @@ def run_event(rid: str, eid: str):
     return {"event": e.model_dump(mode="json"), "row": _row(e, S.cfg), "effective_decision": d.model_dump(mode="json"),
             "effective_source": "deterministic rules (study replay)", "counterfactuals": cf, "audit": [], "sim_item": None,
             "study": {k: v for k, v in ex.items() if k != "event"}}
+
+
+# ---------------------------------------------------------------- Phase 3.1 human review (internal, development only)
+# Pairwise judgments: "Which observation would you prioritize for downlink?" A / B / EQUAL / UNSURE.
+# Blinding: /next returns images + basic metadata only; algorithm scores and the sampler category are revealed only in
+# the POST response, after the annotation is stored. Images are NASA PDS observations (review pairs are real only).
+REVIEW_DIR = _ROOT / "data" / "review"
+REVIEW_PAIRS = REVIEW_DIR / "pairs_v1.json"
+REVIEW_ANN = REVIEW_DIR / "annotations_v1.jsonl"
+REVIEW_CHOICES = ("A", "B", "EQUAL", "UNSURE")
+_review_acq: dict | None = None
+
+
+def _review_pairs() -> dict:
+    if not REVIEW_PAIRS.exists():
+        raise HTTPException(404, "no review pairs yet (scripts/run_phase3_1.py builds data/review/pairs_v1.json)")
+    return json.loads(REVIEW_PAIRS.read_text())
+
+
+def _review_annotations() -> list[dict]:
+    return [json.loads(x) for x in REVIEW_ANN.read_text().splitlines()] if REVIEW_ANN.exists() else []
+
+
+def _acq_index() -> dict:
+    global _review_acq
+    if _review_acq is None:
+        from deepsift.imaging.acquisitions import group_acquisitions
+
+        man = json.loads((_ROOT / "data" / "manifests" / "navcam_development.json").read_text())
+        _review_acq = {a["acq_id"]: a for a in group_acquisitions(man["products"])}
+    return _review_acq
+
+
+def _acq_public(acq_id: str) -> dict:
+    a = _acq_index().get(acq_id)
+    if a is None:
+        raise HTTPException(404, "unknown acquisition")
+    return {"acq_id": acq_id, "sol": a["sol"], "utc": a["utc"], "sequence_id": a["sequence_id"], "primary_tier": a["primary_tier"],
+            "stereo": a["stereo"], "label": "NASA PDS OBSERVATION", "image_url": f"/api/review/image/{acq_id}"}
+
+
+@app.get("/api/review/next")
+def review_next():
+    spec = _review_pairs()
+    done = {x["pair_id"] for x in _review_annotations()}
+    todo = [p for p in spec["pairs"] if p["pair_id"] not in done]
+    if not todo:
+        return {"done": True, "progress": {"annotated": len(done), "total": len(spec["pairs"])}}
+    p = todo[0]
+    return {"done": False, "pair_id": p["pair_id"], "question": spec["question"], "choices": list(REVIEW_CHOICES),
+            "A": _acq_public(p["A"]), "B": _acq_public(p["B"]), "progress": {"annotated": len(done), "total": len(spec["pairs"])}}
+
+
+@app.get("/api/review/image/{acq_id}")
+def review_image(acq_id: str):
+    import io
+
+    import numpy as np
+    from fastapi.responses import Response as RawResponse
+    from PIL import Image
+
+    from deepsift.imaging.features import load_primary
+
+    a = _acq_index().get(acq_id)
+    if a is None:
+        raise HTTPException(404, "unknown acquisition")
+    x = load_primary(a)
+    lo, hi = np.percentile(x, [1, 99])
+    im = Image.fromarray((np.clip((x - lo) / max(hi - lo, 1e-6), 0, 1) * 255).astype(np.uint8))
+    im.thumbnail((512, 512))
+    buf = io.BytesIO()
+    im.save(buf, format="PNG")
+    return RawResponse(buf.getvalue(), media_type="image/png")
+
+
+class ReviewAnnotation(BaseModel):
+    pair_id: str
+    choice: str
+    note: str | None = None
+    reviewer: str | None = None
+
+
+@app.post("/api/review/annotations")
+def review_annotate(req: ReviewAnnotation):
+    if req.choice not in REVIEW_CHOICES:
+        raise HTTPException(422, f"choice must be one of {REVIEW_CHOICES}")
+    spec = _review_pairs()
+    p = next((x for x in spec["pairs"] if x["pair_id"] == req.pair_id), None)
+    if p is None:
+        raise HTTPException(404, "unknown pair")
+    rec = {"annotation_id": uuid.uuid4().hex, "pair_id": p["pair_id"], "A": p["A"], "B": p["B"], "choice": req.choice,
+           "note": (req.note or "")[:2000] or None, "reviewer": req.reviewer, "timestamp": datetime.now(timezone.utc).isoformat(),
+           "pairs_version": spec.get("version")}
+    REVIEW_DIR.mkdir(parents=True, exist_ok=True)
+    with S.lock, REVIEW_ANN.open("a") as fh:
+        fh.write(json.dumps(rec) + "\n")
+    return {"annotation": rec, "revealed": {"category": p["category"], "scores": p["scores"]}}
+
+
+@app.get("/api/review/annotations")
+def review_annotations():
+    return _review_annotations()

@@ -144,3 +144,94 @@ def run(obs: list[dict], emb: np.ndarray | None) -> dict:
                 out["results"][f"{name}@{f}"] = agg
         out.setdefault("budget_bytes", {})[str(f)] = budget
     return out
+
+
+# ---------------------------------------------------------------------------------------------------------------
+# Phase 3.1 — SCHEDULER_V2_PROGRESSIVE (added; SCHEDULER_V1_GREEDY above is kept unchanged for the frozen baseline).
+# Fixes an ALLOCATION artifact found in development: V1's greedy FULL-first purchases made coverage non-monotonic in
+# budget (e.g. FIFO: 16 usable acquisitions at 0.25 % but 11 at 0.5 %). Ranking scores are not changed.
+#
+# V2 fills tier by tier — METADATA → THUMBNAIL → COMPRESSED → FULL — each pass walking the strategy's order and only
+# upgrading acquisitions that completed the previous pass. Allocation STOPS entirely at the first increment that does
+# not fit, so every pass is a prefix of the order and each prefix only grows with budget: acquisitions represented
+# (≥ THUMBNAIL) and scene clusters represented are monotone non-decreasing in budget (tests/test_phase3_scheduler.py).
+# A tier with UNKNOWN cost is skipped for that acquisition, which stays eligible for the next pass.
+SCHEDULER_V1_GREEDY = "SCHEDULER_V1_GREEDY"
+SCHEDULER_V2_PROGRESSIVE = "SCHEDULER_V2_PROGRESSIVE"
+PROGRESSIVE_TIERS = ["METADATA", "THUMBNAIL", "COMPRESSED", "FULL"]
+
+
+def allocate_progressive(costs: list[dict], order: list[int], budget: float, tiers: list[str] = PROGRESSIVE_TIERS) -> list[str]:
+    tier = ["NONE"] * len(costs)
+    left = budget
+    eligible = list(order)
+    for t in tiers:
+        done = []
+        for i in eligible:
+            c = costs[i][t]
+            if c is None:
+                done.append(i)
+                continue
+            inc = max(0.0, c - (costs[i][tier[i]] or 0.0))
+            if inc > left:
+                return tier                                   # stop: later passes never jump ahead of this prefix
+            left -= inc
+            if RANK[t] > RANK[tier[i]]:
+                tier[i] = t
+            done.append(i)
+        eligible = done
+    return tier
+
+
+def strategy_orders(obs: list[dict], seed: int = 0) -> dict[str, list[int]]:
+    """Orders only (ranking unchanged from V1): FIFO, RANDOM, SIZE-AWARE, EMBEDDING-NOVELTY, TELEMETRY-PRIORITY and
+    PHASH-REPRESENTATIVES (one representative per pHash group first, chronologically, then the rest)."""
+    n = len(obs)
+    chrono = sorted(range(n), key=lambda i: (obs[i]["utc"], obs[i]["id"]))
+    rng = random.Random(seed)
+    rand = chrono[:]
+    rng.shuffle(rand)
+    groups = defaultdict(list)
+    for i in chrono:
+        groups[obs[i]["near_duplicate_group"]].append(i)
+
+    def rep(members):
+        clean = [i for i in members if obs[i]["quality_state"] == "CLEAN"] or members
+        return max(clean, key=lambda i: obs[i]["image_features"]["sharpness"])
+    reps = [rep(m) for m in sorted(groups.values(), key=lambda m: min(chrono.index(i) for i in m))]
+    rs = set(reps)
+    return {
+        "FIFO": chrono, "RANDOM": rand,
+        "SIZE-AWARE": sorted(chrono, key=lambda i: (obs[i]["downlink"]["full_bytes"] is None, obs[i]["downlink"]["full_bytes"] or 0)),
+        "EMBEDDING-NOVELTY": sorted(chrono, key=lambda i: -(obs[i]["image_features"].get("embedding_novelty") or 0.0)),
+        "TELEMETRY-PRIORITY": sorted(chrono, key=lambda i: -(obs[i]["telemetry_context"].get("telemetry_score") or 0.0)),
+        "PHASH-REPRESENTATIVES": reps + [i for i in chrono if i not in rs],
+    }
+
+
+def run_v2(obs: list[dict], emb: np.ndarray | None, budgets: list[float] = BUDGETS) -> dict:
+    costs = cost_table(obs)
+    total_full = sum(c["FULL"] for c in costs if c["FULL"] is not None)
+    out = {"scheduler": SCHEDULER_V2_PROGRESSIVE, "total_full_bytes": total_full, "results": {}}
+    for f in budgets:
+        per = defaultdict(list)
+        for seed in range(RANDOM_SEEDS):
+            for name, order in strategy_orders(obs, seed).items():
+                if seed > 0 and name != "RANDOM":
+                    continue
+                per[name].append(metrics(obs, costs, allocate_progressive(costs, order, f * total_full), emb))
+        for name, runs in per.items():
+            if len(runs) == 1:
+                out["results"][f"{name}@{f}"] = runs[0]
+                continue
+            agg = {}
+            for k, v in runs[0].items():
+                if k == "counts":
+                    agg[k] = {t: float(np.mean([r[k][t] for r in runs])) for t in TIERS}
+                elif isinstance(v, (int, float)):
+                    xs = [r[k] for r in runs if r[k] is not None]
+                    agg[k] = float(np.mean(xs)) if xs else None
+                    agg[k + "_min_over_seeds"] = float(np.min(xs)) if xs else None
+            agg["seeds"] = len(runs)
+            out["results"][f"{name}@{f}"] = agg
+    return out

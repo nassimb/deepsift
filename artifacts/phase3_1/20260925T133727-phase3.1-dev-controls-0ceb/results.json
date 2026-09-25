@@ -1,0 +1,4581 @@
+{
+ "run_id": "20260925T133727-phase3.1-dev-controls-0ceb",
+ "baseline_run": "20260925T132323-phase3-dev-baseline-ff13",
+ "split": "development",
+ "scheduler": {
+  "v1_reproduces_frozen_baseline": true,
+  "fine_grid_budgets": 40,
+  "monotonicity_violations": {
+   "V1|FIFO|policy": {
+    "acq_repr": 14,
+    "scene_repr": 14,
+    "acq_usable": 12,
+    "scene_usable": 12
+   },
+   "V1|RANDOM|policy": {
+    "acq_repr": 12,
+    "scene_repr": 12,
+    "acq_usable": 8,
+    "scene_usable": 8
+   },
+   "V1|SIZE-AWARE|policy": {
+    "acq_repr": 10,
+    "scene_repr": 1,
+    "acq_usable": 8,
+    "scene_usable": 2
+   },
+   "V1|EMBEDDING-NOVELTY|policy": {
+    "acq_repr": 18,
+    "scene_repr": 18,
+    "acq_usable": 9,
+    "scene_usable": 9
+   },
+   "V1|TELEMETRY-PRIORITY|policy": {
+    "acq_repr": 15,
+    "scene_repr": 14,
+    "acq_usable": 11,
+    "scene_usable": 7
+   },
+   "V1|FIFO|ordering": {
+    "acq_repr": 0,
+    "scene_repr": 0,
+    "acq_usable": 9,
+    "scene_usable": 9
+   },
+   "V1|RANDOM|ordering": {
+    "acq_repr": 0,
+    "scene_repr": 0,
+    "acq_usable": 9,
+    "scene_usable": 7
+   },
+   "V1|SIZE-AWARE|ordering": {
+    "acq_repr": 0,
+    "scene_repr": 0,
+    "acq_usable": 6,
+    "scene_usable": 4
+   },
+   "V1|EMBEDDING-NOVELTY|ordering": {
+    "acq_repr": 0,
+    "scene_repr": 0,
+    "acq_usable": 8,
+    "scene_usable": 8
+   },
+   "V1|TELEMETRY-PRIORITY|ordering": {
+    "acq_repr": 0,
+    "scene_repr": 0,
+    "acq_usable": 9,
+    "scene_usable": 7
+   },
+   "V1|THUMBNAIL-EVERYTHING": {
+    "acq_repr": 0,
+    "scene_repr": 0,
+    "acq_usable": 9,
+    "scene_usable": 9
+   },
+   "V1|PHASH-REPRESENTATIVES": {
+    "acq_repr": 0,
+    "scene_repr": 0,
+    "acq_usable": 12,
+    "scene_usable": 12
+   },
+   "V2|FIFO": {
+    "acq_repr": 0,
+    "scene_repr": 0,
+    "acq_usable": 0,
+    "scene_usable": 0
+   },
+   "V2|RANDOM": {
+    "acq_repr": 0,
+    "scene_repr": 0,
+    "acq_usable": 0,
+    "scene_usable": 0
+   },
+   "V2|SIZE-AWARE": {
+    "acq_repr": 0,
+    "scene_repr": 0,
+    "acq_usable": 0,
+    "scene_usable": 0
+   },
+   "V2|EMBEDDING-NOVELTY": {
+    "acq_repr": 0,
+    "scene_repr": 0,
+    "acq_usable": 0,
+    "scene_usable": 0
+   },
+   "V2|TELEMETRY-PRIORITY": {
+    "acq_repr": 0,
+    "scene_repr": 0,
+    "acq_usable": 0,
+    "scene_usable": 0
+   },
+   "V2|PHASH-REPRESENTATIVES": {
+    "acq_repr": 0,
+    "scene_repr": 0,
+    "acq_usable": 0,
+    "scene_usable": 0
+   }
+  },
+  "v2": {
+   "scheduler": "SCHEDULER_V2_PROGRESSIVE",
+   "total_full_bytes": 161367007.56528,
+   "results": {
+    "FIFO@0.001": {
+     "bytes_transmitted": 161213.00064,
+     "counts": {
+      "NONE": 0,
+      "METADATA": 548,
+      "THUMBNAIL": 61,
+      "COMPRESSED": 0,
+      "FULL": 0
+     },
+     "unique_acquisitions_with_image": 61,
+     "unique_acquisitions_usable": 0,
+     "scene_clusters_total": 548,
+     "scene_clusters_with_image": 61,
+     "scene_clusters_usable": 0,
+     "phash_groups_total": 476,
+     "phash_groups_usable": 0,
+     "redundant_full_bytes": 0,
+     "redundant_share_of_full_bytes": null,
+     "diversity_proxy_embedding_coverage": 0.0,
+     "usable_scene_clusters_per_mb": 0.0,
+     "usable_acquisitions_per_mb": 0.0
+    },
+    "RANDOM@0.001": {
+     "bytes_transmitted": 161254.40076479997,
+     "bytes_transmitted_min_over_seeds": 161224.000832,
+     "counts": {
+      "NONE": 0.0,
+      "METADATA": 548.0,
+      "THUMBNAIL": 61.0,
+      "COMPRESSED": 0.0,
+      "FULL": 0.0
+     },
+     "unique_acquisitions_with_image": 61.0,
+     "unique_acquisitions_with_image_min_over_seeds": 61.0,
+     "unique_acquisitions_usable": 0.0,
+     "unique_acquisitions_usable_min_over_seeds": 0.0,
+     "scene_clusters_total": 548.0,
+     "scene_clusters_total_min_over_seeds": 548.0,
+     "scene_clusters_with_image": 58.95,
+     "scene_clusters_with_image_min_over_seeds": 55.0,
+     "scene_clusters_usable": 0.0,
+     "scene_clusters_usable_min_over_seeds": 0.0,
+     "phash_groups_total": 476.0,
+     "phash_groups_total_min_over_seeds": 476.0,
+     "phash_groups_usable": 0.0,
+     "phash_groups_usable_min_over_seeds": 0.0,
+     "redundant_full_bytes": 0.0,
+     "redundant_full_bytes_min_over_seeds": 0.0,
+     "diversity_proxy_embedding_coverage": 0.0,
+     "diversity_proxy_embedding_coverage_min_over_seeds": 0.0,
+     "usable_scene_clusters_per_mb": 0.0,
+     "usable_scene_clusters_per_mb_min_over_seeds": 0.0,
+     "usable_acquisitions_per_mb": 0.0,
+     "usable_acquisitions_per_mb_min_over_seeds": 0.0,
+     "seeds": 20
+    },
+    "SIZE-AWARE@0.001": {
+     "bytes_transmitted": 161162.000512,
+     "counts": {
+      "NONE": 0,
+      "METADATA": 549,
+      "THUMBNAIL": 60,
+      "COMPRESSED": 0,
+      "FULL": 0
+     },
+     "unique_acquisitions_with_image": 60,
+     "unique_acquisitions_usable": 0,
+     "scene_clusters_total": 548,
+     "scene_clusters_with_image": 25,
+     "scene_clusters_usable": 0,
+     "phash_groups_total": 476,
+     "phash_groups_usable": 0,
+     "redundant_full_bytes": 0,
+     "redundant_share_of_full_bytes": null,
+     "diversity_proxy_embedding_coverage": 0.0,
+     "usable_scene_clusters_per_mb": 0.0,
+     "usable_acquisitions_per_mb": 0.0
+    },
+    "EMBEDDING-NOVELTY@0.001": {
+     "bytes_transmitted": 161281.001344,
+     "counts": {
+      "NONE": 0,
+      "METADATA": 548,
+      "THUMBNAIL": 61,
+      "COMPRESSED": 0,
+      "FULL": 0
+     },
+     "unique_acquisitions_with_image": 61,
+     "unique_acquisitions_usable": 0,
+     "scene_clusters_total": 548,
+     "scene_clusters_with_image": 61,
+     "scene_clusters_usable": 0,
+     "phash_groups_total": 476,
+     "phash_groups_usable": 0,
+     "redundant_full_bytes": 0,
+     "redundant_share_of_full_bytes": null,
+     "diversity_proxy_embedding_coverage": 0.0,
+     "usable_scene_clusters_per_mb": 0.0,
+     "usable_acquisitions_per_mb": 0.0
+    },
+    "TELEMETRY-PRIORITY@0.001": {
+     "bytes_transmitted": 161321.000896,
+     "counts": {
+      "NONE": 0,
+      "METADATA": 548,
+      "THUMBNAIL": 61,
+      "COMPRESSED": 0,
+      "FULL": 0
+     },
+     "unique_acquisitions_with_image": 61,
+     "unique_acquisitions_usable": 0,
+     "scene_clusters_total": 548,
+     "scene_clusters_with_image": 44,
+     "scene_clusters_usable": 0,
+     "phash_groups_total": 476,
+     "phash_groups_usable": 0,
+     "redundant_full_bytes": 0,
+     "redundant_share_of_full_bytes": null,
+     "diversity_proxy_embedding_coverage": 0.0,
+     "usable_scene_clusters_per_mb": 0.0,
+     "usable_acquisitions_per_mb": 0.0
+    },
+    "PHASH-REPRESENTATIVES@0.001": {
+     "bytes_transmitted": 161225.000832,
+     "counts": {
+      "NONE": 0,
+      "METADATA": 548,
+      "THUMBNAIL": 61,
+      "COMPRESSED": 0,
+      "FULL": 0
+     },
+     "unique_acquisitions_with_image": 61,
+     "unique_acquisitions_usable": 0,
+     "scene_clusters_total": 548,
+     "scene_clusters_with_image": 60,
+     "scene_clusters_usable": 0,
+     "phash_groups_total": 476,
+     "phash_groups_usable": 0,
+     "redundant_full_bytes": 0,
+     "redundant_share_of_full_bytes": null,
+     "diversity_proxy_embedding_coverage": 0.0,
+     "usable_scene_clusters_per_mb": 0.0,
+     "usable_acquisitions_per_mb": 0.0
+    },
+    "FIFO@0.0025": {
+     "bytes_transmitted": 402534.007424,
+     "counts": {
+      "NONE": 0,
+      "METADATA": 0,
+      "THUMBNAIL": 595,
+      "COMPRESSED": 14,
+      "FULL": 0
+     },
+     "unique_acquisitions_with_image": 609,
+     "unique_acquisitions_usable": 14,
+     "scene_clusters_total": 548,
+     "scene_clusters_with_image": 548,
+     "scene_clusters_usable": 14,
+     "phash_groups_total": 476,
+     "phash_groups_usable": 13,
+     "redundant_full_bytes": 0,
+     "redundant_share_of_full_bytes": null,
+     "diversity_proxy_embedding_coverage": 0.8519013524055481,
+     "usable_scene_clusters_per_mb": 34.77967014412628,
+     "usable_acquisitions_per_mb": 34.77967014412628
+    },
+    "RANDOM@0.0025": {
+     "bytes_transmitted": 366649.007456,
+     "bytes_transmitted_min_over_seeds": 311691.007488,
+     "counts": {
+      "NONE": 0.0,
+      "METADATA": 0.0,
+      "THUMBNAIL": 605.15,
+      "COMPRESSED": 3.85,
+      "FULL": 0.0
+     },
+     "unique_acquisitions_with_image": 609.0,
+     "unique_acquisitions_with_image_min_over_seeds": 609.0,
+     "unique_acquisitions_usable": 3.85,
+     "unique_acquisitions_usable_min_over_seeds": 0.0,
+     "scene_clusters_total": 548.0,
+     "scene_clusters_total_min_over_seeds": 548.0,
+     "scene_clusters_with_image": 548.0,
+     "scene_clusters_with_image_min_over_seeds": 548.0,
+     "scene_clusters_usable": 3.85,
+     "scene_clusters_usable_min_over_seeds": 0.0,
+     "phash_groups_total": 476.0,
+     "phash_groups_total_min_over_seeds": 476.0,
+     "phash_groups_usable": 3.8,
+     "phash_groups_usable_min_over_seeds": 0.0,
+     "redundant_full_bytes": 0.0,
+     "redundant_full_bytes_min_over_seeds": 0.0,
+     "diversity_proxy_embedding_coverage": 0.6880833715200424,
+     "diversity_proxy_embedding_coverage_min_over_seeds": 0.0,
+     "usable_scene_clusters_per_mb": 10.276877828438959,
+     "usable_scene_clusters_per_mb_min_over_seeds": 0.0,
+     "usable_acquisitions_per_mb": 10.276877828438959,
+     "usable_acquisitions_per_mb_min_over_seeds": 0.0,
+     "seeds": 20
+    },
+    "SIZE-AWARE@0.0025": {
+     "bytes_transmitted": 401829.007168,
+     "counts": {
+      "NONE": 0,
+      "METADATA": 0,
+      "THUMBNAIL": 583,
+      "COMPRESSED": 26,
+      "FULL": 0
+     },
+     "unique_acquisitions_with_image": 609,
+     "unique_acquisitions_usable": 26,
+     "scene_clusters_total": 548,
+     "scene_clusters_with_image": 548,
+     "scene_clusters_usable": 5,
+     "phash_groups_total": 476,
+     "phash_groups_usable": 5,
+     "redundant_full_bytes": 0,
+     "redundant_share_of_full_bytes": null,
+     "diversity_proxy_embedding_coverage": 0.5248510241508484,
+     "usable_scene_clusters_per_mb": 12.44310368541801,
+     "usable_acquisitions_per_mb": 64.70413916417365
+    },
+    "EMBEDDING-NOVELTY@0.0025": {
+     "bytes_transmitted": 387922.00736,
+     "counts": {
+      "NONE": 0,
+      "METADATA": 0,
+      "THUMBNAIL": 602,
+      "COMPRESSED": 7,
+      "FULL": 0
+     },
+     "unique_acquisitions_with_image": 609,
+     "unique_acquisitions_usable": 7,
+     "scene_clusters_total": 548,
+     "scene_clusters_with_image": 548,
+     "scene_clusters_usable": 7,
+     "phash_groups_total": 476,
+     "phash_groups_usable": 7,
+     "redundant_full_bytes": 0,
+     "redundant_share_of_full_bytes": null,
+     "diversity_proxy_embedding_coverage": 0.8673047423362732,
+     "usable_scene_clusters_per_mb": 18.044864346930048,
+     "usable_acquisitions_per_mb": 18.044864346930048
+    },
+    "TELEMETRY-PRIORITY@0.0025": {
+     "bytes_transmitted": 380078.007488,
+     "counts": {
+      "NONE": 0,
+      "METADATA": 0,
+      "THUMBNAIL": 608,
+      "COMPRESSED": 1,
+      "FULL": 0
+     },
+     "unique_acquisitions_with_image": 609,
+     "unique_acquisitions_usable": 1,
+     "scene_clusters_total": 548,
+     "scene_clusters_with_image": 548,
+     "scene_clusters_usable": 1,
+     "phash_groups_total": 476,
+     "phash_groups_usable": 1,
+     "redundant_full_bytes": 0,
+     "redundant_share_of_full_bytes": null,
+     "diversity_proxy_embedding_coverage": 0.7016669511795044,
+     "usable_scene_clusters_per_mb": 2.631038840182229,
+     "usable_acquisitions_per_mb": 2.631038840182229
+    },
+    "PHASH-REPRESENTATIVES@0.0025": {
+     "bytes_transmitted": 402002.007296,
+     "counts": {
+      "NONE": 0,
+      "METADATA": 0,
+      "THUMBNAIL": 595,
+      "COMPRESSED": 14,
+      "FULL": 0
+     },
+     "unique_acquisitions_with_image": 609,
+     "unique_acquisitions_usable": 14,
+     "scene_clusters_total": 548,
+     "scene_clusters_with_image": 548,
+     "scene_clusters_usable": 14,
+     "phash_groups_total": 476,
+     "phash_groups_usable": 14,
+     "redundant_full_bytes": 0,
+     "redundant_share_of_full_bytes": null,
+     "diversity_proxy_embedding_coverage": 0.849355936050415,
+     "usable_scene_clusters_per_mb": 34.825696752532856,
+     "usable_acquisitions_per_mb": 34.825696752532856
+    },
+    "FIFO@0.005": {
+     "bytes_transmitted": 728356.007104,
+     "counts": {
+      "NONE": 0,
+      "METADATA": 0,
+      "THUMBNAIL": 561,
+      "COMPRESSED": 48,
+      "FULL": 0
+     },
+     "unique_acquisitions_with_image": 609,
+     "unique_acquisitions_usable": 48,
+     "scene_clusters_total": 548,
+     "scene_clusters_with_image": 548,
+     "scene_clusters_usable": 48,
+     "phash_groups_total": 476,
+     "phash_groups_usable": 38,
+     "redundant_full_bytes": 0,
+     "redundant_share_of_full_bytes": null,
+     "diversity_proxy_embedding_coverage": 0.873617947101593,
+     "usable_scene_clusters_per_mb": 65.90183856772423,
+     "usable_acquisitions_per_mb": 65.90183856772423
+    },
+    "RANDOM@0.005": {
+     "bytes_transmitted": 771621.2572639999,
+     "bytes_transmitted_min_over_seeds": 697496.00736,
+     "counts": {
+      "NONE": 0.0,
+      "METADATA": 0.0,
+      "THUMBNAIL": 586.4,
+      "COMPRESSED": 22.6,
+      "FULL": 0.0
+     },
+     "unique_acquisitions_with_image": 609.0,
+     "unique_acquisitions_with_image_min_over_seeds": 609.0,
+     "unique_acquisitions_usable": 22.6,
+     "unique_acquisitions_usable_min_over_seeds": 13.0,
+     "scene_clusters_total": 548.0,
+     "scene_clusters_total_min_over_seeds": 548.0,
+     "scene_clusters_with_image": 548.0,
+     "scene_clusters_with_image_min_over_seeds": 548.0,
+     "scene_clusters_usable": 22.3,
+     "scene_clusters_usable_min_over_seeds": 13.0,
+     "phash_groups_total": 476.0,
+     "phash_groups_total_min_over_seeds": 476.0,
+     "phash_groups_usable": 21.5,
+     "phash_groups_usable_min_over_seeds": 12.0,
+     "redundant_full_bytes": 0.0,
+     "redundant_full_bytes_min_over_seeds": 0.0,
+     "diversity_proxy_embedding_coverage": 0.8982559680938721,
+     "diversity_proxy_embedding_coverage_min_over_seeds": 0.8108893036842346,
+     "usable_scene_clusters_per_mb": 28.85919741454823,
+     "usable_scene_clusters_per_mb_min_over_seeds": 17.023059535924887,
+     "usable_acquisitions_per_mb": 29.252518064716515,
+     "usable_acquisitions_per_mb_min_over_seeds": 17.023059535924887,
+     "seeds": 20
+    },
+    "SIZE-AWARE@0.005": {
+     "bytes_transmitted": 800660.006336,
+     "counts": {
+      "NONE": 0,
+      "METADATA": 0,
+      "THUMBNAIL": 506,
+      "COMPRESSED": 103,
+      "FULL": 0
+     },
+     "unique_acquisitions_with_image": 609,
+     "unique_acquisitions_usable": 103,
+     "scene_clusters_total": 548,
+     "scene_clusters_with_image": 548,
+     "scene_clusters_usable": 68,
+     "phash_groups_total": 476,
+     "phash_groups_usable": 29,
+     "redundant_full_bytes": 0,
+     "redundant_share_of_full_bytes": null,
+     "diversity_proxy_embedding_coverage": 0.882249653339386,
+     "usable_scene_clusters_per_mb": 84.92993213334492,
+     "usable_acquisitions_per_mb": 128.64386779021362
+    },
+    "EMBEDDING-NOVELTY@0.005": {
+     "bytes_transmitted": 794667.007104,
+     "counts": {
+      "NONE": 0,
+      "METADATA": 0,
+      "THUMBNAIL": 596,
+      "COMPRESSED": 13,
+      "FULL": 0
+     },
+     "unique_acquisitions_with_image": 609,
+     "unique_acquisitions_usable": 13,
+     "scene_clusters_total": 548,
+     "scene_clusters_with_image": 548,
+     "scene_clusters_usable": 13,
+     "phash_groups_total": 476,
+     "phash_groups_usable": 13,
+     "redundant_full_bytes": 0,
+     "redundant_share_of_full_bytes": null,
+     "diversity_proxy_embedding_coverage": 0.8847150206565857,
+     "usable_scene_clusters_per_mb": 16.359053394422173,
+     "usable_acquisitions_per_mb": 16.359053394422173
+    },
+    "TELEMETRY-PRIORITY@0.005": {
+     "bytes_transmitted": 763099.007488,
+     "counts": {
+      "NONE": 0,
+      "METADATA": 0,
+      "THUMBNAIL": 602,
+      "COMPRESSED": 7,
+      "FULL": 0
+     },
+     "unique_acquisitions_with_image": 609,
+     "unique_acquisitions_usable": 7,
+     "scene_clusters_total": 548,
+     "scene_clusters_with_image": 548,
+     "scene_clusters_usable": 7,
+     "phash_groups_total": 476,
+     "phash_groups_usable": 7,
+     "redundant_full_bytes": 0,
+     "redundant_share_of_full_bytes": null,
+     "diversity_proxy_embedding_coverage": 0.8015764951705933,
+     "usable_scene_clusters_per_mb": 9.173121615035095,
+     "usable_acquisitions_per_mb": 9.173121615035095
+    },
+    "PHASH-REPRESENTATIVES@0.005": {
+     "bytes_transmitted": 742796.007104,
+     "counts": {
+      "NONE": 0,
+      "METADATA": 0,
+      "THUMBNAIL": 570,
+      "COMPRESSED": 39,
+      "FULL": 0
+     },
+     "unique_acquisitions_with_image": 609,
+     "unique_acquisitions_usable": 39,
+     "scene_clusters_total": 548,
+     "scene_clusters_with_image": 548,
+     "scene_clusters_usable": 39,
+     "phash_groups_total": 476,
+     "phash_groups_usable": 39,
+     "redundant_full_bytes": 0,
+     "redundant_share_of_full_bytes": null,
+     "diversity_proxy_embedding_coverage": 0.8713595271110535,
+     "usable_scene_clusters_per_mb": 52.50432100739545,
+     "usable_acquisitions_per_mb": 52.50432100739545
+    },
+    "FIFO@0.01": {
+     "bytes_transmitted": 1612648.006592,
+     "counts": {
+      "NONE": 0,
+      "METADATA": 0,
+      "THUMBNAIL": 524,
+      "COMPRESSED": 85,
+      "FULL": 0
+     },
+     "unique_acquisitions_with_image": 609,
+     "unique_acquisitions_usable": 85,
+     "scene_clusters_total": 548,
+     "scene_clusters_with_image": 548,
+     "scene_clusters_usable": 84,
+     "phash_groups_total": 476,
+     "phash_groups_usable": 70,
+     "redundant_full_bytes": 0,
+     "redundant_share_of_full_bytes": null,
+     "diversity_proxy_embedding_coverage": 0.900988757610321,
+     "usable_scene_clusters_per_mb": 52.088242230563836,
+     "usable_acquisitions_per_mb": 52.70834035235627
+    },
+    "RANDOM@0.01": {
+     "bytes_transmitted": 1590034.0067744,
+     "bytes_transmitted_min_over_seeds": 1543328.006976,
+     "counts": {
+      "NONE": 0.0,
+      "METADATA": 0.0,
+      "THUMBNAIL": 549.8,
+      "COMPRESSED": 59.2,
+      "FULL": 0.0
+     },
+     "unique_acquisitions_with_image": 609.0,
+     "unique_acquisitions_with_image_min_over_seeds": 609.0,
+     "unique_acquisitions_usable": 59.2,
+     "unique_acquisitions_usable_min_over_seeds": 35.0,
+     "scene_clusters_total": 548.0,
+     "scene_clusters_total_min_over_seeds": 548.0,
+     "scene_clusters_with_image": 548.0,
+     "scene_clusters_with_image_min_over_seeds": 548.0,
+     "scene_clusters_usable": 57.45,
+     "scene_clusters_usable_min_over_seeds": 35.0,
+     "phash_groups_total": 476.0,
+     "phash_groups_total_min_over_seeds": 476.0,
+     "phash_groups_usable": 53.05,
+     "phash_groups_usable_min_over_seeds": 34.0,
+     "redundant_full_bytes": 0.0,
+     "redundant_full_bytes_min_over_seeds": 0.0,
+     "diversity_proxy_embedding_coverage": 0.932668799161911,
+     "diversity_proxy_embedding_coverage_min_over_seeds": 0.9194097518920898,
+     "usable_scene_clusters_per_mb": 36.157140795147484,
+     "usable_scene_clusters_per_mb_min_over_seeds": 21.97400653651546,
+     "usable_acquisitions_per_mb": 37.25507639744946,
+     "usable_acquisitions_per_mb_min_over_seeds": 21.97400653651546,
+     "seeds": 20
+    },
+    "SIZE-AWARE@0.01": {
+     "bytes_transmitted": 1612297.004352,
+     "counts": {
+      "NONE": 0,
+      "METADATA": 0,
+      "THUMBNAIL": 374,
+      "COMPRESSED": 235,
+      "FULL": 0
+     },
+     "unique_acquisitions_with_image": 609,
+     "unique_acquisitions_usable": 235,
+     "scene_clusters_total": 548,
+     "scene_clusters_with_image": 548,
+     "scene_clusters_usable": 200,
+     "phash_groups_total": 476,
+     "phash_groups_usable": 125,
+     "redundant_full_bytes": 0,
+     "redundant_share_of_full_bytes": null,
+     "diversity_proxy_embedding_coverage": 0.9286263585090637,
+     "usable_scene_clusters_per_mb": 124.04662382932491,
+     "usable_acquisitions_per_mb": 145.75478299945678
+    },
+    "EMBEDDING-NOVELTY@0.01": {
+     "bytes_transmitted": 1562366.00672,
+     "counts": {
+      "NONE": 0,
+      "METADATA": 0,
+      "THUMBNAIL": 582,
+      "COMPRESSED": 27,
+      "FULL": 0
+     },
+     "unique_acquisitions_with_image": 609,
+     "unique_acquisitions_usable": 27,
+     "scene_clusters_total": 548,
+     "scene_clusters_with_image": 548,
+     "scene_clusters_usable": 27,
+     "phash_groups_total": 476,
+     "phash_groups_usable": 27,
+     "redundant_full_bytes": 0,
+     "redundant_share_of_full_bytes": null,
+     "diversity_proxy_embedding_coverage": 0.9067779779434204,
+     "usable_scene_clusters_per_mb": 17.281481985570885,
+     "usable_acquisitions_per_mb": 17.281481985570885
+    },
+    "TELEMETRY-PRIORITY@0.01": {
+     "bytes_transmitted": 1582554.00704,
+     "counts": {
+      "NONE": 0,
+      "METADATA": 0,
+      "THUMBNAIL": 590,
+      "COMPRESSED": 19,
+      "FULL": 0
+     },
+     "unique_acquisitions_with_image": 609,
+     "unique_acquisitions_usable": 19,
+     "scene_clusters_total": 548,
+     "scene_clusters_with_image": 548,
+     "scene_clusters_usable": 19,
+     "phash_groups_total": 476,
+     "phash_groups_usable": 19,
+     "redundant_full_bytes": 0,
+     "redundant_share_of_full_bytes": null,
+     "diversity_proxy_embedding_coverage": 0.8477887511253357,
+     "usable_scene_clusters_per_mb": 12.005909381593549,
+     "usable_acquisitions_per_mb": 12.005909381593549
+    },
+    "PHASH-REPRESENTATIVES@0.01": {
+     "bytes_transmitted": 1569756.006208,
+     "counts": {
+      "NONE": 0,
+      "METADATA": 0,
+      "THUMBNAIL": 528,
+      "COMPRESSED": 81,
+      "FULL": 0
+     },
+     "unique_acquisitions_with_image": 609,
+     "unique_acquisitions_usable": 81,
+     "scene_clusters_total": 548,
+     "scene_clusters_with_image": 548,
+     "scene_clusters_usable": 79,
+     "phash_groups_total": 476,
+     "phash_groups_usable": 81,
+     "redundant_full_bytes": 0,
+     "redundant_share_of_full_bytes": null,
+     "diversity_proxy_embedding_coverage": 0.902587890625,
+     "usable_scene_clusters_per_mb": 50.326292549653814,
+     "usable_acquisitions_per_mb": 51.60037590534125
+    },
+    "FIFO@0.02": {
+     "bytes_transmitted": 3225949.006016,
+     "counts": {
+      "NONE": 0,
+      "METADATA": 0,
+      "THUMBNAIL": 460,
+      "COMPRESSED": 149,
+      "FULL": 0
+     },
+     "unique_acquisitions_with_image": 609,
+     "unique_acquisitions_usable": 149,
+     "scene_clusters_total": 548,
+     "scene_clusters_with_image": 548,
+     "scene_clusters_usable": 131,
+     "phash_groups_total": 476,
+     "phash_groups_usable": 117,
+     "redundant_full_bytes": 0,
+     "redundant_share_of_full_bytes": null,
+     "diversity_proxy_embedding_coverage": 0.9377726316452026,
+     "usable_scene_clusters_per_mb": 40.60820544766859,
+     "usable_acquisitions_per_mb": 46.187958867958926
+    },
+    "RANDOM@0.02": {
+     "bytes_transmitted": 3188668.255968,
+     "bytes_transmitted_min_over_seeds": 3134386.006464,
+     "counts": {
+      "NONE": 0.0,
+      "METADATA": 0.0,
+      "THUMBNAIL": 478.15,
+      "COMPRESSED": 130.85,
+      "FULL": 0.0
+     },
+     "unique_acquisitions_with_image": 609.0,
+     "unique_acquisitions_with_image_min_over_seeds": 609.0,
+     "unique_acquisitions_usable": 130.85,
+     "unique_acquisitions_usable_min_over_seeds": 80.0,
+     "scene_clusters_total": 548.0,
+     "scene_clusters_total_min_over_seeds": 548.0,
+     "scene_clusters_with_image": 548.0,
+     "scene_clusters_with_image_min_over_seeds": 548.0,
+     "scene_clusters_usable": 124.7,
+     "scene_clusters_usable_min_over_seeds": 80.0,
+     "phash_groups_total": 476.0,
+     "phash_groups_total_min_over_seeds": 476.0,
+     "phash_groups_usable": 110.45,
+     "phash_groups_usable_min_over_seeds": 76.0,
+     "redundant_full_bytes": 0.0,
+     "redundant_full_bytes_min_over_seeds": 0.0,
+     "diversity_proxy_embedding_coverage": 0.951890429854393,
+     "diversity_proxy_embedding_coverage_min_over_seeds": 0.9397468566894531,
+     "usable_scene_clusters_per_mb": 39.10081866460821,
+     "usable_scene_clusters_per_mb_min_over_seeds": 25.356295520048718,
+     "usable_acquisitions_per_mb": 41.02857375019508,
+     "usable_acquisitions_per_mb_min_over_seeds": 25.356295520048718,
+     "seeds": 20
+    },
+    "SIZE-AWARE@0.02": {
+     "bytes_transmitted": 3222902.00256,
+     "counts": {
+      "NONE": 0,
+      "METADATA": 0,
+      "THUMBNAIL": 158,
+      "COMPRESSED": 451,
+      "FULL": 0
+     },
+     "unique_acquisitions_with_image": 609,
+     "unique_acquisitions_usable": 451,
+     "scene_clusters_total": 548,
+     "scene_clusters_with_image": 548,
+     "scene_clusters_usable": 406,
+     "phash_groups_total": 476,
+     "phash_groups_usable": 327,
+     "redundant_full_bytes": 0,
+     "redundant_share_of_full_bytes": null,
+     "diversity_proxy_embedding_coverage": 0.9576698541641235,
+     "usable_scene_clusters_per_mb": 125.9734238513948,
+     "usable_acquisitions_per_mb": 139.93599546053954
+    },
+    "EMBEDDING-NOVELTY@0.02": {
+     "bytes_transmitted": 3216709.006336,
+     "counts": {
+      "NONE": 0,
+      "METADATA": 0,
+      "THUMBNAIL": 560,
+      "COMPRESSED": 49,
+      "FULL": 0
+     },
+     "unique_acquisitions_with_image": 609,
+     "unique_acquisitions_usable": 49,
+     "scene_clusters_total": 548,
+     "scene_clusters_with_image": 548,
+     "scene_clusters_usable": 49,
+     "phash_groups_total": 476,
+     "phash_groups_usable": 49,
+     "redundant_full_bytes": 0,
+     "redundant_share_of_full_bytes": null,
+     "diversity_proxy_embedding_coverage": 0.9196276068687439,
+     "usable_scene_clusters_per_mb": 15.232960116530268,
+     "usable_acquisitions_per_mb": 15.232960116530268
+    },
+    "TELEMETRY-PRIORITY@0.02": {
+     "bytes_transmitted": 3136284.006464,
+     "counts": {
+      "NONE": 0,
+      "METADATA": 0,
+      "THUMBNAIL": 540,
+      "COMPRESSED": 69,
+      "FULL": 0
+     },
+     "unique_acquisitions_with_image": 609,
+     "unique_acquisitions_usable": 69,
+     "scene_clusters_total": 548,
+     "scene_clusters_with_image": 548,
+     "scene_clusters_usable": 52,
+     "phash_groups_total": 476,
+     "phash_groups_usable": 52,
+     "redundant_full_bytes": 0,
+     "redundant_share_of_full_bytes": null,
+     "diversity_proxy_embedding_coverage": 0.9094724655151367,
+     "usable_scene_clusters_per_mb": 16.580131101911064,
+     "usable_acquisitions_per_mb": 22.000558577535834
+    },
+    "PHASH-REPRESENTATIVES@0.02": {
+     "bytes_transmitted": 3199787.006144,
+     "counts": {
+      "NONE": 0,
+      "METADATA": 0,
+      "THUMBNAIL": 470,
+      "COMPRESSED": 139,
+      "FULL": 0
+     },
+     "unique_acquisitions_with_image": 609,
+     "unique_acquisitions_usable": 139,
+     "scene_clusters_total": 548,
+     "scene_clusters_with_image": 548,
+     "scene_clusters_usable": 129,
+     "phash_groups_total": 476,
+     "phash_groups_usable": 139,
+     "redundant_full_bytes": 0,
+     "redundant_share_of_full_bytes": null,
+     "diversity_proxy_embedding_coverage": 0.9398291707038879,
+     "usable_scene_clusters_per_mb": 40.31518340199004,
+     "usable_acquisitions_per_mb": 43.440391417648186
+    },
+    "FIFO@0.05": {
+     "bytes_transmitted": 8065945.002624,
+     "counts": {
+      "NONE": 0,
+      "METADATA": 0,
+      "THUMBNAIL": 171,
+      "COMPRESSED": 438,
+      "FULL": 0
+     },
+     "unique_acquisitions_with_image": 609,
+     "unique_acquisitions_usable": 438,
+     "scene_clusters_total": 548,
+     "scene_clusters_with_image": 548,
+     "scene_clusters_usable": 406,
+     "phash_groups_total": 476,
+     "phash_groups_usable": 344,
+     "redundant_full_bytes": 0,
+     "redundant_share_of_full_bytes": null,
+     "diversity_proxy_embedding_coverage": 0.9797477722167969,
+     "usable_scene_clusters_per_mb": 50.33508161386183,
+     "usable_acquisitions_per_mb": 54.30237868687557
+    },
+    "RANDOM@0.05": {
+     "bytes_transmitted": 8042193.553104,
+     "bytes_transmitted_min_over_seeds": 7968953.003584,
+     "counts": {
+      "NONE": 0.0,
+      "METADATA": 0.0,
+      "THUMBNAIL": 255.9,
+      "COMPRESSED": 353.1,
+      "FULL": 0.0
+     },
+     "unique_acquisitions_with_image": 609.0,
+     "unique_acquisitions_with_image_min_over_seeds": 609.0,
+     "unique_acquisitions_usable": 353.1,
+     "unique_acquisitions_usable_min_over_seeds": 315.0,
+     "scene_clusters_total": 548.0,
+     "scene_clusters_total_min_over_seeds": 548.0,
+     "scene_clusters_with_image": 548.0,
+     "scene_clusters_with_image_min_over_seeds": 548.0,
+     "scene_clusters_usable": 324.2,
+     "scene_clusters_usable_min_over_seeds": 292.0,
+     "phash_groups_total": 476.0,
+     "phash_groups_total_min_over_seeds": 476.0,
+     "phash_groups_usable": 283.6,
+     "phash_groups_usable_min_over_seeds": 253.0,
+     "redundant_full_bytes": 0.0,
+     "redundant_full_bytes_min_over_seeds": 0.0,
+     "diversity_proxy_embedding_coverage": 0.9800378769636154,
+     "diversity_proxy_embedding_coverage_min_over_seeds": 0.9756060838699341,
+     "usable_scene_clusters_per_mb": 40.314060422441074,
+     "usable_scene_clusters_per_mb_min_over_seeds": 36.21329480302814,
+     "usable_acquisitions_per_mb": 43.90792965156443,
+     "usable_acquisitions_per_mb_min_over_seeds": 39.06571185943104,
+     "seeds": 20
+    },
+    "SIZE-AWARE@0.05": {
+     "bytes_transmitted": 8010192.001216,
+     "counts": {
+      "NONE": 0,
+      "METADATA": 0,
+      "THUMBNAIL": 68,
+      "COMPRESSED": 541,
+      "FULL": 0
+     },
+     "unique_acquisitions_with_image": 609,
+     "unique_acquisitions_usable": 541,
+     "scene_clusters_total": 548,
+     "scene_clusters_with_image": 548,
+     "scene_clusters_usable": 483,
+     "phash_groups_total": 476,
+     "phash_groups_usable": 408,
+     "redundant_full_bytes": 0,
+     "redundant_share_of_full_bytes": null,
+     "diversity_proxy_embedding_coverage": 0.9903628826141357,
+     "usable_scene_clusters_per_mb": 60.29818010937534,
+     "usable_acquisitions_per_mb": 67.53895536060467
+    },
+    "EMBEDDING-NOVELTY@0.05": {
+     "bytes_transmitted": 8067266.004544,
+     "counts": {
+      "NONE": 0,
+      "METADATA": 0,
+      "THUMBNAIL": 449,
+      "COMPRESSED": 160,
+      "FULL": 0
+     },
+     "unique_acquisitions_with_image": 609,
+     "unique_acquisitions_usable": 160,
+     "scene_clusters_total": 548,
+     "scene_clusters_with_image": 548,
+     "scene_clusters_usable": 158,
+     "phash_groups_total": 476,
+     "phash_groups_usable": 160,
+     "redundant_full_bytes": 0,
+     "redundant_share_of_full_bytes": null,
+     "diversity_proxy_embedding_coverage": 0.9595339894294739,
+     "usable_scene_clusters_per_mb": 19.585321707627376,
+     "usable_acquisitions_per_mb": 19.83323717228089
+    },
+    "TELEMETRY-PRIORITY@0.05": {
+     "bytes_transmitted": 8034522.003776,
+     "counts": {
+      "NONE": 0,
+      "METADATA": 0,
+      "THUMBNAIL": 260,
+      "COMPRESSED": 349,
+      "FULL": 0
+     },
+     "unique_acquisitions_with_image": 609,
+     "unique_acquisitions_usable": 349,
+     "scene_clusters_total": 548,
+     "scene_clusters_with_image": 548,
+     "scene_clusters_usable": 319,
+     "phash_groups_total": 476,
+     "phash_groups_usable": 283,
+     "redundant_full_bytes": 0,
+     "redundant_share_of_full_bytes": null,
+     "diversity_proxy_embedding_coverage": 0.974726140499115,
+     "usable_scene_clusters_per_mb": 39.7036687247952,
+     "usable_acquisitions_per_mb": 43.43755606568503
+    },
+    "PHASH-REPRESENTATIVES@0.05": {
+     "bytes_transmitted": 8031244.003072,
+     "counts": {
+      "NONE": 0,
+      "METADATA": 0,
+      "THUMBNAIL": 236,
+      "COMPRESSED": 373,
+      "FULL": 0
+     },
+     "unique_acquisitions_with_image": 609,
+     "unique_acquisitions_usable": 373,
+     "scene_clusters_total": 548,
+     "scene_clusters_with_image": 548,
+     "scene_clusters_usable": 359,
+     "phash_groups_total": 476,
+     "phash_groups_usable": 373,
+     "redundant_full_bytes": 0,
+     "redundant_share_of_full_bytes": null,
+     "diversity_proxy_embedding_coverage": 0.9761608839035034,
+     "usable_scene_clusters_per_mb": 44.70042248282835,
+     "usable_acquisitions_per_mb": 46.443614445947006
+    },
+    "FIFO@0.1": {
+     "bytes_transmitted": 15995272.8976,
+     "counts": {
+      "NONE": 0,
+      "METADATA": 0,
+      "THUMBNAIL": 0,
+      "COMPRESSED": 592,
+      "FULL": 17
+     },
+     "unique_acquisitions_with_image": 609,
+     "unique_acquisitions_usable": 609,
+     "scene_clusters_total": 548,
+     "scene_clusters_with_image": 548,
+     "scene_clusters_usable": 548,
+     "phash_groups_total": 476,
+     "phash_groups_usable": 476,
+     "redundant_full_bytes": 0,
+     "redundant_share_of_full_bytes": 0.0,
+     "diversity_proxy_embedding_coverage": 0.9999998211860657,
+     "usable_scene_clusters_per_mb": 34.26012194404162,
+     "usable_acquisitions_per_mb": 38.07374865679078
+    },
+    "RANDOM@0.1": {
+     "bytes_transmitted": 15918430.767899062,
+     "bytes_transmitted_min_over_seeds": 15393277.89159875,
+     "counts": {
+      "NONE": 0.0,
+      "METADATA": 0.0,
+      "THUMBNAIL": 0.0,
+      "COMPRESSED": 598.55,
+      "FULL": 10.45
+     },
+     "unique_acquisitions_with_image": 609.0,
+     "unique_acquisitions_with_image_min_over_seeds": 609.0,
+     "unique_acquisitions_usable": 609.0,
+     "unique_acquisitions_usable_min_over_seeds": 609.0,
+     "scene_clusters_total": 548.0,
+     "scene_clusters_total_min_over_seeds": 548.0,
+     "scene_clusters_with_image": 548.0,
+     "scene_clusters_with_image_min_over_seeds": 548.0,
+     "scene_clusters_usable": 548.0,
+     "scene_clusters_usable_min_over_seeds": 548.0,
+     "phash_groups_total": 476.0,
+     "phash_groups_total_min_over_seeds": 476.0,
+     "phash_groups_usable": 476.0,
+     "phash_groups_usable_min_over_seeds": 476.0,
+     "redundant_full_bytes": 9791.9885398125,
+     "redundant_full_bytes_min_over_seeds": 0.0,
+     "redundant_share_of_full_bytes": 0.003955707727550632,
+     "redundant_share_of_full_bytes_min_over_seeds": 0.0,
+     "diversity_proxy_embedding_coverage": 0.9999998211860657,
+     "diversity_proxy_embedding_coverage_min_over_seeds": 0.9999998211860657,
+     "usable_scene_clusters_per_mb": 34.432428363704844,
+     "usable_scene_clusters_per_mb_min_over_seeds": 33.9882361169434,
+     "usable_acquisitions_per_mb": 38.2652351706136,
+     "usable_acquisitions_per_mb_min_over_seeds": 37.771598166457174,
+     "seeds": 20
+    },
+    "SIZE-AWARE@0.1": {
+     "bytes_transmitted": 16119926.19504,
+     "counts": {
+      "NONE": 0,
+      "METADATA": 0,
+      "THUMBNAIL": 0,
+      "COMPRESSED": 568,
+      "FULL": 41
+     },
+     "unique_acquisitions_with_image": 609,
+     "unique_acquisitions_usable": 609,
+     "scene_clusters_total": 548,
+     "scene_clusters_with_image": 548,
+     "scene_clusters_usable": 548,
+     "phash_groups_total": 476,
+     "phash_groups_usable": 476,
+     "redundant_full_bytes": 2284768.60264625,
+     "redundant_share_of_full_bytes": 0.8319284783548938,
+     "diversity_proxy_embedding_coverage": 0.9999998211860657,
+     "usable_scene_clusters_per_mb": 33.99519286686412,
+     "usable_acquisitions_per_mb": 37.77932929912455
+    },
+    "EMBEDDING-NOVELTY@0.1": {
+     "bytes_transmitted": 15881157.0663975,
+     "counts": {
+      "NONE": 0,
+      "METADATA": 0,
+      "THUMBNAIL": 0,
+      "COMPRESSED": 601,
+      "FULL": 8
+     },
+     "unique_acquisitions_with_image": 609,
+     "unique_acquisitions_usable": 609,
+     "scene_clusters_total": 548,
+     "scene_clusters_with_image": 548,
+     "scene_clusters_usable": 548,
+     "phash_groups_total": 476,
+     "phash_groups_usable": 476,
+     "redundant_full_bytes": 0,
+     "redundant_share_of_full_bytes": 0.0,
+     "diversity_proxy_embedding_coverage": 0.9999998211860657,
+     "usable_scene_clusters_per_mb": 34.5063018839791,
+     "usable_acquisitions_per_mb": 38.34733183821765
+    },
+    "TELEMETRY-PRIORITY@0.1": {
+     "bytes_transmitted": 15207948.9104,
+     "counts": {
+      "NONE": 0,
+      "METADATA": 0,
+      "THUMBNAIL": 0,
+      "COMPRESSED": 607,
+      "FULL": 2
+     },
+     "unique_acquisitions_with_image": 609,
+     "unique_acquisitions_usable": 609,
+     "scene_clusters_total": 548,
+     "scene_clusters_with_image": 548,
+     "scene_clusters_usable": 548,
+     "phash_groups_total": 476,
+     "phash_groups_usable": 476,
+     "redundant_full_bytes": 0,
+     "redundant_share_of_full_bytes": 0.0,
+     "diversity_proxy_embedding_coverage": 0.9999998211860657,
+     "usable_scene_clusters_per_mb": 36.0337875428585,
+     "usable_acquisitions_per_mb": 40.044847835038006
+    },
+    "PHASH-REPRESENTATIVES@0.1": {
+     "bytes_transmitted": 16008031.8976,
+     "counts": {
+      "NONE": 0,
+      "METADATA": 0,
+      "THUMBNAIL": 0,
+      "COMPRESSED": 592,
+      "FULL": 17
+     },
+     "unique_acquisitions_with_image": 609,
+     "unique_acquisitions_usable": 609,
+     "scene_clusters_total": 548,
+     "scene_clusters_with_image": 548,
+     "scene_clusters_usable": 548,
+     "phash_groups_total": 476,
+     "phash_groups_usable": 476,
+     "redundant_full_bytes": 0,
+     "redundant_share_of_full_bytes": 0.0,
+     "diversity_proxy_embedding_coverage": 0.9999998211860657,
+     "usable_scene_clusters_per_mb": 34.23281534578643,
+     "usable_acquisitions_per_mb": 38.04340245544514
+    }
+   }
+  }
+ },
+ "synthetic": {
+  "count": 960,
+  "by_family": {
+   "BLUR": 120,
+   "EXPOSURE": 120,
+   "MISSING_REGION": 120,
+   "STRIPING": 120,
+   "FRAME_DROPOUT": 120,
+   "LOCALIZED_STRUCTURE": 120,
+   "TEXTURE_CHANGE": 120,
+   "NEAR_DUPLICATE": 120
+  },
+  "by_severity": {
+   "OBVIOUS": 210,
+   "MODERATE": 210,
+   "SUBTLE": 210,
+   "NEAR_NOISE_FLOOR": 210,
+   "N/A": 120
+  },
+  "by_half": {
+   "TUNE": 522,
+   "EVAL": 438
+  },
+  "bytes_on_disk": 316827260
+ },
+ "quality": {
+  "v1_recall_eval_half": {
+   "BLUR": {
+    "OBVIOUS": {
+     "recall": 0.0,
+     "n": 14
+    },
+    "MODERATE": {
+     "recall": 0.0,
+     "n": 15
+    },
+    "SUBTLE": {
+     "recall": 0.0,
+     "n": 15
+    },
+    "NEAR_NOISE_FLOOR": {
+     "recall": 0.0,
+     "n": 13
+    }
+   },
+   "EXPOSURE": {
+    "OBVIOUS": {
+     "recall": 0.2857142857142857,
+     "n": 14
+    },
+    "MODERATE": {
+     "recall": 0.09090909090909091,
+     "n": 11
+    },
+    "SUBTLE": {
+     "recall": 0.0,
+     "n": 9
+    },
+    "NEAR_NOISE_FLOOR": {
+     "recall": 0.0,
+     "n": 16
+    }
+   },
+   "MISSING_REGION": {
+    "OBVIOUS": {
+     "recall": 1.0,
+     "n": 15
+    },
+    "MODERATE": {
+     "recall": 1.0,
+     "n": 15
+    },
+    "SUBTLE": {
+     "recall": 0.0,
+     "n": 14
+    },
+    "NEAR_NOISE_FLOOR": {
+     "recall": 0.0,
+     "n": 17
+    }
+   },
+   "STRIPING": {
+    "OBVIOUS": {
+     "recall": 1.0,
+     "n": 15
+    },
+    "MODERATE": {
+     "recall": 0.8571428571428571,
+     "n": 14
+    },
+    "SUBTLE": {
+     "recall": 0.4166666666666667,
+     "n": 12
+    },
+    "NEAR_NOISE_FLOOR": {
+     "recall": 0.0,
+     "n": 11
+    }
+   },
+   "FRAME_DROPOUT": {
+    "OBVIOUS": {
+     "recall": 1.0,
+     "n": 13
+    },
+    "MODERATE": {
+     "recall": 1.0,
+     "n": 17
+    },
+    "SUBTLE": {
+     "recall": 1.0,
+     "n": 17
+    },
+    "NEAR_NOISE_FLOOR": {
+     "recall": 0.6111111111111112,
+     "n": 18
+    }
+   }
+  },
+  "v2_recall_eval_half": {
+   "BLUR": {
+    "OBVIOUS": {
+     "recall": 1.0,
+     "n": 14
+    },
+    "MODERATE": {
+     "recall": 1.0,
+     "n": 15
+    },
+    "SUBTLE": {
+     "recall": 0.9333333333333333,
+     "n": 15
+    },
+    "NEAR_NOISE_FLOOR": {
+     "recall": 0.38461538461538464,
+     "n": 13
+    }
+   },
+   "EXPOSURE": {
+    "OBVIOUS": {
+     "recall": 1.0,
+     "n": 14
+    },
+    "MODERATE": {
+     "recall": 0.45454545454545453,
+     "n": 11
+    },
+    "SUBTLE": {
+     "recall": 0.3333333333333333,
+     "n": 9
+    },
+    "NEAR_NOISE_FLOOR": {
+     "recall": 0.0625,
+     "n": 16
+    }
+   },
+   "MISSING_REGION": {
+    "OBVIOUS": {
+     "recall": 1.0,
+     "n": 15
+    },
+    "MODERATE": {
+     "recall": 1.0,
+     "n": 15
+    },
+    "SUBTLE": {
+     "recall": 1.0,
+     "n": 14
+    },
+    "NEAR_NOISE_FLOOR": {
+     "recall": 1.0,
+     "n": 17
+    }
+   },
+   "STRIPING": {
+    "OBVIOUS": {
+     "recall": 1.0,
+     "n": 15
+    },
+    "MODERATE": {
+     "recall": 1.0,
+     "n": 14
+    },
+    "SUBTLE": {
+     "recall": 1.0,
+     "n": 12
+    },
+    "NEAR_NOISE_FLOOR": {
+     "recall": 1.0,
+     "n": 11
+    }
+   },
+   "FRAME_DROPOUT": {
+    "OBVIOUS": {
+     "recall": 1.0,
+     "n": 13
+    },
+    "MODERATE": {
+     "recall": 1.0,
+     "n": 17
+    },
+    "SUBTLE": {
+     "recall": 1.0,
+     "n": 17
+    },
+    "NEAR_NOISE_FLOOR": {
+     "recall": 1.0,
+     "n": 18
+    }
+   }
+  },
+  "v1_recall_all": {
+   "BLUR": {
+    "OBVIOUS": {
+     "recall": 0.0,
+     "n": 30
+    },
+    "MODERATE": {
+     "recall": 0.0,
+     "n": 30
+    },
+    "SUBTLE": {
+     "recall": 0.0,
+     "n": 30
+    },
+    "NEAR_NOISE_FLOOR": {
+     "recall": 0.0,
+     "n": 30
+    }
+   },
+   "EXPOSURE": {
+    "OBVIOUS": {
+     "recall": 0.43333333333333335,
+     "n": 30
+    },
+    "MODERATE": {
+     "recall": 0.16666666666666666,
+     "n": 30
+    },
+    "SUBTLE": {
+     "recall": 0.0,
+     "n": 30
+    },
+    "NEAR_NOISE_FLOOR": {
+     "recall": 0.0,
+     "n": 30
+    }
+   },
+   "MISSING_REGION": {
+    "OBVIOUS": {
+     "recall": 1.0,
+     "n": 30
+    },
+    "MODERATE": {
+     "recall": 1.0,
+     "n": 30
+    },
+    "SUBTLE": {
+     "recall": 0.0,
+     "n": 30
+    },
+    "NEAR_NOISE_FLOOR": {
+     "recall": 0.0,
+     "n": 30
+    }
+   },
+   "STRIPING": {
+    "OBVIOUS": {
+     "recall": 1.0,
+     "n": 30
+    },
+    "MODERATE": {
+     "recall": 0.9,
+     "n": 30
+    },
+    "SUBTLE": {
+     "recall": 0.3333333333333333,
+     "n": 30
+    },
+    "NEAR_NOISE_FLOOR": {
+     "recall": 0.0,
+     "n": 30
+    }
+   },
+   "FRAME_DROPOUT": {
+    "OBVIOUS": {
+     "recall": 1.0,
+     "n": 30
+    },
+    "MODERATE": {
+     "recall": 1.0,
+     "n": 30
+    },
+    "SUBTLE": {
+     "recall": 1.0,
+     "n": 30
+    },
+    "NEAR_NOISE_FLOOR": {
+     "recall": 0.7333333333333333,
+     "n": 30
+    }
+   }
+  },
+  "v2_recall_all": {
+   "BLUR": {
+    "OBVIOUS": {
+     "recall": 1.0,
+     "n": 30
+    },
+    "MODERATE": {
+     "recall": 1.0,
+     "n": 30
+    },
+    "SUBTLE": {
+     "recall": 0.9666666666666667,
+     "n": 30
+    },
+    "NEAR_NOISE_FLOOR": {
+     "recall": 0.3,
+     "n": 30
+    }
+   },
+   "EXPOSURE": {
+    "OBVIOUS": {
+     "recall": 1.0,
+     "n": 30
+    },
+    "MODERATE": {
+     "recall": 0.6,
+     "n": 30
+    },
+    "SUBTLE": {
+     "recall": 0.3333333333333333,
+     "n": 30
+    },
+    "NEAR_NOISE_FLOOR": {
+     "recall": 0.06666666666666667,
+     "n": 30
+    }
+   },
+   "MISSING_REGION": {
+    "OBVIOUS": {
+     "recall": 1.0,
+     "n": 30
+    },
+    "MODERATE": {
+     "recall": 1.0,
+     "n": 30
+    },
+    "SUBTLE": {
+     "recall": 1.0,
+     "n": 30
+    },
+    "NEAR_NOISE_FLOOR": {
+     "recall": 1.0,
+     "n": 30
+    }
+   },
+   "STRIPING": {
+    "OBVIOUS": {
+     "recall": 1.0,
+     "n": 30
+    },
+    "MODERATE": {
+     "recall": 1.0,
+     "n": 30
+    },
+    "SUBTLE": {
+     "recall": 1.0,
+     "n": 30
+    },
+    "NEAR_NOISE_FLOOR": {
+     "recall": 1.0,
+     "n": 30
+    }
+   },
+   "FRAME_DROPOUT": {
+    "OBVIOUS": {
+     "recall": 1.0,
+     "n": 30
+    },
+    "MODERATE": {
+     "recall": 1.0,
+     "n": 30
+    },
+    "SUBTLE": {
+     "recall": 1.0,
+     "n": 30
+    },
+    "NEAR_NOISE_FLOOR": {
+     "recall": 1.0,
+     "n": 30
+    }
+   }
+  },
+  "v1_false_alarm_real": 0.0,
+  "v2_false_alarm_real_in_sample": 0.0361247947454844,
+  "v2_real_alarm_reasons": {
+   "saturation": 3,
+   "brightness_out_of_range": 14,
+   "low_sharpness": 9
+  },
+  "visual_controls_flagged_v1": 0.0,
+  "visual_controls_flagged_v2": 0.16666666666666666,
+  "v2_thresholds": {
+   "brightness_lo": 0.10098657608032227,
+   "brightness_hi": 0.48083547353744505,
+   "saturated_hi": 0.005,
+   "zero_pixel_hi": 0.0005,
+   "sharp_percentile": 1,
+   "sharpness_norm_lo": {
+    "D": 0.46743168294429777,
+    "F": 0.08914214089512824,
+    "M": 0.003695661942474544,
+    "S": 0.05519267246127128
+   }
+  },
+  "v2_sharpness_percentile_choice": {
+   "1": {
+    "tune_recall": 0.8539682539682539,
+    "real_false_alarm": 0.0361247947454844,
+    "score": 0.7817186644772851
+   },
+   "2": {
+    "tune_recall": 0.8539682539682539,
+    "real_false_alarm": 0.042692939244663386,
+    "score": 0.7685823754789272
+   },
+   "5": {
+    "tune_recall": 0.8571428571428571,
+    "real_false_alarm": 0.07060755336617405,
+    "score": 0.715927750410509
+   }
+  },
+  "v2_chosen_percentile": 1
+ },
+ "stereo": {
+  "pairs": 550,
+  "cos_dist_p10_p50_p90": [
+   0.014092481136322022,
+   0.028908073902130127,
+   0.26641592979431156
+  ],
+  "hamming_p10_p50_p90": [
+   16.0,
+   26.0,
+   32.0
+  ],
+  "left_right_within_phash_threshold": 0.016363636363636365,
+  "stereo_acquisitions": 550,
+  "relationship": "STEREO_PAIR (both eyes kept together in the FULL tier; never de-duplicated)",
+  "consecutive_sequence_frames": {
+   "n": 559,
+   "cos_dist_p10_p50_p90": [
+    0.028077101707458498,
+    0.12863028049468994,
+    0.4793133020401001
+   ],
+   "hamming_p10_p50_p90": [
+    18.0,
+    28.0,
+    34.0
+   ]
+  },
+  "random_pairs_different_sols": {
+   "n": 2000,
+   "cos_dist_p10_p50_p90": [
+    0.11456213593482971,
+    0.33906397223472595,
+    0.5423502564430237
+   ],
+   "hamming_p10_p50_p90": [
+    22.0,
+    28.0,
+    34.0
+   ]
+  },
+  "change_thresholds": {
+   "cos_dist": 0.028908073902130127,
+   "hamming": 26.0,
+   "definition": "median left/right stereo distance"
+  }
+ },
+ "change_sensitivity": {
+  "BLUR": {
+   "OBVIOUS": {
+    "embedding_recall": 1.0,
+    "phash_recall": 0.0,
+    "cos_dist_median": 0.4598695933818817,
+    "hamming_median": 0.0,
+    "n": 30
+   },
+   "MODERATE": {
+    "embedding_recall": 0.9333333333333333,
+    "phash_recall": 0.0,
+    "cos_dist_median": 0.23738139867782593,
+    "hamming_median": 0.0,
+    "n": 30
+   },
+   "SUBTLE": {
+    "embedding_recall": 0.9666666666666667,
+    "phash_recall": 0.0,
+    "cos_dist_median": 0.11818060278892517,
+    "hamming_median": 0.0,
+    "n": 30
+   },
+   "NEAR_NOISE_FLOOR": {
+    "embedding_recall": 0.03333333333333333,
+    "phash_recall": 0.0,
+    "cos_dist_median": 0.016708970069885254,
+    "hamming_median": 0.0,
+    "n": 30
+   }
+  },
+  "EXPOSURE": {
+   "OBVIOUS": {
+    "embedding_recall": 1.0,
+    "phash_recall": 0.0,
+    "cos_dist_median": 0.1837160587310791,
+    "hamming_median": 2.0,
+    "n": 30
+   },
+   "MODERATE": {
+    "embedding_recall": 1.0,
+    "phash_recall": 0.0,
+    "cos_dist_median": 0.08090579509735107,
+    "hamming_median": 0.0,
+    "n": 30
+   },
+   "SUBTLE": {
+    "embedding_recall": 0.03333333333333333,
+    "phash_recall": 0.0,
+    "cos_dist_median": 0.01267901062965393,
+    "hamming_median": 0.0,
+    "n": 30
+   },
+   "NEAR_NOISE_FLOOR": {
+    "embedding_recall": 0.0,
+    "phash_recall": 0.0,
+    "cos_dist_median": 0.0009588301181793213,
+    "hamming_median": 0.0,
+    "n": 30
+   }
+  },
+  "MISSING_REGION": {
+   "OBVIOUS": {
+    "embedding_recall": 1.0,
+    "phash_recall": 0.5,
+    "cos_dist_median": 0.29023295640945435,
+    "hamming_median": 27.0,
+    "n": 30
+   },
+   "MODERATE": {
+    "embedding_recall": 0.9666666666666667,
+    "phash_recall": 0.26666666666666666,
+    "cos_dist_median": 0.21389147639274597,
+    "hamming_median": 24.0,
+    "n": 30
+   },
+   "SUBTLE": {
+    "embedding_recall": 0.9333333333333333,
+    "phash_recall": 0.36666666666666664,
+    "cos_dist_median": 0.16250699758529663,
+    "hamming_median": 24.0,
+    "n": 30
+   },
+   "NEAR_NOISE_FLOOR": {
+    "embedding_recall": 0.7666666666666667,
+    "phash_recall": 0.0,
+    "cos_dist_median": 0.10376659035682678,
+    "hamming_median": 14.0,
+    "n": 30
+   }
+  },
+  "STRIPING": {
+   "OBVIOUS": {
+    "embedding_recall": 1.0,
+    "phash_recall": 0.0,
+    "cos_dist_median": 0.5775167942047119,
+    "hamming_median": 6.0,
+    "n": 30
+   },
+   "MODERATE": {
+    "embedding_recall": 1.0,
+    "phash_recall": 0.0,
+    "cos_dist_median": 0.4960753917694092,
+    "hamming_median": 4.0,
+    "n": 30
+   },
+   "SUBTLE": {
+    "embedding_recall": 1.0,
+    "phash_recall": 0.0,
+    "cos_dist_median": 0.33328601717948914,
+    "hamming_median": 2.0,
+    "n": 30
+   },
+   "NEAR_NOISE_FLOOR": {
+    "embedding_recall": 0.9666666666666667,
+    "phash_recall": 0.0,
+    "cos_dist_median": 0.13781031966209412,
+    "hamming_median": 2.0,
+    "n": 30
+   }
+  },
+  "FRAME_DROPOUT": {
+   "OBVIOUS": {
+    "embedding_recall": 1.0,
+    "phash_recall": 0.06666666666666667,
+    "cos_dist_median": 0.22575563192367554,
+    "hamming_median": 20.0,
+    "n": 30
+   },
+   "MODERATE": {
+    "embedding_recall": 1.0,
+    "phash_recall": 0.03333333333333333,
+    "cos_dist_median": 0.0862695574760437,
+    "hamming_median": 15.0,
+    "n": 30
+   },
+   "SUBTLE": {
+    "embedding_recall": 0.6,
+    "phash_recall": 0.0,
+    "cos_dist_median": 0.03043156862258911,
+    "hamming_median": 8.0,
+    "n": 30
+   },
+   "NEAR_NOISE_FLOOR": {
+    "embedding_recall": 0.0,
+    "phash_recall": 0.0,
+    "cos_dist_median": 0.014434278011322021,
+    "hamming_median": 4.0,
+    "n": 30
+   }
+  },
+  "LOCALIZED_STRUCTURE": {
+   "OBVIOUS": {
+    "embedding_recall": 0.8,
+    "phash_recall": 0.0,
+    "cos_dist_median": 0.060953766107559204,
+    "hamming_median": 14.0,
+    "n": 30
+   },
+   "MODERATE": {
+    "embedding_recall": 0.3,
+    "phash_recall": 0.0,
+    "cos_dist_median": 0.007612019777297974,
+    "hamming_median": 8.0,
+    "n": 30
+   },
+   "SUBTLE": {
+    "embedding_recall": 0.1,
+    "phash_recall": 0.0,
+    "cos_dist_median": 0.0009160637855529785,
+    "hamming_median": 2.0,
+    "n": 30
+   },
+   "NEAR_NOISE_FLOOR": {
+    "embedding_recall": 0.0,
+    "phash_recall": 0.0,
+    "cos_dist_median": 3.781914710998535e-05,
+    "hamming_median": 0.0,
+    "n": 30
+   }
+  },
+  "TEXTURE_CHANGE": {
+   "OBVIOUS": {
+    "embedding_recall": 1.0,
+    "phash_recall": 0.0,
+    "cos_dist_median": 0.22917822003364563,
+    "hamming_median": 0.0,
+    "n": 30
+   },
+   "MODERATE": {
+    "embedding_recall": 0.9666666666666667,
+    "phash_recall": 0.0,
+    "cos_dist_median": 0.09280368685722351,
+    "hamming_median": 0.0,
+    "n": 30
+   },
+   "SUBTLE": {
+    "embedding_recall": 0.1,
+    "phash_recall": 0.0,
+    "cos_dist_median": 0.004933565855026245,
+    "hamming_median": 0.0,
+    "n": 30
+   },
+   "NEAR_NOISE_FLOOR": {
+    "embedding_recall": 0.0,
+    "phash_recall": 0.0,
+    "cos_dist_median": 0.00014322996139526367,
+    "hamming_median": 0.0,
+    "n": 30
+   }
+  }
+ },
+ "resolution": {
+  "full_frames": 134,
+  "cos_dist_median": {
+   "D_like": 0.0,
+   "T_like": 0.2604985237121582,
+   "real_thumbnail": 0.5134165287017822
+  },
+  "cos_dist_p90": {
+   "D_like": 1.1920928955078125e-07,
+   "T_like": 0.3337499022483826,
+   "real_thumbnail": 0.5994331479072571
+  },
+  "hamming_median": {
+   "D_like": 0.0,
+   "T_like": 0.0,
+   "real_thumbnail": 2.0
+  },
+  "hamming_p90": {
+   "D_like": 0.0,
+   "T_like": 0.0,
+   "real_thumbnail": 4.0
+  },
+  "feature_rel_change_median": {
+   "D_like": {
+    "brightness": 0.0,
+    "contrast": 0.05020648646636801,
+    "entropy_bits": 0.02717482115566655,
+    "sharpness": 0.0
+   },
+   "T_like": {
+    "brightness": 0.0,
+    "contrast": 0.11201102007864289,
+    "entropy_bits": 0.06876822821279606,
+    "sharpness": 0.9936008483814937
+   }
+  },
+  "novelty_spearman_original_vs_all_at_64px": 0.8518318301406426,
+  "spearman_novelty_vs_full_bytes": {
+   "original": 0.5789951843996649,
+   "all_at_64px": 0.5707841714234709,
+   "phash_novelty": 0.47135535985242916
+  },
+  "novelty_median_by_sequence_type": {
+   "ncam": 0.07208466529846191,
+   "sapp": 0.36115795373916626,
+   "trav": 0.041275858879089355
+  },
+  "novelty_median_by_tier": {
+   "D": 0.041275858879089355,
+   "F": 0.08969011902809143,
+   "M": 0.0004412531852722168,
+   "S": 0.0010001063346862793
+  },
+  "ranking_by_tier_note": "same-scene multi-tier real data exist only as primary + rover thumbnail; D/T-like tiers are box-averaged copies"
+ },
+ "phash_grouping": {
+  "PHASH_ONLY": {
+   "synthetic_duplicate_retrieval": 1.0,
+   "groups_real": 475,
+   "within_group_pairs_real": 1063,
+   "false_merge_rate_scene": 0.8513640639698965,
+   "false_merge_rate_different_stop": 0.8513640639698965,
+   "traverse_frames": 423,
+   "traverse_groups": 333,
+   "traverse_compression_ratio": 1.2702702702702702,
+   "unique_rover_stop_loss_if_one_rep_per_group": 0.013274336283185861
+  },
+  "PHASH_PLUS_TIME": {
+   "synthetic_duplicate_retrieval": 1.0,
+   "groups_real": 565,
+   "within_group_pairs_real": 158,
+   "false_merge_rate_scene": 0.0,
+   "false_merge_rate_different_stop": 0.0,
+   "traverse_frames": 423,
+   "traverse_groups": 423,
+   "traverse_compression_ratio": 1.0,
+   "unique_rover_stop_loss_if_one_rep_per_group": 0.0
+  },
+  "PHASH_PLUS_POSE": {
+   "synthetic_duplicate_retrieval": 1.0,
+   "groups_real": 565,
+   "within_group_pairs_real": 158,
+   "false_merge_rate_scene": 0.0,
+   "false_merge_rate_different_stop": 0.0,
+   "traverse_frames": 423,
+   "traverse_groups": 423,
+   "traverse_compression_ratio": 1.0,
+   "unique_rover_stop_loss_if_one_rep_per_group": 0.0
+  },
+  "METADATA_SCENE": {
+   "synthetic_duplicate_retrieval": 1.0,
+   "groups_real": 553,
+   "within_group_pairs_real": 170,
+   "false_merge_rate_scene": 0.0,
+   "false_merge_rate_different_stop": 0.0,
+   "traverse_frames": 423,
+   "traverse_groups": 413,
+   "traverse_compression_ratio": 1.0242130750605327,
+   "unique_rover_stop_loss_if_one_rep_per_group": 0.0,
+   "note": "false-merge rate is 0 by construction (the reference IS the metadata scene); duplicates share metadata"
+  }
+ },
+ "redundancy_concepts": {
+  "PIXEL_SIMILAR_pairs": 668,
+  "SCENE_SIMILAR_pairs": 170,
+  "SEQUENCE_RELATED_pairs": 12639,
+  "SEQUENCE_REDUNDANT_pairs (same sequence AND same scene)": 168,
+  "STEREO_RELATED_acquisitions": 550,
+  "PIXEL_AND_SCENE_pairs": 158,
+  "PIXEL_SIMILAR_but_DIFFERENT_SCENE_pairs": 510,
+  "definitions": {
+   "PIXEL_SIMILAR": "same sol, pHash Hamming \u2264 10",
+   "SCENE_SIMILAR": "same stop + pointing \u2264 15\u00b0",
+   "SEQUENCE_RELATED": "same sol + sequence id (context, not redundancy)",
+   "SEQUENCE_REDUNDANT": "same sequence AND same scene (a repeated capture)",
+   "STEREO_RELATED": "left/right of one acquisition (parallax; never a duplicate)"
+  }
+ },
+ "sequence_experiment": {
+  "sequences": 10,
+  "frames": 423,
+  "summary": {
+   "1.0|SEND_ALL": {
+    "bytes_total": 64108818.26815999,
+    "bytes_fraction_of_send_all": 1.0,
+    "positions_represented": 1.0,
+    "scene_clusters_represented": 1.0,
+    "embedding_coverage": 0.9999998211860657,
+    "phash_mean_min_hamming": 0.0,
+    "max_spatial_gap_m": 15.698729484735242,
+    "max_spatial_gap_m_worst": 19.49948635220945
+   },
+   "0.5|HYBRID_POSITION_VISUAL_CHANGE": {
+    "bytes_total": 32775036.187136002,
+    "bytes_fraction_of_send_all": 0.5112406853303972,
+    "positions_represented": 0.7716503971214983,
+    "scene_clusters_represented": 0.5297677752701117,
+    "embedding_coverage": 0.9748855531215668,
+    "phash_mean_min_hamming": 7.263201965436396,
+    "max_spatial_gap_m": 15.885635269735975,
+    "max_spatial_gap_m_worst": 19.962775859083457
+   },
+   "0.5|METADATA_POSITION_SAMPLE": {
+    "bytes_total": 32375113.442304,
+    "bytes_fraction_of_send_all": 0.5050024991395494,
+    "positions_represented": 0.8870138888888889,
+    "scene_clusters_represented": 0.5301195068718433,
+    "embedding_coverage": 0.9680268347263337,
+    "phash_mean_min_hamming": 9.41174760355042,
+    "max_spatial_gap_m": 15.741943681482221,
+    "max_spatial_gap_m_worst": 19.545618051113127
+   },
+   "0.5|PHASH_REPRESENTATIVES": {
+    "bytes_total": 32820471.857664004,
+    "bytes_fraction_of_send_all": 0.5119494126436656,
+    "positions_represented": 0.754408106618264,
+    "scene_clusters_represented": 0.5089344419367784,
+    "embedding_coverage": 0.9747543394565582,
+    "phash_mean_min_hamming": 6.942926189637999,
+    "max_spatial_gap_m": 18.609686284218462,
+    "max_spatial_gap_m_worst": 39.36241750705873
+   },
+   "0.5|UNIFORM_TEMPORAL_SAMPLE": {
+    "bytes_total": 32549775.079423998,
+    "bytes_fraction_of_send_all": 0.5077269548671439,
+    "positions_represented": 0.7590995355154041,
+    "scene_clusters_represented": 0.5363695068718433,
+    "embedding_coverage": 0.9592730760574341,
+    "phash_mean_min_hamming": 9.152366439769377,
+    "max_spatial_gap_m": 16.297101797316042,
+    "max_spatial_gap_m_worst": 22.107405931044973
+   },
+   "0.25|HYBRID_POSITION_VISUAL_CHANGE": {
+    "bytes_total": 17117279.502336,
+    "bytes_fraction_of_send_all": 0.26700351004344425,
+    "positions_represented": 0.5696614769938984,
+    "scene_clusters_represented": 0.28463893939937873,
+    "embedding_coverage": 0.9586656272411347,
+    "phash_mean_min_hamming": 12.798826002381581,
+    "max_spatial_gap_m": 16.24782734801189,
+    "max_spatial_gap_m_worst": 20.735499077668884
+   },
+   "0.25|METADATA_POSITION_SAMPLE": {
+    "bytes_total": 16877873.169407997,
+    "bytes_fraction_of_send_all": 0.2632691355939482,
+    "positions_represented": 0.5914275387744949,
+    "scene_clusters_represented": 0.28463893939937873,
+    "embedding_coverage": 0.9169358491897583,
+    "phash_mean_min_hamming": 15.535141889323233,
+    "max_spatial_gap_m": 16.110148411161457,
+    "max_spatial_gap_m_worst": 20.373179550575895
+   },
+   "0.25|PHASH_REPRESENTATIVES": {
+    "bytes_total": 17130522.398208,
+    "bytes_fraction_of_send_all": 0.2672100790651443,
+    "positions_represented": 0.4656106834911554,
+    "scene_clusters_represented": 0.27687378788422723,
+    "embedding_coverage": 0.9546428203582764,
+    "phash_mean_min_hamming": 12.507071767823406,
+    "max_spatial_gap_m": 25.324870454163758,
+    "max_spatial_gap_m_worst": 75.23270358693748
+   },
+   "0.25|UNIFORM_TEMPORAL_SAMPLE": {
+    "bytes_total": 17130454.091264,
+    "bytes_fraction_of_send_all": 0.26720901358077187,
+    "positions_represented": 0.5914275387744949,
+    "scene_clusters_represented": 0.28463893939937873,
+    "embedding_coverage": 0.9303816020488739,
+    "phash_mean_min_hamming": 14.042814986090079,
+    "max_spatial_gap_m": 28.025591985297133,
+    "max_spatial_gap_m_worst": 39.89080746237148
+   },
+   "0.125|HYBRID_POSITION_VISUAL_CHANGE": {
+    "bytes_total": 8949308.635648,
+    "bytes_fraction_of_send_all": 0.13959559507420718,
+    "positions_represented": 0.30010572675158864,
+    "scene_clusters_represented": 0.14501492341218541,
+    "embedding_coverage": 0.9100794970989228,
+    "phash_mean_min_hamming": 17.943457351703128,
+    "max_spatial_gap_m": 19.97304499947122,
+    "max_spatial_gap_m_worst": 45.66336520669505
+   },
+   "0.125|METADATA_POSITION_SAMPLE": {
+    "bytes_total": 8826768.5504,
+    "bytes_fraction_of_send_all": 0.13768415623383695,
+    "positions_represented": 0.30010572675158864,
+    "scene_clusters_represented": 0.14501492341218541,
+    "embedding_coverage": 0.9031867623329163,
+    "phash_mean_min_hamming": 18.744075174707454,
+    "max_spatial_gap_m": 20.0772912659918,
+    "max_spatial_gap_m_worst": 45.66336520669505
+   },
+   "0.125|PHASH_REPRESENTATIVES": {
+    "bytes_total": 8830680.939008001,
+    "bytes_fraction_of_send_all": 0.13774518354199344,
+    "positions_represented": 0.25878789729422425,
+    "scene_clusters_represented": 0.14501492341218541,
+    "embedding_coverage": 0.9345484733581543,
+    "phash_mean_min_hamming": 16.976933078095684,
+    "max_spatial_gap_m": 34.310337206186276,
+    "max_spatial_gap_m_worst": 77.89066085866781
+   },
+   "0.125|UNIFORM_TEMPORAL_SAMPLE": {
+    "bytes_total": 8883649.772544,
+    "bytes_fraction_of_send_all": 0.1385714167337275,
+    "positions_represented": 0.30010572675158864,
+    "scene_clusters_represented": 0.14501492341218541,
+    "embedding_coverage": 0.8839478969573975,
+    "phash_mean_min_hamming": 19.17767110361929,
+    "max_spatial_gap_m": 41.67553308766303,
+    "max_spatial_gap_m_worst": 75.68533980236857
+   }
+  },
+  "rows": [
+   {
+    "sequence": "412:trav00108",
+    "frames": 46,
+    "fraction": 1.0,
+    "method": "SEND_ALL",
+    "selected": 46,
+    "bytes": 6991407.67744,
+    "bytes_send_all": 6991407.67744,
+    "positions_represented": 1.0,
+    "scene_clusters_represented": 1.0,
+    "embedding_coverage": 0.9999998211860657,
+    "phash_mean_min_hamming": 0.0,
+    "max_spatial_gap_m": 19.403000644230275,
+    "path_extent_m": 91.65640665550876
+   },
+   {
+    "sequence": "412:trav00108",
+    "frames": 46,
+    "fraction": 0.5,
+    "method": "UNIFORM_TEMPORAL_SAMPLE",
+    "selected": 23,
+    "bytes": 3502858.8928,
+    "bytes_send_all": 6991407.67744,
+    "positions_represented": 0.7727272727272727,
+    "scene_clusters_represented": 0.5,
+    "embedding_coverage": 0.9779505729675293,
+    "phash_mean_min_hamming": 8.73913043478261,
+    "max_spatial_gap_m": 19.87834520275773,
+    "path_extent_m": 91.65640665550876
+   },
+   {
+    "sequence": "412:trav00108",
+    "frames": 46,
+    "fraction": 0.5,
+    "method": "PHASH_REPRESENTATIVES",
+    "selected": 23,
+    "bytes": 3522383.722496,
+    "bytes_send_all": 6991407.67744,
+    "positions_represented": 0.7727272727272727,
+    "scene_clusters_represented": 0.5,
+    "embedding_coverage": 0.975187361240387,
+    "phash_mean_min_hamming": 6.826086956521739,
+    "max_spatial_gap_m": 20.345523586282887,
+    "path_extent_m": 91.65640665550876
+   },
+   {
+    "sequence": "412:trav00108",
+    "frames": 46,
+    "fraction": 0.5,
+    "method": "METADATA_POSITION_SAMPLE",
+    "selected": 23,
+    "bytes": 3472652.9745920002,
+    "bytes_send_all": 6991407.67744,
+    "positions_represented": 1.0,
+    "scene_clusters_represented": 0.5,
+    "embedding_coverage": 0.9529174566268921,
+    "phash_mean_min_hamming": 10.347826086956522,
+    "max_spatial_gap_m": 19.403000644230275,
+    "path_extent_m": 91.65640665550876
+   },
+   {
+    "sequence": "412:trav00108",
+    "frames": 46,
+    "fraction": 0.5,
+    "method": "HYBRID_POSITION_VISUAL_CHANGE",
+    "selected": 23,
+    "bytes": 3528143.681536,
+    "bytes_send_all": 6991407.67744,
+    "positions_represented": 0.9090909090909091,
+    "scene_clusters_represented": 0.5,
+    "embedding_coverage": 0.9736865758895874,
+    "phash_mean_min_hamming": 7.391304347826087,
+    "max_spatial_gap_m": 19.403000644230275,
+    "path_extent_m": 91.65640665550876
+   },
+   {
+    "sequence": "412:trav00108",
+    "frames": 46,
+    "fraction": 0.25,
+    "method": "UNIFORM_TEMPORAL_SAMPLE",
+    "selected": 12,
+    "bytes": 1840685.8557439998,
+    "bytes_send_all": 6991407.67744,
+    "positions_represented": 0.5454545454545454,
+    "scene_clusters_represented": 0.2608695652173913,
+    "embedding_coverage": 0.9576151371002197,
+    "phash_mean_min_hamming": 13.304347826086957,
+    "max_spatial_gap_m": 38.65961122411857,
+    "path_extent_m": 91.65640665550876
+   },
+   {
+    "sequence": "412:trav00108",
+    "frames": 46,
+    "fraction": 0.25,
+    "method": "PHASH_REPRESENTATIVES",
+    "selected": 12,
+    "bytes": 1850055.981056,
+    "bytes_send_all": 6991407.67744,
+    "positions_represented": 0.45454545454545453,
+    "scene_clusters_represented": 0.2608695652173913,
+    "embedding_coverage": 0.9494667649269104,
+    "phash_mean_min_hamming": 12.173913043478262,
+    "max_spatial_gap_m": 75.23270358693748,
+    "path_extent_m": 91.65640665550876
+   },
+   {
+    "sequence": "412:trav00108",
+    "frames": 46,
+    "fraction": 0.25,
+    "method": "METADATA_POSITION_SAMPLE",
+    "selected": 12,
+    "bytes": 1818969.8467839998,
+    "bytes_send_all": 6991407.67744,
+    "positions_represented": 0.5454545454545454,
+    "scene_clusters_represented": 0.2608695652173913,
+    "embedding_coverage": 0.9247068166732788,
+    "phash_mean_min_hamming": 14.956521739130435,
+    "max_spatial_gap_m": 19.87834520275773,
+    "path_extent_m": 91.65640665550876
+   },
+   {
+    "sequence": "412:trav00108",
+    "frames": 46,
+    "fraction": 0.25,
+    "method": "HYBRID_POSITION_VISUAL_CHANGE",
+    "selected": 12,
+    "bytes": 1844334.8352,
+    "bytes_send_all": 6991407.67744,
+    "positions_represented": 0.5,
+    "scene_clusters_represented": 0.2608695652173913,
+    "embedding_coverage": 0.9569377899169922,
+    "phash_mean_min_hamming": 12.73913043478261,
+    "max_spatial_gap_m": 20.735499077668884,
+    "path_extent_m": 91.65640665550876
+   },
+   {
+    "sequence": "412:trav00108",
+    "frames": 46,
+    "fraction": 0.125,
+    "method": "UNIFORM_TEMPORAL_SAMPLE",
+    "selected": 6,
+    "bytes": 940741.899264,
+    "bytes_send_all": 6991407.67744,
+    "positions_represented": 0.2727272727272727,
+    "scene_clusters_represented": 0.13043478260869565,
+    "embedding_coverage": 0.8387184739112854,
+    "phash_mean_min_hamming": 20.130434782608695,
+    "max_spatial_gap_m": 75.68533980236857,
+    "path_extent_m": 91.65640665550876
+   },
+   {
+    "sequence": "412:trav00108",
+    "frames": 46,
+    "fraction": 0.125,
+    "method": "PHASH_REPRESENTATIVES",
+    "selected": 6,
+    "bytes": 938914.018304,
+    "bytes_send_all": 6991407.67744,
+    "positions_represented": 0.2727272727272727,
+    "scene_clusters_represented": 0.13043478260869565,
+    "embedding_coverage": 0.9351668357849121,
+    "phash_mean_min_hamming": 16.434782608695652,
+    "max_spatial_gap_m": 77.89066085866781,
+    "path_extent_m": 91.65640665550876
+   },
+   {
+    "sequence": "412:trav00108",
+    "frames": 46,
+    "fraction": 0.125,
+    "method": "METADATA_POSITION_SAMPLE",
+    "selected": 6,
+    "bytes": 927917.978624,
+    "bytes_send_all": 6991407.67744,
+    "positions_represented": 0.2727272727272727,
+    "scene_clusters_represented": 0.13043478260869565,
+    "embedding_coverage": 0.9132848978042603,
+    "phash_mean_min_hamming": 16.782608695652176,
+    "max_spatial_gap_m": 19.87834520275773,
+    "path_extent_m": 91.65640665550876
+   },
+   {
+    "sequence": "412:trav00108",
+    "frames": 46,
+    "fraction": 0.125,
+    "method": "HYBRID_POSITION_VISUAL_CHANGE",
+    "selected": 6,
+    "bytes": 933454.96832,
+    "bytes_send_all": 6991407.67744,
+    "positions_represented": 0.2727272727272727,
+    "scene_clusters_represented": 0.13043478260869565,
+    "embedding_coverage": 0.9342542886734009,
+    "phash_mean_min_hamming": 16.434782608695652,
+    "max_spatial_gap_m": 23.977328124709892,
+    "path_extent_m": 91.65640665550876
+   },
+   {
+    "sequence": "413:trav00109",
+    "frames": 38,
+    "fraction": 1.0,
+    "method": "SEND_ALL",
+    "selected": 38,
+    "bytes": 5514736.0256,
+    "bytes_send_all": 5514736.0256,
+    "positions_represented": 1.0,
+    "scene_clusters_represented": 1.0,
+    "embedding_coverage": 0.9999998211860657,
+    "phash_mean_min_hamming": 0.0,
+    "max_spatial_gap_m": 19.342878431091965,
+    "path_extent_m": 66.21856344711793
+   },
+   {
+    "sequence": "413:trav00109",
+    "frames": 38,
+    "fraction": 0.5,
+    "method": "UNIFORM_TEMPORAL_SAMPLE",
+    "selected": 19,
+    "bytes": 2758936.949248,
+    "bytes_send_all": 5514736.0256,
+    "positions_represented": 0.7647058823529411,
+    "scene_clusters_represented": 0.5135135135135135,
+    "embedding_coverage": 0.9825458526611328,
+    "phash_mean_min_hamming": 7.052631578947368,
+    "max_spatial_gap_m": 19.80652039102263,
+    "path_extent_m": 66.21856344711793
+   },
+   {
+    "sequence": "413:trav00109",
+    "frames": 38,
+    "fraction": 0.5,
+    "method": "PHASH_REPRESENTATIVES",
+    "selected": 19,
+    "bytes": 2799719.79264,
+    "bytes_send_all": 5514736.0256,
+    "positions_represented": 0.8235294117647058,
+    "scene_clusters_represented": 0.5135135135135135,
+    "embedding_coverage": 0.9830640554428101,
+    "phash_mean_min_hamming": 4.947368421052632,
+    "max_spatial_gap_m": 19.342878431091965,
+    "path_extent_m": 66.21856344711793
+   },
+   {
+    "sequence": "413:trav00109",
+    "frames": 38,
+    "fraction": 0.5,
+    "method": "METADATA_POSITION_SAMPLE",
+    "selected": 19,
+    "bytes": 2757925.9238400003,
+    "bytes_send_all": 5514736.0256,
+    "positions_represented": 1.0,
+    "scene_clusters_represented": 0.5135135135135135,
+    "embedding_coverage": 0.9733871817588806,
+    "phash_mean_min_hamming": 9.842105263157896,
+    "max_spatial_gap_m": 19.342878431091965,
+    "path_extent_m": 66.21856344711793
+   },
+   {
+    "sequence": "413:trav00109",
+    "frames": 38,
+    "fraction": 0.5,
+    "method": "HYBRID_POSITION_VISUAL_CHANGE",
+    "selected": 19,
+    "bytes": 2788735.7952,
+    "bytes_send_all": 5514736.0256,
+    "positions_represented": 0.7647058823529411,
+    "scene_clusters_represented": 0.5135135135135135,
+    "embedding_coverage": 0.9838646054267883,
+    "phash_mean_min_hamming": 5.052631578947368,
+    "max_spatial_gap_m": 19.80652039102263,
+    "path_extent_m": 66.21856344711793
+   },
+   {
+    "sequence": "413:trav00109",
+    "frames": 38,
+    "fraction": 0.25,
+    "method": "UNIFORM_TEMPORAL_SAMPLE",
+    "selected": 10,
+    "bytes": 1474853.92384,
+    "bytes_send_all": 5514736.0256,
+    "positions_represented": 0.5882352941176471,
+    "scene_clusters_represented": 0.2702702702702703,
+    "embedding_coverage": 0.9701200723648071,
+    "phash_mean_min_hamming": 9.894736842105264,
+    "max_spatial_gap_m": 38.92272042136819,
+    "path_extent_m": 66.21856344711793
+   },
+   {
+    "sequence": "413:trav00109",
+    "frames": 38,
+    "fraction": 0.25,
+    "method": "PHASH_REPRESENTATIVES",
+    "selected": 10,
+    "bytes": 1483347.818496,
+    "bytes_send_all": 5514736.0256,
+    "positions_represented": 0.47058823529411764,
+    "scene_clusters_represented": 0.2702702702702703,
+    "embedding_coverage": 0.9690322875976562,
+    "phash_mean_min_hamming": 10.157894736842104,
+    "max_spatial_gap_m": 19.342878431091965,
+    "path_extent_m": 66.21856344711793
+   },
+   {
+    "sequence": "413:trav00109",
+    "frames": 38,
+    "fraction": 0.25,
+    "method": "METADATA_POSITION_SAMPLE",
+    "selected": 10,
+    "bytes": 1441398.0415999999,
+    "bytes_send_all": 5514736.0256,
+    "positions_represented": 0.5882352941176471,
+    "scene_clusters_represented": 0.2702702702702703,
+    "embedding_coverage": 0.9406771659851074,
+    "phash_mean_min_hamming": 15.578947368421053,
+    "max_spatial_gap_m": 19.80652039102263,
+    "path_extent_m": 66.21856344711793
+   },
+   {
+    "sequence": "413:trav00109",
+    "frames": 38,
+    "fraction": 0.25,
+    "method": "HYBRID_POSITION_VISUAL_CHANGE",
+    "selected": 10,
+    "bytes": 1482038.816256,
+    "bytes_send_all": 5514736.0256,
+    "positions_represented": 0.5882352941176471,
+    "scene_clusters_represented": 0.2702702702702703,
+    "embedding_coverage": 0.9721741080284119,
+    "phash_mean_min_hamming": 10.526315789473685,
+    "max_spatial_gap_m": 19.80652039102263,
+    "path_extent_m": 66.21856344711793
+   },
+   {
+    "sequence": "413:trav00109",
+    "frames": 38,
+    "fraction": 0.125,
+    "method": "UNIFORM_TEMPORAL_SAMPLE",
+    "selected": 5,
+    "bytes": 756701.065728,
+    "bytes_send_all": 5514736.0256,
+    "positions_represented": 0.29411764705882354,
+    "scene_clusters_represented": 0.13513513513513514,
+    "embedding_coverage": 0.8458946347236633,
+    "phash_mean_min_hamming": 19.736842105263158,
+    "max_spatial_gap_m": 57.57010237962054,
+    "path_extent_m": 66.21856344711793
+   },
+   {
+    "sequence": "413:trav00109",
+    "frames": 38,
+    "fraction": 0.125,
+    "method": "PHASH_REPRESENTATIVES",
+    "selected": 5,
+    "bytes": 755856.9620480001,
+    "bytes_send_all": 5514736.0256,
+    "positions_represented": 0.29411764705882354,
+    "scene_clusters_represented": 0.13513513513513514,
+    "embedding_coverage": 0.9416272044181824,
+    "phash_mean_min_hamming": 14.789473684210526,
+    "max_spatial_gap_m": 38.26446363141664,
+    "path_extent_m": 66.21856344711793
+   },
+   {
+    "sequence": "413:trav00109",
+    "frames": 38,
+    "fraction": 0.125,
+    "method": "METADATA_POSITION_SAMPLE",
+    "selected": 5,
+    "bytes": 738045.9468800001,
+    "bytes_send_all": 5514736.0256,
+    "positions_represented": 0.29411764705882354,
+    "scene_clusters_represented": 0.13513513513513514,
+    "embedding_coverage": 0.9359909892082214,
+    "phash_mean_min_hamming": 16.263157894736842,
+    "max_spatial_gap_m": 19.80652039102263,
+    "path_extent_m": 66.21856344711793
+   },
+   {
+    "sequence": "413:trav00109",
+    "frames": 38,
+    "fraction": 0.125,
+    "method": "HYBRID_POSITION_VISUAL_CHANGE",
+    "selected": 5,
+    "bytes": 753113.90208,
+    "bytes_send_all": 5514736.0256,
+    "positions_represented": 0.29411764705882354,
+    "scene_clusters_represented": 0.13513513513513514,
+    "embedding_coverage": 0.9449374675750732,
+    "phash_mean_min_hamming": 14.736842105263158,
+    "max_spatial_gap_m": 19.80652039102263,
+    "path_extent_m": 66.21856344711793
+   },
+   {
+    "sequence": "413:trav15030",
+    "frames": 21,
+    "fraction": 1.0,
+    "method": "SEND_ALL",
+    "selected": 21,
+    "bytes": 3109103.86176,
+    "bytes_send_all": 3109103.86176,
+    "positions_represented": 1.0,
+    "scene_clusters_represented": 1.0,
+    "embedding_coverage": 0.9999998211860657,
+    "phash_mean_min_hamming": 0.0,
+    "max_spatial_gap_m": 0.9391400321571727,
+    "path_extent_m": 4.615171719448646
+   },
+   {
+    "sequence": "413:trav15030",
+    "frames": 21,
+    "fraction": 0.5,
+    "method": "UNIFORM_TEMPORAL_SAMPLE",
+    "selected": 11,
+    "bytes": 1663223.72608,
+    "bytes_send_all": 3109103.86176,
+    "positions_represented": 1.0,
+    "scene_clusters_represented": 0.6875,
+    "embedding_coverage": 0.8774501085281372,
+    "phash_mean_min_hamming": 11.80952380952381,
+    "max_spatial_gap_m": 0.9391400321571727,
+    "path_extent_m": 4.615171719448646
+   },
+   {
+    "sequence": "413:trav15030",
+    "frames": 21,
+    "fraction": 0.5,
+    "method": "PHASH_REPRESENTATIVES",
+    "selected": 11,
+    "bytes": 1669519.85152,
+    "bytes_send_all": 3109103.86176,
+    "positions_represented": 1.0,
+    "scene_clusters_represented": 0.5625,
+    "embedding_coverage": 0.9883646965026855,
+    "phash_mean_min_hamming": 4.285714285714286,
+    "max_spatial_gap_m": 0.9391400321571727,
+    "path_extent_m": 4.615171719448646
+   },
+   {
+    "sequence": "413:trav15030",
+    "frames": 21,
+    "fraction": 0.5,
+    "method": "METADATA_POSITION_SAMPLE",
+    "selected": 11,
+    "bytes": 1659459.91168,
+    "bytes_send_all": 3109103.86176,
+    "positions_represented": 1.0,
+    "scene_clusters_represented": 0.625,
+    "embedding_coverage": 0.9853465557098389,
+    "phash_mean_min_hamming": 6.380952380952381,
+    "max_spatial_gap_m": 0.9391400321571727,
+    "path_extent_m": 4.615171719448646
+   },
+   {
+    "sequence": "413:trav15030",
+    "frames": 21,
+    "fraction": 0.5,
+    "method": "HYBRID_POSITION_VISUAL_CHANGE",
+    "selected": 11,
+    "bytes": 1641335.84896,
+    "bytes_send_all": 3109103.86176,
+    "positions_represented": 1.0,
+    "scene_clusters_represented": 0.6875,
+    "embedding_coverage": 0.9886840581893921,
+    "phash_mean_min_hamming": 5.333333333333333,
+    "max_spatial_gap_m": 0.9391400321571727,
+    "path_extent_m": 4.615171719448646
+   },
+   {
+    "sequence": "413:trav15030",
+    "frames": 21,
+    "fraction": 0.25,
+    "method": "UNIFORM_TEMPORAL_SAMPLE",
+    "selected": 6,
+    "bytes": 942111.86688,
+    "bytes_send_all": 3109103.86176,
+    "positions_represented": 1.0,
+    "scene_clusters_represented": 0.375,
+    "embedding_coverage": 0.8356270790100098,
+    "phash_mean_min_hamming": 16.666666666666668,
+    "max_spatial_gap_m": 0.9391400321571727,
+    "path_extent_m": 4.615171719448646
+   },
+   {
+    "sequence": "413:trav15030",
+    "frames": 21,
+    "fraction": 0.25,
+    "method": "PHASH_REPRESENTATIVES",
+    "selected": 6,
+    "bytes": 899187.9168,
+    "bytes_send_all": 3109103.86176,
+    "positions_represented": 0.5,
+    "scene_clusters_represented": 0.3125,
+    "embedding_coverage": 0.9806875586509705,
+    "phash_mean_min_hamming": 9.333333333333334,
+    "max_spatial_gap_m": 0.9391400321571727,
+    "path_extent_m": 4.615171719448646
+   },
+   {
+    "sequence": "413:trav15030",
+    "frames": 21,
+    "fraction": 0.25,
+    "method": "METADATA_POSITION_SAMPLE",
+    "selected": 6,
+    "bytes": 942111.86688,
+    "bytes_send_all": 3109103.86176,
+    "positions_represented": 1.0,
+    "scene_clusters_represented": 0.375,
+    "embedding_coverage": 0.8356270790100098,
+    "phash_mean_min_hamming": 16.666666666666668,
+    "max_spatial_gap_m": 0.9391400321571727,
+    "path_extent_m": 4.615171719448646
+   },
+   {
+    "sequence": "413:trav15030",
+    "frames": 21,
+    "fraction": 0.25,
+    "method": "HYBRID_POSITION_VISUAL_CHANGE",
+    "selected": 6,
+    "bytes": 900079.86176,
+    "bytes_send_all": 3109103.86176,
+    "positions_represented": 1.0,
+    "scene_clusters_represented": 0.375,
+    "embedding_coverage": 0.9788565635681152,
+    "phash_mean_min_hamming": 9.238095238095237,
+    "max_spatial_gap_m": 0.9391400321571727,
+    "path_extent_m": 4.615171719448646
+   },
+   {
+    "sequence": "413:trav15030",
+    "frames": 21,
+    "fraction": 0.125,
+    "method": "UNIFORM_TEMPORAL_SAMPLE",
+    "selected": 3,
+    "bytes": 462615.92063999997,
+    "bytes_send_all": 3109103.86176,
+    "positions_represented": 0.5,
+    "scene_clusters_represented": 0.1875,
+    "embedding_coverage": 0.8565453290939331,
+    "phash_mean_min_hamming": 20.476190476190474,
+    "max_spatial_gap_m": 2.7685479948881375,
+    "path_extent_m": 4.615171719448646
+   },
+   {
+    "sequence": "413:trav15030",
+    "frames": 21,
+    "fraction": 0.125,
+    "method": "PHASH_REPRESENTATIVES",
+    "selected": 3,
+    "bytes": 454803.94752,
+    "bytes_send_all": 3109103.86176,
+    "positions_represented": 0.3333333333333333,
+    "scene_clusters_represented": 0.1875,
+    "embedding_coverage": 0.951453447341919,
+    "phash_mean_min_hamming": 14.285714285714286,
+    "max_spatial_gap_m": 1.8466770156148067,
+    "path_extent_m": 4.615171719448646
+   },
+   {
+    "sequence": "413:trav15030",
+    "frames": 21,
+    "fraction": 0.125,
+    "method": "METADATA_POSITION_SAMPLE",
+    "selected": 3,
+    "bytes": 475003.94496,
+    "bytes_send_all": 3109103.86176,
+    "positions_represented": 0.5,
+    "scene_clusters_represented": 0.1875,
+    "embedding_coverage": 0.8299219012260437,
+    "phash_mean_min_hamming": 20.38095238095238,
+    "max_spatial_gap_m": 2.7639328863052044,
+    "path_extent_m": 4.615171719448646
+   },
+   {
+    "sequence": "413:trav15030",
+    "frames": 21,
+    "fraction": 0.125,
+    "method": "HYBRID_POSITION_VISUAL_CHANGE",
+    "selected": 3,
+    "bytes": 470423.9616,
+    "bytes_send_all": 3109103.86176,
+    "positions_represented": 0.5,
+    "scene_clusters_represented": 0.1875,
+    "embedding_coverage": 0.8385096788406372,
+    "phash_mean_min_hamming": 18.952380952380953,
+    "max_spatial_gap_m": 2.7685479948881375,
+    "path_extent_m": 4.615171719448646
+   },
+   {
+    "sequence": "417:trav00110",
+    "frames": 46,
+    "fraction": 1.0,
+    "method": "SEND_ALL",
+    "selected": 46,
+    "bytes": 7167859.75296,
+    "bytes_send_all": 7167859.75296,
+    "positions_represented": 1.0,
+    "scene_clusters_represented": 1.0,
+    "embedding_coverage": 0.9999998211860657,
+    "phash_mean_min_hamming": 0.0,
+    "max_spatial_gap_m": 19.49948635220945,
+    "path_extent_m": 51.106244872813846
+   },
+   {
+    "sequence": "417:trav00110",
+    "frames": 46,
+    "fraction": 0.5,
+    "method": "UNIFORM_TEMPORAL_SAMPLE",
+    "selected": 23,
+    "bytes": 3590507.88864,
+    "bytes_send_all": 7167859.75296,
+    "positions_represented": 0.5555555555555556,
+    "scene_clusters_represented": 0.5,
+    "embedding_coverage": 0.9766805171966553,
+    "phash_mean_min_hamming": 8.956521739130435,
+    "max_spatial_gap_m": 19.956493178913025,
+    "path_extent_m": 51.106244872813846
+   },
+   {
+    "sequence": "417:trav00110",
+    "frames": 46,
+    "fraction": 0.5,
+    "method": "PHASH_REPRESENTATIVES",
+    "selected": 23,
+    "bytes": 3588082.957824,
+    "bytes_send_all": 7167859.75296,
+    "positions_represented": 0.5555555555555556,
+    "scene_clusters_represented": 0.5,
+    "embedding_coverage": 0.9663544297218323,
+    "phash_mean_min_hamming": 7.826086956521739,
+    "max_spatial_gap_m": 26.391721523993024,
+    "path_extent_m": 51.106244872813846
+   },
+   {
+    "sequence": "417:trav00110",
+    "frames": 46,
+    "fraction": 0.5,
+    "method": "METADATA_POSITION_SAMPLE",
+    "selected": 23,
+    "bytes": 3603951.958016,
+    "bytes_send_all": 7167859.75296,
+    "positions_represented": 0.6388888888888888,
+    "scene_clusters_represented": 0.5,
+    "embedding_coverage": 0.9644402265548706,
+    "phash_mean_min_hamming": 9.434782608695652,
+    "max_spatial_gap_m": 19.49948635220945,
+    "path_extent_m": 51.106244872813846
+   },
+   {
+    "sequence": "417:trav00110",
+    "frames": 46,
+    "fraction": 0.5,
+    "method": "HYBRID_POSITION_VISUAL_CHANGE",
+    "selected": 23,
+    "bytes": 3589156.059136,
+    "bytes_send_all": 7167859.75296,
+    "positions_represented": 0.5277777777777778,
+    "scene_clusters_represented": 0.5,
+    "embedding_coverage": 0.974951446056366,
+    "phash_mean_min_hamming": 7.608695652173913,
+    "max_spatial_gap_m": 19.956493178913025,
+    "path_extent_m": 51.106244872813846
+   },
+   {
+    "sequence": "417:trav00110",
+    "frames": 46,
+    "fraction": 0.25,
+    "method": "UNIFORM_TEMPORAL_SAMPLE",
+    "selected": 12,
+    "bytes": 1881244.989952,
+    "bytes_send_all": 7167859.75296,
+    "positions_represented": 0.3333333333333333,
+    "scene_clusters_represented": 0.2608695652173913,
+    "embedding_coverage": 0.9592331647872925,
+    "phash_mean_min_hamming": 14.26086956521739,
+    "max_spatial_gap_m": 20.17752184982087,
+    "path_extent_m": 51.106244872813846
+   },
+   {
+    "sequence": "417:trav00110",
+    "frames": 46,
+    "fraction": 0.25,
+    "method": "PHASH_REPRESENTATIVES",
+    "selected": 12,
+    "bytes": 1878903.0128640002,
+    "bytes_send_all": 7167859.75296,
+    "positions_represented": 0.3333333333333333,
+    "scene_clusters_represented": 0.2608695652173913,
+    "embedding_coverage": 0.9512272477149963,
+    "phash_mean_min_hamming": 13.043478260869565,
+    "max_spatial_gap_m": 26.391721523993024,
+    "path_extent_m": 51.106244872813846
+   },
+   {
+    "sequence": "417:trav00110",
+    "frames": 46,
+    "fraction": 0.25,
+    "method": "METADATA_POSITION_SAMPLE",
+    "selected": 12,
+    "bytes": 1887887.783936,
+    "bytes_send_all": 7167859.75296,
+    "positions_represented": 0.3333333333333333,
+    "scene_clusters_represented": 0.2608695652173913,
+    "embedding_coverage": 0.9489313364028931,
+    "phash_mean_min_hamming": 13.91304347826087,
+    "max_spatial_gap_m": 19.49948635220945,
+    "path_extent_m": 51.106244872813846
+   },
+   {
+    "sequence": "417:trav00110",
+    "frames": 46,
+    "fraction": 0.25,
+    "method": "HYBRID_POSITION_VISUAL_CHANGE",
+    "selected": 12,
+    "bytes": 1873664.178176,
+    "bytes_send_all": 7167859.75296,
+    "positions_represented": 0.3055555555555556,
+    "scene_clusters_represented": 0.2608695652173913,
+    "embedding_coverage": 0.955894947052002,
+    "phash_mean_min_hamming": 13.565217391304348,
+    "max_spatial_gap_m": 19.956493178913025,
+    "path_extent_m": 51.106244872813846
+   },
+   {
+    "sequence": "417:trav00110",
+    "frames": 46,
+    "fraction": 0.125,
+    "method": "UNIFORM_TEMPORAL_SAMPLE",
+    "selected": 6,
+    "bytes": 955490.9424640001,
+    "bytes_send_all": 7167859.75296,
+    "positions_represented": 0.16666666666666666,
+    "scene_clusters_represented": 0.13043478260869565,
+    "embedding_coverage": 0.8936580419540405,
+    "phash_mean_min_hamming": 18.608695652173914,
+    "max_spatial_gap_m": 28.8288823578023,
+    "path_extent_m": 51.106244872813846
+   },
+   {
+    "sequence": "417:trav00110",
+    "frames": 46,
+    "fraction": 0.125,
+    "method": "PHASH_REPRESENTATIVES",
+    "selected": 6,
+    "bytes": 944648.042496,
+    "bytes_send_all": 7167859.75296,
+    "positions_represented": 0.16666666666666666,
+    "scene_clusters_represented": 0.13043478260869565,
+    "embedding_coverage": 0.9315605163574219,
+    "phash_mean_min_hamming": 18.17391304347826,
+    "max_spatial_gap_m": 31.187383490764393,
+    "path_extent_m": 51.106244872813846
+   },
+   {
+    "sequence": "417:trav00110",
+    "frames": 46,
+    "fraction": 0.125,
+    "method": "METADATA_POSITION_SAMPLE",
+    "selected": 6,
+    "bytes": 949723.9695359999,
+    "bytes_send_all": 7167859.75296,
+    "positions_represented": 0.16666666666666666,
+    "scene_clusters_represented": 0.13043478260869565,
+    "embedding_coverage": 0.9277638792991638,
+    "phash_mean_min_hamming": 18.782608695652176,
+    "max_spatial_gap_m": 19.49948635220945,
+    "path_extent_m": 51.106244872813846
+   },
+   {
+    "sequence": "417:trav00110",
+    "frames": 46,
+    "fraction": 0.125,
+    "method": "HYBRID_POSITION_VISUAL_CHANGE",
+    "selected": 6,
+    "bytes": 954272.0860159999,
+    "bytes_send_all": 7167859.75296,
+    "positions_represented": 0.16666666666666666,
+    "scene_clusters_represented": 0.13043478260869565,
+    "embedding_coverage": 0.9305858016014099,
+    "phash_mean_min_hamming": 17.82608695652174,
+    "max_spatial_gap_m": 19.956493178913025,
+    "path_extent_m": 51.106244872813846
+   },
+   {
+    "sequence": "417:trav15030",
+    "frames": 21,
+    "fraction": 1.0,
+    "method": "SEND_ALL",
+    "selected": 21,
+    "bytes": 3271683.76832,
+    "bytes_send_all": 3271683.76832,
+    "positions_represented": 1.0,
+    "scene_clusters_represented": 1.0,
+    "embedding_coverage": 0.9999997019767761,
+    "phash_mean_min_hamming": 0.0,
+    "max_spatial_gap_m": 0.9769467743944739,
+    "path_extent_m": 4.744529692182163
+   },
+   {
+    "sequence": "417:trav15030",
+    "frames": 21,
+    "fraction": 0.5,
+    "method": "UNIFORM_TEMPORAL_SAMPLE",
+    "selected": 11,
+    "bytes": 1727805.897728,
+    "bytes_send_all": 3271683.76832,
+    "positions_represented": 1.0,
+    "scene_clusters_represented": 0.5238095238095238,
+    "embedding_coverage": 0.885156512260437,
+    "phash_mean_min_hamming": 11.047619047619047,
+    "max_spatial_gap_m": 0.9769467743944739,
+    "path_extent_m": 4.744529692182163
+   },
+   {
+    "sequence": "417:trav15030",
+    "frames": 21,
+    "fraction": 0.5,
+    "method": "PHASH_REPRESENTATIVES",
+    "selected": 11,
+    "bytes": 1731649.993728,
+    "bytes_send_all": 3271683.76832,
+    "positions_represented": 0.8333333333333334,
+    "scene_clusters_represented": 0.5238095238095238,
+    "embedding_coverage": 0.9804689288139343,
+    "phash_mean_min_hamming": 7.523809523809524,
+    "max_spatial_gap_m": 0.9769467743944739,
+    "path_extent_m": 4.744529692182163
+   },
+   {
+    "sequence": "417:trav15030",
+    "frames": 21,
+    "fraction": 0.5,
+    "method": "METADATA_POSITION_SAMPLE",
+    "selected": 11,
+    "bytes": 1731451.86304,
+    "bytes_send_all": 3271683.76832,
+    "positions_represented": 1.0,
+    "scene_clusters_represented": 0.5238095238095238,
+    "embedding_coverage": 0.9709670543670654,
+    "phash_mean_min_hamming": 7.619047619047619,
+    "max_spatial_gap_m": 0.9769467743944739,
+    "path_extent_m": 4.744529692182163
+   },
+   {
+    "sequence": "417:trav15030",
+    "frames": 21,
+    "fraction": 0.5,
+    "method": "HYBRID_POSITION_VISUAL_CHANGE",
+    "selected": 11,
+    "bytes": 1722223.90272,
+    "bytes_send_all": 3271683.76832,
+    "positions_represented": 1.0,
+    "scene_clusters_represented": 0.5238095238095238,
+    "embedding_coverage": 0.9669039845466614,
+    "phash_mean_min_hamming": 7.904761904761905,
+    "max_spatial_gap_m": 0.9769467743944739,
+    "path_extent_m": 4.744529692182163
+   },
+   {
+    "sequence": "417:trav15030",
+    "frames": 21,
+    "fraction": 0.25,
+    "method": "UNIFORM_TEMPORAL_SAMPLE",
+    "selected": 6,
+    "bytes": 960125.959168,
+    "bytes_send_all": 3271683.76832,
+    "positions_represented": 1.0,
+    "scene_clusters_represented": 0.2857142857142857,
+    "embedding_coverage": 0.821120023727417,
+    "phash_mean_min_hamming": 17.238095238095237,
+    "max_spatial_gap_m": 0.9769467743944739,
+    "path_extent_m": 4.744529692182163
+   },
+   {
+    "sequence": "417:trav15030",
+    "frames": 21,
+    "fraction": 0.25,
+    "method": "PHASH_REPRESENTATIVES",
+    "selected": 6,
+    "bytes": 942277.884928,
+    "bytes_send_all": 3271683.76832,
+    "positions_represented": 0.6666666666666666,
+    "scene_clusters_represented": 0.2857142857142857,
+    "embedding_coverage": 0.954203188419342,
+    "phash_mean_min_hamming": 12.952380952380953,
+    "max_spatial_gap_m": 0.9769467743944739,
+    "path_extent_m": 4.744529692182163
+   },
+   {
+    "sequence": "417:trav15030",
+    "frames": 21,
+    "fraction": 0.25,
+    "method": "METADATA_POSITION_SAMPLE",
+    "selected": 6,
+    "bytes": 960125.959168,
+    "bytes_send_all": 3271683.76832,
+    "positions_represented": 1.0,
+    "scene_clusters_represented": 0.2857142857142857,
+    "embedding_coverage": 0.821120023727417,
+    "phash_mean_min_hamming": 17.238095238095237,
+    "max_spatial_gap_m": 0.9769467743944739,
+    "path_extent_m": 4.744529692182163
+   },
+   {
+    "sequence": "417:trav15030",
+    "frames": 21,
+    "fraction": 0.25,
+    "method": "HYBRID_POSITION_VISUAL_CHANGE",
+    "selected": 6,
+    "bytes": 944213.900288,
+    "bytes_send_all": 3271683.76832,
+    "positions_represented": 1.0,
+    "scene_clusters_represented": 0.2857142857142857,
+    "embedding_coverage": 0.9553746581077576,
+    "phash_mean_min_hamming": 13.047619047619047,
+    "max_spatial_gap_m": 0.9769467743944739,
+    "path_extent_m": 4.744529692182163
+   },
+   {
+    "sequence": "417:trav15030",
+    "frames": 21,
+    "fraction": 0.125,
+    "method": "UNIFORM_TEMPORAL_SAMPLE",
+    "selected": 3,
+    "bytes": 482825.8785279999,
+    "bytes_send_all": 3271683.76832,
+    "positions_represented": 0.5,
+    "scene_clusters_represented": 0.14285714285714285,
+    "embedding_coverage": 0.8466406464576721,
+    "phash_mean_min_hamming": 22.19047619047619,
+    "max_spatial_gap_m": 2.823986543877231,
+    "path_extent_m": 4.744529692182163
+   },
+   {
+    "sequence": "417:trav15030",
+    "frames": 21,
+    "fraction": 0.125,
+    "method": "PHASH_REPRESENTATIVES",
+    "selected": 3,
+    "bytes": 473769.95020799997,
+    "bytes_send_all": 3271683.76832,
+    "positions_represented": 0.3333333333333333,
+    "scene_clusters_represented": 0.14285714285714285,
+    "embedding_coverage": 0.9308154582977295,
+    "phash_mean_min_hamming": 18.0,
+    "max_spatial_gap_m": 1.9206254189715104,
+    "path_extent_m": 4.744529692182163
+   },
+   {
+    "sequence": "417:trav15030",
+    "frames": 21,
+    "fraction": 0.125,
+    "method": "METADATA_POSITION_SAMPLE",
+    "selected": 3,
+    "bytes": 486417.90668799996,
+    "bytes_send_all": 3271683.76832,
+    "positions_represented": 0.5,
+    "scene_clusters_represented": 0.14285714285714285,
+    "embedding_coverage": 0.8106338977813721,
+    "phash_mean_min_hamming": 22.571428571428573,
+    "max_spatial_gap_m": 2.823986543877231,
+    "path_extent_m": 4.744529692182163
+   },
+   {
+    "sequence": "417:trav15030",
+    "frames": 21,
+    "fraction": 0.125,
+    "method": "HYBRID_POSITION_VISUAL_CHANGE",
+    "selected": 3,
+    "bytes": 479665.8964479999,
+    "bytes_send_all": 3271683.76832,
+    "positions_represented": 0.5,
+    "scene_clusters_represented": 0.14285714285714285,
+    "embedding_coverage": 0.9063607454299927,
+    "phash_mean_min_hamming": 18.571428571428573,
+    "max_spatial_gap_m": 2.823986543877231,
+    "path_extent_m": 4.744529692182163
+   },
+   {
+    "sequence": "419:trav00111",
+    "frames": 68,
+    "fraction": 1.0,
+    "method": "SEND_ALL",
+    "selected": 68,
+    "bytes": 10065504.09216,
+    "bytes_send_all": 10065504.09216,
+    "positions_represented": 1.0,
+    "scene_clusters_represented": 1.0,
+    "embedding_coverage": 0.9999998807907104,
+    "phash_mean_min_hamming": 0.0,
+    "max_spatial_gap_m": 19.368323236666626,
+    "path_extent_m": 113.19761817723924
+   },
+   {
+    "sequence": "419:trav00111",
+    "frames": 68,
+    "fraction": 0.5,
+    "method": "UNIFORM_TEMPORAL_SAMPLE",
+    "selected": 34,
+    "bytes": 5067883.06688,
+    "bytes_send_all": 10065504.09216,
+    "positions_represented": 0.8,
+    "scene_clusters_represented": 0.5151515151515151,
+    "embedding_coverage": 0.9823582768440247,
+    "phash_mean_min_hamming": 7.323529411764706,
+    "max_spatial_gap_m": 19.8369691485369,
+    "path_extent_m": 113.19761817723924
+   },
+   {
+    "sequence": "419:trav00111",
+    "frames": 68,
+    "fraction": 0.5,
+    "method": "PHASH_REPRESENTATIVES",
+    "selected": 34,
+    "bytes": 5148144.054272,
+    "bytes_send_all": 10065504.09216,
+    "positions_represented": 0.8333333333333334,
+    "scene_clusters_represented": 0.48484848484848486,
+    "embedding_coverage": 0.9788098931312561,
+    "phash_mean_min_hamming": 6.029411764705882,
+    "max_spatial_gap_m": 19.368323236666626,
+    "path_extent_m": 113.19761817723924
+   },
+   {
+    "sequence": "419:trav00111",
+    "frames": 68,
+    "fraction": 0.5,
+    "method": "METADATA_POSITION_SAMPLE",
+    "selected": 34,
+    "bytes": 5015457.196544,
+    "bytes_send_all": 10065504.09216,
+    "positions_represented": 1.0,
+    "scene_clusters_represented": 0.5151515151515151,
+    "embedding_coverage": 0.9611057043075562,
+    "phash_mean_min_hamming": 9.823529411764707,
+    "max_spatial_gap_m": 19.368323236666626,
+    "path_extent_m": 113.19761817723924
+   },
+   {
+    "sequence": "419:trav00111",
+    "frames": 68,
+    "fraction": 0.5,
+    "method": "HYBRID_POSITION_VISUAL_CHANGE",
+    "selected": 34,
+    "bytes": 5126439.005696,
+    "bytes_send_all": 10065504.09216,
+    "positions_represented": 0.8,
+    "scene_clusters_represented": 0.48484848484848486,
+    "embedding_coverage": 0.981436550617218,
+    "phash_mean_min_hamming": 6.235294117647059,
+    "max_spatial_gap_m": 19.368323236666626,
+    "path_extent_m": 113.19761817723924
+   },
+   {
+    "sequence": "419:trav00111",
+    "frames": 68,
+    "fraction": 0.25,
+    "method": "UNIFORM_TEMPORAL_SAMPLE",
+    "selected": 17,
+    "bytes": 2579111.979008,
+    "bytes_send_all": 10065504.09216,
+    "positions_represented": 0.5666666666666667,
+    "scene_clusters_represented": 0.25757575757575757,
+    "embedding_coverage": 0.9660643339157104,
+    "phash_mean_min_hamming": 11.205882352941176,
+    "max_spatial_gap_m": 39.618861089132906,
+    "path_extent_m": 113.19761817723924
+   },
+   {
+    "sequence": "419:trav00111",
+    "frames": 68,
+    "fraction": 0.25,
+    "method": "PHASH_REPRESENTATIVES",
+    "selected": 17,
+    "bytes": 2600536.107008,
+    "bytes_send_all": 10065504.09216,
+    "positions_represented": 0.4666666666666667,
+    "scene_clusters_represented": 0.24242424242424243,
+    "embedding_coverage": 0.966678261756897,
+    "phash_mean_min_hamming": 11.117647058823529,
+    "max_spatial_gap_m": 39.18978887414421,
+    "path_extent_m": 113.19761817723924
+   },
+   {
+    "sequence": "419:trav00111",
+    "frames": 68,
+    "fraction": 0.25,
+    "method": "METADATA_POSITION_SAMPLE",
+    "selected": 17,
+    "bytes": 2502812.1006079996,
+    "bytes_send_all": 10065504.09216,
+    "positions_represented": 0.5666666666666667,
+    "scene_clusters_represented": 0.25757575757575757,
+    "embedding_coverage": 0.9451601505279541,
+    "phash_mean_min_hamming": 14.029411764705882,
+    "max_spatial_gap_m": 20.251159102629273,
+    "path_extent_m": 113.19761817723924
+   },
+   {
+    "sequence": "419:trav00111",
+    "frames": 68,
+    "fraction": 0.25,
+    "method": "HYBRID_POSITION_VISUAL_CHANGE",
+    "selected": 17,
+    "bytes": 2590983.071232,
+    "bytes_send_all": 10065504.09216,
+    "positions_represented": 0.5,
+    "scene_clusters_represented": 0.25757575757575757,
+    "embedding_coverage": 0.9671975374221802,
+    "phash_mean_min_hamming": 11.5,
+    "max_spatial_gap_m": 19.8369691485369,
+    "path_extent_m": 113.19761817723924
+   },
+   {
+    "sequence": "419:trav00111",
+    "frames": 68,
+    "fraction": 0.125,
+    "method": "UNIFORM_TEMPORAL_SAMPLE",
+    "selected": 9,
+    "bytes": 1386376.0445440002,
+    "bytes_send_all": 10065504.09216,
+    "positions_represented": 0.3,
+    "scene_clusters_represented": 0.13636363636363635,
+    "embedding_coverage": 0.9555137753486633,
+    "phash_mean_min_hamming": 14.0,
+    "max_spatial_gap_m": 75.52472570622172,
+    "path_extent_m": 113.19761817723924
+   },
+   {
+    "sequence": "419:trav00111",
+    "frames": 68,
+    "fraction": 0.125,
+    "method": "PHASH_REPRESENTATIVES",
+    "selected": 9,
+    "bytes": 1376771.139072,
+    "bytes_send_all": 10065504.09216,
+    "positions_represented": 0.26666666666666666,
+    "scene_clusters_represented": 0.13636363636363635,
+    "embedding_coverage": 0.9547898769378662,
+    "phash_mean_min_hamming": 14.617647058823529,
+    "max_spatial_gap_m": 57.09370636068391,
+    "path_extent_m": 113.19761817723924
+   },
+   {
+    "sequence": "419:trav00111",
+    "frames": 68,
+    "fraction": 0.125,
+    "method": "METADATA_POSITION_SAMPLE",
+    "selected": 9,
+    "bytes": 1376199.9421440002,
+    "bytes_send_all": 10065504.09216,
+    "positions_represented": 0.3,
+    "scene_clusters_represented": 0.13636363636363635,
+    "embedding_coverage": 0.9404407739639282,
+    "phash_mean_min_hamming": 15.147058823529411,
+    "max_spatial_gap_m": 20.251159102629273,
+    "path_extent_m": 113.19761817723924
+   },
+   {
+    "sequence": "419:trav00111",
+    "frames": 68,
+    "fraction": 0.125,
+    "method": "HYBRID_POSITION_VISUAL_CHANGE",
+    "selected": 9,
+    "bytes": 1387507.082752,
+    "bytes_send_all": 10065504.09216,
+    "positions_represented": 0.3,
+    "scene_clusters_represented": 0.13636363636363635,
+    "embedding_coverage": 0.9464293122291565,
+    "phash_mean_min_hamming": 14.970588235294118,
+    "max_spatial_gap_m": 20.298511718842846,
+    "path_extent_m": 113.19761817723924
+   },
+   {
+    "sequence": "422:trav00112",
+    "frames": 29,
+    "fraction": 1.0,
+    "method": "SEND_ALL",
+    "selected": 29,
+    "bytes": 4472363.99104,
+    "bytes_send_all": 4472363.99104,
+    "positions_represented": 1.0,
+    "scene_clusters_represented": 1.0,
+    "embedding_coverage": 0.9999998807907104,
+    "phash_mean_min_hamming": 0.0,
+    "max_spatial_gap_m": 19.48869490243003,
+    "path_extent_m": 67.45795766994424
+   },
+   {
+    "sequence": "422:trav00112",
+    "frames": 29,
+    "fraction": 0.5,
+    "method": "UNIFORM_TEMPORAL_SAMPLE",
+    "selected": 15,
+    "bytes": 2299079.048704,
+    "bytes_send_all": 4472363.99104,
+    "positions_represented": 0.7142857142857143,
+    "scene_clusters_represented": 0.5357142857142857,
+    "embedding_coverage": 0.9805790185928345,
+    "phash_mean_min_hamming": 9.172413793103448,
+    "max_spatial_gap_m": 19.95844826132518,
+    "path_extent_m": 67.45795766994424
+   },
+   {
+    "sequence": "422:trav00112",
+    "frames": 29,
+    "fraction": 0.5,
+    "method": "PHASH_REPRESENTATIVES",
+    "selected": 15,
+    "bytes": 2364784.14848,
+    "bytes_send_all": 4472363.99104,
+    "positions_represented": 0.8571428571428571,
+    "scene_clusters_represented": 0.5,
+    "embedding_coverage": 0.9749366641044617,
+    "phash_mean_min_hamming": 7.172413793103448,
+    "max_spatial_gap_m": 19.48869490243003,
+    "path_extent_m": 67.45795766994424
+   },
+   {
+    "sequence": "422:trav00112",
+    "frames": 29,
+    "fraction": 0.5,
+    "method": "METADATA_POSITION_SAMPLE",
+    "selected": 15,
+    "bytes": 2324547.075584,
+    "bytes_send_all": 4472363.99104,
+    "positions_represented": 1.0,
+    "scene_clusters_represented": 0.5357142857142857,
+    "embedding_coverage": 0.967385470867157,
+    "phash_mean_min_hamming": 9.862068965517242,
+    "max_spatial_gap_m": 19.48869490243003,
+    "path_extent_m": 67.45795766994424
+   },
+   {
+    "sequence": "422:trav00112",
+    "frames": 29,
+    "fraction": 0.5,
+    "method": "HYBRID_POSITION_VISUAL_CHANGE",
+    "selected": 15,
+    "bytes": 2341603.147264,
+    "bytes_send_all": 4472363.99104,
+    "positions_represented": 0.7857142857142857,
+    "scene_clusters_represented": 0.5,
+    "embedding_coverage": 0.979516327381134,
+    "phash_mean_min_hamming": 7.379310344827586,
+    "max_spatial_gap_m": 19.962775859083457,
+    "path_extent_m": 67.45795766994424
+   },
+   {
+    "sequence": "422:trav00112",
+    "frames": 29,
+    "fraction": 0.25,
+    "method": "UNIFORM_TEMPORAL_SAMPLE",
+    "selected": 8,
+    "bytes": 1255943.110144,
+    "bytes_send_all": 4472363.99104,
+    "positions_represented": 0.5714285714285714,
+    "scene_clusters_represented": 0.2857142857142857,
+    "embedding_coverage": 0.9624559879302979,
+    "phash_mean_min_hamming": 13.793103448275861,
+    "max_spatial_gap_m": 39.89080746237148,
+    "path_extent_m": 67.45795766994424
+   },
+   {
+    "sequence": "422:trav00112",
+    "frames": 29,
+    "fraction": 0.25,
+    "method": "PHASH_REPRESENTATIVES",
+    "selected": 8,
+    "bytes": 1249311.194624,
+    "bytes_send_all": 4472363.99104,
+    "positions_represented": 0.5714285714285714,
+    "scene_clusters_represented": 0.2857142857142857,
+    "embedding_coverage": 0.9582719206809998,
+    "phash_mean_min_hamming": 12.96551724137931,
+    "max_spatial_gap_m": 19.939277143367107,
+    "path_extent_m": 67.45795766994424
+   },
+   {
+    "sequence": "422:trav00112",
+    "frames": 29,
+    "fraction": 0.25,
+    "method": "METADATA_POSITION_SAMPLE",
+    "selected": 8,
+    "bytes": 1239651.024384,
+    "bytes_send_all": 4472363.99104,
+    "positions_represented": 0.5714285714285714,
+    "scene_clusters_represented": 0.2857142857142857,
+    "embedding_coverage": 0.9528376460075378,
+    "phash_mean_min_hamming": 14.551724137931034,
+    "max_spatial_gap_m": 19.95844826132518,
+    "path_extent_m": 67.45795766994424
+   },
+   {
+    "sequence": "422:trav00112",
+    "frames": 29,
+    "fraction": 0.25,
+    "method": "HYBRID_POSITION_VISUAL_CHANGE",
+    "selected": 8,
+    "bytes": 1261583.220224,
+    "bytes_send_all": 4472363.99104,
+    "positions_represented": 0.5714285714285714,
+    "scene_clusters_represented": 0.2857142857142857,
+    "embedding_coverage": 0.9632745981216431,
+    "phash_mean_min_hamming": 13.241379310344827,
+    "max_spatial_gap_m": 20.43555462912611,
+    "path_extent_m": 67.45795766994424
+   },
+   {
+    "sequence": "422:trav00112",
+    "frames": 29,
+    "fraction": 0.125,
+    "method": "UNIFORM_TEMPORAL_SAMPLE",
+    "selected": 4,
+    "bytes": 631783.079424,
+    "bytes_send_all": 4472363.99104,
+    "positions_represented": 0.2857142857142857,
+    "scene_clusters_represented": 0.14285714285714285,
+    "embedding_coverage": 0.8452777862548828,
+    "phash_mean_min_hamming": 21.24137931034483,
+    "max_spatial_gap_m": 60.33252231591172,
+    "path_extent_m": 67.45795766994424
+   },
+   {
+    "sequence": "422:trav00112",
+    "frames": 29,
+    "fraction": 0.125,
+    "method": "PHASH_REPRESENTATIVES",
+    "selected": 4,
+    "bytes": 617007.169024,
+    "bytes_send_all": 4472363.99104,
+    "positions_represented": 0.2857142857142857,
+    "scene_clusters_represented": 0.14285714285714285,
+    "embedding_coverage": 0.9464054703712463,
+    "phash_mean_min_hamming": 17.17241379310345,
+    "max_spatial_gap_m": 57.89400405050589,
+    "path_extent_m": 67.45795766994424
+   },
+   {
+    "sequence": "422:trav00112",
+    "frames": 29,
+    "fraction": 0.125,
+    "method": "METADATA_POSITION_SAMPLE",
+    "selected": 4,
+    "bytes": 641775.1075840001,
+    "bytes_send_all": 4472363.99104,
+    "positions_represented": 0.2857142857142857,
+    "scene_clusters_represented": 0.14285714285714285,
+    "embedding_coverage": 0.9368418455123901,
+    "phash_mean_min_hamming": 19.03448275862069,
+    "max_spatial_gap_m": 27.605531492800523,
+    "path_extent_m": 67.45795766994424
+   },
+   {
+    "sequence": "422:trav00112",
+    "frames": 29,
+    "fraction": 0.125,
+    "method": "HYBRID_POSITION_VISUAL_CHANGE",
+    "selected": 4,
+    "bytes": 647407.189504,
+    "bytes_send_all": 4472363.99104,
+    "positions_represented": 0.2857142857142857,
+    "scene_clusters_represented": 0.14285714285714285,
+    "embedding_coverage": 0.8486186861991882,
+    "phash_mean_min_hamming": 20.620689655172413,
+    "max_spatial_gap_m": 24.215261303566354,
+    "path_extent_m": 67.45795766994424
+   },
+   {
+    "sequence": "424:trav00113",
+    "frames": 107,
+    "fraction": 1.0,
+    "method": "SEND_ALL",
+    "selected": 107,
+    "bytes": 16006191.43168,
+    "bytes_send_all": 16006191.43168,
+    "positions_represented": 1.0,
+    "scene_clusters_represented": 1.0,
+    "embedding_coverage": 0.9999998807907104,
+    "phash_mean_min_hamming": 0.0,
+    "max_spatial_gap_m": 19.457057228676742,
+    "path_extent_m": 85.14949463737287
+   },
+   {
+    "sequence": "424:trav00113",
+    "frames": 107,
+    "fraction": 0.5,
+    "method": "UNIFORM_TEMPORAL_SAMPLE",
+    "selected": 54,
+    "bytes": 8103454.895616,
+    "bytes_send_all": 16006191.43168,
+    "positions_represented": 0.8837209302325582,
+    "scene_clusters_represented": 0.5046728971962616,
+    "embedding_coverage": 0.9837079048156738,
+    "phash_mean_min_hamming": 7.046728971962617,
+    "max_spatial_gap_m": 19.92294486264535,
+    "path_extent_m": 85.14949463737287
+   },
+   {
+    "sequence": "424:trav00113",
+    "frames": 107,
+    "fraction": 0.5,
+    "method": "PHASH_REPRESENTATIVES",
+    "selected": 54,
+    "bytes": 8155892.509184,
+    "bytes_send_all": 16006191.43168,
+    "positions_represented": 0.8372093023255814,
+    "scene_clusters_represented": 0.5046728971962616,
+    "embedding_coverage": 0.9807671308517456,
+    "phash_mean_min_hamming": 5.5514018691588785,
+    "max_spatial_gap_m": 39.36241750705873,
+    "path_extent_m": 85.14949463737287
+   },
+   {
+    "sequence": "424:trav00113",
+    "frames": 107,
+    "fraction": 0.5,
+    "method": "METADATA_POSITION_SAMPLE",
+    "selected": 54,
+    "bytes": 7965681.837056001,
+    "bytes_send_all": 16006191.43168,
+    "positions_represented": 1.0,
+    "scene_clusters_represented": 0.5046728971962616,
+    "embedding_coverage": 0.9680885076522827,
+    "phash_mean_min_hamming": 9.626168224299066,
+    "max_spatial_gap_m": 19.457057228676742,
+    "path_extent_m": 85.14949463737287
+   },
+   {
+    "sequence": "424:trav00113",
+    "frames": 107,
+    "fraction": 0.5,
+    "method": "HYBRID_POSITION_VISUAL_CHANGE",
+    "selected": 54,
+    "bytes": 8204401.892352001,
+    "bytes_send_all": 16006191.43168,
+    "positions_represented": 0.8604651162790697,
+    "scene_clusters_represented": 0.5046728971962616,
+    "embedding_coverage": 0.9824134707450867,
+    "phash_mean_min_hamming": 5.514018691588785,
+    "max_spatial_gap_m": 19.457057228676742,
+    "path_extent_m": 85.14949463737287
+   },
+   {
+    "sequence": "424:trav00113",
+    "frames": 107,
+    "fraction": 0.25,
+    "method": "UNIFORM_TEMPORAL_SAMPLE",
+    "selected": 27,
+    "bytes": 4098543.52384,
+    "bytes_send_all": 16006191.43168,
+    "positions_represented": 0.627906976744186,
+    "scene_clusters_represented": 0.2523364485981308,
+    "embedding_coverage": 0.9692264199256897,
+    "phash_mean_min_hamming": 11.177570093457945,
+    "max_spatial_gap_m": 39.82948311238813,
+    "path_extent_m": 85.14949463737287
+   },
+   {
+    "sequence": "424:trav00113",
+    "frames": 107,
+    "fraction": 0.25,
+    "method": "PHASH_REPRESENTATIVES",
+    "selected": 27,
+    "bytes": 4134306.51648,
+    "bytes_send_all": 16006191.43168,
+    "positions_represented": 0.5116279069767442,
+    "scene_clusters_represented": 0.2523364485981308,
+    "embedding_coverage": 0.9620764851570129,
+    "phash_mean_min_hamming": 11.738317757009346,
+    "max_spatial_gap_m": 44.16431764445143,
+    "path_extent_m": 85.14949463737287
+   },
+   {
+    "sequence": "424:trav00113",
+    "frames": 107,
+    "fraction": 0.25,
+    "method": "METADATA_POSITION_SAMPLE",
+    "selected": 27,
+    "bytes": 3993851.81184,
+    "bytes_send_all": 16006191.43168,
+    "positions_represented": 0.627906976744186,
+    "scene_clusters_represented": 0.2523364485981308,
+    "embedding_coverage": 0.9322379231452942,
+    "phash_mean_min_hamming": 15.30841121495327,
+    "max_spatial_gap_m": 20.373179550575895,
+    "path_extent_m": 85.14949463737287
+   },
+   {
+    "sequence": "424:trav00113",
+    "frames": 107,
+    "fraction": 0.25,
+    "method": "HYBRID_POSITION_VISUAL_CHANGE",
+    "selected": 27,
+    "bytes": 4137619.705856,
+    "bytes_send_all": 16006191.43168,
+    "positions_represented": 0.5813953488372093,
+    "scene_clusters_represented": 0.2523364485981308,
+    "embedding_coverage": 0.9703707695007324,
+    "phash_mean_min_hamming": 10.69158878504673,
+    "max_spatial_gap_m": 19.909933400190013,
+    "path_extent_m": 85.14949463737287
+   },
+   {
+    "sequence": "424:trav00113",
+    "frames": 107,
+    "fraction": 0.125,
+    "method": "UNIFORM_TEMPORAL_SAMPLE",
+    "selected": 14,
+    "bytes": 2132286.98368,
+    "bytes_send_all": 16006191.43168,
+    "positions_represented": 0.32558139534883723,
+    "scene_clusters_represented": 0.1308411214953271,
+    "embedding_coverage": 0.9548606276512146,
+    "phash_mean_min_hamming": 14.11214953271028,
+    "max_spatial_gap_m": 44.16431764445143,
+    "path_extent_m": 85.14949463737287
+   },
+   {
+    "sequence": "424:trav00113",
+    "frames": 107,
+    "fraction": 0.125,
+    "method": "PHASH_REPRESENTATIVES",
+    "selected": 14,
+    "bytes": 2135477.668864,
+    "bytes_send_all": 16006191.43168,
+    "positions_represented": 0.27906976744186046,
+    "scene_clusters_represented": 0.1308411214953271,
+    "embedding_coverage": 0.9488642811775208,
+    "phash_mean_min_hamming": 14.897196261682243,
+    "max_spatial_gap_m": 49.500693247670895,
+    "path_extent_m": 85.14949463737287
+   },
+   {
+    "sequence": "424:trav00113",
+    "frames": 107,
+    "fraction": 0.125,
+    "method": "METADATA_POSITION_SAMPLE",
+    "selected": 14,
+    "bytes": 2104899.930112,
+    "bytes_send_all": 16006191.43168,
+    "positions_represented": 0.32558139534883723,
+    "scene_clusters_represented": 0.1308411214953271,
+    "embedding_coverage": 0.9292929768562317,
+    "phash_mean_min_hamming": 15.962616822429906,
+    "max_spatial_gap_m": 20.373179550575895,
+    "path_extent_m": 85.14949463737287
+   },
+   {
+    "sequence": "424:trav00113",
+    "frames": 107,
+    "fraction": 0.125,
+    "method": "HYBRID_POSITION_VISUAL_CHANGE",
+    "selected": 14,
+    "bytes": 2182981.602304,
+    "bytes_send_all": 16006191.43168,
+    "positions_represented": 0.32558139534883723,
+    "scene_clusters_represented": 0.1308411214953271,
+    "embedding_coverage": 0.9509347081184387,
+    "phash_mean_min_hamming": 15.158878504672897,
+    "max_spatial_gap_m": 20.373179550575895,
+    "path_extent_m": 85.14949463737287
+   },
+   {
+    "sequence": "426:trav00114",
+    "frames": 13,
+    "fraction": 1.0,
+    "method": "SEND_ALL",
+    "selected": 13,
+    "bytes": 2029928.0384,
+    "bytes_send_all": 2029928.0384,
+    "positions_represented": 1.0,
+    "scene_clusters_represented": 1.0,
+    "embedding_coverage": 0.9999997019767761,
+    "phash_mean_min_hamming": 0.0,
+    "max_spatial_gap_m": 19.113476083643338,
+    "path_extent_m": 45.66336520669505
+   },
+   {
+    "sequence": "426:trav00114",
+    "frames": 13,
+    "fraction": 0.5,
+    "method": "UNIFORM_TEMPORAL_SAMPLE",
+    "selected": 7,
+    "bytes": 1094162.906624,
+    "bytes_send_all": 2029928.0384,
+    "positions_represented": 0.6,
+    "scene_clusters_represented": 0.5833333333333334,
+    "embedding_coverage": 0.970876157283783,
+    "phash_mean_min_hamming": 9.846153846153847,
+    "max_spatial_gap_m": 19.58780419036298,
+    "path_extent_m": 45.66336520669505
+   },
+   {
+    "sequence": "426:trav00114",
+    "frames": 13,
+    "fraction": 0.5,
+    "method": "PHASH_REPRESENTATIVES",
+    "selected": 7,
+    "bytes": 1083771.026944,
+    "bytes_send_all": 2029928.0384,
+    "positions_represented": 0.5,
+    "scene_clusters_represented": 0.5,
+    "embedding_coverage": 0.9601866006851196,
+    "phash_mean_min_hamming": 9.384615384615385,
+    "max_spatial_gap_m": 20.03396086648856,
+    "path_extent_m": 45.66336520669505
+   },
+   {
+    "sequence": "426:trav00114",
+    "frames": 13,
+    "fraction": 0.5,
+    "method": "METADATA_POSITION_SAMPLE",
+    "selected": 7,
+    "bytes": 1097038.953984,
+    "bytes_send_all": 2029928.0384,
+    "positions_represented": 0.7,
+    "scene_clusters_represented": 0.5833333333333334,
+    "embedding_coverage": 0.9638438820838928,
+    "phash_mean_min_hamming": 10.76923076923077,
+    "max_spatial_gap_m": 19.545618051113127,
+    "path_extent_m": 45.66336520669505
+   },
+   {
+    "sequence": "426:trav00114",
+    "frames": 13,
+    "fraction": 0.5,
+    "method": "HYBRID_POSITION_VISUAL_CHANGE",
+    "selected": 7,
+    "bytes": 1094987.021824,
+    "bytes_send_all": 2029928.0384,
+    "positions_represented": 0.6,
+    "scene_clusters_represented": 0.5833333333333334,
+    "embedding_coverage": 0.9425746202468872,
+    "phash_mean_min_hamming": 10.153846153846153,
+    "max_spatial_gap_m": 19.58780419036298,
+    "path_extent_m": 45.66336520669505
+   },
+   {
+    "sequence": "426:trav00114",
+    "frames": 13,
+    "fraction": 0.25,
+    "method": "UNIFORM_TEMPORAL_SAMPLE",
+    "selected": 4,
+    "bytes": 630422.9616640001,
+    "bytes_send_all": 2029928.0384,
+    "positions_represented": 0.4,
+    "scene_clusters_represented": 0.3333333333333333,
+    "embedding_coverage": 0.917111337184906,
+    "phash_mean_min_hamming": 16.76923076923077,
+    "max_spatial_gap_m": 39.133421956174516,
+    "path_extent_m": 45.66336520669505
+   },
+   {
+    "sequence": "426:trav00114",
+    "frames": 13,
+    "fraction": 0.25,
+    "method": "PHASH_REPRESENTATIVES",
+    "selected": 4,
+    "bytes": 630822.059008,
+    "bytes_send_all": 2029928.0384,
+    "positions_represented": 0.4,
+    "scene_clusters_represented": 0.3333333333333333,
+    "embedding_coverage": 0.9169318675994873,
+    "phash_mean_min_hamming": 16.0,
+    "max_spatial_gap_m": 20.03396086648856,
+    "path_extent_m": 45.66336520669505
+   },
+   {
+    "sequence": "426:trav00114",
+    "frames": 13,
+    "fraction": 0.25,
+    "method": "METADATA_POSITION_SAMPLE",
+    "selected": 4,
+    "bytes": 633095.028224,
+    "bytes_send_all": 2029928.0384,
+    "positions_represented": 0.4,
+    "scene_clusters_represented": 0.3333333333333333,
+    "embedding_coverage": 0.9155838489532471,
+    "phash_mean_min_hamming": 16.46153846153846,
+    "max_spatial_gap_m": 20.019967282690416,
+    "path_extent_m": 45.66336520669505
+   },
+   {
+    "sequence": "426:trav00114",
+    "frames": 13,
+    "fraction": 0.25,
+    "method": "HYBRID_POSITION_VISUAL_CHANGE",
+    "selected": 4,
+    "bytes": 631781.997568,
+    "bytes_send_all": 2029928.0384,
+    "positions_represented": 0.4,
+    "scene_clusters_represented": 0.3333333333333333,
+    "embedding_coverage": 0.9158413410186768,
+    "phash_mean_min_hamming": 16.615384615384617,
+    "max_spatial_gap_m": 20.03396086648856,
+    "path_extent_m": 45.66336520669505
+   },
+   {
+    "sequence": "426:trav00114",
+    "frames": 13,
+    "fraction": 0.125,
+    "method": "UNIFORM_TEMPORAL_SAMPLE",
+    "selected": 2,
+    "bytes": 315929.934848,
+    "bytes_send_all": 2029928.0384,
+    "positions_represented": 0.2,
+    "scene_clusters_represented": 0.16666666666666666,
+    "embedding_coverage": 0.8723870515823364,
+    "phash_mean_min_hamming": 21.692307692307693,
+    "max_spatial_gap_m": 45.66336520669505,
+    "path_extent_m": 45.66336520669505
+   },
+   {
+    "sequence": "426:trav00114",
+    "frames": 13,
+    "fraction": 0.125,
+    "method": "PHASH_REPRESENTATIVES",
+    "selected": 2,
+    "bytes": 312473.97580799996,
+    "bytes_send_all": 2029928.0384,
+    "positions_represented": 0.2,
+    "scene_clusters_represented": 0.16666666666666666,
+    "embedding_coverage": 0.8808119893074036,
+    "phash_mean_min_hamming": 21.692307692307693,
+    "max_spatial_gap_m": 19.545618051113127,
+    "path_extent_m": 45.66336520669505
+   },
+   {
+    "sequence": "426:trav00114",
+    "frames": 13,
+    "fraction": 0.125,
+    "method": "METADATA_POSITION_SAMPLE",
+    "selected": 2,
+    "bytes": 315929.934848,
+    "bytes_send_all": 2029928.0384,
+    "positions_represented": 0.2,
+    "scene_clusters_represented": 0.16666666666666666,
+    "embedding_coverage": 0.8723870515823364,
+    "phash_mean_min_hamming": 21.692307692307693,
+    "max_spatial_gap_m": 45.66336520669505,
+    "path_extent_m": 45.66336520669505
+   },
+   {
+    "sequence": "426:trav00114",
+    "frames": 13,
+    "fraction": 0.125,
+    "method": "HYBRID_POSITION_VISUAL_CHANGE",
+    "selected": 2,
+    "bytes": 315929.934848,
+    "bytes_send_all": 2029928.0384,
+    "positions_represented": 0.2,
+    "scene_clusters_represented": 0.16666666666666666,
+    "embedding_coverage": 0.8723870515823364,
+    "phash_mean_min_hamming": 21.692307692307693,
+    "max_spatial_gap_m": 45.66336520669505,
+    "path_extent_m": 45.66336520669505
+   },
+   {
+    "sequence": "429:trav00115",
+    "frames": 34,
+    "fraction": 1.0,
+    "method": "SEND_ALL",
+    "selected": 34,
+    "bytes": 5480039.6288,
+    "bytes_send_all": 5480039.6288,
+    "positions_represented": 1.0,
+    "scene_clusters_represented": 1.0,
+    "embedding_coverage": 0.9999998807907104,
+    "phash_mean_min_hamming": 0.0,
+    "max_spatial_gap_m": 19.398291161852338,
+    "path_extent_m": 42.7692695752451
+   },
+   {
+    "sequence": "429:trav00115",
+    "frames": 34,
+    "fraction": 0.5,
+    "method": "UNIFORM_TEMPORAL_SAMPLE",
+    "selected": 17,
+    "bytes": 2741861.807104,
+    "bytes_send_all": 5480039.6288,
+    "positions_represented": 0.5,
+    "scene_clusters_represented": 0.5,
+    "embedding_coverage": 0.9754258394241333,
+    "phash_mean_min_hamming": 10.529411764705882,
+    "max_spatial_gap_m": 22.107405931044973,
+    "path_extent_m": 42.7692695752451
+   },
+   {
+    "sequence": "429:trav00115",
+    "frames": 34,
+    "fraction": 0.5,
+    "method": "PHASH_REPRESENTATIVES",
+    "selected": 17,
+    "bytes": 2756523.800576,
+    "bytes_send_all": 5480039.6288,
+    "positions_represented": 0.53125,
+    "scene_clusters_represented": 0.5,
+    "embedding_coverage": 0.9594036340713501,
+    "phash_mean_min_hamming": 9.882352941176471,
+    "max_spatial_gap_m": 19.84725598162113,
+    "path_extent_m": 42.7692695752451
+   },
+   {
+    "sequence": "429:trav00115",
+    "frames": 34,
+    "fraction": 0.5,
+    "method": "METADATA_POSITION_SAMPLE",
+    "selected": 17,
+    "bytes": 2746945.747968,
+    "bytes_send_all": 5480039.6288,
+    "positions_represented": 0.53125,
+    "scene_clusters_represented": 0.5,
+    "embedding_coverage": 0.9727863073348999,
+    "phash_mean_min_hamming": 10.411764705882353,
+    "max_spatial_gap_m": 19.398291161852338,
+    "path_extent_m": 42.7692695752451
+   },
+   {
+    "sequence": "429:trav00115",
+    "frames": 34,
+    "fraction": 0.5,
+    "method": "HYBRID_POSITION_VISUAL_CHANGE",
+    "selected": 17,
+    "bytes": 2738009.832448,
+    "bytes_send_all": 5480039.6288,
+    "positions_represented": 0.46875,
+    "scene_clusters_represented": 0.5,
+    "embedding_coverage": 0.9748238921165466,
+    "phash_mean_min_hamming": 10.058823529411764,
+    "max_spatial_gap_m": 19.398291161852338,
+    "path_extent_m": 42.7692695752451
+   },
+   {
+    "sequence": "429:trav00115",
+    "frames": 34,
+    "fraction": 0.25,
+    "method": "UNIFORM_TEMPORAL_SAMPLE",
+    "selected": 9,
+    "bytes": 1467409.9210239998,
+    "bytes_send_all": 5480039.6288,
+    "positions_represented": 0.28125,
+    "scene_clusters_represented": 0.2647058823529412,
+    "embedding_coverage": 0.9452424645423889,
+    "phash_mean_min_hamming": 16.11764705882353,
+    "max_spatial_gap_m": 22.107405931044973,
+    "path_extent_m": 42.7692695752451
+   },
+   {
+    "sequence": "429:trav00115",
+    "frames": 34,
+    "fraction": 0.25,
+    "method": "PHASH_REPRESENTATIVES",
+    "selected": 9,
+    "bytes": 1461773.906944,
+    "bytes_send_all": 5480039.6288,
+    "positions_represented": 0.28125,
+    "scene_clusters_represented": 0.2647058823529412,
+    "embedding_coverage": 0.9378526210784912,
+    "phash_mean_min_hamming": 15.588235294117647,
+    "max_spatial_gap_m": 7.037969664612138,
+    "path_extent_m": 42.7692695752451
+   },
+   {
+    "sequence": "429:trav00115",
+    "frames": 34,
+    "fraction": 0.25,
+    "method": "METADATA_POSITION_SAMPLE",
+    "selected": 9,
+    "bytes": 1457969.705984,
+    "bytes_send_all": 5480039.6288,
+    "positions_represented": 0.28125,
+    "scene_clusters_represented": 0.2647058823529412,
+    "embedding_coverage": 0.9524765014648438,
+    "phash_mean_min_hamming": 16.647058823529413,
+    "max_spatial_gap_m": 19.398291161852338,
+    "path_extent_m": 42.7692695752451
+   },
+   {
+    "sequence": "429:trav00115",
+    "frames": 34,
+    "fraction": 0.25,
+    "method": "HYBRID_POSITION_VISUAL_CHANGE",
+    "selected": 9,
+    "bytes": 1450979.9157760001,
+    "bytes_send_all": 5480039.6288,
+    "positions_represented": 0.25,
+    "scene_clusters_represented": 0.2647058823529412,
+    "embedding_coverage": 0.9507339596748352,
+    "phash_mean_min_hamming": 16.823529411764707,
+    "max_spatial_gap_m": 19.84725598162113,
+    "path_extent_m": 42.7692695752451
+   },
+   {
+    "sequence": "429:trav00115",
+    "frames": 34,
+    "fraction": 0.125,
+    "method": "UNIFORM_TEMPORAL_SAMPLE",
+    "selected": 5,
+    "bytes": 818898.023424,
+    "bytes_send_all": 5480039.6288,
+    "positions_represented": 0.15625,
+    "scene_clusters_represented": 0.14705882352941177,
+    "embedding_coverage": 0.929982602596283,
+    "phash_mean_min_hamming": 19.58823529411765,
+    "max_spatial_gap_m": 23.393540924793633,
+    "path_extent_m": 42.7692695752451
+   },
+   {
+    "sequence": "429:trav00115",
+    "frames": 34,
+    "fraction": 0.125,
+    "method": "PHASH_REPRESENTATIVES",
+    "selected": 5,
+    "bytes": 820958.065664,
+    "bytes_send_all": 5480039.6288,
+    "positions_represented": 0.15625,
+    "scene_clusters_represented": 0.14705882352941177,
+    "embedding_coverage": 0.9239896535873413,
+    "phash_mean_min_hamming": 19.705882352941178,
+    "max_spatial_gap_m": 7.959539936453801,
+    "path_extent_m": 42.7692695752451
+   },
+   {
+    "sequence": "429:trav00115",
+    "frames": 34,
+    "fraction": 0.125,
+    "method": "METADATA_POSITION_SAMPLE",
+    "selected": 5,
+    "bytes": 810853.889024,
+    "bytes_send_all": 5480039.6288,
+    "positions_represented": 0.15625,
+    "scene_clusters_represented": 0.14705882352941177,
+    "embedding_coverage": 0.9353094100952148,
+    "phash_mean_min_hamming": 20.823529411764707,
+    "max_spatial_gap_m": 22.107405931044973,
+    "path_extent_m": 42.7692695752451
+   },
+   {
+    "sequence": "429:trav00115",
+    "frames": 34,
+    "fraction": 0.125,
+    "method": "HYBRID_POSITION_VISUAL_CHANGE",
+    "selected": 5,
+    "bytes": 824552.0117759999,
+    "bytes_send_all": 5480039.6288,
+    "positions_represented": 0.15625,
+    "scene_clusters_represented": 0.14705882352941177,
+    "embedding_coverage": 0.9277772307395935,
+    "phash_mean_min_hamming": 20.470588235294116,
+    "max_spatial_gap_m": 19.84725598162113,
+    "path_extent_m": 42.7692695752451
+   }
+  ]
+ },
+ "visual_control_retention": {
+  "FIFO@0.005": {
+   "OBVIOUS": {
+    "control_retained": 0.1,
+    "source_retained": 0.1,
+    "lift": 0.0,
+    "n": 60
+   },
+   "MODERATE": {
+    "control_retained": 0.03333333333333333,
+    "source_retained": 0.03333333333333333,
+    "lift": 0.0,
+    "n": 60
+   },
+   "SUBTLE": {
+    "control_retained": 0.016666666666666666,
+    "source_retained": 0.016666666666666666,
+    "lift": 0.0,
+    "n": 60
+   },
+   "NEAR_NOISE_FLOOR": {
+    "control_retained": 0.11666666666666667,
+    "source_retained": 0.11666666666666667,
+    "lift": 0.0,
+    "n": 60
+   }
+  },
+  "FIFO@0.01": {
+   "OBVIOUS": {
+    "control_retained": 0.18333333333333332,
+    "source_retained": 0.18333333333333332,
+    "lift": 0.0,
+    "n": 60
+   },
+   "MODERATE": {
+    "control_retained": 0.1,
+    "source_retained": 0.1,
+    "lift": 0.0,
+    "n": 60
+   },
+   "SUBTLE": {
+    "control_retained": 0.08333333333333333,
+    "source_retained": 0.08333333333333333,
+    "lift": 0.0,
+    "n": 60
+   },
+   "NEAR_NOISE_FLOOR": {
+    "control_retained": 0.21666666666666667,
+    "source_retained": 0.21666666666666667,
+    "lift": 0.0,
+    "n": 60
+   }
+  },
+  "FIFO@0.02": {
+   "OBVIOUS": {
+    "control_retained": 0.25,
+    "source_retained": 0.25,
+    "lift": 0.0,
+    "n": 60
+   },
+   "MODERATE": {
+    "control_retained": 0.18333333333333332,
+    "source_retained": 0.18333333333333332,
+    "lift": 0.0,
+    "n": 60
+   },
+   "SUBTLE": {
+    "control_retained": 0.18333333333333332,
+    "source_retained": 0.18333333333333332,
+    "lift": 0.0,
+    "n": 60
+   },
+   "NEAR_NOISE_FLOOR": {
+    "control_retained": 0.3,
+    "source_retained": 0.3,
+    "lift": 0.0,
+    "n": 60
+   }
+  },
+  "SIZE-AWARE@0.005": {
+   "OBVIOUS": {
+    "control_retained": 0.1,
+    "source_retained": 0.1,
+    "lift": 0.0,
+    "n": 60
+   },
+   "MODERATE": {
+    "control_retained": 0.16666666666666666,
+    "source_retained": 0.16666666666666666,
+    "lift": 0.0,
+    "n": 60
+   },
+   "SUBTLE": {
+    "control_retained": 0.21666666666666667,
+    "source_retained": 0.21666666666666667,
+    "lift": 0.0,
+    "n": 60
+   },
+   "NEAR_NOISE_FLOOR": {
+    "control_retained": 0.16666666666666666,
+    "source_retained": 0.16666666666666666,
+    "lift": 0.0,
+    "n": 60
+   }
+  },
+  "SIZE-AWARE@0.01": {
+   "OBVIOUS": {
+    "control_retained": 0.36666666666666664,
+    "source_retained": 0.36666666666666664,
+    "lift": 0.0,
+    "n": 60
+   },
+   "MODERATE": {
+    "control_retained": 0.4666666666666667,
+    "source_retained": 0.4666666666666667,
+    "lift": 0.0,
+    "n": 60
+   },
+   "SUBTLE": {
+    "control_retained": 0.4,
+    "source_retained": 0.4,
+    "lift": 0.0,
+    "n": 60
+   },
+   "NEAR_NOISE_FLOOR": {
+    "control_retained": 0.4,
+    "source_retained": 0.4,
+    "lift": 0.0,
+    "n": 60
+   }
+  },
+  "SIZE-AWARE@0.02": {
+   "OBVIOUS": {
+    "control_retained": 0.8,
+    "source_retained": 0.8,
+    "lift": 0.0,
+    "n": 60
+   },
+   "MODERATE": {
+    "control_retained": 0.8833333333333333,
+    "source_retained": 0.8833333333333333,
+    "lift": 0.0,
+    "n": 60
+   },
+   "SUBTLE": {
+    "control_retained": 0.6666666666666666,
+    "source_retained": 0.6666666666666666,
+    "lift": 0.0,
+    "n": 60
+   },
+   "NEAR_NOISE_FLOOR": {
+    "control_retained": 0.7833333333333333,
+    "source_retained": 0.7833333333333333,
+    "lift": 0.0,
+    "n": 60
+   }
+  },
+  "EMBEDDING-NOVELTY@0.005": {
+   "OBVIOUS": {
+    "control_retained": 0.31666666666666665,
+    "source_retained": 0.05,
+    "lift": 0.26666666666666666,
+    "n": 60
+   },
+   "MODERATE": {
+    "control_retained": 0.08333333333333333,
+    "source_retained": 0.016666666666666666,
+    "lift": 0.06666666666666667,
+    "n": 60
+   },
+   "SUBTLE": {
+    "control_retained": 0.016666666666666666,
+    "source_retained": 0.0,
+    "lift": 0.016666666666666666,
+    "n": 60
+   },
+   "NEAR_NOISE_FLOOR": {
+    "control_retained": 0.016666666666666666,
+    "source_retained": 0.016666666666666666,
+    "lift": 0.0,
+    "n": 60
+   }
+  },
+  "EMBEDDING-NOVELTY@0.01": {
+   "OBVIOUS": {
+    "control_retained": 0.6333333333333333,
+    "source_retained": 0.05,
+    "lift": 0.5833333333333333,
+    "n": 60
+   },
+   "MODERATE": {
+    "control_retained": 0.21666666666666667,
+    "source_retained": 0.03333333333333333,
+    "lift": 0.18333333333333335,
+    "n": 60
+   },
+   "SUBTLE": {
+    "control_retained": 0.03333333333333333,
+    "source_retained": 0.016666666666666666,
+    "lift": 0.016666666666666666,
+    "n": 60
+   },
+   "NEAR_NOISE_FLOOR": {
+    "control_retained": 0.05,
+    "source_retained": 0.05,
+    "lift": 0.0,
+    "n": 60
+   }
+  },
+  "EMBEDDING-NOVELTY@0.02": {
+   "OBVIOUS": {
+    "control_retained": 0.7166666666666667,
+    "source_retained": 0.08333333333333333,
+    "lift": 0.6333333333333333,
+    "n": 60
+   },
+   "MODERATE": {
+    "control_retained": 0.25,
+    "source_retained": 0.05,
+    "lift": 0.2,
+    "n": 60
+   },
+   "SUBTLE": {
+    "control_retained": 0.1,
+    "source_retained": 0.06666666666666667,
+    "lift": 0.03333333333333334,
+    "n": 60
+   },
+   "NEAR_NOISE_FLOOR": {
+    "control_retained": 0.08333333333333333,
+    "source_retained": 0.08333333333333333,
+    "lift": 0.0,
+    "n": 60
+   }
+  },
+  "TELEMETRY-PRIORITY@0.005": {
+   "OBVIOUS": {
+    "control_retained": 0.0,
+    "source_retained": 0.0,
+    "lift": 0.0,
+    "n": 60
+   },
+   "MODERATE": {
+    "control_retained": 0.0,
+    "source_retained": 0.0,
+    "lift": 0.0,
+    "n": 60
+   },
+   "SUBTLE": {
+    "control_retained": 0.05,
+    "source_retained": 0.05,
+    "lift": 0.0,
+    "n": 60
+   },
+   "NEAR_NOISE_FLOOR": {
+    "control_retained": 0.0,
+    "source_retained": 0.0,
+    "lift": 0.0,
+    "n": 60
+   }
+  },
+  "TELEMETRY-PRIORITY@0.01": {
+   "OBVIOUS": {
+    "control_retained": 0.0,
+    "source_retained": 0.0,
+    "lift": 0.0,
+    "n": 60
+   },
+   "MODERATE": {
+    "control_retained": 0.0,
+    "source_retained": 0.0,
+    "lift": 0.0,
+    "n": 60
+   },
+   "SUBTLE": {
+    "control_retained": 0.1,
+    "source_retained": 0.1,
+    "lift": 0.0,
+    "n": 60
+   },
+   "NEAR_NOISE_FLOOR": {
+    "control_retained": 0.0,
+    "source_retained": 0.0,
+    "lift": 0.0,
+    "n": 60
+   }
+  },
+  "TELEMETRY-PRIORITY@0.02": {
+   "OBVIOUS": {
+    "control_retained": 0.03333333333333333,
+    "source_retained": 0.03333333333333333,
+    "lift": 0.0,
+    "n": 60
+   },
+   "MODERATE": {
+    "control_retained": 0.08333333333333333,
+    "source_retained": 0.08333333333333333,
+    "lift": 0.0,
+    "n": 60
+   },
+   "SUBTLE": {
+    "control_retained": 0.18333333333333332,
+    "source_retained": 0.18333333333333332,
+    "lift": 0.0,
+    "n": 60
+   },
+   "NEAR_NOISE_FLOOR": {
+    "control_retained": 0.08333333333333333,
+    "source_retained": 0.08333333333333333,
+    "lift": 0.0,
+    "n": 60
+   }
+  },
+  "PHASH-REPRESENTATIVES@0.005": {
+   "OBVIOUS": {
+    "control_retained": 0.1,
+    "source_retained": 0.08333333333333333,
+    "lift": 0.016666666666666677,
+    "n": 60
+   },
+   "MODERATE": {
+    "control_retained": 0.03333333333333333,
+    "source_retained": 0.016666666666666666,
+    "lift": 0.016666666666666666,
+    "n": 60
+   },
+   "SUBTLE": {
+    "control_retained": 0.016666666666666666,
+    "source_retained": 0.016666666666666666,
+    "lift": 0.0,
+    "n": 60
+   },
+   "NEAR_NOISE_FLOOR": {
+    "control_retained": 0.11666666666666667,
+    "source_retained": 0.11666666666666667,
+    "lift": 0.0,
+    "n": 60
+   }
+  },
+  "PHASH-REPRESENTATIVES@0.01": {
+   "OBVIOUS": {
+    "control_retained": 0.16666666666666666,
+    "source_retained": 0.15,
+    "lift": 0.016666666666666663,
+    "n": 60
+   },
+   "MODERATE": {
+    "control_retained": 0.11666666666666667,
+    "source_retained": 0.1,
+    "lift": 0.016666666666666663,
+    "n": 60
+   },
+   "SUBTLE": {
+    "control_retained": 0.08333333333333333,
+    "source_retained": 0.08333333333333333,
+    "lift": 0.0,
+    "n": 60
+   },
+   "NEAR_NOISE_FLOOR": {
+    "control_retained": 0.23333333333333334,
+    "source_retained": 0.23333333333333334,
+    "lift": 0.0,
+    "n": 60
+   }
+  },
+  "PHASH-REPRESENTATIVES@0.02": {
+   "OBVIOUS": {
+    "control_retained": 0.2833333333333333,
+    "source_retained": 0.26666666666666666,
+    "lift": 0.016666666666666663,
+    "n": 60
+   },
+   "MODERATE": {
+    "control_retained": 0.21666666666666667,
+    "source_retained": 0.2,
+    "lift": 0.016666666666666663,
+    "n": 60
+   },
+   "SUBTLE": {
+    "control_retained": 0.18333333333333332,
+    "source_retained": 0.16666666666666666,
+    "lift": 0.016666666666666663,
+    "n": 60
+   },
+   "NEAR_NOISE_FLOOR": {
+    "control_retained": 0.35,
+    "source_retained": 0.35,
+    "lift": 0.0,
+    "n": 60
+   }
+  }
+ },
+ "telemetry_after_controls": {
+  "note": "TELEMETRY-PRIORITY scores do not depend on image content, so a controlled visual change can never alter its ranking: lift is 0 by construction (measured below)",
+  "lift": {
+   "0.005": {
+    "OBVIOUS": {
+     "control_retained": 0.0,
+     "source_retained": 0.0,
+     "lift": 0.0,
+     "n": 60
+    },
+    "MODERATE": {
+     "control_retained": 0.0,
+     "source_retained": 0.0,
+     "lift": 0.0,
+     "n": 60
+    },
+    "SUBTLE": {
+     "control_retained": 0.05,
+     "source_retained": 0.05,
+     "lift": 0.0,
+     "n": 60
+    },
+    "NEAR_NOISE_FLOOR": {
+     "control_retained": 0.0,
+     "source_retained": 0.0,
+     "lift": 0.0,
+     "n": 60
+    }
+   },
+   "0.01": {
+    "OBVIOUS": {
+     "control_retained": 0.0,
+     "source_retained": 0.0,
+     "lift": 0.0,
+     "n": 60
+    },
+    "MODERATE": {
+     "control_retained": 0.0,
+     "source_retained": 0.0,
+     "lift": 0.0,
+     "n": 60
+    },
+    "SUBTLE": {
+     "control_retained": 0.1,
+     "source_retained": 0.1,
+     "lift": 0.0,
+     "n": 60
+    },
+    "NEAR_NOISE_FLOOR": {
+     "control_retained": 0.0,
+     "source_retained": 0.0,
+     "lift": 0.0,
+     "n": 60
+    }
+   },
+   "0.02": {
+    "OBVIOUS": {
+     "control_retained": 0.03333333333333333,
+     "source_retained": 0.03333333333333333,
+     "lift": 0.0,
+     "n": 60
+    },
+    "MODERATE": {
+     "control_retained": 0.08333333333333333,
+     "source_retained": 0.08333333333333333,
+     "lift": 0.0,
+     "n": 60
+    },
+    "SUBTLE": {
+     "control_retained": 0.18333333333333332,
+     "source_retained": 0.18333333333333332,
+     "lift": 0.0,
+     "n": 60
+    },
+    "NEAR_NOISE_FLOOR": {
+     "control_retained": 0.08333333333333333,
+     "source_retained": 0.08333333333333333,
+     "lift": 0.0,
+     "n": 60
+    }
+   }
+  }
+ },
+ "review": {
+  "pairs": 77,
+  "by_category": {
+   "PHASH_VS_EMBEDDING": 2,
+   "SIZE_VS_NOVELTY": 25,
+   "TELEMETRY_VS_IMAGE": 25,
+   "SEQUENCE_METHODS": 25
+  },
+  "annotations_collected": 0
+ },
+ "git": "577d5be38acf5080347b664189c5926d5114f334",
+ "declared": {
+  "per_level": 30,
+  "near_duplicates": 120,
+  "time_link_s": 120,
+  "sequence_fractions": [
+   0.5,
+   0.25,
+   0.125
+  ],
+  "control_budgets": [
+   0.005,
+   0.01,
+   0.02
+  ],
+  "fine_grid": [
+   0.0005,
+   0.0005830281060297251,
+   0.0006798435448412177,
+   0.0007927357886906194,
+   0.0009243744909245455,
+   0.0010778726174118585,
+   0.0012568600613418782,
+   0.001465569482217119,
+   0.0017089363989440257,
+   0.0019927159040031887,
+   0.002323618758732584,
+   0.0027094700880779987,
+   0.00315939442759262,
+   0.0036840314986403863,
+   0.00429578781441231,
+   0.0050091300666847685,
+   0.00584092723127155,
+   0.006810849482211397,
+   0.00794183334813449,
+   0.009260624110733136,
+   0.010798408271867904,
+   0.012591551045765731,
+   0.014682456316378807,
+   0.017120569396005033,
+   0.019963546298206583,
+   0.023278617175760245,
+   0.027144176165949066,
+   0.031651635239541,
+   0.036907585892906616,
+   0.04303631980254152,
+   0.05018276804993071,
+   0.05851592842296028,
+   0.068232861842019,
+   0.07956335241748048,
+   0.09277534133867851,
+   0.10818126309390201,
+   0.12614543385908233,
+   0.14709266677431748,
+   0.17151831784058383,
+   0.2
+  ],
+  "phash_max_bits": 10,
+  "scene_max_deg": 15.0,
+  "vision_model": "mobilenetv2-12"
+ }
+}
