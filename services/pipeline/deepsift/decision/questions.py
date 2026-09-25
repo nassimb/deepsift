@@ -116,3 +116,56 @@ QUESTIONS_V2["instrument_failure"] = QuestionSpec(
         "uncertain": "The evidence points both ways, or there is too little information to tell a malfunction from a natural phenomenon",
     },
 )
+
+
+# ---------------------------------------------------------------------------------------------------
+# JEV_SCHEMA_V3 (2026-09-25, VALIDATION-only redesign after the q1 pilot and the q2 wording experiment).
+# Jev answers ONLY scientific questions about an already-detected, already quality-controlled candidate.
+# Removed entirely (system decisions, pathological in the q1 pilot): instrument_failure, downlink_action,
+# needs_deep_analysis. Data quality is deterministic metadata in the state (decision/state.py
+# data_quality_state), never a Jev question. No instrument-anomaly class.
+# Two requests per event, so the mission objective can never reach the phenomenon class:
+#   V3_SCIENCE   — state WITHOUT any mission objective: scientific_interest + phenomenon_class
+#   V3_RELEVANCE — same state PLUS the mission objective:  mission_relevance only
+QUESTION_SCHEMA_VERSION["v3"] = "2026-09-25 JEV_SCHEMA_V3 validation-only redesign"
+
+QUESTIONS_V3_SCIENCE: dict[str, QuestionSpec] = {
+    "scientific_interest": QuestionSpec(
+        "choice",
+        "Assuming the measurements are valid, how much would planetary scientists want to study this detected Mars surface "
+        "environmental event?",
+        {
+            "none": "Ordinary day-to-day behaviour; nothing a scientist would look at twice",
+            "low": "Slightly unusual, but within the range routinely seen at this site",
+            "medium": "Clearly unusual and worth a record, but of a kind seen fairly often",
+            "high": "A strong, rare, long-lasting or multi-sensor departure from usual conditions that scientists would study",
+            "exceptional": "Among the most unusual environmental events this instrument records, e.g. a major solar particle "
+                           "event or an extreme atmospheric event",
+        },
+    ),
+    "phenomenon_class": QuestionSpec(
+        "choice",
+        "Which kind of natural phenomenon best explains this event, assuming the measurements are valid?",
+        {
+            "atmospheric": "A change in the atmosphere: pressure, dust, humidity or ultraviolet flux",
+            "radiation": "A change in the surface radiation environment measured by the dosimeter",
+            "thermal": "A change in air or ground temperature not explained by the usual daily cycle",
+            "other_physical": "A real physical change that fits none of the classes above",
+            "uncertain": "The description does not clearly point to one of these classes",
+        },
+    ),
+}
+
+QUESTIONS_V3_RELEVANCE: dict[str, QuestionSpec] = {
+    "mission_relevance": QuestionSpec(
+        "choice",
+        "How relevant is this event to the mission's current scientific objective stated in the description?",
+        {
+            "none": "Unrelated to the stated objective",
+            "low": "Only loosely connected to the stated objective",
+            "medium": "Partly within the stated objective",
+            "high": "Directly within the stated objective",
+            "very_high": "A central example of what the stated objective asks for",
+        },
+    ),
+}

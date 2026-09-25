@@ -30,8 +30,9 @@ from pathlib import Path
 
 from deepsift.core.models import AnswerDist, EngineDecision, ScientificEvent
 from deepsift.decision.base import DecisionEngine
-from deepsift.decision.questions import QUESTIONS, QUESTIONS_V2, SINGLE_DECISION_QUESTIONS, QuestionSpec
-from deepsift.decision.state import build_state_variant
+from deepsift.decision.questions import (QUESTIONS, QUESTIONS_V2, QUESTIONS_V3_RELEVANCE, QUESTIONS_V3_SCIENCE,
+                                         SINGLE_DECISION_QUESTIONS, QuestionSpec)
+from deepsift.decision.state import build_state_v3, build_state_variant
 
 VARIANTS = {
     # name: (state variant, question set)
@@ -44,9 +45,21 @@ VARIANTS = {
 # Validation-only question-schema experiments. Kept OUT of VARIANTS so the pre-registered five are unchanged.
 SCHEMA_VARIANTS = {
     "no_mission_objective@q2": ("no_mission_objective", "five_q2"),
+    # JEV_SCHEMA_V3: science questions on an objective-free state; relevance on the same state + objective
+    "v3_science": ("v3", "v3_science"),
+    "v3_relevance": ("v3_objective", "v3_relevance"),
+    # diagnostic only: the science questions asked WITH the objective in the state (to measure leakage we designed out)
+    "v3_science_objective_diag": ("v3_objective", "v3_science"),
 }
 ALL_VARIANTS = {**VARIANTS, **SCHEMA_VARIANTS}
-QUESTION_SETS = {"five": QUESTIONS, "five_q2": QUESTIONS_V2, "single": SINGLE_DECISION_QUESTIONS}
+QUESTION_SETS = {"five": QUESTIONS, "five_q2": QUESTIONS_V2, "single": SINGLE_DECISION_QUESTIONS,
+                 "v3_science": QUESTIONS_V3_SCIENCE, "v3_relevance": QUESTIONS_V3_RELEVANCE}
+
+
+def v3_thresholds(cfg) -> dict[str, float]:
+    """Frozen detector thresholds, used only to describe magnitude in the V3 state."""
+    d = cfg.detection
+    return {"REMS": d.z_threshold, "RAD": d.rad_z_threshold, "dip_pa": d.dip_threshold_pa}
 
 
 def question_specs_for(variant: str) -> dict[str, QuestionSpec]:
@@ -143,7 +156,7 @@ class JevDecisionEngine(DecisionEngine):
     def __init__(self, model: str = "typesafe/jev-1.13", timeout_s: float = 10.0, max_concurrency: int = 8,
                  price_per_mtok_input_usd: float = 0.042, client=None, variant: str = "no_mission_objective",
                  call_log: Path | None = None, run_id: str | None = None, max_retries: int = 2,
-                 cache=None, use_cache: bool = True, budget: ApiBudget | None = None):
+                 cache=None, use_cache: bool = True, budget: ApiBudget | None = None, v3_thresholds: dict | None = None):
         if variant not in ALL_VARIANTS:
             raise ValueError(f"unknown Jev variant {variant}")
         self.model = model
@@ -154,6 +167,9 @@ class JevDecisionEngine(DecisionEngine):
         self.variant = variant
         self.state_variant = ALL_VARIANTS[variant][0]
         self.question_specs = question_specs_for(variant)
+        if self.state_variant.startswith("v3") and not v3_thresholds:
+            raise ValueError("V3 variants need v3_thresholds=v3_thresholds(cfg)")
+        self.v3_thresholds = v3_thresholds
         self.call_log = call_log
         self.run_id = run_id
         self.max_retries = max_retries
@@ -195,7 +211,11 @@ class JevDecisionEngine(DecisionEngine):
         sdkv = sdk_version()
 
         def one(e: ScientificEvent) -> EngineDecision:
-            state = build_state_variant(e, mission_name, location, self.state_variant, objective)
+            if self.state_variant.startswith("v3"):
+                state = build_state_v3(e, mission_name, location, self.v3_thresholds,
+                                       objective if self.state_variant == "v3_objective" else None)
+            else:
+                state = build_state_variant(e, mission_name, location, self.state_variant, objective)
             from deepsift.decision.jev_cache import request_key
 
             payload_hash = request_key(state, qpayload, self.variant, self.model, sdkv, TRANSPORT)

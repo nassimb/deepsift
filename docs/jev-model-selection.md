@@ -95,6 +95,30 @@ but RAD `event_type = instrument_anomaly` 60 % → 84 % (documented Forbush decr
 ground-truth accuracy unchanged within noise (n = 37: event type 0.41 → 0.35, instrument failure 0.32 → 0.35).
 **Not adopted.** No further wording iterations were run.
 
+## JEV_SCHEMA_V3 — final redesign pilot (declared before any V3 answer existed)
+
+Jev answers only scientific questions about an already-detected candidate; instrument failure, downlink action and
+deep-analysis routing are system decisions and are no longer asked. Code: `decision/questions.py`
+(`QUESTIONS_V3_SCIENCE`, `QUESTIONS_V3_RELEVANCE`), `decision/state.py` (`build_state_v3`, `data_quality_state`),
+`evaluation/v3_adapter.py`, `scripts/jev_v3_pilot.py`. q1/q2 runs and cache entries are kept.
+
+* Requests: V3_SCIENCE (objective-free state) → `scientific_interest` (none…exceptional) + `phenomenon_class`
+  (atmospheric / radiation / thermal / other_physical / uncertain; no instrument class). V3_RELEVANCE (same state +
+  objective) → `mission_relevance` only. The objective therefore cannot reach the phenomenon class. Diagnostic only:
+  the science questions re-asked with the objective in the state (2 objectives × 100 events) + an uncached repeat baseline.
+* `data_quality_state` CLEAN / SUSPECT / BAD from the frozen detector flags and sample counts only (no new threshold).
+* State wording: qualitative buckets, no raw rows, none of failure / important / critical / valuable / interesting.
+* Adapter (not tuned): ordinal map 0 / .25 / .5 / .75 / 1 on the CHOSEN category; QC factor 1 / 0.5 / 0; frozen
+  objective weights for {science, relevance, anomaly strength, novelty}; no confidence penalty; no instrument-failure
+  floor; frozen action thresholds. `phenomenon_class` not used in priority. RULES+JEV_V3 = RULES unchanged + 0.10 ×
+  (Jev signal − 0.5), actions = RULES actions. Control V3_ADAPTER_NO_JEV = the adapter with every Jev value = 0.5.
+* Health gates checked before ranking: any category > 90 %; relevance nearly constant; phenomenon class moving with the
+  objective beyond the repeat baseline; confidence not separating correct from incorrect.
+* Sample (validation, seed 20260925): 15 synthetic batches (first B reaching ≥ 100 medium and ≥ 100 high), all medium,
+  high subsampled to ≈ 150, ≤ 2 low and 5 unlabelled distractors per group; all documented-overlap real candidates +
+  60 unlabelled per real segment. Preflight: 598 events, 1,500 live calls, est. $0.046.
+* Outcome rule (stop rule): PROCEED / MARGINAL / STOP JEV after this pilot; no fourth redesign.
+
 ## Selection record
 
 *Empty until the validation ablation has run.* To be filled from `--freeze-jev` output: chosen variant,
