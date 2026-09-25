@@ -159,3 +159,53 @@ textarea {
 .btn[data-active="true"]:hover {
   color: var(--bg);
 }
+
+/* ---------------------------------------------------------------- homepage only (class names prefixed home-) */
+.home-grid {
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 56px 56px;
+  background-position: -1px -1px;
+}
+.home-range {
+  appearance: none;
+  height: 4px;
+  background: var(--line-2);
+  outline: none;
+}
+.home-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: var(--ink);
+  border: 2px solid var(--bg);
+  cursor: pointer;
+}
+.home-range::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  background: var(--ink);
+  border: 2px solid var(--bg);
+  border-radius: 0;
+  cursor: pointer;
+}
+.home-range:focus-visible {
+  outline: 1px solid var(--ink-3);
+  outline-offset: 6px;
+}
+@keyframes home-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+.home-grow {
+  transform-origin: left;
+  animation: home-grow 900ms ease-out both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-grow {
+    animation: none;
+  }
+}
