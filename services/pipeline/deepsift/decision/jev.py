@@ -110,6 +110,9 @@ class ApiBudget:
             self.cost_usd += usd or 0.0
 
 
+FATAL = ("TypeSafeAuthenticationError", "TypeSafePermissionDeniedError")   # stop sending after the first one
+
+
 RETRYABLE = ("TypeSafeRateLimitError", "TypeSafeInternalServerError", "TypeSafeAPIConnectionError", "TypeSafeAPITimeoutError")
 
 
@@ -142,6 +145,7 @@ class JevDecisionEngine(DecisionEngine):
         self.cache = cache if use_cache else None
         self.budget = budget
         self.stats = {"cache_hits": 0, "live_calls": 0, "errors": 0}
+        self.fatal_error: str | None = None
 
     def describe(self) -> dict:
         return {"name": self.name, "is_real_model": True, "variant": self.variant, "model": self.model,
@@ -184,6 +188,8 @@ class JevDecisionEngine(DecisionEngine):
                     return EngineDecision(engine=self.name, model=hit["model_returned"], answers=answers,
                                           latency_ms=hit["latency_ms"] or 0.0, input_tokens=hit["input_tokens"],
                                           output_tokens=hit["output_tokens"], cost_usd=0.0, state_sent=state)
+            if self.fatal_error:                            # fail fast: never repeat a rejected credential
+                return EngineDecision(engine=self.name, model=self.model, error=f"not sent: {self.fatal_error}", state_sent=state)
             if self.budget is not None:
                 self.budget.reserve()                       # raises before any call beyond the hard limit
             self.stats["live_calls"] += 1
@@ -197,6 +203,9 @@ class JevDecisionEngine(DecisionEngine):
                     break
                 except Exception as exc:  # noqa: BLE001 — recorded; gated to deterministic fallback
                     err = f"{type(exc).__name__}: {exc}"[:500]
+                    if type(exc).__name__ in FATAL:
+                        self.fatal_error = err
+                        break
                     if type(exc).__name__ not in RETRYABLE or attempts > self.max_retries:
                         break
                     time.sleep(min(0.5 * 2 ** (attempts - 1), 5.0))

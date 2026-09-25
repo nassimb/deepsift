@@ -14,3 +14,4 @@ node_modules/
 artifacts/runs/*/rows.jsonl
 artifacts/jev_smoke_calls.jsonl
 artifacts/*.log
+.DS_Store

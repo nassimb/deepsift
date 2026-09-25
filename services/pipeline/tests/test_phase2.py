@@ -255,3 +255,17 @@ def test_detection_decomposition():
     assert d["high_detection_recall"] == pytest.approx(2 / 3) and d["high_conditional_retention"] == 0.5
     assert d["retained_undetected"] == 1
     assert mcnemar(0, 0) is None and mcnemar(10, 0) == pytest.approx(2 / 1024) and mcnemar(5, 5) == 1.0
+
+
+def test_auth_error_fails_fast():
+    from typesafe_sdk import RetryPolicy, TypeSafeClient
+
+    n = {"i": 0}
+
+    def deny(request):
+        n["i"] += 1
+        return httpx2.Response(401, json={"detail": "Cannot authenticate"})
+
+    client = TypeSafeClient(api_key="bad", transport=httpx2.MockTransport(deny), retry=RetryPolicy(max_retries=0))
+    ds = JevDecisionEngine(client=client, use_cache=False, max_concurrency=1).decide([make_event(eid=f"E{i}") for i in range(10)], "MSL", "Gale")
+    assert n["i"] == 1 and all(d.error for d in ds) and ds[-1].error.startswith("not sent")

@@ -87,6 +87,17 @@ def main() -> int:
     objective = load_objectives()[cfg.objective].model_dump(mode="json")
     events = [e for e, _, _ in selected]
     strata = {e.id: list(k) for e, _, k in selected}
+    # single-request probe before any batch: a rejected key or schema problem costs one call, not N
+    probe_eng = JevDecisionEngine(model=cfg.decision_engine.jev_model, variant=variants[0], call_log=out / "jev_calls.jsonl",
+                                  run_id=run_id, cache=cache, budget=budget, max_concurrency=1)
+    [pd] = probe_eng.decide(events[:1], *MISSION, objective=objective)
+    specs0 = SINGLE_DECISION_QUESTIONS if VARIANTS[variants[0]][1] == "single" else QUESTIONS
+    problem = validate(pd, specs0)
+    if problem:
+        print(f"STOP after 1 probe request: {problem}")
+        (out / "summary.json").write_text(json.dumps({"stopped": True, "probe_event": events[0].id, "problem": problem}, indent=1))
+        return 1
+    print(f"probe OK: {events[0].id} · {pd.latency_ms:.0f} ms · tokens {pd.input_tokens} · model {pd.model}")
     per_variant, answers_by = {}, defaultdict(dict)
     for v in variants:
         eng = JevDecisionEngine(model=cfg.decision_engine.jev_model, timeout_s=cfg.decision_engine.timeout_s,
