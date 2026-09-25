@@ -59,7 +59,7 @@ blackout:
   storage_bytes: 196608
 decision_engine:
   kind: auto
-  jev_model: jev-latest
+  jev_model: jev-1.13.0
   price_per_mtok_input_usd: 0.042
   timeout_s: 10.0
   max_concurrency: 8

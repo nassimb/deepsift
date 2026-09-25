@@ -28,6 +28,8 @@ interface Point {
   downlink_bytes?: Stat;
   false_positive_units?: Stat;
   value_per_mb_proxy?: Stat;
+  high_detection_recall?: Stat;
+  high_conditional_retention?: Stat;
 }
 interface Results {
   run_id: string;
@@ -58,7 +60,9 @@ function TradeoffTable({ title, rows, note }: { title: string; rows: Record<stri
     ["labels", "labels", (x) => (x == null ? "—" : x.toFixed(0))],
     ["strict_recall", "strict recall", (x) => pct(x, 0)],
     ["tolerant_recall", "tolerant recall", (x) => pct(x, 0)],
-    ["high_tolerant_recall", "high-sev recall", (x) => pct(x, 0)],
+    ["high_tolerant_recall", "high-sev recall (end-to-end)", (x) => pct(x, 0)],
+    ["high_detection_recall", "high-sev detection", (x) => pct(x, 0)],
+    ["high_conditional_retention", "retention | detected", (x) => pct(x, 0)],
     ["coverage", "coverage", (x) => pct(x, 1)],
     ["precision_lower_bound", "precision (lb)", (x) => pct(x, 1)],
     ["false_positive_units", "unlabelled kept", (x) => (x == null ? "—" : x.toFixed(0))],
@@ -167,7 +171,7 @@ export default function StudyPage() {
                 Documented events and synthetic injections are never pooled. RANDOM shows mean over 30 seeds [95 % CI].
                 {!res.jev_status.startsWith("enabled") && <span style={{ color: "var(--s-warn)" }}> Jev: {res.jev_status}.</span>}
               </div>
-              <TradeoffTable title="Documented events (real)" rows={res.real_reference} note="precision (lb) is a lower bound: unlabelled real phenomena exist. Coverage = fraction of the labelled event's raw data covered by retained products." />
+              <TradeoffTable title="Documented events (real)" rows={res.real_reference} note="End-to-end recall = detection recall (frozen candidate filter, identical for all strategies) × retention given detection. precision (lb) is a lower bound: unlabelled real phenomena exist. Coverage = fraction of the labelled event's raw data covered by retained products. n = 14 on test: too few for strong claims." />
               <TradeoffTable title="Synthetic stress test" rows={res.synthetic_reference} note="injections placed in scored sols only, magnitudes in σ of the local background; ORACLE — NOT DEPLOYABLE — is a label-aware upper bound." />
               <Section title="Figures">
                 <div className="grid grid-cols-2 gap-2 p-2">

@@ -180,3 +180,78 @@ def test_test_split_refuses_without_frozen_config(tmp_path, monkeypatch):
     r = subprocess.run([sys.executable, str(root / "scripts" / "run_study.py"), "--split", "test", "--no-jev"],
                        capture_output=True, text=True, cwd=root)
     assert r.returncode != 0 and "refusing to evaluate TEST" in (r.stderr + r.stdout)
+
+
+# ------------------------------------------------------------------ Jev cache, budget guard, plan guard
+def test_cache_prevents_second_api_call(tmp_path):
+    from typesafe_sdk import RetryPolicy, TypeSafeClient
+
+    from deepsift.decision.jev_cache import JevCache
+
+    sent = []
+    client = TypeSafeClient(api_key="k", transport=_transport(sent), retry=RetryPolicy(max_retries=0))
+    cache = JevCache(tmp_path / "c.sqlite")
+    e = make_event()
+    eng = JevDecisionEngine(client=client, cache=cache, run_id="R1")
+    [d1] = eng.decide([e], "MSL", "Gale")
+    [d2] = JevDecisionEngine(client=client, cache=cache, run_id="R2").decide([e], "MSL", "Gale")
+    assert len(sent) == 1, "identical request must be served from cache"
+    assert d1.answers == d2.answers and d2.cost_usd == 0.0
+    # a different variant is a different request
+    JevDecisionEngine(client=client, cache=cache, variant="minimal").decide([e], "MSL", "Gale")
+    assert len(sent) == 2
+    # explicit research bypass
+    JevDecisionEngine(client=client, use_cache=False).decide([e], "MSL", "Gale")
+    assert len(sent) == 3
+
+
+def test_objective_text_only_changes_keys_for_full_context(tmp_path):
+    from deepsift.decision.jev import VARIANTS, questions_payload
+    from deepsift.decision.jev_cache import request_key
+    from deepsift.decision.questions import QUESTIONS
+
+    e = make_event()
+    q = questions_payload(QUESTIONS)
+    k = lambda v, o: request_key(build_state_variant(e, "M", "L", VARIANTS[v][0], o), q, v, "jev-1.13.0", "0.7.1")  # noqa: E731
+    a, b = {"name": "A", "description": "x"}, {"name": "B", "description": "y"}
+    assert k("no_mission_objective", a) == k("no_mission_objective", b)
+    assert k("full_context", a) != k("full_context", b)
+
+
+def test_hard_budget_stops_live_calls(tmp_path):
+    from typesafe_sdk import RetryPolicy, TypeSafeClient
+
+    from deepsift.decision.jev import ApiBudget, JevBudgetExceeded
+
+    sent = []
+    client = TypeSafeClient(api_key="k", transport=_transport(sent), retry=RetryPolicy(max_retries=0))
+    eng = JevDecisionEngine(client=client, use_cache=False, budget=ApiBudget(2, 10.0), max_concurrency=1)
+    with pytest.raises(JevBudgetExceeded):
+        eng.decide([make_event(eid=f"E{i}") for i in range(5)], "MSL", "Gale")
+    assert len(sent) == 2
+
+
+def test_plan_guard_blocks_large_or_unmeasured_runs():
+    from deepsift.evaluation.jev_plan import guard
+
+    s = {"live_calls_needed": 5000, "estimated_cost_usd": 0.2, "token_estimate_basis": "measured 3.9 chars/token"}
+    assert guard(s, 1000, 1.0, None, None)[0] is False
+    assert guard(s, 1000, 1.0, 5000, None)[0] is True
+    s2 = {"live_calls_needed": 500, "estimated_cost_usd": 0.02, "token_estimate_basis": "ASSUMED 4.0 chars/token"}
+    assert guard(s2, 1000, 1.0, None, None)[0] is False       # cost not measured yet → no bulk run
+    s3 = {"live_calls_needed": 30, "estimated_cost_usd": 0.001, "token_estimate_basis": "ASSUMED 4.0 chars/token"}
+    assert guard(s3, 1000, 1.0, None, None)[0] is True        # the smoke test is allowed
+
+
+def test_detection_decomposition():
+    from deepsift.evaluation.metrics2 import decompose, mcnemar
+
+    scored = [{"severity": "high", "detected": True, "tolerant_hit": True},
+              {"severity": "high", "detected": True, "tolerant_hit": False},
+              {"severity": "high", "detected": False, "tolerant_hit": False},
+              {"severity": "low", "detected": False, "tolerant_hit": True}]
+    d = decompose(scored)
+    assert d["detection_recall"] == 0.5 and d["conditional_retention"] == 0.5 and d["end_to_end_recall"] == 0.5
+    assert d["high_detection_recall"] == pytest.approx(2 / 3) and d["high_conditional_retention"] == 0.5
+    assert d["retained_undetected"] == 1
+    assert mcnemar(0, 0) is None and mcnemar(10, 0) == pytest.approx(2 / 1024) and mcnemar(5, 5) == 1.0

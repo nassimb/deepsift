@@ -1,0 +1,67 @@
+{
+ "split": "validation",
+ "batches_per_segment": 25,
+ "model_requested": "jev-latest",
+ "funnel": [
+  {
+   "segment": "VAL-2013-10-SEP",
+   "raw_samples_scored_sols": 2362372,
+   "instrument_windows": 3596,
+   "candidate_windows": 350,
+   "candidate_events": 135
+  },
+  {
+   "segment": "VAL-2014-10-FD",
+   "raw_samples_scored_sols": 5470397,
+   "instrument_windows": 8050,
+   "candidate_windows": 1184,
+   "candidate_events": 323
+  }
+ ],
+ "candidate_events": {
+  "real": 458,
+  "synthetic": 11766
+ },
+ "requests_per_event": 1,
+ "decisions_per_request": {
+  "full_context": 5,
+  "no_mission_objective": 5,
+  "minimal": 5,
+  "numeric_only": 5,
+  "single_decision": 1
+ },
+ "per_variant": {
+  "full_context": {
+   "raw_requests_without_cache": 12224,
+   "unique_payloads": 3145,
+   "real_unique": 458,
+   "synthetic_payloads_identical_to_a_real_payload": null
+  },
+  "no_mission_objective": {
+   "raw_requests_without_cache": 12224,
+   "unique_payloads": 3145,
+   "real_unique": 458,
+   "synthetic_payloads_identical_to_a_real_payload": null
+  },
+  "minimal": {
+   "raw_requests_without_cache": 12224,
+   "unique_payloads": 1216,
+   "real_unique": 415,
+   "synthetic_payloads_identical_to_a_real_payload": null
+  },
+  "numeric_only": {
+   "raw_requests_without_cache": 12224,
+   "unique_payloads": 11571,
+   "real_unique": 458,
+   "synthetic_payloads_identical_to_a_real_payload": null
+  },
+  "single_decision": {
+   "raw_requests_without_cache": 12224,
+   "unique_payloads": 3145,
+   "real_unique": 458,
+   "synthetic_payloads_identical_to_a_real_payload": null
+  }
+ },
+ "total_raw_requests_without_cache": 61120,
+ "total_unique_payloads": 22222
+}

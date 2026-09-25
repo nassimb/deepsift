@@ -98,7 +98,8 @@ def synthetic_labels_with_meta(injections) -> tuple[list[Label], dict]:
 
 class Study:
     def __init__(self, cfg: Config, split: str, run_id: str | None = None, n_batches: int = 25, use_jev: bool = True,
-                 jev_variants: list[str] | None = None, experiments: set[str] | None = None, out_root: Path | None = None):
+                 jev_variants: list[str] | None = None, experiments: set[str] | None = None, out_root: Path | None = None,
+                 budget=None, use_cache: bool = True):
         self.cfg = cfg
         self.split = split
         self.run_id = run_id or datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S") + f"-{split}-" + uuid.uuid4().hex[:4]
@@ -116,7 +117,8 @@ class Study:
                     eng = JevDecisionEngine(model=cfg.decision_engine.jev_model, timeout_s=cfg.decision_engine.timeout_s,
                                             max_concurrency=cfg.decision_engine.max_concurrency,
                                             price_per_mtok_input_usd=cfg.decision_engine.price_per_mtok_input_usd,
-                                            variant=v, call_log=self.out / "jev_calls.jsonl", run_id=self.run_id)
+                                            variant=v, call_log=self.out / "jev_calls.jsonl", run_id=self.run_id,
+                                            budget=budget, use_cache=use_cache)
                     self.engines.append(EngineSpec("JEV_" + v.upper(), eng, single=(v == "single_decision")))
                 self.jev_status = "enabled"
             else:
@@ -140,6 +142,8 @@ class Study:
         self.latency.setdefault(f"engine_call_ms:{spec.key}", []).extend(d.latency_ms for d in ds)
         if spec.key != "MOCK":
             self.jev_usage["calls"] += len(ds)
+            self.jev_usage["live_calls"] = sum(sp.engine.stats["live_calls"] for sp in self.engines if sp.key != "MOCK")
+            self.jev_usage["cache_hits"] = sum(sp.engine.stats["cache_hits"] for sp in self.engines if sp.key != "MOCK")
             self.jev_usage["errors"] += sum(1 for d in ds if d.error)
             self.jev_usage["cost_usd"] += sum(d.cost_usd or 0 for d in ds)
             self.jev_usage["input_tokens"] += sum(d.input_tokens or 0 for d in ds)
@@ -170,8 +174,9 @@ class Study:
         out.append(oracle_strategy(iw, labels, tol))
         return out
 
-    def _evaluate_all(self, dataset, sd, batch, strategies, iw, labels, label_meta, raw_total):
+    def _evaluate_all(self, dataset, sd, batch, strategies, iw, labels, label_meta, raw_total, events=None):
         widx = WindowIndex(iw)
+        detected = {lab.id for lab in labels if any(self._overlap(e, lab, label_meta) for e in (events or []))} if events is not None else None
         fid = self.cfg.compression.fidelity
         # RANDOM: one unit list per seed (ordering is budget-independent), re-used for every budget
         seg_seed = int(hashlib.sha256(f"{sd.segment.id}:{batch}".encode()).hexdigest()[:6], 16) * 100
@@ -185,10 +190,10 @@ class Study:
             for s in strategies:
                 if not s.available:
                     continue
-                m = evaluate_selection(allocate(s.units, budget), labels, label_meta, widx, raw_total, fid)
+                m = evaluate_selection(allocate(s.units, budget), labels, label_meta, widx, raw_total, fid, detected)
                 self.rows.append(self._row(dataset, sd, batch, s.name, frac, None, m))
             for seed, units in enumerate(rand_orders):
-                m = evaluate_selection(allocate(units, budget), labels, label_meta, widx, raw_total, fid)
+                m = evaluate_selection(allocate(units, budget), labels, label_meta, widx, raw_total, fid, detected)
                 self.rows.append(self._row(dataset, sd, batch, "RANDOM", frac, seed, m))
 
     @staticmethod
@@ -217,7 +222,7 @@ class Study:
             dec0 = {spec.key: self._engine_decisions(spec, events0, sd) for spec in self.engines}
             strat0 = self._strategies(det0, sd, events0, iw0, sd.labels, sd.label_meta, dec0)
             if "real" in self.experiments:
-                self._evaluate_all("real", sd, None, strat0, iw0, sd.labels, sd.label_meta, raw0)
+                self._evaluate_all("real", sd, None, strat0, iw0, sd.labels, sd.label_meta, raw0, events0)
                 self._failure_examples("real", sd, events0, strat0, sd.labels, sd.label_meta, iw0, raw0)
             if "storage" in self.experiments:
                 self._storage_curve("real", sd, events0, strat0, sd.labels, sd.label_meta)
@@ -242,7 +247,7 @@ class Study:
                 labels, meta = synthetic_labels_with_meta(inj)
                 dec = {spec.key: self._engine_decisions(spec, events, sd) for spec in self.engines}
                 strat = self._strategies(det, sd, events, iw, labels, meta, dec)
-                self._evaluate_all("synthetic", sd, b, strat, iw, labels, meta, raw)
+                self._evaluate_all("synthetic", sd, b, strat, iw, labels, meta, raw, events)
                 self._failure_examples("synthetic", sd, events, strat, labels, meta, iw, raw)
                 if "calibration" in self.experiments:
                     self._calibration("synthetic", events, dec, labels, meta)
@@ -488,12 +493,42 @@ class Study:
                     p["pareto"] = i in front
                 gating[f"{dataset}:{eng}"] = pts
         res["gating"] = gating
+        res["paired_tests"] = self._paired_tests()
         res["calibration"] = {k: ece(v["conf"], v["correct"]) for k, v in self.calib.items()}
         res["latency"] = {k: percentiles(v) for k, v in self.latency.items()}
         res["timing_ms"] = self.timing
         res["jev_usage"] = self.jev_usage
         res["local_edge_footprint"] = self.local.meta | {"note": "see artifacts/models/local_edge.json"}
         return res
+
+    def _paired_tests(self) -> dict:
+        """Exact McNemar on paired high-severity tolerant hits (same labels, same budget)."""
+        from deepsift.evaluation.metrics2 import mcnemar
+
+        out = {}
+        rows = [r for r in self.rows if r.get("experiment") is None and r["strategy"] != "RANDOM"]
+        names = sorted({r["strategy"] for r in rows})
+        engines = [n for n in names if "/" in n]
+        refs = [n for n in ("RULES", "RULES_PLUS_STATISTICAL", "LOCAL_EDGE") if n in names]
+        for dataset in ("real", "synthetic"):
+            for frac in BUDGET_FRACTIONS:
+                idx = {}
+                for r in rows:
+                    if r["dataset"] == dataset and r["budget_fraction"] == frac:
+                        for lid, v in r["per_label"].items():
+                            if v["status"] == "scored" and v["severity"] == "high":
+                                idx[(r["strategy"], r["segment"], r["batch"], lid)] = v["tolerant_hit"]
+                for a in engines:
+                    for b_ in refs + [e for e in engines if e != a]:
+                        keys = [(k[1], k[2], k[3]) for k in idx if k[0] == a]
+                        pairs = [(idx[(a, *k)], idx.get((b_, *k))) for k in keys if (b_, *k) in idx]
+                        if not pairs:
+                            continue
+                        bb = sum(1 for x, y in pairs if x and not y)
+                        cc = sum(1 for x, y in pairs if y and not x)
+                        out[f"{dataset}|{frac}|{a}|vs|{b_}"] = {"n_pairs": len(pairs), "a_only": bb, "b_only": cc,
+                                                                 "net_gain_labels": bb - cc, "p_value": mcnemar(bb, cc)}
+        return out
 
     @staticmethod
     def _pool(rows: list[dict]) -> dict:
@@ -510,7 +545,10 @@ class Study:
         dl = sum(r["downlink_bytes"] for r in rows)
         raw = sum(r["raw_bytes"] for r in rows)
         val = sum(r["labeled_value_proxy"] for r in rows)
-        return {"labels": len(labels), "strict_recall": rate(lambda v: True, "strict_hit"),
+        from deepsift.evaluation.metrics2 import decompose
+
+        dec = decompose(labels)
+        return {**dec, "labels": len(labels), "strict_recall": rate(lambda v: True, "strict_hit"),
                 "tolerant_recall": rate(lambda v: True, "tolerant_hit"),
                 "high_tolerant_recall": rate(lambda v: v["severity"] == "high", "tolerant_hit"),
                 "high_strict_recall": rate(lambda v: v["severity"] == "high", "strict_hit"),

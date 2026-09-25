@@ -61,7 +61,8 @@ blackout:
   storage_bytes: 196608         # 192 KiB available during blackout
 
 decision_engine:
-  kind: auto                    # auto (jev if TYPESAFE_API_KEY is set, else mock) | mock | jev
+  kind: mock                    # mock | jev | auto — the API/demo stays on mock so starting the UI never spends API calls;
+                                # Jev is evaluated only through scripts/run_study.py (preflight + budget guard)
   jev_model: jev-latest
   price_per_mtok_input_usd: 0.042   # TypeSafe published price (Sept 2026); output tokens free
   timeout_s: 10

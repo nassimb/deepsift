@@ -36,14 +36,15 @@ def order(names):
 def reference_table(res, ds):
     ref = res[f"{ds}_reference"]
     print(f"\n#### {'Documented events' if ds == 'real' else 'Synthetic stress test'} — reference budget 0.5 %\n")
-    print("| strategy | labels | strict recall | tolerant recall | high-sev recall | coverage | precision (lb) | unlabelled kept | downlinked MB | value/MB (proxy) |")
-    print("|---|---|---|---|---|---|---|---|---|---|")
+    print("| strategy | labels | strict recall | tolerant recall | high-sev recall | high-sev detection | high-sev retention given detection | coverage | precision (lb) | unlabelled kept | downlinked MB | value/MB (proxy) |")
+    print("|---|---|---|---|---|---|---|---|---|---|---|---|")
     for s in order([k for k, v in ref.items() if v]):
         v = ref[s]
         dl = val(v.get("downlink_bytes"))
         vp = val(v.get("value_per_mb_proxy"))
         print(f"| {s} | {val(v.get('labels')):.0f} | {pct(v.get('strict_recall'))}{ci(v.get('strict_recall'))} | "
               f"{pct(v.get('tolerant_recall'))}{ci(v.get('tolerant_recall'))} | {pct(v.get('high_tolerant_recall'))}{ci(v.get('high_tolerant_recall'))} | "
+              f"{pct(v.get('high_detection_recall'))} | {pct(v.get('high_conditional_retention'))} | "
               f"{pct(v.get('coverage'), 1)} | {pct(v.get('precision_lower_bound'), 1)} | {val(v.get('false_positive_units')):.0f} | "
               f"{dl / 1e6:.2f} | {'—' if vp is None else f'{vp:.1f}'} |")
 
@@ -102,6 +103,21 @@ def storage(res):
             print(f"| {s} · {pol} | " + " | ".join(cells) + " |")
 
 
+def paired(res):
+    pt = res.get("paired_tests") or {}
+    if not pt:
+        return
+    print("\n#### Paired exact McNemar tests — high-severity tolerant hits (a_only / b_only / p)\n")
+    print("| dataset | budget | A | B | pairs | A-only | B-only | net | p |")
+    print("|---|---|---|---|---|---|---|---|---|")
+    for k, v in sorted(pt.items(), key=lambda kv: (kv[0].split("|")[0], float(kv[0].split("|")[1]))):
+        ds, frac, a, _, b = k.split("|")
+        if float(frac) > 0.01:
+            continue
+        p = "—" if v["p_value"] is None else f"{v['p_value']:.3g}"
+        print(f"| {ds} | {100 * float(frac):g}% | {a} | {b} | {v['n_pairs']} | {v['a_only']} | {v['b_only']} | {v['net_gain_labels']:+d} | {p} |")
+
+
 def calibration(res):
     print("\n#### Confidence calibration (MODEL CONFIDENCE, not probability of scientific truth)\n")
     print("| series | n | ECE | mean confidence | observed agreement |")
@@ -144,6 +160,7 @@ def main():
     groups(res)
     storage(res)
     gating(res)
+    paired(res)
     calibration(res)
     latency(res)
     print(f"\nJev usage: {res['jev_usage']}")

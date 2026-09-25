@@ -61,7 +61,9 @@ class WindowIndex:
 
 
 def evaluate_selection(selection, labels: list[Label], label_meta: dict[str, dict], windows: WindowIndex,
-                       raw_total: int, fidelity: dict[str, float]) -> dict:
+                       raw_total: int, fidelity: dict[str, float], detected: set[str] | None = None) -> dict:
+    """`detected`: label ids overlapped (tolerantly) by at least one candidate event of the frozen detector.
+    Lets every strategy's recall be split into DETECTION recall × CONDITIONAL RETENTION given detection."""
     kept = [(u, a, s) for u, a, s in selection if a != DownlinkAction.DISCARD]
     downlinked = sum(s for _, _, s in kept)
     kept_by_inst: dict[str, list] = {}
@@ -113,7 +115,7 @@ def evaluate_selection(selection, labels: list[Label], label_meta: dict[str, dic
             "status": "scored", "severity": lab.severity, "subtype": m.get("subtype"), "source": lab.source.value,
             "confidence": conf, "strict_hit": strict if conf in STRICT_OK else None, "tolerant_hit": tol,
             "coverage": cov / tot, "best_fidelity": best_f, "magnitude": m.get("magnitude", {}),
-            "bucket": m.get("bucket"),
+            "bucket": m.get("bucket"), "detected": (lab.id in detected) if detected is not None else None,
         }
 
     def rate(pred, key):
@@ -154,7 +156,31 @@ def evaluate_selection(selection, labels: list[Label], label_meta: dict[str, dic
             by_group[f"{key}={g}"] = {"tolerant_recall": rate(pred, "tolerant_hit")[0], "strict_recall": rate(pred, "strict_hit")[0],
                                       "coverage": mean_of(pred, "coverage"), "n": rate(pred, "tolerant_hit")[1]}
     out["by_group"] = by_group
+    out.update(decompose([v for v in per_label.values() if v["status"] == "scored"]))
     return out
+
+
+def decompose(scored: list[dict]) -> dict:
+    """END-TO-END recall = DETECTION recall × CONDITIONAL RETENTION given detection (tolerant hits)."""
+    out = {}
+    for tag, pred in (("", lambda v: True), ("high_", lambda v: v["severity"] == "high")):
+        xs = [v for v in scored if pred(v) and v.get("detected") is not None]
+        det = [v for v in xs if v["detected"]]
+        out[f"{tag}detection_recall"] = len(det) / len(xs) if xs else None
+        out[f"{tag}conditional_retention"] = (sum(v["tolerant_hit"] for v in det) / len(det)) if det else None
+        out[f"{tag}end_to_end_recall"] = (sum(v["tolerant_hit"] for v in xs) / len(xs)) if xs else None
+        out[f"{tag}retained_undetected"] = sum(1 for v in xs if v["tolerant_hit"] and not v["detected"])
+    return out
+
+
+def mcnemar(b: int, c: int) -> float | None:
+    """Exact two-sided McNemar p-value from discordant counts (b: A-only hits, c: B-only hits)."""
+    n = b + c
+    if n == 0:
+        return None
+    k = min(b, c)
+    tail = sum(math.comb(n, i) for i in range(k + 1)) / 2 ** n
+    return min(1.0, 2 * tail)
 
 
 def ece(confidences: list[float], correct: list[bool], bins: int = 10) -> dict:

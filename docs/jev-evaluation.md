@@ -1,6 +1,6 @@
 # Jev evaluation — Phase 2 report
 
-**Status: Jev was not evaluated.** No `TYPESAFE_API_KEY` was available during Phase 2, so every Jev
+**Status: Jev has not been evaluated yet (no API key).** No `TYPESAFE_API_KEY` was available during Phase 2, so every Jev
 strategy and ablation is reported UNAVAILABLE and no Jev number appears in this report. The harness,
 the call logging, the smoke test and all five ablation variants are implemented and tested (through the
 official SDK with a mock HTTP transport); one command runs the evaluation once a key exists (see the end).
@@ -11,6 +11,68 @@ have to clear, and several of them change what the Jev question should be.
 
 > **Onboard vs cloud.** DEEPSIFT evaluates an onboard-autonomy architecture. The current Jev
 > implementation is API-hosted and therefore does not establish deployability on spacecraft hardware.
+
+## Phase 2b — real-Jev protocol (status 2026-09-25)
+
+**No live Jev call has been made.** The baseline is frozen at tag `phase2-pre-jev` (`3142727`). The live
+experiment is prepared so that it is cheap, cached, budget-guarded and pre-registered:
+
+* **Question being tested:** *under extreme bandwidth constraints, does semantic judgment improve the ordering
+  of already-detected candidate events?* Focus budgets: 0.1, 0.25, 0.5, 1 % of generated raw bytes.
+* **Staged, validation-first:** smoke (~30 events) → pilot (~300 events × 5 variants) → validation ablation →
+  selection by a rule declared before any call (`docs/jev-model-selection.md`) → TEST once with the frozen
+  primary configuration (and its gated RULES+JEV form, which reuses the same answers).
+* **Call audit:** the Phase-2 estimate of ~142,000 calls was 28,387 test candidates × 5 variants with no cache.
+  With a request-level cache and ablations restricted to validation: validation 22,222 unique calls
+  (61,120 without cache), test 7,499 unique calls for one frozen variant. Requests per event = 1; the five
+  bounded judgments share one request (Jev evaluates all questions against one state in parallel).
+* **Cost preflight** (official price $0.042 per million input tokens, output free; token count *assumed* at
+  4 chars/token until the smoke test measures it): smoke ≈ $0.001, pilot ≈ $0.04, validation ≈ $0.72,
+  test ≈ $0.28. Rate limit 1,200 requests/min → validation ≥ 18.5 min, test ≥ 6.2 min.
+* **Guards:** `JEV_MAX_CALLS` (default 1,000) and `JEV_MAX_COST_USD` (default $1.00); larger runs need an explicit
+  `--allow-calls/--allow-cost`; the engine hard-stops at the limit; bulk runs are refused until the smoke test
+  has measured real token usage.
+* **Every call** is cached (key: exact state + question schema + variant + pinned model `jev-1.13.0` + SDK
+  version) and logged per run in `jev_calls.jsonl` with payload hash, request id, latency, retries, tokens.
+* **Objective reuse:** only JEV_FULL_CONTEXT puts the mission objective's name/description in Jev's context;
+  for every other variant the objective acts purely in deterministic scoring, so changing objective weights,
+  budgets, storage or priority weights needs no new call.
+* **Detection vs ranking** is now separated in every result: DETECTION recall (frozen candidate filter, the
+  same for every strategy) × RETENTION given detection = END-TO-END recall. Jev is judged on retention given
+  detection; it cannot recover events the detector never surfaced.
+* **Significance:** exact paired McNemar tests on high-severity labels per budget (Jev vs RULES,
+  RULES_PLUS_STATISTICAL, LOCAL_EDGE).
+
+Funnel (validation, real data, measured): 7,832,769 raw channel samples → 11,646 instrument windows →
+1,534 candidate windows → 458 candidate events → 458 Jev evaluations per variant. Jev never sees raw samples.
+
+### The twelve Phase-2b questions — pending the live run
+
+1. Did real Jev improve ranking under tight bandwidth? — *pending*
+2. At what bandwidth regimes? — *pending*
+3. Statistically meaningful? — *pending (McNemar, per budget)*
+4. Did Jev beat RULES + STATISTICAL? — *pending*
+5. Did Jev beat the 1.6 KB local model? — *pending*
+6. Important events Jev saved that rules lost? — *pending (A-only counts)*
+7. Important events Jev wrongly deprioritized? — *pending (B-only counts)*
+8. API cost? — *pending (measured from reported tokens)*
+9. p50 / p95 / p99 latency? — *pending*
+10. Confidence calibrated? — *pending (ECE, reliability diagram)*
+11. Gain large enough to justify remote semantic inference? — *pending*
+12. Does this justify Phase 3? — *pending; Phase 3 will not start automatically*
+
+## Documented limitations kept as results
+
+* **Forbush decreases.** The generic candidate detector (5-min windows, |z| vs a 7-sol trailing baseline,
+  thresholds calibrated to a 2 % false-flag rate) is poorly matched to slowly evolving heliophysical events:
+  a 5 % multi-day dose drop is ≈ 2σ of hourly RAD scatter and is rarely surfaced as a candidate. On test,
+  practical strategies cover ≈ 2 % of Forbush-decrease data (random 7 %). This is not changed using test
+  knowledge; a dedicated temporal detector is future work and would need a new untouched test split.
+* **Protected-tier storage rule.** v0.1 intuition: after watching the sol 242 SEP degraded in a blackout,
+  protect high-utility products. Validation (not used to choose storage policy — the rule stayed the v0.1
+  default): already worse at 0.5–2 MiB (mock engine, 1 MiB: 7/23 vs 11/23 high-severity synthetic events
+  preserved). Held-out test: same direction (1 MiB: 18/56 vs 27/56). Evidence that intuitive triage rules
+  need evaluation; it is kept, not "fixed", against this test set.
 
 ## Runs and provenance
 

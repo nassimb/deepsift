@@ -1,0 +1,78 @@
+{
+ "mode": "validation",
+ "split": "validation",
+ "variants": [
+  "full_context",
+  "no_mission_objective",
+  "minimal",
+  "numeric_only",
+  "single_decision"
+ ],
+ "model": "jev-1.13.0",
+ "candidate_events": {
+  "real": 458,
+  "synthetic": 11766
+ },
+ "requests_without_cache": 61120,
+ "unique_requests": 22222,
+ "already_cached": 0,
+ "live_calls_needed": 22222,
+ "live_calls_by_variant": {
+  "full_context": 3145,
+  "no_mission_objective": 3145,
+  "minimal": 1216,
+  "numeric_only": 11571,
+  "single_decision": 3145
+ },
+ "requests_per_event": 1,
+ "decisions_per_request": {
+  "full_context": 5,
+  "no_mission_objective": 5,
+  "minimal": 5,
+  "numeric_only": 5,
+  "single_decision": 1
+ },
+ "estimated_input_tokens": 17053759,
+ "token_estimate_basis": "ASSUMED 4.0 chars/token (no real usage yet) \u2014 treat cost as \u00b150 %",
+ "estimated_cost_usd": 0.7163,
+ "pricing": {
+  "model": "jev-1.13.0",
+  "usd_per_mtok_input": 0.042,
+  "usd_per_mtok_output": 0.0,
+  "requests_per_minute": 1200,
+  "tokens_per_second": 250000,
+  "source": "https://docs.typesafe.ai/models.md",
+  "retrieved": "2026-09-25",
+  "verbatim": "Price (per Btok / per Mtok) $42 / $0.042 \u2014 Charged per input token. Output tokens are free."
+ },
+ "estimated_minutes": {
+  "rate_limit_floor": 18.5,
+  "latency_bound_range": [
+   3.2,
+   23.1
+  ],
+  "basis": "vendor-stated 70\u2013500 ms, 8 concurrent"
+ },
+ "funnel": [
+  {
+   "segment": "VAL-2013-10-SEP",
+   "raw_samples": 2362372,
+   "instrument_windows": 3596,
+   "candidate_windows": 350,
+   "candidate_events": 135
+  },
+  {
+   "segment": "VAL-2014-10-FD",
+   "raw_samples": 5470397,
+   "instrument_windows": 8050,
+   "candidate_windows": 1184,
+   "candidate_events": 323
+  }
+ ],
+ "guard_ok": false,
+ "guard_reason": "token usage not yet measured (cost is an assumption); run the smoke test first or pass an explicit --allow-cost for this run",
+ "limits": {
+  "JEV_MAX_CALLS": 1000,
+  "JEV_MAX_COST_USD": 1.0
+ }
+}

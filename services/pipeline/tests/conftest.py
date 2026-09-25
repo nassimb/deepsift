@@ -93,3 +93,11 @@ def make_decision(sci="high", sci_conf=0.95, etype="atmospheric", type_conf=0.95
         "instrument_failure": AnswerDist(kind="choice", choice="yes" if fail_yes > 0.5 else "no", confidence=max(fail_yes, 1 - fail_yes),
                                          probabilities={"yes": fail_yes, "no": 1 - fail_yes - 0.0, "uncertain": 0.0}),
     })
+
+
+@pytest.fixture(autouse=True)
+def _isolated_jev_cache(tmp_path, monkeypatch):
+    """Tests must never write fake answers into the real Jev cache."""
+    import deepsift.decision.jev_cache as jc
+
+    monkeypatch.setattr(jc, "CACHE_PATH", tmp_path / "jev_cache_test.sqlite")

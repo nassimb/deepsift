@@ -83,6 +83,33 @@ def convert_answers(resp) -> dict[str, AnswerDist]:
     return out
 
 
+class JevBudgetExceeded(RuntimeError):
+    """Raised before an API call that would exceed the run's hard call budget."""
+
+
+class ApiBudget:
+    """Thread-safe hard limit on live API calls for one run (cache hits are free)."""
+
+    def __init__(self, max_calls: int, max_cost_usd: float):
+        self.max_calls = max_calls
+        self.max_cost_usd = max_cost_usd
+        self.calls = 0
+        self.cost_usd = 0.0
+        self._lock = threading.Lock()
+
+    def reserve(self) -> None:
+        with self._lock:
+            if self.calls >= self.max_calls:
+                raise JevBudgetExceeded(f"hard limit reached: {self.calls} live Jev calls (JEV_MAX_CALLS={self.max_calls})")
+            if self.cost_usd >= self.max_cost_usd:
+                raise JevBudgetExceeded(f"hard limit reached: ${self.cost_usd:.4f} (JEV_MAX_COST_USD={self.max_cost_usd})")
+            self.calls += 1
+
+    def add_cost(self, usd: float | None) -> None:
+        with self._lock:
+            self.cost_usd += usd or 0.0
+
+
 RETRYABLE = ("TypeSafeRateLimitError", "TypeSafeInternalServerError", "TypeSafeAPIConnectionError", "TypeSafeAPITimeoutError")
 
 
@@ -91,7 +118,8 @@ class JevDecisionEngine(DecisionEngine):
 
     def __init__(self, model: str = "jev-latest", timeout_s: float = 10.0, max_concurrency: int = 8,
                  price_per_mtok_input_usd: float = 0.042, client=None, variant: str = "no_mission_objective",
-                 call_log: Path | None = None, run_id: str | None = None, max_retries: int = 2):
+                 call_log: Path | None = None, run_id: str | None = None, max_retries: int = 2,
+                 cache=None, use_cache: bool = True, budget: ApiBudget | None = None):
         if variant not in VARIANTS:
             raise ValueError(f"unknown Jev variant {variant}")
         self.model = model
@@ -107,6 +135,13 @@ class JevDecisionEngine(DecisionEngine):
         self.max_retries = max_retries
         self._log_lock = threading.Lock()
         self.name = f"jev:{model}:{variant}"
+        if use_cache and cache is None:
+            from deepsift.decision.jev_cache import JevCache
+
+            cache = JevCache()
+        self.cache = cache if use_cache else None
+        self.budget = budget
+        self.stats = {"cache_hits": 0, "live_calls": 0, "errors": 0}
 
     def describe(self) -> dict:
         return {"name": self.name, "is_real_model": True, "variant": self.variant, "model": self.model,
@@ -135,8 +170,23 @@ class JevDecisionEngine(DecisionEngine):
 
         def one(e: ScientificEvent) -> EngineDecision:
             state = build_state_variant(e, mission_name, location, self.state_variant, objective)
-            payload_hash = hashlib.sha256(json.dumps({"state": state, "questions": qpayload, "model": self.model},
-                                                     sort_keys=True).encode()).hexdigest()
+            from deepsift.decision.jev_cache import request_key
+
+            payload_hash = request_key(state, qpayload, self.variant, self.model, sdkv)
+            if self.cache is not None:
+                hit = self.cache.get(payload_hash)
+                if hit is not None:
+                    self.stats["cache_hits"] += 1
+                    answers = {k: AnswerDist(**v) for k, v in hit["answers"].items()}
+                    self._log({"run_id": self.run_id, "timestamp": datetime.now(timezone.utc).isoformat(), "event_id": e.id,
+                               "variant": self.variant, "payload_sha256": payload_hash, "cache_hit": True,
+                               "cached_from_run": hit["run_id"], "model_returned": hit["model_returned"]})
+                    return EngineDecision(engine=self.name, model=hit["model_returned"], answers=answers,
+                                          latency_ms=hit["latency_ms"] or 0.0, input_tokens=hit["input_tokens"],
+                                          output_tokens=hit["output_tokens"], cost_usd=0.0, state_sent=state)
+            if self.budget is not None:
+                self.budget.reserve()                       # raises before any call beyond the hard limit
+            self.stats["live_calls"] += 1
             attempts, err, resp = 0, None, None
             t0 = time.perf_counter()
             while attempts <= self.max_retries:
@@ -157,7 +207,9 @@ class JevDecisionEngine(DecisionEngine):
                 "model_requested": self.model, "sdk_version": sdkv, "latency_ms": latency,
                 "attempts": attempts, "retries": attempts - 1, "error": err,
             }
+            rec["cache_hit"] = False
             if resp is None:
+                self.stats["errors"] += 1
                 self._log(rec)
                 return EngineDecision(engine=self.name, model=self.model, error=err, latency_ms=latency, state_sent=state)
             answers = convert_answers(resp)
@@ -172,6 +224,15 @@ class JevDecisionEngine(DecisionEngine):
                 "input_tokens": tokens_in, "output_tokens": getattr(resp.usage, "output_tokens", None),
             })
             self._log(rec)
+            cost = (tokens_in * self.price / 1e6) if tokens_in is not None else None
+            if self.budget is not None:
+                self.budget.add_cost(cost)
+            if self.cache is not None:
+                self.cache.put(payload_hash, event_id=e.id, variant=self.variant, model_requested=self.model,
+                               model_returned=getattr(resp, "model", None), sdk_version=sdkv, request_id=request_id,
+                               questions=qpayload, state=state, answers={k: v.model_dump() for k, v in answers.items()},
+                               latency_ms=latency, input_tokens=tokens_in, output_tokens=getattr(resp.usage, "output_tokens", None),
+                               cost_usd=cost, run_id=self.run_id)
             return EngineDecision(
                 engine=self.name, model=getattr(resp, "model", self.model), answers=answers, latency_ms=latency,
                 input_tokens=tokens_in, output_tokens=getattr(resp.usage, "output_tokens", None),
