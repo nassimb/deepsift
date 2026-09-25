@@ -235,3 +235,57 @@ def run_v2(obs: list[dict], emb: np.ndarray | None, budgets: list[float] = BUDGE
             agg["seeds"] = len(runs)
             out["results"][f"{name}@{f}"] = agg
     return out
+
+
+# ---------------------------------------------------------------------------------------------------------------
+# Phase 3.2 — SCHEDULER_V3_STEREO_SAFE (V1 and V2 above are kept unchanged for reproducibility).
+# Same progressive prefix allocator as V2 (so the same monotonicity argument holds), but a STEREO acquisition's tiers
+# carry BOTH eyes, so no stereo observation can become "usable" with only one eye:
+#   METADATA                 compact metadata record (measured)
+#   THUMBNAIL -> THUMBNAIL_PAIR          left + right rover thumbnails        [NASA product, label estimate]
+#   COMPRESSED -> COMPRESSED_STEREO_PAIR left + right JPEG q50 re-encodings   [SIMULATED PRODUCT TIER — not a NASA product]
+#   FULL -> FULL_STEREO_PAIR             left + right primaries                [NASA product, label estimate]
+# Mono acquisitions keep mono tiers. Costs come from a per-eye byte table (see scripts/run_phase3_2.py).
+SCHEDULER_V3_STEREO_SAFE = "SCHEDULER_V3_STEREO_SAFE"
+V3_TIER_NAMES = {"THUMBNAIL": "THUMBNAIL_PAIR", "COMPRESSED": "COMPRESSED_STEREO_PAIR", "FULL": "FULL_STEREO_PAIR"}
+
+
+def cost_table_v3(eye_costs: list[dict]) -> list[dict]:
+    """eye_costs[i] = {"metadata": b, "stereo": bool, "L": {"thumbnail", "compressed", "full"}, "R": {...} (stereo only)}.
+    A tier's cost is the SUM over the eyes it must carry; any missing eye cost makes the tier UNKNOWN (None)."""
+    out = []
+    for e in eye_costs:
+        eyes = ["L", "R"] if e["stereo"] else ["L"]
+        row = {"NONE": 0.0, "METADATA": float(e["metadata"])}
+        for tier, key in (("THUMBNAIL", "thumbnail"), ("COMPRESSED", "compressed"), ("FULL", "full")):
+            vals = [e.get(eye, {}).get(key) for eye in eyes]
+            row[tier] = float(sum(vals)) if all(v is not None for v in vals) else None
+        out.append(row)
+    return out
+
+
+def stereo_metrics(obs: list[dict], tiers: list[str], pair_semantics: bool) -> dict:
+    """STEREO_PAIR_PRESENT / USABLE / FULL. With pair_semantics=False (V1/V2 cost tables) the THUMBNAIL and COMPRESSED
+    tiers carry ONE eye, so only FULL represents both eyes."""
+    st = [i for i, o in enumerate(obs) if o["stereo"]]
+    rank = [RANK[tiers[i]] for i in st]
+    if pair_semantics:
+        present = sum(r >= RANK["THUMBNAIL"] for r in rank)
+        usable = sum(r >= RANK["COMPRESSED"] for r in rank)
+    else:
+        present = usable = sum(r >= RANK["FULL"] for r in rank)
+    return {"stereo_acquisitions": len(st), "stereo_pair_present": present, "stereo_pair_usable": usable,
+            "stereo_pair_full": sum(r >= RANK["FULL"] for r in rank)}
+
+
+def coverage(obs: list[dict], costs: list[dict], tiers: list[str], pair_semantics: bool) -> dict:
+    img = [i for i in range(len(obs)) if RANK[tiers[i]] >= RANK["THUMBNAIL"]]
+    use = [i for i in range(len(obs)) if RANK[tiers[i]] >= RANK["COMPRESSED"]]
+    return {"acquisitions_represented": len(img), "acquisitions_usable": len(use),
+            "scene_clusters_represented": len({obs[i]["scene_cluster"] for i in img}),
+            "scene_clusters_usable": len({obs[i]["scene_cluster"] for i in use}),
+            "rover_positions_represented": len({tuple(obs[i]["source_metadata"]["pose"]) for i in img}),
+            "rover_positions_usable": len({tuple(obs[i]["source_metadata"]["pose"]) for i in use}),
+            "bytes_transmitted": float(sum(costs[i][tiers[i]] or 0.0 for i in range(len(obs)))),
+            "counts": {t: sum(1 for x in tiers if x == t) for t in TIERS},
+            **stereo_metrics(obs, tiers, pair_semantics)}

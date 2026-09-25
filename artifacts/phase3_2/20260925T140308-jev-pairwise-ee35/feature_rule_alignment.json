@@ -1,0 +1,33 @@
+{
+ "label": "JEV PAIRWISE PREFERENCE \u2014 post-hoc feature-rule alignment (AB and BA main calls)",
+ "rules": {
+  "larger_previous_frame_visual_difference": {
+   "n_decisive_calls": 153,
+   "agreement": 0.758
+  },
+  "higher_entropy": {
+   "n_decisive_calls": 153,
+   "agreement": 0.797
+  },
+  "stereo_over_single_eye": {
+   "n_decisive_calls": 42,
+   "agreement": 0.857
+  },
+  "full_frame_over_downsampled": {
+   "n_decisive_calls": 74,
+   "agreement": 0.757
+  },
+  "larger_downlink_bytes": {
+   "n_decisive_calls": 150,
+   "agreement": 0.527
+  },
+  "fewer_acquisitions_at_same_position": {
+   "n_decisive_calls": 98,
+   "agreement": 0.357
+  },
+  "telemetry_event_nearby": {
+   "n_decisive_calls": 82,
+   "agreement": 0.427
+  }
+ }
+}

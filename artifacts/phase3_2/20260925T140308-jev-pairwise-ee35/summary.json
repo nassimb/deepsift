@@ -1,0 +1,513 @@
+{
+ "label": "JEV PAIRWISE PREFERENCE",
+ "notice": "Jev receives structured metadata/features only. It does not see the images.",
+ "not": [
+  "HUMAN REVIEW",
+  "SCIENTIFIC GROUND TRUTH",
+  "EXPERT REVIEW",
+  "NASA-LIKE REVIEW",
+  "TELEMETRY VALIDATION"
+ ],
+ "run_id": "20260925T140308-jev-pairwise-ee35",
+ "schema_version": "JEV_PAIRWISE_V1",
+ "pairs_file": "data/review/pairs_v1.json",
+ "pair_ids_included": [
+  "P31-000",
+  "P31-001",
+  "P31-002",
+  "P31-003",
+  "P31-004",
+  "P31-005",
+  "P31-006",
+  "P31-007",
+  "P31-008",
+  "P31-009",
+  "P31-010",
+  "P31-011",
+  "P31-012",
+  "P31-013",
+  "P31-014",
+  "P31-015",
+  "P31-016",
+  "P31-017",
+  "P31-018",
+  "P31-019",
+  "P31-020",
+  "P31-021",
+  "P31-022",
+  "P31-023",
+  "P31-024",
+  "P31-025",
+  "P31-026",
+  "P31-027",
+  "P31-028",
+  "P31-029",
+  "P31-030",
+  "P31-031",
+  "P31-032",
+  "P31-033",
+  "P31-034",
+  "P31-035",
+  "P31-036",
+  "P31-037",
+  "P31-038",
+  "P31-039",
+  "P31-040",
+  "P31-041",
+  "P31-042",
+  "P31-043",
+  "P31-044",
+  "P31-045",
+  "P31-046",
+  "P31-047",
+  "P31-048",
+  "P31-049",
+  "P31-050",
+  "P31-051",
+  "P31-052",
+  "P31-053",
+  "P31-054",
+  "P31-055",
+  "P31-056",
+  "P31-057",
+  "P31-058",
+  "P31-059",
+  "P31-060",
+  "P31-061",
+  "P31-062",
+  "P31-063",
+  "P31-064",
+  "P31-065",
+  "P31-066",
+  "P31-067",
+  "P31-068",
+  "P31-069",
+  "P31-070",
+  "P31-071",
+  "P31-072",
+  "P31-073",
+  "P31-074",
+  "P31-075",
+  "P31-076"
+ ],
+ "model_requested": "typesafe/jev-1.13",
+ "snapshots_returned": {
+  "typesafe/jev-1.13-20260917": 178
+ },
+ "providers": {
+  "TypeSafe": 178
+ },
+ "transport": "openrouter",
+ "calls": {
+  "total_records": 178,
+  "live": 178,
+  "cache_hits": 0,
+  "errors": 0
+ },
+ "cost_usd": 0.010078,
+ "cap_usd": 0.05,
+ "tokens": {
+  "input": 239954,
+  "output": 23632
+ },
+ "latency_ms_p50_p95": [
+  294.08041608985513,
+  474.8789999866858
+ ],
+ "choice_distribution_AB": {
+  "A": 42,
+  "EQUAL": 1,
+  "B": 34
+ },
+ "choice_distribution_all_main": {
+  "A": 76,
+  "EQUAL": 1,
+  "B": 77
+ },
+ "reason_distribution_AB": {
+  "VISUAL_CHANGE": 53,
+  "SPATIAL_COVERAGE": 15,
+  "STEREO_VALUE": 6,
+  "IMAGE_QUALITY": 3
+ },
+ "choice_confidence_p10_p50_p90": [
+  0.346,
+  0.65,
+  0.837
+ ],
+ "reason_confidence_p50": 0.4,
+ "choice_by_category_AB": {
+  "PHASH_VS_EMBEDDING": {
+   "A": 1,
+   "EQUAL": 1
+  },
+  "SIZE_VS_NOVELTY": {
+   "B": 14,
+   "A": 11
+  },
+  "TELEMETRY_VS_IMAGE": {
+   "A": 16,
+   "B": 9
+  },
+  "SEQUENCE_METHODS": {
+   "A": 14,
+   "B": 11
+  }
+ },
+ "ab_swap": {
+  "pairs_compared": 77,
+  "consistent": 69,
+  "consistency_rate": 0.896,
+  "position_A_share_among_A_or_B": 0.497,
+  "position_A_share_wilson95": [
+   0.419,
+   0.575
+  ]
+ },
+ "repeatability_uncached": {
+  "pairs": [
+   "P31-001",
+   "P31-006",
+   "P31-012",
+   "P31-018",
+   "P31-026",
+   "P31-030",
+   "P31-040",
+   "P31-045",
+   "P31-050",
+   "P31-059",
+   "P31-071",
+   "P31-073"
+  ],
+  "repeats_per_pair": 2,
+  "choice_identical_across_all_draws": 11,
+  "reason_identical_across_all_draws": 10,
+  "pairs_with_three_draws": 12,
+  "draws": {
+   "P31-001": [
+    [
+     "EQUAL",
+     "SPATIAL_COVERAGE",
+     0.12
+    ],
+    [
+     "EQUAL",
+     "SPATIAL_COVERAGE",
+     0.1
+    ],
+    [
+     "B",
+     "SPATIAL_COVERAGE",
+     0.07
+    ]
+   ],
+   "P31-006": [
+    [
+     "B",
+     "VISUAL_CHANGE",
+     0.65
+    ],
+    [
+     "B",
+     "VISUAL_CHANGE",
+     0.58
+    ],
+    [
+     "B",
+     "SPATIAL_COVERAGE",
+     0.62
+    ]
+   ],
+   "P31-012": [
+    [
+     "A",
+     "VISUAL_CHANGE",
+     0.67
+    ],
+    [
+     "A",
+     "VISUAL_CHANGE",
+     0.66
+    ],
+    [
+     "A",
+     "VISUAL_CHANGE",
+     0.6
+    ]
+   ],
+   "P31-018": [
+    [
+     "B",
+     "VISUAL_CHANGE",
+     0.84
+    ],
+    [
+     "B",
+     "VISUAL_CHANGE",
+     0.85
+    ],
+    [
+     "B",
+     "VISUAL_CHANGE",
+     0.83
+    ]
+   ],
+   "P31-026": [
+    [
+     "B",
+     "VISUAL_CHANGE",
+     0.42
+    ],
+    [
+     "B",
+     "VISUAL_CHANGE",
+     0.4
+    ],
+    [
+     "B",
+     "SPATIAL_COVERAGE",
+     0.47
+    ]
+   ],
+   "P31-030": [
+    [
+     "A",
+     "VISUAL_CHANGE",
+     0.33
+    ],
+    [
+     "A",
+     "VISUAL_CHANGE",
+     0.32
+    ],
+    [
+     "A",
+     "VISUAL_CHANGE",
+     0.31
+    ]
+   ],
+   "P31-040": [
+    [
+     "A",
+     "VISUAL_CHANGE",
+     0.54
+    ],
+    [
+     "A",
+     "VISUAL_CHANGE",
+     0.54
+    ],
+    [
+     "A",
+     "VISUAL_CHANGE",
+     0.54
+    ]
+   ],
+   "P31-045": [
+    [
+     "B",
+     "STEREO_VALUE",
+     0.42
+    ],
+    [
+     "B",
+     "STEREO_VALUE",
+     0.46
+    ],
+    [
+     "B",
+     "STEREO_VALUE",
+     0.37
+    ]
+   ],
+   "P31-050": [
+    [
+     "B",
+     "SPATIAL_COVERAGE",
+     0.76
+    ],
+    [
+     "B",
+     "SPATIAL_COVERAGE",
+     0.76
+    ],
+    [
+     "B",
+     "SPATIAL_COVERAGE",
+     0.78
+    ]
+   ],
+   "P31-059": [
+    [
+     "A",
+     "SPATIAL_COVERAGE",
+     0.74
+    ],
+    [
+     "A",
+     "SPATIAL_COVERAGE",
+     0.66
+    ],
+    [
+     "A",
+     "SPATIAL_COVERAGE",
+     0.67
+    ]
+   ],
+   "P31-071": [
+    [
+     "B",
+     "VISUAL_CHANGE",
+     0.81
+    ],
+    [
+     "B",
+     "VISUAL_CHANGE",
+     0.74
+    ],
+    [
+     "B",
+     "VISUAL_CHANGE",
+     0.79
+    ]
+   ],
+   "P31-073": [
+    [
+     "B",
+     "SPATIAL_COVERAGE",
+     0.53
+    ],
+    [
+     "B",
+     "SPATIAL_COVERAGE",
+     0.55
+    ],
+    [
+     "B",
+     "SPATIAL_COVERAGE",
+     0.53
+    ]
+   ]
+  }
+ },
+ "cache_determinism": {
+  "rereads": 77,
+  "identical_to_first_answer": 77,
+  "note": "cache hits replay one recorded draw \u2014 this is NOT model repeatability"
+ },
+ "feature_overlap_with_strategy_inputs": {
+  "sides_with_previous_frame": 126,
+  "previous_frame_difference_equals_novelty_input": 27
+ },
+ "agreement_with_strategies": {
+  "FIFO": {
+   "all": {
+    "n": 76,
+    "agreement": 0.474,
+    "wilson95": [
+     0.365,
+     0.584
+    ]
+   },
+   "swap_consistent": {
+    "n": 69,
+    "agreement": 0.493,
+    "wilson95": [
+     0.378,
+     0.608
+    ]
+   }
+  },
+  "SIZE-AWARE": {
+   "all": {
+    "n": 76,
+    "agreement": 0.474,
+    "wilson95": [
+     0.365,
+     0.584
+    ]
+   },
+   "swap_consistent": {
+    "n": 69,
+    "agreement": 0.464,
+    "wilson95": [
+     0.351,
+     0.58
+    ]
+   }
+  },
+  "EMBEDDING-NOVELTY": {
+   "all": {
+    "n": 76,
+    "agreement": 0.539,
+    "wilson95": [
+     0.428,
+     0.647
+    ]
+   },
+   "swap_consistent": {
+    "n": 69,
+    "agreement": 0.536,
+    "wilson95": [
+     0.42,
+     0.649
+    ]
+   }
+  },
+  "TELEMETRY-PRIORITY": {
+   "all": {
+    "n": 47,
+    "agreement": 0.468,
+    "wilson95": [
+     0.333,
+     0.608
+    ]
+   },
+   "swap_consistent": {
+    "n": 42,
+    "agreement": 0.476,
+    "wilson95": [
+     0.334,
+     0.623
+    ]
+   }
+  },
+  "PHASH-REPRESENTATIVES": {
+   "all": {
+    "n": 76,
+    "agreement": 0.342,
+    "wilson95": [
+     0.245,
+     0.454
+    ]
+   },
+   "swap_consistent": {
+    "n": 69,
+    "agreement": 0.348,
+    "wilson95": [
+     0.246,
+     0.466
+    ]
+   }
+  },
+  "POSITION_SAMPLING": {
+   "all": {
+    "n": 49,
+    "agreement": 0.347,
+    "wilson95": [
+     0.229,
+     0.487
+    ]
+   },
+   "swap_consistent": {
+    "n": 44,
+    "agreement": 0.341,
+    "wilson95": [
+     0.219,
+     0.489
+    ]
+   }
+  }
+ },
+ "agreement_note": "preference alignment only; no strategy is correct by construction and Jev is not ground truth. SIZE-AWARE and POSITION_SAMPLING use inputs Jev also sees (downlink size, same-position count); the previous-frame visual difference Jev sees often equals the EMBEDDING-NOVELTY input (see feature_overlap_with_strategy_inputs). FIFO, TELEMETRY-PRIORITY and PHASH-REPRESENTATIVES scores/ranks are withheld."
+}

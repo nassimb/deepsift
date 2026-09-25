@@ -621,3 +621,32 @@ def review_annotate(req: ReviewAnnotation):
 @app.get("/api/review/annotations")
 def review_annotations():
     return _review_annotations()
+
+
+# Phase 3.2 — JEV PAIRWISE PREFERENCE (read-only; produced offline by scripts/jev_pairwise_review.py). Text-only reviewer:
+# Jev received structured metadata/features only and never saw the images. Not human review, not ground truth.
+REVIEW_JEV = REVIEW_DIR / "jev_pairwise_v1.json"
+JEV_NOTICE = "Jev receives structured metadata/features only. It does not see the images."
+
+
+@app.get("/api/review/jev")
+def review_jev():
+    if not REVIEW_JEV.exists():
+        return {"available": False, "label": "JEV PAIRWISE PREFERENCE", "notice": JEV_NOTICE, "pairs": []}
+    d = json.loads(REVIEW_JEV.read_text())
+    spec = _review_pairs()
+    main = {(a["pair_id"], a["order"]): a for a in d["answers"] if a["repeat"] == 0}
+    pairs = []
+    for p in spec["pairs"]:
+        ab, ba = main.get((p["pair_id"], "AB")), main.get((p["pair_id"], "BA"))
+        if not ab:
+            continue
+        swapped = {"A": "B", "B": "A"}.get(ba["choice"], ba["choice"]) if ba else None
+        pairs.append({"pair_id": p["pair_id"], "A": _acq_public(p["A"]), "B": _acq_public(p["B"]),
+                      "choice": ab["choice"], "choice_confidence": ab["choice_confidence"], "reason": ab["reason"],
+                      "reason_confidence": ab["reason_confidence"], "swapped_choice_mapped_back": swapped,
+                      "swap_consistent": swapped == ab["choice"] if ba else None})
+    keep = ("label", "notice", "not", "run_id", "schema_version", "model_requested", "snapshots_returned", "transport", "calls",
+            "cost_usd", "choice_distribution_AB", "reason_distribution_AB", "ab_swap", "cache_determinism")
+    return {"available": True, **{k: d.get(k) for k in keep}, "notice": JEV_NOTICE,
+            "repeatability": {k: v for k, v in d["repeatability_uncached"].items() if k != "draws"}, "pairs": pairs}

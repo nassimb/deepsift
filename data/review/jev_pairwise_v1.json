@@ -1,0 +1,2473 @@
+{
+ "label": "JEV PAIRWISE PREFERENCE",
+ "notice": "Jev receives structured metadata/features only. It does not see the images.",
+ "not": [
+  "HUMAN REVIEW",
+  "SCIENTIFIC GROUND TRUTH",
+  "EXPERT REVIEW",
+  "NASA-LIKE REVIEW",
+  "TELEMETRY VALIDATION"
+ ],
+ "run_id": "20260925T140308-jev-pairwise-ee35",
+ "schema_version": "JEV_PAIRWISE_V1",
+ "pairs_file": "data/review/pairs_v1.json",
+ "pair_ids_included": [
+  "P31-000",
+  "P31-001",
+  "P31-002",
+  "P31-003",
+  "P31-004",
+  "P31-005",
+  "P31-006",
+  "P31-007",
+  "P31-008",
+  "P31-009",
+  "P31-010",
+  "P31-011",
+  "P31-012",
+  "P31-013",
+  "P31-014",
+  "P31-015",
+  "P31-016",
+  "P31-017",
+  "P31-018",
+  "P31-019",
+  "P31-020",
+  "P31-021",
+  "P31-022",
+  "P31-023",
+  "P31-024",
+  "P31-025",
+  "P31-026",
+  "P31-027",
+  "P31-028",
+  "P31-029",
+  "P31-030",
+  "P31-031",
+  "P31-032",
+  "P31-033",
+  "P31-034",
+  "P31-035",
+  "P31-036",
+  "P31-037",
+  "P31-038",
+  "P31-039",
+  "P31-040",
+  "P31-041",
+  "P31-042",
+  "P31-043",
+  "P31-044",
+  "P31-045",
+  "P31-046",
+  "P31-047",
+  "P31-048",
+  "P31-049",
+  "P31-050",
+  "P31-051",
+  "P31-052",
+  "P31-053",
+  "P31-054",
+  "P31-055",
+  "P31-056",
+  "P31-057",
+  "P31-058",
+  "P31-059",
+  "P31-060",
+  "P31-061",
+  "P31-062",
+  "P31-063",
+  "P31-064",
+  "P31-065",
+  "P31-066",
+  "P31-067",
+  "P31-068",
+  "P31-069",
+  "P31-070",
+  "P31-071",
+  "P31-072",
+  "P31-073",
+  "P31-074",
+  "P31-075",
+  "P31-076"
+ ],
+ "model_requested": "typesafe/jev-1.13",
+ "snapshots_returned": {
+  "typesafe/jev-1.13-20260917": 178
+ },
+ "providers": {
+  "TypeSafe": 178
+ },
+ "transport": "openrouter",
+ "calls": {
+  "total_records": 178,
+  "live": 178,
+  "cache_hits": 0,
+  "errors": 0
+ },
+ "cost_usd": 0.010078,
+ "cap_usd": 0.05,
+ "tokens": {
+  "input": 239954,
+  "output": 23632
+ },
+ "latency_ms_p50_p95": [
+  294.08041608985513,
+  474.8789999866858
+ ],
+ "choice_distribution_AB": {
+  "A": 42,
+  "EQUAL": 1,
+  "B": 34
+ },
+ "choice_distribution_all_main": {
+  "A": 76,
+  "EQUAL": 1,
+  "B": 77
+ },
+ "reason_distribution_AB": {
+  "VISUAL_CHANGE": 53,
+  "SPATIAL_COVERAGE": 15,
+  "STEREO_VALUE": 6,
+  "IMAGE_QUALITY": 3
+ },
+ "choice_confidence_p10_p50_p90": [
+  0.346,
+  0.65,
+  0.837
+ ],
+ "reason_confidence_p50": 0.4,
+ "choice_by_category_AB": {
+  "PHASH_VS_EMBEDDING": {
+   "A": 1,
+   "EQUAL": 1
+  },
+  "SIZE_VS_NOVELTY": {
+   "B": 14,
+   "A": 11
+  },
+  "TELEMETRY_VS_IMAGE": {
+   "A": 16,
+   "B": 9
+  },
+  "SEQUENCE_METHODS": {
+   "A": 14,
+   "B": 11
+  }
+ },
+ "ab_swap": {
+  "pairs_compared": 77,
+  "consistent": 69,
+  "consistency_rate": 0.896,
+  "position_A_share_among_A_or_B": 0.497,
+  "position_A_share_wilson95": [
+   0.419,
+   0.575
+  ]
+ },
+ "repeatability_uncached": {
+  "pairs": [
+   "P31-001",
+   "P31-006",
+   "P31-012",
+   "P31-018",
+   "P31-026",
+   "P31-030",
+   "P31-040",
+   "P31-045",
+   "P31-050",
+   "P31-059",
+   "P31-071",
+   "P31-073"
+  ],
+  "repeats_per_pair": 2,
+  "choice_identical_across_all_draws": 11,
+  "reason_identical_across_all_draws": 10,
+  "pairs_with_three_draws": 12,
+  "draws": {
+   "P31-001": [
+    [
+     "EQUAL",
+     "SPATIAL_COVERAGE",
+     0.12
+    ],
+    [
+     "EQUAL",
+     "SPATIAL_COVERAGE",
+     0.1
+    ],
+    [
+     "B",
+     "SPATIAL_COVERAGE",
+     0.07
+    ]
+   ],
+   "P31-006": [
+    [
+     "B",
+     "VISUAL_CHANGE",
+     0.65
+    ],
+    [
+     "B",
+     "VISUAL_CHANGE",
+     0.58
+    ],
+    [
+     "B",
+     "SPATIAL_COVERAGE",
+     0.62
+    ]
+   ],
+   "P31-012": [
+    [
+     "A",
+     "VISUAL_CHANGE",
+     0.67
+    ],
+    [
+     "A",
+     "VISUAL_CHANGE",
+     0.66
+    ],
+    [
+     "A",
+     "VISUAL_CHANGE",
+     0.6
+    ]
+   ],
+   "P31-018": [
+    [
+     "B",
+     "VISUAL_CHANGE",
+     0.84
+    ],
+    [
+     "B",
+     "VISUAL_CHANGE",
+     0.85
+    ],
+    [
+     "B",
+     "VISUAL_CHANGE",
+     0.83
+    ]
+   ],
+   "P31-026": [
+    [
+     "B",
+     "VISUAL_CHANGE",
+     0.42
+    ],
+    [
+     "B",
+     "VISUAL_CHANGE",
+     0.4
+    ],
+    [
+     "B",
+     "SPATIAL_COVERAGE",
+     0.47
+    ]
+   ],
+   "P31-030": [
+    [
+     "A",
+     "VISUAL_CHANGE",
+     0.33
+    ],
+    [
+     "A",
+     "VISUAL_CHANGE",
+     0.32
+    ],
+    [
+     "A",
+     "VISUAL_CHANGE",
+     0.31
+    ]
+   ],
+   "P31-040": [
+    [
+     "A",
+     "VISUAL_CHANGE",
+     0.54
+    ],
+    [
+     "A",
+     "VISUAL_CHANGE",
+     0.54
+    ],
+    [
+     "A",
+     "VISUAL_CHANGE",
+     0.54
+    ]
+   ],
+   "P31-045": [
+    [
+     "B",
+     "STEREO_VALUE",
+     0.42
+    ],
+    [
+     "B",
+     "STEREO_VALUE",
+     0.46
+    ],
+    [
+     "B",
+     "STEREO_VALUE",
+     0.37
+    ]
+   ],
+   "P31-050": [
+    [
+     "B",
+     "SPATIAL_COVERAGE",
+     0.76
+    ],
+    [
+     "B",
+     "SPATIAL_COVERAGE",
+     0.76
+    ],
+    [
+     "B",
+     "SPATIAL_COVERAGE",
+     0.78
+    ]
+   ],
+   "P31-059": [
+    [
+     "A",
+     "SPATIAL_COVERAGE",
+     0.74
+    ],
+    [
+     "A",
+     "SPATIAL_COVERAGE",
+     0.66
+    ],
+    [
+     "A",
+     "SPATIAL_COVERAGE",
+     0.67
+    ]
+   ],
+   "P31-071": [
+    [
+     "B",
+     "VISUAL_CHANGE",
+     0.81
+    ],
+    [
+     "B",
+     "VISUAL_CHANGE",
+     0.74
+    ],
+    [
+     "B",
+     "VISUAL_CHANGE",
+     0.79
+    ]
+   ],
+   "P31-073": [
+    [
+     "B",
+     "SPATIAL_COVERAGE",
+     0.53
+    ],
+    [
+     "B",
+     "SPATIAL_COVERAGE",
+     0.55
+    ],
+    [
+     "B",
+     "SPATIAL_COVERAGE",
+     0.53
+    ]
+   ]
+  }
+ },
+ "cache_determinism": {
+  "rereads": 77,
+  "identical_to_first_answer": 77,
+  "note": "cache hits replay one recorded draw \u2014 this is NOT model repeatability"
+ },
+ "feature_overlap_with_strategy_inputs": {
+  "sides_with_previous_frame": 126,
+  "previous_frame_difference_equals_novelty_input": 27
+ },
+ "agreement_with_strategies": {
+  "FIFO": {
+   "all": {
+    "n": 76,
+    "agreement": 0.474,
+    "wilson95": [
+     0.365,
+     0.584
+    ]
+   },
+   "swap_consistent": {
+    "n": 69,
+    "agreement": 0.493,
+    "wilson95": [
+     0.378,
+     0.608
+    ]
+   }
+  },
+  "SIZE-AWARE": {
+   "all": {
+    "n": 76,
+    "agreement": 0.474,
+    "wilson95": [
+     0.365,
+     0.584
+    ]
+   },
+   "swap_consistent": {
+    "n": 69,
+    "agreement": 0.464,
+    "wilson95": [
+     0.351,
+     0.58
+    ]
+   }
+  },
+  "EMBEDDING-NOVELTY": {
+   "all": {
+    "n": 76,
+    "agreement": 0.539,
+    "wilson95": [
+     0.428,
+     0.647
+    ]
+   },
+   "swap_consistent": {
+    "n": 69,
+    "agreement": 0.536,
+    "wilson95": [
+     0.42,
+     0.649
+    ]
+   }
+  },
+  "TELEMETRY-PRIORITY": {
+   "all": {
+    "n": 47,
+    "agreement": 0.468,
+    "wilson95": [
+     0.333,
+     0.608
+    ]
+   },
+   "swap_consistent": {
+    "n": 42,
+    "agreement": 0.476,
+    "wilson95": [
+     0.334,
+     0.623
+    ]
+   }
+  },
+  "PHASH-REPRESENTATIVES": {
+   "all": {
+    "n": 76,
+    "agreement": 0.342,
+    "wilson95": [
+     0.245,
+     0.454
+    ]
+   },
+   "swap_consistent": {
+    "n": 69,
+    "agreement": 0.348,
+    "wilson95": [
+     0.246,
+     0.466
+    ]
+   }
+  },
+  "POSITION_SAMPLING": {
+   "all": {
+    "n": 49,
+    "agreement": 0.347,
+    "wilson95": [
+     0.229,
+     0.487
+    ]
+   },
+   "swap_consistent": {
+    "n": 44,
+    "agreement": 0.341,
+    "wilson95": [
+     0.219,
+     0.489
+    ]
+   }
+  }
+ },
+ "agreement_note": "preference alignment only; no strategy is correct by construction and Jev is not ground truth. SIZE-AWARE and POSITION_SAMPLING use inputs Jev also sees (downlink size, same-position count); the previous-frame visual difference Jev sees often equals the EMBEDDING-NOVELTY input (see feature_overlap_with_strategy_inputs). FIFO, TELEMETRY-PRIORITY and PHASH-REPRESENTATIVES scores/ranks are withheld.",
+ "answers": [
+  {
+   "pair_id": "P31-000",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.41,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.38,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-000",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.25,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.32,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-001",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "EQUAL",
+   "choice_confidence": 0.12,
+   "reason": "SPATIAL_COVERAGE",
+   "reason_confidence": 0.34,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-001",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.22,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.41,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-002",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.52,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.37,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-002",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.38,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.47,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-003",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.53,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.31,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-003",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.32,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.32,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-004",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.32,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.54,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-004",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.34,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.48,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-005",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.78,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.41,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-005",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.65,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.43,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-006",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.65,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.28,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-006",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.33,
+   "reason": "SPATIAL_COVERAGE",
+   "reason_confidence": 0.35,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-007",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.8,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.19,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-007",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.84,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.2,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-008",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.37,
+   "reason": "SPATIAL_COVERAGE",
+   "reason_confidence": 0.37,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-008",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.36,
+   "reason": "SPATIAL_COVERAGE",
+   "reason_confidence": 0.28,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-009",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.47,
+   "reason": "STEREO_VALUE",
+   "reason_confidence": 0.23,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-009",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.5,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.24,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-010",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.69,
+   "reason": "STEREO_VALUE",
+   "reason_confidence": 0.33,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-010",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.81,
+   "reason": "STEREO_VALUE",
+   "reason_confidence": 0.27,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-011",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.75,
+   "reason": "STEREO_VALUE",
+   "reason_confidence": 0.25,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-011",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.83,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.24,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-012",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.67,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.31,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-012",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.78,
+   "reason": "STEREO_VALUE",
+   "reason_confidence": 0.21,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-013",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.43,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.37,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-013",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.33,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.37,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-014",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.58,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.19,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-014",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.67,
+   "reason": "STEREO_VALUE",
+   "reason_confidence": 0.22,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-015",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.75,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.48,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-015",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.81,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.33,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-016",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.74,
+   "reason": "STEREO_VALUE",
+   "reason_confidence": 0.35,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-016",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.72,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.4,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-017",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.72,
+   "reason": "SPATIAL_COVERAGE",
+   "reason_confidence": 0.24,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-017",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.78,
+   "reason": "SPATIAL_COVERAGE",
+   "reason_confidence": 0.45,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-018",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.84,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.35,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-018",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.73,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.41,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-019",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.49,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.17,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-019",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.33,
+   "reason": "STEREO_VALUE",
+   "reason_confidence": 0.18,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-020",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.53,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.42,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-020",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.62,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.34,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-021",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.4,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.39,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-021",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.38,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.36,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-022",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.82,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.32,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-022",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.9,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.33,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-023",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.47,
+   "reason": "SPATIAL_COVERAGE",
+   "reason_confidence": 0.28,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-023",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.37,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.18,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-024",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.8,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.43,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-024",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.86,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.33,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-025",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.82,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.49,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-025",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.83,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.39,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-026",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.42,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.27,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-026",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.36,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.46,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-027",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.46,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.51,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-027",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.63,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.57,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-028",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.89,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.4,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-028",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.92,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.37,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-029",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.5,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.57,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-029",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.36,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.61,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-030",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.33,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.59,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-030",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.34,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.44,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-031",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.7,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.29,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-031",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.78,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.2,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-032",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.68,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.62,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-032",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.64,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.67,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-033",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.53,
+   "reason": "STEREO_VALUE",
+   "reason_confidence": 0.2,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-033",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.97,
+   "reason": "STEREO_VALUE",
+   "reason_confidence": 0.29,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-034",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.75,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.26,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-034",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.73,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.41,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-035",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.36,
+   "reason": "SPATIAL_COVERAGE",
+   "reason_confidence": 0.42,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-035",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.55,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.43,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-036",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.41,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.29,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-036",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.53,
+   "reason": "STEREO_VALUE",
+   "reason_confidence": 0.17,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-037",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.67,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.43,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-037",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.78,
+   "reason": "STEREO_VALUE",
+   "reason_confidence": 0.3,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-038",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.52,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.14,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-038",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.37,
+   "reason": "SPATIAL_COVERAGE",
+   "reason_confidence": 0.27,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-039",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.55,
+   "reason": "SPATIAL_COVERAGE",
+   "reason_confidence": 0.52,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-039",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.76,
+   "reason": "SPATIAL_COVERAGE",
+   "reason_confidence": 0.33,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-040",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.54,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.4,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-040",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.55,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.3,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-041",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.6,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.55,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-041",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.55,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.56,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-042",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.32,
+   "reason": "SPATIAL_COVERAGE",
+   "reason_confidence": 0.34,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-042",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.36,
+   "reason": "SPATIAL_COVERAGE",
+   "reason_confidence": 0.41,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-043",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.48,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.37,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-043",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.51,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.39,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-044",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.45,
+   "reason": "SPATIAL_COVERAGE",
+   "reason_confidence": 0.45,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-044",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.67,
+   "reason": "SPATIAL_COVERAGE",
+   "reason_confidence": 0.38,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-045",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.42,
+   "reason": "STEREO_VALUE",
+   "reason_confidence": 0.26,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-045",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.37,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.16,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-046",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.37,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.48,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-046",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.56,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.27,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-047",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.25,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.35,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-047",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.34,
+   "reason": "SPATIAL_COVERAGE",
+   "reason_confidence": 0.38,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-048",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.78,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.37,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-048",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.73,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.3,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-049",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.8,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.26,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-049",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.91,
+   "reason": "IMAGE_QUALITY",
+   "reason_confidence": 0.22,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-050",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.76,
+   "reason": "SPATIAL_COVERAGE",
+   "reason_confidence": 0.3,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-050",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.81,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.38,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-051",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.99,
+   "reason": "IMAGE_QUALITY",
+   "reason_confidence": 0.35,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-051",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.94,
+   "reason": "IMAGE_QUALITY",
+   "reason_confidence": 0.28,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-052",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.54,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.63,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-052",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.72,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.72,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-053",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.71,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.73,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-053",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.64,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.74,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-054",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.75,
+   "reason": "SPATIAL_COVERAGE",
+   "reason_confidence": 0.29,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-054",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.82,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.19,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-055",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.59,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.5,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-055",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.74,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.72,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-056",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.37,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.62,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-056",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.36,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.5,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-057",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.64,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.92,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-057",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.65,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.93,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-058",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.68,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.72,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-058",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.73,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.71,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-059",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.74,
+   "reason": "SPATIAL_COVERAGE",
+   "reason_confidence": 0.54,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-059",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.76,
+   "reason": "SPATIAL_COVERAGE",
+   "reason_confidence": 0.49,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-060",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.4,
+   "reason": "SPATIAL_COVERAGE",
+   "reason_confidence": 0.45,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-060",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.6,
+   "reason": "SPATIAL_COVERAGE",
+   "reason_confidence": 0.71,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-061",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.78,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.76,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-061",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.74,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.76,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-062",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.69,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.45,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-062",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.84,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.58,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-063",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.61,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.88,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-063",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.66,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.91,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-064",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.68,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.64,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-064",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.71,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.73,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-065",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.31,
+   "reason": "SPATIAL_COVERAGE",
+   "reason_confidence": 0.46,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-065",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.34,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.45,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-066",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.98,
+   "reason": "IMAGE_QUALITY",
+   "reason_confidence": 0.51,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-066",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.99,
+   "reason": "IMAGE_QUALITY",
+   "reason_confidence": 0.81,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-067",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.83,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.4,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-067",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.92,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.45,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-068",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.73,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.4,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-068",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.8,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.66,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-069",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.71,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.55,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-069",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.77,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.72,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-070",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.97,
+   "reason": "IMAGE_QUALITY",
+   "reason_confidence": 0.39,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-070",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.91,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.34,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-071",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.81,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.81,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-071",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.61,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.69,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-072",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.51,
+   "reason": "SPATIAL_COVERAGE",
+   "reason_confidence": 0.55,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-072",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.53,
+   "reason": "SPATIAL_COVERAGE",
+   "reason_confidence": 0.53,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-073",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.53,
+   "reason": "SPATIAL_COVERAGE",
+   "reason_confidence": 0.37,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-073",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.52,
+   "reason": "SPATIAL_COVERAGE",
+   "reason_confidence": 0.36,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-074",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.63,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.47,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-074",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.39,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.69,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-075",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.79,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.94,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-075",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.82,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.92,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-076",
+   "order": "AB",
+   "repeat": 0,
+   "choice": "A",
+   "choice_confidence": 0.78,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.44,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-076",
+   "order": "BA",
+   "repeat": 0,
+   "choice": "B",
+   "choice_confidence": 0.76,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.71,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "MISS_LIVE"
+  },
+  {
+   "pair_id": "P31-001",
+   "order": "AB",
+   "repeat": 1,
+   "choice": "EQUAL",
+   "choice_confidence": 0.1,
+   "reason": "SPATIAL_COVERAGE",
+   "reason_confidence": 0.33,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "BYPASS_REPEAT"
+  },
+  {
+   "pair_id": "P31-001",
+   "order": "AB",
+   "repeat": 2,
+   "choice": "B",
+   "choice_confidence": 0.07,
+   "reason": "SPATIAL_COVERAGE",
+   "reason_confidence": 0.33,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "BYPASS_REPEAT"
+  },
+  {
+   "pair_id": "P31-006",
+   "order": "AB",
+   "repeat": 1,
+   "choice": "B",
+   "choice_confidence": 0.58,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.28,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "BYPASS_REPEAT"
+  },
+  {
+   "pair_id": "P31-006",
+   "order": "AB",
+   "repeat": 2,
+   "choice": "B",
+   "choice_confidence": 0.62,
+   "reason": "SPATIAL_COVERAGE",
+   "reason_confidence": 0.25,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "BYPASS_REPEAT"
+  },
+  {
+   "pair_id": "P31-012",
+   "order": "AB",
+   "repeat": 1,
+   "choice": "A",
+   "choice_confidence": 0.66,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.35,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "BYPASS_REPEAT"
+  },
+  {
+   "pair_id": "P31-012",
+   "order": "AB",
+   "repeat": 2,
+   "choice": "A",
+   "choice_confidence": 0.6,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.36,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "BYPASS_REPEAT"
+  },
+  {
+   "pair_id": "P31-018",
+   "order": "AB",
+   "repeat": 1,
+   "choice": "B",
+   "choice_confidence": 0.85,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.33,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "BYPASS_REPEAT"
+  },
+  {
+   "pair_id": "P31-018",
+   "order": "AB",
+   "repeat": 2,
+   "choice": "B",
+   "choice_confidence": 0.83,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.39,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "BYPASS_REPEAT"
+  },
+  {
+   "pair_id": "P31-026",
+   "order": "AB",
+   "repeat": 1,
+   "choice": "B",
+   "choice_confidence": 0.4,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.27,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "BYPASS_REPEAT"
+  },
+  {
+   "pair_id": "P31-026",
+   "order": "AB",
+   "repeat": 2,
+   "choice": "B",
+   "choice_confidence": 0.47,
+   "reason": "SPATIAL_COVERAGE",
+   "reason_confidence": 0.32,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "BYPASS_REPEAT"
+  },
+  {
+   "pair_id": "P31-030",
+   "order": "AB",
+   "repeat": 1,
+   "choice": "A",
+   "choice_confidence": 0.32,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.57,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "BYPASS_REPEAT"
+  },
+  {
+   "pair_id": "P31-030",
+   "order": "AB",
+   "repeat": 2,
+   "choice": "A",
+   "choice_confidence": 0.31,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.58,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "BYPASS_REPEAT"
+  },
+  {
+   "pair_id": "P31-040",
+   "order": "AB",
+   "repeat": 1,
+   "choice": "A",
+   "choice_confidence": 0.54,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.47,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "BYPASS_REPEAT"
+  },
+  {
+   "pair_id": "P31-040",
+   "order": "AB",
+   "repeat": 2,
+   "choice": "A",
+   "choice_confidence": 0.54,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.47,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "BYPASS_REPEAT"
+  },
+  {
+   "pair_id": "P31-045",
+   "order": "AB",
+   "repeat": 1,
+   "choice": "B",
+   "choice_confidence": 0.46,
+   "reason": "STEREO_VALUE",
+   "reason_confidence": 0.18,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "BYPASS_REPEAT"
+  },
+  {
+   "pair_id": "P31-045",
+   "order": "AB",
+   "repeat": 2,
+   "choice": "B",
+   "choice_confidence": 0.37,
+   "reason": "STEREO_VALUE",
+   "reason_confidence": 0.18,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "BYPASS_REPEAT"
+  },
+  {
+   "pair_id": "P31-050",
+   "order": "AB",
+   "repeat": 1,
+   "choice": "B",
+   "choice_confidence": 0.76,
+   "reason": "SPATIAL_COVERAGE",
+   "reason_confidence": 0.48,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "BYPASS_REPEAT"
+  },
+  {
+   "pair_id": "P31-050",
+   "order": "AB",
+   "repeat": 2,
+   "choice": "B",
+   "choice_confidence": 0.78,
+   "reason": "SPATIAL_COVERAGE",
+   "reason_confidence": 0.37,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "BYPASS_REPEAT"
+  },
+  {
+   "pair_id": "P31-059",
+   "order": "AB",
+   "repeat": 1,
+   "choice": "A",
+   "choice_confidence": 0.66,
+   "reason": "SPATIAL_COVERAGE",
+   "reason_confidence": 0.43,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "BYPASS_REPEAT"
+  },
+  {
+   "pair_id": "P31-059",
+   "order": "AB",
+   "repeat": 2,
+   "choice": "A",
+   "choice_confidence": 0.67,
+   "reason": "SPATIAL_COVERAGE",
+   "reason_confidence": 0.49,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "BYPASS_REPEAT"
+  },
+  {
+   "pair_id": "P31-071",
+   "order": "AB",
+   "repeat": 1,
+   "choice": "B",
+   "choice_confidence": 0.74,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.83,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "BYPASS_REPEAT"
+  },
+  {
+   "pair_id": "P31-071",
+   "order": "AB",
+   "repeat": 2,
+   "choice": "B",
+   "choice_confidence": 0.79,
+   "reason": "VISUAL_CHANGE",
+   "reason_confidence": 0.83,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "BYPASS_REPEAT"
+  },
+  {
+   "pair_id": "P31-073",
+   "order": "AB",
+   "repeat": 1,
+   "choice": "B",
+   "choice_confidence": 0.55,
+   "reason": "SPATIAL_COVERAGE",
+   "reason_confidence": 0.34,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "BYPASS_REPEAT"
+  },
+  {
+   "pair_id": "P31-073",
+   "order": "AB",
+   "repeat": 2,
+   "choice": "B",
+   "choice_confidence": 0.53,
+   "reason": "SPATIAL_COVERAGE",
+   "reason_confidence": 0.31,
+   "model_returned": "typesafe/jev-1.13-20260917",
+   "cache_status": "BYPASS_REPEAT"
+  }
+ ]
+}

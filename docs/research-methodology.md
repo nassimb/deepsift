@@ -223,3 +223,15 @@ Splits (frozen before any image was downloaded, `data/splits/phase3_splits.json`
 validation 779–820, held-out test 950–979 (selected by a pre-declared rule from PDS listings only; immutable).
 Camera: Navcam raw EDR. Image-to-telemetry alignment is minutes-level, so telemetry is reported as TELEMETRY
 CONTEXT, never as co-measurement. No VLM, no Jev in Phase 3 baselines.
+
+### Phase 3 research question — traverse imaging (added in Phase 3.2)
+
+> **For rover traverse imaging, how much downlink can be removed while preserving spatial coverage and meaningful visual change?**
+
+Measured on development traverse sequences only, at comparable bytes (the kept frames at FULL_STEREO_PAIR, the rest as
+THUMBNAIL_PAIR, both from `SCHEDULER_V3_STEREO_SAFE` pair costs). Methods: SEND_ALL, EVERY_NTH_FRAME, UNIFORM_DISTANCE,
+METADATA_POSITION, EMBEDDING_CHANGE, POSITION_PLUS_EMBEDDING_CHANGE. Metrics: frames and unique rover positions retained,
+position coverage (every frame within 5 m of a kept frame), share of traverse distance represented, mean and maximum spatial
+gap, visual-change coverage (mean best cosine similarity of every frame to a kept frame), stereo pairs preserved, bytes.
+"Meaningful visual change" is approximated by MobileNetV2 embedding distance; that is a proxy, not a scientific judgement.
+The validation split (sols 779–820) answers the question; development numbers only choose the methods to carry forward.

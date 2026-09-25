@@ -1,0 +1,104 @@
+{
+ "schema_version": "JEV_PAIRWISE_V1",
+ "pairs": 77,
+ "requests_AB_BA": 154,
+ "cached": 0,
+ "live_main": 154,
+ "live_repeats": 24,
+ "repeat_pair_ids": [
+  "P31-001",
+  "P31-006",
+  "P31-012",
+  "P31-018",
+  "P31-026",
+  "P31-030",
+  "P31-040",
+  "P31-045",
+  "P31-050",
+  "P31-059",
+  "P31-071",
+  "P31-073"
+ ],
+ "projected_input_chars": 562852,
+ "projected_cost_usd_with_1.5x_margin": 0.01459,
+ "cap_usd": 0.05,
+ "model_requested": "typesafe/jev-1.13",
+ "expected_snapshot": "typesafe/jev-1.13-20260917",
+ "transport": "openrouter",
+ "sdk": "0.7.1",
+ "feature_overlap_with_strategy_inputs": {
+  "sides_with_previous_frame": 126,
+  "previous_frame_difference_equals_novelty_input": 27
+ },
+ "sample_state_AB": {
+  "task": "Compare two archived Mars rover Navcam observations using the structured metadata and features below. No image is provided; only these numbers and categories.",
+  "mission": "MSL / Curiosity, Gale Crater, Mars",
+  "setting": "Retrospective bandwidth-constrained prioritization of archived rover observations",
+  "feature_notes": {
+   "visual_difference_from_previous_frame_in_same_sequence": "cosine distance between image embeddings, 0 = identical, larger = more change",
+   "visual_difference_between_A_and_B": "same scale",
+   "pixel_hash_difference_bits_between_A_and_B": "0-64, small = pixel-similar",
+   "full_quality_downlink_kilobytes": "estimated bytes for all eyes at full quality"
+  },
+  "observation_A": {
+   "camera": "Navcam (engineering camera, grayscale)",
+   "stereo": "left+right pair",
+   "product_resolution": "256x256 downsampled",
+   "sequence_type_code": "TRAV",
+   "sol": 417,
+   "rover_position_site_drive_pose": [
+    18,
+    452,
+    4
+   ],
+   "acquisitions_in_this_development_set_at_the_same_rover_position": 1,
+   "full_quality_downlink_kilobytes": 157.0,
+   "image_quality": {
+    "automatic_quality_check": "passed",
+    "mean_brightness_0_to_1": 0.451,
+    "contrast": 0.0717,
+    "entropy_bits": 6.2,
+    "sharpness": 0.0198,
+    "saturated_fraction": 0.0,
+    "missing_fraction": 0.0
+   },
+   "visual_difference_from_previous_frame_in_same_sequence": 0.0235,
+   "environmental_telemetry_event_within_30_min": "yes"
+  },
+  "observation_B": {
+   "camera": "Navcam (engineering camera, grayscale)",
+   "stereo": "left+right pair",
+   "product_resolution": "256x256 downsampled",
+   "sequence_type_code": "TRAV",
+   "sol": 417,
+   "rover_position_site_drive_pose": [
+    18,
+    446,
+    4
+   ],
+   "acquisitions_in_this_development_set_at_the_same_rover_position": 1,
+   "full_quality_downlink_kilobytes": 155.0,
+   "image_quality": {
+    "automatic_quality_check": "passed",
+    "mean_brightness_0_to_1": 0.439,
+    "contrast": 0.068,
+    "entropy_bits": 6.12,
+    "sharpness": 0.017,
+    "saturated_fraction": 0.0,
+    "missing_fraction": 0.0
+   },
+   "visual_difference_from_previous_frame_in_same_sequence": 0.0443,
+   "environmental_telemetry_event_within_30_min": "yes"
+  },
+  "relation_between_A_and_B": {
+   "same_sol": true,
+   "time_between_minutes": 1.74,
+   "same_rover_position": false,
+   "distance_between_rover_positions_m": 0.956,
+   "same_scene_cluster_from_metadata": false,
+   "same_sequence": true,
+   "visual_difference_between_A_and_B": 0.0235,
+   "pixel_hash_difference_bits_between_A_and_B": 32
+  }
+ }
+}

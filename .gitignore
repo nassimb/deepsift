@@ -18,3 +18,4 @@ artifacts/*.log
 data/models/
 data/fetch_navcam.log
 data/synthetic/
+data/*.log
