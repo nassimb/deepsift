@@ -79,8 +79,8 @@ class Blackout(BaseModel):
 
 
 class DecisionEngineCfg(BaseModel):
-    kind: Literal["auto", "mock", "jev"] = "auto"  # auto → jev when TYPESAFE_API_KEY is set
-    jev_model: str = "jev-latest"
+    kind: Literal["auto", "mock", "jev"] = "auto"  # auto → jev when OPENROUTER_API_KEY is set
+    jev_model: str = "typesafe/jev-1.13"
     price_per_mtok_input_usd: float = 0.042
     timeout_s: float = 10
     max_concurrency: int = 8

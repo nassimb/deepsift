@@ -37,6 +37,6 @@ for _ in $(seq 1 90); do
 done
 echo
 echo "  DEEPSIFT ready → http://localhost:$WEB_PORT/control"
-echo "  engine: $( [ -n "${TYPESAFE_API_KEY:-}" ] && echo 'Jev (TYPESAFE_API_KEY present)' || echo 'mock heuristic (no TYPESAFE_API_KEY)')"
+echo "  engine: $( [ -n "${OPENROUTER_API_KEY:-}" ] && echo 'Jev via OpenRouter (OPENROUTER_API_KEY present)' || echo 'mock heuristic (no OPENROUTER_API_KEY)')"
 (command -v open >/dev/null && open "http://localhost:$WEB_PORT/control") || true
 wait

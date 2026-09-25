@@ -1,6 +1,6 @@
 # Jev model selection (VALIDATION only)
 
-**Status: PRE-REGISTERED — no live Jev call has been made.** This file fixes the procedure before any
+**Status: PRE-REGISTERED.** Live calls so far: 1 probe + the 30-event smoke only (operational checks, no selection input). This file fixes the procedure before any
 Jev output exists. The "Selection record" section is filled in by `scripts/run_study.py --freeze-jev`
 output after the validation ablation; nothing here may be chosen or changed using test results.
 
@@ -10,8 +10,13 @@ Tag `phase2-pre-jev` (commit `3142727`): detector thresholds, event extraction, 
 truth and splits are frozen. Any later change to them requires a new untouched test split. The Jev
 layer (state representation, questions, gating) may still change — on validation only.
 
-Pinned model: `jev-1.13.0` (the alias `jev-latest` resolved to it on 2026-09-25 per
-https://docs.typesafe.ai/models.md). SDK: `typesafe-sdk` 0.7.1.
+Pinned model: `typesafe/jev-1.13` (never `jev-latest`). Transport: OpenRouter System One API
+(`POST https://openrouter.ai/api/v1/systemone`, TypeSafe SDK with `base_url=https://openrouter.ai/api`,
+key `OPENROUTER_API_KEY`; `TYPESAFE_API_KEY` is not read). Provider behind OpenRouter: TypeSafe.
+Served snapshot on 2026-09-25: `typesafe/jev-1.13-20260917` (every response logs it). SDK: `typesafe-sdk` 0.7.1.
+The cache key includes the transport, so answers obtained through different transports are never mixed.
+Price: $0.042 / Mtok input, output free (OpenRouter endpoint listing, 2026-09-25); each response's
+`usage.cost` is recorded and used by the run budget.
 
 ## Staged protocol
 
@@ -59,6 +64,14 @@ requests repeat up to 25×. Budget, storage, gating and random-seed sweeps never
 stored answers); the UI/API runs on the mock engine. `numeric_only` alone is 11,571 of the 22,222
 validation calls because raw floats (e.g. rarity) differ slightly between batches; the pilot will show
 whether it deserves the full ablation.
+
+## Operational record (not selection input)
+
+| stage | run | live requests | result |
+|---|---|---|---|
+| TypeSafe-direct smoke | `20260925T083440-jev-smoke-fe7c` | 30 (before fail-fast existed) | all HTTP 401, key rejected — transport abandoned |
+| OpenRouter probe | `20260925T090044-jev-probe-6ded` | 1 | all 8 probe checks passed |
+| OpenRouter smoke (30 events, `--repeat 3`) | `20260925T090119-jev-smoke-b935` | 29 + 9 repeats | 0 errors, 0 malformed, 0 retries; cache determinism confirmed |
 
 ## Selection record
 

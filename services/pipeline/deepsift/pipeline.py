@@ -42,7 +42,7 @@ def make_engine(cfg: Config) -> DecisionEngine:
     de = cfg.decision_engine
     if de.kind == "jev" or (de.kind == "auto" and jev_available()):
         if not jev_available():
-            raise RuntimeError("decision_engine.kind=jev but TYPESAFE_API_KEY is not set")
+            raise RuntimeError("decision_engine.kind=jev but OPENROUTER_API_KEY is not set")
         return JevDecisionEngine(model=de.jev_model, timeout_s=de.timeout_s, max_concurrency=de.max_concurrency,
                                  price_per_mtok_input_usd=de.price_per_mtok_input_usd)
     return MockDecisionEngine()

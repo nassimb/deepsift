@@ -21,7 +21,7 @@ import random
 from dataclasses import dataclass, field
 
 from deepsift.core.config import Config
-from deepsift.decision.jev import VARIANTS, questions_payload, sdk_version
+from deepsift.decision.jev import TRANSPORT, VARIANTS, questions_payload, sdk_version
 from deepsift.decision.jev_cache import JevCache, request_key
 from deepsift.decision.questions import QUESTIONS, SINGLE_DECISION_QUESTIONS
 from deepsift.decision.state import build_state_variant
@@ -32,10 +32,13 @@ from deepsift.features.novelty import assign_novelty
 from deepsift.objectives.objective import load_objectives
 from deepsift.priority.engine import rules_type
 
-PRICING = {"model": "jev-1.13.0", "usd_per_mtok_input": 0.042, "usd_per_mtok_output": 0.0,
+PRICING = {"model": "typesafe/jev-1.13", "transport": TRANSPORT, "provider": "TypeSafe",
+           "usd_per_mtok_input": 0.042, "usd_per_mtok_output": 0.0,
            "requests_per_minute": 1200, "tokens_per_second": 250_000,
-           "source": "https://docs.typesafe.ai/models.md", "retrieved": "2026-09-25",
-           "verbatim": "Price (per Btok / per Mtok) $42 / $0.042 — Charged per input token. Output tokens are free."}
+           "source": "https://openrouter.ai/api/v1/models/typesafe/jev-1.13/endpoints", "retrieved": "2026-09-25",
+           "verbatim": 'endpoint "TypeSafe | typesafe/jev-1.13-20260917": pricing {"prompt":"0.000000042","completion":"0"}',
+           "rate_limit_source": "TypeSafe direct (docs.typesafe.ai/models.md); OpenRouter's own limit for this key is not published — used only for the time estimate",
+           "actual_cost": "each OpenRouter response carries usage.cost (USD); the run budget uses it when present"}
 CHARS_PER_TOKEN_ASSUMED = 4.0            # used only until the cache holds real usage; reported as an assumption
 VENDOR_LATENCY_MS = (70, 500)            # TypeSafe-stated range; replaced by measured p50 once available
 MISSION = ("MSL / CURIOSITY", "Gale Crater, Mars (4.59°S, 137.44°E landing site)")
@@ -173,7 +176,7 @@ def build_plan(cfg: Config, mode: str, variants: list[str], batches: int = 25, n
         for e, tag, stratum in selected:
             for v in variants:
                 state, chars, q = _payload(e, v, objective)
-                plan.requests.append(PlannedRequest(request_key(state, q, v, plan.model, sdk_version()), e.id, v, chars,
+                plan.requests.append(PlannedRequest(request_key(state, q, v, plan.model, sdk_version(), TRANSPORT), e.id, v, chars,
                                                     tag.split(":")[1], tag.split(":")[0], None))
         return plan, selected
     for dataset, sd, det, b, evs, inj, seg in _candidate_sets(cfg, split, batches):
@@ -186,7 +189,7 @@ def build_plan(cfg: Config, mode: str, variants: list[str], batches: int = 25, n
         for e in evs:
             for v in variants:
                 state, chars, q = _payload(e, v, objective)
-                plan.requests.append(PlannedRequest(request_key(state, q, v, plan.model, sdk_version()), e.id, v, chars, dataset, seg.id, b))
+                plan.requests.append(PlannedRequest(request_key(state, q, v, plan.model, sdk_version(), TRANSPORT), e.id, v, chars, dataset, seg.id, b))
     return plan, selected
 
 

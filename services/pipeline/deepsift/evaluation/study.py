@@ -122,7 +122,7 @@ class Study:
                     self.engines.append(EngineSpec("JEV_" + v.upper(), eng, single=(v == "single_decision")))
                 self.jev_status = "enabled"
             else:
-                self.jev_status = "UNAVAILABLE: TYPESAFE_API_KEY not set"
+                self.jev_status = "UNAVAILABLE: OPENROUTER_API_KEY not set"
         self.git_at_start = git_state()          # captured before any work: the code actually executed
         self.rows: list[dict] = []
         self.calib: dict[str, dict[str, list]] = {}

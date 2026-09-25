@@ -1,0 +1,2328 @@
+{
+ "run_id": "20260925T090119-jev-smoke-b935",
+ "mode": "smoke",
+ "split": "validation",
+ "variants": [
+  "no_mission_objective"
+ ],
+ "preflight": {
+  "mode": "smoke",
+  "split": "validation",
+  "variants": [
+   "no_mission_objective"
+  ],
+  "model": "typesafe/jev-1.13",
+  "candidate_events": {
+   "sampled": 30
+  },
+  "requests_without_cache": 30,
+  "unique_requests": 30,
+  "already_cached": 1,
+  "live_calls_needed": 38,
+  "live_calls_by_variant": {
+   "no_mission_objective": 29
+  },
+  "requests_per_event": 1,
+  "decisions_per_request": {
+   "no_mission_objective": 5
+  },
+  "estimated_input_tokens": 42806,
+  "token_estimate_basis": "measured 2.49 chars/token from 1 cached calls",
+  "estimated_cost_usd": 0.0018,
+  "pricing": {
+   "model": "typesafe/jev-1.13",
+   "transport": "openrouter",
+   "provider": "TypeSafe",
+   "usd_per_mtok_input": 0.042,
+   "usd_per_mtok_output": 0.0,
+   "requests_per_minute": 1200,
+   "tokens_per_second": 250000,
+   "source": "https://openrouter.ai/api/v1/models/typesafe/jev-1.13/endpoints",
+   "retrieved": "2026-09-25",
+   "verbatim": "endpoint \"TypeSafe | typesafe/jev-1.13-20260917\": pricing {\"prompt\":\"0.000000042\",\"completion\":\"0\"}",
+   "rate_limit_source": "TypeSafe direct (docs.typesafe.ai/models.md); OpenRouter's own limit for this key is not published \u2014 used only for the time estimate",
+   "actual_cost": "each OpenRouter response carries usage.cost (USD); the run budget uses it when present"
+  },
+  "estimated_minutes": {
+   "rate_limit_floor": 0.0,
+   "latency_bound_range": [
+    0.0,
+    0.0
+   ],
+   "basis": "measured p50"
+  },
+  "funnel": []
+ },
+ "transport": "openrouter",
+ "endpoint": "https://openrouter.ai/api/v1/systemone",
+ "sdk": "typesafe-sdk 0.7.1",
+ "model_requested": "typesafe/jev-1.13",
+ "operations": {
+  "live_requests": 38,
+  "cache_hits_logged": 32,
+  "input_tokens": 55351,
+  "output_tokens": 8505,
+  "cost_usd_reported": 0.002324742,
+  "cost_usd_derived": 0.0023247420000000003,
+  "cost_sources": {
+   "usage.cost": 38
+  },
+  "latency_ms_live": {
+   "n": 38,
+   "p50": 295.6653534783982,
+   "p90": 521.311108127702,
+   "p95": 627.0150518859735,
+   "p99": 808.4492330218204,
+   "max": 876.2978749582544,
+   "mean": 352.364735659457
+  },
+  "retries": 0,
+  "api_errors": 0,
+  "http_statuses": {
+   "200": 38
+  },
+  "models_returned": {
+   "typesafe/jev-1.13-20260917": 38
+  },
+  "providers": {
+   "TypeSafe": 38
+  },
+  "malformed_responses": 0
+ },
+ "smoke_checks": {
+  "one_event_one_request": true,
+  "live_requests_per_event": {
+   "1": 29
+  },
+  "all_questions_in_the_same_request": true,
+  "no_raw_rows_sent": true,
+  "max_state_chars": 1883,
+  "max_numeric_values_in_state": 1,
+  "min_raw_samples_in_event_window": 2,
+  "identical_repeat_live_calls": 0,
+  "identical_repeat_cache_hits": 30,
+  "cache_determinism_answers_identical": true,
+  "probe_event_first_request_cache_miss_then_hit": [
+   true,
+   true,
+   true
+  ]
+ },
+ "representative_candidates": [
+  {
+   "event_id": "MSL-REMS-0418-213430",
+   "stratum": [
+    "synthetic",
+    "high",
+    "MODERATE",
+    "atmospheric"
+   ],
+   "instrument": "REMS",
+   "sensors": [
+    "rel_humidity"
+   ],
+   "features": {
+    "deviation_score": 42.31,
+    "rarity": 0.997,
+    "duration_s": 1850.0,
+    "correlated_channels": 1,
+    "cross_instrument": false,
+    "lmst_hour": 19.42,
+    "trigger_reasons": [
+     "rel_humidity: mean 4.00 % is +42.3\u03c3 from the same-local-time baseline (3.15); threshold \u00b19.344\u03c3"
+    ],
+    "flags": {
+     "rel_humidity": [
+      "level"
+     ]
+    }
+   },
+   "rules": {
+    "science_value": "critical",
+    "event_type": "atmospheric"
+   },
+   "jev": {
+    "science_value": {
+     "choice": "high",
+     "confidence": 0.56
+    },
+    "event_type": {
+     "choice": "instrument_anomaly",
+     "confidence": 0.55
+    },
+    "downlink_action": {
+     "choice": "full_data",
+     "confidence": 0.4
+    },
+    "needs_deep_analysis": {
+     "noul": 0.82
+    },
+    "instrument_failure": {
+     "choice": "yes",
+     "confidence": 0.72
+    }
+   },
+   "latency_ms": 480.47470895107836,
+   "input_tokens": 1503,
+   "disagrees_on_type": true,
+   "disagrees_on_value": true
+  },
+  {
+   "event_id": "MSL-REMS-0424-041159",
+   "stratum": [
+    "synthetic",
+    "high",
+    "MODERATE",
+    "instrument_anomaly"
+   ],
+   "instrument": "REMS",
+   "sensors": [
+    "uv_abc"
+   ],
+   "features": {
+    "deviation_score": 5.13,
+    "rarity": 0.922,
+    "duration_s": 308.0,
+    "correlated_channels": 1,
+    "cross_instrument": false,
+    "lmst_hour": 22.01,
+    "trigger_reasons": [
+     "uv_abc: value outside physical range [-0.03, -0.02] W/m\u00b2"
+    ],
+    "flags": {
+     "uv_abc": [
+      "range"
+     ]
+    }
+   },
+   "rules": {
+    "science_value": "medium",
+    "event_type": "instrument_anomaly"
+   },
+   "jev": {
+    "science_value": {
+     "choice": "low",
+     "confidence": 0.19
+    },
+    "event_type": {
+     "choice": "instrument_anomaly",
+     "confidence": 0.85
+    },
+    "downlink_action": {
+     "choice": "summary_only",
+     "confidence": 0.31
+    },
+    "needs_deep_analysis": {
+     "noul": 0.7
+    },
+    "instrument_failure": {
+     "choice": "yes",
+     "confidence": 0.84
+    }
+   },
+   "latency_ms": 692.9231670219451,
+   "input_tokens": 1468,
+   "disagrees_on_type": false,
+   "disagrees_on_value": true
+  },
+  {
+   "event_id": "MSL-RAD-0799-142359",
+   "stratum": [
+    "synthetic",
+    "high",
+    "OBVIOUS",
+    "instrument_anomaly"
+   ],
+   "instrument": "RAD",
+   "sensors": [
+    "dose_b",
+    "dose_e"
+   ],
+   "features": {
+    "deviation_score": 23.82,
+    "rarity": 1.0,
+    "duration_s": 13214.0,
+    "correlated_channels": 2,
+    "cross_instrument": false,
+    "lmst_hour": 1.36,
+    "trigger_reasons": [
+     "dose_b: mean -0.02 \u00b5Gy/h is -21.0\u03c3 from the same-local-time baseline (8.74); threshold \u00b18.603\u03c3",
+     "dose_b: value outside physical range [-0.02, -0.02] \u00b5Gy/h",
+     "dose_e: mean 2.81 \u00b5Gy/h is -23.8\u03c3 from the same-local-time baseline (8.63); threshold \u00b18.603\u03c3"
+    ],
+    "flags": {
+     "dose_b": [
+      "level",
+      "range"
+     ],
+     "dose_e": [
+      "level"
+     ]
+    }
+   },
+   "rules": {
+    "science_value": "critical",
+    "event_type": "instrument_anomaly"
+   },
+   "jev": {
+    "science_value": {
+     "choice": "high",
+     "confidence": 0.54
+    },
+    "event_type": {
+     "choice": "instrument_anomaly",
+     "confidence": 0.96
+    },
+    "downlink_action": {
+     "choice": "full_data",
+     "confidence": 0.35
+    },
+    "needs_deep_analysis": {
+     "noul": 0.83
+    },
+    "instrument_failure": {
+     "choice": "yes",
+     "confidence": 0.94
+    }
+   },
+   "latency_ms": 525.3629999933764,
+   "input_tokens": 1319,
+   "disagrees_on_type": false,
+   "disagrees_on_value": true
+  },
+  {
+   "event_id": "MSL-RAD-0792-234729",
+   "stratum": [
+    "synthetic",
+    "high",
+    "OBVIOUS",
+    "radiation"
+   ],
+   "instrument": "RAD",
+   "sensors": [
+    "dose_b",
+    "dose_e"
+   ],
+   "features": {
+    "deviation_score": 16.85,
+    "rarity": 0.997,
+    "duration_s": 2375.0,
+    "correlated_channels": 2,
+    "cross_instrument": true,
+    "lmst_hour": 14.99,
+    "trigger_reasons": [
+     "dose_b: mean 3.56 \u00b5Gy/h is -12.1\u03c3 from the same-local-time baseline (8.42); threshold \u00b18.603\u03c3",
+     "dose_e: mean 3.70 \u00b5Gy/h is -16.9\u03c3 from the same-local-time baseline (8.20); threshold \u00b18.603\u03c3"
+    ],
+    "flags": {
+     "dose_b": [
+      "level"
+     ],
+     "dose_e": [
+      "level"
+     ]
+    }
+   },
+   "rules": {
+    "science_value": "critical",
+    "event_type": "radiation"
+   },
+   "jev": {
+    "science_value": {
+     "choice": "high",
+     "confidence": 0.77
+    },
+    "event_type": {
+     "choice": "instrument_anomaly",
+     "confidence": 0.78
+    },
+    "downlink_action": {
+     "choice": "full_data",
+     "confidence": 0.42
+    },
+    "needs_deep_analysis": {
+     "noul": 0.91
+    },
+    "instrument_failure": {
+     "choice": "yes",
+     "confidence": 0.78
+    }
+   },
+   "latency_ms": 519.574583042413,
+   "input_tokens": 1297,
+   "disagrees_on_type": true,
+   "disagrees_on_value": true
+  },
+  {
+   "event_id": "MSL-REMS-0815-232155",
+   "stratum": [
+    "synthetic",
+    "high",
+    "WEAK",
+    "instrument_anomaly"
+   ],
+   "instrument": "REMS",
+   "sensors": [
+    "air_temp"
+   ],
+   "features": {
+    "deviation_score": 4.78,
+    "rarity": 0.947,
+    "duration_s": 616.0,
+    "correlated_channels": 1,
+    "cross_instrument": false,
+    "lmst_hour": 23.17,
+    "trigger_reasons": [
+     "air_temp: sample-to-sample noise 8.2\u00d7 the baseline (threshold 4.631\u00d7)"
+    ],
+    "flags": {
+     "air_temp": [
+      "noise"
+     ]
+    }
+   },
+   "rules": {
+    "science_value": "medium",
+    "event_type": "instrument_anomaly"
+   },
+   "jev": {
+    "science_value": {
+     "choice": "low",
+     "confidence": 0.21
+    },
+    "event_type": {
+     "choice": "instrument_anomaly",
+     "confidence": 0.98
+    },
+    "downlink_action": {
+     "choice": "summary_only",
+     "confidence": 0.4
+    },
+    "needs_deep_analysis": {
+     "noul": 0.66
+    },
+    "instrument_failure": {
+     "choice": "yes",
+     "confidence": 0.84
+    }
+   },
+   "latency_ms": 476.37420892715454,
+   "input_tokens": 1489,
+   "disagrees_on_type": false,
+   "disagrees_on_value": true
+  },
+  {
+   "event_id": "MSL-RAD-0818-171025",
+   "stratum": [
+    "synthetic",
+    "high",
+    "WEAK",
+    "radiation"
+   ],
+   "instrument": "RAD",
+   "sensors": [
+    "dose_e"
+   ],
+   "features": {
+    "deviation_score": 16.28,
+    "rarity": 0.988,
+    "duration_s": 452.0,
+    "correlated_channels": 1,
+    "cross_instrument": true,
+    "lmst_hour": 15.21,
+    "trigger_reasons": [
+     "dose_e: mean 5.71 \u00b5Gy/h is -16.3\u03c3 from the same-local-time baseline (8.96); threshold \u00b18.603\u03c3"
+    ],
+    "flags": {
+     "dose_e": [
+      "level"
+     ]
+    }
+   },
+   "rules": {
+    "science_value": "critical",
+    "event_type": "radiation"
+   },
+   "jev": {
+    "science_value": {
+     "choice": "high",
+     "confidence": 0.81
+    },
+    "event_type": {
+     "choice": "instrument_anomaly",
+     "confidence": 0.79
+    },
+    "downlink_action": {
+     "choice": "full_data",
+     "confidence": 0.32
+    },
+    "needs_deep_analysis": {
+     "noul": 0.87
+    },
+    "instrument_failure": {
+     "choice": "yes",
+     "confidence": 0.78
+    }
+   },
+   "latency_ms": 435.4068749817088,
+   "input_tokens": 1245,
+   "disagrees_on_type": true,
+   "disagrees_on_value": true
+  },
+  {
+   "event_id": "MSL-REMS-0817-112956",
+   "stratum": [
+    "synthetic",
+    "low",
+    "MODERATE",
+    "instrument_anomaly"
+   ],
+   "instrument": "REMS",
+   "sensors": [
+    "air_temp",
+    "ground_temp",
+    "pressure",
+    "uv_abc"
+   ],
+   "features": {
+    "deviation_score": 17.89,
+    "rarity": 0.961,
+    "duration_s": 6531.0,
+    "correlated_channels": 4,
+    "cross_instrument": true,
+    "lmst_hour": 10.33,
+    "trigger_reasons": [
+     "air_temp: sample-to-sample noise 12.1\u00d7 the baseline (threshold 4.631\u00d7)",
+     "ground_temp: sample-to-sample noise 8.1\u00d7 the baseline (threshold 4.631\u00d7)",
+     "pressure: 0.75 Pa drop below the 60 s running median (threshold 0.43 Pa)",
+     "uv_abc: 75% of records missing this channel (baseline 0%)"
+    ],
+    "flags": {
+     "air_temp": [
+      "noise"
+     ],
+     "ground_temp": [
+      "noise"
+     ],
+     "pressure": [
+      "dip"
+     ],
+     "uv_abc": [
+      "dropout"
+     ]
+    }
+   },
+   "rules": {
+    "science_value": "critical",
+    "event_type": "instrument_anomaly"
+   },
+   "jev": {
+    "science_value": {
+     "choice": "high",
+     "confidence": 0.56
+    },
+    "event_type": {
+     "choice": "instrument_anomaly",
+     "confidence": 0.99
+    },
+    "downlink_action": {
+     "choice": "compress",
+     "confidence": 0.25
+    },
+    "needs_deep_analysis": {
+     "noul": 0.87
+    },
+    "instrument_failure": {
+     "choice": "yes",
+     "confidence": 0.99
+    }
+   },
+   "latency_ms": 424.66370901092887,
+   "input_tokens": 1660,
+   "disagrees_on_type": false,
+   "disagrees_on_value": true
+  },
+  {
+   "event_id": "MSL-REMS-0789-025816",
+   "stratum": [
+    "synthetic",
+    "low",
+    "OBVIOUS",
+    "instrument_anomaly"
+   ],
+   "instrument": "REMS",
+   "sensors": [
+    "ground_temp"
+   ],
+   "features": {
+    "deviation_score": 1.49,
+    "rarity": 0.805,
+    "duration_s": 565.0,
+    "correlated_channels": 1,
+    "cross_instrument": false,
+    "lmst_hour": 20.01,
+    "trigger_reasons": [
+     "ground_temp: sample-to-sample noise 5.8\u00d7 the baseline (threshold 4.631\u00d7)"
+    ],
+    "flags": {
+     "ground_temp": [
+      "noise"
+     ]
+    }
+   },
+   "rules": {
+    "science_value": "low",
+    "event_type": "instrument_anomaly"
+   },
+   "jev": {
+    "science_value": {
+     "choice": "low",
+     "confidence": 0.39
+    },
+    "event_type": {
+     "choice": "instrument_anomaly",
+     "confidence": 0.99
+    },
+    "downlink_action": {
+     "choice": "summary_only",
+     "confidence": 0.25
+    },
+    "needs_deep_analysis": {
+     "noul": 0.69
+    },
+    "instrument_failure": {
+     "choice": "yes",
+     "confidence": 0.92
+    }
+   },
+   "latency_ms": 448.7026249989867,
+   "input_tokens": 1486,
+   "disagrees_on_type": false,
+   "disagrees_on_value": false
+  },
+  {
+   "event_id": "MSL-REMS-0791-155732",
+   "stratum": [
+    "synthetic",
+    "low",
+    "QUALITY_FAULT",
+    "instrument_anomaly"
+   ],
+   "instrument": "REMS",
+   "sensors": [
+    "pressure",
+    "uv_abc"
+   ],
+   "features": {
+    "deviation_score": 1.87,
+    "rarity": 0.768,
+    "duration_s": 3964.0,
+    "correlated_channels": 2,
+    "cross_instrument": false,
+    "lmst_hour": 8.01,
+    "trigger_reasons": [
+     "pressure: sample-to-sample noise 12.9\u00d7 the baseline (threshold 4.631\u00d7)",
+     "uv_abc: 100% of records missing this channel (baseline 0%)"
+    ],
+    "flags": {
+     "pressure": [
+      "noise",
+      "stuck"
+     ],
+     "uv_abc": [
+      "dropout"
+     ]
+    }
+   },
+   "rules": {
+    "science_value": "low",
+    "event_type": "instrument_anomaly"
+   },
+   "jev": {
+    "science_value": {
+     "choice": "none",
+     "confidence": 0.78
+    },
+    "event_type": {
+     "choice": "instrument_anomaly",
+     "confidence": 1.0
+    },
+    "downlink_action": {
+     "choice": "summary_only",
+     "confidence": 0.16
+    },
+    "needs_deep_analysis": {
+     "noul": 0.75
+    },
+    "instrument_failure": {
+     "choice": "yes",
+     "confidence": 1.0
+    }
+   },
+   "latency_ms": 615.3842080384493,
+   "input_tokens": 1525,
+   "disagrees_on_type": false,
+   "disagrees_on_value": true
+  },
+  {
+   "event_id": "MSL-REMS-0793-014435",
+   "stratum": [
+    "synthetic",
+    "low",
+    "WEAK",
+    "instrument_anomaly"
+   ],
+   "instrument": "REMS",
+   "sensors": [
+    "pressure",
+    "uv_abc"
+   ],
+   "features": {
+    "deviation_score": 12.17,
+    "rarity": 0.819,
+    "duration_s": 1850.0,
+    "correlated_channels": 2,
+    "cross_instrument": true,
+    "lmst_hour": 16.25,
+    "trigger_reasons": [
+     "pressure: 0.51 Pa drop below the 60 s running median (threshold 0.43 Pa)",
+     "uv_abc: sample-to-sample noise 5.3\u00d7 the baseline (threshold 4.631\u00d7)"
+    ],
+    "flags": {
+     "pressure": [
+      "dip"
+     ],
+     "uv_abc": [
+      "noise"
+     ]
+    }
+   },
+   "rules": {
+    "science_value": "high",
+    "event_type": "instrument_anomaly"
+   },
+   "jev": {
+    "science_value": {
+     "choice": "medium",
+     "confidence": 0.2
+    },
+    "event_type": {
+     "choice": "instrument_anomaly",
+     "confidence": 0.77
+    },
+    "downlink_action": {
+     "choice": "compress",
+     "confidence": 0.19
+    },
+    "needs_deep_analysis": {
+     "noul": 0.77
+    },
+    "instrument_failure": {
+     "choice": "yes",
+     "confidence": 0.73
+    }
+   },
+   "latency_ms": 261.12041692249477,
+   "input_tokens": 1547,
+   "disagrees_on_type": false,
+   "disagrees_on_value": true
+  },
+  {
+   "event_id": "MSL-REMS-0811-215747",
+   "stratum": [
+    "synthetic",
+    "medium",
+    "MODERATE",
+    "instrument_anomaly"
+   ],
+   "instrument": "REMS",
+   "sensors": [
+    "uv_abc"
+   ],
+   "features": {
+    "deviation_score": 4.04,
+    "rarity": 0.944,
+    "duration_s": 308.0,
+    "correlated_channels": 1,
+    "cross_instrument": false,
+    "lmst_hour": 1.01,
+    "trigger_reasons": [
+     "uv_abc: value outside physical range [-0.04, -0.03] W/m\u00b2"
+    ],
+    "flags": {
+     "uv_abc": [
+      "range"
+     ]
+    }
+   },
+   "rules": {
+    "science_value": "medium",
+    "event_type": "instrument_anomaly"
+   },
+   "jev": {
+    "science_value": {
+     "choice": "low",
+     "confidence": 0.12
+    },
+    "event_type": {
+     "choice": "instrument_anomaly",
+     "confidence": 0.66
+    },
+    "downlink_action": {
+     "choice": "summary_only",
+     "confidence": 0.3
+    },
+    "needs_deep_analysis": {
+     "noul": 0.72
+    },
+    "instrument_failure": {
+     "choice": "yes",
+     "confidence": 0.73
+    }
+   },
+   "latency_ms": 287.4565829988569,
+   "input_tokens": 1468,
+   "disagrees_on_type": false,
+   "disagrees_on_value": true
+  },
+  {
+   "event_id": "MSL-REMS-0791-023351",
+   "stratum": [
+    "synthetic",
+    "medium",
+    "NEAR_NOISE_FLOOR",
+    "instrument_anomaly"
+   ],
+   "instrument": "REMS",
+   "sensors": [
+    "pressure",
+    "rel_humidity"
+   ],
+   "features": {
+    "deviation_score": 16.62,
+    "rarity": 0.994,
+    "duration_s": 1541.0,
+    "correlated_channels": 2,
+    "cross_instrument": false,
+    "lmst_hour": 18.33,
+    "trigger_reasons": [
+     "pressure: 0.70 Pa drop below the 60 s running median (threshold 0.43 Pa)",
+     "pressure: sample-to-sample noise 5.1\u00d7 the baseline (threshold 4.631\u00d7)",
+     "rel_humidity: mean 1.95 % is -13.1\u03c3 from the same-local-time baseline (2.09); threshold \u00b19.344\u03c3"
+    ],
+    "flags": {
+     "pressure": [
+      "dip",
+      "noise"
+     ],
+     "rel_humidity": [
+      "level"
+     ]
+    }
+   },
+   "rules": {
+    "science_value": "critical",
+    "event_type": "instrument_anomaly"
+   },
+   "jev": {
+    "science_value": {
+     "choice": "high",
+     "confidence": 0.69
+    },
+    "event_type": {
+     "choice": "instrument_anomaly",
+     "confidence": 0.79
+    },
+    "downlink_action": {
+     "choice": "full_data",
+     "confidence": 0.33
+    },
+    "needs_deep_analysis": {
+     "noul": 0.82
+    },
+    "instrument_failure": {
+     "choice": "yes",
+     "confidence": 0.82
+    }
+   },
+   "latency_ms": 275.42245807126164,
+   "input_tokens": 1593,
+   "disagrees_on_type": false,
+   "disagrees_on_value": true
+  },
+  {
+   "event_id": "MSL-REMS-0788-170808",
+   "stratum": [
+    "synthetic",
+    "medium",
+    "OBVIOUS",
+    "instrument_anomaly"
+   ],
+   "instrument": "REMS",
+   "sensors": [
+    "ground_temp",
+    "uv_abc"
+   ],
+   "features": {
+    "deviation_score": 54.53,
+    "rarity": 0.992,
+    "duration_s": 7090.0,
+    "correlated_channels": 2,
+    "cross_instrument": false,
+    "lmst_hour": 11.08,
+    "trigger_reasons": [
+     "ground_temp: 100% of records missing this channel (baseline 0%)",
+     "uv_abc: mean 1.73 W/m\u00b2 is -54.5\u03c3 from the same-local-time baseline (9.98); threshold \u00b19.344\u03c3"
+    ],
+    "flags": {
+     "ground_temp": [
+      "dropout"
+     ],
+     "uv_abc": [
+      "dropout",
+      "level",
+      "noise"
+     ]
+    }
+   },
+   "rules": {
+    "science_value": "critical",
+    "event_type": "instrument_anomaly"
+   },
+   "jev": {
+    "science_value": {
+     "choice": "high",
+     "confidence": 0.51
+    },
+    "event_type": {
+     "choice": "instrument_anomaly",
+     "confidence": 0.96
+    },
+    "downlink_action": {
+     "choice": "full_data",
+     "confidence": 0.35
+    },
+    "needs_deep_analysis": {
+     "noul": 0.88
+    },
+    "instrument_failure": {
+     "choice": "yes",
+     "confidence": 0.98
+    }
+   },
+   "latency_ms": 284.66862498316914,
+   "input_tokens": 1581,
+   "disagrees_on_type": false,
+   "disagrees_on_value": true
+  },
+  {
+   "event_id": "MSL-REMS-0809-194120",
+   "stratum": [
+    "synthetic",
+    "medium",
+    "WEAK",
+    "instrument_anomaly"
+   ],
+   "instrument": "REMS",
+   "sensors": [
+    "rel_humidity",
+    "uv_abc"
+   ],
+   "features": {
+    "deviation_score": 5.05,
+    "rarity": 0.959,
+    "duration_s": 3588.0,
+    "correlated_channels": 2,
+    "cross_instrument": false,
+    "lmst_hour": 0.08,
+    "trigger_reasons": [
+     "rel_humidity: 99% of records missing this channel (baseline 0%)",
+     "uv_abc: value outside physical range [-0.06, -0.05] W/m\u00b2"
+    ],
+    "flags": {
+     "rel_humidity": [
+      "dropout"
+     ],
+     "uv_abc": [
+      "range"
+     ]
+    }
+   },
+   "rules": {
+    "science_value": "medium",
+    "event_type": "instrument_anomaly"
+   },
+   "jev": {
+    "science_value": {
+     "choice": "high",
+     "confidence": 0.43
+    },
+    "event_type": {
+     "choice": "instrument_anomaly",
+     "confidence": 0.99
+    },
+    "downlink_action": {
+     "choice": "full_data",
+     "confidence": 0.15
+    },
+    "needs_deep_analysis": {
+     "noul": 0.82
+    },
+    "instrument_failure": {
+     "choice": "yes",
+     "confidence": 0.99
+    }
+   },
+   "latency_ms": 307.81970790121704,
+   "input_tokens": 1525,
+   "disagrees_on_type": false,
+   "disagrees_on_value": true
+  },
+  {
+   "event_id": "MSL-REMS-0812-070513",
+   "stratum": [
+    "unlabelled",
+    "none",
+    "dev_hi",
+    "atmospheric"
+   ],
+   "instrument": "REMS",
+   "sensors": [
+    "pressure"
+   ],
+   "features": {
+    "deviation_score": 196.33,
+    "rarity": 1.0,
+    "duration_s": 2466.0,
+    "correlated_channels": 1,
+    "cross_instrument": false,
+    "lmst_hour": 9.25,
+    "trigger_reasons": [
+     "pressure: mean 919.11 Pa is +196.3\u03c3 from the same-local-time baseline (910.87); threshold \u00b19.344\u03c3"
+    ],
+    "flags": {
+     "pressure": [
+      "level"
+     ]
+    }
+   },
+   "rules": {
+    "science_value": "critical",
+    "event_type": "atmospheric"
+   },
+   "jev": {
+    "science_value": {
+     "choice": "high",
+     "confidence": 0.57
+    },
+    "event_type": {
+     "choice": "instrument_anomaly",
+     "confidence": 0.67
+    },
+    "downlink_action": {
+     "choice": "full_data",
+     "confidence": 0.5
+    },
+    "needs_deep_analysis": {
+     "noul": 0.87
+    },
+    "instrument_failure": {
+     "choice": "yes",
+     "confidence": 0.85
+    }
+   },
+   "latency_ms": 265.1925829704851,
+   "input_tokens": 1490,
+   "disagrees_on_type": true,
+   "disagrees_on_value": true
+  },
+  {
+   "event_id": "MSL-REMS-0819-133104",
+   "stratum": [
+    "unlabelled",
+    "none",
+    "dev_hi",
+    "instrument_anomaly"
+   ],
+   "instrument": "REMS",
+   "sensors": [
+    "pressure",
+    "uv_abc"
+   ],
+   "features": {
+    "deviation_score": 55.09,
+    "rarity": 0.941,
+    "duration_s": 4022.0,
+    "correlated_channels": 2,
+    "cross_instrument": false,
+    "lmst_hour": 11.01,
+    "trigger_reasons": [
+     "pressure: 2.31 Pa drop below the 60 s running median (threshold 0.43 Pa)",
+     "uv_abc: 100% of records missing this channel (baseline 0%)"
+    ],
+    "flags": {
+     "pressure": [
+      "dip"
+     ],
+     "uv_abc": [
+      "dropout"
+     ]
+    }
+   },
+   "rules": {
+    "science_value": "critical",
+    "event_type": "instrument_anomaly"
+   },
+   "jev": {
+    "science_value": {
+     "choice": "high",
+     "confidence": 0.32
+    },
+    "event_type": {
+     "choice": "instrument_anomaly",
+     "confidence": 0.8
+    },
+    "downlink_action": {
+     "choice": "compress",
+     "confidence": 0.15
+    },
+    "needs_deep_analysis": {
+     "noul": 0.79
+    },
+    "instrument_failure": {
+     "choice": "yes",
+     "confidence": 0.85
+    }
+   },
+   "latency_ms": 283.7552080163732,
+   "input_tokens": 1521,
+   "disagrees_on_type": false,
+   "disagrees_on_value": true
+  },
+  {
+   "event_id": "MSL-RAD-0817-192731",
+   "stratum": [
+    "unlabelled",
+    "none",
+    "dev_hi",
+    "radiation"
+   ],
+   "instrument": "RAD",
+   "sensors": [
+    "dose_b",
+    "dose_e"
+   ],
+   "features": {
+    "deviation_score": 39.8,
+    "rarity": 1.0,
+    "duration_s": 146.0,
+    "correlated_channels": 2,
+    "cross_instrument": false,
+    "lmst_hour": 18.08,
+    "trigger_reasons": [
+     "dose_b: mean 0.29 \u00b5Gy/h is -21.0\u03c3 from the same-local-time baseline (9.01); threshold \u00b18.603\u03c3",
+     "dose_e: mean 0.37 \u00b5Gy/h is -39.8\u03c3 from the same-local-time baseline (9.01); threshold \u00b18.603\u03c3"
+    ],
+    "flags": {
+     "dose_b": [
+      "level"
+     ],
+     "dose_e": [
+      "level"
+     ]
+    }
+   },
+   "rules": {
+    "science_value": "critical",
+    "event_type": "radiation"
+   },
+   "jev": {
+    "science_value": {
+     "choice": "high",
+     "confidence": 0.57
+    },
+    "event_type": {
+     "choice": "instrument_anomaly",
+     "confidence": 0.87
+    },
+    "downlink_action": {
+     "choice": "full_data",
+     "confidence": 0.43
+    },
+    "needs_deep_analysis": {
+     "noul": 0.86
+    },
+    "instrument_failure": {
+     "choice": "yes",
+     "confidence": 0.88
+    }
+   },
+   "latency_ms": 294.43741601426154,
+   "input_tokens": 1294,
+   "disagrees_on_type": true,
+   "disagrees_on_value": true
+  },
+  {
+   "event_id": "MSL-REMS-0414-071302",
+   "stratum": [
+    "unlabelled",
+    "none",
+    "dev_hi",
+    "thermal"
+   ],
+   "instrument": "REMS",
+   "sensors": [
+    "air_temp"
+   ],
+   "features": {
+    "deviation_score": 29.8,
+    "rarity": 0.991,
+    "duration_s": 268.0,
+    "correlated_channels": 1,
+    "cross_instrument": false,
+    "lmst_hour": 8.01,
+    "trigger_reasons": [
+     "air_temp: mean 203.10 K is -29.8\u03c3 from the same-local-time baseline (212.76); threshold \u00b19.344\u03c3"
+    ],
+    "flags": {
+     "air_temp": [
+      "level"
+     ]
+    }
+   },
+   "rules": {
+    "science_value": "critical",
+    "event_type": "thermal"
+   },
+   "jev": {
+    "science_value": {
+     "choice": "high",
+     "confidence": 0.85
+    },
+    "event_type": {
+     "choice": "instrument_anomaly",
+     "confidence": 0.47
+    },
+    "downlink_action": {
+     "choice": "full_data",
+     "confidence": 0.49
+    },
+    "needs_deep_analysis": {
+     "noul": 0.87
+    },
+    "instrument_failure": {
+     "choice": "yes",
+     "confidence": 0.77
+    }
+   },
+   "latency_ms": 297.3076249472797,
+   "input_tokens": 1512,
+   "disagrees_on_type": true,
+   "disagrees_on_value": true
+  },
+  {
+   "event_id": "MSL-REMS-0417-164821",
+   "stratum": [
+    "unlabelled",
+    "none",
+    "dev_lo",
+    "atmospheric"
+   ],
+   "instrument": "REMS",
+   "sensors": [
+    "rel_humidity"
+   ],
+   "features": {
+    "deviation_score": 9.41,
+    "rarity": 0.979,
+    "duration_s": 308.0,
+    "correlated_channels": 1,
+    "cross_instrument": true,
+    "lmst_hour": 15.42,
+    "trigger_reasons": [
+     "rel_humidity: mean 1.08 % is +9.4\u03c3 from the same-local-time baseline (0.98); threshold \u00b19.344\u03c3"
+    ],
+    "flags": {
+     "rel_humidity": [
+      "level"
+     ]
+    }
+   },
+   "rules": {
+    "science_value": "high",
+    "event_type": "atmospheric"
+   },
+   "jev": {
+    "science_value": {
+     "choice": "high",
+     "confidence": 0.84
+    },
+    "event_type": {
+     "choice": "instrument_anomaly",
+     "confidence": 0.75
+    },
+    "downlink_action": {
+     "choice": "full_data",
+     "confidence": 0.41
+    },
+    "needs_deep_analysis": {
+     "noul": 0.86
+    },
+    "instrument_failure": {
+     "choice": "yes",
+     "confidence": 0.86
+    }
+   },
+   "latency_ms": 333.52941705379635,
+   "input_tokens": 1470,
+   "disagrees_on_type": true,
+   "disagrees_on_value": false
+  },
+  {
+   "event_id": "MSL-REMS-0792-194203",
+   "stratum": [
+    "unlabelled",
+    "none",
+    "dev_lo",
+    "instrument_anomaly"
+   ],
+   "instrument": "REMS",
+   "sensors": [
+    "air_temp",
+    "uv_abc"
+   ],
+   "features": {
+    "deviation_score": 9.77,
+    "rarity": 0.988,
+    "duration_s": 6739.0,
+    "correlated_channels": 2,
+    "cross_instrument": false,
+    "lmst_hour": 11.01,
+    "trigger_reasons": [
+     "air_temp: mean 256.77 K is +9.8\u03c3 from the same-local-time baseline (253.10); threshold \u00b19.344\u03c3",
+     "uv_abc: 100% of records missing this channel (baseline 0%)"
+    ],
+    "flags": {
+     "air_temp": [
+      "level"
+     ],
+     "uv_abc": [
+      "dropout"
+     ]
+    }
+   },
+   "rules": {
+    "science_value": "high",
+    "event_type": "instrument_anomaly"
+   },
+   "jev": {
+    "science_value": {
+     "choice": "high",
+     "confidence": 0.79
+    },
+    "event_type": {
+     "choice": "instrument_anomaly",
+     "confidence": 0.87
+    },
+    "downlink_action": {
+     "choice": "full_data",
+     "confidence": 0.43
+    },
+    "needs_deep_analysis": {
+     "noul": 0.88
+    },
+    "instrument_failure": {
+     "choice": "yes",
+     "confidence": 0.86
+    }
+   },
+   "latency_ms": 247.96704202890396,
+   "input_tokens": 1530,
+   "disagrees_on_type": false,
+   "disagrees_on_value": false
+  },
+  {
+   "event_id": "MSL-RAD-0819-172053",
+   "stratum": [
+    "unlabelled",
+    "none",
+    "dev_lo",
+    "radiation"
+   ],
+   "instrument": "RAD",
+   "sensors": [
+    "dose_e"
+   ],
+   "features": {
+    "deviation_score": 9.56,
+    "rarity": 0.978,
+    "duration_s": 716.0,
+    "correlated_channels": 1,
+    "cross_instrument": true,
+    "lmst_hour": 14.74,
+    "trigger_reasons": [
+     "dose_e: mean 7.13 \u00b5Gy/h is -9.6\u03c3 from the same-local-time baseline (8.90); threshold \u00b18.603\u03c3"
+    ],
+    "flags": {
+     "dose_e": [
+      "level"
+     ]
+    }
+   },
+   "rules": {
+    "science_value": "high",
+    "event_type": "radiation"
+   },
+   "jev": {
+    "science_value": {
+     "choice": "high",
+     "confidence": 0.9
+    },
+    "event_type": {
+     "choice": "instrument_anomaly",
+     "confidence": 0.69
+    },
+    "downlink_action": {
+     "choice": "full_data",
+     "confidence": 0.35
+    },
+    "needs_deep_analysis": {
+     "noul": 0.85
+    },
+    "instrument_failure": {
+     "choice": "yes",
+     "confidence": 0.73
+    }
+   },
+   "latency_ms": 256.03091600351036,
+   "input_tokens": 1244,
+   "disagrees_on_type": true,
+   "disagrees_on_value": false
+  },
+  {
+   "event_id": "MSL-REMS-0421-143900",
+   "stratum": [
+    "unlabelled",
+    "none",
+    "dev_lo",
+    "thermal"
+   ],
+   "instrument": "REMS",
+   "sensors": [
+    "air_temp"
+   ],
+   "features": {
+    "deviation_score": 9.76,
+    "rarity": 0.971,
+    "duration_s": 308.0,
+    "correlated_channels": 1,
+    "cross_instrument": false,
+    "lmst_hour": 10.75,
+    "trigger_reasons": [
+     "air_temp: mean 219.55 K is -9.8\u03c3 from the same-local-time baseline (221.49); threshold \u00b19.344\u03c3"
+    ],
+    "flags": {
+     "air_temp": [
+      "level"
+     ]
+    }
+   },
+   "rules": {
+    "science_value": "high",
+    "event_type": "thermal"
+   },
+   "jev": {
+    "science_value": {
+     "choice": "high",
+     "confidence": 0.8
+    },
+    "event_type": {
+     "choice": "thermal",
+     "confidence": 0.62
+    },
+    "downlink_action": {
+     "choice": "full_data",
+     "confidence": 0.41
+    },
+    "needs_deep_analysis": {
+     "noul": 0.83
+    },
+    "instrument_failure": {
+     "choice": "yes",
+     "confidence": 0.64
+    }
+   },
+   "latency_ms": 252.9034580802545,
+   "input_tokens": 1467,
+   "disagrees_on_type": false,
+   "disagrees_on_value": false
+  },
+  {
+   "event_id": "MSL-REMS-0798-233943",
+   "stratum": [
+    "unlabelled",
+    "none",
+    "dev_mid",
+    "atmospheric"
+   ],
+   "instrument": "REMS",
+   "sensors": [
+    "uv_abc"
+   ],
+   "features": {
+    "deviation_score": 16.71,
+    "rarity": 0.985,
+    "duration_s": 874.0,
+    "correlated_channels": 1,
+    "cross_instrument": false,
+    "lmst_hour": 11.01,
+    "trigger_reasons": [
+     "uv_abc: mean 8.91 W/m\u00b2 is +16.7\u03c3 from the same-local-time baseline (1.46); threshold \u00b19.344\u03c3"
+    ],
+    "flags": {
+     "uv_abc": [
+      "level"
+     ]
+    }
+   },
+   "rules": {
+    "science_value": "critical",
+    "event_type": "atmospheric"
+   },
+   "jev": {
+    "science_value": {
+     "choice": "high",
+     "confidence": 0.72
+    },
+    "event_type": {
+     "choice": "atmospheric",
+     "confidence": 0.65
+    },
+    "downlink_action": {
+     "choice": "full_data",
+     "confidence": 0.47
+    },
+    "needs_deep_analysis": {
+     "noul": 0.86
+    },
+    "instrument_failure": {
+     "choice": "yes",
+     "confidence": 0.52
+    }
+   },
+   "latency_ms": 252.45133403223008,
+   "input_tokens": 1499,
+   "disagrees_on_type": false,
+   "disagrees_on_value": true
+  },
+  {
+   "event_id": "MSL-REMS-0786-195107",
+   "stratum": [
+    "unlabelled",
+    "none",
+    "dev_mid",
+    "instrument_anomaly"
+   ],
+   "instrument": "REMS",
+   "sensors": [
+    "uv_abc"
+   ],
+   "features": {
+    "deviation_score": 16.82,
+    "rarity": 0.977,
+    "duration_s": 4013.0,
+    "correlated_channels": 1,
+    "cross_instrument": false,
+    "lmst_hour": 15.01,
+    "trigger_reasons": [
+     "uv_abc: mean 0.69 W/m\u00b2 is +16.8\u03c3 from the same-local-time baseline (0.31); threshold \u00b19.344\u03c3"
+    ],
+    "flags": {
+     "uv_abc": [
+      "dropout",
+      "level"
+     ]
+    }
+   },
+   "rules": {
+    "science_value": "critical",
+    "event_type": "instrument_anomaly"
+   },
+   "jev": {
+    "science_value": {
+     "choice": "high",
+     "confidence": 0.46
+    },
+    "event_type": {
+     "choice": "instrument_anomaly",
+     "confidence": 0.72
+    },
+    "downlink_action": {
+     "choice": "full_data",
+     "confidence": 0.37
+    },
+    "needs_deep_analysis": {
+     "noul": 0.84
+    },
+    "instrument_failure": {
+     "choice": "yes",
+     "confidence": 0.9
+    }
+   },
+   "latency_ms": 310.2185829775408,
+   "input_tokens": 1513,
+   "disagrees_on_type": false,
+   "disagrees_on_value": true
+  },
+  {
+   "event_id": "MSL-RAD-0781-034653",
+   "stratum": [
+    "unlabelled",
+    "none",
+    "dev_mid",
+    "radiation"
+   ],
+   "instrument": "RAD",
+   "sensors": [
+    "dose_e"
+   ],
+   "features": {
+    "deviation_score": 18.39,
+    "rarity": 0.993,
+    "duration_s": 1148.0,
+    "correlated_channels": 1,
+    "cross_instrument": true,
+    "lmst_hour": 2.58,
+    "trigger_reasons": [
+     "dose_e: mean 13.32 \u00b5Gy/h is +12.1\u03c3 from the same-local-time baseline (9.30); threshold \u00b18.603\u03c3"
+    ],
+    "flags": {
+     "dose_e": [
+      "level"
+     ]
+    }
+   },
+   "rules": {
+    "science_value": "critical",
+    "event_type": "radiation"
+   },
+   "jev": {
+    "science_value": {
+     "choice": "high",
+     "confidence": 0.71
+    },
+    "event_type": {
+     "choice": "radiation",
+     "confidence": 0.82
+    },
+    "downlink_action": {
+     "choice": "full_data",
+     "confidence": 0.44
+    },
+    "needs_deep_analysis": {
+     "noul": 0.88
+    },
+    "instrument_failure": {
+     "choice": "no",
+     "confidence": 0.45
+    }
+   },
+   "latency_ms": 272.25229097530246,
+   "input_tokens": 1251,
+   "disagrees_on_type": false,
+   "disagrees_on_value": true
+  },
+  {
+   "event_id": "MSL-REMS-0412-035501",
+   "stratum": [
+    "unlabelled",
+    "none",
+    "dev_mid",
+    "thermal"
+   ],
+   "instrument": "REMS",
+   "sensors": [
+    "air_temp"
+   ],
+   "features": {
+    "deviation_score": 16.34,
+    "rarity": 0.987,
+    "duration_s": 56.0,
+    "correlated_channels": 1,
+    "cross_instrument": false,
+    "lmst_hour": 6.08,
+    "trigger_reasons": [
+     "air_temp: mean 196.71 K is +16.3\u03c3 from the same-local-time baseline (193.08); threshold \u00b19.344\u03c3"
+    ],
+    "flags": {
+     "air_temp": [
+      "level"
+     ]
+    }
+   },
+   "rules": {
+    "science_value": "critical",
+    "event_type": "thermal"
+   },
+   "jev": {
+    "science_value": {
+     "choice": "high",
+     "confidence": 0.69
+    },
+    "event_type": {
+     "choice": "thermal",
+     "confidence": 0.49
+    },
+    "downlink_action": {
+     "choice": "full_data",
+     "confidence": 0.28
+    },
+    "needs_deep_analysis": {
+     "noul": 0.83
+    },
+    "instrument_failure": {
+     "choice": "yes",
+     "confidence": 0.73
+    }
+   },
+   "latency_ms": 375.3275419585407,
+   "input_tokens": 1496,
+   "disagrees_on_type": false,
+   "disagrees_on_value": true
+  },
+  {
+   "event_id": "MSL-REMS-0430-235539",
+   "stratum": [
+    "synthetic",
+    "high",
+    "MODERATE",
+    "atmospheric"
+   ],
+   "instrument": "REMS",
+   "sensors": [
+    "pressure"
+   ],
+   "features": {
+    "deviation_score": 11.17,
+    "rarity": 1.0,
+    "duration_s": 357.0,
+    "correlated_channels": 1,
+    "cross_instrument": false,
+    "lmst_hour": 14.0,
+    "trigger_reasons": [
+     "pressure: mean 860.73 Pa is -11.2\u03c3 from the same-local-time baseline (867.90); threshold \u00b19.344\u03c3"
+    ],
+    "flags": {
+     "pressure": [
+      "level"
+     ]
+    }
+   },
+   "rules": {
+    "science_value": "high",
+    "event_type": "atmospheric"
+   },
+   "jev": {
+    "science_value": {
+     "choice": "high",
+     "confidence": 0.93
+    },
+    "event_type": {
+     "choice": "atmospheric",
+     "confidence": 0.68
+    },
+    "downlink_action": {
+     "choice": "full_data",
+     "confidence": 0.61
+    },
+    "needs_deep_analysis": {
+     "noul": 0.86
+    },
+    "instrument_failure": {
+     "choice": "yes",
+     "confidence": 0.37
+    }
+   },
+   "latency_ms": 324.3167910259217,
+   "input_tokens": 1481,
+   "disagrees_on_type": false,
+   "disagrees_on_value": false
+  },
+  {
+   "event_id": "MSL-REMS-0820-040842",
+   "stratum": [
+    "synthetic",
+    "high",
+    "MODERATE",
+    "instrument_anomaly"
+   ],
+   "instrument": "REMS",
+   "sensors": [
+    "rel_humidity",
+    "uv_abc"
+   ],
+   "features": {
+    "deviation_score": 1.18,
+    "rarity": 0.839,
+    "duration_s": 617.0,
+    "correlated_channels": 2,
+    "cross_instrument": false,
+    "lmst_hour": 1.25,
+    "trigger_reasons": [
+     "rel_humidity: sample-to-sample noise 6.8\u00d7 the baseline (threshold 4.631\u00d7)",
+     "uv_abc: value outside physical range [-0.10, 0.00] W/m\u00b2"
+    ],
+    "flags": {
+     "rel_humidity": [
+      "noise"
+     ],
+     "uv_abc": [
+      "range"
+     ]
+    }
+   },
+   "rules": {
+    "science_value": "low",
+    "event_type": "instrument_anomaly"
+   },
+   "jev": {
+    "science_value": {
+     "choice": "none",
+     "confidence": 0.56
+    },
+    "event_type": {
+     "choice": "instrument_anomaly",
+     "confidence": 1.0
+    },
+    "downlink_action": {
+     "choice": "summary_only",
+     "confidence": 0.27
+    },
+    "needs_deep_analysis": {
+     "noul": 0.69
+    },
+    "instrument_failure": {
+     "choice": "yes",
+     "confidence": 0.97
+    }
+   },
+   "latency_ms": 257.01345899142325,
+   "input_tokens": 1526,
+   "disagrees_on_type": false,
+   "disagrees_on_value": true
+  },
+  {
+   "event_id": "MSL-REMS-0788-065139",
+   "stratum": [
+    "synthetic",
+    "high",
+    "OBVIOUS",
+    "instrument_anomaly"
+   ],
+   "instrument": "REMS",
+   "sensors": [
+    "air_temp",
+    "pressure",
+    "uv_abc"
+   ],
+   "features": {
+    "deviation_score": 12.0,
+    "rarity": 0.99,
+    "duration_s": 1233.0,
+    "correlated_channels": 3,
+    "cross_instrument": false,
+    "lmst_hour": 1.08,
+    "trigger_reasons": [
+     "air_temp: mean 195.75 K is -10.2\u03c3 from the same-local-time baseline (214.29); threshold \u00b19.344\u03c3",
+     "air_temp: sample-to-sample noise 34.9\u00d7 the baseline (threshold 4.631\u00d7)",
+     "pressure: sample-to-sample noise 42.2\u00d7 the baseline (threshold 4.631\u00d7)",
+     "uv_abc: mean -0.25 W/m\u00b2 is -12.0\u03c3 from the same-local-time baseline (0.00); threshold \u00b19.344\u03c3",
+     "uv_abc: value outside physical range [-0.25, -0.25] W/m\u00b2"
+    ],
+    "flags": {
+     "air_temp": [
+      "level",
+      "noise"
+     ],
+     "pressure": [
+      "noise"
+     ],
+     "uv_abc": [
+      "level",
+      "range"
+     ]
+    }
+   },
+   "rules": {
+    "science_value": "high",
+    "event_type": "instrument_anomaly"
+   },
+   "jev": {
+    "science_value": {
+     "choice": "high",
+     "confidence": 0.47
+    },
+    "event_type": {
+     "choice": "instrument_anomaly",
+     "confidence": 0.99
+    },
+    "downlink_action": {
+     "choice": "full_data",
+     "confidence": 0.27
+    },
+    "needs_deep_analysis": {
+     "noul": 0.83
+    },
+    "instrument_failure": {
+     "choice": "yes",
+     "confidence": 0.99
+    }
+   },
+   "latency_ms": 296.8932909425348,
+   "input_tokens": 1691,
+   "disagrees_on_type": false,
+   "disagrees_on_value": false
+  },
+  {
+   "event_id": "MSL-RAD-0412-190234",
+   "stratum": [
+    "synthetic",
+    "high",
+    "OBVIOUS",
+    "radiation"
+   ],
+   "instrument": "RAD",
+   "sensors": [
+    "dose_b",
+    "dose_e"
+   ],
+   "features": {
+    "deviation_score": 11.66,
+    "rarity": 0.993,
+    "duration_s": 2049.0,
+    "correlated_channels": 2,
+    "cross_instrument": false,
+    "lmst_hour": 20.8,
+    "trigger_reasons": [
+     "dose_b: mean 5.07 \u00b5Gy/h is -11.7\u03c3 from the same-local-time baseline (8.88); threshold \u00b18.603\u03c3",
+     "dose_e: mean 7.18 \u00b5Gy/h is -10.6\u03c3 from the same-local-time baseline (8.78); threshold \u00b18.603\u03c3"
+    ],
+    "flags": {
+     "dose_b": [
+      "level"
+     ],
+     "dose_e": [
+      "level"
+     ]
+    }
+   },
+   "rules": {
+    "science_value": "high",
+    "event_type": "radiation"
+   },
+   "jev": {
+    "science_value": {
+     "choice": "high",
+     "confidence": 0.83
+    },
+    "event_type": {
+     "choice": "radiation",
+     "confidence": 0.48
+    },
+    "downlink_action": {
+     "choice": "full_data",
+     "confidence": 0.21
+    },
+    "needs_deep_analysis": {
+     "noul": 0.81
+    },
+    "instrument_failure": {
+     "choice": "yes",
+     "confidence": 0.35
+    }
+   },
+   "latency_ms": 245.48645806498826,
+   "input_tokens": 1293,
+   "disagrees_on_type": false,
+   "disagrees_on_value": false
+  }
+ ],
+ "per_variant": {
+  "no_mission_objective": {
+   "events": 30,
+   "invalid": 0,
+   "invalid_examples": [],
+   "live_calls": 29,
+   "cache_hits": 1,
+   "latency_ms": {
+    "n": 30,
+    "p50": 297.10045794490725,
+    "p90": 520.1534247375093,
+    "p95": 574.8746644181663,
+    "p99": 670.4368689167314,
+    "max": 692.9231670219451,
+    "mean": 353.3479429975462
+   },
+   "input_tokens_per_request": 1466.1333333333334,
+   "choice_distributions": {
+    "science_value": {
+     "high": 23,
+     "low": 4,
+     "none": 2,
+     "medium": 1
+    },
+    "event_type": {
+     "instrument_anomaly": 24,
+     "thermal": 2,
+     "atmospheric": 2,
+     "radiation": 2
+    },
+    "downlink_action": {
+     "full_data": 21,
+     "summary_only": 6,
+     "compress": 3
+    },
+    "instrument_failure": {
+     "yes": 29,
+     "no": 1
+    }
+   },
+   "mean_confidence": {
+    "science_value": 0.5923333333333333,
+    "event_type": 0.7876666666666666,
+    "downlink_action": 0.3423333333333333,
+    "instrument_failure": 0.7926666666666667
+   },
+   "importance_calibration_vs_injection_overlap": {
+    "ece": 0.47566666666666674,
+    "n": 30,
+    "bins": [
+     {
+      "lo": 0.0,
+      "hi": 0.2,
+      "n": 3,
+      "mean_conf": 0.12,
+      "accuracy": 1.0
+     },
+     {
+      "lo": 0.2,
+      "hi": 0.4,
+      "n": 2,
+      "mean_conf": 0.275,
+      "accuracy": 1.0
+     },
+     {
+      "lo": 0.4,
+      "hi": 0.6000000000000001,
+      "n": 4,
+      "mean_conf": 0.5525,
+      "accuracy": 1.0
+     },
+     {
+      "lo": 0.6000000000000001,
+      "hi": 0.8,
+      "n": 8,
+      "mean_conf": 0.69625,
+      "accuracy": 0.5
+     },
+     {
+      "lo": 0.8,
+      "hi": 1.0,
+      "n": 13,
+      "mean_conf": 0.9092307692307694,
+      "accuracy": 0.38461538461538464
+     }
+    ],
+    "overall_accuracy": 0.6,
+    "mean_confidence": 0.6836666666666666
+   }
+  }
+ },
+ "event_type_agreement_between_variants": {},
+ "repeat_variability": {
+  "MSL-REMS-0418-213430": {
+   "n": 4,
+   "exact_all_answers_identical": false,
+   "per_question_choice_agreement": {
+    "science_value": 1.0,
+    "event_type": 1.0,
+    "downlink_action": 1.0,
+    "instrument_failure": 1.0
+   },
+   "largest_confidence_or_probability_variation": 0.18,
+   "uncached_repeats": 3,
+   "errors": 0
+  },
+  "MSL-REMS-0424-041159": {
+   "n": 4,
+   "exact_all_answers_identical": false,
+   "per_question_choice_agreement": {
+    "science_value": 1.0,
+    "event_type": 1.0,
+    "downlink_action": 1.0,
+    "instrument_failure": 1.0
+   },
+   "largest_confidence_or_probability_variation": 0.08999999999999997,
+   "uncached_repeats": 3,
+   "errors": 0
+  },
+  "MSL-RAD-0799-142359": {
+   "n": 4,
+   "exact_all_answers_identical": false,
+   "per_question_choice_agreement": {
+    "science_value": 1.0,
+    "event_type": 1.0,
+    "downlink_action": 1.0,
+    "instrument_failure": 1.0
+   },
+   "largest_confidence_or_probability_variation": 0.10000000000000003,
+   "uncached_repeats": 3,
+   "errors": 0
+  }
+ },
+ "strata": [
+  [
+   [
+    "synthetic",
+    "high",
+    "MODERATE",
+    "atmospheric"
+   ],
+   2
+  ],
+  [
+   [
+    "synthetic",
+    "high",
+    "MODERATE",
+    "instrument_anomaly"
+   ],
+   2
+  ],
+  [
+   [
+    "synthetic",
+    "high",
+    "OBVIOUS",
+    "instrument_anomaly"
+   ],
+   2
+  ],
+  [
+   [
+    "synthetic",
+    "high",
+    "OBVIOUS",
+    "radiation"
+   ],
+   2
+  ],
+  [
+   [
+    "synthetic",
+    "high",
+    "WEAK",
+    "instrument_anomaly"
+   ],
+   1
+  ],
+  [
+   [
+    "synthetic",
+    "high",
+    "WEAK",
+    "radiation"
+   ],
+   1
+  ],
+  [
+   [
+    "synthetic",
+    "low",
+    "MODERATE",
+    "instrument_anomaly"
+   ],
+   1
+  ],
+  [
+   [
+    "synthetic",
+    "low",
+    "OBVIOUS",
+    "instrument_anomaly"
+   ],
+   1
+  ],
+  [
+   [
+    "synthetic",
+    "low",
+    "QUALITY_FAULT",
+    "instrument_anomaly"
+   ],
+   1
+  ],
+  [
+   [
+    "synthetic",
+    "low",
+    "WEAK",
+    "instrument_anomaly"
+   ],
+   1
+  ],
+  [
+   [
+    "synthetic",
+    "medium",
+    "MODERATE",
+    "instrument_anomaly"
+   ],
+   1
+  ],
+  [
+   [
+    "synthetic",
+    "medium",
+    "NEAR_NOISE_FLOOR",
+    "instrument_anomaly"
+   ],
+   1
+  ],
+  [
+   [
+    "synthetic",
+    "medium",
+    "OBVIOUS",
+    "instrument_anomaly"
+   ],
+   1
+  ],
+  [
+   [
+    "synthetic",
+    "medium",
+    "WEAK",
+    "instrument_anomaly"
+   ],
+   1
+  ],
+  [
+   [
+    "unlabelled",
+    "none",
+    "dev_hi",
+    "atmospheric"
+   ],
+   1
+  ],
+  [
+   [
+    "unlabelled",
+    "none",
+    "dev_hi",
+    "instrument_anomaly"
+   ],
+   1
+  ],
+  [
+   [
+    "unlabelled",
+    "none",
+    "dev_hi",
+    "radiation"
+   ],
+   1
+  ],
+  [
+   [
+    "unlabelled",
+    "none",
+    "dev_hi",
+    "thermal"
+   ],
+   1
+  ],
+  [
+   [
+    "unlabelled",
+    "none",
+    "dev_lo",
+    "atmospheric"
+   ],
+   1
+  ],
+  [
+   [
+    "unlabelled",
+    "none",
+    "dev_lo",
+    "instrument_anomaly"
+   ],
+   1
+  ],
+  [
+   [
+    "unlabelled",
+    "none",
+    "dev_lo",
+    "radiation"
+   ],
+   1
+  ],
+  [
+   [
+    "unlabelled",
+    "none",
+    "dev_lo",
+    "thermal"
+   ],
+   1
+  ],
+  [
+   [
+    "unlabelled",
+    "none",
+    "dev_mid",
+    "atmospheric"
+   ],
+   1
+  ],
+  [
+   [
+    "unlabelled",
+    "none",
+    "dev_mid",
+    "instrument_anomaly"
+   ],
+   1
+  ],
+  [
+   [
+    "unlabelled",
+    "none",
+    "dev_mid",
+    "radiation"
+   ],
+   1
+  ],
+  [
+   [
+    "unlabelled",
+    "none",
+    "dev_mid",
+    "thermal"
+   ],
+   1
+  ]
+ ],
+ "budget_used": {
+  "calls": 38,
+  "cost_usd": 0.0023247420000000003
+ },
+ "note": "DEVELOPMENT diagnostics on VALIDATION only; not a performance result.",
+ "key_leak": {
+  "files_scanned": 4,
+  "files_containing_key": 0
+ }
+}

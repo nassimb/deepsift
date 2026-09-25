@@ -2,7 +2,7 @@
 
 Key = sha256 of the canonical JSON of
     { state (exact payload, which already contains the objective for variants that include it),
-      questions (exact question schema), variant, model_requested, sdk_version }
+      questions (exact question schema), variant, model_requested, sdk_version, transport }
 so an identical request is never sent twice. Changing budget, storage, priority weights or the
 objective's *weights* never changes a key; changing the objective *text* changes keys only for the
 variant that puts the objective in Jev's context (FULL_CONTEXT).
@@ -34,8 +34,9 @@ CREATE TABLE IF NOT EXISTS jev_cache (
 """
 
 
-def request_key(state: dict, questions: dict, variant: str, model: str, sdk_version: str) -> str:
-    blob = json.dumps({"state": state, "questions": questions, "variant": variant, "model": model, "sdk": sdk_version},
+def request_key(state: dict, questions: dict, variant: str, model: str, sdk_version: str, transport: str) -> str:
+    blob = json.dumps({"state": state, "questions": questions, "variant": variant, "model": model, "sdk": sdk_version,
+                       "transport": transport},
                       sort_keys=True, separators=(",", ":"), ensure_ascii=False)
     return hashlib.sha256(blob.encode()).hexdigest()
 

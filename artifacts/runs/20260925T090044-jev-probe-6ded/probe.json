@@ -1,0 +1,78 @@
+{
+ "run_id": "20260925T090044-jev-probe-6ded",
+ "passed": true,
+ "checks": {
+  "exactly_one_live_request": true,
+  "http_success": true,
+  "jev_1_13_served": true,
+  "all_questions_parse": true,
+  "confidences_and_probabilities_present": true,
+  "usage_tokens_present": true,
+  "cost_present_or_derivable": true,
+  "payload_is_candidate_event_not_raw": true
+ },
+ "event_id": "MSL-REMS-0418-213430",
+ "endpoint": "https://openrouter.ai/api/v1/systemone",
+ "transport": "openrouter",
+ "sdk": "typesafe-sdk 0.7.1",
+ "model_requested": "typesafe/jev-1.13",
+ "model_returned": "typesafe/jev-1.13-20260917",
+ "provider": "TypeSafe",
+ "generation_id": "gen-dec-1790326844-q2LUnVWhW2TZ5Qa06Hdq",
+ "http_status": 200,
+ "error": null,
+ "error_body": null,
+ "latency_ms": 480.47470895107836,
+ "retries": 0,
+ "input_tokens": 1503,
+ "output_tokens": 224,
+ "cost_usd": 6.3126e-05,
+ "cost_source": "usage.cost",
+ "cost_usd_derived": 6.3126e-05,
+ "payload": {
+  "ok": true,
+  "state_chars": 1430,
+  "numeric_values_in_state": 1,
+  "longest_list": 1,
+  "raw_samples_in_event_window": 7710,
+  "top_level_keys": [
+   "channels",
+   "detection_reasons",
+   "duration",
+   "instrument",
+   "local_time",
+   "location",
+   "mission",
+   "number_of_sensors_flagged",
+   "other_instrument_also_anomalous",
+   "sensors_flagged",
+   "similar_to_earlier_events"
+  ]
+ },
+ "answers": {
+  "science_value": {
+   "choice": "high",
+   "confidence": 0.56
+  },
+  "event_type": {
+   "choice": "instrument_anomaly",
+   "confidence": 0.55
+  },
+  "downlink_action": {
+   "choice": "full_data",
+   "confidence": 0.4
+  },
+  "needs_deep_analysis": {
+   "noul": 0.82
+  },
+  "instrument_failure": {
+   "choice": "yes",
+   "confidence": 0.72
+  }
+ },
+ "validate": null,
+ "key_leak": {
+  "files_scanned": 1,
+  "files_containing_key": 0
+ }
+}

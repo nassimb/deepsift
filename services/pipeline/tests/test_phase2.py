@@ -212,7 +212,7 @@ def test_objective_text_only_changes_keys_for_full_context(tmp_path):
 
     e = make_event()
     q = questions_payload(QUESTIONS)
-    k = lambda v, o: request_key(build_state_variant(e, "M", "L", VARIANTS[v][0], o), q, v, "jev-1.13.0", "0.7.1")  # noqa: E731
+    k = lambda v, o: request_key(build_state_variant(e, "M", "L", VARIANTS[v][0], o), q, v, "typesafe/jev-1.13", "0.7.1", "openrouter")  # noqa: E731
     a, b = {"name": "A", "description": "x"}, {"name": "B", "description": "y"}
     assert k("no_mission_objective", a) == k("no_mission_objective", b)
     assert k("full_context", a) != k("full_context", b)
@@ -269,3 +269,49 @@ def test_auth_error_fails_fast():
     client = TypeSafeClient(api_key="bad", transport=httpx2.MockTransport(deny), retry=RetryPolicy(max_retries=0))
     ds = JevDecisionEngine(client=client, use_cache=False, max_concurrency=1).decide([make_event(eid=f"E{i}") for i in range(10)], "MSL", "Gale")
     assert n["i"] == 1 and all(d.error for d in ds) and ds[-1].error.startswith("not sent")
+
+
+def test_openrouter_transport_endpoint_key_and_cost(tmp_path, monkeypatch):
+    """Requests go to OpenRouter's System One endpoint with OPENROUTER_API_KEY; usage.cost/provider are recorded."""
+    import httpx2
+
+    from deepsift.decision.jev import ENDPOINT
+    from deepsift.decision.jev_cache import JevCache
+
+    seen = []
+
+    def handler(request):
+        seen.append((str(request.url), request.headers.get("authorization")))
+        body = json.loads(request.content)
+        answers = {n: ({"type": "noul", "noul": 0.6} if q["type"] == "noul" else
+                       {"type": "choice", "choice": list(q["criteria"])[0], "confidence": 0.9,
+                        "probabilities": {k: (1.0 if i == 0 else 0.0) for i, k in enumerate(q["criteria"])}})
+                   for n, q in body["questions"].items()}
+        return httpx2.Response(200, json={"id": "gen-dec-1", "model": "typesafe/jev-1.13-20260917", "provider": "TypeSafe",
+                                          "answers": answers, "usage": {"input_tokens": 1000, "output_tokens": 5, "cost": 0.000042}})
+
+    monkeypatch.setenv("OPENROUTER_API_KEY", "sk-or-test")
+    monkeypatch.setenv("TYPESAFE_API_KEY", "must-not-be-used")
+    monkeypatch.setenv("TYPESAFE_BASE_URL", "https://example.invalid")
+    eng = JevDecisionEngine(cache=JevCache(tmp_path / "c.sqlite"), call_log=tmp_path / "log.jsonl", max_concurrency=1)
+    from typesafe_sdk import TypeSafeClient
+
+    from deepsift.decision import jev as jev_mod
+
+    real = TypeSafeClient
+    monkeypatch.setattr("typesafe_sdk.TypeSafeClient", lambda **kw: real(transport=httpx2.MockTransport(handler), **kw))
+    [d] = eng.decide([make_event()], "MSL", "Gale")
+    [d2] = eng.decide([make_event()], "MSL", "Gale")
+    assert seen == [(ENDPOINT, "Bearer sk-or-test")]           # one live call; the repeat is a cache hit
+    assert d.model == "typesafe/jev-1.13-20260917" and d.cost_usd == 0.000042 and d2.cost_usd == 0.0
+    rec = json.loads((tmp_path / "log.jsonl").read_text().splitlines()[0])
+    assert rec["provider"] == "TypeSafe" and rec["cost_source"] == "usage.cost" and rec["transport"] == jev_mod.TRANSPORT
+    assert rec["request_id"] == "gen-dec-1" and rec["model_requested"] == "typesafe/jev-1.13"
+    assert "sk-or-test" not in (tmp_path / "log.jsonl").read_text()
+
+
+
+def test_transport_changes_cache_key():
+    from deepsift.decision.jev_cache import request_key
+
+    assert request_key({"a": 1}, {}, "v", "m", "s", "openrouter") != request_key({"a": 1}, {}, "v", "m", "s", "typesafe")

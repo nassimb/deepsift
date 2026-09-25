@@ -1,12 +1,17 @@
-"""JevDecisionEngine — TypeSafe AI's Jev via the official `typesafe-sdk` (Python).
+"""JevDecisionEngine — TypeSafe AI's Jev via the official `typesafe-sdk` (Python), routed through OpenRouter.
 
-All Jev-specific code lives in this file. Verified against typesafe-sdk 0.7.1, whose wire models
-are generated from https://api.typesafe.ai/openapi.json:
+All Jev-specific code lives in this file. Verified against typesafe-sdk 0.7.1 and OpenRouter's System One
+API (https://openrouter.ai/docs/guides/community/typesafe-sdk, retrieved 2026-09-25): the SDK is pointed
+at OpenRouter by base URL; nothing else in the SDK call changes.
 
-    client = TypeSafeClient(retry=RetryPolicy(max_retries=0))   # reads TYPESAFE_API_KEY
-    resp = client.system_one(state=..., questions={name: Choice(...) | Noul(...)}, model="jev-latest")
+    client = TypeSafeClient(api_key=$OPENROUTER_API_KEY, base_url="https://openrouter.ai/api",
+                            retry=RetryPolicy(max_retries=0))      # POST /api/v1/systemone
+    resp = client.system_one(state=..., questions={name: Choice(...) | Noul(...)}, model="typesafe/jev-1.13")
     resp.answers[name]  -> ChoiceAnswer(choice, confidence, probabilities) | NoulAnswer(noul)
-    resp.usage.input_tokens / output_tokens · resp.model · resp.request_id (x-typesafe-request-id)
+    resp.usage.input_tokens / output_tokens · resp.model (served snapshot)
+    OpenRouter extras the SDK ignores, read from resp.raw_http_response: id, provider, usage.cost (USD)
+
+TYPESAFE_API_KEY / TYPESAFE_BASE_URL are never read: key and base URL are passed explicitly.
 
 SDK retries are disabled; retries happen in this file so the retry count per call is exact.
 Every call is appended to a JSONL call log (never the API key).
@@ -38,8 +43,14 @@ VARIANTS = {
 }
 
 
+TRANSPORT = "openrouter"
+BASE_URL = "https://openrouter.ai/api"
+ENDPOINT = BASE_URL + "/v1/systemone"
+KEY_ENV = "OPENROUTER_API_KEY"
+
+
 def jev_available() -> bool:
-    return bool(os.environ.get("TYPESAFE_API_KEY", "").strip())
+    return bool(os.environ.get(KEY_ENV, "").strip())
 
 
 def sdk_version() -> str:
@@ -119,7 +130,7 @@ RETRYABLE = ("TypeSafeRateLimitError", "TypeSafeInternalServerError", "TypeSafeA
 class JevDecisionEngine(DecisionEngine):
     is_real_model = True
 
-    def __init__(self, model: str = "jev-latest", timeout_s: float = 10.0, max_concurrency: int = 8,
+    def __init__(self, model: str = "typesafe/jev-1.13", timeout_s: float = 10.0, max_concurrency: int = 8,
                  price_per_mtok_input_usd: float = 0.042, client=None, variant: str = "no_mission_objective",
                  call_log: Path | None = None, run_id: str | None = None, max_retries: int = 2,
                  cache=None, use_cache: bool = True, budget: ApiBudget | None = None):
@@ -149,13 +160,14 @@ class JevDecisionEngine(DecisionEngine):
 
     def describe(self) -> dict:
         return {"name": self.name, "is_real_model": True, "variant": self.variant, "model": self.model,
-                "sdk": f"typesafe-sdk {sdk_version()}"}
+                "transport": TRANSPORT, "endpoint": ENDPOINT, "sdk": f"typesafe-sdk {sdk_version()}"}
 
     def _get_client(self):
         if self._client is None:
             from typesafe_sdk import RetryPolicy, TypeSafeClient
 
-            self._client = TypeSafeClient(timeout=self.timeout_s, retry=RetryPolicy(max_retries=0))
+            self._client = TypeSafeClient(api_key=os.environ[KEY_ENV].strip(), base_url=BASE_URL,
+                                          timeout=self.timeout_s, retry=RetryPolicy(max_retries=0))
         return self._client
 
     def _log(self, rec: dict) -> None:
@@ -176,7 +188,7 @@ class JevDecisionEngine(DecisionEngine):
             state = build_state_variant(e, mission_name, location, self.state_variant, objective)
             from deepsift.decision.jev_cache import request_key
 
-            payload_hash = request_key(state, qpayload, self.variant, self.model, sdkv)
+            payload_hash = request_key(state, qpayload, self.variant, self.model, sdkv, TRANSPORT)
             if self.cache is not None:
                 hit = self.cache.get(payload_hash)
                 if hit is not None:
@@ -184,7 +196,7 @@ class JevDecisionEngine(DecisionEngine):
                     answers = {k: AnswerDist(**v) for k, v in hit["answers"].items()}
                     self._log({"run_id": self.run_id, "timestamp": datetime.now(timezone.utc).isoformat(), "event_id": e.id,
                                "variant": self.variant, "payload_sha256": payload_hash, "cache_hit": True,
-                               "cached_from_run": hit["run_id"], "model_returned": hit["model_returned"]})
+                               "cached_from_run": hit["run_id"], "model_returned": hit["model_returned"], "transport": TRANSPORT})
                     return EngineDecision(engine=self.name, model=hit["model_returned"], answers=answers,
                                           latency_ms=hit["latency_ms"] or 0.0, input_tokens=hit["input_tokens"],
                                           output_tokens=hit["output_tokens"], cost_usd=0.0, state_sent=state)
@@ -193,7 +205,7 @@ class JevDecisionEngine(DecisionEngine):
             if self.budget is not None:
                 self.budget.reserve()                       # raises before any call beyond the hard limit
             self.stats["live_calls"] += 1
-            attempts, err, resp = 0, None, None
+            attempts, err, resp, http_status, err_body = 0, None, None, None, None
             t0 = time.perf_counter()
             while attempts <= self.max_retries:
                 attempts += 1
@@ -203,6 +215,7 @@ class JevDecisionEngine(DecisionEngine):
                     break
                 except Exception as exc:  # noqa: BLE001 — recorded; gated to deterministic fallback
                     err = f"{type(exc).__name__}: {exc}"[:500]
+                    http_status, err_body = getattr(exc, "status", None), getattr(exc, "body", None)
                     if type(exc).__name__ in FATAL:
                         self.fatal_error = err
                         break
@@ -213,8 +226,9 @@ class JevDecisionEngine(DecisionEngine):
             rec = {
                 "run_id": self.run_id, "timestamp": datetime.now(timezone.utc).isoformat(), "event_id": e.id,
                 "variant": self.variant, "payload_sha256": payload_hash, "state": state, "questions": qpayload,
-                "model_requested": self.model, "sdk_version": sdkv, "latency_ms": latency,
-                "attempts": attempts, "retries": attempts - 1, "error": err,
+                "model_requested": self.model, "sdk_version": sdkv, "transport": TRANSPORT, "endpoint": ENDPOINT,
+                "latency_ms": latency, "attempts": attempts, "retries": attempts - 1, "error": err,
+                "http_status": http_status, "error_body": err_body,
             }
             rec["cache_hit"] = False
             if resp is None:
@@ -223,17 +237,23 @@ class JevDecisionEngine(DecisionEngine):
                 return EngineDecision(engine=self.name, model=self.model, error=err, latency_ms=latency, state_sent=state)
             answers = convert_answers(resp)
             tokens_in = getattr(resp.usage, "input_tokens", None)
-            try:
-                request_id = resp.request_id
-            except Exception:  # noqa: BLE001 — header absent
-                request_id = None
+            extra = openrouter_extras(resp)
+            request_id = extra["generation_id"]
+            if request_id is None:
+                try:
+                    request_id = resp.request_id
+                except Exception:  # noqa: BLE001 — header absent
+                    pass
+            derived = (tokens_in * self.price / 1e6) if tokens_in is not None else None
+            cost = extra["cost_usd"] if extra["cost_usd"] is not None else derived
             rec.update({
-                "model_returned": getattr(resp, "model", None), "request_id": request_id,
-                "answers": {k: v.model_dump() for k, v in answers.items()},
+                "http_status": extra["http_status"], "model_returned": getattr(resp, "model", None), "provider": extra["provider"],
+                "request_id": request_id, "answers": {k: v.model_dump() for k, v in answers.items()},
                 "input_tokens": tokens_in, "output_tokens": getattr(resp.usage, "output_tokens", None),
+                "cost_usd": cost, "cost_source": "usage.cost" if extra["cost_usd"] is not None else "derived",
+                "cost_usd_derived": derived,
             })
             self._log(rec)
-            cost = (tokens_in * self.price / 1e6) if tokens_in is not None else None
             if self.budget is not None:
                 self.budget.add_cost(cost)
             if self.cache is not None:
@@ -245,19 +265,35 @@ class JevDecisionEngine(DecisionEngine):
             return EngineDecision(
                 engine=self.name, model=getattr(resp, "model", self.model), answers=answers, latency_ms=latency,
                 input_tokens=tokens_in, output_tokens=getattr(resp.usage, "output_tokens", None),
-                cost_usd=(tokens_in * self.price / 1e6) if tokens_in is not None else None, state_sent=state,
+                cost_usd=cost, state_sent=state,
             )
 
         with ThreadPoolExecutor(max_workers=self.max_concurrency) as pool:
             return list(pool.map(one, events))
 
 
+def openrouter_extras(resp) -> dict:
+    """OpenRouter fields the SDK's strict models drop (id, provider, usage.cost), read from the raw body."""
+    out = {"http_status": None, "generation_id": None, "provider": None, "cost_usd": None}
+    try:
+        raw = resp.raw_http_response
+        out["http_status"] = raw.status_code
+        body = raw.json()
+    except Exception:  # noqa: BLE001 — injected test clients have no raw response
+        return out
+    usage = body.get("usage") or {}
+    out.update(generation_id=body.get("id"), provider=body.get("provider"),
+               cost_usd=float(usage["cost"]) if isinstance(usage.get("cost"), (int, float)) else None)
+    return out
+
+
 def missing_key_instructions() -> str:
     return (
-        "TYPESAFE_API_KEY is not set, so every Jev strategy is reported UNAVAILABLE.\n"
+        f"{KEY_ENV} is not set, so every Jev strategy is reported UNAVAILABLE.\n"
+        "Jev is called through OpenRouter's System One API (TYPESAFE_API_KEY is not used).\n"
         "To enable it (do not paste the key into chat):\n"
         "  1. cp .env.example .env            (in the DEEPSIFT repository root)\n"
-        "  2. edit .env and set  TYPESAFE_API_KEY=<your key>\n"
+        f"  2. edit .env and set  {KEY_ENV}=<your OpenRouter key>\n"
         "  3. export it for CLI runs:  set -a; . ./.env; set +a\n"
         "  4. uv run python scripts/jev_smoke.py      (verifies one call before any benchmark)\n"
         "`npm run demo` and scripts/run_study.py load .env automatically."

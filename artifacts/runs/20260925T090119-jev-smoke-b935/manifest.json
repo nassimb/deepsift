@@ -1,0 +1,78 @@
+{
+ "run_id": "20260925T090119-jev-smoke-b935",
+ "split": "validation",
+ "mode": "smoke",
+ "git": {
+  "commit": "297e3496cfff4a997f2b6b0a0ca3ac064777b1e9",
+  "dirty": true,
+  "describe": "phase2-pre-jev-2-g297e349-dirty",
+  "dirty_paths": [
+   "env.example",
+   "artifacts/jev_preflight/preflight_smoke.json",
+   "config/default.yaml",
+   "config/phase2.yaml",
+   "scripts/demo.sh",
+   "scripts/jev_pilot.py",
+   "scripts/run_study.py",
+   "services/pipeline/deepsift/core/config.py",
+   "services/pipeline/deepsift/decision/jev.py",
+   "services/pipeline/deepsift/decision/jev_cache.py",
+   "services/pipeline/deepsift/evaluation/jev_plan.py",
+   "services/pipeline/deepsift/evaluation/study.py",
+   "services/pipeline/deepsift/pipeline.py",
+   "services/pipeline/tests/test_phase2.py",
+   "artifacts/runs/20260925T090044-jev-probe-6ded/",
+   "artifacts/runs/20260925T090119-jev-smoke-b935/"
+  ]
+ },
+ "config_version": "12f4761f8a9c",
+ "model": "typesafe/jev-1.13",
+ "transport": "openrouter",
+ "endpoint": "https://openrouter.ai/api/v1/systemone",
+ "models_returned": {
+  "typesafe/jev-1.13-20260917": 38
+ },
+ "providers": {
+  "TypeSafe": 38
+ },
+ "sdk": "0.7.1",
+ "system": {
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "python": "3.12.13",
+  "cpu": "Apple M5",
+  "polars": "1.44.2",
+  "typesafe_sdk": "0.7.1"
+ },
+ "event_ids": [
+  "MSL-REMS-0418-213430",
+  "MSL-REMS-0424-041159",
+  "MSL-RAD-0799-142359",
+  "MSL-RAD-0792-234729",
+  "MSL-REMS-0815-232155",
+  "MSL-RAD-0818-171025",
+  "MSL-REMS-0817-112956",
+  "MSL-REMS-0789-025816",
+  "MSL-REMS-0791-155732",
+  "MSL-REMS-0793-014435",
+  "MSL-REMS-0811-215747",
+  "MSL-REMS-0791-023351",
+  "MSL-REMS-0788-170808",
+  "MSL-REMS-0809-194120",
+  "MSL-REMS-0812-070513",
+  "MSL-REMS-0819-133104",
+  "MSL-RAD-0817-192731",
+  "MSL-REMS-0414-071302",
+  "MSL-REMS-0417-164821",
+  "MSL-REMS-0792-194203",
+  "MSL-RAD-0819-172053",
+  "MSL-REMS-0421-143900",
+  "MSL-REMS-0798-233943",
+  "MSL-REMS-0786-195107",
+  "MSL-RAD-0781-034653",
+  "MSL-REMS-0412-035501",
+  "MSL-REMS-0430-235539",
+  "MSL-REMS-0820-040842",
+  "MSL-REMS-0788-065139",
+  "MSL-RAD-0412-190234"
+ ]
+}

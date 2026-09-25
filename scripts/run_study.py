@@ -5,7 +5,7 @@
     uv run python scripts/run_study.py --freeze <validation_run_id>  # apply the pre-declared selection rule
     uv run python scripts/run_study.py --split test                  # refuses unless the config is frozen
 
-Jev strategies run only if TYPESAFE_API_KEY is set AND scripts/jev_smoke.py passes first.
+Jev strategies run only if OPENROUTER_API_KEY is set AND scripts/jev_smoke.py passes first.
 """
 
 from __future__ import annotations

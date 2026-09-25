@@ -4,7 +4,7 @@
  "variants": [
   "no_mission_objective"
  ],
- "model": "jev-1.13.0",
+ "model": "typesafe/jev-1.13",
  "candidate_events": {
   "sampled": 30
  },
@@ -23,14 +23,18 @@
  "token_estimate_basis": "ASSUMED 4.0 chars/token (no real usage yet) \u2014 treat cost as \u00b150 %",
  "estimated_cost_usd": 0.0012,
  "pricing": {
-  "model": "jev-1.13.0",
+  "model": "typesafe/jev-1.13",
+  "transport": "openrouter",
+  "provider": "TypeSafe",
   "usd_per_mtok_input": 0.042,
   "usd_per_mtok_output": 0.0,
   "requests_per_minute": 1200,
   "tokens_per_second": 250000,
-  "source": "https://docs.typesafe.ai/models.md",
+  "source": "https://openrouter.ai/api/v1/models/typesafe/jev-1.13/endpoints",
   "retrieved": "2026-09-25",
-  "verbatim": "Price (per Btok / per Mtok) $42 / $0.042 \u2014 Charged per input token. Output tokens are free."
+  "verbatim": "endpoint \"TypeSafe | typesafe/jev-1.13-20260917\": pricing {\"prompt\":\"0.000000042\",\"completion\":\"0\"}",
+  "rate_limit_source": "TypeSafe direct (docs.typesafe.ai/models.md); OpenRouter's own limit for this key is not published \u2014 used only for the time estimate",
+  "actual_cost": "each OpenRouter response carries usage.cost (USD); the run budget uses it when present"
  },
  "estimated_minutes": {
   "rate_limit_floor": 0.0,
