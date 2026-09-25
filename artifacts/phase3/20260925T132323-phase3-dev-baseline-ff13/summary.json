@@ -1,0 +1,302 @@
+{
+ "run_id": "20260925T132323-phase3-dev-baseline-ff13",
+ "split": "development",
+ "sols": [
+  412,
+  430
+ ],
+ "test_interval_frozen": [
+  950,
+  979
+ ],
+ "grouping": {
+  "products": 2318,
+  "acquisitions": 609,
+  "stereo_acquisitions": 550,
+  "mono_acquisitions": 59,
+  "primary_tier_counts": {
+   "D": 423,
+   "F": 134,
+   "M": 40,
+   "S": 12
+  },
+  "acquisitions_with_thumbnail": 609,
+  "products_per_acquisition_mean": 3.80623973727422
+ },
+ "quality_states": {
+  "CLEAN": 609
+ },
+ "download": {
+  "products": 2318,
+  "archive_bytes": 852770614
+ },
+ "downlink_bytes": {
+  "full_total": 161367007.56528,
+  "full_unknown": 0,
+  "compressed_total": 13539272.0,
+  "thumbnail_total": 311691.007488,
+  "metadata_total": 144505,
+  "archive_total": 852770614,
+  "sample_archive_vs_downlink": [
+   {
+    "product_id": "NRB_434076977EDR_F0171310SAPP07612M1",
+    "tier": "F",
+    "lines": 1024,
+    "samples": 1024,
+    "compression": "LOCO",
+    "rate_bpp": 3.755,
+    "ratio": 3.19573,
+    "archive_bytes_img": 2142208,
+    "estimated_downlink_bytes": 492175.36,
+    "archive_over_downlink": 4.352529960053262
+   },
+   {
+    "product_id": "NLB_434077120EDR_F0180000NCAM00278M1",
+    "tier": "F",
+    "lines": 1024,
+    "samples": 1024,
+    "compression": "ICER",
+    "rate_bpp": 3.0,
+    "ratio": 4.0,
+    "archive_bytes_img": 2142208,
+    "estimated_downlink_bytes": 393216.0,
+    "archive_over_downlink": 5.447916666666667
+   },
+   {
+    "product_id": "NRB_434077120EDR_F0180000NCAM00278M1",
+    "tier": "F",
+    "lines": 1024,
+    "samples": 1024,
+    "compression": "ICER",
+    "rate_bpp": 3.0,
+    "ratio": 4.0,
+    "archive_bytes_img": 2142208,
+    "estimated_downlink_bytes": 393216.0,
+    "archive_over_downlink": 5.447916666666667
+   },
+   {
+    "product_id": "NLB_434069809EDR_D0170826TRAV00108M1",
+    "tier": "D",
+    "lines": 256,
+    "samples": 256,
+    "compression": "LOCO",
+    "rate_bpp": 9.29492,
+    "ratio": 1.29103,
+    "archive_bytes_img": 171008,
+    "estimated_downlink_bytes": 76143.98464,
+    "archive_over_downlink": 2.2458504215205726
+   },
+   {
+    "product_id": "NRB_434069809EDR_D0170826TRAV00108M1",
+    "tier": "D",
+    "lines": 256,
+    "samples": 256,
+    "compression": "LOCO",
+    "rate_bpp": 9.36523,
+    "ratio": 1.28133,
+    "archive_bytes_img": 171008,
+    "estimated_downlink_bytes": 76719.96416,
+    "archive_over_downlink": 2.228989570998256
+   },
+   {
+    "product_id": "NLB_434069859EDR_D0170832TRAV00108M1",
+    "tier": "D",
+    "lines": 256,
+    "samples": 256,
+    "compression": "LOCO",
+    "rate_bpp": 9.42529,
+    "ratio": 1.27317,
+    "archive_bytes_img": 171008,
+    "estimated_downlink_bytes": 77211.97568,
+    "archive_over_downlink": 2.2147859641454004
+   },
+   {
+    "product_id": "NLB_434871645EDR_S0190000NCAM00546M1",
+    "tier": "S",
+    "lines": 512,
+    "samples": 1024,
+    "compression": "ICER",
+    "rate_bpp": 4.0,
+    "ratio": 3.0,
+    "archive_bytes_img": 1093632,
+    "estimated_downlink_bytes": 262144.0,
+    "archive_over_downlink": 4.171875
+   },
+   {
+    "product_id": "NLB_434871657EDR_S0190000NCAM00546M1",
+    "tier": "S",
+    "lines": 512,
+    "samples": 1024,
+    "compression": "ICER",
+    "rate_bpp": 4.0,
+    "ratio": 3.0,
+    "archive_bytes_img": 1093632,
+    "estimated_downlink_bytes": 262144.0,
+    "archive_over_downlink": 4.171875
+   },
+   {
+    "product_id": "NLB_434871670EDR_S0190000NCAM00546M1",
+    "tier": "S",
+    "lines": 512,
+    "samples": 1024,
+    "compression": "ICER",
+    "rate_bpp": 4.0,
+    "ratio": 3.0,
+    "archive_bytes_img": 1093632,
+    "estimated_downlink_bytes": 262144.0,
+    "archive_over_downlink": 4.171875
+   },
+   {
+    "product_id": "NLB_434436356EDR_M0180422NCAM00505M1",
+    "tier": "M",
+    "lines": 511,
+    "samples": 511,
+    "compression": "ICER",
+    "rate_bpp": 1.99999,
+    "ratio": 6.00002,
+    "archive_bytes_img": 564144,
+    "estimated_downlink_bytes": 65279.92359875,
+    "archive_over_downlink": 8.641921878885324
+   },
+   {
+    "product_id": "NLB_434436369EDR_M0180422NCAM00505M1",
+    "tier": "M",
+    "lines": 511,
+    "samples": 511,
+    "compression": "ICER",
+    "rate_bpp": 1.99999,
+    "ratio": 6.00002,
+    "archive_bytes_img": 564144,
+    "estimated_downlink_bytes": 65279.92359875,
+    "archive_over_downlink": 8.641921878885324
+   },
+   {
+    "product_id": "NLB_434436382EDR_M0180422NCAM00505M1",
+    "tier": "M",
+    "lines": 511,
+    "samples": 511,
+    "compression": "ICER",
+    "rate_bpp": 1.99999,
+    "ratio": 6.00002,
+    "archive_bytes_img": 564144,
+    "estimated_downlink_bytes": 65279.92359875,
+    "archive_over_downlink": 8.641921878885324
+   },
+   {
+    "product_id": "NLB_434069809EDR_T0170826TRAV00108M1",
+    "tier": "T",
+    "lines": 64,
+    "samples": 64,
+    "compression": "ICER",
+    "rate_bpp": 1.0,
+    "ratio": 8.0,
+    "archive_bytes_img": 47488,
+    "estimated_downlink_bytes": 512.0,
+    "archive_over_downlink": 92.75
+   },
+   {
+    "product_id": "NRB_434069809EDR_T0170826TRAV00108M1",
+    "tier": "T",
+    "lines": 64,
+    "samples": 64,
+    "compression": "ICER",
+    "rate_bpp": 1.0,
+    "ratio": 8.0,
+    "archive_bytes_img": 47488,
+    "estimated_downlink_bytes": 512.0,
+    "archive_over_downlink": 92.75
+   },
+   {
+    "product_id": "NLB_434069859EDR_T0170832TRAV00108M1",
+    "tier": "T",
+    "lines": 64,
+    "samples": 64,
+    "compression": "ICER",
+    "rate_bpp": 1.0,
+    "ratio": 8.0,
+    "archive_bytes_img": 47488,
+    "estimated_downlink_bytes": 512.0,
+    "archive_over_downlink": 92.75
+   }
+  ]
+ },
+ "groups": {
+  "phash": {
+   "acquisitions": 609,
+   "groups": 476,
+   "groups_with_duplicates": 17,
+   "acquisitions_in_duplicate_groups": 150,
+   "mean_group_size": 1.2794117647058822,
+   "largest_group": 33,
+   "estimated_redundant_downlink_bytes": 17526951.094806254,
+   "total_full_downlink_bytes": 161367007.56528
+  },
+  "sequence": {
+   "acquisitions": 609,
+   "groups": 50,
+   "groups_with_duplicates": 44,
+   "acquisitions_in_duplicate_groups": 603,
+   "mean_group_size": 12.18,
+   "largest_group": 107,
+   "estimated_redundant_downlink_bytes": 133471393.85192625,
+   "total_full_downlink_bytes": 161367007.56528
+  },
+  "scene_metadata": {
+   "acquisitions": 609,
+   "groups": 548,
+   "groups_with_duplicates": 25,
+   "acquisitions_in_duplicate_groups": 86,
+   "mean_group_size": 1.1113138686131387,
+   "largest_group": 8,
+   "estimated_redundant_downlink_bytes": 9634601.83912625,
+   "total_full_downlink_bytes": 161367007.56528
+  }
+ },
+ "vision_model": {
+  "name": "mobilenetv2-12",
+  "file_bytes": 13964571,
+  "embedding_dim": 1280,
+  "p50_ms": 2.284146088641137,
+  "p95_ms": 2.4577669973950833,
+  "n_inferences": 1100,
+  "stereo_retrieval_at_1": 0.6381818181818182,
+  "determinism_max_abs_diff": 0.0,
+  "peak_rss_mb_isolated": 125.763584,
+  "onnxruntime_provider": "CPUExecutionProvider",
+  "threads": 4,
+  "run_latency_p50_ms": 2.2879999596625566,
+  "run_latency_p95_ms": 2.4979753885418177
+ },
+ "telemetry_alignment": {
+  "rems_gap_s": {
+   "median": 74.83999991416931,
+   "p90": 1381.833799982071
+  },
+  "rad_gap_s": {
+   "median": 262.18499994277954,
+   "p90": 497.85699996948244
+  },
+  "acquisitions_with_context_event": 306,
+  "context_window_s": 1800,
+  "segment": "VAL-2013-10-SEP",
+  "phase2_config_version": "12f4761f8a9c"
+ },
+ "places": {
+  "matches": {
+   "site_drive_nearest_pose": 550,
+   "exact_site_drive_pose": 59
+  },
+  "url": "https://planetarydata.jpl.nasa.gov/img/data/msl/msl_places/data_localizations/localized_interp.csv",
+  "path": "/Users/nassim/Desktop/ai-projects/DEEPSIFT/data/raw/places/localized_interp.csv",
+  "bytes": 11755643,
+  "sha256": "09d4474e64aec6e788efdb4ec24a906f487fe1a58e26dd4431847c94d385faec",
+  "checked_at": "2026-09-25T13:23:25.646440+00:00"
+ },
+ "novelty": {
+  "lookback_sols": 3,
+  "median": 0.04574263095855713,
+  "p90": 0.10941056013107303
+ },
+ "feature_ms_per_acquisition": 4.325860016329339,
+ "wall_s": 11.38137249997817
+}

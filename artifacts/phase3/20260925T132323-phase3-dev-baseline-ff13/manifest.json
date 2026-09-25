@@ -1,0 +1,30 @@
+{
+ "run_id": "20260925T132323-phase3-dev-baseline-ff13",
+ "git_commit": "91e6e14108202761cfd7d108650bf244798d58f8",
+ "git_dirty": true,
+ "inputs": {
+  "navcam_manifest": "data/manifests/navcam_development.json",
+  "splits": "data/splits/phase3_splits.json",
+  "vision_model": "mobilenetv2-12",
+  "vision_model_sha256": "c0c3f76d93fa3fd6580652a45618618a220fced18babf65774ed169de0432ad5",
+  "places_sha256": "09d4474e64aec6e788efdb4ec24a906f487fe1a58e26dd4431847c94d385faec"
+ },
+ "parameters": {
+  "phash_max_bits": 10,
+  "scene_max_deg": 15.0,
+  "novelty_lookback_sols": 3,
+  "jpeg_quality": 50,
+  "telemetry_context_s": 1800,
+  "budgets": [
+   0.001,
+   0.0025,
+   0.005,
+   0.01,
+   0.02,
+   0.05,
+   0.1
+  ],
+  "random_seeds": 20
+ },
+ "reproduce": "uv run python scripts/fetch_navcam.py --split development && uv run python scripts/run_phase3_baseline.py"
+}
