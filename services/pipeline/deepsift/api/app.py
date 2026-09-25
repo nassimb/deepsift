@@ -3,13 +3,15 @@
 from __future__ import annotations
 
 import json
+import logging
 import threading
 import time
 import uuid
 from datetime import datetime, timezone
+from pathlib import Path
 
 import polars as pl
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Response
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
@@ -421,15 +423,48 @@ def _run_dir(rid: str):
     return d
 
 
+STUDY_MANIFEST_KEYS = ("run_id", "split", "started_at", "config_version")
+_log = logging.getLogger("deepsift.api.runs")
+LAST_RUNS_SKIPPED: list[dict] = []     # why each folder was left out of the most recent /api/runs listing
+
+
+def _study_manifest(d: Path) -> tuple[dict | None, dict | None]:
+    """(manifest, None) for a study run; (None, skip-record) otherwise. Never modifies the folder.
+
+    A study run (scripts/run_study.py) always writes results.json next to its manifest. Folders without it — Jev
+    smoke/probe/pilot runs, which write their own manifest schema — are not study runs and are skipped quietly.
+    A folder WITH results.json whose manifest is unreadable or incomplete is a malformed study run: skipped, logged.
+    """
+    rid = d.name
+    if not (d / "results.json").exists():
+        return None, {"run_id": rid, "kind": "not_a_study_run", "reason": "no results.json (e.g. Jev smoke/probe/pilot folder)"}
+    try:
+        m = json.loads((d / "manifest.json").read_text())
+    except (OSError, ValueError) as exc:
+        return None, {"run_id": rid, "kind": "malformed_study_run", "reason": f"unreadable manifest.json: {exc}"}
+    missing = [k for k in STUDY_MANIFEST_KEYS if k not in m]
+    if missing:
+        return None, {"run_id": rid, "kind": "malformed_study_run", "reason": f"manifest.json missing {missing}"}
+    return m, None
+
+
 @app.get("/api/runs")
-def list_runs():
-    out = []
-    for d in sorted(RUNS_ROOT.glob("*/manifest.json"), reverse=True):
-        m = json.loads(d.read_text())
+def list_runs(response: Response):
+    out, skipped = [], []
+    for mf in sorted(RUNS_ROOT.glob("*/manifest.json"), reverse=True):
+        m, skip = _study_manifest(mf.parent)
+        if skip:
+            skipped.append(skip)
+            if skip["kind"] == "malformed_study_run":
+                _log.warning("skipping study run %s: %s", skip["run_id"], skip["reason"])
+            continue
         out.append({"run_id": m["run_id"], "split": m["split"], "started_at": m["started_at"], "git": m.get("git"),
                     "config_version": m["config_version"], "jev_status": m.get("jev_status"),
                     "engines": [e["key"] for e in m.get("engines", [])],
                     "figures": sorted(p.name for p in (FIG_ROOT / m["run_id"]).glob("*.png")) if (FIG_ROOT / m["run_id"]).exists() else []})
+    LAST_RUNS_SKIPPED[:] = skipped
+    response.headers["X-DEEPSIFT-Skipped-Runs"] = str(len(skipped))
+    response.headers["X-DEEPSIFT-Malformed-Study-Runs"] = str(sum(1 for x in skipped if x["kind"] == "malformed_study_run"))
     return out
 
 
