@@ -1,0 +1,48 @@
+{
+ "sclk_to_utc": {
+  "slope": 1.0000094607755452,
+  "intercept_s_since_2000": 39564.02546092868,
+  "fit_labels": 4,
+  "check_abs_error_s": [
+   0.804044,
+   0.023998,
+   0.010072,
+   0.054586
+  ]
+ },
+ "rems_pressure_samples": 1677274,
+ "rad_observations": 5049,
+ "rad_observation_spacing_s": {
+  "median": 1021.0,
+  "p90": 1025.0
+ },
+ "navcam_products_by_type": {
+  "D": 1614,
+  "T": 2782,
+  "F": 1000,
+  "M": 88,
+  "S": 80
+ },
+ "images_FDSM_nearest_rems": {
+  "n": 2782,
+  "median_s": 238.0580450296402,
+  "p90_s": 1424.3068529844286,
+  "within_150s": 0.46046010064701653,
+  "within_15min": 0.7408339324227174,
+  "within_60min": 1.0
+ },
+ "images_FDSM_nearest_rad": {
+  "n": 2782,
+  "median_s": 278.7226915359497,
+  "p90_s": 718.6864869594574,
+  "within_150s": 0.2559309849029475,
+  "within_15min": 0.905823148813803,
+  "within_60min": 0.9539899352983465
+ },
+ "sequences": {
+  "TRAV": 1546,
+  "NCAM": 1232,
+  "SAPP": 4
+ },
+ "n_sequences": 72
+}

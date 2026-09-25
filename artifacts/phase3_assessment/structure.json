@@ -1,0 +1,100 @@
+{
+ "validation_sep": {
+  "navcam_acquisitions": 1159,
+  "active_sols": 13,
+  "acq_per_active_sol_median": 92,
+  "acq_per_active_sol_max": 256,
+  "sites": 4,
+  "site_drive_positions": 226,
+  "sols_with_>1_position": 8,
+  "sequences": 50,
+  "images_per_sequence_median": 10.0,
+  "images_per_sequence_max": 214,
+  "sequence_types": {
+   "NCAM": 37,
+   "TRAV": 10,
+   "SAPP": 3
+  },
+  "mastcam": {
+   "edr_products": 1039,
+   "cams": {
+    "ML": 803,
+    "MR": 236
+   },
+   "types": {
+    "E": 507,
+    "I": 516,
+    "C": 8,
+    "D": 8
+   },
+   "edr_GB": 0.199,
+   "sequences": 48,
+   "active_sols": 15
+  },
+  "mahli": {
+   "edr_products": 19,
+   "cams": {
+    "MH": 19
+   },
+   "types": {
+    "E": 8,
+    "I": 10,
+    "C": 1
+   },
+   "edr_GB": 0.004,
+   "sequences": 9,
+   "active_sols": 9
+  }
+ },
+ "validation_fd": {
+  "navcam_acquisitions": 1623,
+  "active_sols": 35,
+  "acq_per_active_sol_median": 14,
+  "acq_per_active_sol_max": 194,
+  "sites": 2,
+  "site_drive_positions": 340,
+  "sols_with_>1_position": 13,
+  "sequences": 139,
+  "images_per_sequence_median": 6,
+  "images_per_sequence_max": 116,
+  "sequence_types": {
+   "NCAM": 126,
+   "TRAV": 12,
+   "SAPP": 1
+  },
+  "mastcam": {
+   "edr_products": 3050,
+   "cams": {
+    "ML": 1700,
+    "MR": 1350
+   },
+   "types": {
+    "D": 373,
+    "I": 1542,
+    "C": 204,
+    "E": 931
+   },
+   "edr_GB": 0.431,
+   "sequences": 272,
+   "active_sols": 37
+  },
+  "mahli": {
+   "edr_products": 1676,
+   "cams": {
+    "MH": 1676
+   },
+   "types": {
+    "E": 32,
+    "I": 1100,
+    "C": 168,
+    "R": 94,
+    "T": 94,
+    "S": 94,
+    "U": 94
+   },
+   "edr_GB": 0.376,
+   "sequences": 73,
+   "active_sols": 22
+  }
+ }
+}
