@@ -1,0 +1,26 @@
+{
+ "fetched_at": "2026-09-25T13:15:54.745615+00:00",
+ "models": {
+  "mobilenetv2-12": {
+   "url": "https://media.githubusercontent.com/media/onnx/models/main/validated/vision/classification/mobilenet/model/mobilenetv2-12.onnx",
+   "description": "ONNX Model Zoo, ImageNet classifier",
+   "path": "data/models/mobilenetv2-12.onnx",
+   "bytes": 13964571,
+   "sha256": "c0c3f76d93fa3fd6580652a45618618a220fced18babf65774ed169de0432ad5"
+  },
+  "resnet18-v1-7": {
+   "url": "https://media.githubusercontent.com/media/onnx/models/main/validated/vision/classification/resnet/model/resnet18-v1-7.onnx",
+   "description": "ONNX Model Zoo, ImageNet classifier",
+   "path": "data/models/resnet18-v1-7.onnx",
+   "bytes": 46820737,
+   "sha256": "4e8f8653e7a2222b3904cc3fe8e304cd8b339ce1d05fd24688162f86fb6df52c"
+  },
+  "dinov2-small": {
+   "url": "https://huggingface.co/onnx-community/dinov2-small/resolve/main/onnx/model.onnx",
+   "description": "Hugging Face onnx-community, self-supervised ViT-S/14",
+   "path": "data/models/dinov2-small.onnx",
+   "bytes": 88532934,
+   "sha256": "f22797eabf810a75e41de68d378541ebea372122b25c4ce3ef25ff618250c20a"
+  }
+ }
+}

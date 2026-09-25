@@ -19,6 +19,12 @@ is not validated by NASA/JPL, and it does not produce scientific findings.
 > spacecraft hardware; its latency and cost figures are for a ground-based API call, not an onboard
 > processor. The LOCAL EDGE BASELINE is the only decision model in DEEPSIFT that runs without a network.
 
+> **Phase 3 scope — survivorship bias (read before any Phase 3 result).** The PDS archive contains only the
+> observations that were actually downlinked to Earth. DEEPSIFT Phase 3 therefore does **not** reproduce the rover's
+> complete onboard image stream. It tests *retrospective bandwidth-constrained prioritization of archived rover
+> observations* — not reconstruction of every image the rover could have captured onboard. Images the mission team
+> never downlinked, or deleted onboard, are invisible to every Phase 3 strategy and metric.
+
 ---
 
 ## Why onboard science triage matters

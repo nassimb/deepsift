@@ -1,0 +1,48 @@
+{
+ "chosen": "mobilenetv2-12",
+ "chosen_sha256": "c0c3f76d93fa3fd6580652a45618618a220fced18babf65774ed169de0432ad5",
+ "chosen_url": "https://media.githubusercontent.com/media/onnx/models/main/validated/vision/classification/mobilenet/model/mobilenetv2-12.onnx",
+ "rule": "(declared before running):\n  1. eligible: deterministic (two runs, max |\u0394| < 1e-5) AND p95 CPU latency \u2264 250 ms per image (4 threads)\n  2. among eligible: highest STEREO RETRIEVAL@1 \u2014 for every stereo acquisition, is the left image's nearest neighbour\n     among all right images its own right image? (label-free sanity check of similarity behaviour)\n  3. tie (within 0.01): smaller model file\nPeak memory is measured in a fresh subprocess per model.",
+ "split_used": "development (sols 412\u2013430) only",
+ "selected_at": "2026-09-25T13:22:56.360515+00:00",
+ "stereo_pairs": 550,
+ "candidates": {
+  "mobilenetv2-12": {
+   "file_bytes": 13964571,
+   "embedding_dim": 1280,
+   "p50_ms": 2.284146088641137,
+   "p95_ms": 2.4577669973950833,
+   "n_inferences": 1100,
+   "stereo_retrieval_at_1": 0.6381818181818182,
+   "determinism_max_abs_diff": 0.0,
+   "peak_rss_mb_isolated": 125.763584,
+   "onnxruntime_provider": "CPUExecutionProvider",
+   "threads": 4
+  },
+  "resnet18-v1-7": {
+   "file_bytes": 46820737,
+   "embedding_dim": 512,
+   "p50_ms": 7.012271031271666,
+   "p95_ms": 7.609312189742922,
+   "n_inferences": 1100,
+   "stereo_retrieval_at_1": 0.6327272727272727,
+   "determinism_max_abs_diff": 0.0,
+   "peak_rss_mb_isolated": 218.89024,
+   "onnxruntime_provider": "CPUExecutionProvider",
+   "threads": 4
+  },
+  "dinov2-small": {
+   "file_bytes": 88532934,
+   "embedding_dim": 384,
+   "p50_ms": 22.050666506402194,
+   "p95_ms": 23.03453955682926,
+   "n_inferences": 1100,
+   "stereo_retrieval_at_1": 0.6218181818181818,
+   "determinism_max_abs_diff": 0.0,
+   "peak_rss_mb_isolated": 199.983104,
+   "onnxruntime_provider": "CPUExecutionProvider",
+   "threads": 4
+  }
+ },
+ "label": "LOCAL VISION BASELINE \u2014 not a deployability claim"
+}

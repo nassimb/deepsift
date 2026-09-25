@@ -210,3 +210,16 @@ deterministic baselines or the local edge model. Under the pre-registered stop r
 ranking role. The result is limited to this experiment and task and is not a general claim about Jev. Jev code,
 runs, call logs and cache are preserved for reproducibility; Jev is not in the default ranking path (opt-in only).
 Details: `docs/jev-model-selection.md`.
+
+## Phase 3 (multimodal imagery + telemetry) — scope
+
+**Phase 3 scope — survivorship bias (read before any Phase 3 result).** The PDS archive contains only the
+observations that were actually downlinked to Earth. DEEPSIFT Phase 3 therefore does **not** reproduce the rover's
+complete onboard image stream. It tests *retrospective bandwidth-constrained prioritization of archived rover
+observations* — not reconstruction of every image the rover could have captured onboard. Images the mission team
+never downlinked, or deleted onboard, are invisible to every Phase 3 strategy and metric.
+
+Splits (frozen before any image was downloaded, `data/splits/phase3_splits.json`): development sols 412–430,
+validation 779–820, held-out test 950–979 (selected by a pre-declared rule from PDS listings only; immutable).
+Camera: Navcam raw EDR. Image-to-telemetry alignment is minutes-level, so telemetry is reported as TELEMETRY
+CONTEXT, never as co-measurement. No VLM, no Jev in Phase 3 baselines.
