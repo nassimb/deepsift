@@ -3,13 +3,16 @@
 *DEEPSIFT v1 research release (tag `deepsift-v1-research`). An independent research prototype; not affiliated with,
 reviewed or validated by NASA or JPL.*
 
+**Keywords:** onboard autonomy · downlink prioritization · Mars Science Laboratory · Navcam · pre-registration ·
+negative results · reproducibility
+
 ## Abstract
 
 Planetary rovers acquire more data than their relay links can return, so onboard or ground prioritization must decide
 what is transmitted first. We report a retrospective study that replays archived Mars Science Laboratory (Curiosity) data
 from the Planetary Data System (PDS) under simulated bandwidth limits.
 
-The study evaluated a sequence of candidate signals:
+The study evaluated a sequence of candidate signals [1–4, 7–9]:
 - deterministic rules;
 - statistical anomaly scores;
 - a local edge model;
@@ -71,16 +74,18 @@ candidate events over deterministic and statistical baselines at equal bytes?
 All data are public PDS archives. They were downloaded with their URLs, labels and SHA-256 values recorded in committed
 manifests.
 
-- **REMS** (Rover Environmental Monitoring Station) MODRDR, PDS Atmospheres Node: pressure, air and ground temperature,
+- **REMS** [1] (Rover Environmental Monitoring Station) MODRDR, PDS Atmospheres Node: pressure, air and ground temperature,
   UV and humidity.
-- **RAD** (Radiation Assessment Detector) RDR, PDS PPI Node: dose rates.
-- **Navcam** raw EDR (MSLNAV_0XXX, PDS Imaging Node): left/right stereo engineering cameras. The products include full
-  frames, downsampled and subframe tiers and 64-pixel thumbnails, each with ICER or LOCO compression metadata.
+- **RAD** [2] (Radiation Assessment Detector) RDR, PDS PPI Node: dose rates.
+- **Navcam** raw EDR [3] (MSLNAV_0XXX, PDS Imaging Node): left/right stereo engineering cameras. The products include full
+  frames, downsampled and subframe tiers and 64-pixel thumbnails, each with ICER [5] or LOCO [6] compression metadata.
   Downlink size is estimated from the label as LINES × LINE_SAMPLES × INST_CMPRS_RATE / 8.
-- **PLACES** (`localized_interp.csv`, PDS): rover localizations by site/drive/pose. Frames are matched to the exact
+- **PLACES** [4] (`localized_interp.csv`, PDS): rover localizations by site/drive/pose. Frames are matched to the exact
   pose where available, and otherwise to the nearest pose within the same site and drive.
 
 **Phase 3 periods.** Periods are reported separately and never pooled.
+
+*Table 1. Phase 3 data periods.*
 
 | period | sols | acquisitions | traverse sequences (≥ 10 frames) |
 |---|---|---|---|
@@ -105,7 +110,7 @@ The released primary path (`deepsift/evaluation/phase3_pipeline.py`) is delibera
 
 1. **Acquisition grouping.** Navcam products are grouped by spacecraft-clock capture instant. A left/right stereo pair
    plus its thumbnails is one acquisition, and the two eyes are never separated.
-2. **Position-aware selection (POSITION).** Within each traverse sequence, farthest-point sampling on the Euclidean
+2. **Position-aware selection (POSITION).** Within each traverse sequence, farthest-point sampling [7] on the Euclidean
    distance between PLACES positions keeps k = ⌈fraction × frames⌉ frames, starting from the first frame.
 3. **Scheduler V3 (stereo-safe progressive).** The scheduler fills tiers in strategy order: metadata, then a
    THUMBNAIL_PAIR for every acquisition, then a COMPRESSED_STEREO_PAIR, then a FULL_STEREO_PAIR. It stops at the first
@@ -132,7 +137,7 @@ Every stage followed the same pattern:
 
 Runners recompute the configuration hash and the SHA-256 of each listed source file, and refuse to start if anything
 differs. Every stochastic component has a recorded seed, and there is no bootstrap except the pre-declared
-sequence-level interval.
+sequence-level interval [10].
 
 **Traverse metrics.** For each traverse and retention fraction:
 - bytes, as a fraction of sending every frame at full quality (kept frames sent as full pairs, the others as thumbnail
@@ -140,7 +145,7 @@ sequence-level interval.
 - **5 m spatial coverage**: the fraction of archived frames within 5 m of a kept frame;
 - **largest distance to a kept frame**: the maximum, over archived frames, of the distance to the nearest kept frame;
 - gap statistics;
-- **visual-change coverage**: the mean over frames of the best MobileNetV2 cosine similarity to a kept frame. This is a
+- **visual-change coverage**: the mean over frames of the best MobileNetV2 [8] cosine similarity to a kept frame. This is a
   proxy, not a scientific judgement;
 - stereo integrity.
 
@@ -221,6 +226,9 @@ first test image was written at 17:03:50 UTC. The analysis ran once and nothing 
 
 **Primary criterion.** Scheduler V3 + POSITION at 1/4 retention, binary:
 
+*Table 2. Pre-registered primary criterion and held-out result
+(`artifacts/phase3_final/20260926T174018-phase3-final-test-e4e2/results.json` → `primary`).*
+
 | criterion | threshold | test |
 |---|---|---|
 | bytes fraction | ≤ 0.35 | **0.261** |
@@ -241,6 +249,8 @@ first test image was written at 17:03:50 UTC. The analysis ran once and nothing 
 
 **Held-out test, 1/4 retention** (figure 1):
 
+*Table 3. Held-out test at 1/4 retention, all frozen selection methods (`results.json` → `traverse.summary`).*
+
 | method | bytes | 5 m coverage | largest distance to kept |
 |---|---|---|---|
 | POSITION | 0.261 | 1.000 | 2.05 m |
@@ -250,22 +260,49 @@ first test image was written at 17:03:50 UTC. The analysis ran once and nothing 
 
 EVERY_NTH drops whole rover stops.
 
+![Figure 1](figures/fig1_bytes_vs_coverage.png)
+
+*Figure 1. Held-out test (sols 950–979; 12 traverses, 679 frames). Left: bytes retained vs 5 m spatial coverage at 1/8,
+1/4 and 1/2 retention. Right: bytes vs the largest distance from any archived frame to a kept frame; the dashed line is
+the pre-registered 10 m limit. Source: final-test `results.json` → `traverse.summary`.*
+
 **POSITION across all four periods** (figure 2):
 - bytes 0.266 / 0.265 / 0.270 / 0.261;
 - 5 m coverage 1.000 in every period;
 - largest distance 2.64 / 2.78 / 1.94 / 2.05 m;
 - 0 broken stereo pairs.
 
+![Figure 2](figures/fig2_four_period_generalization.png)
+
+*Figure 2. Scheduler V3 + POSITION at 1/4 retention in four non-pooled periods. Dashed lines are the final-test limits,
+which were pre-registered for the test only. Source: final-test `results.json` → `four_period`.*
+
 **Embedding gain over POSITION** (figure 3): +0.044 on development, then +0.004, +0.001 and +0.005.
+
+![Figure 3](figures/fig3_embedding_gain_by_period.png)
+
+*Figure 3. Visual-change gain of POSITION + EMBEDDING over POSITION at 1/4 retention, with 95 % sequence-bootstrap
+intervals. The dashed line is the pre-registered 0.020 "meaningful" threshold.*
+
+![Figure 5](figures/fig5_representative_traverse.png)
+
+*Figure 5. Representative held-out traverse 967:trav00327 (the longest path; 105 frames, 89 m). Filled squares: frames
+kept at full quality by POSITION at 1/4. Hollow circles: thumbnail-only frames. Shaded discs: 5 m radius. Orange lines:
+distance from each thumbnail-only frame to its nearest kept frame.*
 
 ## 11. Negative results
 
-These are reported as findings, not footnotes:
+These are reported as findings, not footnotes (figure 4):
+
+![Figure 4](figures/fig4_research_funnel.png)
+
+*Figure 4. What survived the research funnel. Verdicts come from pre-registered rules; evidence and sources are in
+`apps/web/data/release.json` → `funnel`.*
 
 - **Jev semantic ranking:** no measurable improvement in candidate ranking. Discontinued by pre-registered rule.
 - **Telemetry image ranking:** image-independent by construction, and the weakest coverage of six strategies (at 1 %
   budget under Scheduler V3: 7 usable acquisitions at 1 rover position).
-- **pHash representative selection:** unsafe scene merges on validation, and negligible compression.
+- **pHash representative selection [9]:** unsafe scene merges on validation, and negligible compression.
 - **QUALITY_V2 as a priority modifier:** its false-positive rate tripled out of sample. Retained only as a diagnostic
   flag.
 - **Embedding-assisted selection:** it detects synthetic visual change that pHash misses, but it added no meaningful
@@ -321,3 +358,23 @@ The following would each need new, untouched test data:
 
 Git tags mark every stage, from `v0.1-baseline` to `phase3-final-test-complete`; the ordered list is on the web app's
 `/reproducibility` page.
+
+## References
+
+1. Gómez-Elvira, J. et al. REMS: The Environmental Sensor Suite for the Mars Science Laboratory Rover. *Space Science
+   Reviews* 170, 583–640 (2012). Data: MSL-M-REMS-5-MODRDR-V1.0, PDS Atmospheres Node.
+2. Hassler, D. M. et al. The Radiation Assessment Detector (RAD) Investigation. *Space Science Reviews* 170, 503–558
+   (2012). Data: MSL-M-RAD-3-RDR-V1.0, PDS Planetary Plasma Interactions Node.
+3. Maki, J. et al. The Mars Science Laboratory Engineering Cameras. *Space Science Reviews* 170, 77–93 (2012). Data:
+   MSLNAV_0XXX raw EDR, PDS Imaging Node, https://planetarydata.jpl.nasa.gov/img/data/msl/MSLNAV_0XXX/.
+4. MSL PLACES localizations, `localized_interp.csv`, PDS Imaging Node,
+   https://planetarydata.jpl.nasa.gov/img/data/msl/msl_places/.
+5. Kiely, A. & Klimesh, M. The ICER Progressive Wavelet Image Compressor. *IPN Progress Report* 42-155 (2003).
+6. Weinberger, M. J., Seroussi, G. & Sapiro, G. The LOCO-I Lossless Image Compression Algorithm. *IEEE Transactions on
+   Image Processing* 9(8), 1309–1324 (2000).
+7. Gonzalez, T. F. Clustering to Minimize the Maximum Intercluster Distance. *Theoretical Computer Science* 38, 293–306
+   (1985).
+8. Sandler, M. et al. MobileNetV2: Inverted Residuals and Linear Bottlenecks. *CVPR* (2018).
+9. Zauner, C. *Implementation and Benchmarking of Perceptual Image Hash Functions.* Master's thesis, Upper Austria
+   University of Applied Sciences (2010).
+10. Efron, B. & Tibshirani, R. J. *An Introduction to the Bootstrap.* Chapman & Hall (1993).
