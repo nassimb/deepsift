@@ -1,0 +1,220 @@
+{
+ "version": "PHASE3_4_VALIDATION2_CONFIG_V1",
+ "freeze": {
+  "phase3_3_commit": "e78aaffb06f66d00b9ebe16e8f12b2821122214a",
+  "phase3_3_config_hash": "87e52b59c77269fc0bb860e5a34a91a3c905ca8cb535cd383e6ffaca1f635ca0",
+  "seed_freeze_commit": "8db6690",
+  "head_at_freeze": "e78aaffb06f66d00b9ebe16e8f12b2821122214a"
+ },
+ "phase3_3_findings_FINAL_never_rewritten": {
+  "GENERALIZED": [
+   "Scheduler V3 monotonicity",
+   "Scheduler V3 stereo safety",
+   "MobileNetV2 retains a distinct visual-change signal"
+  ],
+  "PARTIALLY_GENERALIZED": {
+   "POSITION + EMBEDDING_CHANGE": {
+    "bytes": "pass",
+    "spatial coverage": "pass",
+    "visual-change coverage": "pass",
+    "stereo preservation": "pass",
+    "relative worst-gap criterion": "FAIL"
+   }
+  },
+  "FAILED_NOT_GENERALIZED": [
+   "QUALITY_V2 false-positive rate (validation 10.6 % vs development 3.6 %)",
+   "constrained pHash safety (false merge 0.15–0.19)"
+  ],
+  "evidence_sha256": {
+   "artifacts/phase3_3/20260926T142033-phase3.3-val-2a31/results.json": "2ab7cb0b4930551de34dcec589e636961b20131d11384962ee3821f30407a3e9",
+   "docs/phase3.3-report.md": "c8deddbf77d5db4f90a69d430503629062192ed45b0092bf14b5ce30bc8f5558",
+   "data/manifests/navcam_validation.json": "7007c544ed4f0baed05064b65800f856443e577905650360309be704cff19344",
+   "data/manifests/navcam_validation_verification.json": "72325ada3b82c6e1fba0a7734aa949491a90bb063db7bd93e3bc75d30db70585"
+  }
+ },
+ "validation1_status": "sols 779–820 informed post-validation development; they are NOT evidence for any Phase 3.4 claim",
+ "source_sha256": {
+  "services/pipeline/deepsift/evaluation/traverse.py": "17dfa0951a90be3b16bd083a8d66566b9af3ede1a14fd2fdad332da0a52fa7ba",
+  "services/pipeline/deepsift/evaluation/phase3_pipeline.py": "6816b75271e588870aef2a28ece6e2b2c55a8e8aa4ad60195dd835e491465f96",
+  "services/pipeline/deepsift/evaluation/image_benchmark.py": "cb0e68386bca3a267ceb7bdd10c8efbbe54f7ebc2d98297e22d1e690c8c5048d",
+  "services/pipeline/deepsift/imaging/embeddings.py": "c4f879493c1f0e472e72e36b1f5a3ec4a61e86be5c324e8b807fff414233b5e2",
+  "services/pipeline/deepsift/imaging/features.py": "4c20afb52919175de6c7e127ee46b217ecc6bdcbae1940e70f2488e3885bc6cd",
+  "services/pipeline/deepsift/imaging/acquisitions.py": "feafe807b8ba9a983712a06309e538e4fcd2b3df83df43e5ece2b4fd0f7f694e",
+  "services/pipeline/deepsift/imaging/synthetic.py": "94e1189c04635d381e788c10788d41f29cc7286af1b8261f9a5961fb55fa20db",
+  "services/pipeline/deepsift/imaging/synthetic_v2.py": "a95cc0111c5773a16b44425911e1fd1ecd6465cf5754f6b44964de06a8aa91fb",
+  "services/pipeline/deepsift/imaging/quality_v2.py": "352ad31dfd911635420a060ac10c333653435e7c37ecf337662a96dcde4997c3",
+  "services/pipeline/deepsift/multimodal/location.py": "2b0611820b0d5038326487c94086b56bbd6a525a1bdbce0d3c256de61b1d0315",
+  "config/phase3_vision_model.json": "7fb171e74c3bfdbca5570defe8b8c0081d5d12baaa4c04074ef0e03bf1a51f3e",
+  "config/phase3_3_validation_config.json": "7d79606c74990692d5a22e564a730a89c3175f955966ec158c8f24a7f9c31519",
+  "data/splits/phase3_splits.json": "bd927885d8fd04f903f7ab8475213d0541cb88e11a11642268edf284498757f8",
+  "artifacts/phase3_4/metric_study_development.json": "b90d9e1569f172e7b9ae7023201699bc33d6edbeccfe748bbe1dbf0392166e10"
+ },
+ "simplified_pipeline": {
+  "primary": [
+   "SCHEDULER_V3_STEREO_SAFE",
+   "METADATA_POSITION",
+   "EMBEDDING_CHANGE",
+   "POSITION_PLUS_EMBEDDING_CHANGE"
+  ],
+  "baselines": [
+   "FIFO",
+   "RANDOM",
+   "SIZE_AWARE",
+   "EVERY_NTH_FRAME",
+   "UNIFORM_DISTANCE"
+  ],
+  "diagnostic_only": [
+   "PHASH_REPRESENTATIVES",
+   "QUALITY_V2 (QUALITY_SUSPECT flag only)",
+   "TELEMETRY",
+   "JEV"
+  ],
+  "module": "services/pipeline/deepsift/evaluation/phase3_pipeline.py",
+  "traverse_methods": "unchanged frozen Phase 3.3 definitions, now in deepsift/evaluation/traverse.py (reproduction asserted on development)",
+  "quality_v3": "not built; orientation-aware quality is FUTURE RESEARCH (POST-VALIDATION DEVELOPMENT), needs its own new validation interval, not a blocker"
+ },
+ "spatial_metric_decision": {
+  "chosen": "MAX_DISTANCE_TO_KEPT_M = max over every archived traverse frame of the distance (PLACES landing x/y) to its nearest kept frame",
+  "why": [
+   "development native spacing has median 0 m (several frames per rover stop) and ~19.5 m drive steps between stops, so any gap-between-kept-frames metric (A absolute max gap, D p95 gap) is dominated by the rover's own drive step, not by selection",
+   "C (gap / median native spacing) is undefined on development (median 0 m); B (gap / traverse length) depends on sequence length (4.6–116 m on development) and has no mission meaning",
+   "MAX_DISTANCE_TO_KEPT_M is 0 for SEND_ALL at any density, is measured only at archived viewpoints, and has a direct mission reading: no archived viewpoint is farther than X m from a downlinked full-quality viewpoint",
+   "on development it separates methods that drop whole rover stops (EVERY_NTH 19.9 m, EMBEDDING_CHANGE 20.0 m at 1/4) from those that do not (POSITION 2.6 m, POSITION+EMBEDDING 3.7 m, UNIFORM_DISTANCE 4.4 m)",
+   "threshold 10 m = 2 × the 5 m coverage radius: an isolated uncovered frame is tolerated, a dropped ~20 m stop is not",
+   "motivation disclosed: the need for a density-independent metric came from the Phase 3.3 validation1 diagnosis; the metric and threshold were evaluated on development data only"
+  ],
+  "rejected": {
+   "A_absolute_max_gap": "dominated by native drive step",
+   "B_gap_over_length": "length-dependent, not interpretable",
+   "C_gap_over_native_spacing": "undefined on development (median spacing 0 m)",
+   "D_p95_gap": "reported descriptively; dominated by native drive step on development",
+   "E_coverage_within_x": "kept as the coverage criterion (5 m)"
+  },
+  "development_values_at_quarter": {
+   "METADATA_POSITION": {
+    "max_distance_to_kept_m": 2.637349047812889,
+    "coverage_5m": 1.0,
+    "visual": 0.9169358491897583,
+    "p95_gap_m": 19.87834520275773
+   },
+   "POSITION_PLUS_EMBEDDING_CHANGE": {
+    "max_distance_to_kept_m": 3.6714710948065887,
+    "coverage_5m": 1.0,
+    "visual": 0.9611488342285156,
+    "p95_gap_m": 19.956493178913025
+   },
+   "EMBEDDING_CHANGE": {
+    "max_distance_to_kept_m": 20.019967282690416,
+    "coverage_5m": 0.9773263820578398,
+    "visual": 0.9605883061885834,
+    "p95_gap_m": 20.3780438953302
+   },
+   "EVERY_NTH_FRAME": {
+    "max_distance_to_kept_m": 19.939277143367107,
+    "coverage_5m": 0.9516606849159592,
+    "visual": 0.9306280195713044,
+    "p95_gap_m": 38.65961122411857
+   },
+   "UNIFORM_DISTANCE": {
+    "max_distance_to_kept_m": 4.353987712431062,
+    "coverage_5m": 1.0,
+    "visual": 0.9221385896205903,
+    "p95_gap_m": 19.457057228676742
+   }
+  },
+  "study": "artifacts/phase3_4/metric_study_development.json"
+ },
+ "primary_claim": {
+  "text": "At 1/4-frame retention on traverse sequences, POSITION + EMBEDDING_CHANGE uses ≤ 35 % of SEND_ALL bytes, keeps ≥ 90 % of archived traverse frames within 5 m of a kept full-quality frame, keeps ≥ 0.90 visual-change coverage, leaves no archived traverse frame farther than 10 m from a kept frame in any sequence, and breaks 0 stereo pairs.",
+  "C1_bytes": "bytes fraction of SEND_ALL ≤ 0.35",
+  "C2_coverage": "mean 5 m position coverage ≥ 0.90",
+  "C3_visual": "visual-change coverage (mean best cosine similarity to a kept frame) ≥ 0.90",
+  "C4_max_distance_to_kept": "max over sequences of MAX_DISTANCE_TO_KEPT_M ≤ 10.0 m",
+  "C5_stereo": "0 broken stereo pairs",
+  "PASS": "C1–C5 all hold",
+  "FAIL": "any of C1–C5 fails",
+  "INCONCLUSIVE": "fewer than 3 traverse sequences (≥ 10 frames) OR fewer than 90 % of traverse frames with a PLACES position",
+  "development_check": {
+   "E_coverage_5m": 1.0,
+   "visual_change_coverage": 0.9611488342285156,
+   "F_max_distance_to_kept_m_worst": 3.6714710948065887
+  },
+  "reported_but_not_criteria": [
+   "unique rover positions",
+   "mean gap",
+   "p95 gap",
+   "max gap",
+   "traverse distance represented"
+  ]
+ },
+ "marginal_embedding_value": {
+  "VISUAL_CHANGE_GAIN": "visual-change coverage(POSITION+EMBEDDING) − visual-change coverage(POSITION), at 1/4",
+  "SPATIAL_COST": "5 m coverage(POSITION+EMBEDDING) − 5 m coverage(POSITION), at 1/4 (negative = cost)",
+  "GAP_DIFFERENCES": "differences in MAX_DISTANCE_TO_KEPT_M, p95 gap, max gap (reported)",
+  "uncertainty": "paired bootstrap over traverse sequences, 10,000 resamples, seed 20260926, 95 % percentile interval",
+  "MEANINGFUL_GAIN": "VISUAL_CHANGE_GAIN ≥ +0.020 AND bootstrap 95 % lower bound > 0",
+  "MATERIAL_SPATIAL_COST": "SPATIAL_COST < −0.020 OR POSITION+EMBEDDING fails C4 while POSITION passes",
+  "EQUIVALENT_NO_REGRESSION": "|VISUAL_CHANGE_GAIN| < 0.020 AND SPATIAL_COST ≥ −0.020 AND POSITION+EMBEDDING meets C4",
+  "why_0.020": "twice the development spread between the two simple baselines at 1/4 (UNIFORM 0.922 vs EVERY_NTH 0.931, Δ 0.009); about half the development gain (+0.044)",
+  "development_values": {
+   "VISUAL_CHANGE_GAIN": 0.04421298503875726,
+   "SPATIAL_COST": 0.0
+  }
+ },
+ "embedding_distinct_rule": "same as Phase 3.3 S4: stereo p50 < consecutive p50 < random p50 (cosine) AND mean over LOCALIZED_STRUCTURE and TEXTURE_CHANGE at OBVIOUS of (embedding − pHash change detection) ≥ 0.30, frozen development thresholds (cos 0.028908073902130127, Hamming 26); SYNTH_V2 visual controls only (30 per level per family), pHash used as a research comparison only",
+ "decision_rule_before_final_test": {
+  "PROCEED_TO_FINAL_TEST_950_979_ONLY_IF": [
+   "Scheduler V3: 0 monotonicity decreases (acquisitions, scene clusters, rover positions, stereo present, stereo usable; primary orders × 80 budgets) and 0 single-eye usable stereo pairs",
+   "0 broken stereo pairs in every traverse selection",
+   "primary claim PASS",
+   "embedding_distinct_rule holds",
+   "MEANINGFUL_GAIN without MATERIAL_SPATIAL_COST, OR EQUIVALENT_NO_REGRESSION"
+  ],
+  "otherwise": "STOP; do not consume the final test; report that the Phase 3 result did not generalize robustly enough",
+  "even_if_passed": "STOP and wait for explicit approval before downloading 950–979"
+ },
+ "validation2_selection_rule": {
+  "name": "PHASE3_VALIDATION2",
+  "text": "Scan windows [s, s+29] for s = 1100, 1101, … and take the FIRST satisfying ALL of: R1 outside every Phase 2 interval (evaluation + warm-up sols), outside 412–430, 779–820 and 950–979; R2 ≥ 10 sols with ≥ 1 Navcam acquisition; R3 ≥ 500 Navcam acquisitions (unique SCLK with ≥ 1 non-thumbnail EDR); R4 REMS RMD product listed for ≥ 27 of 30 sols; R5 RAD RDR product listed for ≥ 27 of 30 sols; R6 no overlap with a known solar-conjunction command moratorium; R7 every Navcam listing retrievable, every .IMG has a .LBL, no zero-size .IMG, INDEX.TAB answers. PDS listings only; no image content is read. If no window passes before sol 1700 (the 2017 conjunction is not in the moratorium list), STOP and report.",
+  "start": 1100,
+  "length": 30,
+  "stop_before": 1700,
+  "implementation": "scripts/phase3_4_select_validation2.py (same listing checks as scripts/phase3_select_test.py)"
+ },
+ "validation2_pipeline": {
+  "observations": "same M3/M4/M8/M9 steps as Phase 3.3 (acquisitions, PLACES, MobileNetV2, causal novelty); telemetry NOT joined (not a ranking input; no Phase 2 segment covers these sols)",
+  "quality_v2": "descriptive FPR only (QUALITY_SUSPECT flags), frozen thresholds, never ranking",
+  "fractions": [
+   0.5,
+   0.25,
+   0.125
+  ],
+  "coverage_radius_m": 5.0,
+  "report_budgets": [
+   0.001,
+   0.0025,
+   0.005,
+   0.01,
+   0.02,
+   0.05,
+   0.1
+  ],
+  "monotonicity_grid": "numpy.geomspace(0.0001, 0.30, 80)",
+  "jev": "none",
+  "seeds": {
+   "random_order": 0,
+   "bootstrap": 20260926,
+   "synthetic_tag": "VALIDATION2",
+   "embedding_random_pairs": 11
+  }
+ },
+ "final_test_unchanged": {
+  "sols": [
+   950,
+   979
+  ],
+  "status": "untouched: not downloaded, not inspected, no features"
+ },
+ "config_hash": "3498febc3a4c87d516ab779871104576405294f3fae756d9c50f23a66a5ee0b8",
+ "written_at": "2026-09-26T16:30:42.350552+00:00"
+}
