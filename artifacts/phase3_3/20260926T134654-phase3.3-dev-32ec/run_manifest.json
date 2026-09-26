@@ -1,0 +1,33 @@
+{
+ "run_id": "20260926T134654-phase3.3-dev-32ec",
+ "split": "development",
+ "config_hash": "87e52b59c77269fc0bb860e5a34a91a3c905ca8cb535cd383e6ffaca1f635ca0",
+ "pre_declared_rules": {
+  "declared_before_validation_download": true,
+  "PRIMARY_position_plus_embedding_at_one_quarter": {
+   "G1_bytes": "bytes fraction of SEND_ALL ≤ 0.35 (substantial reduction)",
+   "G2_coverage": "mean 5 m position coverage ≥ 0.90",
+   "G3_visual": "visual-change coverage ≥ 0.90",
+   "G4_gap": "worst-sequence max spatial gap ≤ 2 × SEND_ALL worst-sequence max gap",
+   "G5_stereo": "0 broken stereo pairs",
+   "GENERALIZES": "G1–G5 all pass",
+   "PARTIALLY_GENERALIZES": "G1 and G5 pass and exactly one of G2–G4 fails",
+   "DOES_NOT_GENERALIZE": "any other outcome",
+   "INCONCLUSIVE": "fewer than 3 validation traverse sequences",
+   "justification": "user's suggested criterion plus G1, which makes 'reduce bytes substantially' testable"
+  },
+  "S1_scheduler_v3": "GENERALIZES iff 0 monotonicity decreases (5 metrics × 6 orders × 80 budgets) AND stereo usable ≤ pairs with both eyes ≥ COMPRESSED",
+  "S2_quality_v2": {
+   "fpr": "GENERALIZES if validation FPR ≤ 2 × development (≤ 7.2 %); PARTIAL if ≤ 3 × (≤ 10.8 %); FAILS otherwise",
+   "recall": "OBVIOUS recall = 1.00 for every engineering family AND MODERATE recall within 0.15 (absolute) of development all-controls recall for every engineering family",
+   "overall": "GENERALIZES iff fpr GENERALIZES and recall passes; PARTIALLY if exactly one holds (or fpr PARTIAL)"
+  },
+  "S3_constrained_phash": "SAFE iff every constrained variant has false-merge (different scene) ≤ 0.05 AND duplicate retrieval ≥ 0.95; 'pHash alone unsafe' reproduces iff pHash-only false merge ≥ 0.50",
+  "S4_embeddings": "DISTINCT SIGNAL iff stereo p50 < consecutive p50 < random p50 (cosine) AND mean over LOCALIZED_STRUCTURE and TEXTURE_CHANGE at OBVIOUS of (embedding − pHash change detection) ≥ 0.30, with frozen development thresholds",
+  "S5_position": "GENERALIZES iff METADATA_POSITION at 1/4 has mean 5 m coverage ≥ 0.90 AND worst max gap ≤ 2 × SEND_ALL worst",
+  "S6_generator": "0 contract violations required; violations are reported as generator failures, never regenerated"
+ },
+ "written_before_metrics": true,
+ "git": "6bce97d821b7c392efddfb9439a38ee74c8c8c80",
+ "created_at": "2026-09-26T13:46:54.491001+00:00"
+}

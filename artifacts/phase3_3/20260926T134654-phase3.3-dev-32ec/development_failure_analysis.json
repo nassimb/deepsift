@@ -1,0 +1,677 @@
+{
+ "label": "DEVELOPMENT FAILURE ANALYSIS \u2014 for future work only; nothing was tuned from these",
+ "scheduler_v3_difficult_allocations": {
+  "at_1pct_FIFO": {
+   "stereo_present": 550,
+   "stereo_usable": 48,
+   "stereo_acquisitions": 550,
+   "acquisitions_usable": 49
+  },
+  "largest_pair_costs_bytes": [
+   [
+    1941712.40448,
+    "MSL-NAV-0426-435329850"
+   ],
+   [
+    1819302.95296,
+    "MSL-NAV-0415-434344341"
+   ],
+   [
+    1818896.62976,
+    "MSL-NAV-0413-434164186"
+   ],
+   [
+    1048576.0,
+    "MSL-NAV-0429-435585517"
+   ],
+   [
+    1048576.0,
+    "MSL-NAV-0426-435323692"
+   ]
+  ],
+  "acquisitions_without_thumbnail_pair": []
+ },
+ "quality_v2_false_positives": [
+  {
+   "acq_id": "MSL-NAV-0412-434076977",
+   "sol": 412,
+   "tier": "F",
+   "reasons": [
+    "saturation",
+    "brightness_out_of_range"
+   ]
+  },
+  {
+   "acq_id": "MSL-NAV-0413-434161292",
+   "sol": 413,
+   "tier": "D",
+   "reasons": [
+    "brightness_out_of_range"
+   ]
+  },
+  {
+   "acq_id": "MSL-NAV-0413-434162458",
+   "sol": 413,
+   "tier": "D",
+   "reasons": [
+    "brightness_out_of_range"
+   ]
+  },
+  {
+   "acq_id": "MSL-NAV-0417-434525459",
+   "sol": 417,
+   "tier": "M",
+   "reasons": [
+    "low_sharpness"
+   ]
+  },
+  {
+   "acq_id": "MSL-NAV-0417-434526222",
+   "sol": 417,
+   "tier": "F",
+   "reasons": [
+    "brightness_out_of_range",
+    "low_sharpness"
+   ]
+  },
+  {
+   "acq_id": "MSL-NAV-0419-434694823",
+   "sol": 419,
+   "tier": "D",
+   "reasons": [
+    "brightness_out_of_range"
+   ]
+  },
+  {
+   "acq_id": "MSL-NAV-0419-434695086",
+   "sol": 419,
+   "tier": "D",
+   "reasons": [
+    "brightness_out_of_range"
+   ]
+  },
+  {
+   "acq_id": "MSL-NAV-0419-434700865",
+   "sol": 419,
+   "tier": "F",
+   "reasons": [
+    "saturation",
+    "brightness_out_of_range"
+   ]
+  },
+  {
+   "acq_id": "MSL-NAV-0419-434703614",
+   "sol": 419,
+   "tier": "F",
+   "reasons": [
+    "brightness_out_of_range"
+   ]
+  },
+  {
+   "acq_id": "MSL-NAV-0419-434703645",
+   "sol": 419,
+   "tier": "F",
+   "reasons": [
+    "brightness_out_of_range"
+   ]
+  },
+  {
+   "acq_id": "MSL-NAV-0421-434871683",
+   "sol": 421,
+   "tier": "S",
+   "reasons": [
+    "low_sharpness"
+   ]
+  },
+  {
+   "acq_id": "MSL-NAV-0422-434966444",
+   "sol": 422,
+   "tier": "D",
+   "reasons": [
+    "low_sharpness"
+   ]
+  },
+  {
+   "acq_id": "MSL-NAV-0422-434966773",
+   "sol": 422,
+   "tier": "D",
+   "reasons": [
+    "low_sharpness"
+   ]
+  },
+  {
+   "acq_id": "MSL-NAV-0422-434967560",
+   "sol": 422,
+   "tier": "D",
+   "reasons": [
+    "low_sharpness"
+   ]
+  },
+  {
+   "acq_id": "MSL-NAV-0422-434967806",
+   "sol": 422,
+   "tier": "D",
+   "reasons": [
+    "low_sharpness"
+   ]
+  },
+  {
+   "acq_id": "MSL-NAV-0424-435140107",
+   "sol": 424,
+   "tier": "D",
+   "reasons": [
+    "brightness_out_of_range"
+   ]
+  },
+  {
+   "acq_id": "MSL-NAV-0424-435140340",
+   "sol": 424,
+   "tier": "D",
+   "reasons": [
+    "low_sharpness"
+   ]
+  },
+  {
+   "acq_id": "MSL-NAV-0424-435140367",
+   "sol": 424,
+   "tier": "D",
+   "reasons": [
+    "brightness_out_of_range"
+   ]
+  },
+  {
+   "acq_id": "MSL-NAV-0424-435141136",
+   "sol": 424,
+   "tier": "D",
+   "reasons": [
+    "brightness_out_of_range"
+   ]
+  },
+  {
+   "acq_id": "MSL-NAV-0426-435323449",
+   "sol": 426,
+   "tier": "F",
+   "reasons": [
+    "saturation",
+    "brightness_out_of_range"
+   ]
+  },
+  {
+   "acq_id": "MSL-NAV-0426-435324379",
+   "sol": 426,
+   "tier": "F",
+   "reasons": [
+    "brightness_out_of_range"
+   ]
+  },
+  {
+   "acq_id": "MSL-NAV-0426-435329850",
+   "sol": 426,
+   "tier": "F",
+   "reasons": [
+    "low_sharpness"
+   ]
+  }
+ ],
+ "quality_v2_misses": [
+  {
+   "synthetic_id": "SYN-P33DEV-EXPOSURE-MODERATE-001",
+   "family": "EXPOSURE",
+   "severity": "MODERATE",
+   "source": "MSL-NAV-0412-434077212"
+  },
+  {
+   "synthetic_id": "SYN-P33DEV-EXPOSURE-MODERATE-006",
+   "family": "EXPOSURE",
+   "severity": "MODERATE",
+   "source": "MSL-NAV-0417-434521298"
+  },
+  {
+   "synthetic_id": "SYN-P33DEV-EXPOSURE-MODERATE-008",
+   "family": "EXPOSURE",
+   "severity": "MODERATE",
+   "source": "MSL-NAV-0412-434077793"
+  },
+  {
+   "synthetic_id": "SYN-P33DEV-EXPOSURE-MODERATE-009",
+   "family": "EXPOSURE",
+   "severity": "MODERATE",
+   "source": "MSL-NAV-0422-434967078"
+  },
+  {
+   "synthetic_id": "SYN-P33DEV-EXPOSURE-MODERATE-011",
+   "family": "EXPOSURE",
+   "severity": "MODERATE",
+   "source": "MSL-NAV-0427-435402135"
+  },
+  {
+   "synthetic_id": "SYN-P33DEV-EXPOSURE-MODERATE-018",
+   "family": "EXPOSURE",
+   "severity": "MODERATE",
+   "source": "MSL-NAV-0412-434076306"
+  },
+  {
+   "synthetic_id": "SYN-P33DEV-EXPOSURE-MODERATE-019",
+   "family": "EXPOSURE",
+   "severity": "MODERATE",
+   "source": "MSL-NAV-0419-434697332"
+  },
+  {
+   "synthetic_id": "SYN-P33DEV-EXPOSURE-MODERATE-022",
+   "family": "EXPOSURE",
+   "severity": "MODERATE",
+   "source": "MSL-NAV-0413-434162483"
+  },
+  {
+   "synthetic_id": "SYN-P33DEV-EXPOSURE-MODERATE-023",
+   "family": "EXPOSURE",
+   "severity": "MODERATE",
+   "source": "MSL-NAV-0413-434163036"
+  },
+  {
+   "synthetic_id": "SYN-P33DEV-EXPOSURE-MODERATE-024",
+   "family": "EXPOSURE",
+   "severity": "MODERATE",
+   "source": "MSL-NAV-0413-434159542"
+  },
+  {
+   "synthetic_id": "SYN-P33DEV-EXPOSURE-MODERATE-027",
+   "family": "EXPOSURE",
+   "severity": "MODERATE",
+   "source": "MSL-NAV-0419-434696418"
+  },
+  {
+   "synthetic_id": "SYN-P33DEV-EXPOSURE-MODERATE-028",
+   "family": "EXPOSURE",
+   "severity": "MODERATE",
+   "source": "MSL-NAV-0413-434159879"
+  },
+  {
+   "synthetic_id": "SYN-P33DEV-EXPOSURE-MODERATE-029",
+   "family": "EXPOSURE",
+   "severity": "MODERATE",
+   "source": "MSL-NAV-0429-435592284"
+  }
+ ],
+ "embedding_missed_visual_change": [
+  {
+   "synthetic_id": "SYN-P33DEV-LOCALIZED_STRUCTURE-OBVIOUS-000",
+   "family": "LOCALIZED_STRUCTURE",
+   "severity": "OBVIOUS",
+   "amplitude_scale": 0.9859038591384888
+  },
+  {
+   "synthetic_id": "SYN-P33DEV-LOCALIZED_STRUCTURE-OBVIOUS-002",
+   "family": "LOCALIZED_STRUCTURE",
+   "severity": "OBVIOUS",
+   "amplitude_scale": 1.0
+  },
+  {
+   "synthetic_id": "SYN-P33DEV-LOCALIZED_STRUCTURE-OBVIOUS-007",
+   "family": "LOCALIZED_STRUCTURE",
+   "severity": "OBVIOUS",
+   "amplitude_scale": 0.4499961733818054
+  },
+  {
+   "synthetic_id": "SYN-P33DEV-LOCALIZED_STRUCTURE-OBVIOUS-008",
+   "family": "LOCALIZED_STRUCTURE",
+   "severity": "OBVIOUS",
+   "amplitude_scale": 0.1480472981929779
+  },
+  {
+   "synthetic_id": "SYN-P33DEV-LOCALIZED_STRUCTURE-OBVIOUS-012",
+   "family": "LOCALIZED_STRUCTURE",
+   "severity": "OBVIOUS",
+   "amplitude_scale": 0.36607709527015686
+  },
+  {
+   "synthetic_id": "SYN-P33DEV-LOCALIZED_STRUCTURE-OBVIOUS-013",
+   "family": "LOCALIZED_STRUCTURE",
+   "severity": "OBVIOUS",
+   "amplitude_scale": 0.39354372024536133
+  },
+  {
+   "synthetic_id": "SYN-P33DEV-LOCALIZED_STRUCTURE-OBVIOUS-015",
+   "family": "LOCALIZED_STRUCTURE",
+   "severity": "OBVIOUS",
+   "amplitude_scale": 0.05408931151032448
+  },
+  {
+   "synthetic_id": "SYN-P33DEV-LOCALIZED_STRUCTURE-OBVIOUS-016",
+   "family": "LOCALIZED_STRUCTURE",
+   "severity": "OBVIOUS",
+   "amplitude_scale": 1.0
+  },
+  {
+   "synthetic_id": "SYN-P33DEV-LOCALIZED_STRUCTURE-OBVIOUS-017",
+   "family": "LOCALIZED_STRUCTURE",
+   "severity": "OBVIOUS",
+   "amplitude_scale": 0.053958915174007416
+  },
+  {
+   "synthetic_id": "SYN-P33DEV-LOCALIZED_STRUCTURE-OBVIOUS-018",
+   "family": "LOCALIZED_STRUCTURE",
+   "severity": "OBVIOUS",
+   "amplitude_scale": 1.0
+  },
+  {
+   "synthetic_id": "SYN-P33DEV-LOCALIZED_STRUCTURE-OBVIOUS-019",
+   "family": "LOCALIZED_STRUCTURE",
+   "severity": "OBVIOUS",
+   "amplitude_scale": 1.0
+  },
+  {
+   "synthetic_id": "SYN-P33DEV-LOCALIZED_STRUCTURE-OBVIOUS-021",
+   "family": "LOCALIZED_STRUCTURE",
+   "severity": "OBVIOUS",
+   "amplitude_scale": 0.2254488468170166
+  },
+  {
+   "synthetic_id": "SYN-P33DEV-LOCALIZED_STRUCTURE-OBVIOUS-022",
+   "family": "LOCALIZED_STRUCTURE",
+   "severity": "OBVIOUS",
+   "amplitude_scale": 0.17366860806941986
+  },
+  {
+   "synthetic_id": "SYN-P33DEV-LOCALIZED_STRUCTURE-OBVIOUS-025",
+   "family": "LOCALIZED_STRUCTURE",
+   "severity": "OBVIOUS",
+   "amplitude_scale": 0.17254644632339478
+  },
+  {
+   "synthetic_id": "SYN-P33DEV-LOCALIZED_STRUCTURE-OBVIOUS-029",
+   "family": "LOCALIZED_STRUCTURE",
+   "severity": "OBVIOUS",
+   "amplitude_scale": 0.3850473463535309
+  },
+  {
+   "synthetic_id": "SYN-P33DEV-LOCALIZED_STRUCTURE-MODERATE-000",
+   "family": "LOCALIZED_STRUCTURE",
+   "severity": "MODERATE",
+   "amplitude_scale": 1.0
+  },
+  {
+   "synthetic_id": "SYN-P33DEV-LOCALIZED_STRUCTURE-MODERATE-001",
+   "family": "LOCALIZED_STRUCTURE",
+   "severity": "MODERATE",
+   "amplitude_scale": 1.0
+  },
+  {
+   "synthetic_id": "SYN-P33DEV-LOCALIZED_STRUCTURE-MODERATE-002",
+   "family": "LOCALIZED_STRUCTURE",
+   "severity": "MODERATE",
+   "amplitude_scale": 1.0
+  },
+  {
+   "synthetic_id": "SYN-P33DEV-LOCALIZED_STRUCTURE-MODERATE-003",
+   "family": "LOCALIZED_STRUCTURE",
+   "severity": "MODERATE",
+   "amplitude_scale": 0.13558606803417206
+  },
+  {
+   "synthetic_id": "SYN-P33DEV-LOCALIZED_STRUCTURE-MODERATE-005",
+   "family": "LOCALIZED_STRUCTURE",
+   "severity": "MODERATE",
+   "amplitude_scale": 1.0
+  },
+  {
+   "synthetic_id": "SYN-P33DEV-LOCALIZED_STRUCTURE-MODERATE-008",
+   "family": "LOCALIZED_STRUCTURE",
+   "severity": "MODERATE",
+   "amplitude_scale": 1.0
+  },
+  {
+   "synthetic_id": "SYN-P33DEV-LOCALIZED_STRUCTURE-MODERATE-009",
+   "family": "LOCALIZED_STRUCTURE",
+   "severity": "MODERATE",
+   "amplitude_scale": 1.0
+  },
+  {
+   "synthetic_id": "SYN-P33DEV-LOCALIZED_STRUCTURE-MODERATE-010",
+   "family": "LOCALIZED_STRUCTURE",
+   "severity": "MODERATE",
+   "amplitude_scale": 1.0
+  },
+  {
+   "synthetic_id": "SYN-P33DEV-LOCALIZED_STRUCTURE-MODERATE-013",
+   "family": "LOCALIZED_STRUCTURE",
+   "severity": "MODERATE",
+   "amplitude_scale": 0.6549702882766724
+  },
+  {
+   "synthetic_id": "SYN-P33DEV-LOCALIZED_STRUCTURE-MODERATE-015",
+   "family": "LOCALIZED_STRUCTURE",
+   "severity": "MODERATE",
+   "amplitude_scale": 1.0
+  }
+ ],
+ "phash_false_merges": [
+  {
+   "A": "MSL-NAV-0419-434693991",
+   "B": "MSL-NAV-0419-434694531",
+   "hamming": 6,
+   "poseA": [
+    18,
+    1170,
+    2
+   ],
+   "poseB": [
+    18,
+    1206,
+    2
+   ]
+  },
+  {
+   "A": "MSL-NAV-0424-435139017",
+   "B": "MSL-NAV-0424-435141893",
+   "hamming": 12,
+   "poseA": [
+    19,
+    620,
+    2
+   ],
+   "poseB": [
+    19,
+    818,
+    2
+   ]
+  },
+  {
+   "A": "MSL-NAV-0424-435138535",
+   "B": "MSL-NAV-0424-435141893",
+   "hamming": 12,
+   "poseA": [
+    19,
+    584,
+    2
+   ],
+   "poseB": [
+    19,
+    818,
+    2
+   ]
+  },
+  {
+   "A": "MSL-NAV-0413-434161265",
+   "B": "MSL-NAV-0413-434161826",
+   "hamming": 2,
+   "poseA": [
+    18,
+    330,
+    2
+   ],
+   "poseB": [
+    18,
+    366,
+    2
+   ]
+  },
+  {
+   "A": "MSL-NAV-0424-435137070",
+   "B": "MSL-NAV-0424-435139822",
+   "hamming": 10,
+   "poseA": [
+    19,
+    488,
+    2
+   ],
+   "poseB": [
+    19,
+    674,
+    2
+   ]
+  },
+  {
+   "A": "MSL-NAV-0424-435139017",
+   "B": "MSL-NAV-0424-435144942",
+   "hamming": 22,
+   "poseA": [
+    19,
+    620,
+    2
+   ],
+   "poseB": [
+    19,
+    1034,
+    2
+   ]
+  },
+  {
+   "A": "MSL-NAV-0424-435137825",
+   "B": "MSL-NAV-0424-435144177",
+   "hamming": 16,
+   "poseA": [
+    19,
+    530,
+    2
+   ],
+   "poseB": [
+    19,
+    980,
+    2
+   ]
+  },
+  {
+   "A": "MSL-NAV-0424-435139271",
+   "B": "MSL-NAV-0424-435144687",
+   "hamming": 22,
+   "poseA": [
+    19,
+    638,
+    2
+   ],
+   "poseB": [
+    19,
+    1016,
+    2
+   ]
+  },
+  {
+   "A": "MSL-NAV-0424-435138768",
+   "B": "MSL-NAV-0424-435144942",
+   "hamming": 22,
+   "poseA": [
+    19,
+    602,
+    2
+   ],
+   "poseB": [
+    19,
+    1034,
+    2
+   ]
+  },
+  {
+   "A": "MSL-NAV-0413-434159218",
+   "B": "MSL-NAV-0413-434162982",
+   "hamming": 6,
+   "poseA": [
+    18,
+    216,
+    2
+   ],
+   "poseB": [
+    18,
+    396,
+    4
+   ]
+  },
+  {
+   "A": "MSL-NAV-0424-435139271",
+   "B": "MSL-NAV-0424-435139575",
+   "hamming": 8,
+   "poseA": [
+    19,
+    638,
+    2
+   ],
+   "poseB": [
+    19,
+    656,
+    2
+   ]
+  },
+  {
+   "A": "MSL-NAV-0412-434073572",
+   "B": "MSL-NAV-0412-434074702",
+   "hamming": 8,
+   "poseA": [
+    17,
+    1120,
+    2
+   ],
+   "poseB": [
+    17,
+    1192,
+    2
+   ]
+  },
+  {
+   "A": "MSL-NAV-0424-435142927",
+   "B": "MSL-NAV-0424-435144687",
+   "hamming": 16,
+   "poseA": [
+    19,
+    890,
+    2
+   ],
+   "poseB": [
+    19,
+    1016,
+    2
+   ]
+  },
+  {
+   "A": "MSL-NAV-0424-435137825",
+   "B": "MSL-NAV-0424-435142927",
+   "hamming": 12,
+   "poseA": [
+    19,
+    530,
+    2
+   ],
+   "poseB": [
+    19,
+    890,
+    2
+   ]
+  },
+  {
+   "A": "MSL-NAV-0419-434694252",
+   "B": "MSL-NAV-0419-434696702",
+   "hamming": 10,
+   "poseA": [
+    18,
+    1188,
+    2
+   ],
+   "poseB": [
+    18,
+    1350,
+    2
+   ]
+  }
+ ],
+ "position_gap_failures": [],
+ "position_plus_embedding_failures": []
+}

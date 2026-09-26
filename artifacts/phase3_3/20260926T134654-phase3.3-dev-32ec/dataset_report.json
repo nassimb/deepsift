@@ -1,0 +1,89 @@
+{
+ "label": "DEVELOPMENT DATASET REPORT (before any performance analysis)",
+ "split": "development",
+ "sols_range": [
+  412,
+  430
+ ],
+ "active_sols": [
+  412,
+  413,
+  415,
+  416,
+  417,
+  419,
+  421,
+  422,
+  424,
+  425,
+  426,
+  427,
+  429
+ ],
+ "n_active_sols": 13,
+ "acquisitions": 609,
+ "stereo_acquisitions": 550,
+ "mono_acquisitions": 59,
+ "products": 2318,
+ "products_by_tier": {
+  "D": 846,
+  "T": 1159,
+  "F": 261,
+  "M": 40,
+  "S": 12
+ },
+ "primary_tier_by_acquisition": {
+  "D": 423,
+  "F": 134,
+  "M": 40,
+  "S": 12
+ },
+ "download_bytes_archive": 852770614,
+ "estimated_downlink_bytes": {
+  "full_total": 161367007.56528,
+  "full_unknown": 0,
+  "thumbnail_total": 311691.007488,
+  "metadata_total": 144505
+ },
+ "sequences": 50,
+ "sequence_types_by_acquisition": {
+  "TRAV": 423,
+  "SAPP": 3,
+  "NCAM": 183
+ },
+ "traverse_sequences_ge_10_frames": 10,
+ "traverse_frames": 423,
+ "grouping": {
+  "products": 2318,
+  "acquisitions": 609,
+  "stereo_acquisitions": 550,
+  "mono_acquisitions": 59,
+  "primary_tier_counts": {
+   "D": 423,
+   "F": 134,
+   "M": 40,
+   "S": 12
+  },
+  "acquisitions_with_thumbnail": 609,
+  "products_per_acquisition_mean": 3.80623973727422
+ },
+ "places_join": {
+  "site_drive_nearest_pose": 550,
+  "exact_site_drive_pose": 59
+ },
+ "places_source_sha256": "09d4474e64aec6e788efdb4ec24a906f487fe1a58e26dd4431847c94d385faec",
+ "rems_context": {
+  "median_gap_s": 74.83999991416931,
+  "within_30_min": 1.0
+ },
+ "rad_context": {
+  "median_gap_s": 262.18499994277954,
+  "within_30_min": 1.0
+ },
+ "telemetry_context_events": 306,
+ "telemetry_context_window_s": 1800,
+ "telemetry_role": "DESCRIPTIVE METADATA ONLY \u2014 not a ranking input",
+ "quality_v1_states": {
+  "CLEAN": 609
+ }
+}
