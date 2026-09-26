@@ -1,0 +1,66 @@
+{
+ "run_id": "20260926T165307-phase3.4-val2-1248",
+ "interval": [
+  1100,
+  1129
+ ],
+ "config_hash": "3498febc3a4c87d516ab779871104576405294f3fae756d9c50f23a66a5ee0b8",
+ "pre_registered": {
+  "primary_claim": {
+   "text": "At 1/4-frame retention on traverse sequences, POSITION + EMBEDDING_CHANGE uses ≤ 35 % of SEND_ALL bytes, keeps ≥ 90 % of archived traverse frames within 5 m of a kept full-quality frame, keeps ≥ 0.90 visual-change coverage, leaves no archived traverse frame farther than 10 m from a kept frame in any sequence, and breaks 0 stereo pairs.",
+   "C1_bytes": "bytes fraction of SEND_ALL ≤ 0.35",
+   "C2_coverage": "mean 5 m position coverage ≥ 0.90",
+   "C3_visual": "visual-change coverage (mean best cosine similarity to a kept frame) ≥ 0.90",
+   "C4_max_distance_to_kept": "max over sequences of MAX_DISTANCE_TO_KEPT_M ≤ 10.0 m",
+   "C5_stereo": "0 broken stereo pairs",
+   "PASS": "C1–C5 all hold",
+   "FAIL": "any of C1–C5 fails",
+   "INCONCLUSIVE": "fewer than 3 traverse sequences (≥ 10 frames) OR fewer than 90 % of traverse frames with a PLACES position",
+   "development_check": {
+    "E_coverage_5m": 1.0,
+    "visual_change_coverage": 0.9611488342285156,
+    "F_max_distance_to_kept_m_worst": 3.6714710948065887
+   },
+   "reported_but_not_criteria": [
+    "unique rover positions",
+    "mean gap",
+    "p95 gap",
+    "max gap",
+    "traverse distance represented"
+   ]
+  },
+  "marginal_embedding_value": {
+   "VISUAL_CHANGE_GAIN": "visual-change coverage(POSITION+EMBEDDING) − visual-change coverage(POSITION), at 1/4",
+   "SPATIAL_COST": "5 m coverage(POSITION+EMBEDDING) − 5 m coverage(POSITION), at 1/4 (negative = cost)",
+   "GAP_DIFFERENCES": "differences in MAX_DISTANCE_TO_KEPT_M, p95 gap, max gap (reported)",
+   "uncertainty": "paired bootstrap over traverse sequences, 10,000 resamples, seed 20260926, 95 % percentile interval",
+   "MEANINGFUL_GAIN": "VISUAL_CHANGE_GAIN ≥ +0.020 AND bootstrap 95 % lower bound > 0",
+   "MATERIAL_SPATIAL_COST": "SPATIAL_COST < −0.020 OR POSITION+EMBEDDING fails C4 while POSITION passes",
+   "EQUIVALENT_NO_REGRESSION": "|VISUAL_CHANGE_GAIN| < 0.020 AND SPATIAL_COST ≥ −0.020 AND POSITION+EMBEDDING meets C4",
+   "why_0.020": "twice the development spread between the two simple baselines at 1/4 (UNIFORM 0.922 vs EVERY_NTH 0.931, Δ 0.009); about half the development gain (+0.044)",
+   "development_values": {
+    "VISUAL_CHANGE_GAIN": 0.04421298503875726,
+    "SPATIAL_COST": 0.0
+   }
+  },
+  "decision_rule_before_final_test": {
+   "PROCEED_TO_FINAL_TEST_950_979_ONLY_IF": [
+    "Scheduler V3: 0 monotonicity decreases (acquisitions, scene clusters, rover positions, stereo present, stereo usable; primary orders × 80 budgets) and 0 single-eye usable stereo pairs",
+    "0 broken stereo pairs in every traverse selection",
+    "primary claim PASS",
+    "embedding_distinct_rule holds",
+    "MEANINGFUL_GAIN without MATERIAL_SPATIAL_COST, OR EQUIVALENT_NO_REGRESSION"
+   ],
+   "otherwise": "STOP; do not consume the final test; report that the Phase 3 result did not generalize robustly enough",
+   "even_if_passed": "STOP and wait for explicit approval before downloading 950–979"
+  }
+ },
+ "seeds": {
+  "random_order": 0,
+  "bootstrap": 20260926,
+  "synthetic_tag": "VALIDATION2",
+  "embedding_random_pairs": 11
+ },
+ "written_before_metrics": true,
+ "created_at": "2026-09-26T16:53:07.480929+00:00"
+}

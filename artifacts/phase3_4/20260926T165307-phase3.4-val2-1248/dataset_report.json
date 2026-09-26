@@ -1,0 +1,84 @@
+{
+ "label": "VALIDATION2 DATASET REPORT (before any performance analysis)",
+ "interval": [
+  1100,
+  1129
+ ],
+ "download_verification": {
+  "listed": 1914,
+  "manifest_products": 1914,
+  "complete": true,
+  "problems": {},
+  "verdict": "PASS"
+ },
+ "active_sols": [
+  1100,
+  1102,
+  1104,
+  1105,
+  1106,
+  1107,
+  1108,
+  1109,
+  1110,
+  1111,
+  1112,
+  1113,
+  1114,
+  1115,
+  1116,
+  1118,
+  1119,
+  1120,
+  1122,
+  1123,
+  1124,
+  1126,
+  1127,
+  1128
+ ],
+ "n_active_sols": 24,
+ "acquisitions": 553,
+ "stereo": 404,
+ "mono": 149,
+ "products": 1914,
+ "products_by_tier": {
+  "D": 406,
+  "T": 957,
+  "F": 403,
+  "M": 136,
+  "S": 12
+ },
+ "download_bytes_archive": 1118066060,
+ "estimated_downlink_bytes": {
+  "full_total": 195035933.56449124,
+  "thumbnail_total": 282985.009664
+ },
+ "sequences": 92,
+ "sequence_types_by_acquisition": {
+  "TRAV": 203,
+  "NCAM": 349,
+  "SAPP": 1
+ },
+ "traverse_sequences_ge_10_frames": 8,
+ "traverse_frames": 200,
+ "traverse_frames_with_places_position": 200,
+ "places_join": {
+  "site_drive_nearest_pose": 505,
+  "exact_site_drive_pose": 48
+ },
+ "grouping": {
+  "products": 1914,
+  "acquisitions": 553,
+  "stereo_acquisitions": 404,
+  "mono_acquisitions": 149,
+  "primary_tier_counts": {
+   "D": 203,
+   "F": 202,
+   "M": 136,
+   "S": 12
+  },
+  "acquisitions_with_thumbnail": 553,
+  "products_per_acquisition_mean": 3.461121157323689
+ }
+}
