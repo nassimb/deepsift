@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PUBLIC_RELEASE } from "@/lib/mode";
 import { H, REL } from "@/lib/release";
 
 const LINKS: [string, string][] = [
@@ -6,7 +7,7 @@ const LINKS: [string, string][] = [
   ["/research", "Research"],
   ["/reproducibility", "Reproducibility"],
   ["/limitations", "Limitations"],
-  ["/control", "Mission control"],
+  PUBLIC_RELEASE ? ["/telemetry", "Phase 1–2 archive"] : ["/control", "Mission control"],
 ];
 
 export function ReleaseTopBar() {
@@ -15,7 +16,7 @@ export function ReleaseTopBar() {
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 h-11 flex items-center gap-4">
         <Link href="/" className="mono font-semibold tracking-[0.2em] text-[13px] text-ink shrink-0">DEEPSIFT</Link>
         <span className="chip text-ink-3 hidden md:inline">v1 · RESEARCH RELEASE</span>
-        <nav className="ml-auto flex items-center gap-1 overflow-x-auto">
+        <nav className="ml-auto min-w-0 flex items-center gap-1 overflow-x-auto">
           {LINKS.map(([h, l]) => (
             <Link key={h} href={h} className="mono text-[11px] uppercase tracking-[0.06em] px-2 py-1 whitespace-nowrap text-ink-3 hover:text-ink">{l}</Link>
           ))}

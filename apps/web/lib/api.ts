@@ -1,6 +1,9 @@
+import { API_ENABLED } from "@/lib/mode";
+
 export const API = process.env.NEXT_PUBLIC_DEEPSIFT_API ?? "http://localhost:8787";
 
 export async function api<T>(path: string, init?: RequestInit): Promise<T> {
+  if (!API_ENABLED) throw new Error("LOCAL RESEARCH TOOL — needs the DEEPSIFT pipeline API (run `npm run demo` locally); not available in the public release");
   const r = await fetch(`${API}${path}`, {
     ...init,
     headers: { "content-type": "application/json", ...(init?.headers ?? {}) },

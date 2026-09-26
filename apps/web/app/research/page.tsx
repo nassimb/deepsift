@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Nav } from "@/components/Nav";
+import { ReleaseFooter, ReleaseTopBar } from "@/components/release/Shell";
 import { H, pct } from "@/lib/release";
 
 const DOCS: [string, string][] = [
@@ -24,9 +24,9 @@ const FIGS: [string, string][] = [
 
 function S({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
   return (
-    <section id={id} className="grid grid-cols-[200px_1fr] gap-6 border-t border-line pt-6">
+    <section id={id} className="grid md:grid-cols-[200px_1fr] gap-3 md:gap-6 border-t border-line pt-6">
       <h2 className="label pt-1">{title}</h2>
-      <div className="text-[14px] text-ink-2 leading-relaxed space-y-3">{children}</div>
+      <div className="text-[14px] text-ink-2 leading-relaxed space-y-3 min-w-0 break-words">{children}</div>
     </section>
   );
 }
@@ -34,8 +34,8 @@ function S({ id, title, children }: { id: string; title: string; children: React
 export default function Research() {
   return (
     <>
-      <Nav />
-      <main className="max-w-[1050px] mx-auto px-6 py-10 space-y-8">
+      <ReleaseTopBar />
+      <main className="max-w-[1050px] mx-auto px-4 sm:px-6 py-10 space-y-8">
         <header>
           <div className="label">DEEPSIFT v1 · research release</div>
           <h1 className="text-[30px] font-medium text-ink mt-2">Which signals actually help decide what a rover should downlink?</h1>
@@ -50,7 +50,7 @@ export default function Research() {
         <S id="documents" title="Documents (repository paths)">
           <ul className="space-y-1">
             {DOCS.map(([path, what]) => (
-              <li key={path}><span className="mono text-ink">{path}</span> — {what}</li>
+              <li key={path}><span className="mono text-ink break-all">{path}</span> — {what}</li>
             ))}
           </ul>
         </S>
@@ -178,6 +178,7 @@ export default function Research() {
           superiority.
         </footer>
       </main>
+      <ReleaseFooter />
     </>
   );
 }

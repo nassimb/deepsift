@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { api, type Status } from "@/lib/api";
+import { API_ENABLED, PUBLIC_RELEASE } from "@/lib/mode";
 
 const LINKS = [
   ["/", "Release"],
@@ -19,11 +20,13 @@ const LINKS = [
   ["/reproducibility", "Reproducibility"],
   ["/limitations", "Limitations"],
 ];
+const PUBLIC_LINKS = new Set(["/", "/final-test", "/research", "/reproducibility", "/limitations"]);
 
 export function useStatus(pollMs = 5000) {
   const [status, setStatus] = useState<Status | null>(null);
   const [err, setErr] = useState<string | null>(null);
   useEffect(() => {
+    if (!API_ENABLED) return;
     let alive = true;
     const tick = () =>
       api<Status>("/api/status")
@@ -72,15 +75,25 @@ export function SourceBadges({ status, replay = true }: { status: Status | null;
 export function Nav({ right }: { right?: React.ReactNode }) {
   const path = usePathname();
   const { status, err } = useStatus();
+  const links = PUBLIC_RELEASE ? LINKS.filter(([h]) => PUBLIC_LINKS.has(h)) : LINKS;
   return (
+    <>
+    {!API_ENABLED && (
+      <div className="border-b border-line px-4 py-1.5 text-[11px] mono" style={{ background: "#1a1508", color: "var(--s-warn)" }}>
+        LOCAL RESEARCH TOOL — this page needs the DEEPSIFT pipeline API running locally (<span className="text-ink">npm run demo</span>). The public
+        release pages are static: <Link href="/" className="underline">Release</Link> · <Link href="/final-test" className="underline">Final test</Link> ·{" "}
+        <Link href="/research" className="underline">Research</Link> · <Link href="/reproducibility" className="underline">Reproducibility</Link> ·{" "}
+        <Link href="/limitations" className="underline">Limitations</Link>
+      </div>
+    )}
     <header className="border-b border-line bg-panel">
       <div className="flex items-center gap-6 px-4 h-11">
         <Link href="/" className="flex items-baseline gap-3 shrink-0">
           <span className="mono font-semibold tracking-[0.2em] text-[13px] text-ink">DEEPSIFT</span>
           <span className="label hidden lg:inline">Autonomous science triage</span>
         </Link>
-        <nav className="flex items-center gap-1 overflow-x-auto">
-          {LINKS.map(([href, label]) => (
+        <nav className="min-w-0 flex items-center gap-1 overflow-x-auto">
+          {links.map(([href, label]) => (
             <Link
               key={href}
               href={href}
@@ -98,10 +111,11 @@ export function Nav({ right }: { right?: React.ReactNode }) {
               className={status?.online ? "" : "state-pulse"}
               style={{ width: 7, height: 7, borderRadius: 7, background: status?.online ? "var(--s-good)" : err ? "var(--s-critical)" : "var(--s-warn)" }}
             />
-            <span style={{ color: "var(--ink-2)" }}>{status?.online ? "ONLINE" : err ? "API OFFLINE" : "STARTING"}</span>
+            <span style={{ color: "var(--ink-2)" }}>{!API_ENABLED ? "STATIC RELEASE" : status?.online ? "ONLINE" : err ? "API OFFLINE" : "STARTING"}</span>
           </span>
         </div>
       </div>
     </header>
+    </>
   );
 }

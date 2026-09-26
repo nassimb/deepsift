@@ -1,0 +1,1 @@
+DEEPSIFT held-out test on Curiosity Navcam sols 950–979: 26.1% of full-quality bytes, 100% 5 m spatial coverage, 2.05 m maximum distance to a kept frame, 0 broken stereo pairs.

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { EmbeddingGain, FourPeriod } from "@/components/release/Generalization";
 import { ReleaseFooter, ReleaseTopBar, Section, Source } from "@/components/release/Shell";
+import { PUBLIC_RELEASE } from "@/lib/mode";
 import { H, REL, pct } from "@/lib/release";
 
 // DEEPSIFT v1 research release homepage. Every number is read from data/release.json (scripts/build_release_data.py,
@@ -147,8 +148,13 @@ export default function Home() {
           <div className="grid gap-3 md:grid-cols-2">
             <LinkCard href="/final-test" title="Final test replay" chip="HISTORICAL REPLAY · sols 950–979"
               body="Rover path, every archived traverse frame, the frames POSITION keeps, the bandwidth meter, 5 m coverage and stereo state — SEND ALL vs POSITION." />
-            <LinkCard href="/control" title="Telemetry mission control (Phase 1–2)" chip="MISSION REPLAY · REMS / RAD"
-              body="The earlier telemetry-triage replay: candidate events, bounded decisions and relay-pass scheduling on real REMS and RAD records." />
+            {PUBLIC_RELEASE ? (
+              <LinkCard href="/telemetry" title="Phase 1–2 telemetry study (archive)" chip="REMS / RAD · STATIC ARCHIVE"
+                body="The earlier telemetry-triage study. Its interactive mission-control replay needs the local pipeline API (npm run demo) and is not part of the public site." />
+            ) : (
+              <LinkCard href="/control" title="Telemetry mission control (Phase 1–2)" chip="MISSION REPLAY · REMS / RAD"
+                body="The earlier telemetry-triage replay: candidate events, bounded decisions and relay-pass scheduling on real REMS and RAD records." />
+            )}
           </div>
         </Section>
 
@@ -164,14 +170,14 @@ export default function Home() {
         {/* 8 · OPEN SOURCE / REPRODUCIBILITY */}
         <Section n="08" kicker="Reproducibility" title="Frozen before it was tested.">
           <div className="grid gap-4 md:grid-cols-2">
-            <div className="panel p-4 space-y-2">
+            <div className="panel p-4 space-y-2 min-w-0">
               <div className="label">Final test ordering (from git and the file system)</div>
               <Row k="config committed" v={REL.reproducibility.frozen_before_download.config_commit_time} />
               <Row k="first test image written" v={REL.reproducibility.frozen_before_download.first_test_image_written.slice(0, 19)} />
               <Row k="config before download" v={REL.reproducibility.frozen_before_download.config_before_download ? "yes" : "NO"} />
               <Row k="final config hash" v={`${H.config_hash.slice(0, 20)}…`} />
             </div>
-            <div className="panel p-4 space-y-2">
+            <div className="panel p-4 space-y-2 min-w-0">
               <div className="label">Artifact structure</div>
               <pre className="mono text-[11px] text-ink-2 leading-5 overflow-x-auto">{`config/phase3_final_test_config.json   frozen criterion + source hashes
 data/splits/                            dev / validation / test intervals

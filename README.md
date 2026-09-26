@@ -8,6 +8,15 @@ DEEPSIFT is an independent research prototype. It replays archived Mars Science 
 NASA Planetary Data System under simulated bandwidth limits, and measures which signals actually help decide what should
 be transmitted. It is not flight software and is not affiliated with, used by or validated by NASA or JPL.
 
+| | |
+|---|---|
+| **What is this?** | A pre-registered, retrospective study of rover-imagery downlink prioritization on public Curiosity Navcam data. |
+| **What was tested?** | Semantic ranking (Jev), telemetry ranking, pHash, a learned quality detector, image embeddings, rover-position sampling, and three downlink schedulers. |
+| **What happened?** | Only rover-position sampling and a stereo-safe progressive scheduler generalized. On the held-out test: 26.1 % of full-quality traverse bytes, 100 % 5 m coverage, 0 broken stereo pairs. |
+| **Where is the evidence?** | [`docs/deepsift-paper.md`](docs/deepsift-paper.md) · [`docs/phase3-final-test-report.md`](docs/phase3-final-test-report.md) · [`artifacts/phase3_final/`](artifacts/phase3_final/) · [`docs/public-claims-checklist.md`](docs/public-claims-checklist.md) |
+| **How do I reproduce it?** | `uv run python scripts/release_integrity.py --verify` then see [Reproducibility](#reproducibility). Raw PDS data are re-downloadable via `scripts/fetch_navcam.py` and the committed manifests. |
+| **Limits?** | Only downlinked (archived) data exist; one rover and one camera; simulated compressed tier; see [Limitations](#limitations-read-before-quoting-a-number). |
+
 ## Final held-out result
 
 **Test:** Curiosity Navcam, sols 950–979 (12 traverse sequences, 679 archived frames). The configuration was committed

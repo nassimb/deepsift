@@ -19,3 +19,6 @@ data/models/
 data/fetch_navcam.log
 data/synthetic/
 data/*.log
+
+# assembled GitHub release assets (scripts/assemble_release_assets.py)
+release/
