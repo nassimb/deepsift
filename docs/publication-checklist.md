@@ -4,13 +4,13 @@ Work through this in order. Nothing in the repository publishes or deploys autom
 
 ## Repository
 
-- [x] GitHub repo created: `https://github.com/nassimb/deepsift` (currently **private**; default branch `uat`)
-- [ ] Set GitHub default branch to `main` at push time: `gh repo edit nassimb/deepsift --default-branch main` (local `main` is the release branch; `uat` kept)
+- [x] GitHub repo created: `https://github.com/nassimb/deepsift` (public; default branch `main`; `uat` kept)
+- [x] GitHub default branch set to `main`
 - [x] Licence chosen and `LICENSE` added (Apache-2.0, code only), plus a data-provenance `NOTICE` (NASA PDS sources)
 - [x] Three run logs untracked (kept locally); `*.log` ignored
 - [x] History left unchanged (every commit and tag preserved); future commits use the GitHub noreply address (repo-local git config)
-- [ ] Repo made public
-- [ ] Repo URL inserted: replace `{{GITHUB_URL}}` in the files listed under *Placeholders* below
+- [x] Repo made public
+- [x] Repo URL inserted (`{{GITHUB_URL}}` → https://github.com/nassimb/deepsift in launch materials)
 
 ## Site
 
@@ -39,14 +39,13 @@ Work through this in order. Nothing in the repository publishes or deploys autom
 
 ## Placeholders to replace (at the time of writing)
 
+`{{GITHUB_URL}}` has been replaced everywhere with https://github.com/nassimb/deepsift. Remaining: `{{DEMO_URL}}`, until the site is deployed.
+
 | file | placeholders |
 |---|---|
-| `docs/deepsift-one-pager.md` (and its PDF: re-run `uvx --with markdown python scripts/build_public_pdfs.py`) | `{{DEMO_URL}}` ×2, `{{GITHUB_URL}}` ×1 |
-| `docs/launch-post-x.md` | `{{DEMO_URL}}`, `{{GITHUB_URL}}` |
-| `docs/launch-post-linkedin.md` | `{{DEMO_URL}}`, `{{GITHUB_URL}}` |
-| `docs/launch-post-hn.md` | `{{DEMO_URL}}`, `{{GITHUB_URL}}` |
-| `docs/launch-video-shotlist.md` | `{{GITHUB_URL}}` |
-| `docs/media-package.md` | `{{DEMO_URL}}`, `{{GITHUB_URL}}` (in the instructions) |
-| `docs/outreach-note.md` | `{{DEMO_URL}}`, `{{GITHUB_URL}}`, plus `{{NAME}}` / `{{SENDER}}` per e-mail |
+| `docs/deepsift-one-pager.md` (and its PDF: re-run `uvx --with markdown python scripts/build_public_pdfs.py`) | `{{DEMO_URL}}` ×2 |
+| `docs/launch-post-x.md` · `docs/launch-post-linkedin.md` · `docs/launch-post-hn.md` | `{{DEMO_URL}}` |
+| `docs/media-package.md` | `{{DEMO_URL}}` (in the instructions) |
+| `docs/outreach-note.md` | `{{DEMO_URL}}`, plus `{{NAME}}` / `{{SENDER}}` per e-mail |
 | `docs/release/github-release-notes-v1.md` | `{{DEMO_URL}}` ×3 |
-| `scripts/check_public_claims.py` → `docs/public-claims-checklist.md` | mentions the placeholders in the manual-check text (update the wording once filled) |
+| `scripts/check_public_claims.py` → `docs/public-claims-checklist.md` | mentioned in the manual-check text |

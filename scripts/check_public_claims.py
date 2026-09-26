@@ -88,7 +88,7 @@ CLAIMS = [
 ]
 
 MANUAL = [
-    "Replace every {{DEMO_URL}} and {{GITHUB_URL}} placeholder with a real, public link (no repository remote or deployment existed at release time).",
+    "Replace every {{DEMO_URL}} placeholder with the deployed site URL (the GitHub URL is already filled in: https://github.com/nassimb/deepsift).",
     "No text says or implies NASA/JPL endorsement, use, review or validation; no NASA logo or insignia in any media.",
     "No 'flight-ready', 'production-ready', 'NASA-grade', 'breakthrough', 'revolutionary'.",
     "No claim of scientific-value preservation or onboard-stream reconstruction; the PDS survivorship-bias caveat accompanies the headline result.",

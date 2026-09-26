@@ -20,7 +20,7 @@ Use the **reset → play** controls for the animations.
 | 22–38 s | **reset → play** in POSITION: blue squares appear along the path, other frames stay hollow (thumbnail only), 5 m discs accumulate, thin lines join each hollow frame to its nearest kept frame. Right panel: "stereo pairs sent whole" counting up, "stereo pairs broken 0". | 22 s: **POSITION keeps frames that spread along the rover’s path** · 30 s: **Stereo pairs stay intact — never one eye alone** |
 | 38–52 s | Homepage hero KPI panel, numbers revealed one at a time (≈3 s each), with the **HELD-OUT TEST** chip visible. | **26.1 %** FULL-QUALITY BYTES · **100 %** 5 M SPATIAL COVERAGE · **2.05 M** MAX NEAREST-KEPT DISTANCE · **0** BROKEN STEREO PAIRS · small line: *held-out interval, frozen before download* |
 | 52–57 s | Homepage "What we tested" section, or figure 3 (embedding gain by period). | **MORE COMPLEX DID NOT MEAN BETTER.** · Jev ranking — no measurable gain · Embeddings — no measurable added selection value · Rover position — generalized |
-| 57–60 s | Black. Wordmark. | **DEEPSIFT** · *Measured autonomy for bandwidth-constrained missions.* · small: independent research prototype · {{GITHUB_URL}} |
+| 57–60 s | Black. Wordmark. | **DEEPSIFT** · *Measured autonomy for bandwidth-constrained missions.* · small: independent research prototype · https://github.com/nassimb/deepsift |
 
 Before export, run `uv run python scripts/check_public_claims.py`. Every number above is in
 `docs/public-claims-checklist.md`.

@@ -15,7 +15,7 @@ detector and image embeddings.
 It is retrospective (only downlinked data exist) and not flight work. I would value your view on whether the
 assumptions and the problem framing map to real mission operations, and where they don't.
 
-Paper: {{GITHUB_URL}}/blob/main/docs/deepsift-paper.md · Replay: {{DEMO_URL}}/final-test
+Paper: https://github.com/nassimb/deepsift/blob/main/docs/deepsift-paper.md · Replay: {{DEMO_URL}}/final-test
 
 Thanks,
 {{SENDER}}

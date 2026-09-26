@@ -48,4 +48,4 @@ as important, a scheduler that never lets more bandwidth reduce coverage and nev
 I would value criticism from people who work on mission operations or onboard autonomy, especially on whether this
 framing matches how downlink decisions are actually made.
 
-Paper, interactive replay, and every config and hash: {{GITHUB_URL}} · {{DEMO_URL}}
+Paper, interactive replay, and every config and hash: https://github.com/nassimb/deepsift · {{DEMO_URL}}

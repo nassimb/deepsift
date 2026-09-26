@@ -23,5 +23,5 @@ There is no mock data, no NASA logo, and no implied endorsement. Files are in `a
 2. Capture with Chrome headless at a 1440 px viewport. Images 1, 4 and 5 are crops of the homepage at its section borders.
 
 **Before publishing:**
-- replace `{{DEMO_URL}}` and `{{GITHUB_URL}}` in the captions and posts;
+- replace `{{DEMO_URL}}` in the captions and posts (the GitHub URL is already filled in);
 - run `uv run python scripts/check_public_claims.py`.
