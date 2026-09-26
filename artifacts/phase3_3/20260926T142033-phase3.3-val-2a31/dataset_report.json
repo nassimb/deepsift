@@ -1,0 +1,112 @@
+{
+ "label": "VALIDATION DATASET REPORT (before any performance analysis)",
+ "split": "validation",
+ "sols_range": [
+  779,
+  820
+ ],
+ "active_sols": [
+  779,
+  780,
+  781,
+  782,
+  783,
+  785,
+  787,
+  788,
+  789,
+  790,
+  791,
+  792,
+  793,
+  794,
+  795,
+  796,
+  797,
+  799,
+  801,
+  802,
+  803,
+  804,
+  805,
+  806,
+  807,
+  808,
+  809,
+  810,
+  812,
+  813,
+  814,
+  815,
+  816,
+  817,
+  819
+ ],
+ "n_active_sols": 35,
+ "acquisitions": 906,
+ "stereo_acquisitions": 717,
+ "mono_acquisitions": 189,
+ "products": 3246,
+ "products_by_tier": {
+  "S": 68,
+  "T": 1623,
+  "F": 739,
+  "D": 768,
+  "M": 48
+ },
+ "primary_tier_by_acquisition": {
+  "S": 68,
+  "F": 372,
+  "D": 418,
+  "M": 48
+ },
+ "download_bytes_archive": 2001964684,
+ "estimated_downlink_bytes": {
+  "full_total": 378096983.296708,
+  "full_unknown": 0,
+  "thumbnail_total": 463695.011328,
+  "metadata_total": 214793
+ },
+ "sequences": 139,
+ "sequence_types_by_acquisition": {
+  "NCAM": 555,
+  "TRAV": 350,
+  "SAPP": 1
+ },
+ "traverse_sequences_ge_10_frames": 11,
+ "traverse_frames": 343,
+ "grouping": {
+  "products": 3246,
+  "acquisitions": 906,
+  "stereo_acquisitions": 717,
+  "mono_acquisitions": 189,
+  "primary_tier_counts": {
+   "S": 68,
+   "F": 372,
+   "D": 418,
+   "M": 48
+  },
+  "acquisitions_with_thumbnail": 906,
+  "products_per_acquisition_mean": 3.5827814569536423
+ },
+ "places_join": {
+  "exact_site_drive_pose": 30,
+  "site_drive_nearest_pose": 876
+ },
+ "places_source_sha256": "09d4474e64aec6e788efdb4ec24a906f487fe1a58e26dd4431847c94d385faec",
+ "rems_context": {
+  "median_gap_s": 336.4850000143051,
+  "within_30_min": 1.0
+ },
+ "rad_context": {
+  "median_gap_s": 287.76349997520447,
+  "within_30_min": 0.8675496688741722
+ },
+ "telemetry_context_events": 682,
+ "telemetry_context_window_s": 1800,
+ "telemetry_role": "DESCRIPTIVE METADATA ONLY \u2014 not a ranking input",
+ "quality_v1_states": {
+  "CLEAN": 904,
+  "SUSPECT": 2
+ }
+}
