@@ -121,6 +121,14 @@ verified by SHA-256.
 - **No NASA validation.**
 - **Single-use test.** The held-out test interval is used up; a modified method needs a new, untouched test interval.
 
+## License and data provenance
+
+- **DEEPSIFT source code:** [Apache License 2.0](LICENSE).
+- **NASA/PDS data** (REMS, RAD, Navcam, PLACES, including the bundled offline sample in `data/fixtures/`): not covered by
+  that licence and not owned by DEEPSIFT. See [`NOTICE`](NOTICE) for provenance and third-party attributions
+  (MobileNetV2 / ONNX Model Zoo, IBM Plex).
+- DEEPSIFT is independent and not endorsed by NASA or JPL.
+
 ---
 
 # Phase 1–2 documentation (historical record)

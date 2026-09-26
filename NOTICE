@@ -1,0 +1,53 @@
+DEEPSIFT
+Copyright 2026 the DEEPSIFT author (https://github.com/nassimb)
+
+This product includes software developed as part of DEEPSIFT, licensed under the Apache License, Version 2.0 (see LICENSE).
+
+-------------------------------------------------------------------------------
+SCOPE OF THE LICENCE
+-------------------------------------------------------------------------------
+The Apache License 2.0 in LICENSE covers the DEEPSIFT SOURCE CODE ONLY (Python pipeline, scripts, web application) and the
+documentation, figures and derived analysis artifacts written by the DEEPSIFT author.
+
+It does NOT cover NASA / Planetary Data System (PDS) data or products derived directly from them. DEEPSIFT claims no
+ownership of any NASA/PDS data. Those data remain subject to the terms and attribution requirements of their providers
+(NASA PDS policy: https://pds.nasa.gov/datastandards/). Use of NASA data does not imply NASA endorsement.
+
+DEEPSIFT is an independent research prototype. It is not affiliated with, sponsored by, reviewed by, used by or endorsed
+by NASA, the Jet Propulsion Laboratory (JPL), Caltech, or any Mars Science Laboratory (MSL) instrument team.
+
+-------------------------------------------------------------------------------
+NASA / PDS DATA PROVENANCE
+-------------------------------------------------------------------------------
+DEEPSIFT reads public Mars Science Laboratory (Curiosity) archives from the NASA Planetary Data System:
+
+* REMS (Rover Environmental Monitoring Station) — MSL-M-REMS-5-MODRDR-V1.0, PDS Atmospheres Node.
+  The REMS instrument was provided by Spain's Centro de Astrobiología (CAB).
+* RAD (Radiation Assessment Detector) — MSL-M-RAD-3-RDR-V1.0, PDS Planetary Plasma Interactions (PPI) Node.
+  Data produced by the MSL RAD team (Southwest Research Institute and partners).
+* Navcam (Navigation Cameras) raw EDR — MSLNAV_0XXX, PDS Imaging Node / JPL
+  (https://planetarydata.jpl.nasa.gov/img/data/msl/MSLNAV_0XXX/).
+* PLACES rover localizations (localized_interp.csv) — PDS Imaging Node
+  (https://planetarydata.jpl.nasa.gov/img/data/msl/msl_places/).
+
+The repository does NOT redistribute the Navcam imagery or PLACES tables. It commits only DEEPSIFT-generated manifests
+(data/manifests/*.json) that record each product's public PDS URL, label metadata and SHA-256, so users download the
+source data themselves (scripts/fetch_navcam.py, scripts/fetch_nasa.py).
+
+Bundled offline sample: data/fixtures/msl_curiosity/ contains gzip-compressed, unmodified copies of 24 public REMS and RAD
+PDS products (sols 238–243, ≈4.6 MB) used as the LOCAL_NASA_SAMPLE offline fallback and in tests. They are public
+NASA/PDS source data, not owned by DEEPSIFT and not covered by the Apache License; each file's original PDS URL and
+SHA-256 are listed in data/fixtures/msl_curiosity/MANIFEST.json.
+
+-------------------------------------------------------------------------------
+THIRD-PARTY MODELS AND ASSETS
+-------------------------------------------------------------------------------
+* MobileNetV2 (mobilenetv2-12.onnx) from the ONNX Model Zoo (https://github.com/onnx/models), Apache License 2.0.
+  The model file is downloaded at run time and is not committed. Reference: Sandler, M. et al., "MobileNetV2: Inverted
+  Residuals and Linear Bottlenecks", CVPR 2018.
+* IBM Plex Sans and IBM Plex Mono typefaces, Copyright IBM Corp., SIL Open Font License 1.1 — loaded by the web app via
+  next/font at build time; the font files are not committed.
+* Figures and social-preview images use the DejaVu fonts bundled with matplotlib (Bitstream Vera / DejaVu licence).
+
+Software dependencies (npm and Python packages) are used under their own licences (MIT, BSD, Apache-2.0, PSF, MIT-CMU)
+and are not redistributed in this repository.

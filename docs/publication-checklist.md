@@ -5,10 +5,10 @@ Work through this in order. Nothing in the repository publishes or deploys autom
 ## Repository
 
 - [x] GitHub repo created: `https://github.com/nassimb/deepsift` (currently **private**; default branch `uat`)
-- [ ] Decide the default branch (`main` recommended for the public repo)
-- [ ] Licence chosen and `LICENSE` added (code), plus a data-provenance `NOTICE` (NASA PDS sources)
-- [ ] Decide on the three tracked run logs (`artifacts/validation_run.log`, `data/fetch_split.log`, `data/fetch_split2.log`): keep or untrack
-- [ ] Accept, or rewrite with a new identity, the commit author e-mail visible in public history
+- [ ] Set GitHub default branch to `main` at push time: `gh repo edit nassimb/deepsift --default-branch main` (local `main` is the release branch; `uat` kept)
+- [x] Licence chosen and `LICENSE` added (Apache-2.0, code only), plus a data-provenance `NOTICE` (NASA PDS sources)
+- [x] Three run logs untracked (kept locally); `*.log` ignored
+- [x] History left unchanged (every commit and tag preserved); future commits use the GitHub noreply address (repo-local git config)
 - [ ] Repo made public
 - [ ] Repo URL inserted: replace `{{GITHUB_URL}}` in the files listed under *Placeholders* below
 
