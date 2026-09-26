@@ -148,10 +148,7 @@ export default function Home() {
           <div className="grid gap-3 md:grid-cols-2">
             <LinkCard href="/final-test" title="Final test replay" chip="HISTORICAL REPLAY · sols 950–979"
               body="Rover path, every archived traverse frame, the frames POSITION keeps, the bandwidth meter, 5 m coverage and stereo state — SEND ALL vs POSITION." />
-            {PUBLIC_RELEASE ? (
-              <LinkCard href="/telemetry" title="Phase 1–2 telemetry study (archive)" chip="REMS / RAD · STATIC ARCHIVE"
-                body="The earlier telemetry-triage study. Its interactive mission-control replay needs the local pipeline API (npm run demo) and is not part of the public site." />
-            ) : (
+            {!PUBLIC_RELEASE && (
               <LinkCard href="/control" title="Telemetry mission control (Phase 1–2)" chip="MISSION REPLAY · REMS / RAD"
                 body="The earlier telemetry-triage replay: candidate events, bounded decisions and relay-pass scheduling on real REMS and RAD records." />
             )}

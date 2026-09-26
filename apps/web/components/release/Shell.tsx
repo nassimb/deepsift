@@ -7,7 +7,7 @@ const LINKS: [string, string][] = [
   ["/research", "Research"],
   ["/reproducibility", "Reproducibility"],
   ["/limitations", "Limitations"],
-  PUBLIC_RELEASE ? ["/telemetry", "Phase 1–2 archive"] : ["/control", "Mission control"],
+  ...(PUBLIC_RELEASE ? [] : ([["/control", "Mission control"]] as [string, string][])),
 ];
 
 export function ReleaseTopBar() {

@@ -1,3 +1,5 @@
+import { notFound } from "next/navigation";
+import { PUBLIC_RELEASE } from "@/lib/mode";
 import Link from "next/link";
 import { BenchmarkChart } from "@/components/home/BenchmarkChart";
 import { BlackoutDemo } from "@/components/home/BlackoutDemo";
@@ -22,6 +24,7 @@ const r = HOME.replay;
 const fun = HOME.data.validation_funnel;
 
 export default function TelemetryHome() {
+  if (PUBLIC_RELEASE) notFound(); // Phase 1–2 archive hidden from the public release for now (code kept; visible locally)
   const ceiling = Math.max(...Object.values(SYN.RULES).map((p) => p.high_any ?? 0), ...Object.values(SYN.LOCAL_EDGE).map((p) => p.high_any ?? 0));
   const bucket = bm["synthetic_by_bucket_at_0.5pct"].RULES;
   const sub = bm["real_by_subtype_at_0.5pct"].RULES;
