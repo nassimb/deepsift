@@ -1,0 +1,153 @@
+{
+ "version": "PHASE3_FINAL_TEST_CONFIG_V1",
+ "test": {
+  "sols": [
+   950,
+   979
+  ],
+  "camera": "MSL Navcam raw EDR (MSLNAV_0XXX)",
+  "status_at_freeze": "never downloaded, inspected, featurised or used for tuning; single use; no replacement interval",
+  "download": "uv run python scripts/fetch_navcam.py --split test --allow-test --workers 2 (only after this config is committed and tagged)"
+ },
+ "freeze": {
+  "head_at_freeze": "33ef7d8a7477520a31070e95d093063c3fbbdfec",
+  "phase3_4_complete": "33ef7d8a7477520a31070e95d093063c3fbbdfec"
+ },
+ "source_sha256": {
+  "scripts/run_phase3_final_test.py": "c9134197742e791be2738d8830e90f618c936788b5ccb7e10bd4c3e76f8eb252",
+  "scripts/fetch_navcam.py": "c34651dbe04fa76c6e9a44794d66b6db2a54d490ac0f3dbbe279f01c8523adcf",
+  "scripts/phase3_4_freeze_config.py": "1a685071586a52186872e90809b757f69a04cf3ef0da08f583c4e5ea129553f5",
+  "services/pipeline/deepsift/evaluation/traverse.py": "17dfa0951a90be3b16bd083a8d66566b9af3ede1a14fd2fdad332da0a52fa7ba",
+  "services/pipeline/deepsift/evaluation/phase3_pipeline.py": "6816b75271e588870aef2a28ece6e2b2c55a8e8aa4ad60195dd835e491465f96",
+  "services/pipeline/deepsift/evaluation/image_benchmark.py": "cb0e68386bca3a267ceb7bdd10c8efbbe54f7ebc2d98297e22d1e690c8c5048d",
+  "services/pipeline/deepsift/imaging/embeddings.py": "c4f879493c1f0e472e72e36b1f5a3ec4a61e86be5c324e8b807fff414233b5e2",
+  "services/pipeline/deepsift/imaging/features.py": "4c20afb52919175de6c7e127ee46b217ecc6bdcbae1940e70f2488e3885bc6cd",
+  "services/pipeline/deepsift/imaging/acquisitions.py": "feafe807b8ba9a983712a06309e538e4fcd2b3df83df43e5ece2b4fd0f7f694e",
+  "services/pipeline/deepsift/imaging/pds3.py": "329c556a941b367d76b949474fc1f5307aec1de2e822267a1a0c344711c19f42",
+  "services/pipeline/deepsift/imaging/navcam.py": "5864c7d37c253ca0fc300a90ddde57a2069e072755f95ceec4a028a1b8533962",
+  "services/pipeline/deepsift/imaging/similarity.py": "607729d6079532b06bd4ec73af6bf2967c6890cc578208176697d4c963b05739",
+  "services/pipeline/deepsift/multimodal/location.py": "2b0611820b0d5038326487c94086b56bbd6a525a1bdbce0d3c256de61b1d0315",
+  "services/pipeline/deepsift/multimodal/observation.py": "ddaae62441d2de37deb53ce9348e6e33a8a3393bf39f94928dd741e0336d6411",
+  "config/phase3_vision_model.json": "7fb171e74c3bfdbca5570defe8b8c0081d5d12baaa4c04074ef0e03bf1a51f3e",
+  "data/splits/phase3_splits.json": "bd927885d8fd04f903f7ab8475213d0541cb88e11a11642268edf284498757f8",
+  "config/phase3_3_validation_config.json": "7d79606c74990692d5a22e564a730a89c3175f955966ec158c8f24a7f9c31519",
+  "config/phase3_4_validation_config.json": "0198698a3b6622a9df4f5190db29a87e5494d8d9df7c0826588010b2aded204e"
+ },
+ "prior_results_sha256": {
+  "artifacts/phase3_3/20260926T134654-phase3.3-dev-32ec/results.json": "4dd2fdf214a41b81eafa1992d28982f05c13415696271bfafd1b57f2ea09c773",
+  "artifacts/phase3_3/20260926T142033-phase3.3-val-2a31/results.json": "2ab7cb0b4930551de34dcec589e636961b20131d11384962ee3821f30407a3e9",
+  "artifacts/phase3_4/20260926T165307-phase3.4-val2-1248/results.json": "0fafac66939dc7adecda9f10cddef0dcd9a80339830a472e72a2b8d8e8be3c8c",
+  "docs/phase3.3-report.md": "c8deddbf77d5db4f90a69d430503629062192ed45b0092bf14b5ce30bc8f5558",
+  "docs/phase3.4-report.md": "95e4682a8239e0637240b63fe4272046974a74adb43fa780abe5f6e89f84dac6"
+ },
+ "places_localized_interp_sha256": "09d4474e64aec6e788efdb4ec24a906f487fe1a58e26dd4431847c94d385faec",
+ "scheduler_v3": {
+  "name": "SCHEDULER_V3_STEREO_SAFE",
+  "implementation": "deepsift.evaluation.phase3_pipeline.allocate_primary → image_benchmark.allocate_progressive over image_benchmark.cost_table_v3",
+  "tiers": {
+   "THUMBNAIL_PAIR": "L+R thumbnails, NASA label estimate",
+   "COMPRESSED_STEREO_PAIR": "L+R JPEG q50 — SIMULATED PRODUCT TIER",
+   "FULL_STEREO_PAIR": "L+R primaries, NASA label estimate LINES×SAMPLES×INST_CMPRS_RATE/8"
+  },
+  "stereo_rule": "a stereo acquisition is usable only when BOTH eyes are sent at COMPRESSED or better; a traverse stereo pair is broken if a kept stereo acquisition has no FULL_STEREO_PAIR cost",
+  "orders_for_monotonicity": [
+   "FIFO",
+   "RANDOM",
+   "SIZE_AWARE",
+   "EMBEDDING_CHANGE"
+  ],
+  "monotonicity": "0 decreases in acquisitions / scene clusters / rover positions / stereo present / stereo usable over numpy.geomspace(0.0001, 0.30, 80) × Σ FULL, and 0 single-eye usable stereo pairs"
+ },
+ "traverse": {
+  "sequence_definition": "same (sol, sequence_id), id starts with 'trav', ≥ 10 acquisitions with a PLACES position, ordered by UTC",
+  "positions": "PLACES localized_interp landing_x / landing_y (site, drive, pose; nearest pose within site/drive)",
+  "POSITION": "METADATA_POSITION: farthest-point sampling on Euclidean position distance from frame 0, k = ceil(fraction × frames)",
+  "POSITION_PLUS_EMBEDDING_CHANGE": "farthest-point sampling on 0.5·D_pos/max + 0.5·D_emb/max (MobileNetV2 cosine distance), from frame 0",
+  "EVERY_NTH_FRAME": "every round(1/fraction)-th frame from 0, truncated to k",
+  "UNIFORM_DISTANCE": "nearest unused frame to k equal odometry targets",
+  "bytes": "kept frames at FULL_STEREO_PAIR, the others at THUMBNAIL_PAIR; fraction of SEND_ALL (all frames at FULL)",
+  "strategies": [
+   "SEND_ALL",
+   "EVERY_NTH_FRAME",
+   "UNIFORM_DISTANCE",
+   "METADATA_POSITION",
+   "POSITION_PLUS_EMBEDDING_CHANGE"
+  ],
+  "not_used": [
+   "pHash ranking",
+   "QUALITY routing",
+   "telemetry ranking",
+   "Jev ranking",
+   "new algorithms"
+  ]
+ },
+ "embedding_preprocessing": "features.to_work (256×256, fixed /4095) → Embedder mobilenetv2-12 (224×224 bicubic, ImageNet mean/std, L2-normalised 1280-d)",
+ "evaluation": {
+  "fractions": [
+   0.5,
+   0.25,
+   0.125
+  ],
+  "primary_fraction": 0.25,
+  "coverage_radius_m": 5.0,
+  "report_budgets": [
+   0.001,
+   0.0025,
+   0.005,
+   0.01,
+   0.02,
+   0.05,
+   0.1
+  ],
+  "metrics": [
+   "bytes fraction",
+   "5 m coverage",
+   "unique rover positions retained",
+   "mean spatial gap",
+   "95th-percentile spatial gap (pooled)",
+   "largest distance from any archived frame to nearest kept frame (worst sequence)",
+   "max inter-kept gap (worst sequence)",
+   "visual-change coverage (descriptive)",
+   "stereo pairs preserved",
+   "broken stereo pairs",
+   "Scheduler V3 monotonicity"
+  ],
+  "seeds": {
+   "random_order": 0,
+   "bootstrap": 20260926
+  },
+  "bootstrap_resamples": 10000,
+  "bootstrap": "paired resampling of traverse sequences, 95 % percentile interval"
+ },
+ "primary": {
+  "claim": "Scheduler V3 + POSITION at 1/4 retention",
+  "binary": true,
+  "PASS_iff_all": {
+   "P0": "≥ 3 qualifying traverse sequences AND ≥ 90 % of traverse frames with a PLACES position (otherwise FAIL: the claim cannot be demonstrated)",
+   "P1": "bytes fraction ≤ 0.35 of SEND_ALL",
+   "P2": "mean 5 m coverage ≥ 0.90",
+   "P3": "largest distance from any archived frame to its nearest kept frame ≤ 10 m in every qualifying sequence",
+   "P4": "0 broken stereo pairs",
+   "P5": "Scheduler V3 monotonic and stereo-safe (see scheduler_v3.monotonicity)"
+  },
+  "not_in_criterion": "visual-change coverage (reported descriptively only)",
+  "no_rescue": "1/2 and 1/8 are context only; no other operating point, metric or method may replace a failed primary"
+ },
+ "secondary": {
+  "question": "Does POSITION + EMBEDDING_CHANGE provide ≥ 0.020 absolute visual-change gain over POSITION at 1/4 retention without reducing 5 m coverage by more than 0.01?",
+  "report": [
+   "visual-change gain",
+   "5 m coverage difference",
+   "largest-distance difference",
+   "95 % resampling intervals"
+  ],
+  "MEANINGFUL ADDED VALUE": "gain ≥ 0.020 AND 95 % lower bound > 0 AND coverage difference ≥ −0.01",
+  "HARMFUL": "coverage difference < −0.01, OR gain ≤ −0.020 with 95 % upper bound < 0",
+  "NO MEASURABLE ADDED VALUE": "otherwise",
+  "role": "does not affect the primary PASS/FAIL"
+ },
+ "diagnostics": "pHash fields exist only because the observation schema requires them; no quality, pHash, telemetry or Jev signal is computed for ranking or used in any criterion",
+ "post_download_rule": "after the first test image is downloaded nothing listed here may change; failures are reported, not fixed",
+ "config_hash": "6f35d7fc205cdffe4a971974362cf77a5bbeb7a6ce518e8831b172292539b49e",
+ "written_at": "2026-09-26T17:03:15.269357+00:00"
+}
