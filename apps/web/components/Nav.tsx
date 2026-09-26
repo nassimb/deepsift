@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import { api, type Status } from "@/lib/api";
 
 const LINKS = [
+  ["/", "Release"],
+  ["/final-test", "Final Test"],
   ["/control", "Mission Control"],
   ["/blackout", "Blackout"],
   ["/experiments", "Experiments"],
@@ -14,6 +16,8 @@ const LINKS = [
   ["/audit", "Audit"],
   ["/config", "Config"],
   ["/research", "Research"],
+  ["/reproducibility", "Reproducibility"],
+  ["/limitations", "Limitations"],
 ];
 
 export function useStatus(pollMs = 5000) {

@@ -124,6 +124,10 @@ export default function ControlPage() {
   return (
     <div className="h-screen flex flex-col">
       <Nav right={<SourceBadges status={status} />} />
+      <div className="border-b border-line bg-panel-2 px-4 py-1.5 flex flex-wrap items-center gap-2 text-[11px]">
+        <span className="mono text-ink-3">Phase 1–2 telemetry replay (REMS / RAD).</span>
+        <Link href="/final-test" className="chip" style={{ color: "var(--ink)", borderColor: "var(--ink-4)" }}>FINAL TEST REPLAY · Navcam sols 950–979 →</Link>
+      </div>
 
       {/* mission bar */}
       <div className="flex items-center gap-4 px-4 h-10 border-b border-line bg-bg">

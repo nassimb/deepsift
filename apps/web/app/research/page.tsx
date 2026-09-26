@@ -1,5 +1,26 @@
 import Link from "next/link";
 import { Nav } from "@/components/Nav";
+import { H, pct } from "@/lib/release";
+
+const DOCS: [string, string][] = [
+  ["docs/deepsift-paper.md", "technical paper (abstract, method, results, negative results, limitations)"],
+  ["docs/phase3-final-test-report.md", "final held-out test report (sols 950–979)"],
+  ["docs/phase3.4-report.md", "post-validation simplification + fresh validation (1100–1129)"],
+  ["docs/phase3.3-report.md", "out-of-sample validation (779–820)"],
+  ["docs/phase3.2-report.md · docs/phase3.1-report.md · docs/phase3-report.md", "Phase 3 development reports"],
+  ["docs/jev-evaluation.md · docs/jev-model-selection.md", "Phase 2 Jev evaluation and stop decision"],
+  ["docs/research-methodology.md", "methodology and pre-registration notes"],
+  ["docs/architecture.md", "system architecture"],
+  ["docs/demo-script.md", "60-second demo script"],
+  ["docs/release/science-artifacts.json", "SHA-256 of every scientific artifact in the release"],
+];
+const FIGS: [string, string][] = [
+  ["fig1_bytes_vs_coverage", "Figure 1 · bytes vs spatial coverage (held-out test)"],
+  ["fig2_four_period_generalization", "Figure 2 · four-period generalization of POSITION"],
+  ["fig3_embedding_gain_by_period", "Figure 3 · embedding gain by period"],
+  ["fig4_research_funnel", "Figure 4 · research funnel"],
+  ["fig5_representative_traverse", "Figure 5 · representative held-out traverse"],
+];
 
 function S({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
   return (
@@ -16,13 +37,44 @@ export default function Research() {
       <Nav />
       <main className="max-w-[1050px] mx-auto px-6 py-10 space-y-8">
         <header>
-          <div className="label">Research methodology · prototype v0.1</div>
-          <h1 className="text-[30px] font-medium text-ink mt-2">Does a fast decision model improve onboard science triage?</h1>
-          <p className="text-[14px] text-ink-3 mt-3 max-w-3xl">
-            This page states what DEEPSIFT measures, how, and what it cannot claim. The full text is in{" "}
-            <span className="mono">docs/research-methodology.md</span>.
+          <div className="label">DEEPSIFT v1 · research release</div>
+          <h1 className="text-[30px] font-medium text-ink mt-2">Which signals actually help decide what a rover should downlink?</h1>
+          <p className="text-[14px] text-ink-2 mt-3 max-w-3xl">
+            Held-out result (Curiosity Navcam, sols 950–979): Scheduler V3 + POSITION at 1/4 retention used {pct(H.bytes_fraction)} of full-quality
+            traverse bytes with 5 m coverage {H.coverage_5m.toFixed(3)}, a largest distance to a kept frame of {H.max_distance_to_kept_m_worst.toFixed(2)} m
+            and {H.stereo_broken} broken stereo pairs — pre-registered criterion {H.result}.{" "}
+            <Link href="/limitations" className="underline text-ink">Limitations</Link> · <Link href="/reproducibility" className="underline text-ink">Reproducibility</Link>
           </p>
         </header>
+
+        <S id="documents" title="Documents (repository paths)">
+          <ul className="space-y-1">
+            {DOCS.map(([path, what]) => (
+              <li key={path}><span className="mono text-ink">{path}</span> — {what}</li>
+            ))}
+          </ul>
+        </S>
+
+        <S id="figures" title="Figures">
+          <div className="grid gap-3 md:grid-cols-2">
+            {FIGS.map(([f, c]) => (
+              <a key={f} href={`/figures/${f}.svg`} className="block border border-line bg-white p-1" target="_blank" rel="noreferrer">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={`/figures/${f}.svg`} alt={c} className="w-full h-auto" />
+                <span className="block mono text-[10px] text-neutral-600 px-1">{c}</span>
+              </a>
+            ))}
+          </div>
+          <p className="mono text-[11px] text-ink-4">scripts/make_release_figures.py · drawn from frozen artifacts only · also in docs/figures/</p>
+        </S>
+
+        <div className="border-t border-line pt-6">
+          <div className="label">Phase 1–2 methodology (telemetry triage) — historical record</div>
+          <p className="text-[13px] text-ink-3 mt-2 max-w-3xl">
+            The sections below describe the original REMS/RAD telemetry-triage study and the Jev evaluation (Phase 2 conclusion: Jev did not improve
+            candidate ranking and was discontinued for that role). Full text: <span className="mono">docs/research-methodology.md</span>.
+          </p>
+        </div>
 
         <S id="question" title="Research question">
           <p>

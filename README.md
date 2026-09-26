@@ -1,39 +1,126 @@
-# DEEPSIFT — Deep Space Intelligent Filtering & Triage
+# DEEPSIFT
+
+**Autonomous downlink research for bandwidth-constrained missions.**
 
 > *Not every bit deserves the trip to Earth.*
 
-DEEPSIFT is a **research prototype** of an onboard science-triage system for bandwidth-constrained
-spacecraft. It ingests real Mars Science Laboratory (Curiosity) environmental and radiation data from
-the NASA Planetary Data System, finds candidate events with deterministic statistics, asks a fast
-decision model a handful of **bounded** questions about each candidate, and lets deterministic code
-decide what is downlinked in full, compressed, summarised or discarded — under a simulated storage and
-relay budget, including a communication blackout.
+DEEPSIFT is an independent research prototype. It replays archived Mars Science Laboratory (Curiosity) data from the
+NASA Planetary Data System under simulated bandwidth limits, and measures which signals actually help decide what should
+be transmitted. It is not flight software and is not affiliated with, used by or validated by NASA or JPL.
 
-It is built to be **measured, inspected and reproduced**, not to impress. It is not flight software, it
-is not validated by NASA/JPL, and it does not produce scientific findings.
+## Final held-out result
 
-> **Onboard vs cloud — read this first.** DEEPSIFT evaluates an *onboard-autonomy architecture*.
-> ONBOARD-SIMULATED: preprocessing, feature extraction, candidate detection, priority, storage,
-> bandwidth and routing. REMOTE (experimental, off by default since Phase 2): Jev inference, called over
-> the network through OpenRouter. It was API-hosted and therefore does not establish deployability on
-> spacecraft hardware; its latency and cost figures are for a ground-based API call, not an onboard
-> processor. The LOCAL EDGE BASELINE is the only decision model in DEEPSIFT that runs without a network.
+**Test:** Curiosity Navcam, sols 950–979 (12 traverse sequences, 679 archived frames). The configuration was committed
+before the first test image was downloaded, and the analysis ran once.
 
-> **Phase 3 scope — survivorship bias (read before any Phase 3 result).** The PDS archive contains only the
-> observations that were actually downlinked to Earth. DEEPSIFT Phase 3 therefore does **not** reproduce the rover's
-> complete onboard image stream. It tests *retrospective bandwidth-constrained prioritization of archived rover
-> observations* — not reconstruction of every image the rover could have captured onboard. Images the mission team
-> never downlinked, or deleted onboard, are invisible to every Phase 3 strategy and metric.
+At **1/4 traverse-frame retention**, Scheduler V3 + POSITION achieved:
+
+| | result | pre-registered criterion |
+|---|---|---|
+| full-quality traverse bytes | **26.1 %** | ≤ 35 % |
+| 5 m spatial coverage | **100 %** (1.000) | ≥ 90 % |
+| maximum distance from any archived frame to a kept frame | **2.05 m** | ≤ 10 m in every traverse |
+| broken stereo pairs | **0** | 0 |
+| Scheduler V3 monotonicity violations | **0** | 0 |
+
+**Primary criterion: PASS.**
+
+> On a held-out Curiosity Navcam interval, position-based traverse sampling with a stereo-safe progressive scheduler
+> kept 1/4 of traverse frames at full quality, using 26.1 % of full-quality traverse bytes, while every archived
+> traverse frame stayed within 5 m of a kept frame (at most 2.05 m) and no stereo pair was broken.
+
+Sources:
+- `artifacts/phase3_final/20260926T174018-phase3-final-test-e4e2/results.json`;
+- config `config/phase3_final_test_config.json` (hash `6f35d7fc…`, commit `96e0694`), result commit `fdc2122`.
+
+## What we learned
+
+- **Simple mission geometry generalized.** Rover-position sampling kept 5 m coverage at 1.000 in development,
+  validation 1, validation 2 and the held-out test.
+- **Semantic ranking did not.** A semantic decision model (Jev) did not improve candidate ranking and was discontinued
+  by a pre-registered stop rule.
+- **Image embeddings detected change but did not improve final selection meaningfully.** Their visual-change gain over
+  POSITION was +0.044 in development, then +0.004, +0.001 and +0.005, against a pre-registered +0.020 threshold.
+- **More complexity was not automatically better.** Every added signal had to survive data it was not tuned on; most
+  did not.
+
+## What didn't work
+
+| component | outcome |
+|---|---|
+| **Jev semantic ranking** | AUROC difference vs deterministic rules +0.006 (95 % CI −0.020 to +0.037) over 1,500 live calls; discontinued for ranking. A later text-only pairwise probe was stable but agreed with no strategy; auxiliary diagnostic only. |
+| **Telemetry image ranking** | Image-independent by construction; weakest coverage of six strategies (at 1 % under Scheduler V3: 7 usable acquisitions at 1 rover position). |
+| **pHash representative selection** | Constrained pHash merged different scenes at 0.15–0.19 on validation (limit 0.05) and compressed traverses by at most 1.03×. |
+| **QUALITY_V2 generalization** | False-positive rate 3.6 % in development → 10.6 % on validation, mostly upward-pointing, low-texture frames. Kept only as a diagnostic `QUALITY_SUSPECT` flag. |
+| **Embedding-assisted ranking** | No measurable added value outside development; spatially looser than POSITION (largest distance 4.89 m vs 2.05 m on the test). |
+| **Earlier schedulers** | V1 was non-monotonic (more budget could lose coverage); V2 dropped stereo. Both were superseded by V3. |
+
+## Research timeline
+
+| stage | tag |
+|---|---|
+| Phase 1 · telemetry triage prototype | `v0.1-baseline` |
+| Phase 2 · Jev semantic decision evaluation | `phase2-complete` |
+| Phase 3 · Navcam downlink baseline | `phase3-baseline` |
+| Phase 3.1 · controlled visual tests (synthetic controls) | `phase3.1-complete` |
+| Phase 3.2 · stereo-safe Scheduler V3 | `phase3.2-complete` |
+| Phase 3.3 · validation 1 (sols 779–820), config frozen first | `phase3.3-config-frozen` → `phase3.3-complete` |
+| Phase 3.4 · simplification + fresh validation 2 (sols 1100–1129) | `phase3.4-config-frozen` → `phase3.4-validation2-frozen` → `phase3.4-complete` |
+| Final held-out test (sols 950–979) | `phase3-final-test-config-frozen` → `phase3-final-test-complete` |
+| Research release | `deepsift-v1-research` |
+
+## Read more
+
+| document | content |
+|---|---|
+| `docs/deepsift-paper.md` | technical paper: abstract, method, results, negative results, limitations |
+| `docs/phase3-final-test-report.md` | final held-out test report |
+| `docs/phase3.3-report.md`, `docs/phase3.4-report.md` | validation reports |
+| `docs/figures/` | figures 1–5, drawn from frozen artifacts by `scripts/make_release_figures.py` |
+| `docs/demo-script.md` | 60-second demo script |
+| web app | `/` result · `/final-test` historical replay · `/research` · `/reproducibility` · `/limitations` · `/telemetry` (Phase 1–2 archive) |
+
+## Reproducibility
+
+```bash
+uv run python scripts/release_integrity.py --verify    # SHA-256 of 70 scientific artifacts (docs/release/science-artifacts.json)
+uv run python scripts/run_phase3_final_test.py --stage analysis --run artifacts/phase3_final/20260926T174018-phase3-final-test-e4e2
+uv run python scripts/build_release_data.py            # web data, from frozen artifacts only
+uv run python scripts/make_release_figures.py          # figures, from frozen artifacts only
+```
+
+Each runner:
+- refuses to start if its frozen config hash or any listed source file changed;
+- takes every seed from its config;
+- keeps periods separate, never pooled.
+
+Raw PDS products are not committed. They can be re-downloaded from the URLs in `data/manifests/navcam_*.json` and are
+verified by SHA-256.
+
+## Limitations (read before quoting a number)
+
+- **PDS survivorship bias.** The archive holds only downlinked observations. This is retrospective re-prioritization,
+  not reconstruction of the onboard image stream.
+- **Simulated compressed tier.** Scheduler V3's compressed stereo tier is a *simulated product tier* (JPEG q50), not a
+  NASA flight product. Traverse results use only label-estimated full and thumbnail tiers.
+- **Interpolated positions.** Positions are PLACES interpolations (mostly the nearest pose within a drive), not
+  per-frame onboard localization.
+- **Narrow scope.** One rover, one camera (Navcam), traverse sequences only, four sol windows.
+- **Proxy metrics.** Visual-change coverage is an embedding proxy, and spatial coverage is geometric. Neither measures
+  scientific value.
+- **No hardware model.** No flight hardware, power, thermal or compute-budget model.
+- **No NASA validation.**
+- **Single-use test.** The held-out test interval is used up; a modified method needs a new, untouched test interval.
 
 ---
 
-## Why onboard science triage matters
+# Phase 1–2 documentation (historical record)
 
-Instruments can generate far more data than relay passes can carry, and link availability is not
-guaranteed. When the spacecraft must choose what to keep, the choice has to be (1) fast and cheap,
-(2) aligned with what scientists currently care about, and (3) explainable after the fact. DEEPSIFT
-explores one architecture for that: cheap deterministic filtering first, a small bounded-output model
-second, and a code-owned priority/scheduling layer last — with every decision logged.
+The sections below describe the original REMS/RAD telemetry-triage system and the Phase 2 Jev evaluation. They are kept
+for the record.
+
+> **Onboard vs cloud.** The Jev engine was API-hosted (via OpenRouter). Its latency and cost describe a ground-based API
+> call, not an onboard processor. The local edge baseline is the only decision model here that runs without a network.
 
 ## Architecture
 
@@ -193,7 +280,7 @@ Measured pipeline performance on the same machine (`npm run pipeline`): 1.43 M s
 126 candidates from 1,922 instrument windows; mock-engine decisions ≈ 0.015 ms each (Python function
 time, not model inference); 99.5 % data reduction under the default budget.
 
-## Phase 2: held-out evaluation (current)
+## Phase 2: held-out evaluation
 
 * Temporal splits: calibration (sols 232–251) → validation (412–430, 779–820) → **test** (732–750,
   871–930, 2068–2105), each held-out segment with a never-scored baseline warm-up (`data/splits/splits.json`).
@@ -225,13 +312,13 @@ Evidence: validation pilots `20260925T091126-jev-pilot-7351` (q1 schema, degener
 +0.006 [−0.020, 0.037] with the mission objective, 100 high-severity labels). Protocol and records:
 `docs/jev-model-selection.md`, `docs/jev-evaluation.md`.
 
-## How to reproduce
+## How to reproduce (Phase 1–2 telemetry study)
 
 ```bash
 uv run python scripts/fetch_nasa.py --sols 232-251   # real PDS products + manifest (sha256)
 npm run pipeline                                      # one run → audit log + stage timings
 npm run benchmark -- --trials 5                       # stored in data/processed/experiments/
-npm test                                              # 58 tests (run offline on the bundled sample)
+npm test                                              # full pipeline test suite (151 tests at v1)
 ```
 
 Every run records the config version (content hash), pipeline version, engine, objective and each
@@ -265,7 +352,7 @@ Individual services: `npm run api`, `npm run web`.
 
 Copy `.env.example` to `.env`; keys are never hard-coded or logged.
 
-## Limitations
+## Limitations (Phase 1–2 telemetry study)
 
 * One documented event; recall is dominated by synthetic injections whose kinds and magnitudes we chose.
 * The mock engine and the injection generator share authors — mock rows say nothing about Jev.
@@ -276,7 +363,7 @@ Copy `.env.example` to `.env`; keys are never hard-coded or logged.
   Gale and are usually missed by the candidate filter.
 * No flight-processor timing, power or radiation-tolerance modelling.
 
-## Future work
+## Future work (as written after Phase 2; Phase 3 has since been completed)
 
 Phase 3: multimodal (imagery + telemetry) triage · more documented events (e.g. Sept 2017 SEP, 2018 dust storm)
 and human labels · Perseverance MEDA adapter · imagery and multi-instrument fusion · learned baselines ·
