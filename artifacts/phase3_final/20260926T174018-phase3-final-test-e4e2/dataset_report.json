@@ -1,0 +1,82 @@
+{
+ "label": "FINAL TEST DATASET REPORT (before any performance analysis)",
+ "sols": [
+  950,
+  979
+ ],
+ "download_verification": {
+  "listed": 4342,
+  "manifest_products": 4342,
+  "complete": true,
+  "problems": {},
+  "acquisition_grouping": {
+   "products": 4342,
+   "acquisitions": 1194,
+   "stereo_acquisitions": 977,
+   "mono_acquisitions": 217,
+   "primary_tier_counts": {
+    "D": 661,
+    "F": 262,
+    "S": 161,
+    "M": 110
+   },
+   "acquisitions_with_thumbnail": 1194,
+   "products_per_acquisition_mean": 3.6365159128978224
+  },
+  "stereo_pairs_without_both_eyes_same_tier": 0,
+  "tier_counts": {
+   "D": 1322,
+   "T": 2171,
+   "F": 522,
+   "S": 217,
+   "M": 110
+  },
+  "compression": {
+   "LOCO": 1399,
+   "ICER": 2943
+  },
+  "verdict": "PASS"
+ },
+ "active_sols": [
+  950,
+  951,
+  952,
+  954,
+  955,
+  956,
+  957,
+  958,
+  960,
+  961,
+  962,
+  963,
+  964,
+  966,
+  967,
+  968,
+  971,
+  972,
+  973,
+  974,
+  975,
+  976,
+  977,
+  978,
+  979
+ ],
+ "n_active_sols": 25,
+ "acquisitions": 1194,
+ "stereo": 977,
+ "mono": 217,
+ "products": 4342,
+ "download_bytes_archive": 1712033965,
+ "estimated_downlink_full_bytes": 311089751.4765363,
+ "sequences": 103,
+ "traverse_sequences_ge_10_frames": 12,
+ "traverse_frames": 679,
+ "traverse_frames_with_places_position": 679,
+ "places_join": {
+  "site_drive_nearest_pose": 1063,
+  "exact_site_drive_pose": 131
+ }
+}

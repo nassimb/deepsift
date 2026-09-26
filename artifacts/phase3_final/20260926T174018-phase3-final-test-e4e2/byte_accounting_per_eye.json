@@ -1,0 +1,8360 @@
+[
+ {
+  "acq_id": "MSL-NAV-0950-481827279",
+  "stereo": true,
+  "FULL_pair": 156096.02048,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 17573.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481827333",
+  "stereo": true,
+  "FULL_pair": 156731.96544,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 18093.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481827394",
+  "stereo": true,
+  "FULL_pair": 156443.93472,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 18367.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481827477",
+  "stereo": true,
+  "FULL_pair": 158008.03328,
+  "THUMBNAIL_pair": 1019.0003200000001,
+  "COMPRESSED_pair_SIMULATED": 18696.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481827547",
+  "stereo": true,
+  "FULL_pair": 156636.03712,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 17959.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481827622",
+  "stereo": true,
+  "FULL_pair": 156192.03071999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 17742.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481827697",
+  "stereo": true,
+  "FULL_pair": 156376.02304,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 17668.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481827770",
+  "stereo": true,
+  "FULL_pair": 157739.99104,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 18386.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481827844",
+  "stereo": true,
+  "FULL_pair": 156807.9872,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 18015.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481827917",
+  "stereo": true,
+  "FULL_pair": 155831.99232000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 17844.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481827993",
+  "stereo": true,
+  "FULL_pair": 156131.98336,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 17760.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481828069",
+  "stereo": true,
+  "FULL_pair": 154911.9488,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 17116.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481828145",
+  "stereo": true,
+  "FULL_pair": 152743.936,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 16155.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481828223",
+  "stereo": true,
+  "FULL_pair": 150352.03584,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14952.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481828303",
+  "stereo": true,
+  "FULL_pair": 148948.00896,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13921.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481828383",
+  "stereo": true,
+  "FULL_pair": 149504.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13814.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481828462",
+  "stereo": true,
+  "FULL_pair": 147948.01152,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13180.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481828538",
+  "stereo": true,
+  "FULL_pair": 144936.05888,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11971.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481828616",
+  "stereo": true,
+  "FULL_pair": 144755.99872,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11598.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481828690",
+  "stereo": true,
+  "FULL_pair": 147127.99232000002,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 12312.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481828772",
+  "stereo": true,
+  "FULL_pair": 148315.99616,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 12860.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481828849",
+  "stereo": true,
+  "FULL_pair": 149532.01664,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13297.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481828922",
+  "stereo": true,
+  "FULL_pair": 149803.99104,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13405.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481828993",
+  "stereo": true,
+  "FULL_pair": 150212.03456,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 13482.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481829067",
+  "stereo": true,
+  "FULL_pair": 150911.95904,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13498.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481829140",
+  "stereo": true,
+  "FULL_pair": 151280.0256,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13658.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481829213",
+  "stereo": true,
+  "FULL_pair": 152640.06144000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14443.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481829288",
+  "stereo": true,
+  "FULL_pair": 153648.00512,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14791.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481829370",
+  "stereo": true,
+  "FULL_pair": 155164.01664,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 15347.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481829417",
+  "stereo": true,
+  "FULL_pair": 154184.00768,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 15159.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481829483",
+  "stereo": true,
+  "FULL_pair": 155300.00384000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 15734.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481829528",
+  "stereo": true,
+  "FULL_pair": 154539.95007999998,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 15408.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481829575",
+  "stereo": true,
+  "FULL_pair": 153223.98719999997,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 15039.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481829652",
+  "stereo": true,
+  "FULL_pair": 153203.99871999997,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 15211.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481829717",
+  "stereo": true,
+  "FULL_pair": 156307.94752,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 16545.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481829783",
+  "stereo": true,
+  "FULL_pair": 156748.02176,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 16896.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481829850",
+  "stereo": true,
+  "FULL_pair": 156444.01664,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 16562.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481829916",
+  "stereo": true,
+  "FULL_pair": 156744.00767999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 16520.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481829979",
+  "stereo": true,
+  "FULL_pair": 156572.0576,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 16493.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481830043",
+  "stereo": true,
+  "FULL_pair": 155435.99104,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 16127.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481830121",
+  "stereo": true,
+  "FULL_pair": 151827.98848,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 15752.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481830163",
+  "stereo": true,
+  "FULL_pair": 151151.98463999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 15382.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481830235",
+  "stereo": true,
+  "FULL_pair": 524247.36768,
+  "THUMBNAIL_pair": 1019.0003200000001,
+  "COMPRESSED_pair_SIMULATED": 180348.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481830260",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 164051.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481830323",
+  "stereo": true,
+  "FULL_pair": 146903.94111999997,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14084.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481830386",
+  "stereo": true,
+  "FULL_pair": 148428.06272,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14571.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481830451",
+  "stereo": true,
+  "FULL_pair": 149580.02175999997,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14805.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481830523",
+  "stereo": true,
+  "FULL_pair": 151604.01919999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 15215.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481830589",
+  "stereo": true,
+  "FULL_pair": 150092.02175999997,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 14646.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481830653",
+  "stereo": true,
+  "FULL_pair": 151783.99744,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 15344.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481830887",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 210573.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481830923",
+  "stereo": true,
+  "FULL_pair": 1048519.63904,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 157714.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481830954",
+  "stereo": true,
+  "FULL_pair": 1048537.98912,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 120263.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481830978",
+  "stereo": true,
+  "FULL_pair": 1048576.0,
+  "THUMBNAIL_pair": 1018.000384,
+  "COMPRESSED_pair_SIMULATED": 146581.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481831003",
+  "stereo": true,
+  "FULL_pair": 786409.71776,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 155387.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481831196",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 155381.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481831227",
+  "stereo": true,
+  "FULL_pair": 786411.02848,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 135665.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481831265",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 86887.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481831348",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 92693.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481831379",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 94749.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481831410",
+  "stereo": true,
+  "FULL_pair": 786395.29984,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 189902.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481831441",
+  "stereo": true,
+  "FULL_pair": 786404.47488,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 203411.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481831479",
+  "stereo": true,
+  "FULL_pair": 524252.61056,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 68248.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481831503",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 79925.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481831527",
+  "stereo": true,
+  "FULL_pair": 524239.50336,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 93350.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481831558",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 101194.0
+ },
+ {
+  "acq_id": "MSL-NAV-0950-481831582",
+  "stereo": true,
+  "FULL_pair": 524222.46400000004,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 82464.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481925130",
+  "stereo": true,
+  "FULL_pair": 153772.032,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 16086.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481925183",
+  "stereo": true,
+  "FULL_pair": 155240.03840000002,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 16776.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481925244",
+  "stereo": true,
+  "FULL_pair": 153971.99872,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 16197.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481925297",
+  "stereo": true,
+  "FULL_pair": 153532.0064,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 15976.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481925375",
+  "stereo": true,
+  "FULL_pair": 154831.99488,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 16690.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481925446",
+  "stereo": true,
+  "FULL_pair": 154696.00767999998,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 16960.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481925519",
+  "stereo": true,
+  "FULL_pair": 154615.97184,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 17079.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481925591",
+  "stereo": true,
+  "FULL_pair": 154488.0128,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 17176.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481925663",
+  "stereo": true,
+  "FULL_pair": 154660.0448,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 17139.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481925736",
+  "stereo": true,
+  "FULL_pair": 153199.98464,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 16490.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481925809",
+  "stereo": true,
+  "FULL_pair": 151999.93855999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 15560.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481925882",
+  "stereo": true,
+  "FULL_pair": 153551.99488,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 15995.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481925961",
+  "stereo": true,
+  "FULL_pair": 155063.99232000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 16496.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481926035",
+  "stereo": true,
+  "FULL_pair": 154628.01408,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 16666.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481926110",
+  "stereo": true,
+  "FULL_pair": 154128.05632,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 16318.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481926184",
+  "stereo": true,
+  "FULL_pair": 152407.98208,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 15569.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481926262",
+  "stereo": true,
+  "FULL_pair": 150460.0064,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14645.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481926339",
+  "stereo": true,
+  "FULL_pair": 148972.01152,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13609.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481926427",
+  "stereo": true,
+  "FULL_pair": 151003.9552,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14208.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481926478",
+  "stereo": true,
+  "FULL_pair": 151731.97824000003,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14346.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481926582",
+  "stereo": true,
+  "FULL_pair": 151948.00128,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14524.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481926645",
+  "stereo": true,
+  "FULL_pair": 151088.00512,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14294.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481926722",
+  "stereo": true,
+  "FULL_pair": 147859.94752,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12237.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481926764",
+  "stereo": true,
+  "FULL_pair": 147591.9872,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12187.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481929317",
+  "stereo": true,
+  "FULL_pair": 786403.1641599999,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 166782.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481929348",
+  "stereo": true,
+  "FULL_pair": 1048535.36768,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 89686.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481929379",
+  "stereo": true,
+  "FULL_pair": 1048532.74624,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 69046.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481929410",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 96198.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481929441",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 136225.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481929472",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 162270.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481929503",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 154167.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481929548",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 169814.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481929573",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 188951.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481929597",
+  "stereo": true,
+  "FULL_pair": 524243.43552,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 194896.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481929629",
+  "stereo": true,
+  "FULL_pair": 524249.98912000004,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 181407.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481929668",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 110800.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481929700",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 153684.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481929738",
+  "stereo": true,
+  "FULL_pair": 786426.75712,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 77793.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481929822",
+  "stereo": true,
+  "FULL_pair": 786418.8928,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 94537.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481929853",
+  "stereo": true,
+  "FULL_pair": 786370.39616,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 103990.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481929884",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 132049.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481929916",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 185763.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481929947",
+  "stereo": true,
+  "FULL_pair": 517632.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 91769.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481929977",
+  "stereo": true,
+  "FULL_pair": 517632.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 109493.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481930013",
+  "stereo": true,
+  "FULL_pair": 517632.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 55582.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481930269",
+  "stereo": false,
+  "FULL_pair": 65278.944395,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4050.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481930302",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4048.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481930335",
+  "stereo": false,
+  "FULL_pair": 65273.0691725,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4052.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481930368",
+  "stereo": false,
+  "FULL_pair": 65275.02758,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4042.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481930401",
+  "stereo": false,
+  "FULL_pair": 65274.04837625,
+  "THUMBNAIL_pair": 511.000064,
+  "COMPRESSED_pair_SIMULATED": 4048.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481930434",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4045.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481930467",
+  "stereo": false,
+  "FULL_pair": 65266.86754875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4031.0
+ },
+ {
+  "acq_id": "MSL-NAV-0951-481930500",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4036.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482002003",
+  "stereo": true,
+  "FULL_pair": 1048528.8140799999,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 113911.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482005923",
+  "stereo": true,
+  "FULL_pair": 141699.97311999998,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 10561.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482005984",
+  "stereo": true,
+  "FULL_pair": 145588.06016,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12029.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482006037",
+  "stereo": true,
+  "FULL_pair": 145260.05248,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 11837.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482006094",
+  "stereo": true,
+  "FULL_pair": 146716.01664,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12387.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482006152",
+  "stereo": true,
+  "FULL_pair": 145716.01919999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12291.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482006235",
+  "stereo": true,
+  "FULL_pair": 148127.98976,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13127.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482006301",
+  "stereo": true,
+  "FULL_pair": 148963.98336,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13802.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482006378",
+  "stereo": true,
+  "FULL_pair": 151204.00384,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 15214.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482006450",
+  "stereo": true,
+  "FULL_pair": 149020.01664,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14940.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482006524",
+  "stereo": true,
+  "FULL_pair": 148175.99488,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14753.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482006597",
+  "stereo": true,
+  "FULL_pair": 150376.03840000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 15721.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482006671",
+  "stereo": true,
+  "FULL_pair": 150219.98080000002,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 15625.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482006748",
+  "stereo": true,
+  "FULL_pair": 146475.99104,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14471.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482006814",
+  "stereo": true,
+  "FULL_pair": 123971.9936,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 9935.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482006867",
+  "stereo": true,
+  "FULL_pair": 127107.97312000001,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10667.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482006940",
+  "stereo": true,
+  "FULL_pair": 128768.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11081.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482006995",
+  "stereo": true,
+  "FULL_pair": 128859.99616,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11205.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482007085",
+  "stereo": true,
+  "FULL_pair": 128652.00128,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11200.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482007131",
+  "stereo": true,
+  "FULL_pair": 147979.96032,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 15098.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482007178",
+  "stereo": true,
+  "FULL_pair": 155476.04992000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 17476.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482007242",
+  "stereo": true,
+  "FULL_pair": 156956.01664,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 17768.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482007315",
+  "stereo": true,
+  "FULL_pair": 158824.0384,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 18167.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482007385",
+  "stereo": true,
+  "FULL_pair": 159867.94496,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 18788.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482007453",
+  "stereo": true,
+  "FULL_pair": 150943.98976000003,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 15649.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482007517",
+  "stereo": true,
+  "FULL_pair": 149991.99744,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 15349.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482007582",
+  "stereo": true,
+  "FULL_pair": 148611.97312,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14886.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482007647",
+  "stereo": true,
+  "FULL_pair": 147287.98208,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14443.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482007713",
+  "stereo": true,
+  "FULL_pair": 145715.93728,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13956.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482007777",
+  "stereo": true,
+  "FULL_pair": 146683.98592,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14106.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482007840",
+  "stereo": true,
+  "FULL_pair": 145272.0128,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13593.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482007904",
+  "stereo": true,
+  "FULL_pair": 145115.9552,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13009.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482007996",
+  "stereo": true,
+  "FULL_pair": 147683.98336,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13196.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482008094",
+  "stereo": true,
+  "FULL_pair": 150324.0192,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 13836.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482008188",
+  "stereo": true,
+  "FULL_pair": 152952.0128,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14757.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482008260",
+  "stereo": true,
+  "FULL_pair": 153332.03968,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14618.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482008334",
+  "stereo": true,
+  "FULL_pair": 151812.01408,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14009.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482008401",
+  "stereo": true,
+  "FULL_pair": 150148.05504,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13483.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482008480",
+  "stereo": true,
+  "FULL_pair": 146344.01792,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 12180.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482008520",
+  "stereo": true,
+  "FULL_pair": 145439.9488,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11897.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482008604",
+  "stereo": true,
+  "FULL_pair": 141152.01024,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10634.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482008677",
+  "stereo": true,
+  "FULL_pair": 140268.01152,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10075.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482008742",
+  "stereo": true,
+  "FULL_pair": 140060.01664,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 9819.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482008807",
+  "stereo": true,
+  "FULL_pair": 140263.99744,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10032.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482008873",
+  "stereo": true,
+  "FULL_pair": 141915.99615999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10621.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482008939",
+  "stereo": true,
+  "FULL_pair": 143036.0064,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10903.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482009003",
+  "stereo": true,
+  "FULL_pair": 144143.9744,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11510.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482009070",
+  "stereo": true,
+  "FULL_pair": 144764.02688,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11860.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482009135",
+  "stereo": true,
+  "FULL_pair": 145267.99872,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 11909.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482009203",
+  "stereo": true,
+  "FULL_pair": 145948.01664,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 12346.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482009268",
+  "stereo": true,
+  "FULL_pair": 147379.97824000003,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12971.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482009334",
+  "stereo": true,
+  "FULL_pair": 147604.02944,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13231.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482009400",
+  "stereo": true,
+  "FULL_pair": 146211.96288,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12781.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482009466",
+  "stereo": true,
+  "FULL_pair": 144292.00384,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11922.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482009531",
+  "stereo": true,
+  "FULL_pair": 142012.0064,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10892.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482009597",
+  "stereo": true,
+  "FULL_pair": 140695.96159999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 9922.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482009661",
+  "stereo": true,
+  "FULL_pair": 141287.99744,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 9875.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482009731",
+  "stereo": true,
+  "FULL_pair": 142187.97056,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10082.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482009796",
+  "stereo": true,
+  "FULL_pair": 144727.98208,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11017.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482009862",
+  "stereo": true,
+  "FULL_pair": 146939.98592,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12052.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482009924",
+  "stereo": true,
+  "FULL_pair": 147504.00512,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12527.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482009989",
+  "stereo": true,
+  "FULL_pair": 150179.92192,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13778.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482010041",
+  "stereo": true,
+  "FULL_pair": 149083.99615999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13365.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482010086",
+  "stereo": true,
+  "FULL_pair": 148216.05375999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12826.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482010139",
+  "stereo": true,
+  "FULL_pair": 147660.06272,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12107.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482010211",
+  "stereo": true,
+  "FULL_pair": 148180.00896,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 11792.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482010276",
+  "stereo": true,
+  "FULL_pair": 148655.96415999997,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12042.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482010341",
+  "stereo": true,
+  "FULL_pair": 150639.98464,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13396.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482010408",
+  "stereo": true,
+  "FULL_pair": 151175.9872,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14267.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482010473",
+  "stereo": true,
+  "FULL_pair": 149616.06656,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13892.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482010538",
+  "stereo": true,
+  "FULL_pair": 148731.98592,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13554.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482010604",
+  "stereo": true,
+  "FULL_pair": 147811.9424,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12899.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482010669",
+  "stereo": true,
+  "FULL_pair": 147663.99488,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12365.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482010733",
+  "stereo": true,
+  "FULL_pair": 147823.98463999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12198.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482010802",
+  "stereo": true,
+  "FULL_pair": 148748.04224,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 12656.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482010867",
+  "stereo": true,
+  "FULL_pair": 150983.96672,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13716.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482010931",
+  "stereo": true,
+  "FULL_pair": 150387.99872,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 13455.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482010975",
+  "stereo": true,
+  "FULL_pair": 150416.01536000002,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 13461.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482011035",
+  "stereo": true,
+  "FULL_pair": 149256.02816,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 13115.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482011086",
+  "stereo": true,
+  "FULL_pair": 148583.95648,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 12522.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482011159",
+  "stereo": true,
+  "FULL_pair": 148851.99871999997,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12953.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482011223",
+  "stereo": true,
+  "FULL_pair": 148779.99104,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13131.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482011290",
+  "stereo": true,
+  "FULL_pair": 147951.94368,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12501.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482011356",
+  "stereo": true,
+  "FULL_pair": 147624.01792,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12170.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482011423",
+  "stereo": true,
+  "FULL_pair": 149687.99232000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12768.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482011487",
+  "stereo": true,
+  "FULL_pair": 149547.99104,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 12690.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482011556",
+  "stereo": true,
+  "FULL_pair": 150091.93984,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12678.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482011628",
+  "stereo": true,
+  "FULL_pair": 149128.06912,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12305.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482011670",
+  "stereo": true,
+  "FULL_pair": 148844.05248,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12102.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482012398",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 215532.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482012422",
+  "stereo": true,
+  "FULL_pair": 524247.36768,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 214162.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482013079",
+  "stereo": false,
+  "FULL_pair": 512772.01408,
+  "THUMBNAIL_pair": 509.000192,
+  "COMPRESSED_pair_SIMULATED": 19782.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482013202",
+  "stereo": true,
+  "FULL_pair": 1048524.8819200001,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 145748.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482013261",
+  "stereo": true,
+  "FULL_pair": 1048576.0,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 130100.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482013486",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 184769.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482013517",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 197111.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482013548",
+  "stereo": true,
+  "FULL_pair": 786396.61056,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 132855.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482013579",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 128515.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482013610",
+  "stereo": true,
+  "FULL_pair": 786429.37856,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 144329.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482013642",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 220977.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482013667",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 222243.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482013691",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 208952.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482013724",
+  "stereo": true,
+  "FULL_pair": 524246.05695999996,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 188111.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482013763",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 118349.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482019085",
+  "stereo": true,
+  "FULL_pair": 524269.64992,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 65024.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482019110",
+  "stereo": true,
+  "FULL_pair": 524269.64992,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 75379.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482019141",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 68603.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482019172",
+  "stereo": true,
+  "FULL_pair": 524264.40703999996,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 49947.0
+ },
+ {
+  "acq_id": "MSL-NAV-0952-482019217",
+  "stereo": true,
+  "FULL_pair": 524268.3392,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 31282.0
+ },
+ {
+  "acq_id": "MSL-NAV-0954-482186043",
+  "stereo": true,
+  "FULL_pair": 1048576.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 119279.0
+ },
+ {
+  "acq_id": "MSL-NAV-0954-482197534",
+  "stereo": true,
+  "FULL_pair": 524243.43552,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 179132.0
+ },
+ {
+  "acq_id": "MSL-NAV-0954-482198253",
+  "stereo": true,
+  "FULL_pair": 524246.05695999996,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 176310.0
+ },
+ {
+  "acq_id": "MSL-NAV-0954-482204006",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 3998.0
+ },
+ {
+  "acq_id": "MSL-NAV-0954-482204039",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 3998.0
+ },
+ {
+  "acq_id": "MSL-NAV-0954-482204073",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 3996.0
+ },
+ {
+  "acq_id": "MSL-NAV-0954-482204107",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 3991.0
+ },
+ {
+  "acq_id": "MSL-NAV-0954-482204141",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 3993.0
+ },
+ {
+  "acq_id": "MSL-NAV-0954-482204175",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4000.0
+ },
+ {
+  "acq_id": "MSL-NAV-0954-482204209",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 3996.0
+ },
+ {
+  "acq_id": "MSL-NAV-0954-482204243",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 3993.0
+ },
+ {
+  "acq_id": "MSL-NAV-0955-482285624",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 161576.0
+ },
+ {
+  "acq_id": "MSL-NAV-0955-482286274",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 158876.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482341543",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 511.000064,
+  "COMPRESSED_pair_SIMULATED": 4259.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482341576",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4245.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482341609",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4237.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482341641",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 511.000064,
+  "COMPRESSED_pair_SIMULATED": 4226.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482341674",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4207.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482341706",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4195.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482341745",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 509.000192,
+  "COMPRESSED_pair_SIMULATED": 4179.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482341784",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 509.000192,
+  "COMPRESSED_pair_SIMULATED": 4176.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482341823",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4170.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482341862",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4165.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482341895",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4186.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482341927",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4174.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482341965",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4158.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482342004",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4130.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482342037",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4159.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482342069",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4131.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482342107",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4102.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482342145",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4217.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482342184",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4258.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482342216",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4359.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482342228",
+  "stereo": false,
+  "FULL_pair": 42824.00768,
+  "THUMBNAIL_pair": 128.0,
+  "COMPRESSED_pair_SIMULATED": 1957.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482342256",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4297.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482342268",
+  "stereo": false,
+  "FULL_pair": 43039.9488,
+  "THUMBNAIL_pair": 124.999936,
+  "COMPRESSED_pair_SIMULATED": 1958.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482342290",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4233.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482342302",
+  "stereo": false,
+  "FULL_pair": 43256.05376,
+  "THUMBNAIL_pair": 124.999936,
+  "COMPRESSED_pair_SIMULATED": 1968.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482354461",
+  "stereo": true,
+  "FULL_pair": 786399.2320000001,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 129243.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482354486",
+  "stereo": true,
+  "FULL_pair": 786338.93888,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 136462.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482354517",
+  "stereo": true,
+  "FULL_pair": 786426.75712,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 122911.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482354600",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 91269.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482354630",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 103935.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482354661",
+  "stereo": true,
+  "FULL_pair": 786373.0176,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 103208.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482354692",
+  "stereo": true,
+  "FULL_pair": 786361.22112,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 169844.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482356290",
+  "stereo": true,
+  "FULL_pair": 145243.99615999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11478.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482356335",
+  "stereo": true,
+  "FULL_pair": 146620.0064,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12140.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482356409",
+  "stereo": true,
+  "FULL_pair": 145399.97184,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12067.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482356485",
+  "stereo": true,
+  "FULL_pair": 143252.02944,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11167.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482356568",
+  "stereo": true,
+  "FULL_pair": 143028.06016,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10703.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482356646",
+  "stereo": true,
+  "FULL_pair": 144239.98463999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10927.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482356720",
+  "stereo": true,
+  "FULL_pair": 145371.95520000003,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11467.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482356797",
+  "stereo": true,
+  "FULL_pair": 144644.01408,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11243.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482356875",
+  "stereo": true,
+  "FULL_pair": 144911.9744,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11237.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482356951",
+  "stereo": true,
+  "FULL_pair": 145960.05888,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11692.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482357029",
+  "stereo": true,
+  "FULL_pair": 143495.98719999997,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11126.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482357108",
+  "stereo": true,
+  "FULL_pair": 142307.98336,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10566.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482357185",
+  "stereo": true,
+  "FULL_pair": 143292.0064,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10999.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482357258",
+  "stereo": true,
+  "FULL_pair": 144368.0256,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11419.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482357328",
+  "stereo": true,
+  "FULL_pair": 143843.98336,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11346.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482357400",
+  "stereo": true,
+  "FULL_pair": 145048.04352,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 11618.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482357473",
+  "stereo": true,
+  "FULL_pair": 146016.01024,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 11975.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482357545",
+  "stereo": true,
+  "FULL_pair": 145944.00256,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12269.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482357618",
+  "stereo": true,
+  "FULL_pair": 145608.04864,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12280.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482357690",
+  "stereo": true,
+  "FULL_pair": 144731.99615999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11834.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482357766",
+  "stereo": true,
+  "FULL_pair": 144012.00128,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11238.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482357841",
+  "stereo": true,
+  "FULL_pair": 144067.95263999997,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 10927.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482357910",
+  "stereo": true,
+  "FULL_pair": 144331.9808,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10820.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482357980",
+  "stereo": true,
+  "FULL_pair": 145187.96288,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10815.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482358053",
+  "stereo": true,
+  "FULL_pair": 146287.98463999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10885.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482358127",
+  "stereo": true,
+  "FULL_pair": 146576.01536,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10841.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482358198",
+  "stereo": true,
+  "FULL_pair": 146836.02944,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10807.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482358269",
+  "stereo": true,
+  "FULL_pair": 146156.01152,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10260.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482358343",
+  "stereo": true,
+  "FULL_pair": 146696.02816,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10613.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482358415",
+  "stereo": true,
+  "FULL_pair": 146464.03071999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10680.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482358488",
+  "stereo": true,
+  "FULL_pair": 146187.96032,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10672.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482358559",
+  "stereo": true,
+  "FULL_pair": 145523.99872,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10596.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482358634",
+  "stereo": true,
+  "FULL_pair": 145895.99744,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10559.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482358709",
+  "stereo": true,
+  "FULL_pair": 146779.99615999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10790.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482358779",
+  "stereo": true,
+  "FULL_pair": 147151.99488,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11076.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482358849",
+  "stereo": true,
+  "FULL_pair": 146031.98463999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11088.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482358918",
+  "stereo": true,
+  "FULL_pair": 145367.94112,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11035.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482358988",
+  "stereo": true,
+  "FULL_pair": 144415.9488,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10608.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482359060",
+  "stereo": true,
+  "FULL_pair": 143480.0128,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10284.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482359131",
+  "stereo": true,
+  "FULL_pair": 140824.00256,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10118.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482359203",
+  "stereo": true,
+  "FULL_pair": 138851.9424,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10727.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482359277",
+  "stereo": true,
+  "FULL_pair": 136767.97952,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11266.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482359351",
+  "stereo": true,
+  "FULL_pair": 139155.94752,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11584.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482359430",
+  "stereo": true,
+  "FULL_pair": 137283.9936,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10759.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482359505",
+  "stereo": true,
+  "FULL_pair": 136320.04096,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 10722.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482359581",
+  "stereo": true,
+  "FULL_pair": 138328.064,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11645.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482359658",
+  "stereo": true,
+  "FULL_pair": 139744.0512,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11725.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482359739",
+  "stereo": true,
+  "FULL_pair": 142848.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12481.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482359819",
+  "stereo": true,
+  "FULL_pair": 144528.01536000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13102.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482359864",
+  "stereo": true,
+  "FULL_pair": 145007.98463999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13304.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482359935",
+  "stereo": true,
+  "FULL_pair": 144628.03968,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13002.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482360011",
+  "stereo": true,
+  "FULL_pair": 144771.97311999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13029.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482360081",
+  "stereo": true,
+  "FULL_pair": 146092.032,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13338.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482360153",
+  "stereo": true,
+  "FULL_pair": 145671.94624000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12976.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482360226",
+  "stereo": true,
+  "FULL_pair": 148224.0,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 13762.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482360299",
+  "stereo": true,
+  "FULL_pair": 148135.936,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13915.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482360373",
+  "stereo": true,
+  "FULL_pair": 149751.97184,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14131.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482360446",
+  "stereo": true,
+  "FULL_pair": 150027.96032,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14102.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482360521",
+  "stereo": true,
+  "FULL_pair": 150127.98463999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14046.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482360602",
+  "stereo": true,
+  "FULL_pair": 150147.97311999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13993.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482360671",
+  "stereo": true,
+  "FULL_pair": 150184.01792,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14162.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482360748",
+  "stereo": true,
+  "FULL_pair": 146652.03712,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13187.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482360803",
+  "stereo": true,
+  "FULL_pair": 144564.06016,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12477.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482360875",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 106375.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482360906",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 85496.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482360930",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 80936.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482360991",
+  "stereo": true,
+  "FULL_pair": 147695.94368,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13308.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482361058",
+  "stereo": true,
+  "FULL_pair": 149816.03328,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13817.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482361116",
+  "stereo": true,
+  "FULL_pair": 148656.04608,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13234.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482361175",
+  "stereo": true,
+  "FULL_pair": 148427.9808,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13306.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482361242",
+  "stereo": true,
+  "FULL_pair": 147216.05632,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12928.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482361289",
+  "stereo": true,
+  "FULL_pair": 146255.95392,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 12806.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482361338",
+  "stereo": true,
+  "FULL_pair": 145948.01664,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 12913.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482361387",
+  "stereo": true,
+  "FULL_pair": 145504.01024,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12950.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482361463",
+  "stereo": true,
+  "FULL_pair": 146839.96159999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13302.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482361531",
+  "stereo": true,
+  "FULL_pair": 147095.9616,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13568.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482361601",
+  "stereo": true,
+  "FULL_pair": 145999.95392,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13329.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482361671",
+  "stereo": true,
+  "FULL_pair": 145744.03584,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13325.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482361741",
+  "stereo": true,
+  "FULL_pair": 144355.98336,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12982.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482361822",
+  "stereo": true,
+  "FULL_pair": 144423.97696,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12625.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482361874",
+  "stereo": true,
+  "FULL_pair": 145324.032,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12678.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482362190",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 119899.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482362221",
+  "stereo": true,
+  "FULL_pair": 786413.64992,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 150486.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482362252",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 137844.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482362284",
+  "stereo": true,
+  "FULL_pair": 786417.5820800001,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 119992.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482362309",
+  "stereo": true,
+  "FULL_pair": 786429.37856,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 126100.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482362364",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 67985.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482362389",
+  "stereo": true,
+  "FULL_pair": 786390.05696,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 75954.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482362413",
+  "stereo": true,
+  "FULL_pair": 786391.36768,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 73369.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482362437",
+  "stereo": true,
+  "FULL_pair": 786380.8819200001,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 73688.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482362461",
+  "stereo": true,
+  "FULL_pair": 786418.8928,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 55637.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482362501",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 138518.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482362525",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 139443.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482362549",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 129384.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482362573",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 120934.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482362604",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 103250.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482362694",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 96678.0
+ },
+ {
+  "acq_id": "MSL-NAV-0956-482362725",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 104105.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482449103",
+  "stereo": false,
+  "FULL_pair": 262144.0,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 17653.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482449175",
+  "stereo": false,
+  "FULL_pair": 262144.0,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 17943.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482449248",
+  "stereo": false,
+  "FULL_pair": 262144.0,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 17949.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482449321",
+  "stereo": false,
+  "FULL_pair": 262136.79104,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 17891.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482449395",
+  "stereo": false,
+  "FULL_pair": 65277.96519125,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4235.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482449432",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4226.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482449469",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4261.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482449507",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4243.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482449544",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4227.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482449581",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4212.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482449619",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4243.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482449656",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4229.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482451853",
+  "stereo": true,
+  "FULL_pair": 146767.95392,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12819.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482451920",
+  "stereo": true,
+  "FULL_pair": 149248.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14068.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482451995",
+  "stereo": true,
+  "FULL_pair": 145364.00896,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12865.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482452076",
+  "stereo": true,
+  "FULL_pair": 138364.02688000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10415.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482452155",
+  "stereo": true,
+  "FULL_pair": 138975.96928,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10253.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482452235",
+  "stereo": true,
+  "FULL_pair": 143872.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11728.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482452310",
+  "stereo": true,
+  "FULL_pair": 144640.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11873.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482452387",
+  "stereo": true,
+  "FULL_pair": 146328.04352,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 12415.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482452466",
+  "stereo": true,
+  "FULL_pair": 148784.00512,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12980.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482452542",
+  "stereo": true,
+  "FULL_pair": 150031.9744,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13005.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482452620",
+  "stereo": true,
+  "FULL_pair": 151711.98976000003,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13664.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482452684",
+  "stereo": true,
+  "FULL_pair": 153411.9936,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14288.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482452775",
+  "stereo": true,
+  "FULL_pair": 153768.01792,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 15126.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482452827",
+  "stereo": true,
+  "FULL_pair": 153547.9808,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 15139.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482452897",
+  "stereo": true,
+  "FULL_pair": 153468.02688000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 15528.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482452976",
+  "stereo": true,
+  "FULL_pair": 154584.02304,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 15917.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482453048",
+  "stereo": true,
+  "FULL_pair": 156947.98848,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 16738.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482453122",
+  "stereo": true,
+  "FULL_pair": 157471.9488,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 17004.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482453196",
+  "stereo": true,
+  "FULL_pair": 155628.01152,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 16897.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482453271",
+  "stereo": true,
+  "FULL_pair": 151195.97568,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 15467.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482453346",
+  "stereo": true,
+  "FULL_pair": 150044.01664,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 15037.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482453428",
+  "stereo": true,
+  "FULL_pair": 146335.98976,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13444.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482453499",
+  "stereo": true,
+  "FULL_pair": 148243.98848,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13805.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482453572",
+  "stereo": true,
+  "FULL_pair": 148532.0192,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14072.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482453643",
+  "stereo": true,
+  "FULL_pair": 148951.94112,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 14633.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482453714",
+  "stereo": true,
+  "FULL_pair": 147712.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13581.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482453793",
+  "stereo": true,
+  "FULL_pair": 149083.99615999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14430.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482453863",
+  "stereo": true,
+  "FULL_pair": 149256.02816,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14858.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482453941",
+  "stereo": true,
+  "FULL_pair": 147407.99488,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14843.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482454016",
+  "stereo": true,
+  "FULL_pair": 143311.99488,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 13844.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482454090",
+  "stereo": true,
+  "FULL_pair": 139983.99488,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12511.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482454163",
+  "stereo": true,
+  "FULL_pair": 139839.97952,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12517.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482454237",
+  "stereo": true,
+  "FULL_pair": 141780.00896,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13083.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482454314",
+  "stereo": true,
+  "FULL_pair": 143064.02304,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13495.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482454385",
+  "stereo": true,
+  "FULL_pair": 143480.0128,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13396.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482454471",
+  "stereo": true,
+  "FULL_pair": 148584.03840000002,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 14515.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482454527",
+  "stereo": true,
+  "FULL_pair": 149047.95136,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14498.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482454599",
+  "stereo": true,
+  "FULL_pair": 147960.05375999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13932.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482454680",
+  "stereo": true,
+  "FULL_pair": 144548.00384000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12853.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482454749",
+  "stereo": true,
+  "FULL_pair": 144091.9552,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12466.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482454822",
+  "stereo": true,
+  "FULL_pair": 142536.04864,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 11796.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482454900",
+  "stereo": true,
+  "FULL_pair": 137623.9616,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10169.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482454975",
+  "stereo": true,
+  "FULL_pair": 135980.07296000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 9788.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482455050",
+  "stereo": true,
+  "FULL_pair": 132627.98848,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 8981.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482455126",
+  "stereo": true,
+  "FULL_pair": 130691.97312,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 8108.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482455196",
+  "stereo": true,
+  "FULL_pair": 128856.064,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 7853.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482455266",
+  "stereo": true,
+  "FULL_pair": 128256.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 7892.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482455342",
+  "stereo": true,
+  "FULL_pair": 126543.95392,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 7668.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482455414",
+  "stereo": true,
+  "FULL_pair": 126043.99616000001,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 7553.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482455485",
+  "stereo": true,
+  "FULL_pair": 125356.032,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 7816.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482455563",
+  "stereo": true,
+  "FULL_pair": 127943.96672,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 9215.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482455614",
+  "stereo": true,
+  "FULL_pair": 129536.0,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 9737.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482455695",
+  "stereo": true,
+  "FULL_pair": 139623.95648,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 13053.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482455767",
+  "stereo": true,
+  "FULL_pair": 146060.00128000003,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14506.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482455839",
+  "stereo": true,
+  "FULL_pair": 145420.04223999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14028.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482455912",
+  "stereo": true,
+  "FULL_pair": 144532.02944,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13483.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482455991",
+  "stereo": true,
+  "FULL_pair": 145599.93855999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13500.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482456066",
+  "stereo": true,
+  "FULL_pair": 147815.95648,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14006.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482456141",
+  "stereo": true,
+  "FULL_pair": 148531.93728,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14204.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482456211",
+  "stereo": true,
+  "FULL_pair": 148151.99232000002,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 14129.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482456283",
+  "stereo": true,
+  "FULL_pair": 150095.95392,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14570.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482456351",
+  "stereo": true,
+  "FULL_pair": 150056.05888,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14391.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482456429",
+  "stereo": true,
+  "FULL_pair": 148851.99872,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14044.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482456500",
+  "stereo": true,
+  "FULL_pair": 146784.01024,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13500.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482456557",
+  "stereo": true,
+  "FULL_pair": 148407.99232000002,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 13903.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482456646",
+  "stereo": true,
+  "FULL_pair": 148135.936,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13996.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482456704",
+  "stereo": true,
+  "FULL_pair": 148711.99744,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14212.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482456774",
+  "stereo": true,
+  "FULL_pair": 152420.02432000003,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 15264.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482456854",
+  "stereo": true,
+  "FULL_pair": 153955.9424,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 15364.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482456928",
+  "stereo": true,
+  "FULL_pair": 153243.97568,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14944.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482457007",
+  "stereo": true,
+  "FULL_pair": 153467.94496,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14773.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482457060",
+  "stereo": true,
+  "FULL_pair": 153240.04352,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14704.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482457131",
+  "stereo": true,
+  "FULL_pair": 262144.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 110390.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482457163",
+  "stereo": true,
+  "FULL_pair": 262144.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 130345.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482457230",
+  "stereo": true,
+  "FULL_pair": 150812.01664,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14135.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482457298",
+  "stereo": true,
+  "FULL_pair": 151180.00128,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14235.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482457376",
+  "stereo": true,
+  "FULL_pair": 146815.95904,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12645.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482457448",
+  "stereo": true,
+  "FULL_pair": 142188.05248,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11074.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482457528",
+  "stereo": true,
+  "FULL_pair": 138247.94624000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10004.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482457574",
+  "stereo": true,
+  "FULL_pair": 140676.05504,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10741.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482457805",
+  "stereo": true,
+  "FULL_pair": 786422.82496,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 78063.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482457836",
+  "stereo": true,
+  "FULL_pair": 1048576.0,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 74357.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482457867",
+  "stereo": true,
+  "FULL_pair": 1048560.27136,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 65929.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482457898",
+  "stereo": true,
+  "FULL_pair": 1048544.54272,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 70265.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482457929",
+  "stereo": true,
+  "FULL_pair": 786416.27136,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 98179.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482458112",
+  "stereo": true,
+  "FULL_pair": 524260.47488,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 99298.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482458143",
+  "stereo": true,
+  "FULL_pair": 524267.02848,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 109662.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482458168",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 130971.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482458201",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 142874.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482458239",
+  "stereo": true,
+  "FULL_pair": 524260.47488,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 99542.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482458273",
+  "stereo": true,
+  "FULL_pair": 786429.37856,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 159474.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482458304",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 147115.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482458343",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 75215.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482458426",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 85782.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482458457",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 65038.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482458488",
+  "stereo": true,
+  "FULL_pair": 786426.75712,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 72910.0
+ },
+ {
+  "acq_id": "MSL-NAV-0957-482458519",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 85615.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482542364",
+  "stereo": true,
+  "FULL_pair": 136064.04096,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 9548.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482542406",
+  "stereo": true,
+  "FULL_pair": 146095.96415999997,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12530.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482542466",
+  "stereo": true,
+  "FULL_pair": 144587.98080000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12338.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482542519",
+  "stereo": true,
+  "FULL_pair": 145788.02688,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12683.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482542575",
+  "stereo": true,
+  "FULL_pair": 144103.99744,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12171.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482542630",
+  "stereo": true,
+  "FULL_pair": 144524.00128000003,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12219.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482542716",
+  "stereo": true,
+  "FULL_pair": 145631.96928000002,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 12616.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482542782",
+  "stereo": true,
+  "FULL_pair": 146467.96288,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12949.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482542854",
+  "stereo": true,
+  "FULL_pair": 146512.03584,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12981.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482542931",
+  "stereo": true,
+  "FULL_pair": 144543.98976,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12437.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482543004",
+  "stereo": true,
+  "FULL_pair": 142972.02688000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11944.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482543077",
+  "stereo": true,
+  "FULL_pair": 140840.05888,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11067.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482543150",
+  "stereo": true,
+  "FULL_pair": 140708.00384000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10877.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482543229",
+  "stereo": true,
+  "FULL_pair": 141539.98336,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10919.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482543304",
+  "stereo": true,
+  "FULL_pair": 143079.99744,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11346.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482543380",
+  "stereo": true,
+  "FULL_pair": 144824.07424,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 11532.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482543456",
+  "stereo": true,
+  "FULL_pair": 146663.99744,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11876.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482543540",
+  "stereo": true,
+  "FULL_pair": 146596.00384,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11669.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482543627",
+  "stereo": true,
+  "FULL_pair": 147399.96672,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12447.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482543677",
+  "stereo": true,
+  "FULL_pair": 147847.9872,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 12636.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482543742",
+  "stereo": true,
+  "FULL_pair": 149396.02944,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13201.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482543794",
+  "stereo": true,
+  "FULL_pair": 150396.02688000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13306.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482543846",
+  "stereo": true,
+  "FULL_pair": 144276.02944,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11464.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482543891",
+  "stereo": true,
+  "FULL_pair": 145648.0256,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12149.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482543939",
+  "stereo": true,
+  "FULL_pair": 142592.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11570.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482543988",
+  "stereo": true,
+  "FULL_pair": 140080.00512,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 11141.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482544065",
+  "stereo": true,
+  "FULL_pair": 134712.03327999997,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 9691.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482544128",
+  "stereo": true,
+  "FULL_pair": 130999.99232,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 8708.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482544194",
+  "stereo": true,
+  "FULL_pair": 131591.94624000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 8635.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482544258",
+  "stereo": true,
+  "FULL_pair": 134983.92576,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 9441.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482544327",
+  "stereo": true,
+  "FULL_pair": 137655.99232,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10476.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482544393",
+  "stereo": true,
+  "FULL_pair": 140940.00128,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11641.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482544457",
+  "stereo": true,
+  "FULL_pair": 140000.0512,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11371.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482544526",
+  "stereo": true,
+  "FULL_pair": 140344.03328,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11125.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482544595",
+  "stereo": true,
+  "FULL_pair": 142060.01152,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 11226.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482544660",
+  "stereo": true,
+  "FULL_pair": 145168.05632,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 11516.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482544742",
+  "stereo": true,
+  "FULL_pair": 146803.99872,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11784.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482544795",
+  "stereo": true,
+  "FULL_pair": 148580.02432,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 12489.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482544839",
+  "stereo": true,
+  "FULL_pair": 147620.00384000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12188.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482545088",
+  "stereo": true,
+  "FULL_pair": 786422.82496,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 131990.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482545119",
+  "stereo": true,
+  "FULL_pair": 1048576.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 140944.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482545151",
+  "stereo": true,
+  "FULL_pair": 1048576.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 148602.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482545183",
+  "stereo": true,
+  "FULL_pair": 1048573.37856,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 147441.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482545208",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 142007.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482545397",
+  "stereo": true,
+  "FULL_pair": 524246.05695999996,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 222622.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482545422",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 232525.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482545453",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 237200.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482545484",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 216272.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482545523",
+  "stereo": true,
+  "FULL_pair": 524246.05695999996,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 136050.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482545588",
+  "stereo": false,
+  "FULL_pair": 196608.0,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 22561.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482545611",
+  "stereo": false,
+  "FULL_pair": 196608.0,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 26596.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482545640",
+  "stereo": false,
+  "FULL_pair": 196608.0,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 23440.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482545688",
+  "stereo": true,
+  "FULL_pair": 786401.85344,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 133763.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482545712",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 99636.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482545743",
+  "stereo": true,
+  "FULL_pair": 786421.5142399999,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 126756.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482545774",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 112598.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482545865",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 69110.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482545896",
+  "stereo": true,
+  "FULL_pair": 786387.43552,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 72906.0
+ },
+ {
+  "acq_id": "MSL-NAV-0958-482545927",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 89824.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482719263",
+  "stereo": true,
+  "FULL_pair": 143092.03968,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11029.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482719338",
+  "stereo": true,
+  "FULL_pair": 148755.98848,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 12891.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482719394",
+  "stereo": true,
+  "FULL_pair": 150239.96928000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13497.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482719493",
+  "stereo": true,
+  "FULL_pair": 147207.94624000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12510.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482719561",
+  "stereo": true,
+  "FULL_pair": 146959.9744,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12200.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482719630",
+  "stereo": true,
+  "FULL_pair": 148647.936,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12716.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482719701",
+  "stereo": true,
+  "FULL_pair": 149087.92832,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 12869.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482719772",
+  "stereo": true,
+  "FULL_pair": 149636.05504,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13073.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482719850",
+  "stereo": true,
+  "FULL_pair": 150379.97056,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13150.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482719921",
+  "stereo": true,
+  "FULL_pair": 150151.98719999997,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 12839.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482719998",
+  "stereo": true,
+  "FULL_pair": 150064.00512,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12755.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482720073",
+  "stereo": true,
+  "FULL_pair": 149655.96159999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12798.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482720148",
+  "stereo": true,
+  "FULL_pair": 152747.95008,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14490.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482720225",
+  "stereo": true,
+  "FULL_pair": 152583.94624000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14766.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482720305",
+  "stereo": true,
+  "FULL_pair": 152487.936,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14837.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482720385",
+  "stereo": true,
+  "FULL_pair": 153107.98848,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 15427.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482720466",
+  "stereo": true,
+  "FULL_pair": 152571.98592,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 15264.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482720543",
+  "stereo": true,
+  "FULL_pair": 152891.96544,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 15457.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482720620",
+  "stereo": true,
+  "FULL_pair": 152840.02816,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 15061.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482720699",
+  "stereo": true,
+  "FULL_pair": 153160.00768,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14652.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482720776",
+  "stereo": true,
+  "FULL_pair": 153676.02176,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14602.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482720854",
+  "stereo": true,
+  "FULL_pair": 153328.0256,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14151.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482720934",
+  "stereo": true,
+  "FULL_pair": 153179.99615999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14130.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482721015",
+  "stereo": true,
+  "FULL_pair": 152351.9488,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13791.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482721090",
+  "stereo": true,
+  "FULL_pair": 152700.02688000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13682.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482721167",
+  "stereo": true,
+  "FULL_pair": 152020.00896,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13406.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482721244",
+  "stereo": true,
+  "FULL_pair": 151183.93344,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13848.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482721323",
+  "stereo": true,
+  "FULL_pair": 148339.99871999997,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13762.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482721399",
+  "stereo": true,
+  "FULL_pair": 147948.01152,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13669.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482721484",
+  "stereo": true,
+  "FULL_pair": 151324.01664,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14750.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482721528",
+  "stereo": true,
+  "FULL_pair": 151764.00896,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 14958.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482721588",
+  "stereo": true,
+  "FULL_pair": 151395.9424,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14669.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482721638",
+  "stereo": true,
+  "FULL_pair": 149655.9616,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13877.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482721686",
+  "stereo": true,
+  "FULL_pair": 147968.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13068.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482721762",
+  "stereo": true,
+  "FULL_pair": 150619.99615999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14178.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482721827",
+  "stereo": true,
+  "FULL_pair": 153279.93856,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 15263.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482721894",
+  "stereo": true,
+  "FULL_pair": 152155.99615999998,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 15181.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482721962",
+  "stereo": true,
+  "FULL_pair": 148143.96416,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14031.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482722029",
+  "stereo": true,
+  "FULL_pair": 145751.98208,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13273.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482722096",
+  "stereo": true,
+  "FULL_pair": 146316.00128,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13229.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482722161",
+  "stereo": true,
+  "FULL_pair": 149232.0256,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13772.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482722227",
+  "stereo": true,
+  "FULL_pair": 149180.0064,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14244.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482722291",
+  "stereo": true,
+  "FULL_pair": 148007.97696,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13776.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482722363",
+  "stereo": true,
+  "FULL_pair": 148791.95136,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13887.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482722431",
+  "stereo": true,
+  "FULL_pair": 147871.98976,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13685.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482722496",
+  "stereo": true,
+  "FULL_pair": 144416.03072,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12878.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482722562",
+  "stereo": true,
+  "FULL_pair": 142003.97824,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12130.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482722634",
+  "stereo": true,
+  "FULL_pair": 137579.97056,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11210.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482722702",
+  "stereo": true,
+  "FULL_pair": 133852.03712,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10791.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482722775",
+  "stereo": true,
+  "FULL_pair": 134476.02176,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11328.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482722822",
+  "stereo": true,
+  "FULL_pair": 135052.00128,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11463.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482722865",
+  "stereo": true,
+  "FULL_pair": 134631.99744,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11314.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482722895",
+  "stereo": true,
+  "FULL_pair": 138075.99616,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12182.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482723541",
+  "stereo": true,
+  "FULL_pair": 139064.03327999997,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 10288.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482723575",
+  "stereo": true,
+  "FULL_pair": 139083.93984,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10222.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482724251",
+  "stereo": true,
+  "FULL_pair": 146464.03072,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12322.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482724287",
+  "stereo": true,
+  "FULL_pair": 147359.98976,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12809.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482724783",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 213213.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482724807",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 221469.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482724831",
+  "stereo": true,
+  "FULL_pair": 786425.4464,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 216682.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482725229",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 150445.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482725261",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 188557.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482725293",
+  "stereo": true,
+  "FULL_pair": 1048576.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 208012.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482725325",
+  "stereo": true,
+  "FULL_pair": 1048576.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 115459.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482725356",
+  "stereo": true,
+  "FULL_pair": 1048576.0,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 101655.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482725387",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 116716.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482725418",
+  "stereo": true,
+  "FULL_pair": 786421.5142399999,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 124539.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482725614",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 213746.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482725639",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 219724.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482725663",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 216903.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482725695",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 203548.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482725734",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 117194.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482725801",
+  "stereo": false,
+  "FULL_pair": 196608.0,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 22882.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482725825",
+  "stereo": false,
+  "FULL_pair": 196608.0,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 32399.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482725854",
+  "stereo": false,
+  "FULL_pair": 196608.0,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 31779.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482725911",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 125673.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482725935",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 117477.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482725973",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 74985.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482726057",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 86715.0
+ },
+ {
+  "acq_id": "MSL-NAV-0960-482726087",
+  "stereo": true,
+  "FULL_pair": 786348.11392,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 90555.0
+ },
+ {
+  "acq_id": "MSL-NAV-0961-482806980",
+  "stereo": false,
+  "FULL_pair": 262144.0,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 13489.0
+ },
+ {
+  "acq_id": "MSL-NAV-0961-482807052",
+  "stereo": false,
+  "FULL_pair": 262144.0,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 13678.0
+ },
+ {
+  "acq_id": "MSL-NAV-0961-482807125",
+  "stereo": false,
+  "FULL_pair": 262144.0,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 13644.0
+ },
+ {
+  "acq_id": "MSL-NAV-0961-482807198",
+  "stereo": false,
+  "FULL_pair": 262144.0,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 13649.0
+ },
+ {
+  "acq_id": "MSL-NAV-0961-482807266",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4158.0
+ },
+ {
+  "acq_id": "MSL-NAV-0961-482807304",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4155.0
+ },
+ {
+  "acq_id": "MSL-NAV-0961-482807342",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4142.0
+ },
+ {
+  "acq_id": "MSL-NAV-0961-482807380",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4159.0
+ },
+ {
+  "acq_id": "MSL-NAV-0961-482807418",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4141.0
+ },
+ {
+  "acq_id": "MSL-NAV-0961-482807456",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4159.0
+ },
+ {
+  "acq_id": "MSL-NAV-0961-482807494",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4157.0
+ },
+ {
+  "acq_id": "MSL-NAV-0961-482807532",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4174.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482890072",
+  "stereo": true,
+  "FULL_pair": 141364.0192,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11254.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482890409",
+  "stereo": true,
+  "FULL_pair": 143391.9488,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11714.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482891657",
+  "stereo": true,
+  "FULL_pair": 142951.95648,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 11473.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482893179",
+  "stereo": true,
+  "FULL_pair": 143679.97952,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 11763.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482894696",
+  "stereo": true,
+  "FULL_pair": 143344.0256,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 11534.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482896212",
+  "stereo": true,
+  "FULL_pair": 144719.95392,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 11943.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482901203",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 199174.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482901227",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 200115.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482901251",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 202257.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482901283",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 193912.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482901322",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 116925.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482914440",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1364.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482914498",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1332.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482914556",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1343.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482914614",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 63.0,
+  "COMPRESSED_pair_SIMULATED": 1328.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482914672",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1338.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482914730",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1328.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482914788",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 63.0,
+  "COMPRESSED_pair_SIMULATED": 1308.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482914846",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1317.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482914904",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 61.0,
+  "COMPRESSED_pair_SIMULATED": 1297.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482914962",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1317.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482915020",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 61.0,
+  "COMPRESSED_pair_SIMULATED": 1296.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482915078",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 61.0,
+  "COMPRESSED_pair_SIMULATED": 1281.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482915136",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1282.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482915194",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1264.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482915252",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1263.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482915310",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1244.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482915368",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1237.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482915426",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1241.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482915484",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 61.0,
+  "COMPRESSED_pair_SIMULATED": 1212.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482915542",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 61.0,
+  "COMPRESSED_pair_SIMULATED": 1188.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482915600",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 62.0,
+  "COMPRESSED_pair_SIMULATED": 1203.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482915601",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1627.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482915659",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1197.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482915660",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 63.0,
+  "COMPRESSED_pair_SIMULATED": 1610.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482915718",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1164.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482915719",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 63.0,
+  "COMPRESSED_pair_SIMULATED": 1423.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482915777",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1193.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482915778",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 63.0,
+  "COMPRESSED_pair_SIMULATED": 1511.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482915836",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 61.0,
+  "COMPRESSED_pair_SIMULATED": 1180.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482915837",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 62.0,
+  "COMPRESSED_pair_SIMULATED": 1472.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482915895",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 62.0,
+  "COMPRESSED_pair_SIMULATED": 1147.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482915896",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 61.0,
+  "COMPRESSED_pair_SIMULATED": 1349.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482915954",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 61.0,
+  "COMPRESSED_pair_SIMULATED": 1170.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482915955",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1387.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482916013",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1160.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482916014",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1375.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482916072",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1125.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482916073",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1293.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482916131",
+  "stereo": false,
+  "FULL_pair": 16177.9712,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1152.0
+ },
+ {
+  "acq_id": "MSL-NAV-0962-482916132",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1312.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482982697",
+  "stereo": true,
+  "FULL_pair": 141991.936,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11146.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482982735",
+  "stereo": true,
+  "FULL_pair": 144279.96159999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11989.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482982776",
+  "stereo": true,
+  "FULL_pair": 144307.97824,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12010.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482982810",
+  "stereo": true,
+  "FULL_pair": 144228.02432000003,
+  "THUMBNAIL_pair": 1019.0003200000001,
+  "COMPRESSED_pair_SIMULATED": 11888.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482983155",
+  "stereo": true,
+  "FULL_pair": 143004.0576,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 9616.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482983192",
+  "stereo": true,
+  "FULL_pair": 141080.00256,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 8894.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482983268",
+  "stereo": true,
+  "FULL_pair": 139803.93472,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 8378.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482983339",
+  "stereo": true,
+  "FULL_pair": 139527.94624000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 8483.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482983408",
+  "stereo": true,
+  "FULL_pair": 140375.98208,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 9330.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482983446",
+  "stereo": true,
+  "FULL_pair": 140360.00768,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 9331.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482983497",
+  "stereo": true,
+  "FULL_pair": 141068.04223999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 9873.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482983542",
+  "stereo": true,
+  "FULL_pair": 141279.96928000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10120.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482983614",
+  "stereo": true,
+  "FULL_pair": 143528.01792,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10850.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482983713",
+  "stereo": true,
+  "FULL_pair": 139675.97568,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 12337.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482983741",
+  "stereo": true,
+  "FULL_pair": 136032.01024,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 9923.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482983766",
+  "stereo": true,
+  "FULL_pair": 137740.04223999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10732.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482983848",
+  "stereo": true,
+  "FULL_pair": 146327.9616,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12408.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482983901",
+  "stereo": true,
+  "FULL_pair": 143767.96159999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11677.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482984020",
+  "stereo": true,
+  "FULL_pair": 136008.00767999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 9588.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482984048",
+  "stereo": true,
+  "FULL_pair": 142395.96544,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10997.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482984076",
+  "stereo": true,
+  "FULL_pair": 141104.00512,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 12001.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482984630",
+  "stereo": true,
+  "FULL_pair": 786395.29984,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 120186.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482984661",
+  "stereo": true,
+  "FULL_pair": 1048576.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 154745.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482984692",
+  "stereo": true,
+  "FULL_pair": 1048530.1248,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 135616.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482984716",
+  "stereo": true,
+  "FULL_pair": 1048576.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 125437.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482984740",
+  "stereo": true,
+  "FULL_pair": 1048541.92128,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 114614.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482984771",
+  "stereo": true,
+  "FULL_pair": 1048576.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 105995.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482984795",
+  "stereo": true,
+  "FULL_pair": 1048531.43552,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 105222.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482984819",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 111938.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482984843",
+  "stereo": true,
+  "FULL_pair": 786429.37856,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 93098.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482984867",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 80590.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482984905",
+  "stereo": true,
+  "FULL_pair": 786418.8928,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 68436.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482984988",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 86686.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482985046",
+  "stereo": true,
+  "FULL_pair": 524230.32832,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 167557.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482985070",
+  "stereo": true,
+  "FULL_pair": 524246.05695999996,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 178549.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482985095",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 188985.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482985126",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 177343.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482985165",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 111106.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482995824",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 3929.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482995857",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 3940.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482995890",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 509.000192,
+  "COMPRESSED_pair_SIMULATED": 3944.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482995923",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 3940.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482995956",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 3942.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482995989",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 3926.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482996022",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 3927.0
+ },
+ {
+  "acq_id": "MSL-NAV-0963-482996055",
+  "stereo": false,
+  "FULL_pair": 65265.888345,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 3919.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483074367",
+  "stereo": true,
+  "FULL_pair": 146488.03327999997,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13118.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483074433",
+  "stereo": true,
+  "FULL_pair": 145316.00384000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12919.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483074508",
+  "stereo": true,
+  "FULL_pair": 142143.97952,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11305.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483074588",
+  "stereo": true,
+  "FULL_pair": 146683.98592,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 12105.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483074666",
+  "stereo": true,
+  "FULL_pair": 147048.0384,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12002.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483074744",
+  "stereo": true,
+  "FULL_pair": 147067.94496,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11837.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483074820",
+  "stereo": true,
+  "FULL_pair": 147947.9296,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12343.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483074897",
+  "stereo": true,
+  "FULL_pair": 147923.92704,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12356.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483074975",
+  "stereo": true,
+  "FULL_pair": 147715.93216,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12448.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483075057",
+  "stereo": true,
+  "FULL_pair": 148208.0256,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12223.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483075122",
+  "stereo": true,
+  "FULL_pair": 148471.97184,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12506.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483075171",
+  "stereo": true,
+  "FULL_pair": 147620.00384000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12189.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483075221",
+  "stereo": true,
+  "FULL_pair": 147628.032,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12293.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483075270",
+  "stereo": true,
+  "FULL_pair": 146159.94368,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11774.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483075350",
+  "stereo": true,
+  "FULL_pair": 146523.99615999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11944.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483075420",
+  "stereo": true,
+  "FULL_pair": 146631.96672,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11823.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483075491",
+  "stereo": true,
+  "FULL_pair": 147208.02816,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 11976.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483075563",
+  "stereo": true,
+  "FULL_pair": 148140.032,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12407.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483075635",
+  "stereo": true,
+  "FULL_pair": 147567.98463999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12446.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483075708",
+  "stereo": true,
+  "FULL_pair": 147411.92703999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12508.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483075779",
+  "stereo": true,
+  "FULL_pair": 148347.94496,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 12717.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483075854",
+  "stereo": true,
+  "FULL_pair": 148228.01408,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 12796.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483075929",
+  "stereo": true,
+  "FULL_pair": 148147.97824000003,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 12866.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483075997",
+  "stereo": true,
+  "FULL_pair": 147332.05504,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 12796.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483076065",
+  "stereo": true,
+  "FULL_pair": 145712.00512,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 12467.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483076135",
+  "stereo": true,
+  "FULL_pair": 143712.01024,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12020.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483076205",
+  "stereo": true,
+  "FULL_pair": 144731.99615999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12374.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483076277",
+  "stereo": true,
+  "FULL_pair": 148147.97824,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13359.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483076346",
+  "stereo": true,
+  "FULL_pair": 150220.06272,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14179.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483076416",
+  "stereo": true,
+  "FULL_pair": 149819.96544,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14011.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483076492",
+  "stereo": true,
+  "FULL_pair": 148884.02944,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13769.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483076563",
+  "stereo": true,
+  "FULL_pair": 147727.9744,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13667.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483076642",
+  "stereo": true,
+  "FULL_pair": 149267.98848,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13748.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483076687",
+  "stereo": true,
+  "FULL_pair": 148832.01024,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 13516.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483076760",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 226030.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483076792",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 224204.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483076858",
+  "stereo": true,
+  "FULL_pair": 150899.99871999997,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14105.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483076932",
+  "stereo": true,
+  "FULL_pair": 150112.01024,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13622.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483077005",
+  "stereo": true,
+  "FULL_pair": 150099.968,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13744.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483077078",
+  "stereo": true,
+  "FULL_pair": 148943.99488,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13049.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483077140",
+  "stereo": true,
+  "FULL_pair": 149440.02048,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13144.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483077225",
+  "stereo": true,
+  "FULL_pair": 147395.95264,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12401.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483077267",
+  "stereo": true,
+  "FULL_pair": 147235.96288,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12311.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483083182",
+  "stereo": false,
+  "FULL_pair": 530655.47776,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 19276.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483083466",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 136791.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483083498",
+  "stereo": true,
+  "FULL_pair": 1048576.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 136037.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483083529",
+  "stereo": true,
+  "FULL_pair": 1048576.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 113345.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483083560",
+  "stereo": true,
+  "FULL_pair": 1048576.0,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 105894.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483083591",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 117336.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483083920",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 257350.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483083944",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 244447.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483083969",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 220272.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483083994",
+  "stereo": true,
+  "FULL_pair": 524268.3392,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 197022.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483084034",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 120648.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483084075",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 115314.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483084106",
+  "stereo": true,
+  "FULL_pair": 786397.92128,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 128974.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483084130",
+  "stereo": true,
+  "FULL_pair": 786404.47488,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 138509.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483084161",
+  "stereo": true,
+  "FULL_pair": 786420.20352,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 127091.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483084199",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 77436.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483084282",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 94037.0
+ },
+ {
+  "acq_id": "MSL-NAV-0964-483084313",
+  "stereo": true,
+  "FULL_pair": 786400.54272,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 101357.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483263598",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 3933.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483263631",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 3930.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483263664",
+  "stereo": false,
+  "FULL_pair": 65271.110765,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 3927.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483263697",
+  "stereo": false,
+  "FULL_pair": 65276.00678375,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 3932.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483263730",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 3932.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483263763",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 3934.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483263796",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 3931.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483263829",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 3928.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483270142",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 61.0,
+  "COMPRESSED_pair_SIMULATED": 1234.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483270201",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1198.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483270259",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 63.0,
+  "COMPRESSED_pair_SIMULATED": 1213.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483270317",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1215.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483270375",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1194.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483270433",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1197.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483270491",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 61.0,
+  "COMPRESSED_pair_SIMULATED": 1181.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483270549",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 62.0,
+  "COMPRESSED_pair_SIMULATED": 1179.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483270607",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1181.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483270665",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1172.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483270723",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1167.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483270781",
+  "stereo": false,
+  "FULL_pair": 16369.00864,
+  "THUMBNAIL_pair": 61.0,
+  "COMPRESSED_pair_SIMULATED": 1159.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483270839",
+  "stereo": false,
+  "FULL_pair": 16167.97696,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1143.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483270897",
+  "stereo": false,
+  "FULL_pair": 16107.02848,
+  "THUMBNAIL_pair": 62.0,
+  "COMPRESSED_pair_SIMULATED": 1137.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483270955",
+  "stereo": false,
+  "FULL_pair": 15857.99168,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1133.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483271013",
+  "stereo": false,
+  "FULL_pair": 15593.96352,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1119.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483271071",
+  "stereo": false,
+  "FULL_pair": 15244.98432,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1118.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483271129",
+  "stereo": false,
+  "FULL_pair": 15210.00448,
+  "THUMBNAIL_pair": 62.0,
+  "COMPRESSED_pair_SIMULATED": 1116.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483271187",
+  "stereo": false,
+  "FULL_pair": 15032.97536,
+  "THUMBNAIL_pair": 62.0,
+  "COMPRESSED_pair_SIMULATED": 1108.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483271245",
+  "stereo": false,
+  "FULL_pair": 14967.02976,
+  "THUMBNAIL_pair": 62.0,
+  "COMPRESSED_pair_SIMULATED": 1108.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483271303",
+  "stereo": false,
+  "FULL_pair": 14881.01376,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1109.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483271304",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 62.0,
+  "COMPRESSED_pair_SIMULATED": 1175.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483271362",
+  "stereo": false,
+  "FULL_pair": 14800.97792,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1100.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483271363",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 61.0,
+  "COMPRESSED_pair_SIMULATED": 1140.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483271421",
+  "stereo": false,
+  "FULL_pair": 14660.97664,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1099.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483271422",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 61.0,
+  "COMPRESSED_pair_SIMULATED": 1136.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483271480",
+  "stereo": false,
+  "FULL_pair": 14566.03136,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1099.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483271481",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1137.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483271539",
+  "stereo": false,
+  "FULL_pair": 14455.02976,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1099.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483271540",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1125.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483271598",
+  "stereo": false,
+  "FULL_pair": 14228.02944,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1099.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483271599",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 62.0,
+  "COMPRESSED_pair_SIMULATED": 1122.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483271657",
+  "stereo": false,
+  "FULL_pair": 14047.96928,
+  "THUMBNAIL_pair": 62.0,
+  "COMPRESSED_pair_SIMULATED": 1099.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483271658",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1127.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483271716",
+  "stereo": false,
+  "FULL_pair": 13987.0208,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1099.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483271717",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1120.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483271775",
+  "stereo": false,
+  "FULL_pair": 13857.01376,
+  "THUMBNAIL_pair": 61.0,
+  "COMPRESSED_pair_SIMULATED": 1099.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483271776",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1115.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483271834",
+  "stereo": false,
+  "FULL_pair": 13673.02144,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1099.0
+ },
+ {
+  "acq_id": "MSL-NAV-0966-483271835",
+  "stereo": false,
+  "FULL_pair": 16384.0,
+  "THUMBNAIL_pair": 64.0,
+  "COMPRESSED_pair_SIMULATED": 1106.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483332357",
+  "stereo": true,
+  "FULL_pair": 53215.975006249995,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 4269.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483332396",
+  "stereo": true,
+  "FULL_pair": 150707.97824000003,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13321.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483332441",
+  "stereo": true,
+  "FULL_pair": 54011.976515,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 4366.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483332529",
+  "stereo": true,
+  "FULL_pair": 146895.99488,
+  "THUMBNAIL_pair": 1019.0003200000001,
+  "COMPRESSED_pair_SIMULATED": 12069.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483332661",
+  "stereo": true,
+  "FULL_pair": 150983.96672000003,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13417.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483332773",
+  "stereo": true,
+  "FULL_pair": 154311.96672000003,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14493.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483332848",
+  "stereo": true,
+  "FULL_pair": 54059.995167500005,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 4362.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483332919",
+  "stereo": true,
+  "FULL_pair": 152328.02816,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13699.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483332967",
+  "stereo": true,
+  "FULL_pair": 150811.93472,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13133.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483333041",
+  "stereo": true,
+  "FULL_pair": 149672.01792,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12678.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483333112",
+  "stereo": true,
+  "FULL_pair": 151368.00767999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13320.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483333183",
+  "stereo": true,
+  "FULL_pair": 151543.97184,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14021.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483333257",
+  "stereo": true,
+  "FULL_pair": 152020.00896,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14786.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483333332",
+  "stereo": true,
+  "FULL_pair": 151864.03328,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14682.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483333402",
+  "stereo": true,
+  "FULL_pair": 152291.98336,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14474.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483333479",
+  "stereo": true,
+  "FULL_pair": 54016.026671249994,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 4397.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483333555",
+  "stereo": true,
+  "FULL_pair": 152076.04224,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14240.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483333627",
+  "stereo": true,
+  "FULL_pair": 151503.99488,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14023.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483333700",
+  "stereo": true,
+  "FULL_pair": 150600.00768,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13817.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483333773",
+  "stereo": true,
+  "FULL_pair": 150035.98848,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13684.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483333846",
+  "stereo": true,
+  "FULL_pair": 149747.95776,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13780.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483333918",
+  "stereo": true,
+  "FULL_pair": 150147.97311999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13977.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483333997",
+  "stereo": true,
+  "FULL_pair": 54044.021351250005,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 4359.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483334074",
+  "stereo": true,
+  "FULL_pair": 149455.99488,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13284.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483334149",
+  "stereo": true,
+  "FULL_pair": 148939.98080000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13415.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483334222",
+  "stereo": true,
+  "FULL_pair": 148232.02816,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13139.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483334296",
+  "stereo": true,
+  "FULL_pair": 148392.01792,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13019.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483334382",
+  "stereo": true,
+  "FULL_pair": 147495.97696,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12052.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483334435",
+  "stereo": true,
+  "FULL_pair": 147832.0128,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11815.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483334501",
+  "stereo": true,
+  "FULL_pair": 149179.92448,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12828.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483334557",
+  "stereo": true,
+  "FULL_pair": 150584.03327999997,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13564.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483334611",
+  "stereo": true,
+  "FULL_pair": 152368.00512,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14547.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483334695",
+  "stereo": true,
+  "FULL_pair": 151700.02944,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13955.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483334781",
+  "stereo": true,
+  "FULL_pair": 54431.99391875,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 4611.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483334864",
+  "stereo": true,
+  "FULL_pair": 149775.9744,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12964.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483334935",
+  "stereo": true,
+  "FULL_pair": 149904.01536000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13088.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483335009",
+  "stereo": true,
+  "FULL_pair": 149760.0,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 13315.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483335082",
+  "stereo": true,
+  "FULL_pair": 150284.04223999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13468.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483335156",
+  "stereo": true,
+  "FULL_pair": 150287.9744,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 13465.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483335229",
+  "stereo": true,
+  "FULL_pair": 149363.99872,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13163.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483335292",
+  "stereo": true,
+  "FULL_pair": 140247.94112,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 8737.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483335328",
+  "stereo": true,
+  "FULL_pair": 139204.03456,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 8303.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483335383",
+  "stereo": true,
+  "FULL_pair": 144555.95007999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10383.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483335431",
+  "stereo": true,
+  "FULL_pair": 145420.04224,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10979.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483335484",
+  "stereo": true,
+  "FULL_pair": 145243.99615999998,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 10853.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483335543",
+  "stereo": true,
+  "FULL_pair": 53928.02487625,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 4465.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483335608",
+  "stereo": true,
+  "FULL_pair": 143388.01664,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10646.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483335678",
+  "stereo": true,
+  "FULL_pair": 143804.0064,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11027.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483335748",
+  "stereo": true,
+  "FULL_pair": 144403.98848,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11499.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483335820",
+  "stereo": true,
+  "FULL_pair": 144272.01536,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11950.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483335891",
+  "stereo": true,
+  "FULL_pair": 145343.93855999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12146.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483335973",
+  "stereo": true,
+  "FULL_pair": 143403.99104,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11356.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483336020",
+  "stereo": true,
+  "FULL_pair": 145427.98848,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12010.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483336150",
+  "stereo": true,
+  "FULL_pair": 141147.99615999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11029.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483336184",
+  "stereo": true,
+  "FULL_pair": 53735.98266750001,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 4379.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483336243",
+  "stereo": true,
+  "FULL_pair": 141700.05504,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10999.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483336434",
+  "stereo": true,
+  "FULL_pair": 53607.99773,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 4350.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483336575",
+  "stereo": true,
+  "FULL_pair": 53583.98840375,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 4322.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483336651",
+  "stereo": true,
+  "FULL_pair": 53591.9915125,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 4366.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483336734",
+  "stereo": true,
+  "FULL_pair": 53656.016382500005,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 4433.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483336921",
+  "stereo": true,
+  "FULL_pair": 53651.9986275,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 4387.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483337071",
+  "stereo": true,
+  "FULL_pair": 145332.06016,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10410.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483337112",
+  "stereo": true,
+  "FULL_pair": 54244.00186625,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 4527.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483337173",
+  "stereo": true,
+  "FULL_pair": 144316.0064,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10156.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483337358",
+  "stereo": true,
+  "FULL_pair": 54612.01526375,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 4681.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483337375",
+  "stereo": true,
+  "FULL_pair": 53864.000006250004,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 4485.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483337473",
+  "stereo": true,
+  "FULL_pair": 53887.97693125,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 4466.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483337665",
+  "stereo": true,
+  "FULL_pair": 53607.99773,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 4399.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483337754",
+  "stereo": true,
+  "FULL_pair": 53344.024746250005,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 4273.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483337836",
+  "stereo": true,
+  "FULL_pair": 53255.99055,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 4270.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483337917",
+  "stereo": true,
+  "FULL_pair": 53236.03138,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 4287.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483337929",
+  "stereo": true,
+  "FULL_pair": 53240.01673375,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 4312.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483337979",
+  "stereo": true,
+  "FULL_pair": 53107.98164,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 4256.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483338010",
+  "stereo": true,
+  "FULL_pair": 152279.94112,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13986.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483338041",
+  "stereo": true,
+  "FULL_pair": 150120.03840000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13168.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483338106",
+  "stereo": true,
+  "FULL_pair": 149344.01023999997,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12689.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483338186",
+  "stereo": true,
+  "FULL_pair": 151368.00767999998,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 13468.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483338260",
+  "stereo": true,
+  "FULL_pair": 153244.0576,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14435.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483338332",
+  "stereo": true,
+  "FULL_pair": 53267.9790125,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 4189.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483338402",
+  "stereo": true,
+  "FULL_pair": 149796.0448,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 13341.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483338477",
+  "stereo": true,
+  "FULL_pair": 150764.01152,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13844.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483338548",
+  "stereo": true,
+  "FULL_pair": 52676.008175,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 4067.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483338618",
+  "stereo": true,
+  "FULL_pair": 152331.96032,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14337.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483338691",
+  "stereo": true,
+  "FULL_pair": 152832.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14816.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483338764",
+  "stereo": true,
+  "FULL_pair": 52463.974395,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 4124.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483338833",
+  "stereo": true,
+  "FULL_pair": 151759.99488,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14784.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483338903",
+  "stereo": true,
+  "FULL_pair": 150604.02176,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14495.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483338978",
+  "stereo": true,
+  "FULL_pair": 52156.00051375,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 4016.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483338990",
+  "stereo": true,
+  "FULL_pair": 51999.988495,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 3975.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483339066",
+  "stereo": true,
+  "FULL_pair": 149291.99104,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 13897.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483339126",
+  "stereo": true,
+  "FULL_pair": 149092.02432000003,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13654.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483339203",
+  "stereo": true,
+  "FULL_pair": 52260.00852624999,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 4201.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483339232",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 168530.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483339256",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 155458.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483339324",
+  "stereo": true,
+  "FULL_pair": 148175.99488,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13339.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483339414",
+  "stereo": true,
+  "FULL_pair": 52339.97481125,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 4298.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483339487",
+  "stereo": true,
+  "FULL_pair": 143604.03968,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12746.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483339559",
+  "stereo": true,
+  "FULL_pair": 52268.011634999995,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 4345.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483339630",
+  "stereo": true,
+  "FULL_pair": 142204.02688,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12962.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483339705",
+  "stereo": true,
+  "FULL_pair": 52099.9787525,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 4428.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483339780",
+  "stereo": true,
+  "FULL_pair": 143055.99488,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 13618.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483339854",
+  "stereo": true,
+  "FULL_pair": 51679.99375,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 4362.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483339865",
+  "stereo": true,
+  "FULL_pair": 51059.995831249995,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 4204.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483339938",
+  "stereo": true,
+  "FULL_pair": 144108.01152,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14014.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483340013",
+  "stereo": true,
+  "FULL_pair": 51423.99147374999,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 4463.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483340062",
+  "stereo": true,
+  "FULL_pair": 143956.04992000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13918.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483340141",
+  "stereo": true,
+  "FULL_pair": 51347.97814125,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 4488.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483340329",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 164851.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483340361",
+  "stereo": true,
+  "FULL_pair": 1048576.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 142154.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483340393",
+  "stereo": true,
+  "FULL_pair": 1048576.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 98783.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483340418",
+  "stereo": true,
+  "FULL_pair": 1048576.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 113240.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483340450",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 139848.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483345734",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 146296.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483345759",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 162289.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483345790",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 151790.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483345822",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 139726.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483345861",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 100596.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483345922",
+  "stereo": true,
+  "FULL_pair": 262144.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 50086.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483345952",
+  "stereo": true,
+  "FULL_pair": 262144.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 37736.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483345982",
+  "stereo": true,
+  "FULL_pair": 262144.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 29725.0
+ },
+ {
+  "acq_id": "MSL-NAV-0967-483346012",
+  "stereo": true,
+  "FULL_pair": 262144.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 28614.0
+ },
+ {
+  "acq_id": "MSL-NAV-0968-483426104",
+  "stereo": false,
+  "FULL_pair": 262144.0,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 9984.0
+ },
+ {
+  "acq_id": "MSL-NAV-0968-483426176",
+  "stereo": false,
+  "FULL_pair": 262144.0,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 10126.0
+ },
+ {
+  "acq_id": "MSL-NAV-0968-483426249",
+  "stereo": false,
+  "FULL_pair": 262140.7232,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 10130.0
+ },
+ {
+  "acq_id": "MSL-NAV-0968-483426322",
+  "stereo": false,
+  "FULL_pair": 262130.8928,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 10145.0
+ },
+ {
+  "acq_id": "MSL-NAV-0968-483427044",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4165.0
+ },
+ {
+  "acq_id": "MSL-NAV-0968-483427082",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4152.0
+ },
+ {
+  "acq_id": "MSL-NAV-0968-483427120",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4148.0
+ },
+ {
+  "acq_id": "MSL-NAV-0968-483427158",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4143.0
+ },
+ {
+  "acq_id": "MSL-NAV-0968-483427196",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4157.0
+ },
+ {
+  "acq_id": "MSL-NAV-0968-483427234",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4144.0
+ },
+ {
+  "acq_id": "MSL-NAV-0968-483427272",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4132.0
+ },
+ {
+  "acq_id": "MSL-NAV-0968-483427310",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4144.0
+ },
+ {
+  "acq_id": "MSL-NAV-0971-483694931",
+  "stereo": true,
+  "FULL_pair": 122015.98976,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 8338.0
+ },
+ {
+  "acq_id": "MSL-NAV-0971-483695002",
+  "stereo": true,
+  "FULL_pair": 125083.97568,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 9099.0
+ },
+ {
+  "acq_id": "MSL-NAV-0971-483695053",
+  "stereo": true,
+  "FULL_pair": 125415.99744,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 9294.0
+ },
+ {
+  "acq_id": "MSL-NAV-0971-483695126",
+  "stereo": true,
+  "FULL_pair": 124884.00896,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 9284.0
+ },
+ {
+  "acq_id": "MSL-NAV-0971-483695195",
+  "stereo": true,
+  "FULL_pair": 1048576.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 109975.0
+ },
+ {
+  "acq_id": "MSL-NAV-0971-483695226",
+  "stereo": true,
+  "FULL_pair": 1048576.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 79148.0
+ },
+ {
+  "acq_id": "MSL-NAV-0971-483695301",
+  "stereo": true,
+  "FULL_pair": 124139.9296,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 9207.0
+ },
+ {
+  "acq_id": "MSL-NAV-0971-483695380",
+  "stereo": true,
+  "FULL_pair": 120204.00128,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 8285.0
+ },
+ {
+  "acq_id": "MSL-NAV-0971-483695460",
+  "stereo": true,
+  "FULL_pair": 118968.07424,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 8022.0
+ },
+ {
+  "acq_id": "MSL-NAV-0971-483695524",
+  "stereo": true,
+  "FULL_pair": 118743.94112,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 7961.0
+ },
+ {
+  "acq_id": "MSL-NAV-0971-483695614",
+  "stereo": true,
+  "FULL_pair": 118180.00384,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 7778.0
+ },
+ {
+  "acq_id": "MSL-NAV-0971-483695679",
+  "stereo": true,
+  "FULL_pair": 119044.01408,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 7925.0
+ },
+ {
+  "acq_id": "MSL-NAV-0971-483695735",
+  "stereo": true,
+  "FULL_pair": 120648.00768000001,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 8234.0
+ },
+ {
+  "acq_id": "MSL-NAV-0971-483695824",
+  "stereo": true,
+  "FULL_pair": 119296.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 7964.0
+ },
+ {
+  "acq_id": "MSL-NAV-0971-483696029",
+  "stereo": true,
+  "FULL_pair": 1048576.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 105919.0
+ },
+ {
+  "acq_id": "MSL-NAV-0971-483696060",
+  "stereo": true,
+  "FULL_pair": 1048569.4464,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 111874.0
+ },
+ {
+  "acq_id": "MSL-NAV-0971-483696452",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 73729.0
+ },
+ {
+  "acq_id": "MSL-NAV-0971-483696536",
+  "stereo": true,
+  "FULL_pair": 1048576.0,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 78502.0
+ },
+ {
+  "acq_id": "MSL-NAV-0971-483696567",
+  "stereo": true,
+  "FULL_pair": 1048576.0,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 85409.0
+ },
+ {
+  "acq_id": "MSL-NAV-0971-483696598",
+  "stereo": true,
+  "FULL_pair": 1048576.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 107956.0
+ },
+ {
+  "acq_id": "MSL-NAV-0971-483696629",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 143305.0
+ },
+ {
+  "acq_id": "MSL-NAV-0971-483696673",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 105804.0
+ },
+ {
+  "acq_id": "MSL-NAV-0971-483696705",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1019.0003200000001,
+  "COMPRESSED_pair_SIMULATED": 94204.0
+ },
+ {
+  "acq_id": "MSL-NAV-0971-483696737",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 79558.0
+ },
+ {
+  "acq_id": "MSL-NAV-0971-483696769",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 87916.0
+ },
+ {
+  "acq_id": "MSL-NAV-0971-483696808",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 72235.0
+ },
+ {
+  "acq_id": "MSL-NAV-0971-483696867",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 132713.0
+ },
+ {
+  "acq_id": "MSL-NAV-0971-483696899",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 126868.0
+ },
+ {
+  "acq_id": "MSL-NAV-0971-483696930",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 117692.0
+ },
+ {
+  "acq_id": "MSL-NAV-0971-483696962",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 115470.0
+ },
+ {
+  "acq_id": "MSL-NAV-0971-483696994",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 93226.0
+ },
+ {
+  "acq_id": "MSL-NAV-0971-483697018",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 91316.0
+ },
+ {
+  "acq_id": "MSL-NAV-0971-483697042",
+  "stereo": true,
+  "FULL_pair": 786391.36768,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 90992.0
+ },
+ {
+  "acq_id": "MSL-NAV-0971-483697103",
+  "stereo": true,
+  "FULL_pair": 262144.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 48089.0
+ },
+ {
+  "acq_id": "MSL-NAV-0971-483697133",
+  "stereo": true,
+  "FULL_pair": 262144.0,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 46393.0
+ },
+ {
+  "acq_id": "MSL-NAV-0971-483697164",
+  "stereo": true,
+  "FULL_pair": 262144.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 35603.0
+ },
+ {
+  "acq_id": "MSL-NAV-0971-483697194",
+  "stereo": true,
+  "FULL_pair": 262130.8928,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 32094.0
+ },
+ {
+  "acq_id": "MSL-NAV-0972-483796161",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 3962.0
+ },
+ {
+  "acq_id": "MSL-NAV-0972-483796193",
+  "stereo": false,
+  "FULL_pair": 65263.929937500005,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 3968.0
+ },
+ {
+  "acq_id": "MSL-NAV-0972-483796226",
+  "stereo": false,
+  "FULL_pair": 65274.04837625,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 3957.0
+ },
+ {
+  "acq_id": "MSL-NAV-0972-483796259",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 3963.0
+ },
+ {
+  "acq_id": "MSL-NAV-0972-483796292",
+  "stereo": false,
+  "FULL_pair": 65277.96519125,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 3962.0
+ },
+ {
+  "acq_id": "MSL-NAV-0972-483796325",
+  "stereo": false,
+  "FULL_pair": 65271.110765,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 3969.0
+ },
+ {
+  "acq_id": "MSL-NAV-0972-483796358",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 3962.0
+ },
+ {
+  "acq_id": "MSL-NAV-0972-483796391",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 3960.0
+ },
+ {
+  "acq_id": "MSL-NAV-0973-483879019",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 509.000192,
+  "COMPRESSED_pair_SIMULATED": 3996.0
+ },
+ {
+  "acq_id": "MSL-NAV-0973-483879057",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4008.0
+ },
+ {
+  "acq_id": "MSL-NAV-0973-483879095",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4008.0
+ },
+ {
+  "acq_id": "MSL-NAV-0973-483879133",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4016.0
+ },
+ {
+  "acq_id": "MSL-NAV-0973-483879171",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4024.0
+ },
+ {
+  "acq_id": "MSL-NAV-0973-483879209",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4021.0
+ },
+ {
+  "acq_id": "MSL-NAV-0973-483879247",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4012.0
+ },
+ {
+  "acq_id": "MSL-NAV-0973-483879285",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4007.0
+ },
+ {
+  "acq_id": "MSL-NAV-0973-483879352",
+  "stereo": false,
+  "FULL_pair": 262144.0,
+  "THUMBNAIL_pair": 509.000192,
+  "COMPRESSED_pair_SIMULATED": 9871.0
+ },
+ {
+  "acq_id": "MSL-NAV-0973-483879424",
+  "stereo": false,
+  "FULL_pair": 262144.0,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 9904.0
+ },
+ {
+  "acq_id": "MSL-NAV-0973-483879497",
+  "stereo": false,
+  "FULL_pair": 262144.0,
+  "THUMBNAIL_pair": 509.000192,
+  "COMPRESSED_pair_SIMULATED": 9875.0
+ },
+ {
+  "acq_id": "MSL-NAV-0973-483879570",
+  "stereo": false,
+  "FULL_pair": 262144.0,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 9872.0
+ },
+ {
+  "acq_id": "MSL-NAV-0974-483955373",
+  "stereo": true,
+  "FULL_pair": 524247.36768,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 125254.0
+ },
+ {
+  "acq_id": "MSL-NAV-0974-483955685",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 127198.0
+ },
+ {
+  "acq_id": "MSL-NAV-0975-484059426",
+  "stereo": true,
+  "FULL_pair": 524278.82496,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 115429.0
+ },
+ {
+  "acq_id": "MSL-NAV-0975-484061303",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 114432.0
+ },
+ {
+  "acq_id": "MSL-NAV-0975-484061592",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 111042.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484135358",
+  "stereo": true,
+  "FULL_pair": 123175.97696,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 7778.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484135399",
+  "stereo": true,
+  "FULL_pair": 122395.93471999999,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 7719.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484135465",
+  "stereo": true,
+  "FULL_pair": 118676.02944,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 7899.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484135528",
+  "stereo": true,
+  "FULL_pair": 123071.93856,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 9313.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484135584",
+  "stereo": true,
+  "FULL_pair": 123035.97568,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 9482.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484135645",
+  "stereo": true,
+  "FULL_pair": 125348.00384,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10208.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484135732",
+  "stereo": true,
+  "FULL_pair": 130988.032,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12305.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484135813",
+  "stereo": true,
+  "FULL_pair": 135132.03712,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13812.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484135888",
+  "stereo": true,
+  "FULL_pair": 137268.01919999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13696.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484135964",
+  "stereo": true,
+  "FULL_pair": 136391.96672,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12352.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484136041",
+  "stereo": true,
+  "FULL_pair": 137467.98592,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11608.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484136120",
+  "stereo": true,
+  "FULL_pair": 140872.00767999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12296.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484136195",
+  "stereo": true,
+  "FULL_pair": 144784.01536000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13734.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484136271",
+  "stereo": true,
+  "FULL_pair": 144268.00128,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13710.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484136358",
+  "stereo": true,
+  "FULL_pair": 147648.02048,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14672.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484136434",
+  "stereo": true,
+  "FULL_pair": 149011.98848,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 14961.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484136510",
+  "stereo": true,
+  "FULL_pair": 151723.95007999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 15662.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484136593",
+  "stereo": true,
+  "FULL_pair": 153000.01792,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 15969.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484136667",
+  "stereo": true,
+  "FULL_pair": 153232.01536,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 15663.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484136741",
+  "stereo": true,
+  "FULL_pair": 155175.97696,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 16049.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484136816",
+  "stereo": true,
+  "FULL_pair": 157524.04992000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 16657.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484136892",
+  "stereo": true,
+  "FULL_pair": 159304.00767999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 17250.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484136976",
+  "stereo": true,
+  "FULL_pair": 158468.01408,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 17260.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484137090",
+  "stereo": true,
+  "FULL_pair": 159435.98080000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 17715.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484137147",
+  "stereo": true,
+  "FULL_pair": 161024.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 18507.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484137233",
+  "stereo": true,
+  "FULL_pair": 163540.00896,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 19495.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484137331",
+  "stereo": true,
+  "FULL_pair": 162728.01792,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 19381.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484137401",
+  "stereo": true,
+  "FULL_pair": 160396.00128000003,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 18626.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484137472",
+  "stereo": true,
+  "FULL_pair": 159615.95904,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 18356.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484137546",
+  "stereo": true,
+  "FULL_pair": 160151.96159999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 18935.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484137620",
+  "stereo": true,
+  "FULL_pair": 161067.99104,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 19342.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484137694",
+  "stereo": true,
+  "FULL_pair": 160903.9872,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 19408.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484137773",
+  "stereo": true,
+  "FULL_pair": 160916.02944,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 19541.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484137855",
+  "stereo": true,
+  "FULL_pair": 159872.04096,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 19161.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484137926",
+  "stereo": true,
+  "FULL_pair": 159475.95776,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 19229.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484137998",
+  "stereo": true,
+  "FULL_pair": 156787.99872,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 18692.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484138069",
+  "stereo": true,
+  "FULL_pair": 155015.9872,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 18308.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484138147",
+  "stereo": true,
+  "FULL_pair": 155520.04096,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 18492.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484138218",
+  "stereo": true,
+  "FULL_pair": 153075.95776000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 17570.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484138293",
+  "stereo": true,
+  "FULL_pair": 145519.98463999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14902.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484138368",
+  "stereo": true,
+  "FULL_pair": 142108.01664,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13476.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484138442",
+  "stereo": true,
+  "FULL_pair": 140220.0064,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12241.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484138516",
+  "stereo": true,
+  "FULL_pair": 134756.02432,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 10804.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484138600",
+  "stereo": true,
+  "FULL_pair": 131179.97056,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10091.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484138654",
+  "stereo": true,
+  "FULL_pair": 131084.04224,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 10180.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484138727",
+  "stereo": true,
+  "FULL_pair": 132855.97184,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 10862.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484138783",
+  "stereo": true,
+  "FULL_pair": 142631.97696,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13867.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484138835",
+  "stereo": true,
+  "FULL_pair": 147843.97311999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 15398.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484138890",
+  "stereo": true,
+  "FULL_pair": 153543.96672,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 17230.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484138971",
+  "stereo": true,
+  "FULL_pair": 158223.9744,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 18857.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484139041",
+  "stereo": true,
+  "FULL_pair": 159560.00767999998,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 19446.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484139115",
+  "stereo": true,
+  "FULL_pair": 159112.06912,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 19381.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484139188",
+  "stereo": true,
+  "FULL_pair": 161384.03840000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 20435.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484139262",
+  "stereo": true,
+  "FULL_pair": 161083.96544,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 20303.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484139336",
+  "stereo": true,
+  "FULL_pair": 158783.97952,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 19414.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484139411",
+  "stereo": true,
+  "FULL_pair": 159572.04992000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 19815.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484139487",
+  "stereo": true,
+  "FULL_pair": 159971.98336,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 20021.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484139558",
+  "stereo": true,
+  "FULL_pair": 161407.95904,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 20567.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484139643",
+  "stereo": true,
+  "FULL_pair": 159768.00256,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 20018.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484139715",
+  "stereo": true,
+  "FULL_pair": 156823.9616,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 19005.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484139785",
+  "stereo": true,
+  "FULL_pair": 155619.98336,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 18398.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484139861",
+  "stereo": true,
+  "FULL_pair": 155796.02944,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 18728.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484139935",
+  "stereo": true,
+  "FULL_pair": 157727.9488,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 19560.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484140008",
+  "stereo": true,
+  "FULL_pair": 156944.05631999997,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 19248.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484140080",
+  "stereo": true,
+  "FULL_pair": 156440.00256,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 19058.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484140153",
+  "stereo": true,
+  "FULL_pair": 155332.03456,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 18555.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484140230",
+  "stereo": true,
+  "FULL_pair": 154335.96928000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 18090.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484140303",
+  "stereo": true,
+  "FULL_pair": 152088.00256,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 17049.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484140386",
+  "stereo": true,
+  "FULL_pair": 151411.99871999997,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 16532.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484140452",
+  "stereo": true,
+  "FULL_pair": 154715.99615999998,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 18144.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484140534",
+  "stereo": true,
+  "FULL_pair": 153956.02432,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 17168.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484140598",
+  "stereo": true,
+  "FULL_pair": 153459.99871999997,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 16608.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484140677",
+  "stereo": true,
+  "FULL_pair": 155744.01024,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 16628.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484140746",
+  "stereo": true,
+  "FULL_pair": 157911.94112,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 16570.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484140820",
+  "stereo": true,
+  "FULL_pair": 160003.93216,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 16763.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484140892",
+  "stereo": true,
+  "FULL_pair": 160367.98463999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 16492.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484140963",
+  "stereo": true,
+  "FULL_pair": 160671.98976,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 16690.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484141041",
+  "stereo": true,
+  "FULL_pair": 161587.93728,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 16855.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484141114",
+  "stereo": true,
+  "FULL_pair": 162076.01664,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 17109.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484141190",
+  "stereo": true,
+  "FULL_pair": 162432.04096,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 17426.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484141260",
+  "stereo": true,
+  "FULL_pair": 163720.06912,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 18014.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484141331",
+  "stereo": true,
+  "FULL_pair": 164011.70432,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 18380.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484141404",
+  "stereo": true,
+  "FULL_pair": 160383.95904,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 17527.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484141476",
+  "stereo": true,
+  "FULL_pair": 157571.97312,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 17502.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484141547",
+  "stereo": true,
+  "FULL_pair": 154523.97568,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 17590.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484141619",
+  "stereo": true,
+  "FULL_pair": 149008.05632,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 15953.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484141697",
+  "stereo": true,
+  "FULL_pair": 143760.01536,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 14788.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484141776",
+  "stereo": true,
+  "FULL_pair": 1048576.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 100639.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484141808",
+  "stereo": true,
+  "FULL_pair": 1048576.0,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 88427.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484141871",
+  "stereo": true,
+  "FULL_pair": 139975.96672,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13510.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484141951",
+  "stereo": true,
+  "FULL_pair": 135024.06656,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11792.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484142023",
+  "stereo": true,
+  "FULL_pair": 135268.02432,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11921.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484142102",
+  "stereo": true,
+  "FULL_pair": 131087.9744,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10824.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484142180",
+  "stereo": true,
+  "FULL_pair": 129892.02432,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 10376.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484142233",
+  "stereo": true,
+  "FULL_pair": 130352.00512,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 10483.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484146615",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 123083.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484146646",
+  "stereo": true,
+  "FULL_pair": 1048576.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 110402.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484146678",
+  "stereo": true,
+  "FULL_pair": 1048576.0,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 118867.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484146709",
+  "stereo": true,
+  "FULL_pair": 1048574.68928,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 131298.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484146734",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 147447.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484146921",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 84464.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484146953",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 86995.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484146985",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 103529.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484147017",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 125154.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484147056",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 120107.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484147090",
+  "stereo": true,
+  "FULL_pair": 786417.5820800001,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 157283.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484147121",
+  "stereo": true,
+  "FULL_pair": 786387.43552,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 105173.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484147152",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 102828.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484147236",
+  "stereo": true,
+  "FULL_pair": 786421.5142399999,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 89883.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484147267",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 96477.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484147298",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 114052.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484147329",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 119898.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484147365",
+  "stereo": true,
+  "FULL_pair": 313344.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 77008.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484147396",
+  "stereo": true,
+  "FULL_pair": 313344.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 67069.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484147427",
+  "stereo": true,
+  "FULL_pair": 313344.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 68182.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484147458",
+  "stereo": true,
+  "FULL_pair": 313344.0,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 69131.0
+ },
+ {
+  "acq_id": "MSL-NAV-0976-484147489",
+  "stereo": true,
+  "FULL_pair": 313318.14912,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 48546.0
+ },
+ {
+  "acq_id": "MSL-NAV-0977-484224414",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4238.0
+ },
+ {
+  "acq_id": "MSL-NAV-0977-484224452",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4191.0
+ },
+ {
+  "acq_id": "MSL-NAV-0977-484224490",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4182.0
+ },
+ {
+  "acq_id": "MSL-NAV-0977-484224528",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4169.0
+ },
+ {
+  "acq_id": "MSL-NAV-0977-484224566",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 510.000128,
+  "COMPRESSED_pair_SIMULATED": 4194.0
+ },
+ {
+  "acq_id": "MSL-NAV-0977-484224604",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4178.0
+ },
+ {
+  "acq_id": "MSL-NAV-0977-484224642",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 510.000128,
+  "COMPRESSED_pair_SIMULATED": 4176.0
+ },
+ {
+  "acq_id": "MSL-NAV-0977-484224680",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 4166.0
+ },
+ {
+  "acq_id": "MSL-NAV-0978-484313647",
+  "stereo": true,
+  "FULL_pair": 132456.03840000002,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11056.0
+ },
+ {
+  "acq_id": "MSL-NAV-0978-484313703",
+  "stereo": true,
+  "FULL_pair": 135323.97568,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11503.0
+ },
+ {
+  "acq_id": "MSL-NAV-0978-484313764",
+  "stereo": true,
+  "FULL_pair": 141392.03584,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 13131.0
+ },
+ {
+  "acq_id": "MSL-NAV-0978-484313882",
+  "stereo": true,
+  "FULL_pair": 137975.97184,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12088.0
+ },
+ {
+  "acq_id": "MSL-NAV-0978-484313979",
+  "stereo": true,
+  "FULL_pair": 134323.97824000003,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11391.0
+ },
+ {
+  "acq_id": "MSL-NAV-0978-484314070",
+  "stereo": true,
+  "FULL_pair": 134688.03071999998,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 11876.0
+ },
+ {
+  "acq_id": "MSL-NAV-0978-484314162",
+  "stereo": true,
+  "FULL_pair": 135032.0128,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 12347.0
+ },
+ {
+  "acq_id": "MSL-NAV-0978-484314415",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 132971.0
+ },
+ {
+  "acq_id": "MSL-NAV-0978-484314446",
+  "stereo": true,
+  "FULL_pair": 1048576.0,
+  "THUMBNAIL_pair": 1022.000128,
+  "COMPRESSED_pair_SIMULATED": 134684.0
+ },
+ {
+  "acq_id": "MSL-NAV-0978-484314478",
+  "stereo": true,
+  "FULL_pair": 1048576.0,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 138360.0
+ },
+ {
+  "acq_id": "MSL-NAV-0978-484314503",
+  "stereo": true,
+  "FULL_pair": 1048528.8140799999,
+  "THUMBNAIL_pair": 1021.000192,
+  "COMPRESSED_pair_SIMULATED": 141833.0
+ },
+ {
+  "acq_id": "MSL-NAV-0978-484314535",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 148792.0
+ },
+ {
+  "acq_id": "MSL-NAV-0978-484314566",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 86751.0
+ },
+ {
+  "acq_id": "MSL-NAV-0978-484314597",
+  "stereo": true,
+  "FULL_pair": 524243.43552,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 87613.0
+ },
+ {
+  "acq_id": "MSL-NAV-0978-484314629",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 76768.0
+ },
+ {
+  "acq_id": "MSL-NAV-0978-484314661",
+  "stereo": true,
+  "FULL_pair": 524248.6784,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 101046.0
+ },
+ {
+  "acq_id": "MSL-NAV-0978-484314700",
+  "stereo": true,
+  "FULL_pair": 524288.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 91826.0
+ },
+ {
+  "acq_id": "MSL-NAV-0978-484314739",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 152784.0
+ },
+ {
+  "acq_id": "MSL-NAV-0978-484314763",
+  "stereo": true,
+  "FULL_pair": 786430.68928,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 128652.0
+ },
+ {
+  "acq_id": "MSL-NAV-0978-484314794",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 111295.0
+ },
+ {
+  "acq_id": "MSL-NAV-0978-484314825",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 95562.0
+ },
+ {
+  "acq_id": "MSL-NAV-0978-484314909",
+  "stereo": true,
+  "FULL_pair": 786399.2320000001,
+  "THUMBNAIL_pair": 1023.0000640000001,
+  "COMPRESSED_pair_SIMULATED": 89835.0
+ },
+ {
+  "acq_id": "MSL-NAV-0978-484314940",
+  "stereo": true,
+  "FULL_pair": 786399.2320000001,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 92145.0
+ },
+ {
+  "acq_id": "MSL-NAV-0978-484314971",
+  "stereo": true,
+  "FULL_pair": 786432.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 105304.0
+ },
+ {
+  "acq_id": "MSL-NAV-0978-484315007",
+  "stereo": true,
+  "FULL_pair": 262144.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 60710.0
+ },
+ {
+  "acq_id": "MSL-NAV-0978-484315031",
+  "stereo": true,
+  "FULL_pair": 262144.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 54743.0
+ },
+ {
+  "acq_id": "MSL-NAV-0978-484315055",
+  "stereo": true,
+  "FULL_pair": 262144.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 55621.0
+ },
+ {
+  "acq_id": "MSL-NAV-0978-484315084",
+  "stereo": true,
+  "FULL_pair": 262144.0,
+  "THUMBNAIL_pair": 1024.0,
+  "COMPRESSED_pair_SIMULATED": 68080.0
+ },
+ {
+  "acq_id": "MSL-NAV-0979-484419352",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 511.000064,
+  "COMPRESSED_pair_SIMULATED": 3996.0
+ },
+ {
+  "acq_id": "MSL-NAV-0979-484419385",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 3994.0
+ },
+ {
+  "acq_id": "MSL-NAV-0979-484419418",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 3996.0
+ },
+ {
+  "acq_id": "MSL-NAV-0979-484419451",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 3992.0
+ },
+ {
+  "acq_id": "MSL-NAV-0979-484419484",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 3997.0
+ },
+ {
+  "acq_id": "MSL-NAV-0979-484419517",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 3995.0
+ },
+ {
+  "acq_id": "MSL-NAV-0979-484419550",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 3997.0
+ },
+ {
+  "acq_id": "MSL-NAV-0979-484419583",
+  "stereo": false,
+  "FULL_pair": 65279.92359875,
+  "THUMBNAIL_pair": 512.0,
+  "COMPRESSED_pair_SIMULATED": 3993.0
+ }
+]

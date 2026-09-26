@@ -1,0 +1,33 @@
+{
+ "listed": 4342,
+ "manifest_products": 4342,
+ "complete": true,
+ "problems": {},
+ "acquisition_grouping": {
+  "products": 4342,
+  "acquisitions": 1194,
+  "stereo_acquisitions": 977,
+  "mono_acquisitions": 217,
+  "primary_tier_counts": {
+   "D": 661,
+   "F": 262,
+   "S": 161,
+   "M": 110
+  },
+  "acquisitions_with_thumbnail": 1194,
+  "products_per_acquisition_mean": 3.6365159128978224
+ },
+ "stereo_pairs_without_both_eyes_same_tier": 0,
+ "tier_counts": {
+  "D": 1322,
+  "T": 2171,
+  "F": 522,
+  "S": 217,
+  "M": 110
+ },
+ "compression": {
+  "LOCO": 1399,
+  "ICER": 2943
+ },
+ "verdict": "PASS"
+}

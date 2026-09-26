@@ -1,0 +1,37 @@
+{
+ "run_id": "20260926T174018-phase3-final-test-e4e2",
+ "config_hash": "6f35d7fc205cdffe4a971974362cf77a5bbeb7a6ce518e8831b172292539b49e",
+ "primary": {
+  "claim": "Scheduler V3 + POSITION at 1/4 retention",
+  "binary": true,
+  "PASS_iff_all": {
+   "P0": "≥ 3 qualifying traverse sequences AND ≥ 90 % of traverse frames with a PLACES position (otherwise FAIL: the claim cannot be demonstrated)",
+   "P1": "bytes fraction ≤ 0.35 of SEND_ALL",
+   "P2": "mean 5 m coverage ≥ 0.90",
+   "P3": "largest distance from any archived frame to its nearest kept frame ≤ 10 m in every qualifying sequence",
+   "P4": "0 broken stereo pairs",
+   "P5": "Scheduler V3 monotonic and stereo-safe (see scheduler_v3.monotonicity)"
+  },
+  "not_in_criterion": "visual-change coverage (reported descriptively only)",
+  "no_rescue": "1/2 and 1/8 are context only; no other operating point, metric or method may replace a failed primary"
+ },
+ "secondary": {
+  "question": "Does POSITION + EMBEDDING_CHANGE provide ≥ 0.020 absolute visual-change gain over POSITION at 1/4 retention without reducing 5 m coverage by more than 0.01?",
+  "report": [
+   "visual-change gain",
+   "5 m coverage difference",
+   "largest-distance difference",
+   "95 % resampling intervals"
+  ],
+  "MEANINGFUL ADDED VALUE": "gain ≥ 0.020 AND 95 % lower bound > 0 AND coverage difference ≥ −0.01",
+  "HARMFUL": "coverage difference < −0.01, OR gain ≤ −0.020 with 95 % upper bound < 0",
+  "NO MEASURABLE ADDED VALUE": "otherwise",
+  "role": "does not affect the primary PASS/FAIL"
+ },
+ "seeds": {
+  "random_order": 0,
+  "bootstrap": 20260926
+ },
+ "written_before_metrics": true,
+ "created_at": "2026-09-26T17:40:18.496803+00:00"
+}
