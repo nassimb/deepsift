@@ -56,7 +56,7 @@ rover-position sampling at **1/4 traverse-frame retention**. Pre-registered crit
 
 | | |
 |---|---|
-| Demo | {{DEMO_URL}} (`/final-test`) |
+| Demo | https://deepsift.space (`/final-test`) |
 | GitHub | https://github.com/nassimb/deepsift |
 | Paper | `docs/deepsift-paper.md` · `artifacts/public/deepsift-v1-paper.pdf` |
-| Reproducibility | {{DEMO_URL}}/reproducibility · `scripts/release_integrity.py --verify` |
+| Reproducibility | https://deepsift.space/reproducibility · `scripts/release_integrity.py --verify` |

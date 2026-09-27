@@ -76,8 +76,8 @@ traverse-frame retention:
 
 | | |
 |---|---|
-| Demo | {{DEMO_URL}} (historical replay at `/final-test`) |
+| Demo | https://deepsift.space (historical replay at `/final-test`) |
 | Paper | `docs/deepsift-paper.md` · attach `artifacts/public/deepsift-v1-paper.pdf` |
 | One-pager | attach `artifacts/public/deepsift-one-pager.pdf` |
-| Reproducibility | {{DEMO_URL}}/reproducibility |
-| Limitations | {{DEMO_URL}}/limitations |
+| Reproducibility | https://deepsift.space/reproducibility |
+| Limitations | https://deepsift.space/limitations |

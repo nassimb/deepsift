@@ -58,4 +58,4 @@ archived frame to its nearest kept frame", chosen on development data only.
 - No flight hardware or power model.
 - Not affiliated with or validated by NASA/JPL.
 
-Code, paper, figures, replay and a 70-file hash manifest: https://github.com/nassimb/deepsift · {{DEMO_URL}}
+Code, paper, figures, replay and a 70-file hash manifest: https://github.com/nassimb/deepsift · https://deepsift.space

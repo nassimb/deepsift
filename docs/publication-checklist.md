@@ -10,13 +10,13 @@ Work through this in order. Nothing in the repository publishes or deploys autom
 - [x] Three run logs untracked (kept locally); `*.log` ignored
 - [x] History left unchanged (every commit and tag preserved); future commits use the GitHub noreply address (repo-local git config)
 - [x] Repo made public
-- [x] Repo URL inserted (`{{GITHUB_URL}}` → https://github.com/nassimb/deepsift in launch materials)
+- [x] Repo URL inserted (https://github.com/nassimb/deepsift)
 
 ## Site
 
-- [ ] Production site deployed (Vercel: root `apps/web`, `NEXT_PUBLIC_DEEPSIFT_PUBLIC_RELEASE=1`, `NEXT_PUBLIC_SITE_URL=<domain>`; see `docs/deployment.md`)
-- [ ] Demo URL inserted: replace `{{DEMO_URL}}`
-- [ ] All placeholders removed. `git grep -nE "\{\{[A-Z_]+\}\}"` returns only `{{NAME}}` / `{{SENDER}}` in `docs/outreach-note.md`, which are filled per e-mail
+- [x] Production site deployed: https://deepsift.space (Vercel: root `apps/web`, `NEXT_PUBLIC_DEEPSIFT_PUBLIC_RELEASE=1`, `NEXT_PUBLIC_SITE_URL=https://deepsift.space`)
+- [x] Demo URL inserted (https://deepsift.space)
+- [x] All link placeholders removed (only the per-e-mail NAME / SENDER fields remain in `docs/outreach-note.md`)
 - [ ] Replay loads: `/final-test` plays, SEND ALL/POSITION toggle works, 12 traverses selectable
 - [ ] Mobile homepage checked (390 px: no horizontal scroll)
 - [ ] Social preview checked (Open Graph and Twitter card show the held-out result image, absolute URLs)
@@ -37,15 +37,8 @@ Work through this in order. Nothing in the repository publishes or deploys autom
 - [ ] Video recorded (`docs/launch-video-shotlist.md`), no NASA logo, numbers re-checked
 - [ ] Outreach links checked (`docs/outreach-note.md`, launch posts): every link opens, no placeholder left
 
-## Placeholders to replace (at the time of writing)
+## Links (final)
 
-`{{GITHUB_URL}}` has been replaced everywhere with https://github.com/nassimb/deepsift. Remaining: `{{DEMO_URL}}`, until the site is deployed.
-
-| file | placeholders |
-|---|---|
-| `docs/deepsift-one-pager.md` (and its PDF: re-run `uvx --with markdown python scripts/build_public_pdfs.py`) | `{{DEMO_URL}}` ×2 |
-| `docs/launch-post-x.md` · `docs/launch-post-linkedin.md` · `docs/launch-post-hn.md` | `{{DEMO_URL}}` |
-| `docs/media-package.md` | `{{DEMO_URL}}` (in the instructions) |
-| `docs/outreach-note.md` | `{{DEMO_URL}}`, plus `{{NAME}}` / `{{SENDER}}` per e-mail |
-| `docs/release/github-release-notes-v1.md` | `{{DEMO_URL}}` ×3 |
-| `scripts/check_public_claims.py` → `docs/public-claims-checklist.md` | mentioned in the manual-check text |
+- Site: https://deepsift.space
+- Repository: https://github.com/nassimb/deepsift
+- No double-brace link placeholder remains. `docs/outreach-note.md` keeps only its per-e-mail NAME / SENDER fields.

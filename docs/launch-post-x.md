@@ -43,4 +43,4 @@ then full images, and never splits a stereo pair.
 Caveats. The PDS only holds what was actually downlinked, so this is retrospective re-prioritization, not the onboard
 stream. It is one rover and one camera. It is not flight software and not NASA-reviewed.
 
-Paper, replay and hashes: https://github.com/nassimb/deepsift · {{DEMO_URL}}
+Paper, replay and hashes: https://github.com/nassimb/deepsift · https://deepsift.space
