@@ -22,7 +22,10 @@ export function useReplayClock(start: number, end: number) {
       if (last.current != null) {
         const dt = (now - last.current) / 1000;
         setT((cur) => {
-          const nt = cur + (dt * speed) / SOL_SECONDS;
+          // start from the clamped time: the window can arrive after the clock was created (e.g. mission data loads
+          // after mount), so an out-of-window value must not be advanced from where it was
+          const base = cur < start || cur > end ? start : cur;
+          const nt = base + (dt * speed) / SOL_SECONDS;
           if (nt >= end) {
             setPlaying(false);
             return end;
@@ -35,7 +38,7 @@ export function useReplayClock(start: number, end: number) {
     };
     raf = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(raf);
-  }, [playing, speed, end]);
+  }, [playing, speed, start, end]);
 
   const step = useCallback((sols: number) => setT((cur) => Math.min(end, Math.max(start, cur + sols))), [start, end]);
   // the window can move (new blackout / new segment): clamp rather than reset in an effect
