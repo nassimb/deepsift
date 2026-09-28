@@ -3,7 +3,6 @@
 /* Public top navigation. The active page is read from the URL, so every page gets its underline without passing a prop. */
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { PUBLIC_RELEASE } from "@/lib/mode";
 
 export const PUBLIC_NAV: [string, string][] = [
   ["/mission-control", "Mission control"],
@@ -12,8 +11,9 @@ export const PUBLIC_NAV: [string, string][] = [
   ["/reproducibility", "Reproducibility"],
   ["/limitations", "Limitations"],
 ];
-/** The Phase 1–2 telemetry cockpit (/control) needs the local API and is listed only in local mode. */
-const LINKS: [string, string][] = [...PUBLIC_NAV, ...(PUBLIC_RELEASE ? [] : ([["/control", "Telemetry cockpit (local)"]] as [string, string][]))];
+/** Same menu locally and in production. The Phase 1–2 telemetry cockpit (/control) is not linked; it stays reachable
+ *  by URL in local mode (it needs the local FastAPI service). */
+const LINKS: [string, string][] = PUBLIC_NAV;
 
 export function NavLinks() {
   const path = usePathname();
