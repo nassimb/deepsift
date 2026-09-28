@@ -21,6 +21,9 @@ service and no local files. Every research number comes from the committed `apps
 |---|---|---|
 | `NEXT_PUBLIC_DEEPSIFT_PUBLIC_RELEASE` | `1` | Public release mode. The browser never contacts a pipeline API (no `localhost` requests), local research tools are hidden from navigation and show a "LOCAL RESEARCH TOOL" notice, and the homepage links to the static Phase 1–2 archive. |
 | `NEXT_PUBLIC_SITE_URL` | `https://<production domain>` | Absolute URLs for the Open Graph and Twitter preview images. |
+| `DATABASE_URL` | Neon 'Deepsift' pooled connection string (type: sensitive; production + preview) | Server-only. Used by `POST /api/subscribe` (footer updates sign-up → table `subscribers`). Without it the form returns a friendly 'not available yet' message. |
+
+The research pages never call it; only the footer form does, on submit.
 
 **Do not set** `OPENROUTER_API_KEY`, `TYPESAFE_API_KEY`, `ANTHROPIC_API_KEY` or `NEXT_PUBLIC_DEEPSIFT_API` on the
 public deployment. None is needed.

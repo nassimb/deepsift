@@ -7,6 +7,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { GITHUB_URL, NavLinks } from "@/components/release/Shell";
+import { SiteFooter } from "@/components/site/SiteFooter";
 import { FRAC_LABEL, FRACS, MC, RADIUS_M, decisionReason, pdsLabelUrl, previewUrl, type Frac, type Frame, type Policy, type Traverse } from "@/lib/missionControl";
 import { eyeLabels, eyeTiers, productForEye, representation, stereoBroken } from "@/lib/representation";
 
@@ -277,6 +278,7 @@ export function MissionControl() {
 
       {/* TIMELINE / REPLAY CONTROLS (desktop: pinned bottom bar) */}
       <footer className="hidden lg:block border-t border-line bg-panel px-4 py-2 sticky bottom-0">{replayBar}</footer>
+      <SiteFooter />
     </div>
   );
 }

@@ -2,7 +2,9 @@ import Link from "next/link";
 import { PUBLIC_RELEASE } from "@/lib/mode";
 import { H, REL } from "@/lib/release";
 
-export const GITHUB_URL = "https://github.com/nassimb/deepsift";
+import { GITHUB_URL, SiteFooter } from "@/components/site/SiteFooter";
+
+export { GITHUB_URL };
 /** Public navigation (Mission Control first). The Phase 1–2 telemetry cockpit (/control) needs the local API and is
  *  listed only in local mode. */
 export const PUBLIC_NAV: [string, string][] = [
@@ -21,7 +23,6 @@ export function NavLinks({ active }: { active?: string }) {
         <Link key={h} href={h} className="mono text-[11px] uppercase tracking-[0.06em] px-2 py-1 whitespace-nowrap hover:text-ink"
           style={{ color: active === h ? "var(--ink)" : "var(--ink-3)", borderBottom: active === h ? "1px solid var(--ink)" : "1px solid transparent" }}>{l}</Link>
       ))}
-      <a href={GITHUB_URL} target="_blank" rel="noreferrer" className="mono text-[11px] uppercase tracking-[0.06em] px-2 py-1 whitespace-nowrap text-ink-3 hover:text-ink">GitHub ↗</a>
     </nav>
   );
 }
@@ -60,7 +61,9 @@ export function Source({ path }: { path: string }) {
 
 export function ReleaseFooter() {
   return (
-    <footer className="max-w-[1240px] mx-auto px-4 sm:px-6 py-8 text-[12px] text-ink-3 space-y-2">
+    <footer>
+      <SiteFooter />
+      <div className="max-w-[1240px] mx-auto px-4 sm:px-6 pb-8 text-[12px] text-ink-3 space-y-2">
       <p>
         DEEPSIFT is an independent research prototype. It is not flight software, is not validated by or affiliated with NASA or JPL, and
         replays archived Planetary Data System observations — which contain only what the mission actually downlinked.
@@ -70,6 +73,7 @@ export function ReleaseFooter() {
         frozen artifacts at {REL.git_head} · integrity: {REL.reproducibility.integrity.files} scientific artifacts, aggregate SHA-256{" "}
         {REL.reproducibility.integrity.aggregate_sha256.slice(0, 12)}…
       </p>
+      </div>
     </footer>
   );
 }
