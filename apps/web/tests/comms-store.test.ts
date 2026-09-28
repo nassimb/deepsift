@@ -4,7 +4,7 @@ import { test } from "node:test";
 import { IDEA_BY_ID, IDEAS } from "../lib/comms/library.ts";
 import { planWeek, recommend, reviewWeek, weekStart } from "../lib/comms/recommend.ts";
 import {
-  approve, createFromIdea, editContent, emptyState, exportState, importState, markPosted, markScheduled, reject, setMetrics, upsert,
+  approve, createFromIdea, editContent, emptyState, exportState, importState, markPosted, markScheduled, reject, setMetrics, setXUrl, upsert,
 } from "../lib/comms/store.ts";
 import { postIdFromUrl, xIntentUrl } from "../lib/comms/xintent.ts";
 
@@ -17,13 +17,15 @@ test("draft → approve → scheduled → posted", () => {
   assert.ok(it.claims.includes("embedding_gain"));
   it = approve(it, NOW);
   assert.equal(it.status, "APPROVED");
-  assert.throws(() => markPosted(it, "not a url"), /X post URL/);
+  assert.throws(() => markPosted(it, { xUrl: "not a url" }), /X post URL/);
   it = markScheduled(it, "2026-09-29", "09:30", NOW);
   assert.equal(it.status, "SCHEDULED_ON_X");
   assert.equal(it.scheduled_at, "2026-09-29T09:30");
-  it = markPosted(it, "https://x.com/nassimb/status/1840000000000000000", "went fine", NOW);
+  it = markPosted(it, { xUrl: "https://x.com/nassimb/status/1840000000000000000", date: "2026-09-29", time: "09:31", notes: "went fine" }, NOW);
   assert.equal(it.status, "POSTED");
   assert.equal(it.x_url, "https://x.com/nassimb/status/1840000000000000000");
+  assert.equal(it.posted_at, "2026-09-29T09:31");
+  assert.equal(it.notes, "went fine");
   assert.deepEqual(it.log.map((l) => l.status), ["DRAFT", "APPROVED", "SCHEDULED_ON_X", "POSTED"]);
   assert.throws(() => editContent(it, { text: "x" }), /posted/);
   it = setMetrics(it, { views: 120, likes: 4, replies: -1 as number });
@@ -39,6 +41,19 @@ test("approval is refused when the claim check fails; editing an approved post r
   it = editContent(it, { text: it.text + " " }, NOW);
   assert.equal(it.status, "DRAFT");
   assert.equal(it.revisions.length, 4);
+});
+
+test("mark posted: every field optional, stored as entered; URL can be added later", () => {
+  let it = approve(createFromIdea(idea, { now: NOW }), NOW);
+  const bare = markPosted(it, {}, NOW);
+  assert.equal(bare.status, "POSTED");
+  assert.equal(bare.x_url, null);
+  assert.equal(bare.posted_at, NOW.toISOString());
+  assert.throws(() => markPosted(it, { time: "09:00" }), /date/);
+  assert.throws(() => markPosted(createFromIdea(idea, { now: NOW }), {}), /approved or scheduled/);
+  it = setXUrl(bare, "https://x.com/nassimb/status/1840000000000000009", NOW);
+  assert.equal(it.x_url, "https://x.com/nassimb/status/1840000000000000009");
+  assert.throws(() => setXUrl(bare, "https://example.com/x"), /X post URL/);
 });
 
 test("scheduling requires approval; reject works", () => {
@@ -94,7 +109,7 @@ test("recommendation avoids recently posted categories and claims, and queued id
   let it = approve(createFromIdea(first, { now: monday }), monday);
   s = upsert(s, it);
   assert.notEqual(recommend(s, monday).primary!.idea.id, first.id, "queued idea is not recommended again");
-  it = markPosted(it, "https://x.com/nassimb/status/1840000000000000001", "", monday);
+  it = markPosted(it, { xUrl: "https://x.com/nassimb/status/1840000000000000001" }, monday);
   s = upsert(s, it);
   const second = recommend(s, monday).primary!;
   assert.notEqual(second.idea.id, first.id);
@@ -120,7 +135,7 @@ test("weekly plan: 5 distinct ideas Mon–Fri on cadence; review flags a repeate
   let s = emptyState();
   for (const [id, day] of [["result-headline", 28], ["mc-send-all-vs-position", 30]] as const) {
     const d = new Date(`2026-09-${day}T10:00:00`);
-    s = upsert(s, markPosted(approve(createFromIdea(IDEA_BY_ID[id], { now: d, planned_at: `2026-09-${day}` }), d), `https://x.com/nassimb/status/18400000000000000${day}`, "", d));
+    s = upsert(s, markPosted(approve(createFromIdea(IDEA_BY_ID[id], { now: d, planned_at: `2026-09-${day}` }), d), { xUrl: `https://x.com/nassimb/status/18400000000000000${day}` }, d));
   }
   const rv = reviewWeek(s, weekStart(new Date("2026-09-30T12:00:00")));
   assert.equal(rv.completed, 2);

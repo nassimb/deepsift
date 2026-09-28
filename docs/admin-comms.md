@@ -28,6 +28,13 @@ date, scheduled date/time, posted status, X URL, notes, manual results, qualifie
 draft → claim check → APPROVE (only if PASS) → OPEN IN X (`https://x.com/intent/tweet?text=…`, X's official web intent;
 threads use `in_reply_to`) → publish or schedule **in X** (native scheduler) → MARK SCHEDULED / MARK POSTED here.
 
+The workflow is manual by design: DEEPSIFT Comms is a private scientific communication assistant, not a social media bot.
+There is no X API, X developer app, X OAuth, access/refresh token, media upload, server-side scheduler, cron or post queue,
+and none should be added. MARK SCHEDULED records the date/time you set in X; MARK POSTED records (all optional) the post
+URL, publication date/time and notes, then manual views, likes, replies, reposts, bookmarks, link clicks and qualified
+replies — stored as entered, never verified through any X API. A test (`test_manual_only_no_social_automation_infrastructure`)
+fails if automation infrastructure appears.
+
 ## Pages
 
 | route | what |

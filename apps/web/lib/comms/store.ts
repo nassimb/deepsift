@@ -152,12 +152,27 @@ export function markScheduled(it: EditorialItem, date: string, time: string, now
   return touch(it, now, { scheduled_at: `${date}T${time}`, planned_at: date }, "SCHEDULED_ON_X");
 }
 
-/** Manual record that the post is live. The URL is stored as given — never verified through any X API. */
-export function markPosted(it: EditorialItem, xUrl: string, notes = "", now = new Date()): EditorialItem {
+/** Manual record that the post is live. Everything is optional and stored as entered — never verified through any X API.
+ *  A URL, if given, must look like an X post URL; the publication time defaults to now. */
+export function markPosted(it: EditorialItem, opts: { xUrl?: string; date?: string; time?: string; notes?: string } = {}, now = new Date()): EditorialItem {
   if (!(it.status === "APPROVED" || it.status === "SCHEDULED_ON_X")) throw new Error("Only an approved or scheduled post can be marked posted.");
-  if (!postIdFromUrl(xUrl)) throw new Error("Paste the X post URL (https://x.com/<user>/status/<id>).");
-  const at = now.toISOString();
-  return touch(it, now, { x_url: xUrl.trim(), posted_at: at, notes: notes ? (it.notes ? `${it.notes}\n${notes}` : notes) : it.notes }, "POSTED");
+  const url = (opts.xUrl ?? "").trim();
+  if (url && !postIdFromUrl(url)) throw new Error("That isn't an X post URL (https://x.com/<user>/status/<id>) — fix it or leave it empty.");
+  const date = (opts.date ?? "").trim();
+  const time = (opts.time ?? "").trim();
+  if (date && !/^\d{4}-\d{2}-\d{2}$/.test(date)) throw new Error("Publication date must be YYYY-MM-DD.");
+  if (time && !/^\d{2}:\d{2}$/.test(time)) throw new Error("Publication time must be HH:MM.");
+  if (time && !date) throw new Error("Enter the publication date too, or leave both empty.");
+  const posted_at = date ? `${date}T${time || "00:00"}` : now.toISOString();
+  const notes = opts.notes ? (it.notes ? `${it.notes}\n${opts.notes}` : opts.notes) : it.notes;
+  return touch(it, now, { x_url: url || null, posted_at, notes }, "POSTED");
+}
+
+/** Add or correct the X post URL after posting (stored as entered). */
+export function setXUrl(it: EditorialItem, xUrl: string, now = new Date()): EditorialItem {
+  const url = xUrl.trim();
+  if (url && !postIdFromUrl(url)) throw new Error("That isn't an X post URL (https://x.com/<user>/status/<id>).");
+  return touch(it, now, { x_url: url || null });
 }
 
 export function setThreadUrl(it: EditorialItem, index: number, url: string, now = new Date()): EditorialItem {

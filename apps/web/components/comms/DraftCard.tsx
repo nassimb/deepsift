@@ -10,7 +10,7 @@ import { AUDIENCE_LABEL, HOOK_STYLES, IDEA_BY_ID, PILLAR_LABEL, composePost, com
 import { shareability } from "@/lib/comms/shareability";
 import {
   METRIC_KEYS, QUALIFIED_TYPES, approve, claimStatus, createFromIdea, editContent, markPosted, markScheduled, plan, postsOf, reject, reopen,
-  setMetrics, setNotes, setQualified, setThreadUrl, type EditorialItem, type Format, type Metrics,
+  setMetrics, setXUrl, setNotes, setQualified, setThreadUrl, type EditorialItem, type Format, type Metrics,
 } from "@/lib/comms/store";
 import { postIdFromUrl, xIntentUrl } from "@/lib/comms/xintent";
 import { useComms } from "./CommsProvider";
@@ -293,7 +293,13 @@ export function DraftCard({ idea: ideaProp, item: itemProp, testid = "draft-card
       {item && (item.status === "SCHEDULED_ON_X" || item.status === "POSTED") && (
         <div className="text-[12px] text-ink-2 space-y-0.5" data-testid="x-record">
           {item.scheduled_at && <div>Scheduled on X for <span className="mono">{item.scheduled_at.replace("T", " ")}</span> (recorded manually)</div>}
-          {item.posted_at && <div>Posted <span className="mono">{item.posted_at.slice(0, 16).replace("T", " ")}</span> · <a className="underline" href={item.x_url ?? "#"} target="_blank" rel="noopener noreferrer">{item.x_url}</a></div>}
+          {item.posted_at && (
+            <div>
+              Posted <span className="mono">{item.posted_at.slice(0, 16).replace("T", " ")}</span>
+              {item.x_url ? <> · <a className="underline" href={item.x_url} target="_blank" rel="noopener noreferrer">{item.x_url}</a></> : " · no X URL recorded"}
+            </div>
+          )}
+          {item.status === "POSTED" && <PostedUrl item={item} onChange={(it) => act(() => it)} onError={setErr} />}
         </div>
       )}
       {item && item.status === "POSTED" && <AfterPost item={item} onChange={(it) => act(() => it)} />}
@@ -320,16 +326,34 @@ function ScheduleForm({ item, onDone, onError }: { item: EditorialItem; onDone: 
 
 function PostedForm({ item, onDone, onError }: { item: EditorialItem; onDone: (it: EditorialItem) => void; onError: (e: string) => void }) {
   const [url, setUrl] = useState(item.x_url ?? "");
+  const [date, setDate] = useState(item.scheduled_at?.slice(0, 10) ?? "");
+  const [time, setTime] = useState(item.scheduled_at?.slice(11, 16) ?? "");
   const [notes, setN] = useState("");
+  const input = "bg-panel-2 border border-line text-ink px-2 py-1";
   return (
     <form className="panel p-3 space-y-2" data-testid="posted-form" onSubmit={(e) => {
       e.preventDefault();
-      try { onDone(markPosted(item, url, notes)); } catch (x) { onError((x as Error).message); }
+      try { onDone(markPosted(item, { xUrl: url, date, time, notes })); } catch (x) { onError((x as Error).message); }
     }}>
-      <label className="text-[11px] text-ink-3 flex flex-col gap-1">X post URL<input required type="url" placeholder="https://x.com/you/status/…" value={url} onChange={(e) => setUrl(e.target.value)} className="bg-panel-2 border border-line text-ink px-2 py-1" data-testid="posted-url" /></label>
-      <label className="text-[11px] text-ink-3 flex flex-col gap-1">Notes (optional)<input value={notes} onChange={(e) => setN(e.target.value)} className="bg-panel-2 border border-line text-ink px-2 py-1" data-testid="posted-notes" /></label>
+      <label className="text-[11px] text-ink-3 flex flex-col gap-1">X post URL (optional)<input type="url" placeholder="https://x.com/you/status/…" value={url} onChange={(e) => setUrl(e.target.value)} className={input} data-testid="posted-url" /></label>
+      <div className="flex flex-wrap gap-3">
+        <label className="text-[11px] text-ink-3 flex flex-col gap-1">Publication date (optional — default: now)<input type="date" value={date} onChange={(e) => setDate(e.target.value)} className={input} data-testid="posted-date" /></label>
+        <label className="text-[11px] text-ink-3 flex flex-col gap-1">Time (optional)<input type="time" value={time} onChange={(e) => setTime(e.target.value)} className={input} data-testid="posted-time" /></label>
+      </div>
+      <label className="text-[11px] text-ink-3 flex flex-col gap-1">Notes (optional)<input value={notes} onChange={(e) => setN(e.target.value)} className={input} data-testid="posted-notes" /></label>
       <button type="submit" className="btn" data-active="true" data-testid="posted-save">Save as POSTED</button>
-      <p className="text-[11px] text-ink-4">Stored as entered — never checked through the X API.</p>
+      <p className="text-[11px] text-ink-4">You published it yourself in X. Everything here is stored as entered — never checked through any X API. Views, likes, replies etc. can be added below once saved.</p>
+    </form>
+  );
+}
+
+function PostedUrl({ item, onChange, onError }: { item: EditorialItem; onChange: (it: EditorialItem) => void; onError: (e: string) => void }) {
+  const [url, setUrl] = useState(item.x_url ?? "");
+  return (
+    <form className="flex flex-wrap gap-2 items-center" onSubmit={(e) => { e.preventDefault(); try { onChange(setXUrl(item, url)); } catch (x) { onError((x as Error).message); } }}>
+      <input type="url" placeholder="https://x.com/you/status/…" value={url} onChange={(e) => setUrl(e.target.value)} data-testid="x-url-edit"
+        className="bg-panel-2 border border-line text-ink text-[12px] px-2 py-1 min-w-0 flex-1" />
+      <button type="submit" className="btn" data-testid="x-url-save">{item.x_url ? "Update URL" : "Add URL"}</button>
     </form>
   );
 }

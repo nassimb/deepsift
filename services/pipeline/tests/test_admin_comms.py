@@ -78,3 +78,18 @@ def test_rendered_public_pages_do_not_mention_admin():
         f = app / name
         if f.exists():
             assert "/admin" not in f.read_text(), name
+
+
+def test_manual_only_no_social_automation_infrastructure():
+    """Comms stays manual: no X API/OAuth/tokens, no scheduler, no post queue; OPEN IN X is the web intent only."""
+    routes = sorted(p.parent.relative_to(WEB / "app/api").as_posix() for p in (WEB / "app/api").rglob("route.ts"))
+    assert routes == ["auth/[...nextauth]", "subscribe"], routes
+    assert not (WEB / "vercel.json").exists() and not (ROOT / "vercel.json").exists()
+    wf = ROOT / ".github/workflows"
+    assert not wf.exists() or not any("schedule" in p.read_text() for p in wf.glob("*.y*ml"))
+    blob = "".join(p.read_text() for p in ADMIN_SRC).lower()
+    for s in ("api.x.com", "api.twitter.com", "/2/tweets", "media/upload", "refresh_token", "access_token", "oauth2/token", "cron", "x_client", "twitter_"):
+        assert s not in blob, s
+    assert "x.com/intent/tweet" in blob
+    subscribe = (WEB / "app/api/subscribe/route.ts").read_text().lower()
+    assert "tweet" not in subscribe and "x.com" not in subscribe
