@@ -21,7 +21,7 @@ data/synthetic/
 data/*.log
 
 # assembled GitHub release assets (scripts/assemble_release_assets.py)
-release/
+/release/
 
 # run / fetch logs (local only)
 *.log
