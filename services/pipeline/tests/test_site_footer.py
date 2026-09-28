@@ -15,9 +15,9 @@ def test_contact_address_not_written_in_source():
 
 
 def test_github_link_moved_to_footer():
-    shell = (WEB / "components/release/Shell.tsx").read_text()
-    nav = shell[shell.index("export function NavLinks"): shell.index("export function ReleaseTopBar")]
+    nav = (WEB / "components/release/NavLinks.tsx").read_text()
     assert "GitHub" not in nav and "GITHUB_URL" not in nav
+    assert "usePathname" in nav  # active page highlighted on every page, not only Mission Control
     footer = (WEB / "components/site/SiteFooter.tsx").read_text()
     assert "https://github.com/nassimb/deepsift" in footer and "/api/subscribe" in footer
 

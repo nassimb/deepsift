@@ -1,31 +1,11 @@
 import Link from "next/link";
-import { PUBLIC_RELEASE } from "@/lib/mode";
 import { H, REL } from "@/lib/release";
 
 import { GITHUB_URL, SiteFooter } from "@/components/site/SiteFooter";
 
 export { GITHUB_URL };
-/** Public navigation (Mission Control first). The Phase 1–2 telemetry cockpit (/control) needs the local API and is
- *  listed only in local mode. */
-export const PUBLIC_NAV: [string, string][] = [
-  ["/mission-control", "Mission control"],
-  ["/final-test", "Final test"],
-  ["/research", "Research"],
-  ["/reproducibility", "Reproducibility"],
-  ["/limitations", "Limitations"],
-];
-const LINKS: [string, string][] = [...PUBLIC_NAV, ...(PUBLIC_RELEASE ? [] : ([["/control", "Telemetry cockpit (local)"]] as [string, string][]))];
-
-export function NavLinks({ active }: { active?: string }) {
-  return (
-    <nav className="ml-auto min-w-0 flex items-center gap-1 overflow-x-auto">
-      {LINKS.map(([h, l]) => (
-        <Link key={h} href={h} className="mono text-[11px] uppercase tracking-[0.06em] px-2 py-1 whitespace-nowrap hover:text-ink"
-          style={{ color: active === h ? "var(--ink)" : "var(--ink-3)", borderBottom: active === h ? "1px solid var(--ink)" : "1px solid transparent" }}>{l}</Link>
-      ))}
-    </nav>
-  );
-}
+export { NavLinks, PUBLIC_NAV } from "@/components/release/NavLinks";
+import { NavLinks } from "@/components/release/NavLinks";
 
 export function ReleaseTopBar() {
   return (

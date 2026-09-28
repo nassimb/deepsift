@@ -146,7 +146,7 @@ export function MissionControl() {
         <div className="px-3 sm:px-4 h-11 flex items-center gap-3">
           <Link href="/" className="mono font-semibold tracking-[0.2em] text-[13px] text-ink shrink-0">DEEPSIFT</Link>
           <span className="mono text-[11px] tracking-[0.12em] text-ink shrink-0 hidden sm:inline">MISSION CONTROL</span>
-          <NavLinks active="/mission-control" />
+          <NavLinks />
         </div>
         <div className="px-3 sm:px-4 py-1.5 border-t border-line flex flex-wrap items-center gap-2 text-[10px]">
           <span className="chip" style={{ color: "var(--ink)", borderColor: "var(--ink-4)" }}>HISTORICAL REPLAY</span>
