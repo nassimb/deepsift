@@ -1,4 +1,4 @@
-import { ReleaseFooter, ReleaseTopBar, Section } from "@/components/release/Shell";
+import { ReleaseFooter, PageTopBar, Section } from "@/components/release/Shell";
 import { H, REL } from "@/lib/release";
 
 const R = REL.reproducibility;
@@ -12,7 +12,7 @@ const ROLE: Record<string, string> = {
 export default function Reproducibility() {
   return (
     <div className="home">
-      <ReleaseTopBar />
+      <PageTopBar label="REPRODUCIBILITY" />
       <main>
         <Section kicker="Reproducibility" title="What was frozen, when, and how to check it."
           lead="Every configuration and pass/fail rule was committed to git before the data that tested it was downloaded. This page lists the periods, hashes, commits, seeds and the order of operations.">

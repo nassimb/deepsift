@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ReleaseFooter, ReleaseTopBar } from "@/components/release/Shell";
+import { ReleaseFooter, PageTopBar } from "@/components/release/Shell";
 import { H, pct } from "@/lib/release";
 
 const DOCS: [string, string][] = [
@@ -34,7 +34,7 @@ function S({ id, title, children }: { id: string; title: string; children: React
 export default function Research() {
   return (
     <>
-      <ReleaseTopBar />
+      <PageTopBar label="RESEARCH" />
       <main className="max-w-[1050px] mx-auto px-4 sm:px-6 py-10 space-y-8">
         <header>
           <div className="label">DEEPSIFT v1 · research release</div>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ReleaseFooter, ReleaseTopBar, Section, Source } from "@/components/release/Shell";
+import { ReleaseFooter, PageTopBar, Section, Source } from "@/components/release/Shell";
 import { TraverseReplay } from "@/components/release/TraverseReplay";
 import { H, REL } from "@/lib/release";
 
@@ -11,7 +11,7 @@ export default function FinalTest() {
   const S = REL.final_summary;
   return (
     <div className="home">
-      <ReleaseTopBar />
+      <PageTopBar label="FINAL TEST" />
       <main>
         <Section kicker="Final test replay" title="Held-out test · Curiosity Navcam · sols 950–979"
           lead={<p>

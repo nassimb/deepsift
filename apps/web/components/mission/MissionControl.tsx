@@ -6,7 +6,7 @@
    stored byte costs. Decision texts are fixed templates filled from the frozen selection trace. */
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { GITHUB_URL, NavLinks } from "@/components/release/Shell";
+import { GITHUB_URL, TopBarRow } from "@/components/release/Shell";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { FRAC_LABEL, FRACS, MC, RADIUS_M, decisionReason, pdsLabelUrl, previewUrl, type Frac, type Frame, type Policy, type Traverse } from "@/lib/missionControl";
 import { eyeLabels, eyeTiers, productForEye, representation, stereoBroken } from "@/lib/representation";
@@ -143,11 +143,7 @@ export function MissionControl() {
     <div className="min-h-screen flex flex-col">
       {/* TOP BAR */}
       <header className="lg:sticky top-0 z-20 border-b border-line bg-bg/95 backdrop-blur">
-        <div className="px-3 sm:px-4 h-11 flex items-center gap-3">
-          <Link href="/" className="mono font-semibold tracking-[0.2em] text-[13px] text-ink shrink-0">DEEPSIFT</Link>
-          <span className="mono text-[11px] tracking-[0.12em] text-ink shrink-0 hidden sm:inline">MISSION CONTROL</span>
-          <NavLinks />
-        </div>
+        <TopBarRow label="MISSION CONTROL" />
         <div className="px-3 sm:px-4 py-1.5 border-t border-line flex flex-wrap items-center gap-2 text-[10px]">
           <span className="chip" style={{ color: "var(--ink)", borderColor: "var(--ink-4)" }}>HISTORICAL REPLAY</span>
           <span className="chip text-ink-2">CURIOSITY / NAVCAM</span>

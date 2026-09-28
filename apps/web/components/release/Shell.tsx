@@ -7,6 +7,26 @@ export { GITHUB_URL };
 export { NavLinks, PUBLIC_NAV } from "@/components/release/NavLinks";
 import { NavLinks } from "@/components/release/NavLinks";
 
+/** Full-width header row shared by Mission Control and every non-home page, so the logo and the menu sit in exactly the
+ *  same place on each page (the homepage keeps its own centered ReleaseTopBar). */
+export function TopBarRow({ label }: { label: string }) {
+  return (
+    <div className="px-3 sm:px-4 h-11 flex items-center gap-3">
+      <Link href="/" className="mono font-semibold tracking-[0.2em] text-[13px] text-ink shrink-0">DEEPSIFT</Link>
+      <span className="mono text-[11px] tracking-[0.12em] text-ink shrink-0 hidden sm:inline">{label}</span>
+      <NavLinks />
+    </div>
+  );
+}
+
+export function PageTopBar({ label }: { label: string }) {
+  return (
+    <header className="sticky top-0 z-20 border-b border-line bg-bg/95 backdrop-blur">
+      <TopBarRow label={label} />
+    </header>
+  );
+}
+
 export function ReleaseTopBar() {
   return (
     <header className="sticky top-0 z-20 border-b border-line bg-bg/95 backdrop-blur">

@@ -1,4 +1,4 @@
-import { ReleaseFooter, ReleaseTopBar, Section } from "@/components/release/Shell";
+import { ReleaseFooter, PageTopBar, Section } from "@/components/release/Shell";
 import { REL } from "@/lib/release";
 
 const ITEMS: [string, string][] = [
@@ -19,7 +19,7 @@ const ITEMS: [string, string][] = [
 export default function Limitations() {
   return (
     <div className="home">
-      <ReleaseTopBar />
+      <PageTopBar label="LIMITATIONS" />
       <main>
         <Section kicker="Limitations" title="What the result does not show."
           lead="The held-out result is narrow on purpose. These limits travel with it; please read them before quoting any number.">
