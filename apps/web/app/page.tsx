@@ -48,9 +48,9 @@ export default function Home() {
               </div>
             </div>
             <div className="flex flex-wrap gap-2">
-              <Link href="/final-test" className="btn" data-active="true" style={{ fontSize: 12, padding: "9px 16px" }}>▶ Replay the held-out test</Link>
-              <Link href="/research" className="btn" style={{ fontSize: 12, padding: "9px 16px" }}>Research & paper</Link>
-              <Link href="#didnt-work" className="btn" style={{ fontSize: 12, padding: "9px 16px" }}>What didn’t work</Link>
+              <Link href="/mission-control" className="btn" data-active="true" style={{ fontSize: 12, padding: "9px 16px" }}>▶ Enter Mission Control</Link>
+              <Link href="/final-test" className="btn" style={{ fontSize: 12, padding: "9px 16px" }}>Final test</Link>
+              <Link href="/research" className="btn" style={{ fontSize: 12, padding: "9px 16px" }}>Research</Link>
             </div>
           </div>
         </section>
@@ -146,8 +146,10 @@ export default function Home() {
         {/* 6 · REPLAY */}
         <Section n="06" kicker="Mission replay" title="Watch the held-out traverses replay.">
           <div className="grid gap-3 md:grid-cols-2">
-            <LinkCard href="/final-test" title="Final test replay" chip="HISTORICAL REPLAY · sols 950–979"
-              body="Rover path, every archived traverse frame, the frames POSITION keeps, the bandwidth meter, 5 m coverage and stereo state — SEND ALL vs POSITION." />
+            <LinkCard href="/mission-control" title="Mission Control" chip="HISTORICAL REPLAY · sols 950–979"
+              body="Interactive console: rover path, every archived traverse frame, the frames POSITION keeps, bandwidth, 5 m coverage, stereo state and a per-acquisition decision inspector — SEND ALL vs 1/2 · 1/4 · 1/8." />
+            <LinkCard href="/final-test" title="Final test tables & figures" chip="EXACT FROZEN COMPARISONS"
+              body="All frozen strategies on the held-out test, publication figures and the quick traverse replay." />
             {!PUBLIC_RELEASE && (
               <LinkCard href="/control" title="Telemetry mission control (Phase 1–2)" chip="MISSION REPLAY · REMS / RAD"
                 body="The earlier telemetry-triage replay: candidate events, bounded decisions and relay-pass scheduling on real REMS and RAD records." />

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ReleaseFooter, ReleaseTopBar, Section, Source } from "@/components/release/Shell";
 import { TraverseReplay } from "@/components/release/TraverseReplay";
 import { H, REL } from "@/lib/release";
@@ -18,6 +19,10 @@ export default function FinalTest() {
             of each traverse at full quality and sends the rest as thumbnail pairs, through the stereo-safe Scheduler V3. The pre-registered criterion
             ({H.claim}) was <span className="text-ink">{H.result}</span>.
           </p>}>
+          <div className="panel p-3 mb-4 flex flex-wrap items-center gap-3">
+            <span className="text-[13px] text-ink-2">The full interactive console — per-acquisition inspector, decision trace, 1/2 · 1/4 · 1/8 bandwidth levels — is in Mission Control.</span>
+            <Link href="/mission-control" className="btn" data-active="true">Enter Mission Control →</Link>
+          </div>
           <TraverseReplay />
         </Section>
         <Section kicker="All frozen strategies on the held-out test" title="SEND ALL vs the four selection methods"

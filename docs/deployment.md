@@ -29,7 +29,7 @@ public deployment. None is needed.
 
 | class | routes | notes |
 |---|---|---|
-| PUBLIC CORE | `/`, `/final-test`, `/research`, `/reproducibility`, `/limitations` | Static; frozen release data only. The replay only animates stored frames. |
+| PUBLIC CORE | `/`, `/mission-control`, `/final-test`, `/research`, `/reproducibility`, `/limitations` | Static; frozen release data only (`data/release.json`, `data/mission-control.json`). Replays only reveal stored frames; nothing is recomputed. |
 | HIDDEN (for now) | `/telemetry` | Phase 1–2 homepage archive. In public mode it returns 404 and is not linked; locally it is unchanged. Re-enable by removing the `notFound()` guard in `apps/web/app/telemetry/page.tsx`. |
 | LOCAL / RESEARCH ONLY | `/control`, `/study`, `/blackout`, `/experiments`, `/explorer`, `/audit`, `/config`, `/review` | Need the FastAPI pipeline (`npm run demo`). In public mode they render a notice instead of calling the API, and are hidden from navigation. Kept for the historical record. |
 

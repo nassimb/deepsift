@@ -5,8 +5,9 @@ import "./globals.css";
 const plexSans = IBM_Plex_Sans({ variable: "--font-plex-sans", subsets: ["latin"], weight: ["400", "500", "600"] });
 const plexMono = IBM_Plex_Mono({ variable: "--font-plex-mono", subsets: ["latin"], weight: ["400", "500", "600"] });
 
-// Canonical public URL (absolute Open Graph / Twitter image URLs). NEXT_PUBLIC_SITE_URL overrides; public release falls back to the canonical domain.
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? (process.env.NEXT_PUBLIC_DEEPSIFT_PUBLIC_RELEASE === "1" ? "https://deepsift.space" : undefined);
+// Canonical public URL for absolute Open Graph / Twitter image URLs (NEXT_PUBLIC_SITE_URL overrides). Always set, so no
+// build — local or public — falls back to Next's http://localhost:3000 metadata base.
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://deepsift.space";
 const DESCRIPTION =
   "Independent research on bandwidth-constrained downlink using archived Curiosity Navcam data. On a held-out test (sols 950–979), " +
   "position-based traverse sampling with a stereo-safe progressive scheduler kept 1/4 of frames: 26.1% of full-quality bytes, " +

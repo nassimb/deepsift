@@ -8,8 +8,9 @@ import { API_ENABLED, PUBLIC_RELEASE } from "@/lib/mode";
 
 const LINKS = [
   ["/", "Release"],
+  ["/mission-control", "Mission Control"],
   ["/final-test", "Final Test"],
-  ["/control", "Mission Control"],
+  ["/control", "Telemetry Cockpit"],
   ["/blackout", "Blackout"],
   ["/experiments", "Experiments"],
   ["/study", "Study"],
@@ -20,7 +21,7 @@ const LINKS = [
   ["/reproducibility", "Reproducibility"],
   ["/limitations", "Limitations"],
 ];
-const PUBLIC_LINKS = new Set(["/", "/final-test", "/research", "/reproducibility", "/limitations"]);
+const PUBLIC_LINKS = new Set(["/", "/mission-control", "/final-test", "/research", "/reproducibility", "/limitations"]);
 
 export function useStatus(pollMs = 5000) {
   const [status, setStatus] = useState<Status | null>(null);
@@ -83,7 +84,7 @@ export function Nav({ right }: { right?: React.ReactNode }) {
         LOCAL RESEARCH TOOL — this page needs the DEEPSIFT pipeline API running locally (<span className="text-ink">npm run demo</span>). The public
         release pages are static: <Link href="/" className="underline">Release</Link> · <Link href="/final-test" className="underline">Final test</Link> ·{" "}
         <Link href="/research" className="underline">Research</Link> · <Link href="/reproducibility" className="underline">Reproducibility</Link> ·{" "}
-        <Link href="/limitations" className="underline">Limitations</Link>
+        <Link href="/limitations" className="underline">Limitations</Link> · <Link href="/mission-control" className="underline">Mission Control</Link>
       </div>
     )}
     <header className="border-b border-line bg-panel">
