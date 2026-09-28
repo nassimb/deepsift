@@ -117,7 +117,7 @@ export function MissionControl() {
     <div className="space-y-2">
         <div className="flex flex-wrap items-center gap-2">
           <select aria-label="traverse" className="bg-panel-2 border border-line text-ink mono text-[11px] px-2 py-1 min-w-0 max-w-full" value={ti} onChange={(e) => pickTraverse(Number(e.target.value))}>
-            {T.map((q, i) => <option key={q.sequence} value={i}>sol {q.sequence} · {q.frames_count} frames · {q.length_m.toFixed(0)} m{q.sequence === MC.representative ? " · representative" : ""}</option>)}
+            {T.map((q, i) => <option key={q.sequence} value={i}>sol {q.sequence} · {q.frames_count} frames · {q.length_m.toFixed(0)} m{q.sequence === MC.representative ? " · example (shown first)" : ""}</option>)}
           </select>
           <button className="btn" data-active="true" style={{ padding: "5px 12px" }} onClick={replayFromStart}>↺ Replay from start</button>
           <button className="btn" data-active={playing} onClick={() => { if (!playing && t >= tr.duration_s - 1e-6) { setT(0); setSel(null); } setPlaying((p) => !p); }}>{playing ? "Pause" : "Play"}</button>
@@ -214,6 +214,12 @@ export function MissionControl() {
       <main className="flex-1 grid gap-px bg-line lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)_minmax(0,1fr)]">
         <section className="bg-bg p-3 min-w-0">
           <PanelTitle t="Rover path · traverse map" right={`${tr.frames_count} frames · ${tr.length_m.toFixed(0)} m`} />
+          {tr.sequence === MC.representative && (
+            <p className="mono text-[9px] text-ink-4 mb-2">
+              Example held-out traverse (shown first by a fixed rule: the longest path). This traverse is shown as an example from the held-out test set; it is not
+              claimed to be statistically representative of all traverses.
+            </p>
+          )}
           <RouteMap tr={tr} kept={kept} seenCount={seen.length} cursor={cursor} focus={focus} policy={policy} radius={radius && mode === "POSITION"} onPick={(i) => setSel(i)} />
           <Legend />
           {/* mobile: replay controls directly under the map */}
@@ -397,6 +403,11 @@ function ObservationCard({ f, kept }: { f: Frame; kept: boolean }) {
           const id = tier === "FULL" ? productForEye(f.primary, e.key, f.stereo) : productForEye(f.thumbnails, e.key, f.stereo);
           return <Preview key={e.key} sol={f.sol} id={id} label={e.label} tier={tier} size={`${f.tier} ${f.size}`} />;
         })}
+      </div>
+      <div className="border border-line px-2 py-1.5 space-y-0.5" title="Image size here reflects the downlink representation shown in the replay, not a judgement of scientific importance.">
+        <div className="mono text-[10px] text-ink-2">DISPLAY RESOLUTION ≠ SCIENCE VALUE</div>
+        <div className="text-[11px] text-ink-3 leading-snug">Image size here reflects the downlink representation shown in the replay, not a judgement of scientific importance.</div>
+        <div className="text-[11px] text-ink-3 leading-snug">Display preview: contrast-stretched for visualization; previews are not photometrically comparable across observations.</div>
       </div>
       <p className="mono text-[9px] text-ink-4">
         Shown: the representation this policy downlinks ({kept ? "full-quality product, 160 px preview" : "the rover's own 64×64 thumbnail product"}). Real PDS

@@ -73,6 +73,9 @@ def main() -> int:
         "label": "NASA PDS OBSERVATION previews — presentation only, not used by any experiment or metric",
         "credit": "NASA/JPL-Caltech · Mars Science Laboratory Navcam raw EDR (PDS Imaging Node, MSLNAV_0XXX)",
         "licence_note": "NASA/PDS data are not covered by the DEEPSIFT Apache-2.0 code licence; see NOTICE",
+        "display_note": ("Display preview: contrast-stretched for visualization (per-image 0.5–99.5th DN percentile linear stretch); "
+                         "previews are not photometrically comparable across observations. Display resolution reflects the downlink "
+                         "representation shown in the replay, not a judgement of scientific importance."),
         "derivation": PARAMS, "software": {"pillow": PIL.__version__, "numpy": np.__version__, "reader": "deepsift.imaging.pds3.read_image"},
         "source_manifest": "data/manifests/navcam_test.json", "count": len(entries), "entries": entries}, indent=1))
     print(f"{len(entries)} previews · {total / 1e6:.1f} MB → {OUT.relative_to(ROOT)}")

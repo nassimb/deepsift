@@ -47,7 +47,7 @@ export default function FinalTest() {
         </Section>
         <Section kicker="Figures" title="Publication figures (drawn from the frozen artifacts)">
           <div className="grid gap-4 md:grid-cols-2">
-            {[["fig1_bytes_vs_coverage", "Figure 1 · bytes vs spatial coverage (held-out test)"], ["fig5_representative_traverse", "Figure 5 · representative traverse and the nearest-kept metric"]].map(([f, c]) => (
+            {[["fig1_bytes_vs_coverage", "Figure 1 · bytes vs spatial coverage (held-out test)"], ["fig5_example_traverse", "Figure 5 · example held-out traverse (not claimed statistically representative) and the nearest-kept metric"]].map(([f, c]) => (
               <figure key={f} className="panel p-2 bg-white">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={`/figures/${f}.svg`} alt={c} className="w-full h-auto" />

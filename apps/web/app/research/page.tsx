@@ -19,7 +19,7 @@ const FIGS: [string, string][] = [
   ["fig2_four_period_generalization", "Figure 2 · four-period generalization of POSITION"],
   ["fig3_embedding_gain_by_period", "Figure 3 · embedding gain by period"],
   ["fig4_research_funnel", "Figure 4 · research funnel"],
-  ["fig5_representative_traverse", "Figure 5 · representative held-out traverse"],
+  ["fig5_example_traverse", "Figure 5 · example held-out traverse (not claimed statistically representative)"],
 ];
 
 function S({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {

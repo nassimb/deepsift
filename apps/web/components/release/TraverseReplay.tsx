@@ -59,7 +59,7 @@ export function TraverseReplay() {
         <label className="mono text-[11px] text-ink-3 min-w-0 max-w-full flex items-center">traverse
           <select className="ml-2 min-w-0 max-w-full bg-panel-2 border border-line text-ink mono text-[11px] px-2 py-1" value={name}
             onChange={(e) => { const q = seqs.find((x) => x.sequence === e.target.value); setName(e.target.value); setT(q ? q.points.length : 0); setPlaying(false); }}>
-            {seqs.map((q) => <option key={q.sequence} value={q.sequence}>sol {q.sequence} · {q.frames} frames · {q.length_m.toFixed(0)} m{q.sequence === REL.replay.representative ? " · representative" : ""}</option>)}
+            {seqs.map((q) => <option key={q.sequence} value={q.sequence}>sol {q.sequence} · {q.frames} frames · {q.length_m.toFixed(0)} m{q.sequence === REL.replay.representative ? " · example (shown first)" : ""}</option>)}
           </select>
         </label>
         <div className="flex gap-1">

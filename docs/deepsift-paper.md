@@ -284,9 +284,9 @@ which were pre-registered for the test only. Source: final-test `results.json` â
 *Figure 3. Visual-change gain of POSITION + EMBEDDING over POSITION at 1/4 retention, with 95 % sequence-bootstrap
 intervals. The dashed line is the pre-registered 0.020 "meaningful" threshold.*
 
-![Figure 5](figures/fig5_representative_traverse.png)
+![Figure 5](figures/fig5_example_traverse.png)
 
-*Figure 5. Representative held-out traverse 967:trav00327 (the longest path; 105 frames, 89 m). Filled squares: frames
+*Figure 5. Example held-out traverse 967:trav00327, chosen by a fixed rule (the longest path; 105 frames, 89 m); it is not claimed to be statistically representative of all traverses. Filled squares: frames
 kept at full quality by POSITION at 1/4. Hollow circles: thumbnail-only frames. Shaded discs: 5 m radius. Orange lines:
 distance from each thumbnail-only frame to its nearest kept frame.*
 

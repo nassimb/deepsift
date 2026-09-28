@@ -1,7 +1,7 @@
 # DEEPSIFT — 60-second demo script
 
 Target length: 45–60 seconds. Screen: the web app. Start at `/final-test` with traverse `967:trav00327` (the
-representative traverse), mode SEND ALL, then press **reset**.
+example held-out traverse, chosen as the longest path — not claimed statistically representative), mode SEND ALL, then press **reset**.
 
 Every on-screen number comes from `apps/web/data/release.json`, which is built from the frozen final-test artifacts.
 

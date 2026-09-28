@@ -9,7 +9,7 @@ mock-ups, no generated imagery.
 - No NASA logo or insignia, and nothing that suggests NASA/JPL endorsement.
 - No sci-fi graphics.
 
-**Recording setup:** in `/final-test`, select traverse **967:trav00327** (the representative traverse: 105 frames, 89 m).
+**Recording setup:** in `/final-test`, select traverse **967:trav00327** (an example held-out traverse, chosen as the longest path; not claimed statistically representative: 105 frames, 89 m).
 Use the **reset → play** controls for the animations.
 
 | time | picture | on-screen text |

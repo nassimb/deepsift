@@ -2,6 +2,7 @@
  "label": "NASA PDS OBSERVATION previews \u2014 presentation only, not used by any experiment or metric",
  "credit": "NASA/JPL-Caltech \u00b7 Mars Science Laboratory Navcam raw EDR (PDS Imaging Node, MSLNAV_0XXX)",
  "licence_note": "NASA/PDS data are not covered by the DEEPSIFT Apache-2.0 code licence; see NOTICE",
+ "display_note": "Display preview: contrast-stretched for visualization (per-image 0.5\u201399.5th DN percentile linear stretch); previews are not photometrically comparable across observations. Display resolution reflects the downlink representation shown in the replay, not a judgement of scientific importance.",
  "derivation": {
   "stretch_percentiles": [
    0.5,

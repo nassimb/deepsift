@@ -131,3 +131,36 @@ def test_previews_are_outside_the_science_integrity_scope():
     # no experiment code reads the previews
     for p in (ROOT / "scripts").glob("run_phase3*.py"):
         assert "public/navcam" not in p.read_text()
+
+
+PUBLIC_TEXT = [WEB / "components/mission/MissionControl.tsx", WEB / "components/release/TraverseReplay.tsx", WEB / "app/research/page.tsx",
+               WEB / "app/final-test/page.tsx", WEB / "app/page.tsx", WEB / "lib/missionControl.ts"]
+PREVIEW_CAVEAT = "Display preview: contrast-stretched for visualization; previews are not photometrically comparable across observations."
+RES_LABEL = "DISPLAY RESOLUTION ≠ SCIENCE VALUE"
+
+
+def test_no_unsupported_representative_traverse_wording():
+    # the traverse shown first is chosen by a fixed rule (longest path), not a statistical representativeness rule
+    for p in PUBLIC_TEXT:
+        src = p.read_text()
+        assert not re.search(r"representative (held-out )?traverse", src, re.I), p
+        assert '" · representative"' not in src, p
+    assert "not claimed to be statistically representative" in " ".join((WEB / "components/mission/MissionControl.tsx").read_text().split())
+    assert not (WEB / "public/figures/fig5_representative_traverse.svg").exists()
+
+
+def test_preview_caveats_are_visible_in_mission_control():
+    src = (WEB / "components/mission/MissionControl.tsx").read_text()
+    assert PREVIEW_CAVEAT in src and RES_LABEL in src
+    assert "not a judgement of scientific importance" in src
+    prov = json.loads((WEB / "public/navcam/provenance.json").read_text())
+    assert "not photometrically comparable" in prov["display_note"] and prov["derivation"]["stretch_percentiles"] == [0.5, 99.5]
+
+
+def test_rendered_mission_control_shows_caveats():
+    html = WEB / ".next/server/app/mission-control.html"
+    if not html.exists():
+        pytest.skip("web app not built")
+    text = html.read_text().replace("&amp;", "&")
+    assert "DISPLAY RESOLUTION ≠ SCIENCE VALUE" in text and "not photometrically comparable across observations" in text
+    assert not re.search(r"representative (held-out )?traverse", text, re.I)

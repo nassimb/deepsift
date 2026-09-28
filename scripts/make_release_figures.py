@@ -135,7 +135,7 @@ def main() -> int:
     fig.suptitle("Figure 4 · What survived the research funnel (evidence and sources in apps/web/data/release.json → funnel)", fontsize=9.5, x=0.01, ha="left")
     save(fig, "fig4_research_funnel")
 
-    # ---- Figure 5: representative final-test traverse — why the nearest-kept metric works
+    # ---- Figure 5: example final-test traverse (fixed rule: longest path; not claimed statistically representative)
     rep = next(s for s in rel["replay"]["sequences"] if s["sequence"] == rel["replay"]["representative"])
     kept = set(rep["kept_position"]["0.25"])
     pts = rep["points"]
@@ -160,7 +160,7 @@ def main() -> int:
                  fontsize=9, x=0.01, ha="left")
     fig.text(0.01, 0.0, f"This traverse at 1/4: 5 m coverage {m['position_coverage']:.3f} · largest distance to kept {m['max_distance_to_kept_m']:.2f} m · "
              f"bytes {m['bytes'] / m['bytes_send_all']:.3f} of SEND ALL · broken stereo {m['stereo_broken']} · rule: longest-path traverse", fontsize=7, color="#555555")
-    save(fig, "fig5_representative_traverse")
+    save(fig, "fig5_example_traverse")
     print("figures →", OUT.relative_to(ROOT), "and", WEB.relative_to(ROOT))
     return 0
 
