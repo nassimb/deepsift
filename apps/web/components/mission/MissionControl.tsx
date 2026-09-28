@@ -7,7 +7,12 @@
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { GITHUB_URL, NavLinks } from "@/components/release/Shell";
-import { FRAC_LABEL, FRACS, MC, RADIUS_M, decisionReason, pdsLabelUrl, type Frac, type Frame, type Policy, type Traverse } from "@/lib/missionControl";
+import { FRAC_LABEL, FRACS, MC, RADIUS_M, decisionReason, pdsLabelUrl, previewUrl, type Frac, type Frame, type Policy, type Traverse } from "@/lib/missionControl";
+import { eyeLabels, eyeTiers, productForEye, representation, stereoBroken } from "@/lib/representation";
+
+const RUN_URL = `${GITHUB_URL}/blob/main/${MC.source.results}`;
+const CONFIG_URL = `${GITHUB_URL}/blob/main/config/phase3_final_test_config.json`;
+const PROVENANCE_URL = `${GITHUB_URL}/blob/main/apps/web/public/navcam/provenance.json`;
 
 type Mode = "SEND_ALL" | "POSITION";
 const SPEEDS = [1, 10, 100, 1000];
@@ -26,6 +31,7 @@ export function MissionControl() {
   const [speed, setSpeed] = useState(100);
   const [sel, setSel] = useState<number | null>(null);
   const [radius, setRadius] = useState(true);
+  const [demo, setDemo] = useState(false);
   const last = useRef<number | null>(null);
 
   useEffect(() => {
@@ -62,11 +68,15 @@ export function MissionControl() {
   // accumulated over the frames revealed so far (stored per-frame byte costs; nothing recomputed)
   let used = 0;
   let pairsWhole = 0;
+  let pairsBroken = 0;
   for (const f of seen) {
-    if (kept.has(f.i)) {
-      used += f.full_bytes;
-      if (f.stereo) pairsWhole++;
-    } else used += f.thumb_bytes;
+    const k = kept.has(f.i);
+    used += k ? f.full_bytes : f.thumb_bytes;
+    if (f.stereo && k) {
+      const tiers = eyeTiers(f, true);
+      if (tiers.L === "FULL" && tiers.R === "FULL") pairsWhole++;
+    }
+    if (stereoBroken(f, k)) pairsBroken++; // one eye at the full tier while its paired eye is not
   }
   const keptSeen = seen.filter((f) => kept.has(f.i));
   const covSoFar = seen.length ? seen.filter((f) => keptSeen.some((k) => Math.hypot(k.x - f.x, k.y - f.y) <= RADIUS_M)).length / seen.length : null;
@@ -74,11 +84,28 @@ export function MissionControl() {
   const op = mode === "SEND_ALL" ? MC.operating_points.send_all : MC.operating_points[frac];
   const trM = policy ? policy.metrics : { bytes_fraction: 1, coverage_5m: 1, max_distance_to_kept_m: 0, frames_retained: tr.frames_count, stereo_broken: 0, stereo_kept_full: tr.send_all.stereo_kept_full, unique_positions: 1 };
 
+  const finalState = !playing && t >= tr.duration_s - 1e-6;
   const pickTraverse = (i: number) => {
     setTi(i);
     setSel(null);
     setPlaying(false);
+    setDemo(false);
     setT(T[i].duration_s);
+  };
+  const replayFromStart = () => {
+    setSel(null);
+    setT(0);
+    setPlaying(true);
+  };
+  const startDemo = () => {
+    setTi(Math.max(0, T.findIndex((q) => q.sequence === MC.representative)));
+    setMode("POSITION");
+    setFrac("0.25");
+    setSpeed(100);
+    setSel(null);
+    setT(0);
+    setDemo(true);
+    setPlaying(true);
   };
   const stepNext = () => {
     setPlaying(false);
@@ -92,11 +119,15 @@ export function MissionControl() {
           <select aria-label="traverse" className="bg-panel-2 border border-line text-ink mono text-[11px] px-2 py-1 min-w-0 max-w-full" value={ti} onChange={(e) => pickTraverse(Number(e.target.value))}>
             {T.map((q, i) => <option key={q.sequence} value={i}>sol {q.sequence} · {q.frames_count} frames · {q.length_m.toFixed(0)} m{q.sequence === MC.representative ? " · representative" : ""}</option>)}
           </select>
+          <button className="btn" data-active="true" style={{ padding: "5px 12px" }} onClick={replayFromStart}>↺ Replay from start</button>
           <button className="btn" data-active={playing} onClick={() => { if (!playing && t >= tr.duration_s - 1e-6) { setT(0); setSel(null); } setPlaying((p) => !p); }}>{playing ? "Pause" : "Play"}</button>
           <button className="btn" onClick={stepNext}>Step</button>
           {SPEEDS.map((s) => <button key={s} className="btn" data-active={speed === s} onClick={() => setSpeed(s)}>{s}×</button>)}
           <button className="btn" onClick={() => { setPlaying(false); setT(0); setSel(null); }}>Reset</button>
-          <span className="mono text-[11px] text-ink-2 ml-auto">{cursor ? `SOL ${cursor.sol} · ${cursor.utc.slice(11, 19)} UTC` : `SOL ${tr.sol}`} · T+{hms(t)} / {hms(tr.duration_s)}</span>
+          <span className="chip ml-auto" style={{ color: finalState ? "var(--ink)" : "var(--s-warn)", borderColor: finalState ? "var(--ink-4)" : "#5a4412" }}>
+            {finalState ? "FINAL STATE" : playing ? "HISTORICAL REPLAY IN PROGRESS" : "HISTORICAL REPLAY PAUSED"}
+          </span>
+          <span className="mono text-[11px] text-ink-2">{cursor ? `SOL ${cursor.sol} · ${cursor.utc.slice(11, 19)} UTC` : `SOL ${tr.sol}`} · T+{hms(t)} / {hms(tr.duration_s)}</span>
         </div>
         <Timeline tr={tr} kept={kept} t={t} onSeek={(v) => { setPlaying(false); setT(v); }} />
         <div className="mono text-[9px] text-ink-4 flex flex-wrap gap-x-3">
@@ -126,18 +157,24 @@ export function MissionControl() {
       </header>
 
       {/* KPI STRIP (held-out test, all 12 traverses, frozen) */}
-      <div className="border-b border-line overflow-x-auto">
+      <div className="border-b border-line">
+        <div className="px-3 sm:px-4 pt-2 flex flex-wrap items-baseline gap-2">
+          <span className="label" style={{ color: "var(--ink)" }}>Held-out test · all {op.sequences} traverses</span>
+          <span className="mono text-[9px] text-ink-4">frozen result at the selected policy · not the traverse on the map</span>
+        </div>
+        <div className="overflow-x-auto">
         <dl className="flex min-w-max">
-          <Kpi k="Bandwidth used" v={pct(op.bytes_fraction)} sub={mode === "SEND_ALL" ? "baseline" : "of full-quality traverse bytes"} />
+          <Kpi k="Traverse downlink cost" v={pct(op.bytes_fraction)} sub="of SEND ALL full-quality baseline" />
           <Kpi k="Frames retained" v={mode === "SEND_ALL" ? "ALL" : FRAC_LABEL[frac]} sub={mode === "SEND_ALL" ? "full quality" : frac === "0.25" ? "primary operating point" : "context"} />
           <Kpi k="5 m coverage" v={pct(op.coverage_5m, op.coverage_5m === 1 ? 0 : 1)} sub="archived frames ≤ 5 m of a retained one" />
           <Kpi k="Max distance to retained" v={`${op.max_distance_to_kept_m_worst.toFixed(2)} m`} sub="worst traverse" />
           <Kpi k="Broken stereo pairs" v={String(op.stereo_broken)} sub={`${op.stereo_kept_full} pairs kept whole`} />
-          <Kpi k="Traverse" v={`${ti + 1} / ${T.length}`} sub={`sol ${tr.sol} · ${tr.sequence_id}`} />
+          <Kpi k="Traverse on map" v={`${ti + 1} / ${T.length}`} sub={`sol ${tr.sol} · ${tr.sequence_id}`} />
           <div className="px-4 py-2 flex items-center">
-            <span className="mono text-[9px] text-ink-4 leading-tight max-w-[220px]">held-out test, all {op.sequences} traverses · source {MC.source.results.split("/").slice(-2).join("/")}</span>
+            <a href={RUN_URL} target="_blank" rel="noreferrer" className="mono text-[9px] text-ink-4 leading-tight max-w-[220px] underline">source · frozen final-test run results.json ↗</a>
           </div>
         </dl>
+        </div>
       </div>
 
       {/* CONTROLS: policy + bandwidth */}
@@ -160,7 +197,18 @@ export function MissionControl() {
         <label className="mono text-[10px] text-ink-3 flex items-center gap-1 ml-auto">
           <input type="checkbox" checked={radius} onChange={(e) => setRadius(e.target.checked)} /> 5 m radius
         </label>
+        <button className="btn" onClick={demo ? () => { setDemo(false); setPlaying(false); } : startDemo}>{demo ? "Exit guided demo" : "Guided demo"}</button>
       </div>
+      <div className="border-b border-line px-3 sm:px-4 py-1.5 text-[11px] text-ink-3">
+        <span className="label mr-2">Research question</span>
+        How much full-quality traverse imagery can be removed while preserving spatial coverage and stereo integrity?
+      </div>
+      {demo && (
+        <div className="border-b border-line px-3 sm:px-4 py-2 text-[12px]" style={{ background: "#0e1520" }} role="status">
+          <span className="label mr-2" style={{ color: "var(--a-full)" }}>Guided demo</span>
+          <span className="text-ink-2">{demoCallout(finalState, cursor, tr, policy, kept)}</span>
+        </div>
+      )}
 
       {/* MAIN: map · observation stream · inspector */}
       <main className="flex-1 grid gap-px bg-line lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)_minmax(0,1fr)]">
@@ -174,18 +222,18 @@ export function MissionControl() {
 
         <section className="bg-bg p-3 min-w-0 space-y-3">
           <PanelTitle t="Observation stream" right={cursor ? `frame ${cursor.i + 1} / ${tr.frames_count}` : "—"} />
-          {focus ? <ObservationCard f={focus} kept={kept.has(focus.i)} mode={mode} /> : <p className="text-[12px] text-ink-3">Press play.</p>}
+          {focus ? <ObservationCard f={focus} kept={kept.has(focus.i)} /> : <p className="text-[12px] text-ink-3">Press play.</p>}
           <div className="panel p-3 space-y-2">
-            <div className="label">This traverse · so far in the replay</div>
+            <div className="label" style={{ color: "var(--ink-2)" }}>Selected traverse · so far in the replay</div>
             <div className="h-2.5 bg-panel-2 border border-line relative"><div className="absolute inset-y-0 left-0" style={{ width: `${(used / tr.send_all.bytes) * 100}%`, background: "var(--a-full)" }} /></div>
-            <Row k="bandwidth used" v={`${kb(used)} · ${pct(used / tr.send_all.bytes)} of SEND ALL`} />
+            <Row k="downlink cost so far" v={`${kb(used)} · ${pct(used / tr.send_all.bytes)} of this traverse's SEND ALL`} />
             <Row k="5 m coverage (frames seen)" v={covSoFar == null ? "—" : covSoFar.toFixed(3)} />
-            <Row k="stereo pairs sent whole" v={`${pairsWhole}`} />
-            <Row k="stereo pairs broken" v={`${keptSeen.filter((f) => f.stereo && !(f.full_bytes > 0)).length}`} />
+            <Row k="stereo pairs at full tier (both eyes)" v={`${pairsWhole}`} />
+            <Row k="stereo pairs broken (one eye full, other not)" v={`${pairsBroken}`} />
           </div>
           <div className="panel p-3 space-y-1">
-            <div className="label">This traverse · frozen result</div>
-            <Row k="bytes / SEND ALL" v={trM.bytes_fraction.toFixed(3)} />
+            <div className="label" style={{ color: "var(--ink-2)" }}>Selected traverse · frozen result</div>
+            <Row k="traverse downlink cost" v={`${pct(trM.bytes_fraction)} of its SEND ALL`} />
             <Row k="5 m coverage" v={trM.coverage_5m.toFixed(3)} />
             <Row k="max distance to retained" v={`${trM.max_distance_to_kept_m.toFixed(2)} m`} />
             <Row k="frames retained" v={`${trM.frames_retained} / ${tr.frames_count}`} />
@@ -197,7 +245,7 @@ export function MissionControl() {
                 <button className="w-full flex items-center gap-2 text-left mono text-[10px] px-1.5 py-0.5 hover:bg-panel-2" onClick={() => setSel(f.i)}>
                   <span style={{ color: kept.has(f.i) ? "var(--a-full)" : "var(--ink-4)" }}>{kept.has(f.i) ? "■" : "○"}</span>
                   <span className="text-ink-2">{f.acq_id}</span>
-                  <span className="ml-auto" style={{ color: kept.has(f.i) ? "var(--a-full)" : "var(--ink-4)" }}>{kept.has(f.i) ? "FULL PAIR" : "THUMB PAIR"}</span>
+                  <span className="ml-auto" style={{ color: kept.has(f.i) ? "var(--a-full)" : "var(--ink-4)" }}>{representation(f, kept.has(f.i))}</span>
                 </button>
               </li>
             ))}
@@ -258,8 +306,8 @@ function Row({ k, v }: { k: string; v: string }) {
 function Legend() {
   return (
     <div className="mono text-[9px] text-ink-4 flex flex-wrap gap-x-3 gap-y-1 mt-1">
-      <span><span style={{ color: "var(--a-full)" }}>■■</span> retained · full stereo pair (L+R)</span>
-      <span>○ deprioritized · thumbnail pair</span>
+      <span><span style={{ color: "var(--a-full)" }}>■■</span> retained stereo · FULL_STEREO_PAIR (■ = FULL_MONO)</span>
+      <span>○ deprioritized · THUMBNAIL_PAIR / THUMBNAIL_MONO</span>
       <span>◌ replay cursor</span>
       <span>— nearest retained frame of the selected acquisition</span>
       <span>PLACES landing-frame x/y, metres, relative to the first frame</span>
@@ -313,29 +361,50 @@ function RouteMap({ tr, kept, seenCount, cursor, focus, policy, radius, onPick }
   );
 }
 
-function ObservationCard({ f, kept, mode }: { f: Frame; kept: boolean; mode: Mode }) {
-  const eyes = f.stereo ? ["L", "R"] : ["L"];
+function Preview({ sol, id, label, tier, size }: { sol: number; id: string | null; label: string; tier: "FULL" | "THUMBNAIL" | "NONE"; size: string }) {
+  const full = tier === "FULL";
+  return (
+    <figure className="border p-1.5 min-w-0" style={{ borderColor: full ? "var(--a-full)" : "var(--line-2)" }}>
+      <div className="flex items-baseline justify-between mono text-[10px] mb-1">
+        <span style={{ color: full ? "var(--a-full)" : "var(--ink-2)" }}>{label}</span>
+        <span className="text-ink-4">{tier === "NONE" ? "no product" : full ? `FULL · ${size}` : "THUMBNAIL · 64×64"}</span>
+      </div>
+      {id ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={previewUrl(sol, id)} alt={`${label} Navcam product ${id}`} width={160} height={160}
+          className="w-full h-auto bg-panel-2" style={{ imageRendering: full ? "auto" : "pixelated", aspectRatio: "1 / 1", objectFit: "contain" }} />
+      ) : <div className="aspect-square bg-panel-2" />}
+      <figcaption className="mono text-[8px] text-ink-4 break-all mt-1">{id ?? "—"}</figcaption>
+    </figure>
+  );
+}
+
+function ObservationCard({ f, kept }: { f: Frame; kept: boolean }) {
+  const rep = representation(f, kept);
+  const tiers = eyeTiers(f, kept);
+  const eyes = eyeLabels(f);
   return (
     <div className="panel p-3 space-y-2">
       <div className="flex flex-wrap items-center gap-2">
         <span className="chip text-ink-2">NASA PDS OBSERVATION</span>
-        <span className="chip" style={{ color: kept ? "var(--a-full)" : "var(--ink-3)" }}>{kept ? "FULL QUALITY · FULL_STEREO_PAIR" : "THUMBNAIL ONLY · THUMBNAIL_PAIR"}</span>
+        <span className="chip" style={{ color: kept ? "var(--a-full)" : "var(--ink-3)" }}>{rep}</span>
+        <span className="chip text-ink-3">{f.stereo ? "STEREO" : "MONO"}</span>
       </div>
       <div className="mono text-[13px] text-ink break-all">{f.acq_id}</div>
-      <div className="grid grid-cols-2 gap-2">
-        {eyes.map((e, n) => (
-          <div key={e} className="border p-2 text-center" style={{ borderColor: kept ? "var(--a-full)" : "var(--line-2)", background: kept ? "rgba(109,167,236,0.06)" : "transparent" }}>
-            <div className="mono text-[18px]" style={{ color: kept ? "var(--a-full)" : "var(--ink-4)" }}>{e}</div>
-            <div className="mono text-[9px] text-ink-3">{kept ? `${f.size} ${f.tier}` : "64×64 thumbnail"}</div>
-            <div className="mono text-[8px] text-ink-4 break-all">{(kept ? f.primary[n] : f.thumbnails[n]) ?? ""}</div>
-          </div>
-        ))}
+      <div className={`grid gap-2 ${eyes.length === 2 ? "grid-cols-2" : "grid-cols-1 max-w-[50%]"}`}>
+        {eyes.map((e) => {
+          const tier = tiers[e.key] ?? "NONE";
+          const id = tier === "FULL" ? productForEye(f.primary, e.key, f.stereo) : productForEye(f.thumbnails, e.key, f.stereo);
+          return <Preview key={e.key} sol={f.sol} id={id} label={e.label} tier={tier} size={`${f.tier} ${f.size}`} />;
+        })}
       </div>
+      <p className="mono text-[9px] text-ink-4">
+        Shown: the representation this policy downlinks ({kept ? "full-quality product, 160 px preview" : "the rover's own 64×64 thumbnail product"}). Real PDS
+        products, deterministic previews (NASA/JPL-Caltech) — presentation only, not used by any metric. <a href={PROVENANCE_URL} target="_blank" rel="noreferrer" className="underline">provenance ↗</a>
+      </p>
       <Row k="sol · UTC" v={`${f.sol} · ${f.utc.replace("T", " ").slice(0, 19)}`} />
       <Row k="rover position (site/drive/pose)" v={`${f.pose.join(" / ")} · x ${f.x.toFixed(1)} m, y ${f.y.toFixed(1)} m`} />
-      <Row k="stereo" v={f.stereo ? (kept ? "left + right sent together" : "left + right thumbnails") : "mono acquisition"} />
-      <Row k="estimated downlink" v={`${kb(kept ? f.full_bytes : f.thumb_bytes)} (${kept ? "full pair" : "thumbnail pair"})`} />
-      <p className="mono text-[9px] text-ink-4">{mode === "SEND_ALL" ? "SEND ALL: every frame at full quality." : "Image pixels are not bundled; products are linked in the inspector."}</p>
+      <Row k="estimated downlink" v={`${kb(kept ? f.full_bytes : f.thumb_bytes)} (${rep})`} />
     </div>
   );
 }
@@ -344,12 +413,14 @@ function Inspector({ f, tr, mode, policy, kept, onPick }: { f: Frame; tr: Traver
   const near = policy ? policy.nearest[f.i] : [f.i, 0];
   const nearF = tr.frames[near[0]];
   const step = policy ? policy.trace.findIndex(([j]) => j === f.i) : -1;
+  const rep = representation(f, kept);
+  const thumbRep = representation(f, false);
   const TRACE = [
-    ["Navcam acquisition", `${f.stereo ? "stereo" : "mono"} · tier ${f.tier} · ${f.size}`],
+    ["Navcam acquisition", `${f.stereo ? "stereo (left + right)" : "mono"} · tier ${f.tier} · ${f.size}`],
     ["Rover position", `site ${f.pose[0]} · drive ${f.pose[1]} · pose ${f.pose[2]} (PLACES ${f.places_match.replaceAll("_", " ")})`],
     ["Position sampler", mode === "SEND_ALL" ? "not applied (SEND ALL)" : step >= 0 ? `selected at step ${step + 1} of ${policy!.trace.length}` : "not selected"],
-    ["Scheduler V3", kept ? "THUMBNAIL_PAIR, then FULL_STEREO_PAIR (both eyes)" : "THUMBNAIL_PAIR (both eyes)"],
-    [kept ? "FULL representation" : "THUMBNAIL representation", kept ? `${kb(f.full_bytes)} downlinked` : `${kb(f.thumb_bytes)} downlinked`],
+    ["Scheduler V3", kept ? `${thumbRep} first, then ${rep}` : `${thumbRep} only`],
+    [rep, `${kb(kept ? f.full_bytes : f.thumb_bytes)} downlinked`],
   ];
   return (
     <div className="space-y-3 text-[12px]">
@@ -358,16 +429,16 @@ function Inspector({ f, tr, mode, policy, kept, onPick }: { f: Frame; tr: Traver
         <Row k="sol · timestamp" v={`${f.sol} · ${f.utc.replace("T", " ").slice(0, 23)} UTC`} />
         <Row k="site / drive / pose" v={f.pose.join(" / ")} />
         <Row k="sequence" v={`${tr.sequence_id} (sol ${tr.sol})`} />
+        <Row k="camera" v={f.stereo ? "Navcam stereo (left + right)" : "Navcam mono"} />
         <Row k="product tier" v={`${f.tier} · ${f.size} · ${f.compression}`} />
-        <Row k="estimated downlink" v={`full pair ${kb(f.full_bytes)} · thumbnail pair ${kb(f.thumb_bytes)}`} />
+        <Row k="estimated downlink" v={`${f.stereo ? "full pair" : "full"} ${kb(f.full_bytes)} · ${f.stereo ? "thumbnail pair" : "thumbnail"} ${kb(f.thumb_bytes)}`} />
         <Row k="POSITION retained?" v={mode === "SEND_ALL" ? "all retained (SEND ALL)" : kept ? "YES" : "NO"} />
+        <Row k="representation" v={rep} />
         <Row k="nearest retained" v={kept ? "itself" : nearF.acq_id} />
         <Row k="distance" v={`${(near[1] as number).toFixed(2)} m`} />
-        <Row k="stereo preserved?" v={f.stereo ? "YES — both eyes travel together" : "mono (n/a)"} />
+        <Row k="stereo preserved?" v={f.stereo ? (stereoBroken(f, kept) ? "NO — one eye only" : "YES — left and right at the same tier") : "mono acquisition (not applicable)"} />
       </div>
-      {!kept && (
-        <button className="btn w-full" onClick={() => onPick(nearF.i)}>Inspect nearest retained frame</button>
-      )}
+      {!kept && <button className="btn w-full" onClick={() => onPick(nearF.i)}>Inspect nearest retained frame</button>}
       <div className="panel p-3">
         <div className="label mb-1">Why</div>
         <p className="text-ink-2 leading-snug">{decisionReason(mode, f, policy, tr.frames)}</p>
@@ -376,7 +447,7 @@ function Inspector({ f, tr, mode, policy, kept, onPick }: { f: Frame; tr: Traver
         <div className="label mb-2">Decision trace</div>
         <ol className="space-y-1">
           {TRACE.map(([a, b], n) => (
-            <li key={a}>
+            <li key={n}>
               <div className="mono text-[11px]" style={{ color: n === TRACE.length - 1 ? (kept ? "var(--a-full)" : "var(--ink-2)") : "var(--ink)" }}>{a.toUpperCase()}</div>
               <div className="mono text-[10px] text-ink-3">{b}</div>
               {n < TRACE.length - 1 && <div className="mono text-[10px] text-ink-4 pl-1">↓</div>}
@@ -385,13 +456,32 @@ function Inspector({ f, tr, mode, policy, kept, onPick }: { f: Frame; tr: Traver
         </ol>
       </div>
       <div className="panel p-3 space-y-1">
-        <div className="label">PDS products (labels)</div>
+        <div className="label">Source evidence</div>
         {[...f.primary, ...f.thumbnails].map((p) => (
-          <a key={p} href={pdsLabelUrl(f.sol, p)} target="_blank" rel="noreferrer" className="block mono text-[10px] text-ink-3 underline break-all">{p}.LBL ↗</a>
+          <a key={p} href={pdsLabelUrl(f.sol, p)} target="_blank" rel="noreferrer" className="block mono text-[10px] text-ink-3 underline break-all">{p}.LBL (PDS label) ↗</a>
         ))}
+        <a href={RUN_URL} target="_blank" rel="noreferrer" className="block mono text-[10px] text-ink-3 underline">frozen final-test run · results.json ↗</a>
+        <a href={CONFIG_URL} target="_blank" rel="noreferrer" className="block mono text-[10px] text-ink-3 underline">frozen final-test config ↗</a>
+        <div className="flex gap-3 pt-1">
+          <Link href="/final-test" className="mono text-[10px] text-ink-3 underline">Final test →</Link>
+          <Link href="/reproducibility" className="mono text-[10px] text-ink-3 underline">Reproducibility →</Link>
+        </div>
       </div>
     </div>
   );
+}
+
+/** Guided-demo callout: fixed templates over the frozen state (only shown after the visitor starts the demo). */
+function demoCallout(finalState: boolean, cursor: Frame | null, tr: Traverse, policy: Policy | null, kept: Set<number>): string {
+  if (!cursor) return "The rover begins the traverse. Each archived Navcam acquisition appears when it was taken.";
+  if (finalState && policy) {
+    const m = policy.metrics;
+    return `Final state for this traverse (frozen): ${(m.bytes_fraction * 100).toFixed(1)}% of its SEND ALL bytes, 5 m coverage ${m.coverage_5m.toFixed(3)}, maximum distance to a retained frame ${m.max_distance_to_kept_m.toFixed(2)} m, ${m.stereo_broken} broken stereo pairs.`;
+  }
+  const r = representation(cursor, kept.has(cursor.i));
+  return kept.has(cursor.i)
+    ? `Frame ${cursor.i + 1}/${tr.frames_count}: retained — this position extends spatial coverage, so it is sent as ${r}.`
+    : `Frame ${cursor.i + 1}/${tr.frames_count}: already within ${policy ? policy.nearest[cursor.i][1].toFixed(2) : "0"} m of a retained frame — sent only as ${r}.`;
 }
 
 function Timeline({ tr, kept, t, onSeek }: { tr: Traverse; kept: Set<number>; t: number; onSeek: (v: number) => void }) {

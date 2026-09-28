@@ -1,6 +1,7 @@
 /** Public Phase 3 Mission Control data — built by scripts/build_mission_control_data.py from the frozen final-test
  *  artifacts only (POSITION retained sets asserted equal to the stored per-traverse rows). No API, no recomputation. */
 import raw from "@/data/mission-control.json";
+import { representation } from "@/lib/representation";
 
 export type Frac = "0.5" | "0.25" | "0.125";
 export const FRACS: Frac[] = ["0.5", "0.25", "0.125"];
@@ -81,10 +82,12 @@ export interface MissionControlData {
 export const MC = raw as unknown as MissionControlData;
 
 export const pdsLabelUrl = (sol: number, productId: string) => `${MC.pds_base}SOL${String(sol).padStart(5, "0")}/${productId}.LBL`;
+/** Deterministic presentation preview of a real PDS product (scripts/build_navcam_previews.py; provenance in public/navcam). */
+export const previewUrl = (sol: number, productId: string) => `/navcam/SOL${String(sol).padStart(5, "0")}/${productId}.jpg`;
 
 /** Deterministic decision text (fixed templates filled from the frozen selection trace — no generated prose). */
 export function decisionReason(mode: "SEND_ALL" | "POSITION", f: Frame, policy: Policy | null, frames: Frame[]): string {
-  if (mode === "SEND_ALL" || !policy) return "SEND ALL baseline: every archived acquisition is downlinked as a FULL_STEREO_PAIR.";
+  if (mode === "SEND_ALL" || !policy) return `SEND ALL baseline: every archived acquisition is downlinked at full quality (${representation(f, true)}).`;
   const step = policy.trace.findIndex(([j]) => j === f.i);
   if (step === 0) return "Retained: first frame of the traverse — the position sampler's fixed starting point.";
   if (step > 0) {
@@ -96,6 +99,6 @@ export function decisionReason(mode: "SEND_ALL" | "POSITION", f: Frame, policy: 
   const [j, d] = policy.nearest[f.i];
   const near = frames[j];
   return d <= RADIUS_M
-    ? `Deprioritized: ${d.toFixed(2)} m from retained frame ${near.acq_id} — inside the ${RADIUS_M} m coverage radius, so it is represented by a THUMBNAIL_PAIR.`
-    : `Deprioritized: ${d.toFixed(2)} m from the nearest retained frame ${near.acq_id} — outside the ${RADIUS_M} m radius at this retention level; represented by a THUMBNAIL_PAIR.`;
+    ? `Deprioritized: ${d.toFixed(2)} m from retained frame ${near.acq_id} — inside the ${RADIUS_M} m coverage radius, so it is represented by a ${representation(f, false)}.`
+    : `Deprioritized: ${d.toFixed(2)} m from the nearest retained frame ${near.acq_id} — outside the ${RADIUS_M} m radius at this retention level; represented by a ${representation(f, false)}.`;
 }

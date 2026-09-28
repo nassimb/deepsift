@@ -30,9 +30,17 @@ DEEPSIFT reads public Mars Science Laboratory (Curiosity) archives from the NASA
 * PLACES rover localizations (localized_interp.csv) — PDS Imaging Node
   (https://planetarydata.jpl.nasa.gov/img/data/msl/msl_places/).
 
-The repository does NOT redistribute the Navcam imagery or PLACES tables. It commits only DEEPSIFT-generated manifests
-(data/manifests/*.json) that record each product's public PDS URL, label metadata and SHA-256, so users download the
-source data themselves (scripts/fetch_navcam.py, scripts/fetch_nasa.py).
+The repository does NOT redistribute the Navcam science products or PLACES tables. The only Navcam pixels it contains are
+small presentation previews for the public Mission Control (apps/web/public/navcam/): 160 px renders of the full-quality
+products and the rover's own 64×64 thumbnail products for the held-out traverse acquisitions (sols 950–979). They are
+derived deterministically from the public PDS EDR products (fixed percentile stretch and resize; no enhancement, no
+generated content). Credit: NASA/JPL-Caltech. Source product IDs, source SHA-256 values and the derivation parameters are
+listed in apps/web/public/navcam/provenance.json. These previews are NOT used by any experiment, metric or result, and
+they are not covered by the Apache License.
+
+For the science data themselves the repository commits only DEEPSIFT-generated manifests (data/manifests/*.json) that
+record each product's public PDS URL, label metadata and SHA-256, so users download the source data themselves
+(scripts/fetch_navcam.py, scripts/fetch_nasa.py).
 
 Bundled offline sample: data/fixtures/msl_curiosity/ contains gzip-compressed, unmodified copies of 24 public REMS and RAD
 PDS products (sols 238–243, ≈4.6 MB) used as the LOCAL_NASA_SAMPLE offline fallback and in tests. They are public

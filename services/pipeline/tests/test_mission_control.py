@@ -1,5 +1,6 @@
 """Public Phase 3 Mission Control: frozen release data only, exact frozen results, no API / localhost dependency."""
 
+import hashlib
 import json
 import re
 from collections import defaultdict
@@ -105,3 +106,28 @@ def test_data_built_only_from_frozen_final_run(mc):
         counts["frames"] += tr["frames_count"]
     ds = json.loads((RUN / "dataset_report.json").read_text())
     assert counts["frames"] == ds["traverse_frames"]
+
+
+def test_navcam_previews_are_real_pds_products_with_provenance(mc):
+    prov = json.loads((WEB / "public/navcam/provenance.json").read_text())
+    by_id = {e["product_id"]: e for e in prov["entries"]}
+    src = {p["product_id"]: p for p in json.loads((ROOT / "data/manifests/navcam_test.json").read_text())["products"]}
+    for tr in mc["traverses"]:
+        for f in tr["frames"]:
+            for role, ids in (("primary", f["primary"]), ("thumbnail", f["thumbnails"])):
+                for pid in ids:
+                    e = by_id[pid]
+                    assert e["role"] == role and e["acq_id"] == f["acq_id"] and e["sol"] == f["sol"]
+                    assert e["source_sha256_img"] == src[pid]["sha256_img"]          # the frozen PDS product
+                    assert e["source_url_img"] == src[pid]["url_img"]
+                    img = WEB / "public" / e["preview"].lstrip("/")
+                    assert img.exists() and hashlib.sha256(img.read_bytes()).hexdigest() == e["preview_sha256"]
+    assert "presentation only" in prov["label"] and "NASA/JPL-Caltech" in prov["credit"]
+
+
+def test_previews_are_outside_the_science_integrity_scope():
+    rec = json.loads((ROOT / "docs/release/science-artifacts.json").read_text())["sha256"]
+    assert not any(k.startswith("apps/web/public/navcam") for k in rec)
+    # no experiment code reads the previews
+    for p in (ROOT / "scripts").glob("run_phase3*.py"):
+        assert "public/navcam" not in p.read_text()
