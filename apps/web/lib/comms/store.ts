@@ -61,13 +61,50 @@ export interface EditorialItem {
   revisions: { at: string; text: string }[];
 }
 
+export type Relevance = "STRONG" | "MODERATE" | "WEAK" | "NONE";
+export type PromoRisk = "LOW" | "MEDIUM" | "HIGH";
+
+/** A reply drafted in the Reply Lab (browser-local, like everything else). */
+export interface ReplyRecord {
+  id: string;
+  created_at: string;
+  updated_at: string;
+  post_text: string;
+  post_url: string | null;
+  author_name: string;
+  author_handle: string;
+  context: string;
+  reply: string;
+  style: string;
+  angle: string | null;
+  facts: string[];
+  relevance: Relevance;
+  promo_risk: PromoRisk;
+  value: string;
+  link: string | null;
+  posted: boolean;
+  reply_url: string | null;
+}
+
 export interface CommsState {
   schema: typeof SCHEMA;
   version: 1;
   items: EditorialItem[];
+  /** Reply Lab history (optional so older exports still import). */
+  replies?: ReplyRecord[];
 }
 
-export const emptyState = (): CommsState => ({ schema: SCHEMA, version: 1, items: [] });
+export const emptyState = (): CommsState => ({ schema: SCHEMA, version: 1, items: [], replies: [] });
+
+export const upsertReply = (s: CommsState, r: ReplyRecord): CommsState => {
+  const list = s.replies ?? [];
+  return { ...s, replies: list.some((x) => x.id === r.id) ? list.map((x) => (x.id === r.id ? r : x)) : [...list, r] };
+};
+
+function validReply(x: unknown): x is ReplyRecord {
+  const r = x as ReplyRecord;
+  return !!r && typeof r.id === "string" && typeof r.post_text === "string" && typeof r.reply === "string" && typeof r.updated_at === "string" && Array.isArray(r.facts);
+}
 
 const newId = (now: Date) => `d-${now.getTime().toString(36)}-${Math.floor(Math.random() * 1e6).toString(36)}`;
 
@@ -232,13 +269,23 @@ export function importState(json: string, current: CommsState, mode: "merge" | "
     const r = raw as EditorialItem;
     good.push({ ...r, metrics: r.metrics ?? {}, qualified_replies: r.qualified_replies ?? [], thread_urls: r.thread_urls ?? [], revisions: r.revisions ?? [], notes: r.notes ?? "", claims: r.claims ?? [] });
   }
-  if (mode === "replace") return { state: { schema: SCHEMA, version: 1, items: good }, imported: good.length, skipped };
+  const replies: ReplyRecord[] = [];
+  for (const raw of Array.isArray(d.replies) ? d.replies : []) {
+    if (validReply(raw)) replies.push(raw);
+    else skipped++;
+  }
+  if (mode === "replace") return { state: { schema: SCHEMA, version: 1, items: good, replies }, imported: good.length + replies.length, skipped };
   const byId = new Map(current.items.map((i) => [i.id, i]));
   for (const it of good) {
     const cur = byId.get(it.id);
     if (!cur || it.updated_at > cur.updated_at) byId.set(it.id, it);
   }
-  return { state: { schema: SCHEMA, version: 1, items: [...byId.values()] }, imported: good.length, skipped };
+  const rById = new Map((current.replies ?? []).map((r) => [r.id, r]));
+  for (const r of replies) {
+    const cur = rById.get(r.id);
+    if (!cur || r.updated_at > cur.updated_at) rById.set(r.id, r);
+  }
+  return { state: { schema: SCHEMA, version: 1, items: [...byId.values()], replies: [...rById.values()] }, imported: good.length + replies.length, skipped };
 }
 
 // ─── browser storage (the only side-effecting code) ───────────────────────

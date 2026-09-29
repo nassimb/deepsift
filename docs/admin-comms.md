@@ -45,6 +45,7 @@ fails if automation infrastructure appears.
 | route | what |
 |---|---|
 | `/admin/comms` | What should I post today? — recommendation + 3 alternatives, mode (all / technical-research / space fan), queue, export/import |
+| `/admin/comms/reply` | Reply Lab — paste someone's X post; get topic, DEEPSIFT relevance (STRONG/MODERATE/WEAK/NONE), what you can add, promotional risk, a NATURAL reply by default (never names DEEPSIFT), TECHNICAL and DEEPSIFT-CONNECTION options, 7 styles, expert question, link recommendation (default NONE), facts used, claim check; OPEN IN X opens the reply composer (`in_reply_to`), nothing is posted |
 | `/admin/comms/library` | All seed ideas (41), filter by category/audience |
 | `/admin/comms/calendar` | Week view, cadence Mon result · Tue negative · Wed Mission Control · Thu engineering/method · Fri question; PLAN THIS WEEK |
 | `/admin/comms/history` | Every item with ids, dates, X URL, visual, claims, status, notes, log |
@@ -66,3 +67,26 @@ fails if automation infrastructure appears.
 
 Add an idea to `IDEAS` in `lib/comms/library.ts` (unique id, pillar, audience, three hooks, body, facts, visual), then
 `cd apps/web && npm test` — every hook variant and every thread post must pass the claim checker.
+
+## Reply Lab (`/admin/comms/reply`, `lib/comms/reply.ts`)
+
+Deterministic, no model and no API:
+
+- **Topic/relevance**: a transparent keyword lexicon (matched words are shown). STRONG = something DEEPSIFT tested
+  (downlink, prioritization, rover imagery, stereo, onboard autonomy/compute, ops, compression, autonomy validation, PDS);
+  MODERATE = adjacent (robotics, generalization, scientific ML, edge AI, computer vision, reproducibility) or a claim
+  DEEPSIFT evidence speaks to directly; WEAK = only generic space/AI words → default DON'T REPLY; NONE (incl.
+  astronomy/launch posts) → **NO NATURAL DEEPSIFT CONNECTION** and **DON'T REPLY**, nothing generated.
+- **Talking points** (13): written only from VERIFIED_FACTS, first person, each in short / natural / technical / DEEPSIFT
+  (named once) / plain (no project) voices. Every one passes the claim checker in CI.
+- **Constructive disagreement** only when the post matches a stance that DEEPSIFT evidence contradicts (4 stances).
+- **Reply check** = claim checker + no hashtags, no @mentions, no link unless COPY + LINK, and overclaim rules
+  (NASA/JPL uses or tests DEEPSIFT, improves real operations, rover position universally optimal, generalizes to all
+  missions, AI proven useless, live Mars data, promotional phrasing, institutional roles you don't have).
+- **Promotional risk**, **value check** (NOTHING → DON'T REPLY), **link recommendation**, and **repetition protection**
+  over the saved reply history (e.g. "You have mentioned the 26.1% held-out result in 4 recent replies").
+- Reply history lives in the same browser-local state (`replies`) and is included in export/import.
+
+**Limitation:** it matches topics, not arguments. It can't summarize an arbitrary post, answer the author's specific
+point, detect sarcasm or read the thread; always read the post and edit the reply. A language model would help exactly
+there — none is used, and adding one needs explicit approval.

@@ -9,6 +9,7 @@ import { CADENCE, performanceByPillar, planWeek, recommend, reviewWeek, weekStar
 import { STATUSES, createFromIdea, exportState, importState, postsOf, type CommsState, type EditorialItem, type Status } from "@/lib/comms/store";
 import { itemForIdea, useComms } from "./CommsProvider";
 import { DraftCard } from "./DraftCard";
+import { ReplyHistory } from "./ReplyLab";
 import { AttachFiles, Chip, CopyButton, Section, StatusChip } from "./ui";
 
 const DAY = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -303,10 +304,11 @@ export function HistoryView() {
           {STATUSES.map((s) => <option key={s}>{s}</option>)}
         </select>
       </div>
-      {items.length === 0 && <p className="text-[12px] text-ink-3">No history yet in this browser.</p>}
+      {items.length === 0 && <p className="text-[12px] text-ink-3">No post history yet in this browser.</p>}
       <ul className="space-y-2" data-testid="history">
         {items.map((i) => <HistoryRow key={i.id} it={i} open={openId === i.id} onToggle={() => setOpenId(openId === i.id ? null : i.id)} />)}
       </ul>
+      <ReplyHistory compact />
     </>
   );
 }

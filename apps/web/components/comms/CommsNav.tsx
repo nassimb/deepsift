@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 
 const LINKS: [string, string][] = [
   ["/admin/comms", "Today"],
+  ["/admin/comms/reply", "Reply lab"],
   ["/admin/comms/library", "Library"],
   ["/admin/comms/calendar", "Calendar"],
   ["/admin/comms/history", "History"],
