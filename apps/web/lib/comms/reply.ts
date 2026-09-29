@@ -374,7 +374,13 @@ export interface Analysis {
   domainTerms: string[];
   domains: Hit<DomainDef>[];
   about: string;
-  postType: "QUESTION" | "PREDICTION / OPINION" | "ANNOUNCEMENT" | "RESULT / DATA" | "STATEMENT";
+  postType: PostType;
+  /** Rover imagery (Mars rover named or "rover" + visual). */
+  roverVisual: boolean;
+  /** Camera / sol already stated in the post (never asked again, never invented). */
+  camera: string | null;
+  sol: string | null;
+  text: string;
   connections: Hit<Connection>[];
   relevance: Relevance;
   relevanceWhy: string;
@@ -394,6 +400,33 @@ export interface Analysis {
 const QUALIFIED = /\b(NASA|JPL|ESA|JAXA|Caltech|MIT|professor|prof\.?|PhD|Dr\.?|postdoc|researcher|scientist|engineer|lab|university|institute|rover (team|driver|planner|operator)|roboticist)\b/i;
 const uniq = (xs: string[]) => [...new Set(xs.map((x) => x.trim()))];
 
+// ─── post type ─────────────────────────────────────────────────────────────
+export type PostType =
+  | "VISUAL / IMAGE" | "NEWS HEADLINE" | "SCIENTIFIC RESULT" | "TECHNICAL ARGUMENT" | "QUESTION" | "OPINION" | "ANNOUNCEMENT"
+  | "THREAD" | "PERSONAL UPDATE" | "OTHER";
+
+const VISUAL = /\b(as seen (from|by)|seen from|images?(?!\s+(pipeline|selection|compression|triage|processing|data|prioriti\w*|budget))|photos?|pictures?|pics?|view (of|from)|panorama\w*|selfie|captured|snapped|shot of|time-?lapse|video|footage|mosaic|night sky|sunsets?|sunrises?|landscape|vista|behold|look at this|here'?s what)\b|📷|📸|🎥|\[(image|photo|video)\]/i;
+const ROVERS = /\b(Curiosity|Perseverance|Opportunity|Spirit|Zhurong|Sojourner|Yutu|rover)\b/i;
+
+/** Transparent rules, in priority order. */
+export function classifyPostType(text: string): PostType {
+  const t = text.trim();
+  if (!t) return "OTHER";
+  if (/🧵|\bthread\b|^\s*1\s*\/|\(1\/\d+\)/i.test(t)) return "THREAD";
+  if (/\?\s*$/.test(t) || /^(who|what|why|how|when|where|which|is|are|does|do|can|could|should|would)\b[^.!]*\?/i.test(t)) return "QUESTION";
+  if (VISUAL.test(t)) return "VISUAL / IMAGE";
+  if (/\b(study|paper|published|preprint|arXiv|doi|peer-reviewed|we (found|show|report|measured)|results? (show|suggest|indicate)|researchers (found|report|show))\b/i.test(t)) return "SCIENTIFIC RESULT";
+  const words = t.split(/\s+/).filter((w) => /^[A-Za-z‘’'"]/.test(w));
+  const caps = words.filter((w) => /^[‘’'"]?[A-Z]/.test(w)).length / Math.max(1, words.length);
+  if (t.length <= 160 && !/[.!]\s*$/.test(t) && caps >= 0.6 && words.length >= 4) return "NEWS HEADLINE";
+  if (/\b(announc\w*|introducing|we'?re (excited|thrilled|proud|hiring)|now (available|live|open)|coming soon|just (launched|released))\b/i.test(t)) return "ANNOUNCEMENT";
+  if (/\b(because|therefore|which means|trade-?offs?|constraints?|bottleneck|the reason|so that|in practice)\b/i.test(t) && t.length > 90) return "TECHNICAL ARGUMENT";
+  if (/\b(I think|I believe|IMO|in my opinion|hot take|overrated|underrated|should|must|will (transform|change|replace|never))\b/i.test(t)) return "OPINION";
+  if (/\b(I|I'm|I've|my|me)\b/.test(t) && /\b(today|just|finally|started|finished|joined|new (job|role)|excited|proud)\b/i.test(t)) return "PERSONAL UPDATE";
+  if (/\b(announc\w*|launch\w*|reveals?|uncovers?|finds?|discover\w*|today)\b/i.test(t)) return "NEWS HEADLINE";
+  return "OTHER";
+}
+
 export function analyzePost(input: ReplyInput): Analysis {
   const text = input.text ?? "";
   const domains: Hit<DomainDef>[] = DOMAINS.map((d) => ({ def: d, matches: uniq([...text.matchAll(d.re)].map((m) => m[0])) })).filter((h) => h.matches.length);
@@ -412,23 +445,27 @@ export function analyzePost(input: ReplyInput): Analysis {
   if (sciencePrimary && relevance === "DIRECT") relevance = "ADJACENT";
   else if (sciencePrimary && relevance === "ADJACENT" && !stance) relevance = "WEAK";
 
+  // image posts are about the picture: unless the text is directly about downlink/selection, DEEPSIFT stays out
+  const isVisual = classifyPostType(text) === "VISUAL / IMAGE";
+  if (isVisual && relevance === "ADJACENT" && !stance) relevance = "WEAK";
+  if (classifyPostType(text) === "PERSONAL UPDATE" && relevance !== "DIRECT" && relevance !== "NONE") relevance = "WEAK";
   const ctx = (input.context ?? "").toLowerCase();
-  const postType: Analysis["postType"] = /\?\s*$|\?\s/.test(text) ? "QUESTION"
-    : /\b(will|should|must|going to|need to|I think|I believe|future)\b/i.test(text) ? "PREDICTION / OPINION"
-    : /\b(announc\w*|launch\w*|today|new|introducing|released?|uncovers?|reveals?|finds?|discover\w*)\b/i.test(text) ? "ANNOUNCEMENT"
-    : /\d/.test(text) ? "RESULT / DATA" : "STATEMENT";
+  const postType = classifyPostType(text);
+  const roverVisual = postType === "VISUAL / IMAGE" && (ROVERS.test(text) || /\b(Navcam|Hazcam|Mastcam|MAHLI|MARDI|WATSON|Pancam)\b/i.test(text));
   const domainTerms = primary?.matches ?? [];
   const about = !text.trim() ? "" : primary
-    ? `${primary.def.domain} — ${postType === "QUESTION" ? "a question" : postType === "PREDICTION / OPINION" ? "an opinion / prediction" : postType === "ANNOUNCEMENT" ? "a news / announcement post" : postType === "RESULT / DATA" ? "a post with data" : "a statement"} (detected: ${uniq([...domainTerms, ...connections.flatMap((c) => c.matches)]).slice(0, 8).join(", ")}).`
+    ? `${postType.toLowerCase()} · ${primary.def.domain.toLowerCase()} (detected: ${uniq([...domainTerms, ...connections.flatMap((c) => c.matches)]).slice(0, 8).join(", ")}).`
     : "No space, science or engineering subject detected (keyword-based).";
   const relevanceWhy =
     relevance === "DIRECT" ? `The post is substantively about ${connections.filter((c) => c.def.level === "DIRECT").map((c) => c.def.label).slice(0, 2).join(" and ")} — something DEEPSIFT actually studied.`
     : relevance === "ADJACENT" ? (connections[0] ? `Legitimate methodological/engineering overlap (${connections[0].def.label})${sciencePrimary ? `, but the post is mainly ${primary!.def.domain.toLowerCase()}` : ""}.` : "The post makes a claim that DEEPSIFT evidence speaks to directly.")
-    : relevance === "WEAK" ? `Same broad domain (${primary!.def.domain.toLowerCase()}), but DEEPSIFT adds little to this specific conversation. Mission or agency names alone are not a connection.`
+    : relevance === "WEAK" ? (isVisual ? "An image post: the conversation is about the picture. DEEPSIFT adds nothing to it; ask about the image instead." : `Same broad domain (${primary!.def.domain.toLowerCase()}), but DEEPSIFT adds little to this specific conversation. Mission or agency names alone are not a connection.`)
     : "No meaningful connection.";
   const connectionTypes = uniq(connections.flatMap((c) => c.def.types)) as ConnectionType[];
   return {
-    domain: primary?.def.domain ?? null, domainTerms, domains, about, postType, connections, relevance, relevanceWhy, noConnection: relevance === "NONE",
+    domain: primary?.def.domain ?? null, domainTerms, domains, about, postType, roverVisual, text,
+    camera: text.match(/\b(Navcam|Hazcam|Mastcam-Z|Mastcam|MAHLI|MARDI|ChemCam|SuperCam|WATSON|SHERLOC|Pancam)\b/i)?.[0] ?? null,
+    sol: text.match(/\bsol\s*(\d{1,4})\b/i)?.[1] ?? null, connections, relevance, relevanceWhy, noConnection: relevance === "NONE",
     connectionTypes, mission: text.match(MISSION)?.[0] ?? null, quoted: text.match(QUOTED)?.[1]?.trim() ?? null,
     technicalSubstance: /\d/.test(text) || connectionWeight >= 2 || /\b(algorithm|architecture|latency|throughput|compute|processor|protocol|validation|dataset|metric)\b/i.test(text),
     qualifiedAuthor: QUALIFIED.test(`${input.authorName ?? ""} ${input.authorHandle ?? ""} ${input.context ?? ""}`) || /\bworks? on\b/.test(ctx),
@@ -442,7 +479,7 @@ export function analyzePost(input: ReplyInput): Analysis {
 // ─── 4. self-promotion tracking ───────────────────────────────────────────
 /** True when a reply mentions DEEPSIFT or the builder's own experiment. */
 export function mentionsProject(text: string): boolean {
-  return /\bDEEPSIFT\b|\bI had exactly this happen\b|\bmy own (tests?|experiments?|scheduler)\b|\bthe data I tuned\b|\bI found\b|\bI've been (experimenting|replaying|testing)\b|\bmy (project|experiments?|tests?|replay|scheduler)\b|\bI (built|tested|ran into)\b|\bI'?ve been (experimenting|replaying|testing)\b|\bin my (own )?(tests|experiments?|rover-image experiments)\b|\barchived Curiosity\b|\bNavcam\b|\bMission Control\b/i.test(text);
+  return /\bDEEPSIFT\b|\bI had exactly this happen\b|\bmy own (tests?|experiments?|scheduler)\b|\bthe data I tuned\b|\bI found\b|\bI've been (experimenting|replaying|testing)\b|\bmy (project|experiments?|tests?|replay|scheduler)\b|\bI (built|tested|ran into)\b|\bI'?ve been (experimenting|replaying|testing)\b|\bin my (own )?(tests|experiments?|rover-image experiments)\b|\barchived Curiosity\b|\bDEEPSIFT'?s Mission Control\b/i.test(text);
 }
 
 export interface Repetition {
@@ -522,8 +559,44 @@ function fill(t: string, a: Analysis): string {
 
 const domainDef = (a: Analysis) => DOMAINS.find((d) => d.domain === a.domain) ?? null;
 
+/** Image posts: provenance and context questions — never "what's the evidence?", never invented camera/sol/product details. */
+const VISUAL_REPLIES = {
+  rover: {
+    natural: "",
+    curious: "Is this the raw frame or a processed / stitched version?",
+    expert: "Is there a product ID for this frame, or a link to the raw image? I'd like to look at the original.",
+  },
+  telescope: {
+    natural: "Beautiful. Do you know which instrument and filters this was taken with?",
+    curious: "Is this processed from public archive data? Would love to see the original.",
+    expert: "Is the original data public? I'd like to see how much processing went into this version.",
+  },
+  generic: {
+    natural: "Great image. Do you know where it's from? Would love to see the original source.",
+    curious: "Is this raw or processed?",
+    expert: "Is there a credit or original source for this? I'd like to trace it back.",
+  },
+};
+function visualSet(a: Analysis) {
+  return a.roverVisual ? VISUAL_REPLIES.rover : a.domain === "ASTROPHYSICS" ? VISUAL_REPLIES.telescope : VISUAL_REPLIES.generic;
+}
+const rover = (a: Analysis) => a.mission && /Curiosity|Perseverance|Opportunity|Spirit|Zhurong/.test(a.mission) ? a.mission : "rover";
+
 /** A — independent reply: reacts to the post's own subject, never uses DEEPSIFT, never invents article content. */
+/** Rover-image reply that only asks for what the post doesn't already state (camera, sol, source). */
+function roverVisualReply(a: Analysis): string {
+  const plural = /\b(images|photos|pictures|pics|frames|panoramas)\b/i.test(a.text);
+  const it = plural ? "these images are" : "this image is";
+  const back = plural ? "them" : "it";
+  if (!a.camera && !a.sol) return `Do you know which ${rover(a)} camera and sol ${it} from? Would love to trace ${back} back to the original NASA/PDS source.`;
+  if (a.camera && !a.sol) return `Do you know which sol ${plural ? `these ${a.camera} images are` : `this ${a.camera} image is`} from? Would love to trace ${back} back to the original NASA/PDS source.`;
+  if (!a.camera && a.sol) return `Do you know which ${rover(a)} camera took ${plural ? "these" : "this"} on sol ${a.sol}? Would love to find the original NASA/PDS product.`;
+  return `Is ${plural ? "this set" : "this"} the raw ${a.camera} ${plural ? "frames" : "frame"} or a processed version? Would love to find the original NASA/PDS product.`;
+}
+
 export function naturalReply(a: Analysis): string | null {
+  if (a.postType === "PERSONAL UPDATE") return "Congratulations! What will you be working on?";
+  if (a.postType === "VISUAL / IMAGE" && a.domain) return a.roverVisual ? roverVisualReply(a) : visualSet(a).natural;
   const d = domainDef(a);
   if (!d) return null;
   return fill(a.quoted && d.naturalQuoted ? d.naturalQuoted : d.natural, a);
@@ -531,6 +604,8 @@ export function naturalReply(a: Analysis): string | null {
 
 /** B — a curious question about the original subject. */
 export function curiousQuestion(a: Analysis): string | null {
+  if (a.postType === "PERSONAL UPDATE") return "What drew you to it?";
+  if (a.postType === "VISUAL / IMAGE" && a.domain) return visualSet(a).curious;
   const d = domainDef(a);
   return d ? fill(d.curious[0], a) : null;
 }
@@ -540,6 +615,7 @@ export function expertQuestion(a: Analysis): string | null {
   if (a.noConnection) return null;
   if (a.stance) return a.stance.question;
   if (a.relevance === "DIRECT" || a.relevance === "ADJACENT") return a.connections.flatMap((h) => h.def.questions)[0] ?? null;
+  if (a.postType === "VISUAL / IMAGE" && a.domain) return visualSet(a).expert;
   const d = domainDef(a);
   return d ? fill(d.curious[1] ?? d.curious[0], a) : null;
 }

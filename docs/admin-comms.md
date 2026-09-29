@@ -98,6 +98,14 @@ relevant experience / invites discussion — none → DON'T REPLY), link recomme
 mentions** ("N of last 10 replies mentioned DEEPSIFT", warning above ~30%), and repetition protection.
 Regression test: the Perseverance volcanic-water headline → PLANETARY GEOLOGY, WEAK, no mention.
 
+**Post type** is classified too (transparent rules): VISUAL / IMAGE, NEWS HEADLINE, SCIENTIFIC RESULT, TECHNICAL ARGUMENT,
+QUESTION, OPINION, ANNOUNCEMENT, THREAD, PERSONAL UPDATE, OTHER. Image posts never get "what's the evidence?" or a generic
+technical question: rover imagery gets a provenance question that asks only for what the post doesn't state (camera,
+sol, raw vs processed, original NASA/PDS source), telescope images ask for instrument/filters, other images for the
+source. Nothing is invented, and an image post is capped at WEAK relevance (it's about the picture). Personal updates get
+a human reply. Regression: "Night Sky on Mars as seen from NASA Curiosity Rover." → VISUAL / IMAGE, WEAK, no mention,
+"Do you know which Curiosity camera and sol this image is from? Would love to trace it back to the original NASA/PDS source."
+
 **Limitation:** it matches topics, not arguments. It can't summarize an arbitrary post, answer the author's specific
 point, detect sarcasm or read the article behind a headline; always read the post and edit the reply. A language model
 would help exactly there — none is used, and adding one needs explicit approval.

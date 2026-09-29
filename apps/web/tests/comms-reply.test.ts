@@ -98,7 +98,7 @@ const DIRECT_OR_ADJACENT: [string, string, string][] = [
   ["autonomous science", "Onboard autonomy becomes essential as spacecraft operate farther from Earth.", "DIRECT"],
   ["spacecraft communications", "The Deep Space Network is oversubscribed; data rates from Mars relay orbiters are a real bottleneck.", "DIRECT"],
   ["AI validation", "Most ML papers never test on out-of-distribution data. Generalization claims should require held-out evaluation.", "ADJACENT"],
-  ["Curiosity imagery", "New raw images from Curiosity's Navcam show the rover climbing toward Mount Sharp.", "ADJACENT"],
+  ["rover image data", "Curiosity's Navcam image pipeline runs every sol before the ops team plans the next drive.", "ADJACENT"],
 ];
 for (const [name, t, rel] of DIRECT_OR_ADJACENT) {
   test(`${name} → ${rel}; every option passes; natural option never names the project`, () => {
@@ -115,10 +115,61 @@ for (const [name, t, rel] of DIRECT_OR_ADJACENT) {
 }
 
 test("ADJACENT with only a 'what I built' point (Mission Control replay) → no mention, natural reply recommended", () => {
-  const { a, mention, rec } = run("New raw images from Curiosity's Navcam show the rover climbing toward Mount Sharp.");
+  const { a, angle, mention, rec } = run("Curiosity's Navcam image pipeline runs every sol before the ops team plans the next drive.");
   assert.equal(a.relevance, "ADJACENT");
+  assert.equal(angle?.id, "mission-control-replay");
   assert.equal(mention.mention, false);
   assert.equal(rec!.key, "NATURAL");
+});
+
+// ─── post types ───────────────────────────────────────────────────────────
+test("REGRESSION: 'Night Sky on Mars as seen from NASA Curiosity Rover.' → VISUAL / IMAGE, WEAK, provenance question", () => {
+  const { a, mention, rec, opts } = run("Night Sky on Mars as seen from NASA Curiosity Rover.");
+  assert.equal(a.postType, "VISUAL / IMAGE");
+  assert.equal(a.relevance, "WEAK");
+  assert.equal(mention.mention, false);
+  assert.equal(rec!.key, "NATURAL");
+  assert.equal(rec!.text, "Do you know which Curiosity camera and sol this image is from? Would love to trace it back to the original NASA/PDS source.");
+  for (const o of opts.filter((x) => x.available)) {
+    assert.ok(!/key evidence|key takeaway|what's the evidence/i.test(o.text), `${o.key}: ${o.text}`);
+    assert.ok(!mentionsProject(o.text));
+  }
+  assert.equal(checkReply(rec!.text, { relevance: a.relevance }).status, "PASS");
+});
+
+test("image replies ask only for what the post doesn't state, and never invent it", () => {
+  const cam = run("New raw images from Curiosity's Navcam show the rover climbing toward Mount Sharp.");
+  assert.equal(cam.a.postType, "VISUAL / IMAGE");
+  assert.equal(cam.a.relevance, "WEAK", "an image post is about the picture, not DEEPSIFT");
+  assert.match(cam.rec!.text, /which sol these Navcam images are from/);
+  assert.ok(!/which .*camera/.test(cam.rec!.text), "doesn't ask for the camera it already named");
+  const both = run("Mastcam image from sol 3400: layered rocks at the base of the ridge.");
+  assert.match(both.rec!.text, /raw Mastcam frame or a processed version/);
+  assert.ok(!/\d/.test(both.rec!.text), "no invented sol/product numbers");
+  const jwst = run("Stunning new JWST image of the Pillars of Creation");
+  assert.equal(jwst.a.postType, "VISUAL / IMAGE");
+  assert.match(jwst.rec!.text, /instrument and filters/);
+  for (const r of [cam, both, jwst]) assert.equal(checkReply(r.rec!.text, { relevance: r.a.relevance }).status, "PASS");
+});
+
+const TYPES: [string, string][] = [
+  ["NASA’s Perseverance Uncovers ‘Unexpected’ Volcanic Record of Water on Mars", "NEWS HEADLINE"],
+  ["Our paper, published today, shows that onboard data prioritization improves science return.", "SCIENTIFIC RESULT"],
+  ["Relay bandwidth is the real constraint because every sol's data volume competes with engineering telemetry, which means someone must prioritize.", "TECHNICAL ARGUMENT"],
+  ["Is onboard autonomy overrated?", "QUESTION"],
+  ["AI will transform Mars exploration within a decade.", "OPINION"],
+  ["We're excited to announce our new rover testbed, now open to researchers.", "ANNOUNCEMENT"],
+  ["🧵 Thread on why downlink is the real bottleneck for Mars rovers", "THREAD"],
+  ["I just started a new job at a robotics startup!", "PERSONAL UPDATE"],
+  ["Night Sky on Mars as seen from NASA Curiosity Rover.", "VISUAL / IMAGE"],
+  ["ok", "OTHER"],
+];
+for (const [t, type] of TYPES) test(`post type: ${type}`, () => assert.equal(analyzePost({ text: t }).postType, type));
+
+test("personal update → a human reply, not a technical question, and no project", () => {
+  const { a, rec } = run("I just started a new job at a robotics startup!");
+  assert.equal(a.relevance, "WEAK");
+  assert.match(rec!.text, /Congratulations/);
 });
 
 test("robotics post with no methodological hook stays WEAK (robot ≠ DEEPSIFT)", () => {

@@ -138,6 +138,7 @@ export function ReplyLabView() {
           <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-4">
             <div className="panel p-3 space-y-1" data-testid="topic">
               <div className="label">Original topic</div>
+              <div className="text-[12px] text-ink-3"><span className="label mr-1">Post type</span><span className="mono text-ink" data-testid="post-type">{a.postType}</span></div>
               <div className="mono text-[14px] text-ink" data-testid="domain-value">{a.domain ?? "—"}</div>
               <p className="text-[12px] text-ink-3">{a.about}</p>
             </div>
