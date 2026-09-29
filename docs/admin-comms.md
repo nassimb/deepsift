@@ -70,23 +70,34 @@ Add an idea to `IDEAS` in `lib/comms/library.ts` (unique id, pillar, audience, t
 
 ## Reply Lab (`/admin/comms/reply`, `lib/comms/reply.ts`)
 
-Deterministic, no model and no API:
+Goal: add value to the original conversation — not mention DEEPSIFT as often as possible. Deterministic, no model, no API.
 
-- **Topic/relevance**: a transparent keyword lexicon (matched words are shown). STRONG = something DEEPSIFT tested
-  (downlink, prioritization, rover imagery, stereo, onboard autonomy/compute, ops, compression, autonomy validation, PDS);
-  MODERATE = adjacent (robotics, generalization, scientific ML, edge AI, computer vision, reproducibility) or a claim
-  DEEPSIFT evidence speaks to directly; WEAK = only generic space/AI words → default DON'T REPLY; NONE (incl.
-  astronomy/launch posts) → **NO NATURAL DEEPSIFT CONNECTION** and **DON'T REPLY**, nothing generated.
-- **Talking points** (13): written only from VERIFIED_FACTS, first person, each in short / natural / technical / DEEPSIFT
-  (named once) / plain (no project) voices. Every one passes the claim checker in CI.
-- **Constructive disagreement** only when the post matches a stance that DEEPSIFT evidence contradicts (4 stances).
-- **Reply check** = claim checker + no hashtags, no @mentions, no link unless COPY + LINK, and overclaim rules
-  (NASA/JPL uses or tests DEEPSIFT, improves real operations, rover position universally optimal, generalizes to all
-  missions, AI proven useless, live Mars data, promotional phrasing, institutional roles you don't have).
-- **Promotional risk**, **value check** (NOTHING → DON'T REPLY), **link recommendation**, and **repetition protection**
-  over the saved reply history (e.g. "You have mentioned the 26.1% held-out result in 4 recent replies").
-- Reply history lives in the same browser-local state (`replies`) and is included in export/import.
+Order of work — **topic first, project second**:
+
+1. **Original topic**: the post's domain (planetary geology, astrobiology, astrophysics, meteorology, launch, policy,
+   instrumentation, rover engineering, operations, communications, autonomy, AI/ML, robotics, science news).
+2. **DEEPSIFT relevance**: DIRECT (downlink, onboard prioritization/selection, onboard autonomy, onboard compute, stereo
+   handling, compression) · ADJACENT (autonomy validation, ML generalization, rover image data, rover operations, mission
+   data pipelines, or a claim DEEPSIFT evidence contradicts) · WEAK (same broad domain only — e.g. Mars geology, water
+   history, weather, exoplanets, launches) · NONE. Mars, NASA, JPL, rover, Curiosity, Perseverance, space, science and AI
+   **never create a connection on their own**, and a science subject DEEPSIFT has no evidence about caps relevance.
+3. **A · Natural reply** — written from the post's own subject, never uses DEEPSIFT, never invents article content (it
+   asks about the claim instead of asserting findings). **B · Curious question** about the subject. **C · Technical**
+   only when the pasted text has technical substance. **D · DEEPSIFT-related** only for DIRECT/ADJACENT (or an explicit
+   project-connection override on WEAK, shown with a warning).
+4. **Should DEEPSIFT be mentioned?** YES only when it materially improves the reply: DIRECT, or ADJACENT with a concrete
+   finding/limitation (not a "here's what I built" point), and not when your recent replies already mention it too often.
+   Otherwise the recommended reply is the project-free one.
+
+Checks on every (edited) reply: claim checker; no hashtags, @mentions or automatic link; overclaims (NASA/JPL uses
+DEEPSIFT, real operations, universally optimal, all missions, AI useless, live data, promotional phrasing, institutional
+roles, "this proves…" about an article you haven't pasted); **PROJECT_INSERTION** (reply relies on your experiment
+under a WEAK/NONE post) → FAIL. Plus: **promotional risk**, **"Would this reply make sense if I had never built
+DEEPSIFT?"**, a **conversation-value test** (reacts to the subject / adds information / meaningful question / clarifies /
+relevant experience / invites discussion — none → DON'T REPLY), link recommendation (default NONE), **recent project
+mentions** ("N of last 10 replies mentioned DEEPSIFT", warning above ~30%), and repetition protection.
+Regression test: the Perseverance volcanic-water headline → PLANETARY GEOLOGY, WEAK, no mention.
 
 **Limitation:** it matches topics, not arguments. It can't summarize an arbitrary post, answer the author's specific
-point, detect sarcasm or read the thread; always read the post and edit the reply. A language model would help exactly
-there — none is used, and adding one needs explicit approval.
+point, detect sarcasm or read the article behind a headline; always read the post and edit the reply. A language model
+would help exactly there — none is used, and adding one needs explicit approval.

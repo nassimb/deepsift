@@ -5,22 +5,26 @@
 import { useMemo, useState } from "react";
 import { FACT_BY_ID } from "@/lib/comms/facts";
 import {
-  ANGLE_BY_ID, LINK_URL, REPLY_STYLES, SEMANTIC_LIMITATION, STYLE_LABEL, analyzePost, checkReply, draftStyle, expertQuestion,
-  linkRecommendation, pickAngles, primaryOptions, promoRisk, repetition, valueCheck, type LinkRec, type ReplyDraft, type ReplyInput,
+  ANGLE_BY_ID, LINK_URL, REPLY_STYLES, SEMANTIC_LIMITATION, STYLE_LABEL, analyzePost, checkReply, conversationValue, draftStyle, expertQuestion,
+  linkRecommendation, mentionsProject, pickAngles, primaryOptions, promoRisk, recommend, repetition, shouldMention, wouldMakeSenseWithoutDeepsift,
+  type LinkRec, type ReplyDraft, type ReplyInput,
 } from "@/lib/comms/reply";
 import { upsertReply, type ReplyRecord } from "@/lib/comms/store";
 import { postIdFromUrl, xIntentUrl } from "@/lib/comms/xintent";
 import { useComms } from "./CommsProvider";
 import { Chip, CopyButton, Section } from "./ui";
 
-const REL_COLOR = { STRONG: "var(--s-good)", MODERATE: "var(--a-full)", WEAK: "var(--s-warn)", NONE: "var(--ink-3)" } as const;
+const REL_COLOR: Record<string, string> = { DIRECT: "var(--s-good)", ADJACENT: "var(--a-full)", WEAK: "var(--s-warn)", NONE: "var(--ink-3)", STRONG: "var(--s-good)", MODERATE: "var(--a-full)" };
 const RISK_COLOR = { LOW: "var(--s-good)", MEDIUM: "var(--s-warn)", HIGH: "var(--s-critical)" } as const;
 const field = "bg-panel-2 border border-line text-ink text-[13px] px-3 py-2 w-full min-w-0";
+
+const newReplyId = () => `r-${Date.now().toString(36)}-${Math.floor(Math.random() * 1e6).toString(36)}`;
 
 export function ReplyLabView() {
   const { state, ready, replace } = useComms();
   const [form, setForm] = useState<ReplyInput>({ text: "", url: "", authorName: "", authorHandle: "", context: "" });
   const [input, setInput] = useState<ReplyInput | null>(null);
+  const [override, setOverride] = useState(false);
   const [angleId, setAngleId] = useState<string | null>(null);
   const [choice, setChoice] = useState<string>("NATURAL");
   const [text, setText] = useState("");
@@ -31,24 +35,25 @@ export function ReplyLabView() {
   const history = useMemo(() => state.replies ?? [], [state.replies]);
   const rep = useMemo(() => repetition(history), [history]);
   const a = useMemo(() => (input ? analyzePost(input) : null), [input]);
-  const angles = useMemo(() => (a ? pickAngles(a, rep) : []), [a, rep]);
-  const angle = angleId ? ANGLE_BY_ID[angleId] : angles[0] ?? null;
-  const options = useMemo(() => (a ? primaryOptions(a, angle) : []), [a, angle]);
-  const styles = useMemo(() => (a ? REPLY_STYLES.map((s) => draftStyle(s, a, angle)) : []), [a, angle]);
-  const all: ReplyDraft[] = [...options, ...styles.map((s) => ({ ...s, key: `STYLE:${s.style}` }))];
-  const current = all.find((o) => o.key === choice) ?? options[0] ?? null;
+  const angles = useMemo(() => (a ? pickAngles(a, rep, override) : []), [a, rep, override]);
+  const angle = (angleId && angles.find((g) => g.id === angleId)) || angles[0] || null;
+  const options = useMemo(() => (a ? primaryOptions(a, angle, override) : []), [a, angle, override]);
+  const styles = useMemo(() => (a ? REPLY_STYLES.map((s) => ({ ...draftStyle(s, a, angle, override), key: `STYLE:${s}` })) : []), [a, angle, override]);
+  const all: ReplyDraft[] = [...options, ...styles];
+  const mention = a ? shouldMention(a, rep, override, angle) : null;
+  const rec = a && mention ? recommend(a, options, mention) : null;
+  const current = all.find((o) => o.key === choice) ?? rec ?? null;
   const q = a ? expertQuestion(a) : null;
   const linkRec = a ? linkRecommendation(a) : null;
   const chosenLink: LinkRec = link ?? linkRec?.link ?? "NONE";
-  const value = a ? valueCheck(a, current) : null;
-  const check = useMemo(() => checkReply(text), [text]);
-  const risk = a ? promoRisk(text, a) : null;
-  const naturalAlt = options[0];
+  const check = useMemo(() => checkReply(text, { relevance: a?.relevance, override }), [text, a, override]);
+  const risk = a && text.trim() ? promoRisk(text, a) : null;
+  const cv = a ? conversationValue(a, text, current) : null;
+  const without = text.trim() ? wouldMakeSenseWithoutDeepsift(text) : null;
 
-  const select = (d: ReplyDraft | undefined) => {
-    if (!d) return;
-    setChoice(d.key);
-    setText(d.available ? d.text : "");
+  const pick = (d: ReplyDraft | null | undefined) => {
+    setChoice(d?.key ?? "NATURAL");
+    setText(d?.available ? d.text : "");
     setEditing(false);
     setSavedId(null);
   };
@@ -59,21 +64,28 @@ export function ReplyLabView() {
     setInput(next);
     setAngleId(null);
     setLink(null);
-    setSavedId(null);
+    setOverride(false);
     const an = analyzePost(next);
-    const first = primaryOptions(an, pickAngles(an, rep)[0] ?? null)[0];
-    setChoice("NATURAL");
-    setText(first.available ? first.text : "");
-    setEditing(false);
+    const g = pickAngles(an, rep)[0] ?? null;
+    const opts = primaryOptions(an, g);
+    pick(recommend(an, opts, shouldMention(an, rep, false, g)));
+  };
+
+  const toggleOverride = (on: boolean) => {
+    setOverride(on);
+    if (!a) return;
+    const g = pickAngles(a, rep, on)[0] ?? null;
+    const opts = primaryOptions(a, g, on);
+    if (on) pick(opts[3].available ? opts[3] : opts[0]);
+    else pick(recommend(a, opts, shouldMention(a, rep, false, g)));
   };
 
   const changeAngle = (id: string) => {
     setAngleId(id);
     if (!a) return;
     const g = ANGLE_BY_ID[id];
-    const opts = primaryOptions(a, g);
-    const d = [...opts, ...REPLY_STYLES.map((s) => ({ ...draftStyle(s, a, g), key: `STYLE:${s}` }))].find((o) => o.key === choice) ?? opts[0];
-    setText(d.available ? d.text : "");
+    const d = [...primaryOptions(a, g, override), ...REPLY_STYLES.map((s) => ({ ...draftStyle(s, a, g, override), key: `STYLE:${s}` }))].find((o) => o.key === choice);
+    if (d?.available) setText(d.text);
   };
 
   const withLink = chosenLink !== "NONE" ? `${text}\n\n${LINK_URL[chosenLink]}` : text;
@@ -82,20 +94,22 @@ export function ReplyLabView() {
   const save = () => {
     if (!a || !input || !text.trim()) return;
     const now = new Date().toISOString();
-    const rec: ReplyRecord = {
-      id: savedId ?? `r-${Date.now().toString(36)}-${Math.floor(Math.random() * 1e6).toString(36)}`,
+    const project = mentionsProject(text);
+    const rec2: ReplyRecord = {
+      id: savedId ?? newReplyId(),
       created_at: history.find((h) => h.id === savedId)?.created_at ?? now, updated_at: now,
       post_text: input.text, post_url: input.url || null, author_name: input.authorName ?? "", author_handle: input.authorHandle ?? "",
-      context: input.context ?? "", reply: text, style: current?.label || choice, angle: current?.angle ?? null,
-      facts: check.facts.length ? check.facts : /DEEPSIFT|Curiosity|archived/i.test(text) ? current?.facts ?? [] : [],
-      relevance: a.relevance, promo_risk: risk?.risk ?? "LOW", value: value?.value ?? "NOTHING", link: chosenLink === "NONE" ? null : LINK_URL[chosenLink],
-      posted: false, reply_url: null,
+      context: input.context ?? "", reply: text, style: current?.label || choice, angle: project ? current?.angle ?? null : null,
+      facts: project ? [...new Set([...check.facts, ...(current?.facts ?? [])])] : check.facts,
+      relevance: a.relevance, promo_risk: risk?.risk ?? "LOW", value: cv?.what ?? "", link: chosenLink === "NONE" ? null : LINK_URL[chosenLink],
+      posted: false, reply_url: null, mentions_project: project, domain: a.domain ?? undefined,
     };
-    replace(upsertReply(state, rec));
-    setSavedId(rec.id);
+    replace(upsertReply(state, rec2));
+    setSavedId(rec2.id);
   };
 
   if (!ready) return null;
+  const factsShown = [...new Set([...check.facts, ...(mentionsProject(text) ? current?.facts ?? [] : [])])];
   return (
     <>
       <div className="space-y-1">
@@ -121,11 +135,16 @@ export function ReplyLabView() {
         <div className="space-y-6" data-testid="reply-result">
           <p className="text-[11px] text-ink-4" data-testid="semantic-note">{SEMANTIC_LIMITATION}</p>
 
-          <div className="grid gap-3 md:grid-cols-4">
-            <div className="panel p-3 space-y-1 md:col-span-2" data-testid="topic">
-              <div className="label">Topic</div>
-              <p className="text-[13px] text-ink-2">{a.about}</p>
-              {a.connectionTypes.length > 0 && <div className="flex flex-wrap gap-1 pt-1">{a.connectionTypes.map((c) => <Chip key={c}>{c}</Chip>)}</div>}
+          <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-4">
+            <div className="panel p-3 space-y-1" data-testid="topic">
+              <div className="label">Original topic</div>
+              <div className="mono text-[14px] text-ink" data-testid="domain-value">{a.domain ?? "—"}</div>
+              <p className="text-[12px] text-ink-3">{a.about}</p>
+            </div>
+            <div className="panel p-3 space-y-1" data-testid="value">
+              <div className="label">What could I add?</div>
+              <div className="text-[13px] text-ink" data-testid="value-value">{cv?.what}</div>
+              {!cv?.reply && <div className="mono text-[16px]" style={{ color: "var(--s-warn)" }} data-testid="dont-reply">DON&apos;T REPLY</div>}
             </div>
             <div className="panel p-3 space-y-1" data-testid="relevance">
               <div className="label">DEEPSIFT relevance</div>
@@ -133,19 +152,24 @@ export function ReplyLabView() {
               {a.noConnection && <div className="mono text-[12px] text-ink" data-testid="no-connection">NO NATURAL DEEPSIFT CONNECTION</div>}
               <p className="text-[12px] text-ink-3">{a.relevanceWhy}</p>
             </div>
-            <div className="panel p-3 space-y-1" data-testid="value">
-              <div className="label">What you can add</div>
-              <div className="mono text-[14px] text-ink" data-testid="value-value">{value?.value}</div>
-              {!value?.reply && <div className="mono text-[16px]" style={{ color: "var(--s-warn)" }} data-testid="dont-reply">DON&apos;T REPLY</div>}
-              <p className="text-[12px] text-ink-3">{value?.why}</p>
-              {risk && (
-                <div className="pt-1 text-[12px]" data-testid="promo-risk">
-                  <span className="label mr-1">Promotional risk</span>
-                  <span className="mono" style={{ color: RISK_COLOR[risk.risk] }} data-testid="promo-value">{risk.risk}</span>
-                  <span className="text-ink-3"> — {risk.why}</span>
-                </div>
-              )}
+            <div className="panel p-3 space-y-1" data-testid="mention">
+              <div className="label">Should DEEPSIFT be mentioned?</div>
+              <div className="mono text-[18px]" style={{ color: mention?.mention ? "var(--a-full)" : "var(--ink-2)" }} data-testid="mention-value">{mention?.mention ? "YES" : "NO"}</div>
+              <p className="text-[12px] text-ink-3">{mention?.why}</p>
             </div>
+          </div>
+
+          <div className="flex flex-wrap gap-x-6 gap-y-2 text-[12px]">
+            <span data-testid="recent-mentions" className="text-ink-3">
+              <span className="label mr-1">Recent project mentions</span>
+              {rep.recentCount ? `${rep.recentMentions} of last ${rep.recentCount} replies mentioned DEEPSIFT` : "no saved replies yet"} <span className="text-ink-4">(target ≈ 15–30%)</span>
+            </span>
+            {(a.relevance === "WEAK") && !a.suppressProject && (
+              <label className="flex items-center gap-1.5 text-ink-3" data-testid="override-label">
+                <input type="checkbox" checked={override} onChange={(e) => toggleOverride(e.target.checked)} data-testid="override" />
+                Project-connection override (not recommended here)
+              </label>
+            )}
           </div>
 
           {rep.warnings.length > 0 && (
@@ -153,33 +177,33 @@ export function ReplyLabView() {
           )}
 
           <Section title="Recommended reply" testid="recommended">
-            {angles.length > 1 && (
+            <div className="flex flex-wrap gap-1.5" data-testid="options">
+              {options.map((o) => (
+                <button key={o.key} type="button" className="btn" data-active={choice === o.key ? "true" : undefined} disabled={!o.available} title={o.unavailableReason}
+                  onClick={() => pick(o)} data-testid={`opt-${o.key}`}>{o.label}{rec?.key === o.key ? " · recommended" : ""}</button>
+              ))}
+            </div>
+            <div className="flex flex-wrap gap-1.5" data-testid="styles">
+              {styles.map((s) => (
+                <button key={s.style} type="button" className="btn" data-active={choice === s.key ? "true" : undefined} disabled={!s.available}
+                  title={s.unavailableReason} onClick={() => pick(s)} data-testid={`style-${s.style}`}>{STYLE_LABEL[s.style]}</button>
+              ))}
+            </div>
+            {angles.length > 1 && current?.project && (
               <label className="text-[11px] text-ink-3 flex flex-wrap items-center gap-2">
-                Talking point
+                DEEPSIFT talking point
                 <select value={angle?.id ?? ""} onChange={(e) => changeAngle(e.target.value)} className="bg-panel-2 border border-line text-ink-2 text-[12px] px-2 py-1 max-w-full" data-testid="angle-select">
                   {angles.map((g) => <option key={g.id} value={g.id}>{g.label}{rep.angleCounts[g.id] ? ` (used ${rep.angleCounts[g.id]}× recently)` : ""}</option>)}
                 </select>
               </label>
             )}
-            <div className="flex flex-wrap gap-1.5" data-testid="options">
-              {options.map((o) => (
-                <button key={o.key} type="button" className="btn" data-active={choice === o.key ? "true" : undefined} disabled={!o.available} title={o.unavailableReason}
-                  onClick={() => select(o)} data-testid={`opt-${o.key}`}>{o.label}{o.key === "NATURAL" ? " (default)" : ""}</button>
-              ))}
-            </div>
-            <div className="flex flex-wrap gap-1.5" data-testid="styles">
-              {styles.map((s) => (
-                <button key={s.style} type="button" className="btn" data-active={choice === `STYLE:${s.style}` ? "true" : undefined} disabled={!s.available}
-                  title={s.unavailableReason} onClick={() => select({ ...s, key: `STYLE:${s.style}` })} data-testid={`style-${s.style}`}>{STYLE_LABEL[s.style]}</button>
-              ))}
-            </div>
             {current && !current.available && <p className="text-[12px]" style={{ color: "var(--s-warn)" }} data-testid="unavailable">{current.unavailableReason}</p>}
 
             {editing ? (
               <textarea data-testid="reply-editor" className={`${field} min-h-[140px] leading-relaxed`} value={text} onChange={(e) => setText(e.target.value)} />
             ) : (
               <pre data-testid="reply-text" className="whitespace-pre-wrap break-words font-sans text-[14px] leading-relaxed text-ink bg-panel-2 border border-line p-3 min-h-[60px]">
-                {text || <span className="text-ink-4">{a.noConnection ? "Nothing generated — no natural connection. Write your own with EDIT, or don't reply." : "No draft."}</span>}
+                {text || <span className="text-ink-4">{a.noConnection ? "Nothing generated — no subject to respond to. Write your own with EDIT, or don't reply." : "No draft."}</span>}
               </pre>
             )}
 
@@ -188,16 +212,26 @@ export function ReplyLabView() {
               <span className="mono" data-testid="reply-claim" style={{ color: text.trim() && check.status === "PASS" ? "var(--s-good)" : "var(--s-critical)" }}>
                 CLAIM CHECK {text.trim() ? check.status : "—"}
               </span>
-              <span className="text-ink-4">No hashtags · no @mentions · no link unless you choose COPY + LINK</span>
+              {risk && (
+                <span data-testid="promo-risk"><span className="label mr-1">Promotional risk</span><span className="mono" style={{ color: RISK_COLOR[risk.risk] }} data-testid="promo-value">{risk.risk}</span><span className="text-ink-3"> — {risk.why}</span></span>
+              )}
             </div>
+            {without !== null && (
+              <p className="text-[12px]" data-testid="promotionality">
+                <span className="label mr-1">Would this reply make sense if I had never built DEEPSIFT?</span>
+                <span className="mono" data-testid="promotionality-value" style={{ color: without ? "var(--s-good)" : "var(--s-warn)" }}>{without ? "YES" : "NO"}</span>
+                {!without && <span className="text-ink-3"> — it relies on your own experiment{a.relevance === "DIRECT" ? "; fine here, the connection is direct." : a.relevance === "ADJACENT" ? "; acceptable only because it adds a concrete finding." : "; rejected unless you use the override."}</span>}
+              </p>
+            )}
             {text.trim() && check.status === "FAIL" && (
               <ul className="text-[12px] space-y-0.5" data-testid="reply-issues" style={{ color: "var(--s-serious)" }}>
                 {check.issues.map((i, k) => <li key={k}>[{i.rule}] {i.message}{i.match ? ` — “${i.match}”` : ""}</li>)}
               </ul>
             )}
-            {risk?.risk === "HIGH" && naturalAlt?.available && (
+            {check.warnings.length > 0 && <ul className="text-[12px]" style={{ color: "var(--s-warn)" }} data-testid="reply-warnings">{check.warnings.map((w, k) => <li key={k}>[{w.rule}] {w.message}</li>)}</ul>}
+            {risk?.risk === "HIGH" && options[0]?.available && (
               <p className="text-[12px]" style={{ color: "var(--s-critical)" }} data-testid="promo-warning">
-                High promotional risk. Less promotional alternative: <button type="button" className="underline" onClick={() => select(naturalAlt)}>use the natural reply</button>.
+                High promotional risk. Less promotional alternative: <button type="button" className="underline" onClick={() => pick(options[0])}>use the natural reply</button>.
               </p>
             )}
 
@@ -220,26 +254,22 @@ export function ReplyLabView() {
           </Section>
 
           <div className="grid gap-4 md:grid-cols-2">
-            <Section title="Alternatives" testid="alternatives">
-              <ul className="space-y-2">
-                {all.filter((o, i) => o.available && o.key !== choice && o.text !== text && all.findIndex((x) => x.available && x.text === o.text) === i).slice(0, 4).map((o) => (
-                  <li key={o.key} className="panel p-2 space-y-1">
-                    <div className="flex items-center gap-2"><span className="label">{o.label}</span><button type="button" className="btn ml-auto" onClick={() => select(o)}>Use</button></div>
-                    <p className="text-[12px] text-ink-2 whitespace-pre-wrap">{o.text}</p>
-                  </li>
+            <Section title="Conversation-value test" testid="value-test">
+              <ul className="text-[12px] space-y-0.5">
+                {cv?.checks.map((c) => (
+                  <li key={c.key} className="flex gap-2"><span className="mono w-8" style={{ color: c.ok ? "var(--s-good)" : "var(--ink-4)" }}>{c.ok ? "YES" : "NO"}</span><span className="text-ink-2">{c.label}</span></li>
                 ))}
-                {!all.some((o) => o.available) && <li className="text-[12px] text-ink-3">None — see DON&apos;T REPLY.</li>}
               </ul>
+              {!cv?.reply && <p className="text-[12px]" style={{ color: "var(--s-warn)" }}>None apply → DON&apos;T REPLY.</p>}
             </Section>
             <div className="space-y-4">
               <Section title="Expert question" testid="expert-question">
                 {q ? (
                   <div className="space-y-2">
-                    {!a.qualifiedAuthor && <p className="text-[11px] text-ink-4">Author not flagged as technically qualified (name/handle/context) — use if it fits.</p>}
                     <p className="text-[13px] text-ink-2">{q}</p>
-                    <button type="button" className="btn" onClick={() => { setChoice("STYLE:QUESTION"); setText(q); }} data-testid="use-question">Use as reply</button>
+                    <button type="button" className="btn" onClick={() => pick({ ...all.find((o) => o.key === "STYLE:QUESTION")!, text: q, available: true })} data-testid="use-question">Use as reply</button>
                   </div>
-                ) : <p className="text-[12px] text-ink-3">None — no genuine DEEPSIFT-related question for this post.</p>}
+                ) : <p className="text-[12px] text-ink-3">None.</p>}
               </Section>
               <Section title="Link recommendation" testid="link-rec">
                 <div className="flex flex-wrap items-center gap-2 text-[12px]">
@@ -253,10 +283,21 @@ export function ReplyLabView() {
             </div>
           </div>
 
+          <Section title="Alternatives" testid="alternatives">
+            <ul className="grid gap-2 md:grid-cols-2">
+              {all.filter((o, i) => o.available && o.key !== choice && o.text !== text && all.findIndex((x) => x.available && x.text === o.text) === i).slice(0, 4).map((o) => (
+                <li key={o.key} className="panel p-2 space-y-1">
+                  <div className="flex items-center gap-2"><span className="label">{o.label}</span>{o.project && <Chip>mentions your project</Chip>}<button type="button" className="btn ml-auto" onClick={() => pick(o)}>Use</button></div>
+                  <p className="text-[12px] text-ink-2 whitespace-pre-wrap">{o.text}</p>
+                </li>
+              ))}
+            </ul>
+          </Section>
+
           <Section title="Facts used" testid="facts-used">
-            {check.facts.length || (current?.facts.length && /DEEPSIFT|Curiosity|archived/i.test(text)) ? (
+            {factsShown.length ? (
               <ul className="text-[12px] space-y-1">
-                {[...new Set([...check.facts, ...(/DEEPSIFT|Curiosity|archived/i.test(text) ? current?.facts ?? [] : [])])].map((f) => (
+                {factsShown.map((f) => (
                   <li key={f}><span className="mono text-ink-4">{f}</span> — <span className="text-ink-2">{FACT_BY_ID[f]?.short_claim}</span> <span className="text-ink-4">({FACT_BY_ID[f]?.source_file})</span></li>
                 ))}
               </ul>
@@ -283,7 +324,9 @@ export function ReplyHistory({ compact = false }: { compact?: boolean }) {
             <div className="flex flex-wrap items-center gap-2">
               <Chip color={REL_COLOR[r.relevance]}>{r.relevance}</Chip>
               <Chip color={RISK_COLOR[r.promo_risk]}>risk {r.promo_risk}</Chip>
+              {r.domain && <Chip>{r.domain}</Chip>}
               <Chip>{r.style}</Chip>
+              {(r.mentions_project ?? /DEEPSIFT/i.test(r.reply)) ? <Chip color="var(--a-full)">mentions DEEPSIFT</Chip> : <Chip>no project mention</Chip>}
               {r.posted ? <Chip color="var(--s-good)">POSTED</Chip> : <Chip>NOT POSTED</Chip>}
               <span className="mono text-[10px] text-ink-4 ml-auto">{r.created_at.slice(0, 16).replace("T", " ")}</span>
             </div>

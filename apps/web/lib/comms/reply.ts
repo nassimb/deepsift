@@ -1,20 +1,20 @@
 /** REPLY LAB — deterministic reply assistant for other people's X posts. No model, no API.
  *
- *  What is deterministic (and honest about it):
- *  - topic + relevance detection from a transparent keyword lexicon (the matched words are shown);
- *  - DEEPSIFT talking points ("angles") written ONLY from VERIFIED_FACTS wording, in the builder's own voice;
- *  - reply styles assembled from those angles and a bank of expert questions;
- *  - constructive disagreement only when the post matches a stance pattern that DEEPSIFT evidence actually contradicts;
- *  - claim check (lib/comms/claims.ts) + reply rules (no hashtags, no @mentions, no automatic link), promotional risk,
- *    value check (NOTHING → DON'T REPLY), link recommendation and repetition protection.
- *  What it cannot do: understand the specific argument of an arbitrary post. Replies react to the detected TOPIC, not to
- *  the author's exact claim — that part needs a language model or your own edit (see SEMANTIC_LIMITATION). Pure logic. */
+ *  Order of work (topic first, project second):
+ *  1. classify the ORIGINAL post's domain (planetary geology, astrophysics, communications, autonomy…);
+ *  2. decide DEEPSIFT relevance — DIRECT / ADJACENT / WEAK / NONE. Mission or agency names (Mars, NASA, JPL, rover,
+ *     Curiosity, Perseverance, space, science, AI) never create a connection on their own, and a science subject
+ *     DEEPSIFT has no evidence about caps relevance;
+ *  3. write an INDEPENDENT reply about the post's own subject, never using DEEPSIFT and never inventing article content;
+ *  4. only then consider a DEEPSIFT-related reply, and recommend it only when it materially improves the contribution.
+ *  Every reply passes the claim checker + reply rules (no hashtags, @mentions, automatic links, overclaims, project
+ *  insertion under unrelated posts). Limitation: this matches topics, not arguments (SEMANTIC_LIMITATION). Pure logic. */
 import { checkPost, type ClaimCheck } from "./claims.ts";
 import { FACT_BY_ID } from "./facts.ts";
 import type { PromoRisk, Relevance, ReplyRecord } from "./store.ts";
 
 export const SEMANTIC_LIMITATION =
-  "Keyword-based, deterministic analysis: it detects the topic and matches verified DEEPSIFT talking points, but it does not understand the author's specific argument. Read the post yourself and edit the reply so it answers what they actually said.";
+  "Keyword-based, deterministic analysis: it classifies the post's subject and suggests questions or verified DEEPSIFT points, but it does not understand the author's specific argument or the article behind a headline. Read the post and edit the reply so it answers what they actually said.";
 
 export type ConnectionType =
   | "RESULT" | "NEGATIVE RESULT" | "ENGINEERING LESSON" | "METHODOLOGY" | "MISSION CONTROL" | "DATASET / CURIOSITY" | "AUTONOMY"
@@ -28,7 +28,7 @@ export const STYLE_LABEL: Record<ReplyStyle, string> = {
   QUESTION: "Question", DEEPSIFT_CONNECTION: "DEEPSIFT connection", NO_PROJECT_MENTION: "No project mention",
 };
 
-export type Value = "NEW EVIDENCE" | "PERSONAL EXPERIMENT" | "TECHNICAL QUESTION" | "METHODOLOGICAL POINT" | "USEFUL LIMITATION" | "CONSTRUCTIVE DISAGREEMENT" | "NOTHING";
+export type Value = "NEW EVIDENCE" | "PERSONAL EXPERIMENT" | "TECHNICAL QUESTION" | "QUESTION ABOUT THE SUBJECT" | "METHODOLOGICAL POINT" | "USEFUL LIMITATION" | "CONSTRUCTIVE DISAGREEMENT" | "NOTHING";
 export type LinkRec = "NONE" | "MISSION CONTROL" | "FINAL TEST" | "RESEARCH" | "GITHUB" | "HOMEPAGE";
 export const LINK_URL: Record<Exclude<LinkRec, "NONE">, string> = {
   "MISSION CONTROL": "deepsift.space/mission-control",
@@ -55,6 +55,8 @@ export interface Angle {
   deepsift: string;
   /** No project and no personal experiment — an observation or question only. */
   plain: string;
+  /** False for "here's what I built" points (no finding or limitation): never recommended on ADJACENT posts. */
+  finding?: boolean;
 }
 
 export const ANGLES: Angle[] = [
@@ -158,7 +160,7 @@ export const ANGLES: Angle[] = [
     plain: "For onboard selection logic, which constraint tends to dominate first: compute, memory, power, or relay scheduling?",
   },
   {
-    id: "mission-control-replay", label: "Historical replay you can inspect", types: ["MISSION CONTROL", "DATASET / CURIOSITY"],
+    id: "mission-control-replay", label: "Historical replay you can inspect", finding: false, types: ["MISSION CONTROL", "DATASET / CURIOSITY"],
     facts: ["ctx_mission_control", "example_traverse", "thumbnails_sent"], value: "PERSONAL EXPERIMENT",
     short: "I built a historical replay of archived Curiosity Navcam traverses that shows, frame by frame, which frames go down at full quality and why.",
     natural: "I've been replaying archived Curiosity Navcam traverses frame by frame. Seeing which frames go down at full quality, and which only as thumbnails, made the downlink trade-offs much easier to reason about.",
@@ -167,7 +169,7 @@ export const ANGLES: Angle[] = [
     plain: "Is there a replay or visualization of how frames are chosen on a real traverse? It makes these trade-offs much easier to reason about.",
   },
   {
-    id: "reproducibility", label: "Hash-locked, checkable results", types: ["REPRODUCIBILITY", "METHODOLOGY"],
+    id: "reproducibility", label: "Hash-locked, checkable results", finding: false, types: ["REPRODUCIBILITY", "METHODOLOGY"],
     facts: ["integrity_manifest", "public_claims"], value: "METHODOLOGICAL POINT",
     short: "Something that helped my own work: hash-locking the result files and recomputing every public number from them by script.",
     natural: "What helped me most with reproducibility: hash-locking the 70 files behind the result, and having a script recompute every public number from them before anything is published.",
@@ -177,17 +179,6 @@ export const ANGLES: Angle[] = [
   },
 ];
 export const ANGLE_BY_ID: Record<string, Angle> = Object.fromEntries(ANGLES.map((a) => [a.id, a]));
-
-// ─── topics (transparent keyword lexicon) ──────────────────────────────────
-export interface Topic {
-  id: string;
-  label: string;
-  strength: Exclude<Relevance, "NONE">;
-  re: RegExp;
-  angles: string[];
-  questions: string[];
-  types: ConnectionType[];
-}
 
 const Q = {
   proxy: "For an operational system, would you treat traverse geometry as a useful first-order proxy, or would mission teams need observation-type-specific utility functions?",
@@ -202,73 +193,137 @@ const Q = {
   replay: "Would a frame-by-frame replay of the selection be useful for operators, or would they want aggregate metrics only?",
 };
 
-export const TOPICS: Topic[] = [
-  { id: "downlink", label: "rover/spacecraft downlink & bandwidth", strength: "STRONG",
-    re: /\b(down[- ]?link\w*|bandwidth|data volume|relay (pass|orbiter)s?|data rates?|bits? per|megabits?|mbps|kbps|deep space network|DSN|MRO relay|limited (link|bandwidth))\b/gi,
-    angles: ["what-is-preserved", "held-out-result", "monotonic-scheduler", "complexity-didnt-generalize"], questions: [Q.constraint, Q.metric, Q.thumbnails], types: ["DOWNLINK CONSTRAINT", "RESULT"] },
-  { id: "prioritization", label: "onboard data prioritization / image selection", strength: "STRONG",
-    re: /\b(prioriti[sz]\w*|triage|image selection|data selection|select(ing)? (which|what) (images?|data)|which (images?|data|frames?) to send|onboard (selection|summari[sz]ation)|data reduction|science data management)\b/gi,
-    angles: ["complexity-didnt-generalize", "held-out-result", "what-is-preserved", "dev-only-gain"], questions: [Q.triage, Q.proxy, Q.learned], types: ["AUTONOMY", "RESULT"] },
-  { id: "mars-imagery", label: "Mars rover imagery / Curiosity / Navcam", strength: "STRONG",
-    re: /\b(Curiosity|Navcam|Hazcam|Mastcam|Perseverance|rover (images?|imagery|cameras?|photos?|pictures?)|Gale crater|Mount Sharp|raw images?)\b/gi,
-    angles: ["mission-control-replay", "survivorship", "held-out-result", "stereo-constraint"], questions: [Q.thumbnails, Q.targeted, Q.replay], types: ["DATASET / CURIOSITY", "MISSION CONTROL"] },
-  { id: "navigation", label: "rover navigation / traverse", strength: "STRONG",
-    re: /\b(rover navigation|auto[- ]?nav|traverse\w*|drive distance|drove \d+|path planning|localization|visual odometry)\b/gi,
-    angles: ["metric-choice", "held-out-result", "stereo-constraint"], questions: [Q.proxy, Q.metric], types: ["SPATIAL COVERAGE", "AUTONOMY"] },
-  { id: "stereo", label: "stereo imagery", strength: "STRONG",
-    re: /\b(stereo\w*|stereoscopic|3D (terrain|mesh|reconstruction)|depth maps?|anaglyph)\b/gi,
-    angles: ["stereo-constraint"], questions: [Q.metric], types: ["STEREO PRESERVATION"] },
-  { id: "autonomous-science", label: "autonomous science / onboard autonomy", strength: "STRONG",
-    re: /\b(autonomous science|science autonomy|onboard autonomy|on-board autonomy|autonomous (rovers?|spacecraft|operations?|targeting)|AEGIS|onboard decision\w*)\b/gi,
-    angles: ["complexity-didnt-generalize", "validation-protocol", "laptop-only"], questions: [Q.learned, Q.triage, Q.constraint], types: ["AUTONOMY", "NEGATIVE RESULT"] },
-  { id: "onboard-compute", label: "edge inference / onboard computing", strength: "STRONG",
-    re: /\b(onboard (comput\w*|processing|inference|AI|ML)|edge (inference|computing|AI)|flight (processors?|computers?|software)|radiation[- ](hardened|tolerant)|HPSC|RAD750|FPGA)\b/gi,
-    angles: ["laptop-only", "complexity-didnt-generalize"], questions: [Q.constraint, Q.learned], types: ["AUTONOMY", "LIMITATION"] },
-  { id: "mission-ops", label: "mission operations / planning", strength: "STRONG",
-    re: /\b(mission operations|ops team|tactical planning|sol planning|operations team|uplink|command sequenc\w*|mission planners?)\b/gi,
-    angles: ["what-is-preserved", "mission-control-replay", "survivorship"], questions: [Q.metric, Q.thumbnails, Q.replay], types: ["MISSION CONTROL", "OPEN RESEARCH QUESTION"] },
-  { id: "compression", label: "compression / telemetry constraints", strength: "STRONG",
-    re: /\b(compress\w*|ICER|JPEG|lossy|lossless|telemetry (budget|constraints?|limits?)|data budget)\b/gi,
-    angles: ["what-is-preserved", "stereo-constraint", "monotonic-scheduler"], questions: [Q.metric, Q.constraint], types: ["DOWNLINK CONSTRAINT", "STEREO PRESERVATION"] },
-  { id: "autonomy-validation", label: "validation of autonomous systems", strength: "STRONG",
-    re: /\b(validat\w* (autonom\w*|onboard|flight)|verification and validation|V&V|test(ing)? autonom\w*|trust(ing)? autonom\w*|certif\w* (AI|autonom\w*))\b/gi,
-    angles: ["validation-protocol", "dev-only-gain", "complexity-didnt-generalize"], questions: [Q.validation, Q.learned], types: ["VALIDATION / GENERALIZATION", "METHODOLOGY"] },
-  { id: "planetary-data", label: "planetary mission data systems / PDS", strength: "STRONG",
-    re: /\b(PDS|Planetary Data System|data archive|archived data|open data|raw data release|data pipeline)\b/gi,
-    angles: ["survivorship", "reproducibility", "mission-control-replay"], questions: [Q.archive], types: ["DATASET / CURIOSITY", "REPRODUCIBILITY"] },
-  // moderate
-  { id: "robotics", label: "robotics", strength: "MODERATE",
-    re: /\b(robot\w*|manipulat\w*|SLAM|field robotics|autonomous vehicles?|drones?|UAVs?)\b/gi,
-    angles: ["dev-only-gain", "validation-protocol", "complexity-didnt-generalize"], questions: [Q.validation, Q.learned], types: ["AUTONOMY", "VALIDATION / GENERALIZATION"] },
-  { id: "ai-reliability", label: "AI reliability / generalization", strength: "MODERATE",
-    re: /\b(generali[sz]\w*|overfit\w*|out[- ]of[- ](sample|distribution)|distribution shift|benchmark\w*|held[- ]out|reliab\w* (AI|ML|models?)|hallucinat\w*|robustness)\b/gi,
-    angles: ["dev-only-gain", "quality-detector-ood", "validation-protocol"], questions: [Q.validation], types: ["VALIDATION / GENERALIZATION", "NEGATIVE RESULT"] },
-  { id: "science-ml", label: "scientific ML validation", strength: "MODERATE",
-    re: /\b(machine learning|deep learning|neural net\w*|ML models?|AI models?|LLMs?|foundation models?|embeddings?)\b.*\b(science|scientific|research|data)\b|\b(scientific|science) (ML|AI|machine learning)\b/gi,
-    angles: ["dev-only-gain", "complexity-didnt-generalize", "validation-protocol"], questions: [Q.validation, Q.learned], types: ["VALIDATION / GENERALIZATION", "METHODOLOGY"] },
-  { id: "autonomous-systems", label: "autonomous systems", strength: "MODERATE",
-    re: /\b(autonom\w*|self[- ]driving|decision[- ]making systems?)\b/gi,
-    angles: ["complexity-didnt-generalize", "validation-protocol", "laptop-only"], questions: [Q.learned, Q.constraint], types: ["AUTONOMY"] },
-  { id: "edge-ai", label: "edge AI", strength: "MODERATE",
-    re: /\b(edge (devices?|hardware)|tinyML|on-device|low[- ]power (AI|inference|compute))\b/gi,
-    angles: ["laptop-only", "complexity-didnt-generalize"], questions: [Q.constraint], types: ["AUTONOMY", "LIMITATION"] },
-  { id: "computer-vision", label: "computer vision", strength: "MODERATE",
-    re: /\b(computer vision|image (classification|recognition|quality)|object detection|perceptual hash\w*|pHash|image similarity|segmentation)\b/gi,
-    angles: ["quality-detector-ood", "dev-only-gain"], questions: [Q.validation], types: ["NEGATIVE RESULT", "VALIDATION / GENERALIZATION"] },
-  { id: "reproducible-research", label: "reproducible research", strength: "MODERATE",
-    re: /\b(reproduc\w*|replicat\w*|pre-?regist\w*|open science|negative results?|p-hacking|research integrity)\b/gi,
-    angles: ["validation-protocol", "reproducibility", "dev-only-gain"], questions: [Q.validation], types: ["METHODOLOGY", "REPRODUCIBILITY"] },
-  // weak
-  { id: "space-general", label: "space exploration (general)", strength: "WEAK",
-    re: /\b(Mars|NASA|JPL|ESA|rovers?|spacecraft|mission|space exploration|planetary|lander|orbiter|Moon|lunar|Artemis)\b/gi,
-    angles: ["what-is-preserved", "survivorship"], questions: [Q.targeted, Q.metric], types: ["OPEN RESEARCH QUESTION"] },
-  { id: "ai-general", label: "AI (general)", strength: "WEAK",
-    re: /\b(AI|artificial intelligence|machine learning|ML|LLMs?|GPT|chatbots?)\b/g,
-    angles: ["complexity-didnt-generalize", "dev-only-gain"], questions: [Q.learned, Q.validation], types: ["OPEN RESEARCH QUESTION"] },
+
+// ─── 1. TOPIC FIRST: what is the original post about? ─────────────────────
+export type Domain =
+  | "PLANETARY GEOLOGY" | "ASTROBIOLOGY" | "ASTROPHYSICS" | "METEOROLOGY" | "ROCKETS / LAUNCH" | "SPACE POLICY"
+  | "INSTRUMENTATION" | "ROVER ENGINEERING" | "SPACECRAFT OPERATIONS" | "COMMUNICATIONS" | "AUTONOMY" | "AI / ML" | "ROBOTICS"
+  | "SCIENCE NEWS";
+
+interface DomainDef {
+  domain: Domain;
+  re: RegExp;
+  /** A science subject DEEPSIFT has no evidence about: caps relevance at WEAK. */
+  science: boolean;
+  /** Independent replies (no project): {Q} = quoted word from the post, {M} = mission/instrument named in the post. */
+  natural: string;
+  naturalQuoted?: string;
+  curious: string[];
+}
+
+const DOMAINS: DomainDef[] = [
+  { domain: "PLANETARY GEOLOGY", science: true,
+    re: /\b(volcan\w*|lava|magma|basalt\w*|mineral\w*|clays?|sediment\w*|sulfates?|carbonates?|rocks?|outcrops?|crater (floor|rim|lake)|delta|river|lake ?beds?|ancient water|water (on|record|history)|geolog\w*|stratigraph\w*|erosion|hydrothermal|groundwater|ice deposits?|regolith)\b/gi,
+    natural: "Interesting result. What in the {M} data points to this interpretation, and how confident are the researchers so far?",
+    naturalQuoted: "The ‘{Q}’ part is what caught my attention. What evidence in the {M} data makes this different from what researchers expected?",
+    curious: ["Is this from a single site or seen across several locations? That would change how I read it.", "Which observations does this rest on: rover instruments, orbital data, or both?"] },
+  { domain: "ASTROBIOLOGY", science: true,
+    re: /\b(life|biosignatures?|organics?|organic molecules|habitab\w*|microb\w*|biolog\w*|astrobiolog\w*|potential signs of)\b/gi,
+    natural: "Interesting. How strong is the evidence so far, and what would the next measurement need to show?",
+    naturalQuoted: "The ‘{Q}’ framing is interesting. What would it take to rule out a non-biological explanation here?",
+    curious: ["What would it take to rule out a non-biological explanation here?", "Is this something the samples returned to Earth could confirm?"] },
+  { domain: "ASTROPHYSICS", science: true,
+    re: /\b(black holes?|galax\w*|exoplanets?|stars?|stellar|supernova\w*|cosmolog\w*|dark (matter|energy)|big bang|neutron stars?|gravitational waves?|nebula\w*|quasars?|astrophysic\w*|light-years?|redshift|telescopes?|JWST|Webb|Hubble)\b/gi,
+    natural: "Remarkable observation. What's the key measurement that makes this stand out from earlier results?",
+    naturalQuoted: "The ‘{Q}’ part stands out. What made this different from what models predicted?",
+    curious: ["How sensitive is this to the modeling assumptions?", "What follow-up observation would confirm it?"] },
+  { domain: "METEOROLOGY", science: true,
+    re: /\b(dust (storms?|devils?)|weather|atmospher\w*|clouds?|wind|seasonal|methane|temperature|climate)\b/gi,
+    natural: "Interesting. How does this compare with what earlier missions recorded in the same season?",
+    curious: ["Is this a seasonal pattern or a one-off event?"] },
+  { domain: "ROCKETS / LAUNCH", science: true,
+    re: /\b(launch\w*|lift-?off|rockets?|boosters?|Starship|Falcon|SLS|landing burn|static fire|countdown)\b/gi,
+    natural: "Congratulations to the team. What's the next milestone you're watching for?",
+    curious: ["What was the biggest open question going into this one?"] },
+  { domain: "SPACE POLICY", science: true,
+    re: /\b(budget|funding|Congress|policy|cancel\w*|appropriation\w*|administrator|workforce|contract\w*)\b/gi,
+    natural: "What would this change in practice for missions already in development?",
+    curious: ["Which missions are most exposed to this?"] },
+  { domain: "INSTRUMENTATION", science: false,
+    re: /\b(spectrometer\w*|instruments?|sensors?|cameras?|lasers?|SuperCam|PIXL|SHERLOC|ChemCam|MOXIE|radar|detector\w*|calibrat\w*)\b/gi,
+    natural: "What was the hardest part of getting the {M} instrument to deliver this?",
+    curious: ["How is the instrument calibrated in the field?"] },
+  { domain: "ROVER ENGINEERING", science: false,
+    re: /\b(wheels?|drill\w*|robotic arm|arm|hardware|mobility|suspension|actuators?|power system|RTG|batter(y|ies)|engineering team)\b/gi,
+    natural: "What was the main engineering constraint behind this?",
+    curious: ["How much margin does the team keep for this kind of issue?"] },
+  { domain: "SPACECRAFT OPERATIONS", science: false,
+    re: /\b(operations|ops|planning|sol \d+|commands?|sequenc\w*|uplink|tactical|drive plan\w*|traverse\w*|navigat\w*)\b/gi,
+    natural: "How much of this is planned on the ground versus decided onboard?",
+    curious: ["What usually limits how much gets done in one planning cycle?"] },
+  { domain: "COMMUNICATIONS", science: false,
+    re: /\b(down[- ]?link\w*|bandwidth|relay\w*|DSN|Deep Space Network|data rates?|antenna\w*|comms?|communications?|signal delay|light[- ]time)\b/gi,
+    natural: "What ends up being the binding constraint in practice: data volume, pass timing, or ground-station time?",
+    curious: ["How is the data volume split between science and engineering data?"] },
+  { domain: "AUTONOMY", science: false,
+    re: /\b(autonom\w*|onboard decision\w*|self-driving|AEGIS|AutoNav)\b/gi,
+    natural: "Which decisions would you trust onboard first, and how would you validate them before flight?",
+    curious: ["How do you test an onboard decision before trusting it in flight?"] },
+  { domain: "AI / ML", science: false,
+    re: /\b(AI|artificial intelligence|machine learning|ML|deep learning|neural net\w*|LLMs?|models?|GPT)\b/g,
+    natural: "How was it evaluated out of sample? That's usually where the story changes.",
+    curious: ["What does it get wrong most often?"] },
+  { domain: "ROBOTICS", science: false,
+    re: /\b(robot\w*|manipulat\w*|grasp\w*|SLAM|drones?|UAVs?)\b/gi,
+    natural: "How did it do on objects or conditions outside the training set?",
+    curious: ["What was the main failure mode during testing?"] },
+  { domain: "SCIENCE NEWS", science: true,
+    re: /\b(NASA|JPL|ESA|Mars|Moon|lunar|rover|Perseverance|Curiosity|mission|spacecraft|scientists?|researchers?|study|discover\w*|finds?|reveals?|uncovers?|evidence)\b/gi,
+    natural: "Interesting. What's the key evidence behind this?",
+    naturalQuoted: "The ‘{Q}’ part caught my attention. What evidence makes this different from what was expected?",
+    curious: ["What would the next measurement need to show to confirm it?"] },
 ];
 
-/** Topics that look space-related but have no DEEPSIFT connection on their own (astronomy/astrophysics). */
-const NO_CONNECTION_TOPICS = /\b(black holes?|galax\w*|exoplanets?|JWST|Webb|Hubble|telescopes?|supernova\w*|cosmolog\w*|dark (matter|energy)|big bang|neutron stars?|gravitational waves?|nebula\w*|quasars?|astrophysic\w*|launch(es|ed)? (window|pad)|rocket launch|Starship|Falcon)\b/gi;
+const MISSION = /\b(Perseverance|Curiosity|Opportunity|Zhurong|InSight|Ingenuity|JWST|Webb|Hubble|Europa Clipper|Juno|MRO|MAVEN|Artemis|Starship|Mars 2020|SuperCam|PIXL|SHERLOC|ChemCam|MOXIE)\b/;
+const QUOTED = /(?:^|\s)[‘“"']([^‘’“”"']{3,40})[’”"'](?=[\s.,!?:;)]|$)/;
+
+// ─── 2. DEEPSIFT connection (only what DEEPSIFT actually studied) ─────────
+export interface Connection {
+  id: string;
+  label: string;
+  level: "DIRECT" | "ADJACENT";
+  re: RegExp;
+  angles: string[];
+  questions: string[];
+  types: ConnectionType[];
+}
+
+/** Mission/agency/generic words (Mars, NASA, JPL, rover, Curiosity, Perseverance, space, science, AI) never create a connection on their own. */
+export const CONNECTIONS: Connection[] = [
+  { id: "autonomous-science", label: "onboard autonomy / autonomous science", level: "DIRECT",
+    re: /\b(autonomous science|science autonomy|onboard autonomy|on-board autonomy|more autonomy|autonomous (rovers?|spacecraft|operations?|targeting)|AEGIS|onboard decision\w*)\b/gi,
+    angles: ["complexity-didnt-generalize", "validation-protocol", "laptop-only"], questions: [Q.learned, Q.triage, Q.constraint], types: ["AUTONOMY", "NEGATIVE RESULT"] },
+  { id: "downlink", label: "downlink / bandwidth", level: "DIRECT",
+    re: /\b(down[- ]?link\w*|bandwidth|data volume|relay (pass|passes|capacity|bandwidth)|data rates?|megabits?|mbps|kbps|limited (link|bandwidth)|data budget)\b/gi,
+    angles: ["what-is-preserved", "held-out-result", "monotonic-scheduler", "complexity-didnt-generalize"], questions: [Q.constraint, Q.metric, Q.thumbnails], types: ["DOWNLINK CONSTRAINT", "RESULT"] },
+  { id: "prioritization", label: "onboard data prioritization / image selection", level: "DIRECT",
+    re: /\b(prioriti[sz]\w* (data|images?|downlink|what)|data prioriti[sz]\w*|triage|image selection|data selection|which (images?|data|frames?) to send|onboard (selection|summari[sz]ation|data reduction)|science data management)\b/gi,
+    angles: ["complexity-didnt-generalize", "held-out-result", "what-is-preserved", "dev-only-gain"], questions: [Q.triage, Q.proxy, Q.learned], types: ["AUTONOMY", "RESULT"] },
+  { id: "onboard-compute", label: "onboard / edge computation", level: "DIRECT",
+    re: /\b(onboard (comput\w*|processing|inference|AI|ML)|edge (inference|computing|AI)|flight (processors?|computers?)|radiation[- ](hardened|tolerant) (processors?|computers?|chips?)|HPSC|RAD750)\b/gi,
+    angles: ["laptop-only", "complexity-didnt-generalize"], questions: [Q.constraint, Q.learned], types: ["AUTONOMY", "LIMITATION"] },
+  { id: "stereo", label: "stereo image handling", level: "DIRECT",
+    re: /\b(stereo (pairs?|images?|imagery|cameras?)|stereoscopic|depth maps?)\b/gi,
+    angles: ["stereo-constraint"], questions: [Q.metric], types: ["STEREO PRESERVATION"] },
+  { id: "compression", label: "compression / telemetry constraints", level: "DIRECT",
+    re: /\b(image compression|data compression|compress(ed|ing)? (images?|data)|ICER|lossy|lossless|telemetry (budget|constraints?|limits?))\b/gi,
+    angles: ["what-is-preserved", "stereo-constraint", "monotonic-scheduler"], questions: [Q.metric, Q.constraint], types: ["DOWNLINK CONSTRAINT", "STEREO PRESERVATION"] },
+  { id: "rover-imagery-triage", label: "rover image data (raw imagery, navigation cameras)", level: "ADJACENT",
+    re: /\b(raw images?|Navcam|Hazcam|navigation cameras?|rover (images|imagery|image data)|image pipeline)\b/gi,
+    angles: ["mission-control-replay", "survivorship", "stereo-constraint"], questions: [Q.thumbnails, Q.replay], types: ["DATASET / CURIOSITY", "MISSION CONTROL"] },
+  { id: "rover-ops", label: "rover operations / traverse planning", level: "ADJACENT",
+    re: /\b(rover (operations|ops|planners?|drivers?)|mission operations|tactical planning|sol planning|traverse planning|drive planning|ops team)\b/gi,
+    angles: ["what-is-preserved", "mission-control-replay", "metric-choice"], questions: [Q.metric, Q.thumbnails, Q.replay], types: ["MISSION CONTROL", "OPEN RESEARCH QUESTION"] },
+  { id: "autonomy-validation", label: "validation of autonomous systems", level: "ADJACENT",
+    re: /\b(validat\w* (autonom\w*|onboard|flight|AI|models?)|verification and validation|V&V|test(ing)? autonom\w*|trust(ing)? autonom\w*|certif\w* (AI|autonom\w*))\b/gi,
+    angles: ["validation-protocol", "dev-only-gain", "complexity-didnt-generalize"], questions: [Q.validation, Q.learned], types: ["VALIDATION / GENERALIZATION", "METHODOLOGY"] },
+  { id: "ml-generalization", label: "scientific ML generalization", level: "ADJACENT",
+    re: /\b(generali[sz]\w*|overfit\w*|out[- ]of[- ](sample|distribution)|distribution shift|held[- ]out|benchmark overfitting|pre-?regist\w*)\b/gi,
+    angles: ["dev-only-gain", "quality-detector-ood", "validation-protocol"], questions: [Q.validation], types: ["VALIDATION / GENERALIZATION", "NEGATIVE RESULT"] },
+  { id: "mission-data", label: "mission data pipelines / archives", level: "ADJACENT",
+    re: /\b(PDS|Planetary Data System|data archive|archived data|data pipelines?|raw data release)\b/gi,
+    angles: ["survivorship", "reproducibility", "mission-control-replay"], questions: [Q.archive], types: ["DATASET / CURIOSITY", "REPRODUCIBILITY"] },
+];
 
 // ─── stances DEEPSIFT evidence can respectfully push back on ──────────────
 export interface Stance {
@@ -303,7 +358,7 @@ export const STANCES: Stance[] = [
     angle: "quality-detector-ood", facts: ["quality_v2_failed"], question: "Has it been tested on a held-out site or period?" },
 ];
 
-// ─── analysis ──────────────────────────────────────────────────────────────
+// ─── 3. analysis ───────────────────────────────────────────────────────────
 export interface ReplyInput {
   text: string;
   url?: string;
@@ -312,20 +367,22 @@ export interface ReplyInput {
   context?: string;
 }
 
-export interface TopicHit {
-  topic: Topic;
-  matches: string[];
-}
+export interface Hit<T> { def: T; matches: string[] }
 
 export interface Analysis {
+  domain: Domain | null;
+  domainTerms: string[];
+  domains: Hit<DomainDef>[];
   about: string;
   postType: "QUESTION" | "PREDICTION / OPINION" | "ANNOUNCEMENT" | "RESULT / DATA" | "STATEMENT";
-  hits: TopicHit[];
+  connections: Hit<Connection>[];
   relevance: Relevance;
   relevanceWhy: string;
   noConnection: boolean;
-  astronomyOnly: boolean;
   connectionTypes: ConnectionType[];
+  mission: string | null;
+  quoted: string | null;
+  technicalSubstance: boolean;
   qualifiedAuthor: boolean;
   suppressProject: boolean;
   wantsQuestion: boolean;
@@ -334,57 +391,65 @@ export interface Analysis {
   asksWhatBuilt: boolean;
 }
 
-const QUALIFIED = /\b(NASA|JPL|ESA|JAXA|Caltech|MIT|professor|prof\.?|PhD|Dr\.?|postdoc|researcher|scientist|engineer|lab|university|institute|mission|rover (team|driver|planner|operator)|roboticist)\b/i;
+const QUALIFIED = /\b(NASA|JPL|ESA|JAXA|Caltech|MIT|professor|prof\.?|PhD|Dr\.?|postdoc|researcher|scientist|engineer|lab|university|institute|rover (team|driver|planner|operator)|roboticist)\b/i;
+const uniq = (xs: string[]) => [...new Set(xs.map((x) => x.trim()))];
 
 export function analyzePost(input: ReplyInput): Analysis {
   const text = input.text ?? "";
-  const hits: TopicHit[] = [];
-  for (const t of TOPICS) {
-    const m = [...new Set([...text.matchAll(t.re)].map((x) => x[0].trim()))];
-    if (m.length) hits.push({ topic: t, matches: m });
-  }
-  const order = { STRONG: 0, MODERATE: 1, WEAK: 2 };
-  hits.sort((a, b) => order[a.topic.strength] - order[b.topic.strength] || b.matches.length - a.matches.length);
-  const astro = [...new Set([...text.matchAll(NO_CONNECTION_TOPICS)].map((x) => x[0]))];
-  const best = hits[0]?.topic.strength;
-  let relevance: Relevance = best ?? "NONE";
-  // astronomy/launch posts that only hit generic space words have no natural connection
-  if (astro.length && relevance === "WEAK") relevance = "NONE";
+  const domains: Hit<DomainDef>[] = DOMAINS.map((d) => ({ def: d, matches: uniq([...text.matchAll(d.re)].map((m) => m[0])) })).filter((h) => h.matches.length);
+  // the generic SCIENCE NEWS bucket (Mars, NASA, rover…) only wins when nothing more specific matched
+  const specific = domains.filter((h) => h.def.domain !== "SCIENCE NEWS").sort((x, y) => y.matches.length - x.matches.length || DOMAINS.indexOf(x.def) - DOMAINS.indexOf(y.def));
+  const primary = specific[0] ?? domains[0] ?? null;
+  const connections: Hit<Connection>[] = CONNECTIONS.map((c) => ({ def: c, matches: uniq([...text.matchAll(c.re)].map((m) => m[0])) })).filter((h) => h.matches.length);
+  // DIRECT before ADJACENT, then list order (the thesis-level subjects — autonomy, prioritization — come first)
+  connections.sort((x, y) => (x.def.level === y.def.level ? CONNECTIONS.indexOf(x.def) - CONNECTIONS.indexOf(y.def) : x.def.level === "DIRECT" ? -1 : 1));
+  const stance = STANCES.find((s) => s.re.test(text)) ?? null;
+
+  let relevance: Relevance = connections[0] ? connections[0].def.level : stance ? "ADJACENT" : primary ? "WEAK" : "NONE";
+  // a science subject DEEPSIFT has no evidence about caps the connection: the post is about the science, not the data handling
+  const connectionWeight = connections.reduce((n, h) => n + h.matches.length, 0);
+  const sciencePrimary = !!primary && primary.def.science && primary.def.domain !== "SCIENCE NEWS" && primary.matches.length >= connectionWeight;
+  if (sciencePrimary && relevance === "DIRECT") relevance = "ADJACENT";
+  else if (sciencePrimary && relevance === "ADJACENT" && !stance) relevance = "WEAK";
+
   const ctx = (input.context ?? "").toLowerCase();
-  const suppressProject = /\b(don'?t|do not|no|without|never)\b[^.]{0,30}\b(mention|name|plug|promote|reference)\b|\bno (project|deepsift) mention\b/.test(ctx);
-  const wantsQuestion = /\bquestion|\bask\b/.test(ctx);
-  const qualifiedAuthor = QUALIFIED.test(`${input.authorName ?? ""} ${input.authorHandle ?? ""} ${input.context ?? ""}`) || /\bworks? on\b/.test(ctx);
   const postType: Analysis["postType"] = /\?\s*$|\?\s/.test(text) ? "QUESTION"
     : /\b(will|should|must|going to|need to|I think|I believe|future)\b/i.test(text) ? "PREDICTION / OPINION"
-    : /\b(announc\w*|launch\w*|today|new|introducing|released?|we('| a)re)\b/i.test(text) ? "ANNOUNCEMENT"
+    : /\b(announc\w*|launch\w*|today|new|introducing|released?|uncovers?|reveals?|finds?|discover\w*)\b/i.test(text) ? "ANNOUNCEMENT"
     : /\d/.test(text) ? "RESULT / DATA" : "STATEMENT";
-  const stance = STANCES.find((s) => s.re.test(text)) ?? null;
-  // a claim that DEEPSIFT evidence speaks to directly is a genuine (moderate) connection
-  if (stance && (relevance === "WEAK" || relevance === "NONE")) relevance = "MODERATE";
-  const labels = hits.map((h) => h.topic.label);
-  const about = !text.trim() ? "" : hits.length
-    ? `${postType === "QUESTION" ? "A question" : postType === "PREDICTION / OPINION" ? "An opinion / prediction" : postType === "ANNOUNCEMENT" ? "An announcement" : postType === "RESULT / DATA" ? "A post with data" : "A statement"} about ${labels.slice(0, 3).join(", ")}${astro.length ? ` (also: ${astro.slice(0, 3).join(", ")})` : ""}. Detected terms: ${hits.flatMap((h) => h.matches).slice(0, 8).join(", ")}.`
-    : astro.length ? `An astronomy / space-science post (${astro.slice(0, 4).join(", ")}), outside rover data and downlink.` : "No DEEPSIFT-related terms detected (keyword-based).";
+  const domainTerms = primary?.matches ?? [];
+  const about = !text.trim() ? "" : primary
+    ? `${primary.def.domain} — ${postType === "QUESTION" ? "a question" : postType === "PREDICTION / OPINION" ? "an opinion / prediction" : postType === "ANNOUNCEMENT" ? "a news / announcement post" : postType === "RESULT / DATA" ? "a post with data" : "a statement"} (detected: ${uniq([...domainTerms, ...connections.flatMap((c) => c.matches)]).slice(0, 8).join(", ")}).`
+    : "No space, science or engineering subject detected (keyword-based).";
   const relevanceWhy =
-    relevance === "STRONG" ? `Directly about ${hits.filter((h) => h.topic.strength === "STRONG").map((h) => h.topic.label).slice(0, 2).join(" and ")} — something DEEPSIFT actually tested.`
-    : relevance === "MODERATE" ? (stance && !hits.some((h) => h.topic.strength !== "WEAK") ? "The post makes a claim that DEEPSIFT evidence speaks to directly (see constructive disagreement)." : `Adjacent topic (${hits[0].topic.label}): a DEEPSIFT lesson may be useful, mentioned at most once.`)
-    : relevance === "WEAK" ? `Only generic terms (${hits.flatMap((h) => h.matches).slice(0, 4).join(", ")}). Contribute an observation or question; don't name DEEPSIFT.`
-    : astro.length ? "Astronomy / launch topic — DEEPSIFT is about rover image downlink, so there is no natural connection."
-    : "No overlap with anything DEEPSIFT tested.";
-  const connectionTypes = [...new Set(hits.filter((h) => h.topic.strength !== "WEAK").flatMap((h) => h.topic.types))];
-  if (relevance === "WEAK") connectionTypes.push("OPEN RESEARCH QUESTION");
+    relevance === "DIRECT" ? `The post is substantively about ${connections.filter((c) => c.def.level === "DIRECT").map((c) => c.def.label).slice(0, 2).join(" and ")} — something DEEPSIFT actually studied.`
+    : relevance === "ADJACENT" ? (connections[0] ? `Legitimate methodological/engineering overlap (${connections[0].def.label})${sciencePrimary ? `, but the post is mainly ${primary!.def.domain.toLowerCase()}` : ""}.` : "The post makes a claim that DEEPSIFT evidence speaks to directly.")
+    : relevance === "WEAK" ? `Same broad domain (${primary!.def.domain.toLowerCase()}), but DEEPSIFT adds little to this specific conversation. Mission or agency names alone are not a connection.`
+    : "No meaningful connection.";
+  const connectionTypes = uniq(connections.flatMap((c) => c.def.types)) as ConnectionType[];
   return {
-    about, postType, hits, relevance, relevanceWhy, noConnection: relevance === "NONE", astronomyOnly: !!astro.length && relevance === "NONE",
-    connectionTypes: [...new Set(connectionTypes)], qualifiedAuthor, suppressProject, wantsQuestion, stance,
+    domain: primary?.def.domain ?? null, domainTerms, domains, about, postType, connections, relevance, relevanceWhy, noConnection: relevance === "NONE",
+    connectionTypes, mission: text.match(MISSION)?.[0] ?? null, quoted: text.match(QUOTED)?.[1]?.trim() ?? null,
+    technicalSubstance: /\d/.test(text) || connectionWeight >= 2 || /\b(algorithm|architecture|latency|throughput|compute|processor|protocol|validation|dataset|metric)\b/i.test(text),
+    qualifiedAuthor: QUALIFIED.test(`${input.authorName ?? ""} ${input.authorHandle ?? ""} ${input.context ?? ""}`) || /\bworks? on\b/.test(ctx),
+    suppressProject: /\b(don'?t|do not|no|without|never)\b[^.]{0,30}\b(mention|name|plug|promote|reference)\b|\bno (project|deepsift) mention\b/.test(ctx),
+    wantsQuestion: /\bquestion|\bask\b/.test(ctx), stance,
     asksForEvidence: /\b(evidence|source|data (on|for|behind)|paper|citation|show me|any (studies|results|numbers))\b/i.test(text),
     asksWhatBuilt: /\b(what (did|have) you (build|built|make|made)|link\??|repo|code\?|where can I (see|find))\b/i.test(text),
   };
 }
 
-// ─── repetition protection ─────────────────────────────────────────────────
+// ─── 4. self-promotion tracking ───────────────────────────────────────────
+/** True when a reply mentions DEEPSIFT or the builder's own experiment. */
+export function mentionsProject(text: string): boolean {
+  return /\bDEEPSIFT\b|\bI had exactly this happen\b|\bmy own (tests?|experiments?|scheduler)\b|\bthe data I tuned\b|\bI found\b|\bI've been (experimenting|replaying|testing)\b|\bmy (project|experiments?|tests?|replay|scheduler)\b|\bI (built|tested|ran into)\b|\bI'?ve been (experimenting|replaying|testing)\b|\bin my (own )?(tests|experiments?|rover-image experiments)\b|\barchived Curiosity\b|\bNavcam\b|\bMission Control\b/i.test(text);
+}
+
 export interface Repetition {
   angleCounts: Record<string, number>;
   factCounts: Record<string, number>;
+  recentMentions: number;
+  recentCount: number;
   warnings: string[];
 }
 
@@ -396,13 +461,42 @@ export function repetition(history: ReplyRecord[], now = new Date(), days = 21):
     if (r.angle) angleCounts[r.angle] = (angleCounts[r.angle] ?? 0) + 1;
     for (const f of r.facts) factCounts[f] = (factCounts[f] ?? 0) + 1;
   }
+  const last10 = [...history].sort((x, y) => y.created_at.localeCompare(x.created_at)).slice(0, 10);
+  const recentMentions = last10.filter((r) => r.mentions_project ?? mentionsProject(r.reply)).length;
   const warnings: string[] = [];
   if ((factCounts.held_out_bytes ?? 0) >= 2) warnings.push(`You have mentioned the 26.1% held-out result in ${factCounts.held_out_bytes} recent replies. Try a negative result, the scheduler lesson, the validation method, a limitation or a question.`);
   for (const [a, n] of Object.entries(angleCounts)) if (n >= 3 && a !== "held-out-result") warnings.push(`“${ANGLE_BY_ID[a]?.label ?? a}” used in ${n} recent replies — pick another angle.`);
-  return { angleCounts, factCounts, warnings };
+  if (last10.length >= 3 && recentMentions / last10.length > 0.3) warnings.push(`${recentMentions} of your last ${last10.length} replies mentioned DEEPSIFT (target: roughly 15–30%). Keep the next ones project-free unless the connection is direct.`);
+  return { angleCounts, factCounts, recentMentions, recentCount: last10.length, warnings };
 }
 
-// ─── reply assembly ────────────────────────────────────────────────────────
+/** Talking points for this post, least-recently-used first (empty unless DIRECT/ADJACENT). */
+export function pickAngles(a: Analysis, rep: Repetition, override = false): Angle[] {
+  if (a.relevance === "NONE" || (a.relevance === "WEAK" && !override)) return [];
+  const ids: string[] = a.stance ? [a.stance.angle] : [];
+  for (const h of a.connections) for (const id of h.def.angles) if (!ids.includes(id)) ids.push(id);
+  if (!ids.length && override) ids.push("what-is-preserved", "complexity-didnt-generalize");
+  const penalty = (id: string) => (rep.angleCounts[id] ?? 0) * 2 + ANGLE_BY_ID[id].facts.reduce((s, f) => s + (rep.factCounts[f] ?? 0) * (f === "held_out_bytes" ? 2 : 0.5), 0);
+  return ids.map((id, i) => ({ id, i, p: penalty(id) })).sort((x, y) => x.p - y.p || x.i - y.i).map((x) => ANGLE_BY_ID[x.id]);
+}
+
+// ─── 5. should DEEPSIFT be mentioned? ──────────────────────────────────────
+export function shouldMention(a: Analysis, rep: Repetition, override = false, angle: Angle | null = null): { mention: boolean; why: string } {
+  if (a.suppressProject) return { mention: false, why: "Your context says not to mention DEEPSIFT." };
+  if (a.relevance === "NONE") return { mention: false, why: "No meaningful connection — never mention DEEPSIFT here." };
+  if (a.relevance === "WEAK")
+    return override ? { mention: true, why: "Override selected. The connection is only the broad domain, so this reads as self-promotion — use with care." }
+      : { mention: false, why: `The post is about ${a.domain?.toLowerCase()}; DEEPSIFT has no evidence on that. Mars/NASA/rover words alone are not a reason to bring it up.` };
+  const ratioHigh = rep.recentCount >= 3 && rep.recentMentions / rep.recentCount > 0.3;
+  if (a.relevance === "ADJACENT") {
+    if (ratioHigh) return { mention: false, why: `Adjacent topic, and ${rep.recentMentions} of your last ${rep.recentCount} replies already mentioned DEEPSIFT. Contribute without it this time.` };
+    if (angle && angle.finding === false) return { mention: false, why: `Adjacent topic, but the matching DEEPSIFT point (“${angle.label}”) is about what you built, not a finding or limitation. Contribute without it.` };
+    return { mention: true, why: "Adjacent topic where a concrete DEEPSIFT finding or limitation adds something. Mention it once, only as evidence." };
+  }
+  return { mention: true, why: ratioHigh ? `Direct connection — but ${rep.recentMentions} of your last ${rep.recentCount} replies mentioned DEEPSIFT; the project-free reply is still a good choice.` : "Direct connection: DEEPSIFT has evidence on exactly this subject, so it can materially improve the reply." };
+}
+
+// ─── 6. reply drafts ───────────────────────────────────────────────────────
 export interface ReplyDraft {
   key: string;
   label: string;
@@ -411,22 +505,9 @@ export interface ReplyDraft {
   angle: string | null;
   facts: string[];
   value: Value;
+  project: boolean;
   available: boolean;
   unavailableReason?: string;
-}
-
-/** Candidate angles for this post, least-recently-used first. */
-export function pickAngles(a: Analysis, rep: Repetition): Angle[] {
-  const ids: string[] = a.stance ? [a.stance.angle] : [];
-  for (const h of a.hits) for (const id of h.topic.angles) if (!ids.includes(id)) ids.push(id);
-  const penalty = (id: string) => (rep.angleCounts[id] ?? 0) * 2 + ANGLE_BY_ID[id].facts.reduce((s, f) => s + (rep.factCounts[f] ?? 0) * (f === "held_out_bytes" ? 2 : 0.5), 0);
-  return ids.map((id, i) => ({ id, i, p: penalty(id) })).sort((x, y) => x.p - y.p || x.i - y.i).map((x) => ANGLE_BY_ID[x.id]);
-}
-
-export function expertQuestion(a: Analysis): string | null {
-  if (a.noConnection) return null;
-  if (a.stance) return a.stance.question; // the question that belongs to the point being discussed
-  return a.hits.flatMap((h) => h.topic.questions)[0] ?? null;
 }
 
 const fit = (parts: string[], max = 280) => {
@@ -435,57 +516,96 @@ const fit = (parts: string[], max = 280) => {
   return out;
 };
 
-export function draftStyle(style: ReplyStyle, a: Analysis, angle: Angle | null): ReplyDraft {
-  const q = expertQuestion(a);
-  const base = { key: style, label: STYLE_LABEL[style], style, angle: angle?.id ?? null };
+function fill(t: string, a: Analysis): string {
+  return t.replace("{Q}", a.quoted ?? "").replace(/the \{M\} data/g, a.mission ? `the ${a.mission} data` : "the data").replace(/the \{M\} instrument/g, a.mission ? a.mission : "the instrument").replace("{M}", a.mission ?? "");
+}
+
+const domainDef = (a: Analysis) => DOMAINS.find((d) => d.domain === a.domain) ?? null;
+
+/** A — independent reply: reacts to the post's own subject, never uses DEEPSIFT, never invents article content. */
+export function naturalReply(a: Analysis): string | null {
+  const d = domainDef(a);
+  if (!d) return null;
+  return fill(a.quoted && d.naturalQuoted ? d.naturalQuoted : d.natural, a);
+}
+
+/** B — a curious question about the original subject. */
+export function curiousQuestion(a: Analysis): string | null {
+  const d = domainDef(a);
+  return d ? fill(d.curious[0], a) : null;
+}
+
+/** Expert question: exposes a real DEEPSIFT limitation (DIRECT/ADJACENT) — otherwise a question about the subject. */
+export function expertQuestion(a: Analysis): string | null {
+  if (a.noConnection) return null;
+  if (a.stance) return a.stance.question;
+  if (a.relevance === "DIRECT" || a.relevance === "ADJACENT") return a.connections.flatMap((h) => h.def.questions)[0] ?? null;
+  const d = domainDef(a);
+  return d ? fill(d.curious[1] ?? d.curious[0], a) : null;
+}
+
+export function draftStyle(style: ReplyStyle, a: Analysis, angle: Angle | null, override = false): ReplyDraft {
+  const base = { key: style, label: STYLE_LABEL[style], style, angle: angle?.id ?? null, project: false };
   const none = (reason: string): ReplyDraft => ({ ...base, text: "", facts: [], value: "NOTHING", available: false, unavailableReason: reason });
-  if (a.noConnection) {
-    if (style === "QUESTION" || style === "CURIOUS")
-      return none("No natural DEEPSIFT connection — a genuine question needs you to engage with the specific post (or a language model). Write your own, or don't reply.");
-    return none("NO NATURAL DEEPSIFT CONNECTION.");
-  }
-  if (!angle) return none("No verified talking point matches this topic.");
+  const projectOk = (a.relevance === "DIRECT" || a.relevance === "ADJACENT" || override) && !a.suppressProject && !!angle;
+  const indep = naturalReply(a);
+  if (a.noConnection) return none("NO NATURAL DEEPSIFT CONNECTION — and no recognisable subject to respond to. Don't reply, or write your own.");
   switch (style) {
-    case "SHORT":
-      return { ...base, text: a.relevance === "WEAK" ? angle.plain : angle.short, facts: a.relevance === "WEAK" ? [] : angle.facts, value: a.relevance === "WEAK" ? "TECHNICAL QUESTION" : angle.value, available: true };
-    case "TECHNICAL":
-      if (a.relevance === "WEAK") return none("Topic too generic for a technical DEEPSIFT data point.");
-      return { ...base, text: angle.technical, facts: angle.facts, value: angle.value === "PERSONAL EXPERIMENT" ? "NEW EVIDENCE" : angle.value, available: true };
-    case "CURIOUS":
-      return { ...base, text: fit([a.relevance === "WEAK" ? angle.plain : angle.short, q ?? ""].filter(Boolean)), facts: a.relevance === "WEAK" ? [] : angle.facts, value: "TECHNICAL QUESTION", available: true };
-    case "QUESTION":
-      return q ? { ...base, angle: null, text: q, facts: [], value: "TECHNICAL QUESTION", available: true } : none("No question matches this topic.");
     case "NO_PROJECT_MENTION":
-      return { ...base, text: angle.plain, facts: [], value: "TECHNICAL QUESTION", available: true };
+      return indep ? { ...base, angle: null, text: indep, facts: [], value: "QUESTION ABOUT THE SUBJECT", available: true } : none("No recognisable subject.");
+    case "CURIOUS": {
+      const q = curiousQuestion(a);
+      return q ? { ...base, angle: null, text: q, facts: [], value: "QUESTION ABOUT THE SUBJECT", available: true } : none("No recognisable subject.");
+    }
+    case "QUESTION": {
+      const q = expertQuestion(a);
+      return q ? { ...base, angle: null, text: q, facts: [], value: "TECHNICAL QUESTION", available: true } : none("No question matches this post.");
+    }
+    case "SHORT":
+      if (projectOk && angle) return { ...base, text: angle.short, facts: angle.facts, value: angle.value, project: true, available: true };
+      return indep ? { ...base, angle: null, text: indep, facts: [], value: "QUESTION ABOUT THE SUBJECT", available: true } : none("No recognisable subject.");
+    case "TECHNICAL":
+      if (!projectOk || !angle) return none(a.relevance === "WEAK" ? "A technical reply here would need the article's content (or a model). Don't invent details from a headline." : "Your context says not to mention DEEPSIFT.");
+      if (!a.technicalSubstance) return none("Not enough technical substance in the pasted text for a technical reply.");
+      return { ...base, text: angle.technical, facts: angle.facts, value: angle.value === "PERSONAL EXPERIMENT" ? "NEW EVIDENCE" : angle.value, project: true, available: true };
     case "DEEPSIFT_CONNECTION":
       if (a.suppressProject) return none("Your context says not to mention DEEPSIFT.");
-      if (a.relevance !== "STRONG" && a.relevance !== "MODERATE") return none("DEEPSIFT is only named when relevance is STRONG or MODERATE.");
-      return { ...base, text: angle.deepsift, facts: angle.facts, value: angle.value, available: true };
+      if (!projectOk || !angle) return none("DEEPSIFT is only named when relevance is DIRECT or ADJACENT (or you tick the override).");
+      return { ...base, text: angle.deepsift, facts: angle.facts, value: angle.value, project: true, available: true };
     case "CONSTRUCTIVE_DISAGREEMENT": {
       if (!a.stance) return none("No genuine conflict with DEEPSIFT evidence detected — disagreement would be manufactured.");
-      const ev = ANGLE_BY_ID[a.stance.angle];
+      if (a.suppressProject) return none("Your context says not to mention DEEPSIFT (the evidence is from your experiment).");
       const text = fit([a.stance.acknowledge, a.stance.evidence, a.stance.question]);
-      return { ...base, angle: ev.id, text, facts: a.stance.facts, value: "CONSTRUCTIVE DISAGREEMENT", available: true };
+      return { ...base, angle: a.stance.angle, text, facts: a.stance.facts, value: "CONSTRUCTIVE DISAGREEMENT", project: true, available: true };
     }
   }
 }
 
-/** The three primary options: A NATURAL (default), B TECHNICAL, C DEEPSIFT CONNECTION. */
-export function primaryOptions(a: Analysis, angle: Angle | null): ReplyDraft[] {
-  let natural: ReplyDraft;
-  if (a.noConnection || !angle) natural = draftStyle("SHORT", a, null);
-  else if (a.stance) natural = draftStyle("CONSTRUCTIVE_DISAGREEMENT", a, angle); // measured pushback, no project name
-  else if (a.relevance === "WEAK" || a.suppressProject) natural = draftStyle("NO_PROJECT_MENTION", a, angle);
-  else if (a.relevance === "MODERATE") natural = { ...draftStyle("SHORT", a, angle) };
-  else natural = { key: "NATURAL", label: "", style: "SHORT", text: angle.natural, angle: angle.id, facts: angle.facts, value: angle.value, available: true };
-  return [
-    { ...natural, key: "NATURAL", label: "A · Natural" },
-    { ...draftStyle("TECHNICAL", a, angle), key: "TECHNICAL", label: "B · Technical" },
-    { ...draftStyle("DEEPSIFT_CONNECTION", a, angle), key: "DEEPSIFT", label: "C · DEEPSIFT connection" },
-  ];
+/** A natural (no project) · B curious question · C technical · D DEEPSIFT-related (DIRECT/ADJACENT or override only). */
+export function primaryOptions(a: Analysis, angle: Angle | null, override = false): ReplyDraft[] {
+  const A = { ...draftStyle("NO_PROJECT_MENTION", a, null), key: "NATURAL", label: "A · Natural (no project)" };
+  const B = { ...draftStyle("CURIOUS", a, null), key: "CURIOUS", label: "B · Curious question" };
+  const C = { ...draftStyle("TECHNICAL", a, angle, override), key: "TECHNICAL", label: "C · Technical" };
+  let D: ReplyDraft;
+  const projectOk = (a.relevance === "DIRECT" || a.relevance === "ADJACENT" || override) && !a.suppressProject;
+  if (!projectOk || !angle) D = { ...draftStyle("DEEPSIFT_CONNECTION", a, angle, override), key: "DEEPSIFT", label: "D · DEEPSIFT-related" };
+  else if (a.stance) D = { ...draftStyle("CONSTRUCTIVE_DISAGREEMENT", a, angle), key: "DEEPSIFT", label: "D · DEEPSIFT-related" };
+  else D = { key: "DEEPSIFT", label: "D · DEEPSIFT-related", style: "SHORT", text: angle.natural, angle: angle.id, facts: angle.facts, value: angle.value, project: true, available: true };
+  if (!projectOk && a.relevance === "WEAK" && !a.suppressProject) D = { ...D, available: false, text: "", unavailableReason: "Not generated: relevance is WEAK. Tick the project-connection override only if you really want it." };
+  return [A, B, C, D];
 }
 
-// ─── checks on a (possibly edited) reply ───────────────────────────────────
+/** Recommended = the best contribution: D only when DEEPSIFT should be mentioned AND it adds evidence; otherwise A. */
+export function recommend(a: Analysis, options: ReplyDraft[], mention: { mention: boolean }): ReplyDraft | null {
+  const [A, B, , D] = options;
+  if (a.noConnection) return null;
+  if (mention.mention && D.available && D.facts.length) return D;
+  if (A.available) return A;
+  if (B.available) return B;
+  return null;
+}
+
+// ─── 7. checks on a (possibly edited) reply ────────────────────────────────
 export interface ReplyIssue { rule: string; message: string; match?: string }
 
 const OVERCLAIM: [RegExp, string][] = [
@@ -495,23 +615,26 @@ const OVERCLAIM: [RegExp, string][] = [
   [/\bgenerali[sz]\w*\b[^.\n]{0,20}\b(to )?(all|every|any)\b[^.\n]{0,20}\b(missions?|rovers?|cameras?)\b/i, "Implies the experiment generalizes to all missions."],
   [/\b(AI|machine learning|ML|learned models?|models?)\b[^.\n]{0,20}\b(is|are|was|were|proven)\b[^.\n]{0,12}\b(useless|worthless|pointless)\b/i, "Implies AI was proven useless."],
   [/\bprocess\w*\b[^.\n]{0,15}\blive\b[^.\n]{0,15}\b(Mars )?data\b/i, "Implies DEEPSIFT processes live Mars data."],
-  [/\b(check (it )?out|my project|try it|link in bio|follow me|shameless plug|sign up)\b/i, "Promotional phrasing."],
+  [/\b(check (it )?out|my project|try it|link in bio|follow me|shameless plug|sign up|this reminds me of DEEPSIFT)\b/i, "Promotional phrasing."],
   [/\b(as a|I'?m a|I am a)\s+(NASA|JPL)\b|\bat (NASA|JPL),? (we|I)\b|\b(we|I) at (NASA|JPL)\b|\bAt DEEPSIFT,? we\b/i, "Implies an institutional role you don't have."],
+  [/\b(this (proves|shows|confirms|means)|the (finding|result|study) (proves|shows|confirms)|the mineral composition suggests)\b/i, "States article content you haven't pasted — ask instead of asserting."],
 ];
 
 export interface ReplyCheck {
   claim: ClaimCheck;
   issues: ReplyIssue[];
+  warnings: ReplyIssue[];
   status: "PASS" | "FAIL";
   chars: number;
-  mentionsDeepsift: number;
+  project: boolean;
   hasLink: boolean;
   facts: string[];
 }
 
-export function checkReply(text: string, opts: { allowLink?: boolean } = {}): ReplyCheck {
+export function checkReply(text: string, opts: { allowLink?: boolean; relevance?: Relevance; override?: boolean } = {}): ReplyCheck {
   const claim = checkPost(text);
   const issues: ReplyIssue[] = [];
+  const warnings: ReplyIssue[] = [];
   for (const m of text.matchAll(/(^|\s)#[\p{L}\d_]+/gu)) issues.push({ rule: "HASHTAG", message: "No hashtags in replies.", match: m[0].trim() });
   for (const m of text.matchAll(/(^|\s)@[A-Za-z0-9_]{1,15}/g)) issues.push({ rule: "MENTION", message: "No @mentions — the reply is already under the author's post.", match: m[0].trim() });
   const hasLink = /\bhttps?:\/\/|\b[a-z0-9-]+\.(space|com|org|io|gov|dev)\b/i.test(text);
@@ -520,35 +643,67 @@ export function checkReply(text: string, opts: { allowLink?: boolean } = {}): Re
     const m = text.match(re);
     if (m) issues.push({ rule: "OVERCLAIM", message: msg, match: m[0] });
   }
+  const project = mentionsProject(text);
+  if (project && (opts.relevance === "WEAK" || opts.relevance === "NONE")) {
+    const it = { rule: "PROJECT_INSERTION", message: "This reply only makes sense because you built DEEPSIFT, but the post isn't about anything DEEPSIFT studied. Keep the project out of it." };
+    if (opts.override && opts.relevance === "WEAK") warnings.push(it);
+    else issues.push(it);
+  }
   const all = [...claim.issues.map((i) => ({ rule: i.rule, message: i.message, match: i.match })), ...issues];
-  const mentionsDeepsift = (text.match(/\bDEEPSIFT\b/gi) ?? []).length;
-  return { claim, issues: all, status: all.length ? "FAIL" : "PASS", chars: claim.chars, mentionsDeepsift, hasLink, facts: claim.facts };
+  return { claim, issues: all, warnings, status: all.length ? "FAIL" : "PASS", chars: claim.chars, project, hasLink, facts: claim.facts };
 }
 
 export function promoRisk(text: string, a: Analysis, withLink = false): { risk: PromoRisk; why: string } {
-  const n = (text.match(/\bDEEPSIFT\b/gi) ?? []).length;
+  const named = (text.match(/\bDEEPSIFT\b/gi) ?? []).length;
+  const project = mentionsProject(text);
   const promo = /\b(check (it )?out|my project|try it|link in bio|follow me|shameless plug|sign up)\b/i.test(text);
-  if (promo || n > 1 || (n >= 1 && (a.relevance === "WEAK" || a.relevance === "NONE")) || (withLink && n >= 1 && a.relevance !== "STRONG"))
-    return { risk: "HIGH", why: promo ? "Promotional phrasing." : n > 1 ? "Names DEEPSIFT more than once." : withLink ? "Names DEEPSIFT and adds a link on a post that isn't squarely about it." : "Names DEEPSIFT under a post it isn't really connected to." };
-  if (n === 1 || withLink) return { risk: "MEDIUM", why: withLink && n === 0 ? "Adds a link." : "DEEPSIFT is relevant and named once." };
-  return { risk: "LOW", why: "Contributes without naming the project." };
+  if (promo || named > 1 || (project && (a.relevance === "WEAK" || a.relevance === "NONE")) || (withLink && project && a.relevance !== "DIRECT"))
+    return { risk: "HIGH", why: promo ? "Promotional phrasing." : named > 1 ? "Names DEEPSIFT more than once." : withLink ? "Mentions your project and adds a link on a post that isn't directly about it." : "Brings your project into a post it isn't really connected to." };
+  if (project || withLink) return { risk: "MEDIUM", why: withLink && !project ? "Adds a link." : "Mentions your project/experiment once, on a relevant post." };
+  return { risk: "LOW", why: "Contributes to the conversation without mentioning your project." };
+}
+
+/** WOULD THIS REPLY MAKE SENSE IF I HAD NEVER BUILT DEEPSIFT? */
+export function wouldMakeSenseWithoutDeepsift(text: string): boolean {
+  return !mentionsProject(text);
 }
 
 export function linkRecommendation(a: Analysis): { link: LinkRec; why: string } {
-  if (a.noConnection) return { link: "NONE", why: "No DEEPSIFT connection — no link." };
+  if (a.relevance === "NONE" || a.relevance === "WEAK") return { link: "NONE", why: "Not a DEEPSIFT conversation — no link." };
   if (a.asksWhatBuilt) return { link: "GITHUB", why: "They asked what you built or for the code." };
-  if (a.asksForEvidence && a.relevance === "STRONG") return { link: "RESEARCH", why: "They asked for evidence; the research page has results and negative results." };
-  if (a.postType === "QUESTION" && a.hits.some((h) => h.topic.id === "mars-imagery" || h.topic.id === "prioritization") && a.relevance === "STRONG")
+  if (a.asksForEvidence && a.relevance === "DIRECT") return { link: "RESEARCH", why: "They asked for evidence; the research page has results and negative results." };
+  if (a.postType === "QUESTION" && a.relevance === "DIRECT" && a.connections.some((h) => h.def.id === "prioritization" || h.def.id === "downlink"))
     return { link: "MISSION CONTROL", why: "Their question is about which rover frames get sent — the replay answers it visually." };
   return { link: "NONE", why: "Default: no link. The reply should stand on its own." };
 }
 
-export function valueCheck(a: Analysis, draft: ReplyDraft | null): { value: Value; reply: boolean; why: string } {
-  if (a.noConnection || !draft || !draft.available || !draft.text.trim())
-    return { value: "NOTHING", reply: false, why: a.noConnection ? "NO NATURAL DEEPSIFT CONNECTION — nothing verified to add. Don't reply (or write something of your own)." : "Nothing verified to add." };
-  if (a.relevance === "WEAK")
-    return { value: "NOTHING", reply: false, why: "Only generic terms matched, so any DEEPSIFT angle would be forced. Don't reply — unless you have your own question about the post (optional drafts below are unrelated to its specifics)." };
-  return { value: draft.value, reply: true, why: `Adds: ${draft.value.toLowerCase()}.` };
+// ─── 8. conversation-value test ────────────────────────────────────────────
+export interface ValueTest {
+  checks: { key: string; label: string; ok: boolean }[];
+  reply: boolean;
+  what: string;
+}
+
+const STOP = new Set("this that with from what about have been were their there which would could should into than then them they your youre just also more most much very some such only over under after before because while where when these those being does make made like said says".split(" "));
+const words = (s: string) => new Set((s.toLowerCase().match(/[a-z][a-z'-]{3,}/g) ?? []).filter((w) => !STOP.has(w)));
+
+export function conversationValue(a: Analysis, text: string, draft: ReplyDraft | null): ValueTest {
+  const t = text.trim();
+  const postWords = words([...a.domainTerms, ...a.connections.flatMap((c) => c.matches), a.quoted ?? "", a.mission ?? ""].join(" "));
+  const replyWords = words(t);
+  const reacts = !!t && ([...replyWords].some((w) => postWords.has(w)) || (!!a.mission && t.includes(a.mission)) || (!!a.quoted && t.toLowerCase().includes(a.quoted.toLowerCase())) || (!!draft && ["NATURAL", "CURIOUS"].includes(draft.key) && !!a.domain));
+  const question = /\?/.test(t);
+  const checks = [
+    { key: "subject", label: "Reacts to the actual subject", ok: reacts },
+    { key: "information", label: "Adds information", ok: checkPost(t).facts.length > 0 || (!!draft && draft.facts.length > 0 && draft.text === t) },
+    { key: "question", label: "Asks a meaningful question", ok: question && reacts },
+    { key: "clarifies", label: "Clarifies something", ok: /\b(caveat|limitation|not the same as|isn't|is not|to be clear|only)\b/i.test(t) && reacts },
+    { key: "experience", label: "Contributes relevant experience", ok: mentionsProject(t) && (a.relevance === "DIRECT" || a.relevance === "ADJACENT") },
+    { key: "discussion", label: "Invites useful discussion", ok: question || /\b(curious|interested|I'd like to hear|would love to hear)\b/i.test(t) },
+  ];
+  const reply = !a.noConnection && !!t && checks.some((c) => c.ok);
+  const what = !reply ? "Nothing useful to add." : draft?.project && draft.facts.length ? `Relevant experience — ${ANGLE_BY_ID[draft.angle ?? ""]?.label ?? "DEEPSIFT evidence"}.` : question ? "A genuine question about the subject." : "An observation on the subject.";
+  return { checks, reply, what };
 }
 
 export const factLabel = (id: string) => FACT_BY_ID[id]?.short_claim ?? id;

@@ -61,7 +61,8 @@ export interface EditorialItem {
   revisions: { at: string; text: string }[];
 }
 
-export type Relevance = "STRONG" | "MODERATE" | "WEAK" | "NONE";
+export type Relevance = "DIRECT" | "ADJACENT" | "WEAK" | "NONE";
+const LEGACY_RELEVANCE: Record<string, Relevance> = { STRONG: "DIRECT", MODERATE: "ADJACENT" };
 export type PromoRisk = "LOW" | "MEDIUM" | "HIGH";
 
 /** A reply drafted in the Reply Lab (browser-local, like everything else). */
@@ -84,6 +85,10 @@ export interface ReplyRecord {
   link: string | null;
   posted: boolean;
   reply_url: string | null;
+  /** Whether the reply mentions DEEPSIFT or the builder's own experiment (for the self-promotion ratio). */
+  mentions_project?: boolean;
+  /** Topic-first classification of the original post. */
+  domain?: string;
 }
 
 export interface CommsState {
@@ -271,7 +276,7 @@ export function importState(json: string, current: CommsState, mode: "merge" | "
   }
   const replies: ReplyRecord[] = [];
   for (const raw of Array.isArray(d.replies) ? d.replies : []) {
-    if (validReply(raw)) replies.push(raw);
+    if (validReply(raw)) replies.push({ ...raw, relevance: LEGACY_RELEVANCE[raw.relevance] ?? raw.relevance, mentions_project: raw.mentions_project ?? /\bDEEPSIFT\b/i.test(raw.reply) });
     else skipped++;
   }
   if (mode === "replace") return { state: { schema: SCHEMA, version: 1, items: good, replies }, imported: good.length + replies.length, skipped };
