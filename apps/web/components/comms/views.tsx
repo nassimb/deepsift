@@ -9,7 +9,7 @@ import { CADENCE, performanceByPillar, planWeek, recommend, reviewWeek, weekStar
 import { STATUSES, createFromIdea, exportState, importState, postsOf, type CommsState, type EditorialItem, type Status } from "@/lib/comms/store";
 import { itemForIdea, useComms } from "./CommsProvider";
 import { DraftCard } from "./DraftCard";
-import { Chip, CopyButton, Section, StatusChip } from "./ui";
+import { AttachFiles, Chip, CopyButton, Section, StatusChip } from "./ui";
 
 const DAY = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
@@ -342,6 +342,7 @@ export function AssetsView() {
       <div className="space-y-1">
         <h1 className="text-[22px] text-ink">Approved visuals</h1>
         <p className="text-[12px] text-ink-3">Existing DEEPSIFT assets only — read-only references to the site and the public repository. No generated imagery. Navcam images: NASA/JPL-Caltech (display previews, contrast-stretched).</p>
+        <p className="text-[12px] text-ink-3">For X, always attach the PNG or JPEG file (DOWNLOAD). X does not accept SVG.</p>
       </div>
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3" data-testid="assets">
         {ASSETS.map((a) => (
@@ -359,6 +360,7 @@ export function AssetsView() {
             <p className="text-[12px] text-ink-3">{a.description}</p>
             {a.caption && <p className="text-[11px] text-ink-4 italic">Caption: {a.caption}</p>}
             <div className="mono text-[10px] text-ink-4 break-all">{a.path}</div>
+            <AttachFiles files={a.files} />
             <div className="flex gap-2">
               <a className="btn" href={a.open} target="_blank" rel="noopener noreferrer" data-testid="asset-open">Open ↗</a>
               <CopyButton text={a.path} label="Copy path" testid="asset-copy" />

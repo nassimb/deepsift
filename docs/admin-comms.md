@@ -28,6 +28,11 @@ date, scheduled date/time, posted status, X URL, notes, manual results, qualifie
 draft → claim check → APPROVE (only if PASS) → OPEN IN X (`https://x.com/intent/tweet?text=…`, X's official web intent;
 threads use `in_reply_to`) → publish or schedule **in X** (native scheduler) → MARK SCHEDULED / MARK POSTED here.
 
+**Images:** X's web intent cannot carry attachments (and the X API is not used), so OPEN IN X first copies the post's
+recommended image to the clipboard as PNG (`lib/comms/clipboardImage.ts`; JPEGs converted in memory), then opens the
+composer — press ⌘V / Ctrl+V there to attach it. For threads the image goes with post 1. Every image also has
+Download and Copy image buttons (a stereo pair has two).
+
 The workflow is manual by design: DEEPSIFT Comms is a private scientific communication assistant, not a social media bot.
 There is no X API, X developer app, X OAuth, access/refresh token, media upload, server-side scheduler, cron or post queue,
 and none should be added. MARK SCHEDULED records the date/time you set in X; MARK POSTED records (all optional) the post
@@ -44,7 +49,7 @@ fails if automation infrastructure appears.
 | `/admin/comms/calendar` | Week view, cadence Mon result · Tue negative · Wed Mission Control · Thu engineering/method · Fri question; PLAN THIS WEEK |
 | `/admin/comms/history` | Every item with ids, dates, X URL, visual, claims, status, notes, log |
 | `/admin/comms/review` | Weekly review (planned, completed, categories, repeated claims, audiences, unused ideas) + manual performance by category |
-| `/admin/comms/assets` | Approved existing visuals (figures, release media, Navcam previews, PDFs, pages to capture) |
+| `/admin/comms/assets` | Approved existing visuals (figures, release media, Navcam previews, PDFs, pages to capture). Every image has a **PNG/JPEG download to attach on X — never SVG** (X does not accept SVG). `apps/web/public/share/*.png` are byte-identical copies of the frozen `docs/figures/*.png` and `artifacts/public/media/*.png` (checked by `tests/comms-assets.test.ts`). |
 
 ## Scientific safety
 

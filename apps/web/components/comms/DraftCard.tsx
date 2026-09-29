@@ -12,9 +12,10 @@ import {
   METRIC_KEYS, QUALIFIED_TYPES, approve, claimStatus, createFromIdea, editContent, markPosted, markScheduled, plan, postsOf, reject, reopen,
   setMetrics, setXUrl, setNotes, setQualified, setThreadUrl, type EditorialItem, type Format, type Metrics,
 } from "@/lib/comms/store";
+import { copyImageToClipboard } from "@/lib/comms/clipboardImage";
 import { postIdFromUrl, xIntentUrl } from "@/lib/comms/xintent";
 import { useComms } from "./CommsProvider";
-import { Chip, CopyButton, StatusChip } from "./ui";
+import { AttachFiles, Chip, CopyButton, StatusChip } from "./ui";
 
 type Props = { idea?: ContentIdea | null; item?: EditorialItem | null; defaultOpen?: boolean; testid?: string };
 
@@ -41,6 +42,23 @@ export function DraftCard({ idea: ideaProp, item: itemProp, testid = "draft-card
   const share = useMemo(() => shareability(posts[0] ?? "", !!visual), [posts, visual]);
   const facts = useMemo(() => [...new Set([...(item?.claims ?? idea?.facts ?? []), ...checks.flatMap((c) => c.facts)])], [item, idea, checks]);
   const status = item?.status ?? null;
+
+  const [xMsg, setXMsg] = useState<{ ok: boolean; text: string; fallback?: string } | null>(null);
+  /** Copy the post's image (PNG) to the clipboard, then open X's composer with the text. Nothing is posted. */
+  const openInX = async (text: string, inReplyTo: string | null, withImage: boolean) => {
+    const url = xIntentUrl(text, inReplyTo);
+    const file = withImage ? visual?.files[0] : undefined;
+    const copied = file ? await copyImageToClipboard(file.url) : null;
+    const w = window.open(url, "_blank");
+    if (w) w.opener = null;
+    const name = file?.url.split("/").pop();
+    const extra = visual && visual.files.length > 1 ? ` This visual has ${visual.files.length} images — use “Copy image” below for the others.` : "";
+    setXMsg(
+      copied === true ? { ok: true, text: `Image copied (${name}). In X's composer press ⌘V (Ctrl+V on Windows) to attach it.${extra}`, fallback: w ? undefined : url }
+      : copied === false ? { ok: false, text: `Couldn't copy the image automatically — use “Download” below and attach ${name} in X.`, fallback: w ? undefined : url }
+      : { ok: true, text: withImage ? "No attachable image for this post — text only." : "Reply opened in X (images go with post 1).", fallback: w ? undefined : url },
+    );
+  };
 
   const act = (f: () => EditorialItem) => {
     try {
@@ -133,7 +151,8 @@ export function DraftCard({ idea: ideaProp, item: itemProp, testid = "draft-card
                   <CopyButton text={p} label={`Copy post ${i + 1}`} testid={`copy-post-${i}`} />
                   {canX && (
                     <a className="btn" target="_blank" rel="noopener noreferrer" data-testid={`open-x-${i}`}
-                      href={xIntentUrl(p, i > 0 ? postIdFromUrl(item!.thread_urls[i - 1] || (i === 1 ? item!.x_url : null)) : null)}>
+                      href={xIntentUrl(p, i > 0 ? postIdFromUrl(item!.thread_urls[i - 1] || (i === 1 ? item!.x_url : null)) : null)}
+                      onClick={(e) => { e.preventDefault(); void openInX(p, i > 0 ? postIdFromUrl(item!.thread_urls[i - 1] || (i === 1 ? item!.x_url : null)) : null, i === 0); }}>
                       Open post {i + 1} in X
                     </a>
                   )}
@@ -198,6 +217,7 @@ export function DraftCard({ idea: ideaProp, item: itemProp, testid = "draft-card
                 <div className="text-ink-3">{visual.description}</div>
                 {visual.caption && <div className="text-ink-4 italic">Caption: {visual.caption}</div>}
                 <a className="text-[11px] underline text-ink-2" href={visual.open} target="_blank" rel="noopener noreferrer">Open asset ↗</a>
+                <AttachFiles files={visual.files} />
               </div>
             </div>
           ) : (
@@ -264,7 +284,8 @@ export function DraftCard({ idea: ideaProp, item: itemProp, testid = "draft-card
               <button type="button" className="btn" disabled={status === "POSTED"} onClick={() => act(() => reject(ensure()))} data-testid="reject">Reject</button>
             )}
             {canX ? (
-              <a className="btn" data-active="true" href={xIntentUrl(posts[0])} target="_blank" rel="noopener noreferrer" data-testid="open-x">Open in X ↗</a>
+              <a className="btn" data-active="true" href={xIntentUrl(posts[0])} target="_blank" rel="noopener noreferrer" data-testid="open-x"
+                onClick={(e) => { e.preventDefault(); void openInX(posts[0], null, true); }}>Open in X ↗</a>
             ) : (
               <button type="button" className="btn" disabled data-testid="open-x" title="Approve first.">Open in X ↗</button>
             )}
@@ -282,11 +303,18 @@ export function DraftCard({ idea: ideaProp, item: itemProp, testid = "draft-card
       </div>
       {!editing && (canX || status === "APPROVED") && (
         <p className="text-[11px] text-ink-3" data-testid="x-help">
-          OPEN IN X opens X&apos;s own composer in a new tab with the text prefilled. Attach the visual there, then publish — or use X&apos;s native
+          OPEN IN X copies the post&apos;s image to your clipboard (PNG) and opens X&apos;s own composer with the text prefilled. Press ⌘V in the
+          composer to attach the image, then publish — or use X&apos;s native
           schedule option to pick a date and time. DEEPSIFT never publishes or schedules anything itself.{format === "THREAD" ? " For a thread, post 1 first, paste its URL, then open the next post (it opens as a reply)." : ""}
         </p>
       )}
 
+      {xMsg && (
+        <p className="text-[12px]" role="status" data-testid="x-msg" style={{ color: xMsg.ok ? "var(--s-good)" : "var(--s-warn)" }}>
+          {xMsg.text}
+          {xMsg.fallback && <> Your browser blocked the new tab — <a className="underline" href={xMsg.fallback} target="_blank" rel="noopener noreferrer">open X&apos;s composer</a>.</>}
+        </p>
+      )}
       {panel === "schedule" && item && <ScheduleForm item={item} onDone={(it) => { act(() => it); setPanel("none"); }} onError={setErr} />}
       {panel === "posted" && item && <PostedForm item={item} onDone={(it) => { act(() => it); setPanel("none"); }} onError={setErr} />}
 

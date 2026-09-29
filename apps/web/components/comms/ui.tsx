@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { copyImageToClipboard } from "@/lib/comms/clipboardImage";
 import type { Status } from "@/lib/comms/store";
 
 export const STATUS_COLOR: Record<Status, string> = {
@@ -67,5 +68,35 @@ export function Section({ title, children, right, testid }: { title: string; chi
       </div>
       {children}
     </section>
+  );
+}
+
+/** PNG/JPEG files to attach on X (X does not accept SVG). Same-origin, so the browser downloads them directly. */
+export function AttachFiles({ files, testid = "attach" }: { files: { url: string; format: string }[]; testid?: string }) {
+  if (!files.length) return <div className="text-[11px] text-ink-4" data-testid={`${testid}-none`}>No attachable image — record or capture it yourself (save as PNG or JPEG).</div>;
+  return (
+    <div className="flex flex-wrap items-center gap-2" data-testid={testid}>
+      <span className="text-[11px] text-ink-3">Attach on X:</span>
+      {files.map((f) => (
+        <span key={f.url} className="flex flex-wrap gap-1 max-w-full">
+          <a className="btn" href={f.url} download data-testid={`${testid}-file`} data-format={f.format} title={f.url.split("/").pop()}>
+            Download {f.format}{files.length > 1 ? ` ${files.indexOf(f) + 1}` : ""}
+          </a>
+          <CopyImageButton url={f.url} testid={`${testid}-copy`} />
+        </span>
+      ))}
+    </div>
+  );
+}
+
+export function CopyImageButton({ url, testid = "copy-image" }: { url: string; testid?: string }) {
+  const [state, setState] = useState<"idle" | "ok" | "fail">("idle");
+  return (
+    <button type="button" className="btn" data-testid={testid} onClick={async () => {
+      setState((await copyImageToClipboard(url)) ? "ok" : "fail");
+      setTimeout(() => setState("idle"), 2200);
+    }}>
+      {state === "ok" ? "IMAGE COPIED — ⌘V in X" : state === "fail" ? "COPY FAILED — download it" : "Copy image"}
+    </button>
   );
 }

@@ -49,7 +49,11 @@ def test_zero_cost_no_x_api_no_paid_scheduler_no_llm():
     for bad in ("twitter-api-v2", "openai", "@anthropic-ai/sdk", "@google/generative-ai", "buffer", "hootsuite", "metricool", "openrouter"):
         assert bad not in deps, bad
     blob = "".join(p.read_text() for p in ADMIN_SRC)
-    assert "api.twitter.com" not in blob and "api.x.com" not in blob and "fetch(" not in blob.replace("prefetch(", "")
+    assert "api.twitter.com" not in blob and "api.x.com" not in blob
+    # the only fetch is the clipboard helper reading a same-origin image; no request ever leaves the site
+    fetchers = [p for p in ADMIN_SRC if "fetch(" in p.read_text()]
+    assert [p.name for p in fetchers] == ["clipboardImage.ts"], fetchers
+    assert not re.search(r"fetch\(\s*[\"'`]https?:", blob)
     for s in ("openai", "anthropic.com", "generativelanguage", "openrouter", "TYPESAFE_API_KEY", "metricool", "buffer.com", "hootsuite"):
         assert s not in blob.lower() if s.islower() else s not in blob, s
     xi = (WEB / "lib/comms/xintent.ts").read_text()
