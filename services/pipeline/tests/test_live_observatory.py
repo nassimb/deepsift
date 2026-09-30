@@ -79,3 +79,39 @@ def test_fixture_tests_never_hit_the_network():
     for t in (WEB / "tests").glob("observatory-*.test.ts"):
         src = t.read_text()
         assert "fetch(" not in src and "fetchDsn" not in src and "https://eyes" not in src, t
+
+
+PI = ROOT / "services/collector/deploy/raspberry-pi"
+
+
+def test_pi_systemd_unit_restarts_and_is_hardened():
+    u = (PI / "deepsift-collector.service").read_text()
+    for need in ["Restart=always", "RestartSec=5", "StartLimitIntervalSec=0", "KillSignal=SIGTERM", "TimeoutStopSec=20", "WantedBy=multi-user.target",
+                 "After=network-online.target", "EnvironmentFile=/etc/deepsift/collector.env", "User=deepsift", "NoNewPrivileges=yes",
+                 "ProtectSystem=strict", "ReadWritePaths=/var/lib/deepsift-observatory", "StandardOutput=journal"]:
+        assert need in u, need
+    t = (PI / "deepsift-collector-backup.timer").read_text()
+    assert "Persistent=true" in t and "OnCalendar=" in t
+    assert "SystemMaxUse=" in (PI / "journald-deepsift.conf").read_text()
+
+
+def test_pi_env_template_has_no_real_secrets_and_splits_listeners():
+    env = (PI / "collector.env.example").read_text()
+    for line in env.splitlines():
+        if line.startswith(("COLLECTOR_ADMIN_TOKEN=", "COLLECTOR_READ_TOKEN=")):
+            assert "__generate_with__" in line, line
+    assert "COLLECTOR_PORT=8790" in env and "COLLECTOR_PUBLIC_PORT=8791" in env and "NEXT_PUBLIC" not in env
+    readme = (PI / "README.md").read_text()
+    assert "tailscale funnel --bg --https=443 http://127.0.0.1:8791" in readme and "Never funnel port 8790" in readme
+
+
+def test_public_listener_is_read_only_allow_list_with_token():
+    c = (ROOT / "services/collector/collector.ts").read_text()
+    m = re.search(r"PUBLIC_ROUTES = new Set\(\[(.*?)\]\)", c)
+    routes = {r.strip().strip('"') for r in m.group(1).split(",")}
+    assert routes == {"/healthz", "/status", "/metrics", "/events", "/stream", "/timeline", "/images", "/dsn-contacts", "/polls"}
+    assert not any("admin" in r for r in routes)
+    assert 'req.method !== "GET" || !PUBLIC_ROUTES.has(u.pathname)' in c
+    assert 'READ_TOKEN && u.pathname !== "/healthz" && req.headers.authorization !== `Bearer ${READ_TOKEN}`' in c
+    assert 'publicServer.listen(PUBLIC_PORT!, "127.0.0.1"' in c
+    assert "wal_checkpoint(TRUNCATE)" in c and 'process.on("uncaughtException"' in c

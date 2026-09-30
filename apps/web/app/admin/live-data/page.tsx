@@ -19,7 +19,8 @@ async function get<T>(path: string): Promise<T | null> {
   const base = process.env.LIVE_COLLECTOR_URL;
   if (!base) return null;
   try {
-    const r = await fetch(new URL(path, base), { cache: "no-store" });
+    const headers: Record<string, string> = process.env.COLLECTOR_READ_TOKEN ? { authorization: `Bearer ${process.env.COLLECTOR_READ_TOKEN}` } : {};
+    const r = await fetch(new URL(path, base), { cache: "no-store", headers });
     return r.ok ? ((await r.json()) as T) : null;
   } catch {
     return null;
@@ -30,12 +31,20 @@ async function refresh(formData: FormData) {
   "use server";
   const session = await auth();
   if (adminAccess(session?.user) !== "ok") return;
-  const base = process.env.LIVE_COLLECTOR_URL;
+  // admin actions go to the collector's full local API only (never exposed through the tunnel)
+  const base = adminBase();
   const token = process.env.COLLECTOR_ADMIN_TOKEN;
   const source = String(formData.get("source") ?? "");
   if (!base || !token || !SOURCES.some((s) => s.id === source)) return;
   await fetch(new URL(`/admin/refresh?source=${source}`, base), { method: "POST", headers: { authorization: `Bearer ${token}` } }).catch(() => {});
   revalidatePath("/admin/live-data");
+}
+
+/** Force refresh needs the full (admin) API: COLLECTOR_ADMIN_URL, or a local LIVE_COLLECTOR_URL. Behind a tunnel it is unavailable by design. */
+function adminBase(): string | null {
+  if (process.env.COLLECTOR_ADMIN_URL) return process.env.COLLECTOR_ADMIN_URL;
+  const u = process.env.LIVE_COLLECTOR_URL;
+  return u && /^http:\/\/(127\.0\.0\.1|localhost)(:\d+)?\/?$/.test(u) ? u : null;
 }
 
 const C: Record<string, string> = { ONLINE: "var(--s-good)", DEGRADED: "var(--s-warn)", STALE: "var(--s-serious)", OFFLINE: "var(--s-critical)" };
@@ -48,7 +57,7 @@ export default async function LiveDataAdmin() {
   if (access === "forbidden") return <main className="p-8 obs-mono text-[13px]">403 FORBIDDEN</main>;
   const status = await get<Status>("/status");
   const polls = (await get<{ polls: Poll[] }>("/polls?limit=80"))?.polls ?? [];
-  const canRefresh = !!process.env.COLLECTOR_ADMIN_TOKEN;
+  const canRefresh = !!process.env.COLLECTOR_ADMIN_TOKEN && !!adminBase();
   return (
     <main className="max-w-[1400px] mx-auto px-4 sm:px-6 py-6 space-y-6">
       <div className="flex flex-wrap items-baseline gap-3">
@@ -96,7 +105,7 @@ export default async function LiveDataAdmin() {
               </tbody>
             </table>
           </div>
-          <div className="text-[11px] text-ink-4">Collector uptime since {status.startedAt} · store {status.dbPath}. Force refresh triggers one poll (server-to-server token); it is not exposed publicly.</div>
+          <div className="text-[11px] text-ink-4">Collector uptime since {status.startedAt} · store {status.dbPath}. {canRefresh ? "Force refresh triggers one poll (server-to-server token); it is not exposed publicly." : "Force refresh is available only on the collector host (it is never exposed through the tunnel): curl -X POST -H \"Authorization: Bearer $COLLECTOR_ADMIN_TOKEN\" http://127.0.0.1:8790/admin/refresh?source=dsn"}</div>
           <div className="overflow-x-auto panel">
             <table className="w-full text-[11px] obs-mono" data-testid="collector-polls">
               <thead><tr className="text-left border-b border-line">{["at", "source", "HTTP", "ok", "304", "ms", "bytes", "parse", "new events", "dedupe drops", "error"].map((h) => <th key={h} className="px-2 py-1.5 label font-normal">{h}</th>)}</tr></thead>

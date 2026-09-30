@@ -4,7 +4,9 @@
  *
  *    node services/collector/collector.ts            # defaults: DSN 5 s, NOAA 5 min, DONKI 10 min, Horizons 5 min,
  *                                                    #           Curiosity 3 min, Perseverance 5 min
- *  env: COLLECTOR_PORT (8790) · COLLECTOR_DB (live_observatory/data/observatory.sqlite) · COLLECTOR_ADMIN_TOKEN
+ *  env: COLLECTOR_PORT (8790, full local API incl. token-protected admin) · COLLECTOR_DB (live_observatory/data/observatory.sqlite)
+ *       COLLECTOR_ADMIN_TOKEN · COLLECTOR_PUBLIC_PORT (e.g. 8791: READ-ONLY listener — the only port a tunnel may expose)
+ *       COLLECTOR_READ_TOKEN (optional; when set, the public listener requires "Authorization: Bearer <token>" except /healthz)
  *       POLL_DSN_S · POLL_NOAA_S · POLL_DONKI_S · POLL_HORIZONS_S · POLL_CURIOSITY_S · POLL_PERSEVERANCE_S · DISABLE_<SOURCE>=1 */
 import { mkdirSync } from "node:fs";
 import { createServer, type ServerResponse } from "node:http";
@@ -23,6 +25,10 @@ const env = process.env;
 const DB_PATH = env.COLLECTOR_DB ?? join(ROOT, "live_observatory/data/observatory.sqlite");
 const PORT = Number(env.COLLECTOR_PORT ?? 8790);
 const ADMIN_TOKEN = env.COLLECTOR_ADMIN_TOKEN ?? "";
+const PUBLIC_PORT = env.COLLECTOR_PUBLIC_PORT ? Number(env.COLLECTOR_PUBLIC_PORT) : null;
+const READ_TOKEN = env.COLLECTOR_READ_TOKEN ?? "";
+/** Routes the public (tunnel-facing) listener serves. GET only; no admin, no writes. */
+export const PUBLIC_ROUTES = new Set(["/healthz", "/status", "/metrics", "/events", "/stream", "/timeline", "/images", "/dsn-contacts", "/polls"]);
 const DEFAULT_S: Record<SourceId, number> = { dsn: 5, noaa: 300, donki: 600, horizons: 300, curiosity: 180, perseverance: 300 };
 const interval = (id: SourceId) => Number(env[`POLL_${id.toUpperCase()}_S`] ?? DEFAULT_S[id]);
 const enabled = (id: SourceId) => env[`DISABLE_${id.toUpperCase()}`] !== "1";
@@ -164,8 +170,8 @@ async function runPoll(id: SourceId) {
   }
   const ok = res.meta.ok && res.parse !== "error" && res.parse !== "schema-error" && res.parse !== "no-data";
   store.recordPoll({ source: id, at, status: res.meta.status, ok, notModified: !!res.meta.notModified, durationMs: res.meta.durationMs, bytes: res.meta.bytes, parse: res.parse, error: ok ? null : res.meta.error ?? res.parse, newEvents: res.events.length, drops: res.drops, sourceTime: res.sourceTime });
-  if (!ok && !failing[id]) store1(sourceEvent(id, false, at, res.meta.error ?? res.parse));
-  if (ok && failing[id]) store1(sourceEvent(id, true, at, "source recovered"));
+  if (!ok && !failing[id]) { store1(sourceEvent(id, false, at, res.meta.error ?? res.parse)); console.warn(`[${at}] ${id}: ERROR ${res.meta.error ?? res.parse}`); }
+  if (ok && failing[id]) { store1(sourceEvent(id, true, at, "source recovered")); console.log(`[${at}] ${id}: recovered`); }
   failing[id] = !ok;
   running[id] = false;
   schedule(id, ok);
@@ -206,41 +212,75 @@ const json = (res: ServerResponse, code: number, body: unknown) => {
   res.end(JSON.stringify(body));
 };
 
-const server = createServer((req, res) => {
-  const u = new URL(req.url ?? "/", "http://localhost");
-  const q = (k: string) => u.searchParams.get(k);
-  try {
-    if (req.method === "POST" && u.pathname === "/admin/refresh") {
-      const auth = req.headers.authorization ?? "";
-      if (!ADMIN_TOKEN || auth !== `Bearer ${ADMIN_TOKEN}`) return json(res, 401, { ok: false, error: "unauthorized" });
-      const id = q("source") as SourceId;
-      if (!SOURCES.some((s) => s.id === id)) return json(res, 400, { ok: false, error: "unknown source" });
-      void runPoll(id);
-      return json(res, 202, { ok: true, refreshing: id });
+function metrics() {
+  const now = Date.now();
+  const hourAgo = new Date(now - 3_600_000).toISOString();
+  const polls = store.db.prepare(`SELECT source_id, COUNT(*) AS n, SUM(ok = 0) AS errors, AVG(duration_ms) AS avg_ms, MAX(duration_ms) AS max_ms, SUM(new_events) AS new_events, SUM(dedupe_drops) AS drops FROM source_polls WHERE at >= ? GROUP BY source_id`).all(hourAgo) as Record<string, unknown>[];
+  const c = store.counts();
+  return {
+    ok: true, version: COLLECTOR_VERSION, uptimeS: Math.round((now - startedAt.getTime()) / 1000), dbBytes: store.bytes(), eventsTotal: c.total, eventsToday: c.today,
+    sseClients: clients.size, memoryRssBytes: process.memoryUsage().rss,
+    lastHour: Object.fromEntries(polls.map((p) => [p.source_id, { polls: Number(p.n), errors: Number(p.errors), avgMs: Math.round(Number(p.avg_ms)), maxMs: Number(p.max_ms), newEvents: Number(p.new_events), dedupeDrops: Number(p.drops) }])),
+    lagS: Object.fromEntries(store.sources().map((s) => [s.id, s.last_success ? Math.round((now - Date.parse(s.last_success as string)) / 1000) : null])),
+  };
+}
+
+/** Liveness for systemd / tunnels / Vercel: 200 while the process polls something successfully within 10 min. */
+function healthz() {
+  const st = status();
+  const online = st.sources.filter((s) => s.health === "ONLINE").map((s) => s.id);
+  const recent = st.sources.some((s) => s.lastSuccess && Date.now() - Date.parse(s.lastSuccess) < 600_000);
+  return { code: recent ? 200 : 503, body: { ok: recent, version: COLLECTOR_VERSION, uptimeS: st.uptimeS, online, notOnline: st.sources.filter((s) => s.health !== "ONLINE").map((s) => `${s.id}:${s.health}`) } };
+}
+
+function handler(publicListener: boolean) {
+  return (req: import("node:http").IncomingMessage, res: ServerResponse) => {
+    const u = new URL(req.url ?? "/", "http://localhost");
+    const q = (k: string) => u.searchParams.get(k);
+    try {
+      if (publicListener) {
+        // read-only surface: GET on an allow-list only; optional bearer token (all but /healthz)
+        if (req.method !== "GET" || !PUBLIC_ROUTES.has(u.pathname)) return json(res, 404, { ok: false, error: "not found" });
+        if (READ_TOKEN && u.pathname !== "/healthz" && req.headers.authorization !== `Bearer ${READ_TOKEN}`) return json(res, 401, { ok: false, error: "unauthorized" });
+      } else if (req.method === "POST" && u.pathname === "/admin/refresh") {
+        const auth = req.headers.authorization ?? "";
+        if (!ADMIN_TOKEN || auth !== `Bearer ${ADMIN_TOKEN}`) return json(res, 401, { ok: false, error: "unauthorized" });
+        const id = q("source") as SourceId;
+        if (!SOURCES.some((s) => s.id === id)) return json(res, 400, { ok: false, error: "unknown source" });
+        console.log(`[${iso()}] force refresh: ${id}`);
+        void runPoll(id);
+        return json(res, 202, { ok: true, refreshing: id });
+      }
+      if (req.method !== "GET") return json(res, 405, { ok: false });
+      if (u.pathname === "/healthz") { const h = healthz(); return json(res, h.code, h.body); }
+      if (u.pathname === "/metrics") return json(res, 200, metrics());
+      if (u.pathname === "/status") return json(res, 200, status());
+      if (u.pathname === "/events") return json(res, 200, { events: store.events({ since: q("since"), limit: Number(q("limit") ?? 200), source: q("source"), afterSeq: q("after") ? Number(q("after")) : null }) });
+      if (u.pathname === "/timeline") return json(res, 200, store.timeline(q("from") ?? new Date(Date.now() - 6 * 3_600_000).toISOString()));
+      if (u.pathname === "/images") return json(res, 200, { images: store.latestImages(Math.min(Number(q("limit") ?? 40), 200)) });
+      if (u.pathname === "/dsn-contacts") return json(res, 200, { open: store.openContacts() });
+      if (u.pathname === "/polls") return json(res, 200, { polls: store.recentPolls(Math.min(Number(q("limit") ?? 60), 500)) });
+      if (u.pathname === "/stream") {
+        res.writeHead(200, { "content-type": "text/event-stream", "cache-control": "no-store", connection: "keep-alive", "x-accel-buffering": "no" });
+        res.write(`event: hello\ndata: ${JSON.stringify({ version: COLLECTOR_VERSION, at: iso() })}\n\n`);
+        clients.add(res);
+        const hb = setInterval(() => res.write(`: heartbeat ${iso()}\n\n`), 15_000);
+        req.on("close", () => { clearInterval(hb); clients.delete(res); });
+        return;
+      }
+      json(res, 404, { ok: false, error: "not found" });
+    } catch (e) {
+      json(res, 500, { ok: false, error: (e as Error).message });
     }
-    if (req.method !== "GET") return json(res, 405, { ok: false });
-    if (u.pathname === "/status") return json(res, 200, status());
-    if (u.pathname === "/events") return json(res, 200, { events: store.events({ since: q("since"), limit: Number(q("limit") ?? 200), source: q("source"), afterSeq: q("after") ? Number(q("after")) : null }) });
-    if (u.pathname === "/timeline") return json(res, 200, store.timeline(q("from") ?? new Date(Date.now() - 6 * 3_600_000).toISOString()));
-    if (u.pathname === "/images") return json(res, 200, { images: store.latestImages(Number(q("limit") ?? 40)) });
-    if (u.pathname === "/dsn-contacts") return json(res, 200, { open: store.openContacts() });
-    if (u.pathname === "/polls") return json(res, 200, { polls: store.recentPolls(Number(q("limit") ?? 60)) });
-    if (u.pathname === "/stream") {
-      res.writeHead(200, { "content-type": "text/event-stream", "cache-control": "no-store", connection: "keep-alive", "x-accel-buffering": "no" });
-      res.write(`event: hello\ndata: ${JSON.stringify({ version: COLLECTOR_VERSION, at: iso() })}\n\n`);
-      clients.add(res);
-      const hb = setInterval(() => res.write(`: heartbeat ${iso()}\n\n`), 15_000);
-      req.on("close", () => { clearInterval(hb); clients.delete(res); });
-      return;
-    }
-    json(res, 404, { ok: false, error: "not found" });
-  } catch (e) {
-    json(res, 500, { ok: false, error: (e as Error).message });
-  }
-});
+  };
+}
+
+const server = createServer(handler(false));
+const publicServer = PUBLIC_PORT ? createServer(handler(true)) : null;
 
 server.listen(PORT, "127.0.0.1", () => {
-  console.log(`[${iso()}] ${COLLECTOR_VERSION} listening on http://127.0.0.1:${PORT} · db ${DB_PATH}`);
+  console.log(`[${iso()}] ${COLLECTOR_VERSION} listening on http://127.0.0.1:${PORT} (full, local only) · db ${DB_PATH}`);
+  if (publicServer) publicServer.listen(PUBLIC_PORT!, "127.0.0.1", () => console.log(`[${iso()}] read-only listener on http://127.0.0.1:${PUBLIC_PORT} (${READ_TOKEN ? "bearer token required" : "no token"}) — the only port a tunnel may expose`));
   for (const s of SOURCES) {
     if (!enabled(s.id)) { console.log(`  ${s.id}: disabled`); continue; }
     console.log(`  ${s.id}: every ${interval(s.id)} s`);
@@ -252,12 +292,26 @@ server.listen(PORT, "127.0.0.1", () => {
 setInterval(() => { const r = store.retention(new Date()); console.log(`[${iso()}] retention`, r); }, 3_600_000);
 setInterval(() => store.metric(iso(), Math.round((Date.now() - startedAt.getTime()) / 1000), { clients: clients.size }), 300_000);
 
-const shutdown = () => {
-  console.log(`[${iso()}] shutting down`);
-  server.close();
+let stopping = false;
+const shutdown = (signal: string) => {
+  if (stopping) return;
+  stopping = true;
+  console.log(`[${iso()}] ${signal}: shutting down`);
+  for (const t of Object.values(timers)) clearTimeout(t);
   for (const c of clients) c.end();
-  store.db.close();
+  server.close();
+  publicServer?.close();
+  try {
+    store.db.exec("PRAGMA wal_checkpoint(TRUNCATE)"); // fold the WAL back into the database file before exit
+    store.db.close();
+  } catch (e) {
+    console.error(`[${iso()}] close error: ${(e as Error).message}`);
+  }
+  console.log(`[${iso()}] stopped cleanly`);
   process.exit(0);
 };
-process.on("SIGINT", shutdown);
-process.on("SIGTERM", shutdown);
+process.on("SIGINT", () => shutdown("SIGINT"));
+process.on("SIGTERM", () => shutdown("SIGTERM"));
+// crash → non-zero exit so the supervisor (systemd Restart=always) restarts us; SQLite WAL recovers on the next open
+process.on("uncaughtException", (e) => { console.error(`[${iso()}] FATAL ${e.stack ?? e}`); process.exit(1); });
+process.on("unhandledRejection", (e) => { console.error(`[${iso()}] FATAL unhandled rejection ${String(e)}`); process.exit(1); });

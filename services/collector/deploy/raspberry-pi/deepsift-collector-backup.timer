@@ -1,0 +1,11 @@
+# /etc/systemd/system/deepsift-collector-backup.timer — daily at 03:30 local time (+ random delay), catch up after downtime
+[Unit]
+Description=Nightly DEEPSIFT collector backup
+
+[Timer]
+OnCalendar=*-*-* 03:30:00
+RandomizedDelaySec=15min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

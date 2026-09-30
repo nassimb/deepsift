@@ -93,8 +93,15 @@ Intervals: `POLL_DSN_S`, `POLL_NOAA_S`, `POLL_DONKI_S`, `POLL_HORIZONS_S`, `POLL
 ## Environment variables
 
 - Tier 0 (Vercel): **none**. No NASA API key is needed (DONKI's new API has none).
-- Collector host (later, not chosen yet): `LIVE_COLLECTOR_URL` (Vercel, server-only) and `COLLECTOR_ADMIN_TOKEN`
-  (server-only, on both sides). Never `NEXT_PUBLIC_*`.
+- Collector (Pi, `/etc/deepsift/collector.env`, never committed): `COLLECTOR_DB`, `COLLECTOR_PORT` (8790, full API, local
+  only), `COLLECTOR_ADMIN_TOKEN`, `COLLECTOR_PUBLIC_PORT` (8791, read-only allow-list — the only tunneled port),
+  `COLLECTOR_READ_TOKEN`, `COLLECTOR_BACKUP_DIR`, `COLLECTOR_BACKUP_KEEP`, `POLL_*_S`, `DISABLE_<SOURCE>`.
+- Vercel, once the Pi is live (server-only, type sensitive; never `NEXT_PUBLIC_*`): `LIVE_COLLECTOR_URL`
+  (the Tailscale Funnel URL of the read-only listener) and `COLLECTOR_READ_TOKEN`. `COLLECTOR_ADMIN_TOKEN` /
+  `COLLECTOR_ADMIN_URL` are **not** set on Vercel: force refresh stays on the Pi, the admin API is never tunneled.
+
+Raspberry Pi deployment kit (systemd, journald, nightly backups, installer, Tailscale Funnel):
+`services/collector/deploy/raspberry-pi/README.md`.
 
 ## Load estimate
 

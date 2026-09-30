@@ -1,0 +1,43 @@
+# /etc/systemd/system/deepsift-collector.service — DEEPSIFT Live Observatory collector (Raspberry Pi, 24/7)
+[Unit]
+Description=DEEPSIFT Live Observatory collector
+Documentation=https://github.com/nassimb/deepsift/blob/main/docs/observatory.md
+After=network-online.target time-sync.target
+Wants=network-online.target
+# never give up restarting
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+User=deepsift
+Group=deepsift
+WorkingDirectory=/opt/deepsift
+EnvironmentFile=/etc/deepsift/collector.env
+ExecStart=/usr/bin/node --disable-warning=ExperimentalWarning --disable-warning=MODULE_TYPELESS_PACKAGE_JSON services/collector/collector.ts
+# crash → restart after 5 s; SIGTERM → graceful stop (WAL checkpoint + close) within 20 s
+Restart=always
+RestartSec=5
+KillSignal=SIGTERM
+TimeoutStopSec=20
+# logs → journald (rotation: see journald-deepsift.conf)
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=deepsift-collector
+# hardening: read-only system, writable data dir only, no privilege escalation
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ReadWritePaths=/var/lib/deepsift-observatory
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+RestrictNamespaces=yes
+LockPersonality=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+MemoryMax=400M
+
+[Install]
+WantedBy=multi-user.target

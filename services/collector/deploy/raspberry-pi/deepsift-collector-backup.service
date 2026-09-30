@@ -1,0 +1,17 @@
+# /etc/systemd/system/deepsift-collector-backup.service — consistent online backup (VACUUM INTO + integrity check)
+[Unit]
+Description=DEEPSIFT Live Observatory — nightly SQLite backup
+
+[Service]
+Type=oneshot
+User=deepsift
+Group=deepsift
+WorkingDirectory=/opt/deepsift
+EnvironmentFile=/etc/deepsift/collector.env
+ExecStart=/usr/bin/node --disable-warning=ExperimentalWarning --disable-warning=MODULE_TYPELESS_PACKAGE_JSON services/collector/backup.ts
+Nice=10
+IOSchedulingClass=idle
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/var/lib/deepsift-observatory
