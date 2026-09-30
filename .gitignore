@@ -26,3 +26,6 @@ data/*.log
 # run / fetch logs (local only)
 *.log
 logs/
+
+# Live Observatory runtime data (SQLite, logs) — operational, never science
+/live_observatory/data/

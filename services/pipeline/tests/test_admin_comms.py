@@ -51,7 +51,7 @@ def test_zero_cost_no_x_api_no_paid_scheduler_no_llm():
     blob = "".join(p.read_text() for p in ADMIN_SRC)
     assert "api.twitter.com" not in blob and "api.x.com" not in blob
     # the only fetch is the clipboard helper reading a same-origin image; no request ever leaves the site
-    fetchers = [p for p in ADMIN_SRC if "fetch(" in p.read_text()]
+    fetchers = [p for p in ADMIN_SRC if "fetch(" in p.read_text() and "live-data" not in p.parts]  # /admin/live-data reads the local collector (tested in test_live_observatory)
     assert [p.name for p in fetchers] == ["clipboardImage.ts"], fetchers
     assert not re.search(r"fetch\(\s*[\"'`]https?:", blob)
     for s in ("openai", "anthropic.com", "generativelanguage", "openrouter", "TYPESAFE_API_KEY", "metricool", "buffer.com", "hootsuite"):
@@ -87,7 +87,13 @@ def test_rendered_public_pages_do_not_mention_admin():
 def test_manual_only_no_social_automation_infrastructure():
     """Comms stays manual: no X API/OAuth/tokens, no scheduler, no post queue; OPEN IN X is the web intent only."""
     routes = sorted(p.parent.relative_to(WEB / "app/api").as_posix() for p in (WEB / "app/api").rglob("route.ts"))
-    assert routes == ["auth/[...nextauth]", "subscribe"], routes
+    non_live = [r for r in routes if not r.startswith("live/")]
+    assert non_live == ["auth/[...nextauth]", "subscribe"], routes
+    # the Live Observatory routes are read-only (GET only) and never talk to X
+    for r in (WEB / "app/api/live").rglob("route.ts"):
+        src = r.read_text()
+        assert "export async function POST" not in src and "export function POST" not in src, r
+        assert "x.com" not in src and "twitter" not in src.lower(), r
     assert not (WEB / "vercel.json").exists() and not (ROOT / "vercel.json").exists()
     wf = ROOT / ".github/workflows"
     assert not wf.exists() or not any("schedule" in p.read_text() for p in wf.glob("*.y*ml"))

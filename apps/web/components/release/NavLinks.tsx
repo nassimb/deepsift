@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 
 export const PUBLIC_NAV: [string, string][] = [
   ["/mission-control", "Mission control"],
+  ["/data-stream", "Data stream"],
   ["/final-test", "Final test"],
   ["/research", "Research"],
   ["/reproducibility", "Reproducibility"],

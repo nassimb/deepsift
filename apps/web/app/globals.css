@@ -209,3 +209,9 @@ textarea {
     animation: none;
   }
 }
+
+/* Live Observatory */
+.obs-mono { font-family: var(--font-plex-mono), ui-monospace, monospace; }
+@keyframes obs-pulse-kf { 0% { opacity: 1; filter: drop-shadow(0 0 4px currentColor); } 40% { opacity: 0.35; } 100% { opacity: 1; filter: none; } }
+.obs-pulse { animation: obs-pulse-kf 1.1s ease-out 1; }
+@media (prefers-reduced-motion: reduce) { .obs-pulse { animation: none; } }

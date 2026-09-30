@@ -46,6 +46,7 @@ public deployment. None is needed.
 |---|---|---|
 | PUBLIC CORE | `/`, `/mission-control`, `/final-test`, `/research`, `/reproducibility`, `/limitations` | Static; frozen release data only (`data/release.json`, `data/mission-control.json`). Replays only reveal stored frames; nothing is recomputed. |
 | HIDDEN (for now) | `/telemetry` | Phase 1–2 homepage archive. In public mode it returns 404 and is not linked; locally it is unchanged. Re-enable by removing the `notFound()` guard in `apps/web/app/telemetry/page.tsx`. |
+| PUBLIC LIVE | `/data-stream`, `/api/live/{dsn,space-weather,donki,geometry,mars-images/*,sources}` (GET, CDN-cached), `/api/live/collector/*` (read-only proxy; answers `tier0` until `LIVE_COLLECTOR_URL` is set) | Live Data Observatory Tier 0 — see `docs/observatory.md`. No env vars needed. |
 | PRIVATE (not linked, noindex) | `/admin/comms` (+ `/calendar`, `/history`, `/library`, `/review`, `/assets`), `/admin/login`, `/api/auth/*` | GitHub OAuth; only GitHub user `nassimb` (account id 3143068). Others get 403; no session → login. Enforced in `proxy.ts` and the admin layout. |
 | LOCAL / RESEARCH ONLY | `/control`, `/study`, `/blackout`, `/experiments`, `/explorer`, `/audit`, `/config`, `/review` | Need the FastAPI pipeline (`npm run demo`). In public mode they render a notice instead of calling the API, and are hidden from navigation. Kept for the historical record. |
 
